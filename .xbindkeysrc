@@ -1,0 +1,12 @@
+# play/pause on play/pause for external keyboard
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+    XF86AudioPlay
+
+# switch to/from Terminator
+"bash /home/igor/MEGA/Tech/Linux/LinuxProjects/term-toggle.sh"
+    F2 + Release
+
+# activate scroll wheel down from keyboard
+# this is useful to scroll window not in focus
+"python3 -c 'import pyautogui; pyautogui.scroll(-3)'"
+    Control + Alt + space
