@@ -1,3 +1,5 @@
+# Config for xbindkeys, only for Linux
+
 # play/pause on play/pause for external keyboard
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
     XF86AudioPlay
