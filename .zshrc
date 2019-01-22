@@ -2,7 +2,7 @@
 export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/igor/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Ruby
 export GEM_HOME=~/.ruby
