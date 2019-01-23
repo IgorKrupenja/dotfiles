@@ -59,6 +59,8 @@ Darwin)
     alias bcr="brew cask remove"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
+    # dark mode
+    alias dark="$HOME/MEGA/Tech/Mac/MacProjects/darkmode-mac/darkmode.sh"
     ;;
 Linux)
     # apt
@@ -189,7 +191,7 @@ trea() {
 
 # move to Done on Personal board
 trex() {
-    trello move-card "$1" 5a785c2b804e1ff3fd905843
+    trello move-card "$1" 5a785c3a56d2f82288d292e8
 }
 
 ################################# Nextcloud
