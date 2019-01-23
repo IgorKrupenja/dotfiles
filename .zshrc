@@ -86,10 +86,10 @@ case `uname` in
     alias open="xdg-open &>/dev/null"
     # mount windows partition
     alias mntwin="sudo mkdir -p /media/igor/c & sudo mount /dev/nvme0n1p4 /media/igor/c"
+    # scaling -- NB! does not work completely well
+    alias scale="$HOME/MEGA/Tech/Linux/LinuxProjects/xrandr/xrandr.sh"
   ;;
 esac
-
-# also see open below
 
 # .zshrc
 alias zs="source ~/.zshrc"
@@ -117,9 +117,6 @@ alias speed="speedtest"
 alias gitssh="$HOME/MEGA/Tech/Linux/scripts/fix_github_https_repo.sh"
 # git status
 alias gs="gst"
-
-# scaling -- NB! does not work completely well
-alias scale="$HOME/MEGA/Tech/Linux/LinuxProjects/xrandr/xrandr.sh"
 
 # cheat sheets
 alias cht="cht.sh"
