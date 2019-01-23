@@ -21,23 +21,15 @@ COMPLETION_WAITING_DOTS="true"
 
 # Plugins
 plugins=(
-  git
-  web-search
-  colored-man-pages
-  extract
-  # the two below need to be installed separately
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+    git
+    web-search
+    colored-man-pages
+    extract
+    osx
+    # the two below need to be installed separately
+    zsh-syntax-highlighting
+    zsh-autosuggestions
 )
-
-# OS-specific plugins
-case `uname` in
-  Darwin)
-    plugins=(
-        osx
-    )
-  ;;
-esac
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,9 +38,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacs -nw'
+    export EDITOR='emacs -nw'
 else
-  export EDITOR='code'
+    export EDITOR='code'
 fi
 
 # disable paste highlight
@@ -57,8 +49,8 @@ zle_highlight+=(paste:none)
 ############################ ALIASES
 
 # OS-specific aliases
-case `uname` in
-  Darwin)
+case $(uname) in
+Darwin)
     # brew
     alias bi="brew install"
     alias bci="brew cask install"
@@ -69,9 +61,9 @@ case `uname` in
     alias bcr="brew cask remove"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
-  ;;
-  Linux)
-     # apt
+    ;;
+Linux)
+    # apt
     alias aptup="sudo apt update && sudo apt upgrade"
     alias aptadd="sudo apt install"
     alias aptrm="sudo apt purge"
@@ -86,7 +78,7 @@ case `uname` in
     alias open="xdg-open &>/dev/null"
     # mount windows partition
     alias mntwin="sudo mkdir -p /media/igor/c & sudo mount /dev/nvme0n1p4 /media/igor/c"
-  ;;
+    ;;
 esac
 
 # also see open below
@@ -148,32 +140,32 @@ tgboc() {
     echo 'notify-send -i tomato "Time is up!" "Take a 10 minute break"; paplay /usr/share/sounds/Yaru/stereo/desktop-login.ogg' | at now + 50 minutes
 }
 
-tgx(){
+tgx() {
     tg now
     tg stop
     # remove all at jobs -- To stop Pomodoro timer
-    for i in `/usr/bin/atq | awk '{print $1}'`; do atrm $i; done
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgttu() {
     tg start "" @TTU
     tg now
     # remove all at jobs -- To stop Pomodoro timer
-    for i in `/usr/bin/atq | awk '{print $1}'`; do atrm $i; done
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgcode() {
     tg start "" @Coding
     tg now
     # remove all at jobs -- To stop Pomodoro timer
-    for i in `/usr/bin/atq | awk '{print $1}'`; do atrm $i; done
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgcar() {
     tg start "" @Career
     tg now
     # remove all at jobs -- To stop Pomodoro timer
-    for i in `/usr/bin/atq | awk '{print $1}'`; do atrm $i; done
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 ################################# Trello CLI
@@ -211,18 +203,18 @@ alias sshcl="ssh igor@167.99.133.96"
 # Show some status info
 status() {
     print
-    print "Date     : "$(date "+%Y-%m-%d %H:%M:%S") 
+    print "Date     : "$(date "+%Y-%m-%d %H:%M:%S")
     print $(timedatectl | grep "Time zone")
     print "Kernel   : $(uname -r)"
     print "Uptime   : $(uptime -p)"
-    print "Resources: CPU `LC_ALL=C top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}'`%, RAM `free -m | awk '/Mem:/ { printf("%3.1f%%", $3/$2*100) }'`"
-    print "Battery  : $(upower -i $(upower -e | grep '/battery') | grep --color=never percentage|xargs|cut -d' ' -f2|sed s/%//)%"
+    print "Resources: CPU $(LC_ALL=C top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')%, RAM $(free -m | awk '/Mem:/ { printf("%3.1f%%", $3/$2*100) }')"
+    print "Battery  : $(upower -i $(upower -e | grep '/battery') | grep --color=never percentage | xargs | cut -d' ' -f2 | sed s/%//)%"
     print
 }
 
 # convert string to TITLE case
 tc() {
-    sed 's/.*/\L&/; s/[a-z]*/\u&/g' <<<"$1"    
+    sed 's/.*/\L&/; s/[a-z]*/\u&/g' <<<"$1"
 }
 
 # convert string to SENTENCE case
@@ -238,4 +230,3 @@ calc() {
     calc="${calc//x/*}"
     bc -l <<<"scale=10;$calc"
 }
-
