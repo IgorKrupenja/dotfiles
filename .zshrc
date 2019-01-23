@@ -62,7 +62,7 @@ Darwin)
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # empty trash
-    alias trash-empty="rm -rf ~/.Trash/*"
+    alias trash-empty="osascript -e 'tell application \"Finder\" to empty trash'"
     ;;
 Linux)
     # apt
