@@ -8,8 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export LESS=-XFR
 
 # Theme
-ZSH_THEME="tjkirch"
+# best one: tjkirch
 # two other favourites: bira, blokkzh
+ZSH_THEME="bira"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -27,9 +28,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -81,7 +79,7 @@ Linux)
 esac
 
 # .zshrc
-alias zs="source ~/.zshrc"
+alias zs="source $HOME/.zshrc"
 alias ze="code $HOME/Projects/dotfiles/.zshrc"
 
 # cd to Downloads
