@@ -61,6 +61,8 @@ Darwin)
     alias bcr="brew cask remove"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
+    # empty trash
+    alias trash-empty="rm -rf ~/.Trash/*"
     ;;
 Linux)
     # apt
