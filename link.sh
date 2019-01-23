@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfiles=(".xbindkeysrc" ".zshrc" ".gitconfig")
+dotfiles=(".xbindkeysrc" ".zshrc" ".gitconfig" ".emacs")
 
 dir="$HOME/Projects/dotfiles"
 
