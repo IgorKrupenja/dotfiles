@@ -109,6 +109,8 @@ alias speed="speedtest"
 alias gitssh="$HOME/MEGA/Tech/Linux/scripts/fix_github_https_repo.sh"
 # git status
 alias gs="gst"
+# log with pretty graph
+alias glo="git log --graph --oneline"
 
 # cheat sheets
 alias cht="cht.sh"
