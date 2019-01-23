@@ -13,8 +13,8 @@ export LESS=-XFR
 ZSH_THEME="bira"
 
 # display red dots whilst waiting for completion
-case $(uname) in
 # Linux-only as broken on macOS atm
+case $(uname) in
 Linux)
     COMPLETION_WAITING_DOTS="true"
     ;;
@@ -141,7 +141,7 @@ tgboc() {
     tg now
     case $(uname) in
     Darwin)
-        echo "osascript -e \"display notification 'Take a 10 minute break' with title 'Time is up sound name 'Tink'\"" | at now + 50 minutes
+        echo "osascript -e \"display notification 'Take a 10 minute break' with title 'Time is up' sound name 'Tink'\"" | at now + 50 minutes
         ;;
     Linux)
         echo 'notify-send -i tomato "Time is up!" "Take a 10 minute break"; paplay /usr/share/sounds/Yaru/stereo/desktop-login.ogg' | at now + 50 minutes
