@@ -19,10 +19,7 @@ ZSH_THEME="tjkirch"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Plugins
 plugins=(
   git
   web-search
@@ -33,9 +30,16 @@ plugins=(
   zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
+# OS-specific plugins
+case `uname` in
+  Darwin)
+    plugins=(
+        osx
+    )
+  ;;
+esac
 
-################################# User configuration
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -44,7 +48,7 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='emacs -nw'
 else
-  export EDITOR='emacs -nw'
+  export EDITOR='code'
 fi
 
 # disable paste highlight
@@ -52,12 +56,44 @@ zle_highlight+=(paste:none)
 
 ############################ ALIASES
 
+# OS-specific aliases
+case `uname` in
+  Darwin)
+    # brew
+    alias bi="brew install"
+    alias bci="brew cask install"
+    alias bl="brew list"
+    alias bcl="brew cask list"
+    alias bs="brew search"
+    alias br="brew remove"
+    alias bcr="brew cask remove"
+    # cd to trash
+    alias cdtr="cd $HOME/.Trash"
+  ;;
+  Linux)
+     # apt
+    alias aptup="sudo apt update && sudo apt upgrade"
+    alias aptadd="sudo apt install"
+    alias aptrm="sudo apt purge"
+    alias aptcl="sudo apt autoremove"
+    # cd to trash
+    alias cdtr="cd $HOME/.local/share/Trash/files"
+    # dark mode
+    alias dark="$HOME/MEGA/Tech/Linux/LinuxProjects/darkmode/darkmode.sh"
+    # backup
+    alias bak="$HOME/MEGA/Tech/Linux/LinuxProjects/backup/backup.sh"
+    # xdg-open
+    alias open="xdg-open &>/dev/null"
+    # mount windows partition
+    alias mntwin="sudo mkdir -p /media/igor/c & sudo mount /dev/nvme0n1p4 /media/igor/c"
+  ;;
+esac
+
+# also see open below
+
 # .zshrc
 alias zs="source ~/.zshrc"
 alias ze="code $HOME/.zshrc"
-
-# xdg-open
-alias open="xdg-open &>/dev/null"
 
 # cd to Downloads
 alias cdd="cd ~/Downloads"
@@ -65,9 +101,6 @@ alias cdd="cd ~/Downloads"
 # emacs cli
 alias emacs="emacs -nw"
 alias suemacs="sudo emacs -nw"
-
-# VSCode
-# alias code="code --disable-gpu"
 
 ######### SYSTEM INFO
 # wifi network list
@@ -79,29 +112,14 @@ alias tcpt="sudo tcptrack -i wlp2s0"
 # speedtest.net
 alias speed="speedtest"
 
-# dark mode
-alias dark="$HOME/MEGA/Tech/Linux/LinuxProjects/darkmode/darkmode.sh"
-
 # GIT
 # move Github repo from HTTPS to SSH
 alias gitssh="$HOME/MEGA/Tech/Linux/scripts/fix_github_https_repo.sh"
 # git status
 alias gs="gst"
 
-# backup
-alias bak="$HOME/MEGA/Tech/Linux/LinuxProjects/backup/backup.sh"
-
-# APT stuff
-alias aptup="sudo apt update && sudo apt upgrade"
-alias aptadd="sudo apt install"
-alias aptrm="sudo apt purge"
-alias aptcl="sudo apt autoremove"
-
 # scaling -- NB! does not work completely well
 alias scale="$HOME/MEGA/Tech/Linux/LinuxProjects/xrandr/xrandr.sh"
-
-# mount windows partition
-alias mntwin="sudo mkdir -p /media/igor/c & sudo mount /dev/nvme0n1p4 /media/igor/c"
 
 # cheat sheets
 alias cht="cht.sh"
@@ -111,8 +129,6 @@ fpath=(~/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 # fixes for Bocconi thesis bibtex file after Mendeley sync
 alias bib="python3 ~/MEGA/Bocconi\ Thesis/LaTeX\ thesis/bib.py"
 
-# cd to trash
-alias cdtr="cd $HOME/.local/share/Trash/files"
 # empty trash
 alias te="trash-empty"
 
