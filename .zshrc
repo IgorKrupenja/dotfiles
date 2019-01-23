@@ -86,6 +86,7 @@ esac
 # .zshrc
 alias zs="source $HOME/.zshrc"
 alias ze="code $HOME/Projects/dotfiles/.zshrc"
+alias cddot="cd $HOME/Projects/dotfiles"
 
 # cd to Downloads
 alias cdd="cd ~/Downloads"
