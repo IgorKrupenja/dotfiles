@@ -4,9 +4,6 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Ruby
-# export GEM_HOME=~/.ruby
-
 # less -- do not clear screen on exit
 export LESS=-XFR
 
