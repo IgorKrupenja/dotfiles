@@ -5,14 +5,12 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 export ZSH="$HOME/.oh-my-zsh"
 
 # Ruby
-export GEM_HOME=~/.ruby
+# export GEM_HOME=~/.ruby
 
 # less -- do not clear screen on exit
 export LESS=-XFR
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Theme
 ZSH_THEME="tjkirch"
 # two other favourites: bira, blokkzh
 
@@ -220,12 +218,13 @@ status() {
 
 # convert string to TITLE case
 tc() {
-    sed 's/.*/\L&/; s/[a-z]*/\u&/g' <<<"$1"
+    # sed 's/.*/\L&/; s/[a-z]*/\u&/g' <<<"$1"
+    echo "$1" | python3 -c "print('$1'.title())"
 }
 
 # convert string to SENTENCE case
 sc() {
-    echo "$1" | python3 -c 'import sys; print(sys.stdin.read().capitalize(), end="")'
+    echo "$1" | python3 -c "print('$1'.capitalize())"
 }
 
 # calculator
