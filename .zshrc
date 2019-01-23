@@ -12,8 +12,13 @@ export LESS=-XFR
 # two other favourites: bira, blokkzh
 ZSH_THEME="bira"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# display red dots whilst waiting for completion
+case $(uname) in
+# Linux-only as broken on macOS atm
+Linux)
+    COMPLETION_WAITING_DOTS="true"
+    ;;
+esac
 
 # Plugins
 plugins=(
