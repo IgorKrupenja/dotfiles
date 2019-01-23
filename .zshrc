@@ -13,8 +13,8 @@ export LESS=-XFR
 ZSH_THEME="bira"
 
 # display red dots whilst waiting for completion
-case $(uname) in
 # Linux-only as broken on macOS atm
+case $(uname) in
 Linux)
     COMPLETION_WAITING_DOTS="true"
     ;;
