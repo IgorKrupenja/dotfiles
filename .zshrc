@@ -63,6 +63,8 @@ Darwin)
     alias dark="$HOME/MEGA/Tech/Mac/MacProjects/darkmode-mac/darkmode.sh"
     # eject all
     alias eja='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
+    # reboot with confirmation dialog
+    alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
     ;;
 Linux)
     # apt
