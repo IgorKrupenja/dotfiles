@@ -23,8 +23,6 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 # oh-my-zsh
 # ------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
-# Source default config
-source $ZSH/oh-my-zsh.sh
 # themes I like: tjkirch, bira, blokkzh
 ZSH_THEME="bira"
 # display red dots while waiting for completion
@@ -47,6 +45,9 @@ plugins=(
 )
 # disable paste highlight
 zle_highlight+=(paste:none)
+# Source default config
+# Should stay at the bottom of configuration
+source $ZSH/oh-my-zsh.sh
 
 # less -- do not clear screen on exit
 # ------------------------------------
@@ -235,6 +236,7 @@ Darwin)
     alias bs="brew search"
     alias br="brew remove"
     alias bcr="brew cask remove"
+    alias bd="brew deps --installed"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
