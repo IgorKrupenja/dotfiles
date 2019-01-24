@@ -94,6 +94,8 @@ alias gs="gst"
 alias glo="git log --graph --oneline"
 # commit and push reminder
 alias gre="git-remind status"
+# commit and push reminder
+alias grer="git-remind repos"
 
 # cht.sh
 # ------------------------------------

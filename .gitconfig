@@ -20,4 +20,4 @@
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [remind]
-	paths = /Users/igor/Projects/OS/*
+	paths = /Users/igor/Projects/OS/*,/Users/igor/Projects/Reference
