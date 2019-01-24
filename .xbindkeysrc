@@ -5,7 +5,7 @@
     XF86AudioPlay
 
 # switch to/from Terminator
-"bash /home/igor/MEGA/Tech/Linux/LinuxProjects/term-toggle.sh"
+"bash /home/igor/Projects/OS/bas-snippets/term-toggle.sh"
     F2 + Release
 
 # activate scroll wheel down from keyboard

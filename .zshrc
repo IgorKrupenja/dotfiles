@@ -87,7 +87,7 @@ sc() {
 # git
 # ------------------------------------
 # move Github repo from HTTPS to SSH
-alias gitssh="$HOME/MEGA/Tech/Linux/scripts/fix_github_https_repo.sh"
+alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
 # git status
 alias gs="gst"
 # log with pretty graph
@@ -115,8 +115,8 @@ alias suemacs="sudo emacs -nw"
 # zsh
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
-alias ze="code $HOME/Projects/dotfiles/.zshrc"
-alias cddot="cd $HOME/Projects/dotfiles"
+alias ze="code $HOME/Projects/OS/dotfiles/.zshrc"
+alias cddot="cd $HOME/Projects/OS/dotfiles"
 
 # Misc
 # ------------------------------------
@@ -248,7 +248,9 @@ Darwin)
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
-    alias dark="$HOME/MEGA/Tech/Mac/MacProjects/darkmode-mac/darkmode.sh"
+    alias dark="$HOME/Projects/OS/darkmode-mac/darkmode.sh"
+    # backup
+    alias bak="$HOME/Projects/OS/bash-snippets/backup-mac.sh"
     # eject all
     alias eja='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
     # reboot with confirmation dialog
@@ -263,15 +265,15 @@ Linux)
     # cd to trash
     alias cdtr="cd $HOME/.local/share/Trash/files"
     # dark mode
-    alias dark="$HOME/MEGA/Tech/Linux/LinuxProjects/darkmode/darkmode.sh"
+    alias dark="$HOME/Projects/OS/darkmode-linux/darkmode.sh"
     # backup
-    alias bak="$HOME/MEGA/Tech/Linux/LinuxProjects/backup/backup.sh"
+    alias bak="$HOME/Projects/OS/bash-snippets/backup-linux.sh"
     # xdg-open
     alias open="xdg-open &>/dev/null"
     # mount windows partition
     alias mntwin="sudo mkdir -p /media/igor/c & sudo mount /dev/nvme0n1p4 /media/igor/c"
     # scaling -- NB! does not work completely well
-    alias scale="$HOME/MEGA/Tech/Linux/LinuxProjects/xrandr/xrandr.sh"
+    alias scale="$HOME/Projects/OS/bash-snippets/xrandr.sh"
     ;;
 esac
 
@@ -313,7 +315,7 @@ calc() {
 }
 
 # ---------------------------------------------------------------------------
-# 8. OUTDATED
+# 0. OUTDATED
 # ---------------------------------------------------------------------------
 
 # Nextcloud

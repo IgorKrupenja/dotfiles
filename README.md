@@ -15,7 +15,7 @@ A repository to store some of my dotfiles.
 1. Create a projects folder.
 
 ```shell
-mkdir ~/Projects
+mkdir -p ~/Projects/OS
 ```
 
 2. Clone the repository into the projects folder.
