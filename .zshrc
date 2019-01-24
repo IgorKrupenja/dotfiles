@@ -99,6 +99,11 @@ alias cht="cht.sh"
 # for completions
 fpath=(~/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
+# cht.sh
+# ------------------------------------
+alias c="code"
+alias ch="code ."
+
 # emacs
 # ------------------------------------
 alias emacs="emacs -nw"
