@@ -48,6 +48,7 @@ zle_highlight+=(paste:none)
 # Source default config
 # Should stay at the bottom of configuration
 source $ZSH/oh-my-zsh.sh
+source ~/.iterm2_shell_integration.zsh
 
 # less -- do not clear screen on exit
 # ------------------------------------
@@ -91,6 +92,8 @@ alias gitssh="$HOME/MEGA/Tech/Linux/scripts/fix_github_https_repo.sh"
 alias gs="gst"
 # log with pretty graph
 alias glo="git log --graph --oneline"
+# commit and push reminder
+alias gre="git-remind status"
 
 # cht.sh
 # ------------------------------------

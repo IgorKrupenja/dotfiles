@@ -19,3 +19,5 @@
     tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[remind]
+	paths = /Users/igor/Projects/Mac/*,/Users/igor/Projects/dotfiles
