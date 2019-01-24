@@ -248,7 +248,7 @@ Darwin)
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
-    alias dark="$HOME/Projects/OS/darkmode-mac/darkmode.sh"
+    alias dark="$HOME/Projects/OS/darkmode/darkmode.sh"
     # backup
     alias bak="$HOME/Projects/OS/bash-snippets/backup-mac.sh"
     # eject all
