@@ -350,6 +350,16 @@ trash-empty() {
 # te
 alias te="trash-empty"
 
+# Weather
+# ------------------------------------
+meteo() {
+    if [[ $@ == "" ]]; then
+        command curl wttr.in
+    else
+        command curl wttr.in/"$@"
+    fi
+}
+
 # Shortcuts
 # ------------------------------------
 alias dl="cd ~/Downloads"
