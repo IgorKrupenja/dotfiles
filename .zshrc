@@ -107,7 +107,7 @@ alias cht="cht.sh"
 # for completions
 fpath=(~/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
-# cht.sh
+# VSCode
 # ------------------------------------
 alias c="code"
 alias ch="code ."
@@ -120,7 +120,7 @@ alias suemacs="sudo emacs -nw"
 # zsh
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
-alias ze="code $HOME/Projects/OS/dotfiles/.zshrc"
+alias ze="code $HOME/Projects/OS/dotfiles"
 alias dot="cd $HOME/Projects/OS/dotfiles"
 
 # Misc
@@ -167,7 +167,7 @@ esac
 # wifi network list
 case $(uname) in
 Darwin)
-    alias trello="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
+    alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
     ;;
 Linux)
     alias wifi="iwlist scan > /dev/null 2>&1 && nmcli dev wifi"
@@ -283,9 +283,10 @@ Darwin)
     alias bl="brew list"
     alias bcl="brew cask list"
     alias bs="brew search"
-    alias br="brew remove"
+    alias br="brew rmtree"
     alias bcr="brew cask remove"
     alias bd="brew deps --installed"
+    alias blv="brew leaves"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
@@ -298,6 +299,13 @@ Darwin)
     alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
     # pip
     alias pip="pip3"
+    # Show/hide hidden files in Finder
+    alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+    alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+    # quick look
+    alias ql="qlmanage -p &>/dev/null"
+    # tmp Chrome with dark mode support
+    alias chromed="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --enable-features=WebUIDarkMode"
     ;;
 Linux)
     # apt
@@ -342,10 +350,13 @@ trash-empty() {
 # te
 alias te="trash-empty"
 
+# Shortcuts
+# ------------------------------------
+alias dl="cd ~/Downloads"
+alias p="cd ~/Prjects"
+
 # Other
 # ------------------------------------
-# cd to Downloads
-alias cdd="cd ~/Downloads"
 # recursive mkdir
 alias mkdir='mkdir -pv'
 # calculator
