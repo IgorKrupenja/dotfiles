@@ -109,8 +109,13 @@ fpath=(~/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
 # VSCode
 # ------------------------------------
-alias c="code"
-alias ch="code ."
+c() {
+    if [[ $@ == "" ]]; then
+        command code .
+    else
+        command code "$@"
+    fi
+}
 
 # emacs
 # ------------------------------------
