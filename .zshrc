@@ -74,7 +74,6 @@ fi
 alias bib="python3 ~/MEGA/Bocconi\ Thesis/LaTeX\ thesis/bib.py"
 # convert string to TITLE case
 tc() {
-    # sed 's/.*/\L&/; s/[a-z]*/\u&/g' <<<"$1"
     echo "$1" | python3 -c "print('$1'.title())"
 }
 # convert string to SENTENCE case
@@ -291,6 +290,9 @@ Darwin)
     alias bcr="brew cask remove"
     alias bd="brew deps --installed"
     alias blv="brew leaves"
+    alias bul="brew update --verbose && brew outdated && brew cask outdated"
+    alias bu="brew upgrade && brew cask upgrade"
+    alias bt="brew cleanup; brew doctor"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
