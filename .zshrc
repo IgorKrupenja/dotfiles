@@ -215,7 +215,18 @@ tgcar() {
 # 6. TRELLO CLI
 # ---------------------------------------------------------------------------
 
-alias trello="$HOME/MEGA/Tech/Linux/trello-cli/bin/trello"
+case $(uname) in
+Darwin)
+    alias trello="$HOME/Applications/trello-cli/bin/trello"
+    ;;
+Linux)
+    alias trello="$HOME/bin/trello-cli/bin/trello"
+    ;;
+esac
+
+# temp
+# alias trello="$HOME/Applications/trello-cli/bin/trello"
+
 trelp() {
     trello show-cards -b Personal -l '💣 Today'
     trello show-cards -b Personal -l '🌆 Tonight'
