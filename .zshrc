@@ -166,9 +166,12 @@ Linux)
     alias memuse="smem -tkP"
     ;;
 esac
-
 # network usage stats
-alias tcpt="sudo tcptrack -i wlp2s0"
+case $(uname) in
+Linux)
+    alias tcpt="sudo tcptrack -i wlp2s0"
+    ;;
+esac
 # speedtest.net
 alias speed="speedtest"
 
