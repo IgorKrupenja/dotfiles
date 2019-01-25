@@ -8,7 +8,6 @@
 # 5.  Toggl CLI
 # 6.  Trello CLI
 # 7.  Misc Aliases and Functions
-# 0.  Outdated
 #
 # ---------------------------------------------------------------------------
 
@@ -382,17 +381,3 @@ calc() {
     calc="${calc//x/*}"
     bc -l <<<"scale=10;$calc"
 }
-
-# ---------------------------------------------------------------------------
-# 0. OUTDATED
-# ---------------------------------------------------------------------------
-
-# Nextcloud
-# ------------------------------------
-# mount cloud FS over SSH
-mntcl() {
-    sudo mkdir /mnt/nextcloud
-    sudo sshfs -o allow_other,IdentityFile=/home/igor/.ssh/id_rsa root@167.99.133.96://mnt/nextcloud
-}
-# SSH
-alias sshcl="ssh igor@167.99.133.96"
