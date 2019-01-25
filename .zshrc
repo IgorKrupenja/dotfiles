@@ -18,7 +18,7 @@
 
 # Paths
 # ------------------------------------
-export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools:$PATH
+export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools:/home/igor/.local/bin:$PATH
 
 # oh-my-zsh
 # ------------------------------------
