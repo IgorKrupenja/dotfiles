@@ -45,9 +45,12 @@ plugins=(
 )
 # disable paste highlight
 zle_highlight+=(paste:none)
+# workaround for slow paste bug
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # Source default config
 # Should stay at the bottom of configuration
 source $ZSH/oh-my-zsh.sh
+# iTerm shell integration
 source ~/.iterm2_shell_integration.zsh
 
 # less -- do not clear screen on exit
@@ -149,9 +152,21 @@ esac
 # Misc
 # ------------------------------------
 # wifi network list
-alias wifi="iwlist scan > /dev/null 2>&1 && nmcli dev wifi"
+case $(uname) in
+Darwin)
+    alias trello="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
+    ;;
+Linux)
+    alias wifi="iwlist scan > /dev/null 2>&1 && nmcli dev wifi"
+    ;;
+esac
 # total memory usage for an app
-alias memuse="smem -tkP"
+case $(uname) in
+Linux)
+    alias memuse="smem -tkP"
+    ;;
+esac
+
 # network usage stats
 alias tcpt="sudo tcptrack -i wlp2s0"
 # speedtest.net
