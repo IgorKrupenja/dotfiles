@@ -132,11 +132,11 @@ alias py="python3 -m IPython"
 # 4. SYSTEM INFORMATION
 # ---------------------------------------------------------------------------
 
-# Linux status
+# OS status
 # ------------------------------------
 case $(uname) in
 Linux)
-    status() {
+    st() {
         print
         print "Date     : "$(date "+%Y-%m-%d %H:%M:%S")
         print $(timedatectl | grep "Time zone")
@@ -144,6 +144,19 @@ Linux)
         print "Uptime   : $(uptime -p)"
         print "Resources: CPU $(LC_ALL=C top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')%, RAM $(free -m | awk '/Mem:/ { printf("%3.1f%%", $3/$2*100) }')"
         print "Battery  : $(upower -i $(upower -e | grep '/battery') | grep --color=never percentage | xargs | cut -d' ' -f2 | sed s/%//)%"
+        print
+    }
+    ;;
+Darwin)
+    st() {
+        print
+        print "Date     : $(date -R)"
+        print "Kernel   : $(uname -r)"
+        print "Uptime   : $(uptime)"
+        print "CPU      : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
+        print "Memory   : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
+        print "Swap     : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
+        print "Battery  : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')"
         print
     }
     ;;
@@ -283,6 +296,8 @@ Darwin)
     alias eja='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
     # reboot with confirmation dialog
     alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
+    # pip
+    alias pip="pip3"
     ;;
 Linux)
     # apt
