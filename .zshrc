@@ -118,7 +118,7 @@ alias suemacs="sudo emacs -nw"
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
 alias ze="code $HOME/Projects/OS/dotfiles/.zshrc"
-alias cddot="cd $HOME/Projects/OS/dotfiles"
+alias dot="cd $HOME/Projects/OS/dotfiles"
 
 # Misc
 # ------------------------------------
@@ -223,9 +223,6 @@ Linux)
     alias trello="$HOME/bin/trello-cli/bin/trello"
     ;;
 esac
-
-# temp
-# alias trello="$HOME/Applications/trello-cli/bin/trello"
 
 trelp() {
     trello show-cards -b Personal -l '💣 Today'
