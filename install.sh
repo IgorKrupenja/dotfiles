@@ -77,9 +77,8 @@ install_sw_node() {
 install_sw_misc() {
 
     # cht.sh
-    # TODO this is broken
-    sudo curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
-    sudo chmod +x /usr/local/bin/cht.sh
+    curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
+    chmod +x /usr/local/bin/cht.sh
 
     # goldendict
     cd /tmp
