@@ -97,6 +97,18 @@ alias glo="git log --graph --oneline"
 alias gre="git-remind status"
 # commit and push reminder
 alias grer="git-remind repos"
+# git commmit with message
+alias gcm="gcmsg"
+# git commit all with message and push
+gcamp() {
+    command git commit -a -m "$1" && gp
+}
+# git commit with message and push
+gcmp() {
+    command git commit -m" $1" && gp
+}
+
+alias testo="echo 'test'"
 
 # cht.sh
 # ------------------------------------
@@ -124,12 +136,10 @@ alias suemacs="sudo emacs -nw"
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
 alias ze="code $HOME/Projects/OS/dotfiles"
-alias dot="cd $HOME/Projects/OS/dotfiles"
-
 # Misc
 # ------------------------------------
 # IPython interpreter
-alias py="python3 -m IPython"
+alias ipy="python3 -m IPython"
 
 # ---------------------------------------------------------------------------
 # 4. SYSTEM INFORMATION
@@ -389,12 +399,16 @@ meteo() {
 # ------------------------------------
 alias dl="cd ~/Downloads"
 alias p="cd ~/Projects"
-
-# Other
-# ------------------------------------
+alias mb="cd ~/MEGA/Backups/Mac"
+alias scr="cd ~/Projects/OS/bash-snippets"
+alias dot="cd $HOME/Projects/OS/dotfiles"
+alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
-# calculator
+alias sshv='ssh igor@macos-10.14.3.shared'
+
+# Calculator
+# ------------------------------------
 calc() {
     # use either + or p to sum
     local calc="${*//p/+}"
