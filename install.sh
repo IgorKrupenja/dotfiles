@@ -57,8 +57,6 @@ install_sw_brew() {
 
 install_sw_pip() {
     pip3 install togglCli
-    # generate sample config file for togglCli
-    toggl
     # for linting in VSCode
     pip3 install autopep8
     pip3 install pep8
@@ -80,8 +78,8 @@ install_sw_misc() {
 
     # cht.sh
     # TODO this is broken
-    curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
-    chmod +x /usr/local/bin/cht.sh
+    sudo curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
+    sudo chmod +x /usr/local/bin/cht.sh
 
     # goldendict
     cd /tmp
@@ -119,12 +117,12 @@ mackup_restore() {
 extra_settings_restore() {
     # VSCode
     source $BAKDIR/VSCode-extra/extensions.sh
-    cp -f $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    cp -fv $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # Marta
-    cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+    cp -Rfv $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
-    cp -f $BAKDIR/.togglrc $HOME/
-    cp -f $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+    cp -fv $BAKDIR/.togglrc $HOME/
+    cp -fv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
 }
 
 macos_settings() {
