@@ -35,10 +35,12 @@ main() {
     link_dotfiles
     mackup_restore
     extra_settings_restore
+    change_shell
 }
 
 # Ask for password only once
 init_sudo() {
+    echo "Please enter password:"
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
         sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
         sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
@@ -51,22 +53,16 @@ install_sw_brew() {
     brew cask install megasync
     # Promt to log into Mega
     osascript -e 'display notification "MEGA installed" with title "dotfiles install" sound name "Glass"'
+    echo ""
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
     read -p "Press any key to continue. Ctrl-C to abort."
+    # TODO open mega from script
     # Install formulae and casks from Brewfile
     brew bundle
 }
 
 zsh_config() {
-    # change shell
-    case "${SHELL}" in
-    *zsh) ;;
-    *)
-        chsh -s "$(which zsh)"
-        exit 1
-        ;;
-    esac
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     # Install plug-ins
@@ -140,6 +136,16 @@ extra_settings_restore() {
 macos_settings() {
     # fix for font smoothing in Chromium/Electron
     defaults read -g CGFontRenderingFontSmoothingDisabled
+}
+
+change_shell() {
+    case "${SHELL}" in
+    *zsh) ;;
+    *)
+        chsh -s "$(which zsh)"
+        exit 1
+        ;;
+    esac
 }
 
 main "$@"
