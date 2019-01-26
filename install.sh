@@ -125,6 +125,9 @@ extra_settings_restore() {
 }
 
 macos_settings() {
+
+    # Thanks to Mathias Bynens! https://mths.be/macos
+
     # fix for font smoothing in Chromium/Electron
     defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
     # Show scrollbars only wen scrolling

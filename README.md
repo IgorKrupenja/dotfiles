@@ -34,5 +34,5 @@ cd dotfiles
 For an automated install on clean systems without Xcode Command Line Tools, run the following (ugly) one-liner (will install into `~/Projects/OS/`):
 
 ```shell
-mkdir -p ~/Projects/OS/; cd ~/Projects/OS/; touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress; PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n'); softwareupdate -i "$PROD" --verbose; rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;  git clone https://github.com/krupenja/dotfiles.git; ./dotfiles/install.sh
+mkdir -p ~/Projects/OS/; cd ~/Projects/OS/; touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress; PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n'); softwareupdate -i "$PROD" --verbose; rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;  git clone https://github.com/krupenja/dotfiles.git; cd dotfiles; ./install.sh
 ```
