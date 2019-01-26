@@ -202,6 +202,9 @@ alias speed="speedtest"
 alias tg="toggl"
 alias tgr="tg continue; tg now"
 alias tgn="tg now"
+# Open in browser
+alias tgw="open https://www.toggl.com/app/timer"
+
 # Stop
 tgx() {
     tg now
@@ -312,8 +315,12 @@ Darwin)
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
     # quick look
     alias ql="qlmanage -p &>/dev/null"
+    # crontab -e fix
+    alias cre="EDITOR=\"nano\" crontab -e"
     # tmp Chrome with dark mode support
     alias chromed="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --enable-features=WebUIDarkMode"
+    # tmp remap caps to esc
+    alias esc="hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'"
     ;;
 Linux)
     # apt
@@ -335,6 +342,16 @@ Linux)
     alias scale="$HOME/Projects/OS/bash-snippets/xrandr.sh"
     ;;
 esac
+
+# Aliases
+# ------------------------------------
+a() {
+    if [[ $@ == "" ]]; then
+        alias
+    else
+        alias | grep "$@"
+    fi
+}
 
 # Trash
 # ------------------------------------
@@ -371,7 +388,7 @@ meteo() {
 # Shortcuts
 # ------------------------------------
 alias dl="cd ~/Downloads"
-alias p="cd ~/Prjects"
+alias p="cd ~/Projects"
 
 # Other
 # ------------------------------------
