@@ -70,8 +70,6 @@ install_sw_pip() {
 
 install_sw_node() {
     npm install -g trello-cli
-    # create sample config
-    trello
 }
 
 install_sw_misc() {
@@ -90,7 +88,7 @@ install_sw_misc() {
 
 zsh_config() {
     # Install oh-my-zsh
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
     # Install plug-ins
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -116,12 +114,12 @@ mackup_restore() {
 extra_settings_restore() {
     # VSCode
     source $BAKDIR/VSCode-extra/extensions.sh
-    cp -fv $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    cp -f $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # Marta
-    cp -Rfv $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+    cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
-    cp -fv $BAKDIR/.togglrc $HOME/
-    cp -fv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+    cp -f $BAKDIR/.togglrc $HOME/
+    cp -f $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
 }
 
 macos_settings() {
@@ -147,7 +145,6 @@ macos_settings() {
     # Set homes as the default location for new Finder windows
     defaults write com.apple.finder NewWindowTarget -string "PfLo"
     defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
-
 }
 
 main "$@"
