@@ -50,6 +50,7 @@ install_sw_brew() {
     echo ""
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
+    say "Attention required"
     read -p "Press any key to continue."
     # Install formulae and casks from Brewfile
     brew bundle
@@ -119,6 +120,7 @@ extra_settings_restore() {
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
     cp -f $BAKDIR/.togglrc $HOME/
+    mkdir -p $HOME/.trello-cli/
     cp -f $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
 }
 
@@ -145,6 +147,16 @@ macos_settings() {
     # Set homes as the default location for new Finder windows
     defaults write com.apple.finder NewWindowTarget -string "PfLo"
     defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+    # Wipe all (default) app icons from the Dock
+    defaults write com.apple.dock persistent-apps -array
+    # Automatically hide and show the Dock
+    defaults write com.apple.dock autohide -bool true
+    # Remove the auto-hiding Dock delay
+    defaults write com.apple.dock autohide-delay -float 0
+    # Don’t show recent applications in Dock
+    defaults write com.apple.dock show-recents -bool false
+    # Check for software updates daily, not just once per week
+    defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 }
 
 main "$@"
