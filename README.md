@@ -25,6 +25,7 @@ git clone git@github.com:krupenja/dotfiles.git
 1. Run the `install.sh` script.
 
 ```shell
+cd dotfiles
 ./install.sh
 ```
 
