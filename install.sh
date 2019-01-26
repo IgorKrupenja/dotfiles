@@ -40,7 +40,6 @@ main() {
 
 # Ask for password only once
 init_sudo() {
-    echo "Please enter password:"
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
         sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
         sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
@@ -51,13 +50,13 @@ install_sw_brew() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     # Install megasync first so that sync could start ASAP
     brew cask install megasync
-    # Promt to log into Mega
+    open /Applications/MEGAsync.app
     osascript -e 'display notification "MEGA installed" with title "dotfiles install" sound name "Glass"'
+    # Promt to log into Mega
     echo ""
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
     read -p "Press any key to continue. Ctrl-C to abort."
-    # TODO open mega from script
     # Install formulae and casks from Brewfile
     brew bundle
 }
@@ -89,7 +88,7 @@ install_sw_pip() {
 
 install_sw_node() {
     npm install -g trello-cli
-    # create sample comfig
+    # create sample config
     trello
 }
 
