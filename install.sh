@@ -25,11 +25,11 @@ main() {
     install_sw_pip
     install_sw_node
     install_sw_misc
+    zsh_config
     link_dotfiles
     mackup_restore
     extra_settings_restore
     macos_settings
-    zsh_config
 }
 
 # Ask for password only once
@@ -80,7 +80,7 @@ install_sw_misc() {
 
     # cht.sh
     # TODO this is broken
-    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+    curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 
     # goldendict
@@ -91,6 +91,15 @@ install_sw_misc() {
     hdiutil unmount /Volumes/goldendict-1.5.0-RC2-311-g15062f7/
 }
 
+zsh_config() {
+    # Install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
+    # Install plug-ins
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+}
+
+# Needs to be called after zsh_config
 link_dotfiles() {
     dotfiles=(".zshrc" ".gitconfig" ".emacs" ".mackup.cfg")
     for dotfile in "${dotfiles[@]}"; do
@@ -101,7 +110,7 @@ link_dotfiles() {
 }
 
 # Restore app settings backed up using Mackup
-# Needs to be run after link_dotfiles
+# Needs to be called after link_dotfiles
 mackup_restore() {
     mackup restore -f
 }
@@ -142,16 +151,6 @@ macos_settings() {
     defaults write com.apple.finder NewWindowTarget -string "PfLo"
     defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
-}
-
-zsh_config() {
-    # Install oh-my-zsh
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
-    # Install plug-ins
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    # Install extra theme
-    curl -O https://raw.githubusercontent.com/KorvinSilver/blokkzh/master/blokkzh-downloader.zsh && zsh blokkzh-downloader.zsh $ZSH_CUSTOM && rm blokkzh-downloader.zsh
 }
 
 main "$@"
