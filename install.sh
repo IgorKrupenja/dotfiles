@@ -151,7 +151,7 @@ macos_settings() {
     defaults write com.apple.finder NewWindowTarget -string "PfLo"
     defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
     # Wipe all (default) app icons from the Dock
-    defaults write com.apple.dock persistent-apps -array
+    dockutil --no-restart --remove all
     # Automatically hide and show the Dock
     defaults write com.apple.dock autohide -bool true
     # Remove the auto-hiding Dock delay
