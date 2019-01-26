@@ -8,25 +8,30 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles.
+A repository to store some of my dotfiles. `.zshrc` has support for both macOS and Linux but installation script `install..sh` is macOS-only at the moment.
+
+## Requirements
+
+Xcode Command Line Tools need to be installed. Run `xcode-select --install` to install them.
 
 ## Installation
 
-1. Create a projects folder.
+1. Clone the repository.
 
 ```shell
-mkdir -p ~/Projects/OS
-```
-
-2. Clone the repository into the projects folder.
-
-```shell
-cd ~/Projects
 git clone git@github.com:krupenja/dotfiles.git
 ```
 
-3. Run the `link.sh` script to create symbolic links inside home folder.
+3. Run the `install.sh` script to create symbolic links inside home folder.
 
 ```shell
-./link.sh
+./install.sh
+```
+
+## Alternative installation
+
+For an automated install on clean systems without Xcode Command Line Tools, run the following (ugly) one-liner (will install into `~/Projects/OS/`):
+
+```shell
+mkdir -p ~/Projects/OS/; cd ~/Projects/OS/; touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress; PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n'); softwareupdate -i "$PROD" --verbose; rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;  git clone https://github.com/krupenja/dotfiles.git; ./dotfiles/install.sh
 ```
