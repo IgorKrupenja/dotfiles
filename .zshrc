@@ -23,7 +23,7 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 # ------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
 # themes I like: tjkirch, bira, blokkzh
-ZSH_THEME="bira"
+ZSH_THEME="tjkirch"
 # display red dots while waiting for completion
 # Linux-only as broken on macOS atm
 case $(uname) in
