@@ -405,6 +405,7 @@ alias dot="cd $HOME/Projects/OS/dotfiles"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
+# SSH to virtual macOS machine
 alias sshv='ssh igor@macos-10.14.3.shared'
 
 # Calculator
