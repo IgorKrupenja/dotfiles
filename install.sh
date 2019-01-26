@@ -47,7 +47,7 @@ init_sudo() {
 
 install_sw_brew() {
     # Install brew
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
     # Install megasync first so that sync could start ASAP
     brew cask install megasync
     open /Applications/MEGAsync.app
@@ -56,24 +56,24 @@ install_sw_brew() {
     echo ""
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
-    read -p "Press any key to continue. Ctrl-C to abort."
+    read -p "Press any key to continue."
     # Install formulae and casks from Brewfile
     brew bundle
 }
 
 install_sw_pip() {
-    pip install togglCli
+    pip3 install togglCli
     # generate sample config file for togglCli
     toggl
     # for linting in VSCode
-    pip install autopep8
-    pip install pep8
-    pip install pylint
-    pip install pydocstyle
+    pip3 install autopep8
+    pip3 install pep8
+    pip3 install pylint
+    pip3 install pydocstyle
     # other
-    pip install pip-autoremove
-    pip install pipdeptree
-    pip install ipython
+    pip3 install pip-autoremove
+    pip3install pipdeptree
+    pip3 install ipython
 }
 
 install_sw_node() {
@@ -83,7 +83,7 @@ install_sw_node() {
 }
 
 install_sw_misc() {
-    
+
     # cht.sh
     curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
