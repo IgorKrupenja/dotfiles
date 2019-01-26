@@ -28,14 +28,14 @@ fi
 main() {
     init_sudo
     install_sw_brew
-    zsh_config
     install_sw_pip
     install_sw_node
     install_sw_misc
     link_dotfiles
     mackup_restore
     extra_settings_restore
-    change_shell
+    macos_settings
+    zsh_config
 }
 
 # Ask for password only once
@@ -61,16 +61,6 @@ install_sw_brew() {
     brew bundle
 }
 
-zsh_config() {
-    # Install oh-my-zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    # Install plug-ins
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    # Install extra theme
-    curl -O https://raw.githubusercontent.com/KorvinSilver/blokkzh/master/blokkzh-downloader.zsh && zsh blokkzh-downloader.zsh $ZSH_CUSTOM && rm blokkzh-downloader.zsh
-}
-
 install_sw_pip() {
     pip install togglCli
     # generate sample config file for togglCli
@@ -93,6 +83,7 @@ install_sw_node() {
 }
 
 install_sw_misc() {
+    
     # cht.sh
     curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
@@ -117,7 +108,7 @@ link_dotfiles() {
 # Restore app settings backed up using Mackup
 # Needs to be run after link_dotfiles
 mackup_restore() {
-    mackup restore
+    mackup restore -f
 }
 
 # Settings not in Mackup
@@ -137,14 +128,14 @@ macos_settings() {
     defaults read -g CGFontRenderingFontSmoothingDisabled
 }
 
-change_shell() {
-    case "${SHELL}" in
-    *zsh) ;;
-    *)
-        chsh -s "$(which zsh)"
-        exit 1
-        ;;
-    esac
+zsh_config() {
+    # Install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
+    # Install plug-ins
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # Install extra theme
+    curl -O https://raw.githubusercontent.com/KorvinSilver/blokkzh/master/blokkzh-downloader.zsh && zsh blokkzh-downloader.zsh $ZSH_CUSTOM && rm blokkzh-downloader.zsh
 }
 
 main "$@"
