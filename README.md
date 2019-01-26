@@ -22,7 +22,7 @@ Xcode Command Line Tools need to be installed. Run `xcode-select --install` to i
 git clone git@github.com:krupenja/dotfiles.git
 ```
 
-3. Run the `install.sh` script to create symbolic links inside home folder.
+1. Run the `install.sh` script.
 
 ```shell
 ./install.sh
