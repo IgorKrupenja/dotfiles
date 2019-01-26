@@ -9,10 +9,10 @@ echo "###############################################"
 echo ""
 
 # Check if root
-if [[ $EUID -ne 0 ]]; then
-    echo "FAIL: this script must be run as root"
-    exit 1
-fi
+# if [[ $EUID -ne 0 ]]; then
+#     echo "FAIL: this script must be run as root"
+#     exit 1
+# fi
 
 # Base directory
 BASEDIR=$(pwd)
@@ -26,14 +26,22 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
 fi
 
 main() {
+    init_sudo
     install_sw_brew
-    zsh_setup
+    zsh_config
     install_sw_pip
     install_sw_node
     install_sw_misc
     link_dotfiles
     mackup_restore
     extra_settings_restore
+}
+
+# Ask for password only once
+init_sudo() {
+    printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
+        sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
+        sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
 
 install_sw_brew() {
@@ -50,7 +58,7 @@ install_sw_brew() {
     brew bundle
 }
 
-zsh_setup() {
+zsh_config() {
     # change shell
     case "${SHELL}" in
     *zsh) ;;
@@ -120,13 +128,18 @@ mackup_restore() {
 # Settings not in Mackup
 extra_settings_restore() {
     # VSCode
-    source $OUT/VSCode-extra/extensions.sh
-    cp -f $OUT/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    source $BAKDIR/VSCode-extra/extensions.sh
+    cp -f $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # Marta
-    cp -Rf $OUT/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+    cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
-    cp -f $OUT/.togglrc $HOME/
-    cp -f $OUT/.trello-cli/config.json $HOME/.trello-cli/
+    cp -f $BAKDIR/.togglrc $HOME/
+    cp -f $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+}
+
+macos_settings() {
+    # fix for font smoothing in Chromium/Electron
+    defaults read -g CGFontRenderingFontSmoothingDisabled
 }
 
 main "$@"
