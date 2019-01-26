@@ -46,8 +46,8 @@ plugins=(
 zle_highlight+=(paste:none)
 # workaround for slow paste bug
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+# IMPORTNANT! Two lines below should stay at the bottom of configuration
 # Source default config
-# Should stay at the bottom of configuration
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source ~/.iterm2_shell_integration.zsh
@@ -185,8 +185,10 @@ esac
 # network usage stats
 case $(uname) in
 Linux)
-    alias tcpt="sudo tcptrack -i wlp2s0"
+    alias net="sudo tcptrack -i wlp2s0"
     ;;
+Darwin)
+    alias net="sudo iftop -B"
 esac
 # speedtest.net
 alias speed="speedtest"
@@ -288,11 +290,11 @@ Darwin)
     alias bs="brew search"
     alias br="brew rmtree"
     alias bcr="brew cask remove"
-    alias bd="brew deps --installed"
+    alias bdep="brew deps --installed"
     alias blv="brew leaves"
     alias bul="brew update --verbose && brew outdated && brew cask outdated"
     alias bu="brew upgrade && brew cask upgrade"
-    alias bt="brew cleanup; brew doctor"
+    alias bd="brew cleanup; brew doctor"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
