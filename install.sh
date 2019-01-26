@@ -8,12 +8,6 @@ echo "#                                             #"
 echo "###############################################"
 echo ""
 
-# Check if root
-# if [[ $EUID -ne 0 ]]; then
-#     echo "FAIL: this script must be run as root"
-#     exit 1
-# fi
-
 # Base directory
 BASEDIR=$(pwd)
 # Custom backup directory for stuff not in mackup
@@ -72,7 +66,7 @@ install_sw_pip() {
     pip3 install pydocstyle
     # other
     pip3 install pip-autoremove
-    pip3install pipdeptree
+    pip3 install pipdeptree
     pip3 install ipython
 }
 
@@ -85,6 +79,7 @@ install_sw_node() {
 install_sw_misc() {
 
     # cht.sh
+    # TODO this is broken
     curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 
@@ -125,7 +120,28 @@ extra_settings_restore() {
 
 macos_settings() {
     # fix for font smoothing in Chromium/Electron
-    defaults read -g CGFontRenderingFontSmoothingDisabled
+    defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
+    # Show scrollbars only wen scrolling
+    defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+    # Disable the “Are you sure you want to open this application?” dialog
+    defaults write com.apple.LaunchServices LSQuarantine -bool false
+    # Trackpad: enable tap to click for this user and for the login screen
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+    defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+    defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+    # Disable “natural” scrolling
+    defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+    # Stop iTunes from responding to the keyboard media keys
+    launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
+    # Require password immediately after sleep or screen saver begins
+    defaults write com.apple.screensaver askForPassword -int 1
+    defaults write com.apple.screensaver askForPasswordDelay -int 0
+    # Save screenshots in PNG format
+    defaults write com.apple.screencapture type -string "png"
+    # Set homes as the default location for new Finder windows
+    defaults write com.apple.finder NewWindowTarget -string "PfLo"
+    defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
 }
 
 zsh_config() {
