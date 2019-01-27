@@ -130,7 +130,7 @@ link_dotfiles() {
 # Restore app settings backed up using Mackup
 # Needs to be called after link_dotfiles
 mackup_restore() {
-    echo "********** RUnning mackup **********"
+    echo "********** Running mackup **********"
     mackup restore -f
 }
 
