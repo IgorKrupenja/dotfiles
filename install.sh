@@ -21,18 +21,19 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
 fi
 
 main() {
-    init_sudo
-    get_repo
-    install_sw_brew
-    install_sw_pip
-    install_sw_node
-    install_sw_misc
-    zsh_config
-    link_dotfiles
-    mackup_restore
-    extra_settings_restore
-    macos_settings
-    change_shell
+    # init_sudo
+    # get_repo
+    # install_sw_brew
+    # install_sw_pip
+    # install_sw_node
+    # install_sw_misc
+    # zsh_config
+    # link_dotfiles
+    vscode_settings
+    # mackup_restore
+    # extra_settings_restore
+    # macos_settings
+    # change_shell
 }
 
 # Ask for password only once
@@ -122,9 +123,23 @@ link_dotfiles() {
     dotfiles=(".zshrc" ".mackup.cfg")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
-        mv $HOME/${dotfile} $HOME/${dotfile}.bak
+        mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
         ln -sv "$REPODIR/${dotfile}" $HOME
     done
+}
+
+vscode_settings() {
+
+    mv -f $HOME/Library/Application\ Support/Code/User/spellright.dict $HOME/Library/Application\ Support/Code/User/spellright.dict.bak
+    mv -f $HOME/Library/Application\ Support/Code/User/settings.json $HOME/Library/Application\ Support/Code/User/settings.json.bak
+    mv -f $HOME/Library/Application\ Support/Code/User/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json.bak
+
+    ln -sv $REPODIR/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    ln -sv $REPODIR/VSCode/settings.json
+    ln -sv $REPODIR/VSCode/keybindings-mac.json $HOME/Library/Application\ Support/Code/User/keybindings.json
+
+    source $REPODIR/VSCode/extensions.sh
+
 }
 
 # Restore app settings backed up using Mackup
@@ -136,9 +151,9 @@ mackup_restore() {
 
 # Settings not in Mackup
 extra_settings_restore() {
-    # VSCode
-    source $BAKDIR/VSCode-extra/extensions.sh
-    cp -f $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    # # VSCode TODO remove later
+    # source $BAKDIR/VSCode-extra/extensions.sh
+    # cp -f $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # Marta
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
