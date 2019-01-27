@@ -43,11 +43,9 @@ init_sudo() {
 
 get_repo() {
 
-    # Install xcode-tools to get git
-    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
-    softwareupdate -i "$PROD" --verbose
-    rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    # Install brew
+    # Will also install xcode-tools, including git
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 
     # Clone repo if not already cloned
     if [[ $(ls $REPODIR/.git) ]]; then
@@ -64,8 +62,6 @@ get_repo() {
 }
 
 install_sw_brew() {
-    # Install brew
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
     # Install megasync first so that sync could start ASAP
     brew cask install megasync
     open /Applications/MEGAsync.app
