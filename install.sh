@@ -8,9 +8,9 @@ echo "#                                             #"
 echo "###############################################"
 echo ""
 
-# Repo directories
+# Repo location
 BASEDIR="$HOME/Projects/OS"
-REPODIR="$BASEDIR/dotfiles"
+DOTFILES="$BASEDIR/dotfiles"
 # Custom backup directory for stuff not in mackup
 BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
@@ -50,15 +50,15 @@ get_repo() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 
     # Clone repo if not already cloned
-    if [[ -d $REPODIR/.git ]]; then
+    if [[ -d $DOTFILES/.git ]]; then
         echo ""
         echo "********************** dotfiles repo already exists! **********************"
         echo ""
     else
-        mkdir -p $REPODIR
+        mkdir -p $DOTFILES
         cd $BASEDIR
         git clone https://github.com/krupenja/dotfiles.git
-        cd $REPODIR
+        cd $DOTFILES
     fi
 
 }
@@ -124,7 +124,7 @@ link_dotfiles() {
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
-        ln -sv "$REPODIR/${dotfile}" $HOME
+        ln -sv "$DOTFILES/${dotfile}" $HOME
     done
 }
 
@@ -134,11 +134,11 @@ vscode_settings() {
     mv -f $HOME/Library/Application\ Support/Code/User/settings.json $HOME/Library/Application\ Support/Code/User/settings.json.bak
     mv -f $HOME/Library/Application\ Support/Code/User/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json.bak
 
-    ln -sv $REPODIR/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
-    ln -sv $REPODIR/VSCode/settings.json
-    ln -sv $REPODIR/VSCode/keybindings-mac.json $HOME/Library/Application\ Support/Code/User/keybindings.json
+    ln -sv $DOTFILES/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    ln -sv $DOTFILES/VSCode/settings.json
+    ln -sv $DOTFILES/VSCode/keybindings-mac.json $HOME/Library/Application\ Support/Code/User/keybindings.json
 
-    source $REPODIR/VSCode/extensions.sh
+    source $DOTFILES/VSCode/extensions.sh
 
 }
 
@@ -151,7 +151,9 @@ mackup_restore() {
 
 # Settings not in Mackup
 extra_settings_restore() {
-    # Marta
+    # SSH - macOS only
+    ln -sv $DOTFILES/.ssh/config ~/.ssh
+    # Marta - macOS only
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
     cp -f $BAKDIR/.togglrc $HOME/
