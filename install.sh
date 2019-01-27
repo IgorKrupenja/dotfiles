@@ -151,9 +151,6 @@ mackup_restore() {
 
 # Settings not in Mackup
 extra_settings_restore() {
-    # # VSCode TODO remove later
-    # source $BAKDIR/VSCode-extra/extensions.sh
-    # cp -f $BAKDIR/VSCode-extra/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # Marta
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
