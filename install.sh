@@ -29,7 +29,6 @@ main() {
     install_sw_misc
     zsh_config
     link_dotfiles
-    vscode_settings
     mackup_restore
     extra_settings_restore
     macos_settings
@@ -127,20 +126,6 @@ link_dotfiles() {
     done
 }
 
-vscode_settings() {
-
-    mv -f $HOME/Library/Application\ Support/Code/User/spellright.dict $HOME/Library/Application\ Support/Code/User/spellright.dict.bak
-    mv -f $HOME/Library/Application\ Support/Code/User/settings.json $HOME/Library/Application\ Support/Code/User/settings.json.bak
-    mv -f $HOME/Library/Application\ Support/Code/User/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json.bak
-
-    ln -sv $DOTFILES/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
-    ln -sv $DOTFILES/VSCode/settings.json
-    ln -sv $DOTFILES/VSCode/keybindings-mac.json $HOME/Library/Application\ Support/Code/User/keybindings.json
-
-    source $DOTFILES/VSCode/extensions.sh
-
-}
-
 # Restore app settings backed up using Mackup
 # Needs to be called after link_dotfiles
 mackup_restore() {
@@ -150,6 +135,8 @@ mackup_restore() {
 
 # Settings not in Mackup
 extra_settings_restore() {
+    # VSCode dictionary
+    ln -sv $DOTFILES/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # SSH - macOS only
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
