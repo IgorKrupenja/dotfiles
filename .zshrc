@@ -365,7 +365,7 @@ a() {
 
 # Trash
 # ------------------------------------
-trash-empty() {
+te() {
     case $(uname) in
     Darwin)
         osascript <<-EOF
@@ -382,8 +382,6 @@ trash-empty() {
         ;;
     esac
 }
-# te
-alias te="trash-empty"
 
 # Weather
 # ------------------------------------
