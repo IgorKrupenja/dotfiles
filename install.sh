@@ -15,10 +15,10 @@ REPODIR="$BASEDIR/dotfiles"
 BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
 # Check if macOS
-# if [[ "$OSTYPE" != "darwin"* ]]; then
-#     echo "Only macOS supported"
-#     exit 1
-# fi
+if [[ "$OSTYPE" != "darwin"* ]]; then
+    echo "Only macOS supported"
+    exit 1
+fi
 
 main() {
     init_sudo
@@ -54,7 +54,7 @@ get_repo() {
     cd $BASEDIR
     git clone https://github.com/krupenja/dotfiles.git
     cd $REPODIR
-
+    
 }
 
 
