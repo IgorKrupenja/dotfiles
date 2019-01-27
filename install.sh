@@ -9,18 +9,19 @@ echo "###############################################"
 echo ""
 
 # Base directory
-BASEDIR=$(pwd)
+BASEDIR="$HOME/Projects/OS/dotfiles"
 # Custom backup directory for stuff not in mackup
 BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
 # Check if macOS
 if [[ "$OSTYPE" != "darwin"* ]]; then
-    cecho "FAIL: only macOS supported" $red
+    echo "Only macOS supported"
     exit 1
 fi
 
 main() {
     init_sudo
+    download_repo
     install_sw_brew
     install_sw_pip
     install_sw_node
@@ -35,8 +36,14 @@ main() {
 # Ask for password only once
 init_sudo() {
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
-        sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
-        sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
+    sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
+    sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
+}
+
+download_repo() {
+    mkdir -p $BASEDIR
+    curl -#L https://github.com/krupenja/dotfiles/tarball/master | tar -xzv -C $BASEDIR --strip-components=1
+    cd $BASEDIR
 }
 
 install_sw_brew() {
@@ -74,11 +81,11 @@ install_sw_node() {
 }
 
 install_sw_misc() {
-
+    
     # cht.sh
     curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
-
+    
     # goldendict
     cd /tmp
     wget "https://sourceforge.net/projects/goldendict/files/early%20access%20builds/MacOS/goldendict-1.5.0-RC2-311-g15062f7(Qt_563).dmg"
@@ -125,9 +132,9 @@ extra_settings_restore() {
 }
 
 macos_settings() {
-
+    
     # Thanks to Mathias Bynens! https://mths.be/macos
-
+    
     # fix for font smoothing in Chromium/Electron
     defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
     # Show scrollbars only wen scrolling
