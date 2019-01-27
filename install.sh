@@ -32,6 +32,7 @@ main() {
     mackup_restore
     extra_settings_restore
     macos_settings
+    change_shell
 }
 
 # Ask for password only once
@@ -180,6 +181,12 @@ macos_settings() {
     defaults write com.apple.dock show-recents -bool false
     # Check for software updates daily, not just once per week
     defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+}
+
+change_shell() {
+        chsh -s "$(which zsh)"
+        exit
 }
 
 main "$@"
