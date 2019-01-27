@@ -8,31 +8,18 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles. `.zshrc` has support for both macOS and Linux but installation script `install..sh` is macOS-only at the moment.
+A repository to store some of my dotfiles. `.zshrc` has support for both macOS and Linux but installation script `install.sh` is macOS-only at the moment.
 
 ## Requirements
 
-Xcode Command Line Tools need to be installed. Run `xcode-select --install` to install them.
+Can be installed on clean systems without git and Xcode Command Line Tools.
 
 ## Installation
 
-1. Clone the repository.
+Execute in terminal to begin installation.
 
 ```shell
-git clone git@github.com:krupenja/dotfiles.git
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install.sh)"
 ```
 
-1. Run the `install.sh` script.
-
-```shell
-cd dotfiles
-./install.sh
-```
-
-## Alternative installation
-
-For an automated install on clean systems without Xcode Command Line Tools, run the following (ugly) one-liner (will install into `~/Projects/OS/`):
-
-```shell
-mkdir -p ~/Projects/OS/; cd ~/Projects/OS/; touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress; PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n'); softwareupdate -i "$PROD" --verbose; rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;  git clone https://github.com/krupenja/dotfiles.git; cd dotfiles; ./install.sh
-```
+The process is completely automated aside from requiring cloud storage login to retrieve settings backup.
