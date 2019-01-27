@@ -129,6 +129,9 @@
     "keyboard.dispatch": "keyCode",
     // do not open Debug sidebar immediately on run
     "debug.openDebug": "openOnDebugBreak", 
+    // properly format idents in shell
     "shellformat.flag": "-i 4",
     "window.zoomLevel": 0,
+    // render dots for boundary whitespaces
+    "editor.renderWhitespace": "boundary"
 }
