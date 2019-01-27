@@ -12,12 +12,11 @@ code --install-extension geddski.macros
 code --install-extension GrapeCity.gc-excelviewer
 code --install-extension idleberg.applescript
 code --install-extension James-Yu.latex-workshop
+code --install-extension jebbs.markdown-extended
 code --install-extension mattn.Lisp
 code --install-extension ms-python.python
 code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
-code --install-extension shakram02.bash-beautify
 code --install-extension stuart.unique-window-colors
 code --install-extension Tyriar.lorem-ipsum
 code --install-extension wayou.vscode-todo-highlight
-code --install-extension yzhang.markdown-all-in-one
