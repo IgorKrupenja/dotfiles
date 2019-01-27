@@ -37,26 +37,31 @@ main() {
 # Ask for password only once
 init_sudo() {
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
-    sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
-    sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
+        sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
+        sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
 
 get_repo() {
-    
+
     # Install xcode-tools to get git
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
     softwareupdate -i "$PROD" --verbose
     rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    
-    # Clone repo in case not already cloned
-    mkdir -p $REPODIR
-    cd $BASEDIR
-    git clone https://github.com/krupenja/dotfiles.git
-    cd $REPODIR
-    
-}
 
+    # Clone repo if not already cloned
+    if [[ $(ls $REPODIR/.git) ]]; then
+        echo ""
+        echo "********************** dotfiles repo already exists! **********************"
+        echo ""
+    else
+        mkdir -p $REPODIR
+        cd $BASEDIR
+        git clone https://github.com/krupenja/dotfiles.git
+        cd $REPODIR
+    fi
+
+}
 
 install_sw_brew() {
     # Install brew
@@ -69,7 +74,7 @@ install_sw_brew() {
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
     say "Attention required"
-    read -p "Press any key to continue."
+    read -p "Press any key to continue.\n"
     # Install formulae and casks from Brewfile
     brew bundle
 }
@@ -92,11 +97,11 @@ install_sw_node() {
 }
 
 install_sw_misc() {
-    
+
     # cht.sh
-    curl https://cht.sh/:cht.sh > /usr/local/bin/cht.sh
+    curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
-    
+
     # goldendict
     cd /tmp
     wget "https://sourceforge.net/projects/goldendict/files/early%20access%20builds/MacOS/goldendict-1.5.0-RC2-311-g15062f7(Qt_563).dmg"
@@ -143,9 +148,9 @@ extra_settings_restore() {
 }
 
 macos_settings() {
-    
+
     # Thanks to Mathias Bynens! https://mths.be/macos
-    
+
     # fix for font smoothing in Chromium/Electron
     defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
     # Show scrollbars only wen scrolling
