@@ -49,7 +49,7 @@ get_repo() {
     softwareupdate -i "$PROD" --verbose
     rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     
-    # Clone repo
+    # Clone repo in case not already cloned
     mkdir -p $REPODIR
     cd $BASEDIR
     git clone https://github.com/krupenja/dotfiles.git
