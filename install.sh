@@ -103,9 +103,8 @@ install_sw_misc() {
     chmod +x /usr/local/bin/cht.sh
 
     # goldendict
-    cd /tmp
-    wget "https://sourceforge.net/projects/goldendict/files/early%20access%20builds/MacOS/goldendict-1.5.0-RC2-311-g15062f7(Qt_563).dmg"
-    hdiutil attach goldendict-1.5.0-RC2-311-g15062f7\(Qt_563\).dmg
+    wget "https://sourceforge.net/projects/goldendict/files/early%20access%20builds/MacOS/goldendict-1.5.0-RC2-311-g15062f7(Qt_563).dmg" -P /tmp/
+    hdiutil attach /tmp/goldendict-1.5.0-RC2-311-g15062f7\(Qt_563\).dmg
     cp -Rfv /Volumes/goldendict-1.5.0-RC2-311-g15062f7/GoldenDict.app /Applications
     hdiutil unmount /Volumes/goldendict-1.5.0-RC2-311-g15062f7/
 }
