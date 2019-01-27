@@ -22,6 +22,7 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 # oh-my-zsh
 # ------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
+export DOTFILES="$HOME/Projects/OS/dotfiles"
 # themes I like: tjkirch, bira, blokkzh
 ZSH_THEME="tjkirch"
 # display red dots while waiting for completion
@@ -119,12 +120,28 @@ fpath=(~/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
 # VSCode
 # ------------------------------------
+
+# alias
 c() {
     if [[ $@ == "" ]]; then
         command code .
     else
         command code "$@"
     fi
+}
+
+# Backup extensions
+ceb() {
+    code --list-extensions | xargs -L 1 echo code --install-extension > $DOTFILES/VSCode/extensions.sh
+    cd $DOTFILES
+    if [[ $(git diff VSCode/extensions.sh) ]]; then
+    git add VSCode/extensions.sh
+    git commit -m "Update VSCode extensions"
+fi
+}
+
+cer() {
+    $DOTFILES/VSCode/extensions.sh
 }
 
 # emacs
@@ -135,7 +152,8 @@ alias suemacs="sudo emacs -nw"
 # zsh
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
-alias ze="code $HOME/Projects/OS/dotfiles"
+alias ze="code $DOTFILES"
+
 # Misc
 # ------------------------------------
 # IPython interpreter
@@ -199,6 +217,7 @@ Linux)
     ;;
 Darwin)
     alias net="sudo iftop -B"
+    ;;
 esac
 # speedtest.net
 alias speed="speedtest"
@@ -399,7 +418,7 @@ alias dl="cd ~/Downloads"
 alias p="cd ~/Projects"
 alias mb="cd ~/MEGA/Backups/Mac"
 alias scr="cd ~/Projects/OS/bash-snippets"
-alias dot="cd $HOME/Projects/OS/dotfiles"
+alias dot="cd $DOTFILES"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
