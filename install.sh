@@ -187,7 +187,7 @@ macos_settings() {
 }
 
 change_shell() {
-    echo "$(which zsh)" >>/etc/shells
+    sh -c "echo $(which zsh) >> /etc/shells"
     chsh -s "$(which zsh)"
     exit
 }
