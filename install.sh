@@ -48,7 +48,7 @@ get_repo() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 
     # Clone repo if not already cloned
-    if [[ $(ls $REPODIR/.git) ]]; then
+    if [[ -d $REPODIR/.git ]]; then
         echo ""
         echo "********************** dotfiles repo already exists! **********************"
         echo ""
@@ -69,8 +69,8 @@ install_sw_brew() {
     echo ""
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
+    read -p "Press any key to continue."
     say "Attention required"
-    read -p "Press any key to continue.\n"
     # Install formulae and casks from Brewfile
     brew bundle
 }
@@ -95,6 +95,7 @@ install_sw_node() {
 install_sw_misc() {
 
     # cht.sh
+    echo "********** Installing cht.sh **********"
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 
@@ -102,7 +103,7 @@ install_sw_misc() {
     cd /tmp
     wget "https://sourceforge.net/projects/goldendict/files/early%20access%20builds/MacOS/goldendict-1.5.0-RC2-311-g15062f7(Qt_563).dmg"
     hdiutil attach goldendict-1.5.0-RC2-311-g15062f7\(Qt_563\).dmg
-    cp -Rf /Volumes/goldendict-1.5.0-RC2-311-g15062f7/GoldenDict.app /Applications
+    cp -Rfv /Volumes/goldendict-1.5.0-RC2-311-g15062f7/GoldenDict.app /Applications
     hdiutil unmount /Volumes/goldendict-1.5.0-RC2-311-g15062f7/
 }
 
