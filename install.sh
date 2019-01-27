@@ -8,8 +8,9 @@ echo "#                                             #"
 echo "###############################################"
 echo ""
 
-# Base directory
-BASEDIR="$HOME/Projects/OS/dotfiles"
+# Repo directories
+BASEDIR="$HOME/Projects/OS"
+REPODIR="$BASEDIR/dotfiles"
 # Custom backup directory for stuff not in mackup
 BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
@@ -21,7 +22,7 @@ BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
 main() {
     init_sudo
-    download_repo
+    get_repo
     install_sw_brew
     install_sw_pip
     install_sw_node
@@ -40,11 +41,22 @@ init_sudo() {
     sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
 
-download_repo() {
-    mkdir -p $BASEDIR
-    curl -#L https://github.com/krupenja/dotfiles/tarball/master | tar -xzv -C $BASEDIR --strip-components=1
+get_repo() {
+    
+    # Install xcode-tools to get git
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+    softwareupdate -i "$PROD" --verbose
+    rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    
+    # Clone repo
+    mkdir -p $REPODIR
     cd $BASEDIR
+    git clone https://github.com/krupenja/dotfiles.git
+    cd $REPODIR
+
 }
+
 
 install_sw_brew() {
     # Install brew
