@@ -97,7 +97,7 @@ zsh_config() {
 
 # Needs to be called after zsh_config
 link_dotfiles() {
-    dotfiles=(".zshrc" ".gitconfig" ".emacs" ".mackup.cfg")
+    dotfiles=(".zshrc" ".mackup.cfg")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv $HOME/${dotfile} $HOME/${dotfile}.bak
