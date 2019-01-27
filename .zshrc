@@ -94,12 +94,11 @@ alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
 alias gs="gst"
 # log with pretty graph
 alias glo="git log --graph --oneline"
-# commit and push reminder
 alias gre="git-remind status"
-# commit and push reminder
 alias grer="git-remind repos"
 # git commmit with message
 alias gcm="gcmsg"
+alias gchm="git checkout master"
 # git commit all with message and push
 gcamp() {
     command git commit -a -m "$1" && gp
@@ -108,8 +107,6 @@ gcamp() {
 gcmp() {
     command git commit -m" $1" && gp
 }
-
-alias testo="echo 'test'"
 
 # cht.sh
 # ------------------------------------
