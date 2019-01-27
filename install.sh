@@ -21,19 +21,19 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
 fi
 
 main() {
-    # init_sudo
-    # get_repo
-    # install_sw_brew
-    # install_sw_pip
-    # install_sw_node
-    # install_sw_misc
-    # zsh_config
-    # link_dotfiles
+    init_sudo
+    get_repo
+    install_sw_brew
+    install_sw_pip
+    install_sw_node
+    install_sw_misc
+    zsh_config
+    link_dotfiles
     vscode_settings
-    # mackup_restore
-    # extra_settings_restore
-    # macos_settings
-    # change_shell
+    mackup_restore
+    extra_settings_restore
+    macos_settings
+    change_shell
 }
 
 # Ask for password only once
