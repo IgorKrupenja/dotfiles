@@ -14,10 +14,10 @@ BASEDIR="$HOME/Projects/OS/dotfiles"
 BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
 # Check if macOS
-if [[ "$OSTYPE" != "darwin"* ]]; then
-    echo "Only macOS supported"
-    exit 1
-fi
+# if [[ "$OSTYPE" != "darwin"* ]]; then
+#     echo "Only macOS supported"
+#     exit 1
+# fi
 
 main() {
     init_sudo
