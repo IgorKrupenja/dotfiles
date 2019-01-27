@@ -70,8 +70,9 @@ install_sw_brew() {
     echo ""
     echo "**************** IMPORTANT ****************"
     echo "Now login to MEGA so that sync starts ASAP"
-    read -p "Press any key to continue."
+    echo "Press any key to continue."
     say "Attention required"
+    read -p ""
     # Install formulae and casks from Brewfile
     brew bundle
 }
@@ -129,6 +130,7 @@ link_dotfiles() {
 # Restore app settings backed up using Mackup
 # Needs to be called after link_dotfiles
 mackup_restore() {
+    echo "********** RUnning mackup **********"
     mackup restore -f
 }
 
@@ -185,8 +187,9 @@ macos_settings() {
 }
 
 change_shell() {
-        chsh -s "$(which zsh)"
-        exit
+    echo "$(which zsh)" >>/etc/shells
+    chsh -s "$(which zsh)"
+    exit
 }
 
 main "$@"
