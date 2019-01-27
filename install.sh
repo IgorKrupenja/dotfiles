@@ -155,9 +155,9 @@ extra_settings_restore() {
     # Marta - macOS only
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Toggl and Trello CLI
-    cp -f $BAKDIR/.togglrc $HOME/
+    ln -sv $BAKDIR/.togglrc $HOME/
     mkdir -p $HOME/.trello-cli/
-    cp -f $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+    ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
 }
 
 macos_settings() {
