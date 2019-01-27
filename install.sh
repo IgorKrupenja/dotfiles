@@ -64,7 +64,6 @@ install_sw_brew() {
     # Install megasync first so that sync could start ASAP
     brew cask install megasync
     open /Applications/MEGAsync.app
-    osascript -e 'display notification "MEGA installed" with title "dotfiles install" sound name "Glass"'
     # Promt to log into Mega
     echo ""
     echo "**************** IMPORTANT ****************"
@@ -120,7 +119,7 @@ link_dotfiles() {
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv $HOME/${dotfile} $HOME/${dotfile}.bak
-        ln -sv "$BASEDIR/${dotfile}" $HOME
+        ln -sv "$REPODIR/${dotfile}" $HOME
     done
 }
 
