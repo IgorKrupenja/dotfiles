@@ -215,7 +215,6 @@ alias speed="speedtest"
 alias tg="toggl"
 alias tgr="tg continue; tg now"
 alias tgn="tg now"
-alias tgl="tg ls --fields +project"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
 
@@ -231,7 +230,7 @@ tgx() {
 # ------------------------------------
 
 tgboc() {
-    tg start -o @Bocconi
+    tg start "" @Bocconi
     tg now
     case $(uname) in
     Darwin)
@@ -244,21 +243,21 @@ tgboc() {
 }
 
 tgttu() {
-    tg start -o TTU
+    tg start "" @TTU
     tg now
     # remove all at jobs -- To stop Pomodoro timer
     for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgcode() {
-    tg start -o Coding
+    tg start "" @Coding
     tg now
     # remove all at jobs -- To stop Pomodoro timer
     for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgcar() {
-    tg start -o Career
+    tg start "" @Career
     tg now
     # remove all at jobs -- To stop Pomodoro timer
     for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
