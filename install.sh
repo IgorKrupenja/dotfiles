@@ -12,7 +12,7 @@ echo ""
 BASEDIR="$HOME/Projects/OS"
 DOTFILES="$BASEDIR/dotfiles"
 # Custom backup directory for stuff not in mackup
-BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
+BAKDIR="$HOME/Dropbox/Backups/Mac/Custom"
 
 main_macos() {
     get_sudo_macos
@@ -179,6 +179,8 @@ link_dotfiles_common() {
     done
 
     # Toggl and Trello CLI
+    mv -f $HOME/.togglrc $HOME/.togglrc.bak
+    mv -f $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     ln -sv $BAKDIR/.togglrc $HOME/
     mkdir -p $HOME/.trello-cli/
     ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
