@@ -23,6 +23,7 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 # ------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
 export DOTFILES="$HOME/Projects/OS/dotfiles"
+export CLOUD="$HOME/Dropbox"
 # themes I like: tjkirch, bira, blokkzh
 ZSH_THEME="tjkirch"
 # display red dots while waiting for completion
@@ -72,7 +73,7 @@ fi
 # ---------------------------------------------------------------------------
 
 # fixes for Bocconi thesis bibtex file after Mendeley sync
-alias bib="python3 ~/MEGA/Bocconi\ Thesis/LaTeX\ thesis/bib.py"
+alias bib="python3 $CLOUD/Bocconi\ Thesis/LaTeX\ thesis/bib.py"
 # convert string to TITLE case
 tc() {
     echo "$1" | python3 -c "print('$1'.title())"
@@ -397,7 +398,7 @@ meteo() {
 # ------------------------------------
 alias dl="cd ~/Downloads"
 alias p="cd ~/Projects"
-alias mb="cd ~/MEGA/Backups/Mac"
+alias mb="cd $CLOUD/Backups/Mac"
 alias scr="cd ~/Projects/OS/bash-snippets"
 alias dot="cd $DOTFILES"
 alias w="which"
