@@ -53,12 +53,15 @@ get_sudo_macos() {
 }
 
 get_sudo_linux() {
-    case $EUID in
-    0) : ;;
-    *) # not root, become root for the rest of this session
-        # (and ask for the sudo password only once)
-        sudo $0 "$@" ;;
-    esac
+    sudo -v &> /dev/null
+
+    # Update existing `sudo` time stamp
+    # until this script has finished.
+    while true; do
+        sudo -n true
+        sleep 60
+        kill -0 "$$" || exit
+    done &> /dev/null &
 }
 
 macos_prepare() {
