@@ -141,6 +141,8 @@ install_sw_apt() {
     sudo apt install -y chrome-gnome-shell
     sudo apt install -y goldendict
     sudo apt install -y papirus-folders
+    sudo apt install -y htop
+    sudo apt install -y p7zip
     
 }
 
@@ -367,7 +369,8 @@ linux_settings() {
     # Cleanup
     sudo apt autoremove -y
     # Remove unwanted apps
-    sudo apt purge -y gnome-initial-setup
+    sudo apt purge -y gnome-initial-setup gedit
+    sudo snap remove gnome-system-monitor gnome-logs gnome-characters gnome-calculator 
     # Change folder icon color
     papirus-folders -C orange --theme Papirus-Dark    
     # Caps additional escape
