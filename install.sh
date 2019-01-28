@@ -272,10 +272,7 @@ install_sw_misc_linux() {
     cd /tmp
     git clone https://github.com/vinceliuice/stylish-gtk-theme.git
     stylish-gtk-theme/Install
-
-    # TODO GNOME extensions
-
-
+    
 }
 
 zsh_config() {
