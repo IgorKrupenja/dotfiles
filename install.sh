@@ -41,7 +41,7 @@ main_linux() {
     link_dotfiles_common
     # TODO linux dotfiles
     mackup_restore
-    # TODO linux settings
+    linux_settings
     change_shell
 }
 
@@ -68,28 +68,64 @@ macos_prepare() {
 }
 
 install_sw_apt() {
-    
-    ###### Adding keys adn repos
+
+    ###### Adding keys and repos
     # apt over htttps
-    apt-get install apt-transport-https
+    apt-get install -y apt-transport-https
     # VSCode
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
-    sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     # Sublime Merge
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-    
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
+    echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+    # fman
+    apt-key adv --force-yes --keyserver keyserver.ubuntu.com --recv 9CFAF7EB
+    echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | tee /etc/apt/sources.list.d/fman.list
+    # Telegram
+    add-apt-repository ppa:atareao/telegram -y
+    # Spotify
+    apt-key adv --force-yes --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+    echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
+    # Chrome
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
     ##### Update
     apt-get update && apt-get upgrade -y
 
     ##### Dropbox
-    
+    apt install -y nautilus-dropbox
+    echo ""
+    echo "**************** IMPORTANT ****************"
+    echo "Now login to Dropbox so that sync starts ASAP"
+    echo "Press any key to continue."
+    say "Attention required"
+    read -p ""
 
     ##### Install
     apt install -y git
     apt install -y code
     apt install -y sublime-merge
+    apt install -y emacs25
+    apt install -y python3-pip
+    # needed for calendar
+    apt install -y evolution
+    apt install -y gnome-calendar
+    apt install -y smem
+    apt install -y tcptrack
+    apt install -y trash-cli
+    apt install -y fman
+    apt install -y telegram
+    apt install -y transmission
+    apt install -y terminator
+    apt install -y libreoffice
+    apt install -y spotify-client
+    apt install -y gimp
+    # latex
+    apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra
+    apt install -y gnome-tweaks
+    apt install -y google-chrome-stable
 
 }
 
@@ -110,7 +146,7 @@ clone_repo() {
 install_sw_brew() {
     # Install megasync first so that sync could start ASAP
     brew cask install dropbox
-    open /Applications/Dropbox.app/  
+    open /Applications/Dropbox.app/
     # Promt to log into Dropbox
     echo ""
     echo "**************** IMPORTANT ****************"
@@ -161,7 +197,44 @@ install_sw_misc_linux() {
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 
+    # Mailspring
+    wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
+    dpkg -i /tmp/mailspring.deb
+
+    # Mendeley
+    wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+    dpkg -i /tmp/mendeley.deb
+
+    # Mackup
+    pip install --system --upgrade mackup
+
+    # Jetbrains Toolbox
+    wget -0 /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
+    tar -xzf /jetbrains-toolbox.tar.gz
+    # TODO does toolbox install automatically?
+
+    # Draw.io
+    wget -0 /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
+    dpkg -i /tmp/draw.deb
+
+    # Latex-indent
+    cpan YAML::Tiny
+    perl -MCPAN -e 'install "File::HomeDir"'
+    mkdir ~/bin/
+    cd ~/bin/
+    git clone https://github.com/cmhughes/latexindent.pl.git
+    ln -s $HOME/bin/latexindent.pl/latexindent.pl /usr/local/bin/latexindent
+
+    # Uniemoji
+    pip install python-Levenshtein
+    cd /tmp
+    git clone https://github.com/salty-horse/ibus-uniemoji.git
+    make install
+    ibus restart
+
     # TODO Goldendict dictionaries
+
+    # TODO https://github.com/suin/git-remind/releases
 
 }
 
@@ -199,6 +272,11 @@ link_dotfiles_macos() {
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+}
+
+link_dotfiles_linux() {
+     # VSCode dictionary
+    ln -sv $DOTFILES/VSCode/spellright.dict $HOME/.config/Code/User/
 }
 
 # Restore app settings from Mackup
@@ -248,12 +326,17 @@ macos_settings() {
 }
 
 linux_settings() {
+    # Remove welcome screen
+    apt purge -y gnome-initial-setup
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
+    # disable natural scrolling
+    gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
+    # scaling for text only
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+    # Key bindings
+
 }
-
-
-
 
 change_shell() {
     sh -c "echo $(which zsh) >> /etc/shells"
