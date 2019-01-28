@@ -321,6 +321,8 @@ macos_settings() {
 linux_settings() {
     # Remove welcome screen
     apt purge -y gnome-initial-setup
+    # Cleanup
+    apt autoremove
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
     # disable natural scrolling
