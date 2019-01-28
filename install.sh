@@ -165,17 +165,18 @@ install_sw_brew() {
 }
 
 install_sw_pip() {
-    # TODO need to find a way to run without sudo
-    pip3 install togglCli
+    # TODO test
+    # sudo -u needed to properly install on Linux
+    sudo -u igor pip3 install togglCli
     # for linting in VSCode
-    pip3 install autopep8
-    pip3 install pep8
-    pip3 install pylint
-    pip3 install pydocstyle
+    sudo -u igor pip3 install autopep8
+    sudo -u igor pip3 install pep8
+    sudo -u igor pip3 install pylint
+    sudo -u igor pip3 install pydocstyle
     # other
-    pip3 install pip-autoremove
-    pip3 install pipdeptree
-    pip3 install ipython
+    sudo -u igor pip3 install pip-autoremove
+    sudo -u igor pip3 install pipdeptree
+    sudo -u igor pip3 install ipython
 }
 
 install_sw_node() {
@@ -214,7 +215,7 @@ install_sw_misc_linux() {
     dpkg -i /tmp/mendeley.deb
 
     # Mackup
-    pip install --system --upgrade mackup
+    sudo -u igor pip install --system --upgrade mackup
 
     # Jetbrains Toolbox
     wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -234,7 +235,7 @@ install_sw_misc_linux() {
     ln -s $HOME/bin/latexindent.pl/latexindent.pl /usr/local/bin/latexindent
 
     # Uniemoji
-    pip install python-Levenshtein
+    sudo -u igor pip install python-Levenshtein
     cd /tmp
     git clone https://github.com/salty-horse/ibus-uniemoji.git
     make install
