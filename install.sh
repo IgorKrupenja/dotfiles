@@ -79,6 +79,7 @@ install_sw_apt() {
     # apt over https and curl
     apt-get install -y apt-transport-https curl
 
+    ##### Add keys and repos
     # VSCode
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >/tmp/microsoft.gpg
     install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -98,6 +99,8 @@ install_sw_apt() {
     # Chrome
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    # Node.js
+    curl -sL https://deb.nodesource.com/setup_11.x
 
     ##### Update
     apt-get update && apt-get upgrade -y
@@ -125,6 +128,7 @@ install_sw_apt() {
     apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra
     apt install -y gnome-tweaks
     apt install -y google-chrome-stable
+    apt install -y nodejs
 
 }
 
@@ -159,6 +163,7 @@ install_sw_brew() {
 }
 
 install_sw_pip() {
+    # TODO check if installed OK or need sudo -H
     pip3 install togglCli
     # for linting in VSCode
     pip3 install autopep8
@@ -209,12 +214,12 @@ install_sw_misc_linux() {
     pip install --system --upgrade mackup
 
     # Jetbrains Toolbox
-    wget -0 /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
+    wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
     tar -xzf /jetbrains-toolbox.tar.gz
     # TODO does toolbox install automatically?
 
     # Draw.io
-    wget -0 /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
+    wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
     dpkg -i /tmp/draw.deb
 
     # Latex-indent
@@ -235,6 +240,7 @@ install_sw_misc_linux() {
     # TODO Goldendict dictionaries
 
     # TODO https://github.com/suin/git-remind/releases
+    wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
 
 }
 
