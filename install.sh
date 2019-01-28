@@ -243,8 +243,8 @@ install_sw_misc_linux() {
     pip3 install --upgrade mackup
 
     # Jetbrains Toolbox
-    wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-    tar -xzf /tmp/jetbrains-toolbox.tar.gz
+    # wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
+    # tar -xzf /tmp/jetbrains-toolbox.tar.gz
     # TODO does toolbox install automatically?
     # TODO test
 
