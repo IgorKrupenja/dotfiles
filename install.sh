@@ -82,7 +82,10 @@ install_sw_apt() {
     
     ##### Update
     apt-get update && apt-get upgrade -y
+
+    ##### Dropbox
     
+
     ##### Install
     apt install -y git
     apt install -y code
@@ -106,12 +109,12 @@ clone_repo() {
 
 install_sw_brew() {
     # Install megasync first so that sync could start ASAP
-    brew cask install megasync
-    open /Applications/MEGAsync.app
-    # Promt to log into Mega
+    brew cask install dropbox
+    open /Applications/Dropbox.app/  
+    # Promt to log into Dropbox
     echo ""
     echo "**************** IMPORTANT ****************"
-    echo "Now login to MEGA so that sync starts ASAP"
+    echo "Now login to Dropbox so that sync starts ASAP"
     echo "Press any key to continue."
     say "Attention required"
     read -p ""
@@ -157,6 +160,8 @@ install_sw_misc_linux() {
     apt install -y rlwrap
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
+
+    # TODO Goldendict dictionaries
 
 }
 
