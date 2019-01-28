@@ -129,7 +129,8 @@ install_sw_apt() {
     apt install -y gnome-tweaks
     apt install -y google-chrome-stable
     apt install -y nodejs
-
+    # for mailspring
+    apt install -y libsecret-1-dev gconf2 gir1.2-gnomekyring-1.0
 }
 
 clone_repo() {
