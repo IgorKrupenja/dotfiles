@@ -1,12 +1,18 @@
 #!/bin/bash
 
+# COLORS
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+
 echo ""
 echo "###############################################"
 echo "#                                             #"
 echo "#              DOTFILES INSTALL               #"
 echo "#                                             #"
 echo "###############################################"
-echo ""
+echo "" 
+echo "${RED} Suggest to use fast connection ${NC}"
 
 # Repo location
 BASEDIR="$HOME/Projects/OS"
@@ -63,7 +69,8 @@ install_sw_apt() {
     ##### Dropbox
     apt install -y nautilus-dropbox
     echo ""
-    echo "**************** IMPORTANT ******************"
+    echo "${RED}**************** IMPORTANT ******************${NC}"
+    echo ""
     echo "Dropbox window should appear"
     echo "Login to Dropbox so that sync starts ASAP"
     echo "Press any key to continue."
@@ -140,12 +147,13 @@ install_sw_brew() {
     brew cask install dropbox
     open /Applications/Dropbox.app/
     # Promt to log into Dropbox
+    echo "${RED}**************** IMPORTANT ******************${NC}"
     echo ""
-    echo "**************** IMPORTANT ****************"
-    echo "Now login to Dropbox so that sync starts ASAP"
+    echo "Dropbox window should appear"
+    echo "Login to Dropbox so that sync starts ASAP"
     echo "Press any key to continue."
-    say "Attention required"
     read -p ""
+    say "Attention required"
     # Install formulae and casks from Brewfile
     brew bundle
 }
