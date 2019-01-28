@@ -36,8 +36,8 @@ main_macos() {
 }
 
 main_linux() {
-    # install_sw_apt
-    # clone_repo
+    install_sw_apt
+    clone_repo
     install_sw_pip
     install_sw_node
     install_sw_misc_linux
@@ -45,7 +45,7 @@ main_linux() {
     # link_dotfiles_common
     # link_dotfiles_linux
     mackup_restore
-    # linux_settings
+    linux_settings
     change_shell
 }
 
@@ -65,7 +65,7 @@ macos_prepare() {
 install_sw_apt() {
 
     ##### Dropbox
-    apt install -y nautilus-dropbox
+    sudo apt install -y nautilus-dropbox
     echo ""
     echo "**************** IMPORTANT ******************"
     echo ""
@@ -75,61 +75,63 @@ install_sw_apt() {
     read -p ""
 
     # apt over https and curl
-    apt-get install -y apt-transport-https curl
+    sudo apt-get install -y apt-transport-https curl
 
     ##### Add keys and repos
     # VSCode
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >/tmp/microsoft.gpg
-    install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
-    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    apt-get update -y
+    sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor >/tmp/microsoft.gpg
+    sudo install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     # Sublime Merge
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-    echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    sudo echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
     # fman
-    apt-key adv --keyserver keyserver.ubuntu.com --recv 9CFAF7EB
-    echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | tee /etc/apt/sources.list.d/fman.list
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 9CFAF7EB
+    sudo echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | sudo tee /etc/apt/sources.list.d/fman.list
     # Telegram
-    add-apt-repository ppa:atareao/telegram -y
-    # Spotify TODO broken
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-    add-apt-repository "deb http://repository.spotify.com stable non-free"
+    sudo add-apt-repository ppa:atareao/telegram -y
     # Chrome
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    # Spotify
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
     ##### Update
-    apt-get update && apt-get upgrade -y
+    sudo apt-get update && sudo apt-get upgrade -y
 
     ##### Install
-    apt install -y git
-    apt install -y code
-    apt install -y sublime-merge
-    apt install -y emacs25
-    apt install -y python-pip
-    apt install -y python3-pip
+    sudo apt install -y git
+    sudo apt install -y code
+    sudo apt install -y sublime-merge
+    sudo apt install -y emacs25
+    sudo apt install -y python-pip
+    sudo apt install -y python3-pip
     # needed for gnome-calendar
-    apt install -y evolution
-    apt install -y gnome-calendar
-    apt install -y smem
-    apt install -y tcptrack
-    apt install -y trash-cli
-    apt install -y fman
-    apt install -y telegram
-    apt install -y transmission
-    apt install -y terminator
-    apt install -y libreoffice
-    apt install -y spotify-client
-    apt install -y gimp
+    sudo apt install -y evolution
+    sudo apt install -y gnome-calendar
+    sudo apt install -y smem
+    sudo apt install -y tcptrack
+    sudo apt install -y trash-cli
+    sudo apt install -y fman
+    sudo apt install -y telegram
+    sudo apt install -y transmission
+    sudo apt install -y terminator
+    sudo apt install -y libreoffice
+    sudo apt install -y spotify-client
+    sudo apt install -y gimp
     # latex
-    apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra texlive-extra-utils
-    apt install -y gnome-tweaks
-    apt install -y google-chrome-stable
-    apt install -y nodejs
-    apt install -y npm
+    sudo apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra texlive-extra-utils
+    sudo apt install -y gnome-tweaks
+    sudo apt install -y google-chrome-stable
+    sudo apt install -y nodejs
+    sudo apt install -y npm
     # for mailspring
-    apt install -y libsecret-1-dev gconf2 gir1.2-gnomekeyring-1.0
-    apt install -y zsh
+    sudo apt install -y libsecret-1-dev gconf2 gir1.2-gnomekeyring-1.0
+    sudo apt install -y zsh
+    # for cht.sh
+    sudo apt install -y rlwrap
+    sudo snap install shfmt
 }
 
 clone_repo() {
@@ -171,23 +173,23 @@ install_sw_pip() {
     echo ""
     # TODO broken WTF?
     # sudo -u needed to properly install on Linux
-    sudo -u igor pip3 install togglCli
+    pip3 install togglCli
     # for linting in VSCode
-    sudo -u igor pip3 install autopep8
-    sudo -u igor pip3 install pep8
-    sudo -u igor pip3 install pylint
-    sudo -u igor pip3 install pydocstyle
+    pip3 install autopep8
+    pip3 install pep8
+    pip3 install pylint
+    pip3 install pydocstyle
     # other
-    sudo -u igor pip3 install pip-autoremove
-    sudo -u igor pip3 install pipdeptree
-    sudo -u igor pip3 install ipython
+    pip3 install pip-autoremove
+    pip3 install pipdeptree
+    pip3 install ipython
 }
 
 install_sw_node() {
     echo ""
     echo "**************************** Installing from npm ***************************"
     echo ""
-    npm install -g trello-cli
+    sudo npm install -g trello-cli
 }
 
 install_sw_misc_macos() {
@@ -212,7 +214,6 @@ install_sw_misc_linux() {
     # echo ""
     # echo "****************************** Installing cht.sh ****************************"
     # echo ""
-    # apt install -y rlwrap
     # curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     # chmod +x /usr/local/bin/cht.sh
 
@@ -229,7 +230,7 @@ install_sw_misc_linux() {
     echo ""
     echo "****************************** Installing Mackup ****************************"
     echo ""
-    sudo -u igor pip3 install --system --upgrade mackup
+    pip3 install --system --upgrade mackup
 
     # Jetbrains Toolbox
     wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
@@ -243,7 +244,7 @@ install_sw_misc_linux() {
 
     # Uniemoji
     # TODO test if working
-    sudo -u igor pip3 install python-Levenshtein
+    pip3 install python-Levenshtein
     cd /tmp
     git clone https://github.com/salty-horse/ibus-uniemoji.git
     make install
@@ -258,12 +259,11 @@ install_sw_misc_linux() {
 }
 
 zsh_config() {
-    # TODO test
     # Install oh-my-zsh
-    sudo -u igor sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
     # Install plug-ins
-    sudo -u igor git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    sudo -u igor git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 }
 
 # Needs to be called after zsh_config
@@ -348,9 +348,11 @@ macos_settings() {
 # Needs to be called after link_dotfiles_common
 linux_settings() {
     # Remove welcome screen
-    apt purge -y gnome-initial-setup
+    sudo apt purge -y gnome-initial-setup
+    # Caps additional escape
+    setxkbmap -option caps:escape
     # Cleanup
-    apt autoremove -y
+    sudo apt autoremove -y
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
     # disable natural scrolling
@@ -363,8 +365,15 @@ linux_settings() {
 
 change_shell() {
 
-    sh -c "echo $(which zsh) >> /etc/shells"
+    sudo sh -c "echo $(which zsh) >> /etc/shells"
     chsh -s "$(which zsh)"
+    echo "###############################################"
+    echo "#                                             #"
+    echo "#         DOTFILES INSTALL COMPLETE!          #"
+    echo "#                                             #"
+    echo "###############################################"
+    echo ""
+    echo "Reopen terminal to get zsh shell."
     exit
 }
 
@@ -375,13 +384,7 @@ Darwin)
     exit
     ;;
 Linux)
-    # check if root
-    if [[ $EUID -ne 0 ]]; then
-        echo "This script must be run as root on Linux!" 1>&2
-        exit 1
-    else
-        main_linux "$@"
-        exit
-    fi
+    main_linux "$@"
+    exit
     ;;
 esac
