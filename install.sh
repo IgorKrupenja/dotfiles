@@ -141,6 +141,9 @@ install_sw_apt() {
     sudo apt install -y chrome-gnome-shell
     sudo apt install -y goldendict
     sudo apt install -y papirus-folders
+    sudo apt install -y htop
+    sudo apt install -y p7zip
+    sudo apt install -y at
     
 }
 
@@ -197,10 +200,7 @@ install_sw_node() {
     echo ""
     echo "**************************** Installing from npm ***************************"
     echo ""
-    # TODO
-    mkdir -p $HOME/bin
-    cd /bin/
-    npm install trello-cli
+    sudo npm install -g trello-cli
 }
 
 install_sw_misc_macos() {
@@ -367,7 +367,8 @@ linux_settings() {
     # Cleanup
     sudo apt autoremove -y
     # Remove unwanted apps
-    sudo apt purge -y gnome-initial-setup
+    sudo apt purge -y gnome-initial-setup gedit
+    sudo snap remove gnome-system-monitor gnome-logs gnome-characters gnome-calculator 
     # Change folder icon color
     papirus-folders -C orange --theme Papirus-Dark    
     # Caps additional escape

@@ -8,18 +8,24 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles. `.zshrc` has support for both macOS and Linux but installation script `install.sh` is macOS-only at the moment.
+A repository to store some of my dotfiles. Both macOS and Linux are supported.
 
 ## Requirements
 
-Can be installed on clean systems without git and Xcode Command Line Tools.
+Can be installed on clean systems without git or Xcode Command Line Tools.
 
 ## Installation
 
-Execute in terminal to begin installation.
+macOS:
 
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install.sh)"
 ```
 
-The process is completely automated aside from requiring cloud storage login to retrieve settings backup.
+Linux:
+
+```shell
+bash -c "$(wget -O- https://raw.githubusercontent.com/krupenja/dotfiles/master/install.sh)"
+```
+
+The process is completely automated aside from requiring Dropbox login to retrieve settings backup.
