@@ -109,7 +109,7 @@ install_sw_apt() {
     apt install -y sublime-merge
     apt install -y emacs25
     apt install -y python3-pip
-    # needed for calendar
+    # needed for gnome-calendar
     apt install -y evolution
     apt install -y gnome-calendar
     apt install -y smem
@@ -241,21 +241,6 @@ install_sw_misc_linux() {
     # Draw.io
     wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
     dpkg -i /tmp/draw.deb
-
-    # Latex-indent
-    # echo ""
-    # echo "****************************** Installing latex-indent ****************************"
-    # echo ""
-    # cpan YAML::Tiny
-    # # TODO prompts for yes -- TEST
-    # # exports to avoid asking for confirmation
-    # export PERL_MM_USE_DEFAULT=1
-    # export PERL_EXTUTILS_AUTOINSTALL="--defaultdeps"
-    # perl -MCPAN -e 'install "File::HomeDir"'
-    # mkdir ~/bin/
-    # cd ~/bin/
-    # git clone https://github.com/cmhughes/latexindent.pl.git
-    # ln -s $HOME/bin/latexindent.pl/latexindent.pl /usr/local/bin/latexindent
 
     # Uniemoji
     sudo -u igor pip3 install python-Levenshtein
