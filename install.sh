@@ -171,7 +171,6 @@ install_sw_pip() {
     echo ""
     echo "**************************** Installing from pip ***************************"
     echo ""
-    # TODO broken WTF?
     # sudo -u needed to properly install on Linux
     pip3 install togglCli
     # for linting in VSCode
@@ -226,11 +225,10 @@ install_sw_misc_linux() {
     # dpkg -i /tmp/mendeley.deb
 
     # Mackup
-    # TODO test
     echo ""
     echo "****************************** Installing Mackup ****************************"
     echo ""
-    pip3 install --system --upgrade mackup
+    pip3 install --upgrade mackup
 
     # Jetbrains Toolbox
     wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
