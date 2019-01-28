@@ -344,5 +344,6 @@ Darwin)
     ;;
 Linux)
     main_linux "$@"
+    exit
     ;;
 esac
