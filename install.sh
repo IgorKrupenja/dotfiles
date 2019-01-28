@@ -60,31 +60,6 @@ macos_prepare() {
 
 install_sw_apt() {
 
-    ###### Adding keys and repos
-    # apt over htttps
-    apt-get install -y apt-transport-https
-    # VSCode
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
-    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    # Sublime Merge
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-    echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
-    # fman
-    apt-key adv --keyserver keyserver.ubuntu.com --recv 9CFAF7EB
-    echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | tee /etc/apt/sources.list.d/fman.list
-    # Telegram
-    add-apt-repository ppa:atareao/telegram -y
-    # Spotify
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-    echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
-    # Chrome
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-
-    ##### Update
-    apt-get update && apt-get upgrade -y
-
     ##### Dropbox
     apt install -y nautilus-dropbox
     echo ""
@@ -93,6 +68,35 @@ install_sw_apt() {
     echo "Press any key to continue."
     say "Attention required"
     read -p ""
+
+    ###### Adding keys and repos
+    # apt over htttps
+    apt-get install -y apt-transport-https
+    # VSCode
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
+    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    apt-get update -y
+    apt install -y code
+    # # Sublime Merge
+    # wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
+    # echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+    # # fman
+    # apt-key adv --keyserver keyserver.ubuntu.com --recv 9CFAF7EB
+    # echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | tee /etc/apt/sources.list.d/fman.list
+    # # Telegram
+    # add-apt-repository ppa:atareao/telegram -y
+    # # Spotify
+    # apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+    # echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
+    # # Chrome
+    # wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    # sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
+    ##### Update
+    apt-get update && apt-get upgrade -y
+
+    
 
     ##### Install
     apt install -y git
@@ -343,6 +347,7 @@ Darwin)
     exit
     ;;
 Linux)
+    # TODO add root check
     main_linux "$@"
     exit
     ;;
