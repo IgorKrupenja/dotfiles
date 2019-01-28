@@ -39,8 +39,7 @@ main_linux() {
     install_sw_apt
     clone_repo
     install_sw_pip
-    # TODO
-    # install_sw_node
+    install_sw_node
     install_sw_misc_linux
     zsh_config
     link_dotfiles_common
