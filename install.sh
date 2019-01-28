@@ -242,12 +242,6 @@ install_sw_misc_linux() {
     echo ""
     pip3 install --upgrade mackup
 
-    # Jetbrains Toolbox
-    # wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-    # tar -xzf /tmp/jetbrains-toolbox.tar.gz
-    # TODO does toolbox install automatically?
-    # TODO test
-
     Draw.io
     wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
     dpkg -i /tmp/draw.deb
