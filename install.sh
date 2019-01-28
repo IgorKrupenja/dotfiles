@@ -36,17 +36,17 @@ main_macos() {
 }
 
 main_linux() {
-    install_sw_apt
-    clone_repo
-    install_sw_pip
-    install_sw_node
+    # install_sw_apt
+    # clone_repo
+    # install_sw_pip
+    # install_sw_node
     install_sw_misc_linux
-    zsh_config
+    # zsh_config
     # link_dotfiles_common
     # link_dotfiles_linux
-    mackup_restore
-    linux_settings
-    change_shell
+    # mackup_restore
+    # linux_settings
+    # change_shell
 }
 
 # Ask for password only once
@@ -96,6 +96,8 @@ install_sw_apt() {
     # Spotify
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+    # Papirus icons
+    sudo add-apt-repository ppa:papirus/papirus
 
     ##### Update
     sudo apt-get update && sudo apt-get upgrade -y
@@ -132,6 +134,12 @@ install_sw_apt() {
     # for cht.sh
     sudo apt install -y rlwrap
     sudo snap install shfmt
+    sudo apt install -y dconf-editor
+    sudo apt install -y papirus-icon-theme
+    # to install Gnome shell extensions
+    sudo apt install -y chrome-gnome-shell
+    sudo apt install -y goldendict 
+    
 }
 
 clone_repo() {
@@ -171,7 +179,6 @@ install_sw_pip() {
     echo ""
     echo "**************************** Installing from pip ***************************"
     echo ""
-    # sudo -u needed to properly install on Linux
     pip3 install togglCli
     # for linting in VSCode
     pip3 install autopep8
@@ -236,7 +243,7 @@ install_sw_misc_linux() {
     # TODO does toolbox install automatically?
     # TODO test
 
-    # # Draw.io
+    # Draw.io
     # wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
     # dpkg -i /tmp/draw.deb
 
@@ -245,6 +252,7 @@ install_sw_misc_linux() {
     pip3 install python-Levenshtein
     cd /tmp
     git clone https://github.com/salty-horse/ibus-uniemoji.git
+    cd /tmp/ibus-uniemoji
     make install
     ibus restart
 
@@ -253,6 +261,14 @@ install_sw_misc_linux() {
     # TODO https://github.com/suin/git-remind/releases
     wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
     tar -xzf /tmp/git-remind.tar.gz
+
+    # Stylish themes
+    cd /tmp
+    git clone https://github.com/vinceliuice/stylish-gtk-theme.git
+    cd stylish-gtk-theme
+    ./Install
+
+    # TODO GNOME extensions
 
 }
 
@@ -358,7 +374,7 @@ linux_settings() {
     # scaling for text only
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
     # Load other settings from dconf-config.ini
-    dconf load / <$DOTFILES/dconf-settings.ini
+    dconf load / < $DOTFILES/dconf-settings.ini
 }
 
 change_shell() {
