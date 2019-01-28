@@ -123,7 +123,7 @@ install_sw_apt() {
     apt install -y spotify-client
     apt install -y gimp
     # latex
-    apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra
+    apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra texlive-extra-utils
     apt install -y gnome-tweaks
     apt install -y google-chrome-stable
     apt install -y nodejs
@@ -227,6 +227,9 @@ install_sw_misc_linux() {
 
     # Mackup
     # TODO test
+    echo ""
+    echo "****************************** Installing Mackup ****************************"
+    echo ""
     sudo -u igor pip3 install --system --upgrade mackup
 
     # Jetbrains Toolbox
@@ -240,19 +243,22 @@ install_sw_misc_linux() {
     dpkg -i /tmp/draw.deb
 
     # Latex-indent
-    cpan YAML::Tiny
-    # TODO prompts for yes -- TEST
-    # exports to avoid asking for confirmation
-    export PERL_MM_USE_DEFAULT=1
-    export PERL_EXTUTILS_AUTOINSTALL="--defaultdeps"
-    perl -MCPAN -e 'install "File::HomeDir"'
-    mkdir ~/bin/
-    cd ~/bin/
-    git clone https://github.com/cmhughes/latexindent.pl.git
-    ln -s $HOME/bin/latexindent.pl/latexindent.pl /usr/local/bin/latexindent
+    # echo ""
+    # echo "****************************** Installing latex-indent ****************************"
+    # echo ""
+    # cpan YAML::Tiny
+    # # TODO prompts for yes -- TEST
+    # # exports to avoid asking for confirmation
+    # export PERL_MM_USE_DEFAULT=1
+    # export PERL_EXTUTILS_AUTOINSTALL="--defaultdeps"
+    # perl -MCPAN -e 'install "File::HomeDir"'
+    # mkdir ~/bin/
+    # cd ~/bin/
+    # git clone https://github.com/cmhughes/latexindent.pl.git
+    # ln -s $HOME/bin/latexindent.pl/latexindent.pl /usr/local/bin/latexindent
 
     # Uniemoji
-    sudo -u igor pip install python-Levenshtein
+    sudo -u igor pip3 install python-Levenshtein
     cd /tmp
     git clone https://github.com/salty-horse/ibus-uniemoji.git
     make install
