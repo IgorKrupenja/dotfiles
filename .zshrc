@@ -95,7 +95,7 @@ alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
 alias gs="gst"
 # log with pretty graph
 alias glo="git log --graph --oneline"
-alias gre="git-remind status"
+alias gre="git-remind status -a"
 alias grer="git-remind repos"
 # git commmit with message
 alias gcm="gcmsg"
@@ -270,9 +270,6 @@ tgcar() {
 case $(uname) in
 Darwin)
     alias trello="$HOME/Applications/trello-cli/bin/trello"
-    ;;
-Linux)
-    alias trello="$HOME/bin/trello-cli/bin/trello"
     ;;
 esac
 
