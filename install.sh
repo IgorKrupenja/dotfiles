@@ -1,18 +1,17 @@
 #!/bin/bash
 
-# COLORS
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-
-
 echo ""
 echo "###############################################"
 echo "#                                             #"
 echo "#              DOTFILES INSTALL               #"
 echo "#                                             #"
 echo "###############################################"
-echo "" 
-echo "${RED} Suggest to use fast connection ${NC}"
+echo ""
+echo ""
+echo "******* Suggest to use fast connection ********"
+echo ""
+echo ""
+echo ""
 
 # Repo location
 BASEDIR="$HOME/Projects/OS"
@@ -37,10 +36,9 @@ main_macos() {
 }
 
 main_linux() {
-    install_sw_apt
-    clone_repo
-    # TODO pip
-    # install_sw_pip
+    # install_sw_apt
+    # clone_repo
+    install_sw_pip
     install_sw_node
     install_sw_misc_linux
     zsh_config
@@ -69,7 +67,7 @@ install_sw_apt() {
     ##### Dropbox
     apt install -y nautilus-dropbox
     echo ""
-    echo "${RED}**************** IMPORTANT ******************${NC}"
+    echo "**************** IMPORTANT ******************"
     echo ""
     echo "Dropbox window should appear"
     echo "Login to Dropbox so that sync starts ASAP"
@@ -93,7 +91,7 @@ install_sw_apt() {
     echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | tee /etc/apt/sources.list.d/fman.list
     # Telegram
     add-apt-repository ppa:atareao/telegram -y
-    # Spotify TODO test
+    # Spotify TODO broken
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
     add-apt-repository "deb http://repository.spotify.com stable non-free"
     # Chrome
@@ -128,10 +126,10 @@ install_sw_apt() {
     apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra
     apt install -y gnome-tweaks
     apt install -y google-chrome-stable
-    # TODO test
     apt install -y nodejs
     # for mailspring
-    apt install -y libsecret-1-dev gconf2 gir1.2-gnomekyring-1.0
+    apt install -y libsecret-1-dev gconf2 gir1.2-gnomekeyring-1.0
+    apt install -y zsh
 }
 
 clone_repo() {
@@ -141,6 +139,9 @@ clone_repo() {
         echo "********************** dotfiles repo already exists! **********************"
         echo ""
     else
+        echo ""
+        echo "*************************** Cloning dotfiles repo **************************"
+        echo ""
         mkdir -p $DOTFILES
         cd $BASEDIR
         git clone https://github.com/krupenja/dotfiles.git
@@ -153,7 +154,7 @@ install_sw_brew() {
     brew cask install dropbox
     open /Applications/Dropbox.app/
     # Promt to log into Dropbox
-    echo "${RED}**************** IMPORTANT ******************${NC}"
+    echo "**************** IMPORTANT ******************"
     echo ""
     echo "Dropbox window should appear"
     echo "Login to Dropbox so that sync starts ASAP"
@@ -165,6 +166,9 @@ install_sw_brew() {
 }
 
 install_sw_pip() {
+    echo ""
+    echo "**************************** Installing from pip ***************************"
+    echo ""
     # TODO test
     # sudo -u needed to properly install on Linux
     sudo -u igor pip3 install togglCli
@@ -180,14 +184,19 @@ install_sw_pip() {
 }
 
 install_sw_node() {
-    # TODO test
+    echo ""
+    echo "**************************** Installing from npm ***************************"
+    echo ""
+    # TODO test - - not run?
     npm install -g trello-cli
 }
 
 install_sw_misc_macos() {
 
     # cht.sh
-    echo "********** Installing cht.sh **********"
+    echo ""
+    echo "****************************** Installing cht.sh ****************************"
+    echo ""
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 
@@ -201,7 +210,9 @@ install_sw_misc_macos() {
 install_sw_misc_linux() {
 
     # cht.sh
-    echo "********** Installing cht.sh **********"
+    echo ""
+    echo "****************************** Installing cht.sh ****************************"
+    echo ""
     apt install -y rlwrap
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
@@ -215,12 +226,14 @@ install_sw_misc_linux() {
     dpkg -i /tmp/mendeley.deb
 
     # Mackup
-    sudo -u igor pip install --system --upgrade mackup
+    # TODO test
+    sudo -u igor pip3 install --system --upgrade mackup
 
     # Jetbrains Toolbox
     wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-    tar -xzf /jetbrains-toolbox.tar.gz
+    tar -xzf /tmp/jetbrains-toolbox.tar.gz
     # TODO does toolbox install automatically?
+    # TODO test
 
     # Draw.io
     wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
@@ -228,6 +241,10 @@ install_sw_misc_linux() {
 
     # Latex-indent
     cpan YAML::Tiny
+    # TODO prompts for yes -- TEST
+    # exports to avoid asking for confirmation
+    export PERL_MM_USE_DEFAULT=1
+    export PERL_EXTUTILS_AUTOINSTALL="--defaultdeps"
     perl -MCPAN -e 'install "File::HomeDir"'
     mkdir ~/bin/
     cd ~/bin/
@@ -245,6 +262,7 @@ install_sw_misc_linux() {
 
     # TODO https://github.com/suin/git-remind/releases
     wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
+    tar -xzf /tmp/git-remind.tar.gz
 
 }
 
@@ -340,7 +358,7 @@ linux_settings() {
     # Remove welcome screen
     apt purge -y gnome-initial-setup
     # Cleanup
-    apt autoremove
+    apt autoremove -y
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
     # disable natural scrolling
@@ -348,7 +366,7 @@ linux_settings() {
     # scaling for text only
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
     # Load other settings from dconf-config.ini
-    dconf load / < $DOTFILES/dconf-settings.ini
+    dconf load / <$DOTFILES/dconf-settings.ini
 }
 
 change_shell() {
