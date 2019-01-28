@@ -127,20 +127,6 @@ c() {
     fi
 }
 
-# Backup extensions
-ceb() {
-    code --list-extensions | xargs -L 1 echo code --install-extension > $DOTFILES/VSCode/extensions.sh
-    cd $DOTFILES
-    if [[ $(git diff VSCode/extensions.sh) ]]; then
-    git add VSCode/extensions.sh
-    git commit -m "Update VSCode extensions"
-fi
-}
-
-cer() {
-    $DOTFILES/VSCode/extensions.sh
-}
-
 # emacs
 # ------------------------------------
 alias emacs="emacs -nw"
@@ -362,8 +348,6 @@ Linux)
     alias bak="$HOME/Projects/OS/bash-snippets/backup-linux.sh"
     # xdg-open
     alias open="xdg-open &>/dev/null"
-    # mount windows partition
-    alias mntwin="sudo mkdir -p /media/igor/c & sudo mount /dev/nvme0n1p4 /media/igor/c"
     # scaling -- NB! does not work completely well
     alias scale="$HOME/Projects/OS/bash-snippets/xrandr.sh"
     ;;
