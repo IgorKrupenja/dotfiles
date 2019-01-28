@@ -14,40 +14,83 @@ DOTFILES="$BASEDIR/dotfiles"
 # Custom backup directory for stuff not in mackup
 BAKDIR="$HOME/MEGA/Backups/Mac/Custom"
 
-# Check if macOS
-if [[ "$OSTYPE" != "darwin"* ]]; then
-    echo "Only macOS supported"
-    exit 1
-fi
-
-main() {
-    init_sudo
-    get_repo
+main_macos() {
+    get_sudo_macos
+    macos_prepare
+    clone_repo
     install_sw_brew
     install_sw_pip
     install_sw_node
-    install_sw_misc
+    install_sw_misc_macos
     zsh_config
-    link_dotfiles
+    link_dotfiles_common
+    link_dotfiles_macos
     mackup_restore
-    extra_settings_restore
     macos_settings
     change_shell
 }
 
+main_linux() {
+    get_sudo_linux
+    install_sw_apt
+    clone_repo
+    install_sw_pip
+    install_sw_node
+    install_sw_misc_linux
+    zsh_config
+    link_dotfiles_common
+    # TODO linux dotfiles
+    mackup_restore
+    # TODO linux settings
+    change_shell
+}
+
 # Ask for password only once
-init_sudo() {
+get_sudo_macos() {
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
         sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
         sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
 
-get_repo() {
+get_sudo_linux() {
+    case $EUID in
+    0) : ;;
+    *) # not root, become root for the rest of this session
+        # (and ask for the sudo password only once)
+        sudo $0 "$@" ;;
+    esac
+}
 
+macos_prepare() {
     # Install brew
-    # Will also install xcode-tools, including git
+    # Will also install xcode-tools, including git - needed to clone repo
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+}
 
+install_sw_apt() {
+    
+    ###### Adding keys adn repos
+    # apt over htttps
+    apt-get install apt-transport-https
+    # VSCode
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >microsoft.gpg
+    sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    # Sublime Merge
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    
+    ##### Update
+    apt-get update && apt-get upgrade -y
+    
+    ##### Install
+    apt install -y git
+    apt install -y code
+    apt install -y sublime-merge
+
+}
+
+clone_repo() {
     # Clone repo if not already cloned
     if [[ -d $DOTFILES/.git ]]; then
         echo ""
@@ -59,7 +102,6 @@ get_repo() {
         git clone https://github.com/krupenja/dotfiles.git
         cd $DOTFILES
     fi
-
 }
 
 install_sw_brew() {
@@ -94,7 +136,7 @@ install_sw_node() {
     npm install -g trello-cli
 }
 
-install_sw_misc() {
+install_sw_misc_macos() {
 
     # cht.sh
     echo "********** Installing cht.sh **********"
@@ -108,6 +150,16 @@ install_sw_misc() {
     hdiutil unmount /Volumes/goldendict-1.5.0-RC2-311-g15062f7/
 }
 
+install_sw_misc_linux() {
+
+    # cht.sh
+    echo "********** Installing cht.sh **********"
+    apt install -y rlwrap
+    curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
+    chmod +x /usr/local/bin/cht.sh
+
+}
+
 zsh_config() {
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
@@ -117,34 +169,36 @@ zsh_config() {
 }
 
 # Needs to be called after zsh_config
-link_dotfiles() {
+link_dotfiles_common() {
+
     dotfiles=(".zshrc" ".mackup.cfg")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
         ln -sv "$DOTFILES/${dotfile}" $HOME
     done
-}
 
-# Restore app settings backed up using Mackup
-# Needs to be called after link_dotfiles
-mackup_restore() {
-    echo "********** Running mackup **********"
-    mackup restore -f
+    # Toggl and Trello CLI
+    ln -sv $BAKDIR/.togglrc $HOME/
+    mkdir -p $HOME/.trello-cli/
+    ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
 }
 
 # Settings not in Mackup
-extra_settings_restore() {
+link_dotfiles_macos() {
     # VSCode dictionary
     ln -sv $DOTFILES/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
     # SSH - macOS only
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
-    # Toggl and Trello CLI
-    ln -sv $BAKDIR/.togglrc $HOME/
-    mkdir -p $HOME/.trello-cli/
-    ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+}
+
+# Restore app settings from Mackup
+# Needs to be called after link_dotfiles
+mackup_restore() {
+    echo "********** Running mackup **********"
+    mackup restore -f
 }
 
 macos_settings() {
@@ -186,11 +240,28 @@ macos_settings() {
 
 }
 
+linux_settings() {
+    # make VSCode default text editor
+    xdg-mime default code.desktop text/plain
+}
+
+
+
+
 change_shell() {
     sh -c "echo $(which zsh) >> /etc/shells"
     chsh -s "$(which zsh)"
     exit
 }
 
-main "$@"
-exit
+# Check OS
+case $(uname) in
+Darwin)
+    main_macos "$@"
+    exit
+    ;;
+Linux)
+    main_linux "$@"
+    exit
+    ;;
+esac
