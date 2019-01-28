@@ -39,7 +39,7 @@ main_linux() {
     install_sw_misc_linux
     zsh_config
     link_dotfiles_common
-    # TODO linux dotfiles
+    link_dotfiles_linux
     mackup_restore
     linux_settings
     change_shell
