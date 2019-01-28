@@ -73,7 +73,7 @@ install_sw_apt() {
     apt-get install -y apt-transport-https curl
 
     # VSCode
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >/tmp/microsoft.gpg
     install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
     sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     apt-get update -y
@@ -94,8 +94,6 @@ install_sw_apt() {
 
     ##### Update
     apt-get update && apt-get upgrade -y
-
-    
 
     ##### Install
     apt install -y git
@@ -269,7 +267,7 @@ link_dotfiles_macos() {
 }
 
 link_dotfiles_linux() {
-     # VSCode dictionary
+    # VSCode dictionary
     ln -sv $DOTFILES/VSCode/spellright.dict $HOME/.config/Code/User/
 }
 
@@ -330,7 +328,7 @@ linux_settings() {
     # scaling for text only
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
     # Load other settings from dconf-config.ini
-    dconf load / < $DOTFILES/dconf-settings.ini 
+    dconf load / < $DOTFILES/dconf-settings.ini
 }
 
 change_shell() {
@@ -346,8 +344,13 @@ Darwin)
     exit
     ;;
 Linux)
-    # TODO add root check
-    main_linux "$@"
-    exit
+    # check if root
+    if [[ $EUID -ne 0 ]]; then
+        echo "This script must be run as root on Linux!" 1>&2
+        exit 1
+    else
+        main_linux "$@"
+        exit
+    fi
     ;;
 esac
