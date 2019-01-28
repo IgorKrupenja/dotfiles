@@ -42,10 +42,10 @@ main_linux() {
     install_sw_node
     install_sw_misc_linux
     zsh_config
-    link_dotfiles_common
-    link_dotfiles_linux
+    # link_dotfiles_common
+    # link_dotfiles_linux
     mackup_restore
-    linux_settings
+    # linux_settings
     change_shell
 }
 
@@ -186,7 +186,7 @@ install_sw_node() {
     echo "**************************** Installing from npm ***************************"
     echo ""
     # TODO test - - not run?
-    npm install -g trello-cli
+    sudo -u igor npm install -g trello-cli
 }
 
 install_sw_misc_macos() {
