@@ -106,6 +106,7 @@ install_sw_apt() {
     apt install -y code
     apt install -y sublime-merge
     apt install -y emacs25
+    apt install -y python-pip
     apt install -y python3-pip
     # needed for gnome-calendar
     apt install -y evolution
@@ -168,6 +169,7 @@ install_sw_pip() {
     echo ""
     echo "**************************** Installing from pip ***************************"
     echo ""
+    # TODO broken WTF?
     # sudo -u needed to properly install on Linux
     sudo -u igor pip3 install togglCli
     # for linting in VSCode
@@ -185,8 +187,7 @@ install_sw_node() {
     echo ""
     echo "**************************** Installing from npm ***************************"
     echo ""
-    # TODO test - - not run?
-    sudo -u igor npm install -g trello-cli
+    npm install -g trello-cli
 }
 
 install_sw_misc_macos() {
@@ -257,11 +258,12 @@ install_sw_misc_linux() {
 }
 
 zsh_config() {
+    # TODO test
     # Install oh-my-zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
+    sudo -u igor sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
     # Install plug-ins
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    sudo -u igor git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    sudo -u igor git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 }
 
 # Needs to be called after zsh_config
@@ -360,6 +362,7 @@ linux_settings() {
 }
 
 change_shell() {
+
     sh -c "echo $(which zsh) >> /etc/shells"
     chsh -s "$(which zsh)"
     exit
