@@ -85,9 +85,9 @@ install_sw_apt() {
     echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | tee /etc/apt/sources.list.d/fman.list
     # Telegram
     add-apt-repository ppa:atareao/telegram -y
-    # Spotify
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-    echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
+    # Spotify TODO broken
+    # apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+    # echo deb http://repository.spotify.com stable non-free | tee /etc/apt/sources.list.d/spotify.list
     # Chrome
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
