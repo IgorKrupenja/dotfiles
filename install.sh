@@ -280,7 +280,7 @@ link_dotfiles_linux() {
 }
 
 # Restore app settings from Mackup
-# Needs to be called after link_dotfiles
+# Needs to be called after link_dotfiles_common
 mackup_restore() {
     echo "********** Running mackup **********"
     mackup restore -f
@@ -325,6 +325,7 @@ macos_settings() {
 
 }
 
+# Needs to be called after link_dotfiles_common
 linux_settings() {
     # Remove welcome screen
     apt purge -y gnome-initial-setup
@@ -334,8 +335,8 @@ linux_settings() {
     gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
     # scaling for text only
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-    # Key bindings
-
+    # Load other settings from dconf-config.ini
+    dconf load / < $DOTFILES/dconf-settings.ini 
 }
 
 change_shell() {
