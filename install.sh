@@ -199,10 +199,7 @@ install_sw_node() {
     echo ""
     echo "**************************** Installing from npm ***************************"
     echo ""
-    # TODO
-    mkdir -p $HOME/bin
-    cd /bin/
-    npm install trello-cli
+    sudo npm install -g trello-cli
 }
 
 install_sw_misc_macos() {
