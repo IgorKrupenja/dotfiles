@@ -107,7 +107,6 @@ install_sw_apt() {
     sudo apt install -y code
     sudo apt install -y sublime-merge
     sudo apt install -y emacs25
-    sudo apt install -y python-pip
     sudo apt install -y python3-pip
     # needed for gnome-calendar
     sudo apt install -y evolution
@@ -143,6 +142,10 @@ install_sw_apt() {
     sudo apt install -y htop
     sudo apt install -y p7zip
     sudo apt install -y at
+    sudo apt install -y xbindkeys
+    # to style qt apps
+    sudo apt install -y qt5-style-plugins
+    sudo apt install -y telegram-desktop
     
 }
 
