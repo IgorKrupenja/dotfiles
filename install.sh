@@ -97,8 +97,6 @@ install_sw_apt() {
     # Chrome
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-    # Node.js
-    curl -sL https://deb.nodesource.com/setup_11.x
 
     ##### Update
     apt-get update && apt-get upgrade -y
@@ -127,6 +125,7 @@ install_sw_apt() {
     apt install -y gnome-tweaks
     apt install -y google-chrome-stable
     apt install -y nodejs
+    apt install -y npm
     # for mailspring
     apt install -y libsecret-1-dev gconf2 gir1.2-gnomekeyring-1.0
     apt install -y zsh
@@ -169,7 +168,6 @@ install_sw_pip() {
     echo ""
     echo "**************************** Installing from pip ***************************"
     echo ""
-    # TODO test
     # sudo -u needed to properly install on Linux
     sudo -u igor pip3 install togglCli
     # for linting in VSCode
@@ -209,21 +207,21 @@ install_sw_misc_macos() {
 
 install_sw_misc_linux() {
 
-    # cht.sh
-    echo ""
-    echo "****************************** Installing cht.sh ****************************"
-    echo ""
-    apt install -y rlwrap
-    curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
-    chmod +x /usr/local/bin/cht.sh
+    # # cht.sh
+    # echo ""
+    # echo "****************************** Installing cht.sh ****************************"
+    # echo ""
+    # apt install -y rlwrap
+    # curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
+    # chmod +x /usr/local/bin/cht.sh
 
-    # Mailspring
-    wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
-    dpkg -i /tmp/mailspring.deb
+    # # Mailspring
+    # wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
+    # dpkg -i /tmp/mailspring.deb
 
-    # Mendeley
-    wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-    dpkg -i /tmp/mendeley.deb
+    # # Mendeley
+    # wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+    # dpkg -i /tmp/mendeley.deb
 
     # Mackup
     # TODO test
@@ -238,11 +236,12 @@ install_sw_misc_linux() {
     # TODO does toolbox install automatically?
     # TODO test
 
-    # Draw.io
-    wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
-    dpkg -i /tmp/draw.deb
+    # # Draw.io
+    # wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
+    # dpkg -i /tmp/draw.deb
 
     # Uniemoji
+    # TODO test if working
     sudo -u igor pip3 install python-Levenshtein
     cd /tmp
     git clone https://github.com/salty-horse/ibus-uniemoji.git
