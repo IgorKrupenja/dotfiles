@@ -31,7 +31,7 @@ main_macos() {
 }
 
 main_linux() {
-    get_sudo_linux
+    # get_sudo_linux
     install_sw_apt
     clone_repo
     install_sw_pip
@@ -51,8 +51,6 @@ get_sudo_macos() {
         sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
         sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
-
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 macos_prepare() {
     # Install brew
@@ -345,6 +343,7 @@ Darwin)
     exit
     ;;
 Linux)
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
     main_linux "$@"
     exit
     ;;
