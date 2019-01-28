@@ -343,7 +343,7 @@ Darwin)
     exit
     ;;
 Linux)
-    sudo -v
+    sudo apt-get update
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
     main_linux "$@"
     exit
