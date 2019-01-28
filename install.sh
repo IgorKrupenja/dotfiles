@@ -36,17 +36,18 @@ main_macos() {
 }
 
 main_linux() {
-    # install_sw_apt
-    # clone_repo
-    # install_sw_pip
+    install_sw_apt
+    clone_repo
+    install_sw_pip
+    # TODO
     # install_sw_node
     install_sw_misc_linux
-    # zsh_config
-    # link_dotfiles_common
-    # link_dotfiles_linux
-    # mackup_restore
-    # linux_settings
-    # change_shell
+    zsh_config
+    link_dotfiles_common
+    link_dotfiles_linux
+    mackup_restore
+    linux_settings
+    change_shell
 }
 
 # Ask for password only once
@@ -138,7 +139,8 @@ install_sw_apt() {
     sudo apt install -y papirus-icon-theme
     # to install Gnome shell extensions
     sudo apt install -y chrome-gnome-shell
-    sudo apt install -y goldendict 
+    sudo apt install -y goldendict
+    sudo apt install -y papirus-folders
     
 }
 
@@ -195,7 +197,10 @@ install_sw_node() {
     echo ""
     echo "**************************** Installing from npm ***************************"
     echo ""
-    sudo npm install -g trello-cli
+    # TODO
+    mkdir -p $HOME/bin
+    cd /bin/
+    npm install trello-cli
 }
 
 install_sw_misc_macos() {
@@ -216,20 +221,20 @@ install_sw_misc_macos() {
 
 install_sw_misc_linux() {
 
-    # # cht.sh
-    # echo ""
-    # echo "****************************** Installing cht.sh ****************************"
-    # echo ""
-    # curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
-    # chmod +x /usr/local/bin/cht.sh
+    # cht.sh
+    echo ""
+    echo "****************************** Installing cht.sh ****************************"
+    echo ""
+    curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
+    chmod +x /usr/local/bin/cht.sh
 
-    # # Mailspring
-    # wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
-    # dpkg -i /tmp/mailspring.deb
+    # Mailspring
+    wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
+    dpkg -i /tmp/mailspring.deb
 
-    # # Mendeley
-    # wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-    # dpkg -i /tmp/mendeley.deb
+    # Mendeley
+    wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+    dpkg -i /tmp/mendeley.deb
 
     # Mackup
     echo ""
@@ -243,32 +248,33 @@ install_sw_misc_linux() {
     # TODO does toolbox install automatically?
     # TODO test
 
-    # Draw.io
-    # wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
-    # dpkg -i /tmp/draw.deb
+    Draw.io
+    wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
+    dpkg -i /tmp/draw.deb
 
     # Uniemoji
-    # TODO test if working
     pip3 install python-Levenshtein
     cd /tmp
     git clone https://github.com/salty-horse/ibus-uniemoji.git
     cd /tmp/ibus-uniemoji
-    make install
-    ibus restart
+    sudo make install
+    ibus restart 
 
     # TODO Goldendict dictionaries
 
     # TODO https://github.com/suin/git-remind/releases
     wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
-    tar -xzf /tmp/git-remind.tar.gz
+    tar xvzf /tmp/git-remind.tar.gz
+    mkdir -p $HOME/bin
+    mv -f /tmp/git-remind $HOME/bin
 
     # Stylish themes
     cd /tmp
     git clone https://github.com/vinceliuice/stylish-gtk-theme.git
-    cd stylish-gtk-theme
-    ./Install
+    stylish-gtk-theme/Install
 
     # TODO GNOME extensions
+
 
 }
 
@@ -361,18 +367,18 @@ macos_settings() {
 
 # Needs to be called after link_dotfiles_common
 linux_settings() {
-    # Remove welcome screen
-    sudo apt purge -y gnome-initial-setup
-    # Caps additional escape
-    setxkbmap -option caps:escape
     # Cleanup
     sudo apt autoremove -y
+    # Remove welcome screen
+    sudo apt purge -y gnome-initial-setup
+    # Change folder icon color
+    papirus-folders -C orange --theme Papirus-Dark    
+    # Caps additional escape
+    setxkbmap -option caps:escape
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
     # disable natural scrolling
     gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
-    # scaling for text only
-    gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
     # Load other settings from dconf-config.ini
     dconf load / < $DOTFILES/dconf-settings.ini
 }
