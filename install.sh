@@ -143,6 +143,7 @@ install_sw_apt() {
     sudo apt install -y papirus-folders
     sudo apt install -y htop
     sudo apt install -y p7zip
+    sudo apt install -y at
     
 }
 
