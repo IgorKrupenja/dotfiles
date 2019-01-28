@@ -225,8 +225,8 @@ install_sw_misc_linux() {
     echo ""
     echo "****************************** Installing cht.sh ****************************"
     echo ""
-    curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
-    chmod +x /usr/local/bin/cht.sh
+    sudo curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
+    sudo chmod +x /usr/local/bin/cht.sh
 
     # Mailspring
     wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
@@ -272,7 +272,7 @@ install_sw_misc_linux() {
     cd /tmp
     git clone https://github.com/vinceliuice/stylish-gtk-theme.git
     stylish-gtk-theme/Install
-    
+
 }
 
 zsh_config() {
@@ -366,7 +366,7 @@ macos_settings() {
 linux_settings() {
     # Cleanup
     sudo apt autoremove -y
-    # Remove welcome screen
+    # Remove unwanted apps
     sudo apt purge -y gnome-initial-setup
     # Change folder icon color
     papirus-folders -C orange --theme Papirus-Dark    
