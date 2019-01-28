@@ -37,10 +37,10 @@ main_macos() {
 }
 
 main_linux() {
-    # get_sudo_linux
     install_sw_apt
     clone_repo
-    install_sw_pip
+    # TODO pip
+    # install_sw_pip
     install_sw_node
     install_sw_misc_linux
     zsh_config
@@ -128,6 +128,7 @@ install_sw_apt() {
     apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra
     apt install -y gnome-tweaks
     apt install -y google-chrome-stable
+    # TODO test
     apt install -y nodejs
     # for mailspring
     apt install -y libsecret-1-dev gconf2 gir1.2-gnomekyring-1.0
@@ -164,7 +165,7 @@ install_sw_brew() {
 }
 
 install_sw_pip() {
-    # TODO check if installed OK or need sudo -H
+    # TODO need to find a way to run without sudo
     pip3 install togglCli
     # for linting in VSCode
     pip3 install autopep8
@@ -178,6 +179,7 @@ install_sw_pip() {
 }
 
 install_sw_node() {
+    # TODO test
     npm install -g trello-cli
 }
 
