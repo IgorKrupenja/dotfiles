@@ -291,12 +291,16 @@ link_dotfiles_common() {
         ln -sv "$DOTFILES/${dotfile}" $HOME
     done
 
-    # Toggl and Trello CLI
+    # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
-    mv -f $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     ln -sv $BAKDIR/.togglrc $HOME/
+    # Trello CLI
+    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
     mkdir -p $HOME/.trello-cli/
     ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
+    # refresh to get list of boards
+    trello refresh
 }
 
 # Settings not in Mackup
