@@ -169,7 +169,7 @@ clone_repo() {
 }
 
 install_sw_brew() {
-    # Install megasync first so that sync could start ASAP
+    # Install Dropbox first so that sync could start ASAP
     brew cask install dropbox
     open /Applications/Dropbox.app/
     # Promt to log into Dropbox
