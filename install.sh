@@ -30,7 +30,7 @@ main_macos() {
     zsh_config
     link_dotfiles_common
     link_dotfiles_macos
-    mackup_restore
+    common_settings
     macos_settings
     change_shell
 }
@@ -44,7 +44,7 @@ main_linux() {
     zsh_config
     link_dotfiles_common
     link_dotfiles_linux
-    mackup_restore
+    common_settings
     linux_settings
     change_shell
 }
@@ -147,6 +147,7 @@ install_sw_apt() {
     sudo apt install -y telegram-desktop
     # for terminatir-toggle
     sudo apt install -y wmctrl xdotool
+    sudo apt install -y speedtest-cli
 
 }
 
@@ -315,16 +316,27 @@ link_dotfiles_linux() {
     # Trello CLI
     mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
     mkdir -p $HOME/.trello-cli/
-    ln -sv $CUSTOM_BACKUP_DIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
+    treln -sv $CUSTOM_BACKUP_DIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
     ln -sv $CUSTOM_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
 }
 
-# Restore app settings from Mackup
-# Needs to be called after link_dotfiles_common
-mackup_restore() {
-    echo "********** Running mackup **********"
+
+common_settings() {
+
+    echo ""
+    echo "********** Running mackup restore ***********"
+    echo ""
+    # Needs to be called after link_dotfiles_common
     # -f option is needed to overwrite default config files
     mackup restore -f
+
+    echo ""
+    echo "********** Goldendict dictionaries **********"
+    echo ""
+    mkdir -p /$HOME/.goldendict/dictionaries 
+    wget -O /tmp/golden.zip https://dl.dropboxusercontent.com/s/d0bzv5wa83em1kj/dictionaries_with_sound.zip
+    7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries 
+
 }
 
 macos_settings() {
