@@ -28,4 +28,4 @@ Linux:
 bash -c "$(wget -O- https://raw.githubusercontent.com/krupenja/dotfiles/master/install.sh)"
 ```
 
-The process is completely automated aside from requiring Dropbox login to retrieve settings backup.
+The process is completely automated aside from requesting Dropbox login to retrieven application settings backed up using Mackup.
