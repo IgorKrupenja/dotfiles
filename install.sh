@@ -140,12 +140,14 @@ install_sw_apt() {
     sudo apt install -y goldendict
     sudo apt install -y papirus-folders
     sudo apt install -y htop
-    sudo apt install -y p7zip
+    sudo apt install -y p7zip-full
     sudo apt install -y at
     sudo apt install -y xbindkeys
     # to style qt apps
     sudo apt install -y qt5-style-plugins
     sudo apt install -y telegram-desktop
+    # for terminatir-toggle
+    sudo apt install -y wmctrl xdotool
     
 }
 
@@ -373,8 +375,6 @@ linux_settings() {
     setxkbmap -option caps:escape
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
-    # disable natural scrolling
-    gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
     # Load other settings from dconf-config.ini
     dconf load / < $DOTFILES/dconf-settings.ini
 }
