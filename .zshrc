@@ -21,12 +21,23 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 
 # oh-my-zsh
 # ------------------------------------
+
+# exports
 export ZSH="$HOME/.oh-my-zsh"
+export PROJECTS="$HOME/Projects/"
 export DOTFILES="$HOME/Projects/OS/dotfiles"
 export CLOUD="$HOME/Dropbox"
 export CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
 export MACKUP_DIR="$HOME/Dropbox/Backups/Mac/Mackup"
 export LINUX_BACKUP_DIR="$HOME/Dropbox/Backups/Linux"
+
+# colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+# No color
+NC='\033[0m'
+
 # themes I like: tjkirch, bira, blokkzh
 ZSH_THEME="tjkirch"
 # display red dots while waiting for completion
@@ -98,8 +109,30 @@ alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
 alias gs="gst"
 # log with pretty graph
 alias glo="git log --graph --oneline"
-alias gre="git-remind status -a"
-alias grer="git-remind repos"
+# git global status to check if any repos need commits/pushes
+ggs() {
+
+    # Store names of git repos from  in an array
+    repos=()
+    while IFS= read -r line; do
+        repos+=("$line")
+    done < <(find $PROJECTS -name .git | sed 's/.git//')
+
+    # navigate to each repo and echo status
+    for repo in "${repos[@]}"; do
+        cd ${repo}
+        if git status | grep -q "up to date"; then
+            # ${PWD##*/} to get dir name w/o full path
+            echo "${GREEN}${PWD##*/}: up-to-date${NC}"
+        elif [[ $(git diff) ]]; then
+            echo "${RED}${PWD##*/}: need to commit${NC}"
+        else
+            echo "${YELLOW}${PWD##*/}: need to push${NC}"
+        fi
+    done
+
+}
+
 # git commmit with message
 alias gcm="gcmsg"
 alias gchm="git checkout master"
