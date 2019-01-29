@@ -320,6 +320,7 @@ link_dotfiles_linux() {
 # Needs to be called after link_dotfiles_common
 mackup_restore() {
     echo "********** Running mackup **********"
+    # -f option is needed to overwrite default config files 
     mackup restore -f
 }
 
