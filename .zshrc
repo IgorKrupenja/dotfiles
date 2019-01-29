@@ -24,6 +24,9 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 export ZSH="$HOME/.oh-my-zsh"
 export DOTFILES="$HOME/Projects/OS/dotfiles"
 export CLOUD="$HOME/Dropbox"
+export CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
+export MACKUP_DIR="$HOME/Dropbox/Backups/Mac/Mackup"
+export LINUX_BACKUP_DIR="$HOME/Dropbox/Backups/Linux"
 # themes I like: tjkirch, bira, blokkzh
 ZSH_THEME="tjkirch"
 # display red dots while waiting for completion
@@ -395,7 +398,6 @@ meteo() {
 # ------------------------------------
 alias dl="cd ~/Downloads"
 alias p="cd ~/Projects"
-alias mb="cd $CLOUD/Backups/Mac"
 alias scr="cd ~/Projects/OS/bash-snippets"
 alias dot="cd $DOTFILES"
 alias w="which"

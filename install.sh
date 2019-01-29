@@ -17,7 +17,7 @@ echo ""
 BASEDIR="$HOME/Projects/OS"
 DOTFILES="$BASEDIR/dotfiles"
 # Custom backup directory for stuff not in mackup
-BAKDIR="$HOME/Dropbox/Backups/Mac/Custom"
+CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
 
 main_macos() {
     get_sudo_macos
@@ -291,7 +291,7 @@ link_dotfiles_common() {
 
     # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
-    ln -sv $BAKDIR/.togglrc $HOME/
+    ln -sv $CUSTOM_BACKUP_DIR/.togglrc $HOME/
    
 }
 
@@ -302,12 +302,12 @@ link_dotfiles_macos() {
     # SSH - macOS only
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
-    cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+    cp -Rf $CUSTOM_BACKUP_DIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
     # Trello CLI
     mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
     mkdir -p $HOME/.trello-cli/
-    ln -sv $BAKDIR/.trello-cli/config-mac.json $HOME/.trello-cli/config.json
-    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
+    ln -sv $CUSTOM_BACKUP_DIR/.trello-cli/config-mac.json $HOME/.trello-cli/config.json
+    ln -sv $CUSTOM_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
 }
 
 link_dotfiles_linux() {
@@ -316,8 +316,8 @@ link_dotfiles_linux() {
     # Trello CLI
     mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
     mkdir -p $HOME/.trello-cli/
-    ln -sv $BAKDIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
-    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
+    ln -sv $CUSTOM_BACKUP_DIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
+    ln -sv $CUSTOM_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
 }
 
 # Restore app settings from Mackup
