@@ -278,6 +278,20 @@ tgboc() {
     esac
 }
 
+tgjav() {
+    tg start "ICD0019 Java" @TTU
+    tg now
+    # remove all at jobs -- To stop Pomodoro timer
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
+}
+
+tgweb() {
+    tg start "ICD0007 Web" @TTU
+    tg now
+    # remove all at jobs -- To stop Pomodoro timer
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
+}
+
 tgttu() {
     tg start "" @TTU
     tg now
