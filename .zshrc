@@ -39,7 +39,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 # themes I like: tjkirch, bira, blokkzh
-ZSH_THEME="tjkirch"
+ZSH_THEME="bira"
 # display red dots while waiting for completion
 # Linux-only as broken on macOS atm
 case $(uname) in
