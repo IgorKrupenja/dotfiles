@@ -329,6 +329,10 @@ mackup_restore() {
 
 macos_settings() {
 
+    # crontab
+    crontab -l > $HOME/.crontab.bak
+    crontab $DOTFILES/.crontab-mac
+
     # Thanks to Mathias Bynens! https://mths.be/macos
 
     # fix for font smoothing in Chromium/Electron
