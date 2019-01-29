@@ -115,7 +115,6 @@ install_sw_apt() {
     sudo apt install -y tcptrack
     sudo apt install -y trash-cli
     sudo apt install -y fman
-    sudo apt install -y telegram
     sudo apt install -y transmission
     sudo apt install -y terminator
     sudo apt install -y libreoffice
