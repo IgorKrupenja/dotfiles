@@ -39,8 +39,7 @@ main_linux() {
     install_sw_apt
     clone_repo
     install_sw_pip
-    # TODO
-    # install_sw_node
+    install_sw_node
     install_sw_misc_linux
     zsh_config
     link_dotfiles_common
@@ -108,7 +107,6 @@ install_sw_apt() {
     sudo apt install -y code
     sudo apt install -y sublime-merge
     sudo apt install -y emacs25
-    sudo apt install -y python-pip
     sudo apt install -y python3-pip
     # needed for gnome-calendar
     sudo apt install -y evolution
@@ -142,8 +140,14 @@ install_sw_apt() {
     sudo apt install -y goldendict
     sudo apt install -y papirus-folders
     sudo apt install -y htop
-    sudo apt install -y p7zip
+    sudo apt install -y p7zip-full
     sudo apt install -y at
+    sudo apt install -y xbindkeys
+    # to style qt apps
+    sudo apt install -y qt5-style-plugins
+    sudo apt install -y telegram-desktop
+    # for terminatir-toggle
+    sudo apt install -y wmctrl xdotool
     
 }
 
@@ -165,7 +169,7 @@ clone_repo() {
 }
 
 install_sw_brew() {
-    # Install Dropboox first so that sync could start ASAP
+    # Install Dropbox first so that sync could start ASAP
     brew cask install dropbox
     open /Applications/Dropbox.app/
     # Promt to log into Dropbox
@@ -242,13 +246,7 @@ install_sw_misc_linux() {
     echo ""
     pip3 install --upgrade mackup
 
-    # Jetbrains Toolbox
-    # wget -O /tmp/jetbrains-toolbox.tar.gz https://www.jetbrains.com/toolbox/download/download-thanks.html?platform=linux
-    # tar -xzf /tmp/jetbrains-toolbox.tar.gz
-    # TODO does toolbox install automatically?
-    # TODO test
-
-    Draw.io
+    # Draw.io
     wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
     dpkg -i /tmp/draw.deb
 
@@ -260,9 +258,7 @@ install_sw_misc_linux() {
     sudo make install
     ibus restart 
 
-    # TODO Goldendict dictionaries
-
-    # TODO https://github.com/suin/git-remind/releases
+    # git-remind
     wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
     tar xvzf /tmp/git-remind.tar.gz
     mkdir -p $HOME/bin
@@ -293,12 +289,16 @@ link_dotfiles_common() {
         ln -sv "$DOTFILES/${dotfile}" $HOME
     done
 
-    # Toggl and Trello CLI
+    # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
-    mv -f $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     ln -sv $BAKDIR/.togglrc $HOME/
+    # Trello CLI
+    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
     mkdir -p $HOME/.trello-cli/
     ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
+    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
+    # refresh to get list of boards
+    trello refresh
 }
 
 # Settings not in Mackup
@@ -375,8 +375,6 @@ linux_settings() {
     setxkbmap -option caps:escape
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
-    # disable natural scrolling
-    gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
     # Load other settings from dconf-config.ini
     dconf load / < $DOTFILES/dconf-settings.ini
 }
