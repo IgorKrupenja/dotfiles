@@ -337,6 +337,9 @@ common_settings() {
     wget -O /tmp/golden.zip https://dl.dropboxusercontent.com/s/d0bzv5wa83em1kj/dictionaries_with_sound.zip
     7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries 
 
+    # refresh Trello CLI to get a list of boards
+    trello refresh
+
 }
 
 macos_settings() {
@@ -389,8 +392,6 @@ linux_settings() {
     # Remove unwanted apps
     sudo apt purge -y gnome-initial-setup gedit
     sudo snap remove gnome-system-monitor gnome-logs gnome-characters gnome-calculator
-    # refresh Trello CLI to get a list of boards
-    trello refresh
     # Change folder icon color
     papirus-folders -C orange --theme Papirus-Dark
     # Caps additional escape
