@@ -147,7 +147,7 @@ install_sw_apt() {
     sudo apt install -y telegram-desktop
     # for terminatir-toggle
     sudo apt install -y wmctrl xdotool
-    
+
 }
 
 clone_repo() {
@@ -255,7 +255,7 @@ install_sw_misc_linux() {
     git clone https://github.com/salty-horse/ibus-uniemoji.git
     cd /tmp/ibus-uniemoji
     sudo make install
-    ibus restart 
+    ibus restart
 
     # git-remind
     wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
@@ -291,7 +291,7 @@ link_dotfiles_common() {
     # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
     ln -sv $CUSTOM_BACKUP_DIR/.togglrc $HOME/
-   
+
 }
 
 # Settings not in Mackup
@@ -323,14 +323,14 @@ link_dotfiles_linux() {
 # Needs to be called after link_dotfiles_common
 mackup_restore() {
     echo "********** Running mackup **********"
-    # -f option is needed to overwrite default config files 
+    # -f option is needed to overwrite default config files
     mackup restore -f
 }
 
 macos_settings() {
 
     # crontab
-    crontab -l > $HOME/.crontab.bak
+    crontab -l >$HOME/.crontab.bak
     crontab $DOTFILES/.crontab-mac
 
     # Thanks to Mathias Bynens! https://mths.be/macos
@@ -380,13 +380,13 @@ linux_settings() {
     # refresh Trello CLI to get a list of boards
     trello refresh
     # Change folder icon color
-    papirus-folders -C orange --theme Papirus-Dark    
+    papirus-folders -C orange --theme Papirus-Dark
     # Caps additional escape
     setxkbmap -option caps:escape
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
     # Load other settings from dconf-config.ini
-    dconf load / < $DOTFILES/dconf-settings.ini
+    dconf load / <$DOTFILES/dconf-settings.ini
 }
 
 change_shell() {
