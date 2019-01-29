@@ -292,13 +292,7 @@ link_dotfiles_common() {
     # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
     ln -sv $BAKDIR/.togglrc $HOME/
-    # Trello CLI
-    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
-    mkdir -p $HOME/.trello-cli/
-    ln -sv $BAKDIR/.trello-cli/config.json $HOME/.trello-cli/
-    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
-    # refresh to get list of boards
-    trello refresh
+   
 }
 
 # Settings not in Mackup
@@ -309,11 +303,21 @@ link_dotfiles_macos() {
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
     cp -Rf $BAKDIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+    # Trello CLI
+    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
+    mkdir -p $HOME/.trello-cli/
+    ln -sv $BAKDIR/.trello-cli/config-mac.json $HOME/.trello-cli/config.json
+    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
 }
 
 link_dotfiles_linux() {
     # VSCode dictionary
     ln -sv $DOTFILES/VSCode/spellright.dict $HOME/.config/Code/User/
+    # Trello CLI
+    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
+    mkdir -p $HOME/.trello-cli/
+    ln -sv $BAKDIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
+    ln -sv $BAKDIR/.trello-cli/authentication.json $HOME/.trello-cli/
 }
 
 # Restore app settings from Mackup
@@ -369,7 +373,9 @@ linux_settings() {
     sudo apt autoremove -y
     # Remove unwanted apps
     sudo apt purge -y gnome-initial-setup gedit
-    sudo snap remove gnome-system-monitor gnome-logs gnome-characters gnome-calculator 
+    sudo snap remove gnome-system-monitor gnome-logs gnome-characters gnome-calculator
+    # refresh Trello CLI to get a list of boards
+    trello refresh
     # Change folder icon color
     papirus-folders -C orange --theme Papirus-Dark    
     # Caps additional escape
