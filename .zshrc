@@ -116,7 +116,7 @@ ggs() {
     # store current dir
     current_dir=$(pwd)
 
-    # Store names of git repos from  in an array
+    # Store names of git repos from $PROJECTS in an array
     repos=()
     while IFS= read -r line; do
         repos+=("$line")
