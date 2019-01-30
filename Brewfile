@@ -55,6 +55,7 @@ cask "telegram-alpha"
 cask "tor-browser"
 cask "transmission"
 cask "visual-studio-code"
+cask "vlc"
 mas "qdigidoc4", id: 1370791134
 mas "Reeder", id: 880001334
 mas "The Unarchiver", id: 425424353
