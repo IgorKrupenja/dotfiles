@@ -2,3 +2,4 @@ PATH=/usr/local/bin:/usr/bin:/bin
 
 0 */2 * * * git-remind status-notification > /dev/null 2>&1
 0 22 * * * sh /Users/igor/Projects/OS/bash-snippets/backup-mac.sh
+0 17 * * * trello refresh
