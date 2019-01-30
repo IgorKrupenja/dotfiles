@@ -110,6 +110,7 @@ alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
 alias gs="gst"
 # log with pretty graph
 alias glo="git log --graph --oneline"
+
 # git global status to check if any repos need commits/pushes
 ggs() {
 
@@ -125,8 +126,10 @@ ggs() {
     # navigate to each repo and echo status
     for repo in "${repos[@]}"; do
         cd ${repo}
+        # ${PWD##*/} to get dir name w/o full path
         if [[ $(git diff) ]]; then
-            # ${PWD##*/} to get dir name w/o full path
+            echo "${RED}${PWD##*/}: need to commit${NC}"
+        elif git status | grep -q "Changes to be committed"; then
             echo "${RED}${PWD##*/}: need to commit${NC}"
         elif git status | grep -q "branch is ahead"; then
             echo "${YELLOW}${PWD##*/}: need to push${NC}"
