@@ -172,6 +172,8 @@ c() {
 # ------------------------------------
 alias emacs="emacs -nw"
 alias suemacs="sudo emacs -nw"
+# crontab
+alias cre="EDITOR=\"emacs\" crontab -e"
 
 # zsh
 # ------------------------------------
@@ -379,8 +381,6 @@ Darwin)
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
     # quick look
     alias ql="qlmanage -p &>/dev/null"
-    # crontab -e fix
-    alias cre="EDITOR=\"nano\" crontab -e"
     # tmp Chrome with dark mode support
     alias chromed="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --enable-features=WebUIDarkMode"
     # tmp remap caps to esc
