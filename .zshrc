@@ -107,9 +107,13 @@ sc() {
 # move Github repo from HTTPS to SSH
 alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
 # git status
-alias gs="gst"
+alias gs="git status"
 # log with pretty graph
 alias glo="git log --graph --oneline"
+# git commmit with message
+alias gcm="git commit -m"
+alias gchm="git checkout master"
+alias gch="git checkout "
 
 # git global status to check if any repos need commits/pushes
 ggs() {
@@ -142,9 +146,6 @@ ggs() {
 
 }
 
-# git commmit with message
-alias gcm="gcmsg"
-alias gchm="git checkout master"
 # git commit all with message and push
 gcamp() {
     command git commit -a -m "$1" && gp
