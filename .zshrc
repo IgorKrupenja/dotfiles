@@ -88,6 +88,7 @@ fi
 
 # fixes for Bocconi thesis bibtex file after Mendeley sync
 alias bib="python3 $CLOUD/Bocconi\ Thesis/LaTeX\ thesis/bib.py"
+
 # convert string to TITLE case
 tc() {
     echo "$1" | python3 -c "print('$1'.title())"
@@ -112,7 +113,10 @@ alias glo="git log --graph --oneline"
 # git global status to check if any repos need commits/pushes
 ggs() {
 
-    # Store names of git repos from  in an array
+    # store current dir
+    current_dir=$(pwd)
+
+    # Store names of git repos from $PROJECTS in an array
     repos=()
     while IFS= read -r line; do
         repos+=("$line")
@@ -121,15 +125,17 @@ ggs() {
     # navigate to each repo and echo status
     for repo in "${repos[@]}"; do
         cd ${repo}
-        if git status | grep -q "up to date"; then
+        if [[ $(git diff) ]]; then
             # ${PWD##*/} to get dir name w/o full path
-            echo "${GREEN}${PWD##*/}: up-to-date${NC}"
-        elif [[ $(git diff) ]]; then
             echo "${RED}${PWD##*/}: need to commit${NC}"
-        else
+        elif git status | grep -q "branch is ahead"; then
             echo "${YELLOW}${PWD##*/}: need to push${NC}"
+        else
+            echo "${GREEN}${PWD##*/}: up-to-date${NC}"
         fi
     done
+
+    cd $current_dir
 
 }
 
@@ -154,8 +160,6 @@ fpath=(~/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
 # VSCode
 # ------------------------------------
-
-# alias
 c() {
     if [[ $@ == "" ]]; then
         command code .
