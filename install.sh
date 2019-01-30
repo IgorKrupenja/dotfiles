@@ -216,11 +216,15 @@ install_sw_misc_macos() {
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 
-    # goldendict
-    wget "https://sourceforge.net/projects/goldendict/files/early%20access%20builds/MacOS/goldendict-1.5.0-RC2-311-g15062f7(Qt_563).dmg" -P /tmp/
-    hdiutil attach /tmp/goldendict-1.5.0-RC2-311-g15062f7\(Qt_563\).dmg
-    cp -Rfv /Volumes/goldendict-1.5.0-RC2-311-g15062f7/GoldenDict.app /Applications
-    hdiutil unmount /Volumes/goldendict-1.5.0-RC2-311-g15062f7/
+    # Goldendict
+    # get download URL from Github releases page
+    dmg_url=$(wget -qO - https://github.com/goldendict/goldendict/wiki/Early-Access-Builds-for-Mac-OS-X | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep .dmg | head -n 2 | tail -1)
+    wget -O /tmp/goldendict.dmg $dmg_url
+    hdiutil attach /tmp/goldendict.dmg
+    cp -Rfv /Volumes/goldendict/GoldenDict.app /Applications
+    # get last mounted volume and unmount
+    last_mount=$(df -h | tail -1)
+    hdiutil unmount $(echo ${last_mount##\/*\ })
 }
 
 install_sw_misc_linux() {
