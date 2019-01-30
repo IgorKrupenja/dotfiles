@@ -262,12 +262,6 @@ install_sw_misc_linux() {
     sudo make install
     ibus restart
 
-    # git-remind
-    wget -O /tmp/git-remind.tar.gz https://github.com/suin/git-remind/releases/download/v1.1.1/git-remind_1.1.1_Linux_x86_64.tar.gz
-    tar xvzf /tmp/git-remind.tar.gz
-    mkdir -p $HOME/bin
-    mv -f /tmp/git-remind $HOME/bin
-
     # Stylish themes
     cd /tmp
     git clone https://github.com/vinceliuice/stylish-gtk-theme.git
