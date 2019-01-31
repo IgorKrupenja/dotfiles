@@ -133,6 +133,8 @@ ggs() {
         # ${PWD##*/} to get dir name w/o full path
         if [[ $(git diff) ]]; then
             echo "${RED}${PWD##*/}: need to commit${NC}"
+        elif git status | grep -q "Untracked files"; then
+            echo "${RED}${PWD##*/}: need to commit${NC}"
         elif git status | grep -q "Changes to be committed"; then
             echo "${RED}${PWD##*/}: need to commit${NC}"
         elif git status | grep -q "branch is ahead"; then
