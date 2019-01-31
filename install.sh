@@ -346,6 +346,9 @@ macos_settings() {
     crontab -l >$HOME/.crontab.bak
     crontab $DOTFILES/.crontab-mac
 
+    # dark mode for iTerm
+    ln -sv $DOTFILES/iTerm/dark.py $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/
+
     # Thanks to Mathias Bynens! https://mths.be/macos
 
     # fix for font smoothing in Chromium/Electron
