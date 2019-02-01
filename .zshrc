@@ -472,3 +472,9 @@ calc() {
     calc="${calc//x/*}"
     bc -l <<<"scale=10;$calc"
 }
+
+# Calendar
+# ------------------------------------
+alias cala="gcalcli agenda --military --details=length --details=location"
+alias calw="gcalcli calw --military"
+alias calm="gcalcli calm --military"

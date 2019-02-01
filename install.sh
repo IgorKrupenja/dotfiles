@@ -148,6 +148,7 @@ install_sw_apt() {
     # for terminatir-toggle
     sudo apt install -y wmctrl xdotool
     sudo apt install -y speedtest-cli
+    sudo apt install -y gcalcli
 
 }
 
