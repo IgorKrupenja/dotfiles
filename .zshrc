@@ -475,6 +475,6 @@ calc() {
 
 # Calendar
 # ------------------------------------
-alias cala="gcalcli agenda --military --details=length --details=location"
-alias calw="gcalcli calw --military"
-alias calm="gcalcli calm --military"
+alias cala="gcalcli --locale=en_US agenda --military --details=length --details=location"
+alias calw="gcalcli --locale=en_US calw --military"
+alias calm="gcalcli --locale=en_US calm --military"
