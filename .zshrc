@@ -82,6 +82,13 @@ else
     export EDITOR='code'
 fi
 
+# Locale
+# ------------------------------------
+# Export locale, required at least by gcalcli
+export LANG=en_GB.UTF-8
+export LC_CTYPE=en_GB.UTF-8
+
+
 # ---------------------------------------------------------------------------
 # 2. THESIS
 # ---------------------------------------------------------------------------
@@ -475,6 +482,6 @@ calc() {
 
 # Calendar
 # ------------------------------------
-alias cala="gcalcli --locale=en_US agenda --military --details=length --details=location"
-alias calw="gcalcli --locale=en_US calw --military"
-alias calm="gcalcli --locale=en_US calm --military"
+alias cala="gcalcli agenda --military --details=length --details=location"
+alias calw="gcalcli calw --military"
+alias calm="gcalcli calm --military"
