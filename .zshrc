@@ -31,6 +31,9 @@ export CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
 export MACKUP_DIR="$HOME/Dropbox/Backups/Mac/Mackup"
 export LINUX_BACKUP_DIR="$HOME/Dropbox/Backups/Linux"
 
+# Java
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
 # colors for output
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
