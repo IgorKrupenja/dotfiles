@@ -31,6 +31,11 @@ export CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
 export MACKUP_DIR="$HOME/Dropbox/Backups/Mac/Mackup"
 export LINUX_BACKUP_DIR="$HOME/Dropbox/Backups/Linux"
 
+# key bindings
+# these are needed for alt + arrow to work in IntelliJ terminal
+bindkey "\e\eOD" backward-word
+bindkey "\e\eOC" forward-word
+
 # Java
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
