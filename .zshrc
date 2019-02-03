@@ -25,7 +25,7 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 # exports
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects/"
-export DOTFILES="$HOME/Projects/OS/dotfiles"
+export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/Dropbox"
 export CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
 export MACKUP_DIR="$HOME/Dropbox/Backups/Mac/Mackup"
@@ -115,7 +115,7 @@ sc() {
 # git
 # ------------------------------------
 # move Github repo from HTTPS to SSH
-alias gitssh="$HOME/Projects/OS/bash-snippets/github-https-to-ssh.sh"
+alias gitssh="$PROJECTS/OS/bash-snippets/github-https-to-ssh.sh"
 # git status
 alias gs="git status"
 # log with pretty graph
@@ -383,9 +383,9 @@ Darwin)
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
     # dark mode
-    alias dark="$HOME/Projects/OS/darkmode/darkmode.sh"
+    alias dark="$PROJECTS/OS/darkmode/darkmode.sh"
     # backup
-    alias bak="$HOME/Projects/OS/bash-snippets/backup-mac.sh"
+    alias bak="$PROJECTS/OS/bash-snippets/backup-mac.sh"
     # eject all
     alias eja='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
     # reboot with confirmation dialog
@@ -411,13 +411,13 @@ Linux)
     # cd to trash
     alias cdtr="cd $HOME/.local/share/Trash/files"
     # dark mode
-    alias dark="$HOME/Projects/OS/darkmode-linux/darkmode.sh"
+    alias dark="$PROJECTS/OS/darkmode-linux/darkmode.sh"
     # backup
-    alias bak="$HOME/Projects/OS/bash-snippets/backup-linux.sh"
+    alias bak="$PROJECTS/OS/bash-snippets/backup-linux.sh"
     # xdg-open
     alias open="xdg-open &>/dev/null"
     # scaling -- NB! does not work completely well
-    alias scale="$HOME/Projects/OS/bash-snippets/xrandr.sh"
+    alias scale="$PROJECTS/OS/bash-snippets/xrandr.sh"
     ;;
 esac
 
@@ -464,14 +464,15 @@ meteo() {
 # Shortcuts
 # ------------------------------------
 alias dl="cd ~/Downloads"
-alias p="cd ~/Projects"
-alias scr="cd ~/Projects/OS/bash-snippets"
+alias p="cd $PROJECTS"
+alias scr="cd $PROJECTS/OS/bash-snippets"
 alias dot="cd $DOTFILES"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
 # SSH to virtual macOS machine
 alias sshv='ssh igor@macos-10.14.3.shared'
+alias sel="cd $PROJECTS/Selenium"
 
 # Calculator
 # ------------------------------------
