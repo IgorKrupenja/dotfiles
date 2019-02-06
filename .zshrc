@@ -90,7 +90,7 @@ fi
 # Export locale, required at least by gcalcli on macOS
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
-
+export LANGUAGE=en_GB.UTF-8
 
 # ---------------------------------------------------------------------------
 # 2. THESIS
