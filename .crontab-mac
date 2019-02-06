@@ -1,4 +1,4 @@
 PATH=/usr/local/bin:/usr/bin:/bin
 
 0 22 * * * sh /Users/igor/Projects/OS/bash-snippets/backup-mac.sh
-0 17 * * * trello refresh
+0 17 * * * /Users/igor/Applications/trello-cli/bin/trello refresh
