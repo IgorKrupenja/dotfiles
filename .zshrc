@@ -49,7 +49,7 @@ NC='\033[0m'
 # themes I like: tjkirch, bira, blokkzh
 ZSH_THEME="bira"
 # display red dots while waiting for completion
-# Linux-only as broken on macOS atm
+# Linux-only as broken on macOS atm https://github.com/robbyrussell/oh-my-zsh/issues/5767
 case $(uname) in
 Linux)
     COMPLETION_WAITING_DOTS="true"
@@ -128,7 +128,7 @@ alias glo="git log --graph --oneline"
 # git commmit with message
 alias gcm="git commit -m"
 alias gchm="git checkout master"
-alias gch="git checkout "
+alias gch="git checkout"
 
 # git global status to check if any repos need commits/pushes
 ggs() {
