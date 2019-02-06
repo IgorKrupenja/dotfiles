@@ -126,6 +126,9 @@ alias gcam="git commit -a -m"
 alias gchm="git checkout master"
 alias gch="git checkout"
 alias gl="git pull"
+alias gp="git push --all origin"
+alias ga="git add"
+alias gcl="git clone"
 
 # git global status to check if any repos need commits/pushes
 ggs() {
@@ -158,15 +161,6 @@ ggs() {
 
     cd $current_dir
 
-}
-
-# git commit all with message and push
-gcamp() {
-    command git commit -a -m "$1" && gp
-}
-# git commit with message and push
-gcmp() {
-    command git commit -m" $1" && gp
 }
 
 # cht.sh
