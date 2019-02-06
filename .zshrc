@@ -57,7 +57,7 @@ Linux)
 esac
 # Plugins
 plugins=(
-    git
+    # git
     web-search
     colored-man-pages
     extract
@@ -92,7 +92,7 @@ fi
 
 # Locale
 # ------------------------------------
-# Export locale, required at least by gcalcli
+# Export locale, required at least by gcalcli on macOS
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
