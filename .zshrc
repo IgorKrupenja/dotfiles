@@ -127,8 +127,10 @@ alias gs="git status"
 alias glo="git log --graph --oneline"
 # git commmit with message
 alias gcm="git commit -m"
+alias gcam="git commit -a -m"
 alias gchm="git checkout master"
 alias gch="git checkout"
+alias gl="git pull"
 
 # git global status to check if any repos need commits/pushes
 ggs() {
