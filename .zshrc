@@ -46,15 +46,10 @@ GREEN='\033[0;32m'
 # No color
 NC='\033[0m'
 
-# themes I like: tjkirch, bira, blokkzh
+# theme I like: bira
 ZSH_THEME="bira"
 # display red dots while waiting for completion
-# Linux-only as broken on macOS atm https://github.com/robbyrussell/oh-my-zsh/issues/5767
-case $(uname) in
-Linux)
-    COMPLETION_WAITING_DOTS="true"
-    ;;
-esac
+COMPLETION_WAITING_DOTS="true"
 # Plugins
 plugins=(
     # git
