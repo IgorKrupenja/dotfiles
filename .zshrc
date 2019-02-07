@@ -121,6 +121,7 @@ alias glo="git log --graph --oneline"
 # git commmit with message
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
+alias gc="git commit"
 alias gchm="git checkout master"
 alias gch="git checkout"
 alias gl="git pull"
