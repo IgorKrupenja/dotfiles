@@ -36,9 +36,6 @@ export LINUX_BACKUP_DIR="$HOME/Dropbox/Backups/Linux"
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
 
-# Java
-export JAVA_HOME="$(/usr/libexec/java_home)"
-
 # colors for output
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
