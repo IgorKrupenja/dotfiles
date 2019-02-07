@@ -186,7 +186,7 @@ c() {
 alias emacs="emacs -nw"
 alias suemacs="sudo emacs -nw"
 # crontab
-alias cre="EDITOR=emacs crontab -e"
+alias cre="EDITOR=nano crontab -e"
 
 # zsh
 # ------------------------------------
