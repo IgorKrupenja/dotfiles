@@ -128,6 +128,7 @@ alias gp="git push --all origin"
 alias ga="git add"
 alias gcl="git clone"
 alias gpt="git push origin master --tags"
+alias gd="git diff"
 
 # git global status to check if any repos need commits/pushes
 ggs() {
@@ -189,8 +190,8 @@ alias cre="EDITOR=emacs crontab -e"
 # zsh
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
-alias ze="emacs $DOTFILES"
 alias zc="code $DOTFILES"
+alias ze="emacs -nw $DOTFILES"
 
 # Misc
 # ------------------------------------
