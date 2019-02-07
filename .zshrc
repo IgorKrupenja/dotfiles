@@ -127,6 +127,7 @@ alias gl="git pull"
 alias gp="git push --all origin"
 alias ga="git add"
 alias gcl="git clone"
+alias gpt="git push origin master --tags"
 
 # git global status to check if any repos need commits/pushes
 ggs() {
