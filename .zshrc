@@ -189,7 +189,8 @@ alias cre="EDITOR=emacs crontab -e"
 # zsh
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
-alias ze="code $DOTFILES"
+alias ze="emacs $DOTFILES"
+alias zc="code $DOTFILES"
 
 # Misc
 # ------------------------------------
