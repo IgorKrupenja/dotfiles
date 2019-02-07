@@ -46,8 +46,10 @@ GREEN='\033[0;32m'
 # No color
 NC='\033[0m'
 
-# theme I like: bira
-ZSH_THEME="bira"
+# themes I like: bira, powerlevel9k/powerlevel9k
+ZSH_THEME="powerlevel9k/powerlevel9k"
+# setting for powerlevel9k theme
+POWERLEVEL9K_MODE='nerdfont-complete'
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 # Plugins
