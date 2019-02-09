@@ -16,7 +16,7 @@ echo ""
 # Repo location
 BASEDIR="$HOME/Projects/OS"
 DOTFILES="$BASEDIR/dotfiles"
-# Custom backup directory for stuff not in mackup
+# Custom backup directory for securely stored stuff
 SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 
 main_macos() {
@@ -246,12 +246,6 @@ install_sw_misc_linux() {
     wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
     dpkg -i /tmp/mendeley.deb
 
-    # Mackup
-    echo ""
-    echo "****************************** Installing Mackup ****************************"
-    echo ""
-    pip3 install --upgrade mackup
-
     # Draw.io
     wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
     dpkg -i /tmp/draw.deb
@@ -282,7 +276,7 @@ zsh_config() {
 # Needs to be called after zsh_config
 link_dotfiles_common() {
 
-    dotfiles=(".zshrc" ".mackup.cfg")
+    dotfiles=(".zshrc")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
@@ -295,7 +289,7 @@ link_dotfiles_common() {
 
 }
 
-# Settings not in Mackup
+# Settings for macOS
 link_dotfiles_macos() {
     # VSCode dictionary
     ln -sv $DOTFILES/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
@@ -322,13 +316,6 @@ link_dotfiles_linux() {
 
 
 common_settings() {
-
-    echo ""
-    echo "********** Running mackup restore ***********"
-    echo ""
-    # Needs to be called after link_dotfiles_common
-    # -f option is needed to overwrite default config files
-    mackup restore -f
 
     echo ""
     echo "********** Goldendict dictionaries **********"
