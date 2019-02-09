@@ -333,6 +333,13 @@ tgcar() {
     for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
+tgin() {
+    tg start "Inna" @Work
+    tg now
+    # remove all at jobs -- To stop Pomodoro timer
+    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
+}
+
 # ---------------------------------------------------------------------------
 # 6. TRELLO CLI
 # ---------------------------------------------------------------------------
