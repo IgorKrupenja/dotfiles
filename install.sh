@@ -17,7 +17,7 @@ echo ""
 BASEDIR="$HOME/Projects/OS"
 DOTFILES="$BASEDIR/dotfiles"
 # Custom backup directory for stuff not in mackup
-CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
+CUSTOM_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 
 main_macos() {
     get_sudo_macos
@@ -171,14 +171,14 @@ clone_repo() {
 }
 
 install_sw_brew() {
-    # Install Dropbox first so that sync could start ASAP
-    brew cask install dropbox
-    open /Applications/Dropbox.app/
-    # Promt to log into Dropbox
+    # Install OneDrive first so that sync could start ASAP
+    brew cask install onedrive
+    open /Applications/OneDrive.app/
+    # Promt to log into OneDrive
     echo "**************** IMPORTANT ******************"
     echo ""
-    echo "Dropbox window should appear"
-    echo "Login to Dropbox so that sync starts ASAP"
+    echo "OneDrive window should appear"
+    echo "Login to OneDrive so that sync starts ASAP"
     echo "Press any key to continue."
     read -p ""
     say "Attention required"
@@ -334,7 +334,7 @@ common_settings() {
     echo "********** Goldendict dictionaries **********"
     echo ""
     mkdir -p /$HOME/.goldendict/dictionaries 
-    wget -O /tmp/golden.zip https://dl.dropboxusercontent.com/s/d0bzv5wa83em1kj/dictionaries_with_sound.zip
+    wget -O /tmp/golden.zip https://livettu-my.sharepoint.com/:u:/g/personal/igkrup_ttu_ee/EeoPUUDFKZFDjPShhCTXXEABjY0qUZfDxTaxulREDe3mtQ?e=xJPaCR
     7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries 
 
     # refresh Trello CLI to get a list of boards

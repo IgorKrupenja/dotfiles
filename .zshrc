@@ -26,10 +26,10 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
-export CLOUD="$HOME/Dropbox"
-export CUSTOM_BACKUP_DIR="$HOME/Dropbox/Backups/Mac/Custom"
-export MACKUP_DIR="$HOME/Dropbox/Backups/Mac/Mackup"
-export LINUX_BACKUP_DIR="$HOME/Dropbox/Backups/Linux"
+export CLOUD="$HOME/OneDrive - TTU"
+export CUSTOM_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
+export MACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Mackup"
+export LINUX_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Linux"
 
 # key bindings
 # these are needed for alt + arrow to work in IntelliJ terminal
