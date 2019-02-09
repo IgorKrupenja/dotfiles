@@ -334,7 +334,7 @@ common_settings() {
     echo "********** Goldendict dictionaries **********"
     echo ""
     mkdir -p /$HOME/.goldendict/dictionaries 
-    wget -O /tmp/golden.zip https://livettu-my.sharepoint.com/:u:/r/personal/igkrup_ttu_ee/Documents/Archive/2014-2017/Lingvo/Ready%20-%20WITH%20sound.zip
+    wget -O /tmp/golden.zip https://dl.dropboxusercontent.com/s/d0bzv5wa83em1kj/dictionaries_with_sound.zip
     7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries 
 
     # refresh Trello CLI to get a list of boards
