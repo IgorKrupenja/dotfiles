@@ -278,8 +278,6 @@ alias tgw="open https://www.toggl.com/app/timer"
 tgx() {
     tg now
     tg stop
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 # Projects
@@ -288,56 +286,41 @@ tgx() {
 tgboc() {
     tg start "" @Bocconi
     tg now
-    case $(uname) in
-    Darwin)
-        echo "osascript -e \"display notification 'Take a 10 minute break' with title 'Time is up' sound name 'Tink'\"" | at now + 50 minutes
-        ;;
-    Linux)
-        echo 'notify-send -i tomato "Time is up!" "Take a 10 minute break"; paplay /usr/share/sounds/Yaru/stereo/desktop-login.ogg' | at now + 50 minutes
-        ;;
-    esac
 }
 
 tgjav() {
     tg start "ICD0019 Java" @TTU
     tg now
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgweb() {
     tg start "ICD0007 Web" @TTU
     tg now
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgttu() {
     tg start "" @TTU
     tg now
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgcode() {
     tg start "" @Coding
     tg now
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgcar() {
     tg start "" @Career
     tg now
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
 }
 
 tgin() {
     tg start "Inna" @Work
     tg now
-    # remove all at jobs -- To stop Pomodoro timer
-    for i in $(/usr/bin/atq | awk '{print $1}'); do atrm $i; done
+}
+
+tghus() {
+    tg start "Hustle" @Work
+    tg now
 }
 
 # ---------------------------------------------------------------------------
