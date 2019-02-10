@@ -296,7 +296,7 @@ link_dotfiles_macos() {
     # SSH - macOS only
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
-    cp -Rf $SECURE_BACKUP_DIR/Marta/org.yanex.marta $HOME/Library/Application\ Support/
+    cp -Rf $DOTFILES/Marta $HOME/Library/Application\ Support/
     # Trello CLI
     mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
     mkdir -p $HOME/.trello-cli/
