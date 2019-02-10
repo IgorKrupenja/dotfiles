@@ -297,9 +297,15 @@ link_dotfiles_macos() {
     files=("spellright.dict" "settings.json" "snippets" "keybindings.json")
     for file in "${files[@]}"; do
         # Backup any existing files
-        mv -fv $HOME/Library/Application\ Support/Code/User/${file} $HOME/Library/Application\ Support/Code/User/${file}.bak
-        ln -sv $DOTFILES/VSCode/${file} $HOME/Library/Application\ Support/Code/User/${file}
+        mv -fv $VSCODE_DIR/${file} $VSCODE_DIR/${file}.bak
+        ln -sv $DOTFILES/VSCode/${file} $VSCODE_DIR/${file}
     done
+
+    # iTerm
+    mv -f $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/dark.py $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/dark.py.bak
+    ln -sv $DOTFILES/iTerm/dark.py $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/
+    mv -fv $HOME/Library/Preferences/com.googlecode.iterm2.plist $HOME/Library/Preferences/com.googlecode.iterm2.plist.bak
+    ln -sv $DOTFILES/iTerm/com.googlecode.iterm2.plist $HOME/Library/Preferences/com.googlecode.iterm2.plist
 
     # SSH - macOS only
     ln -sv $DOTFILES/.ssh/config ~/.ssh
