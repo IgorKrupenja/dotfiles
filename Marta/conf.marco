@@ -25,6 +25,9 @@ environment {
 
 etty {
     useMainThemeColors true
+    fonts {
+        normal [ "Hack" 12 ]
+    }
 }
 
 keyBindings {
