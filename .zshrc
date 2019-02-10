@@ -27,7 +27,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/OneDrive - TTU"
-export CUSTOM_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
+export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 export MACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Mackup"
 export LINUX_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Linux"
 

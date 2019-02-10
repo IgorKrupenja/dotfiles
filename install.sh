@@ -276,11 +276,11 @@ zsh_config() {
 # Needs to be called after zsh_config
 link_dotfiles_common() {
 
-    dotfiles=(".zshrc")
+    dotfiles=(".zshrc" ".gitconfig" ".emacs" ".goldendict/config")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
-        ln -sv "$DOTFILES/${dotfile}" $HOME
+        ln -sv "$DOTFILES/${dotfile}" "$HOME/${dotfile}"
     done
 
     # Toggl CLI
@@ -291,8 +291,16 @@ link_dotfiles_common() {
 
 # Settings for macOS
 link_dotfiles_macos() {
-    # VSCode dictionary
-    ln -sv $DOTFILES/VSCode/spellright.dict $HOME/Library/Application\ Support/Code/User/
+    
+    # VSCode
+    VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
+    files=("spellright.dict" "settings.json" "snippets" "keybindings.json")
+    for file in "${files[@]}"; do
+        # Backup any existing files
+        mv -fv $HOME/Library/Application\ Support/Code/User/${file} $HOME/Library/Application\ Support/Code/User/${file}.bak
+        ln -sv $DOTFILES/VSCode/${file} $HOME/Library/Application\ Support/Code/User/${file}
+    done
+
     # SSH - macOS only
     ln -sv $DOTFILES/.ssh/config ~/.ssh
     # Marta - macOS only
