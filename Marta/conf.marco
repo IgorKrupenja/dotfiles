@@ -116,7 +116,7 @@ keyBindings {
     }
 
     "Shift+F12" {
-        id "core.copy.selected.paths"
+        id "core.copy.paths"
     }
 
     "Shift+F9" {
