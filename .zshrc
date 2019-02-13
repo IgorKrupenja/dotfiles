@@ -26,7 +26,7 @@ export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/An
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
-export CLOUD="$HOME/OneDrive - TTU"
+export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 export MACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Mackup"
 export LINUX_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Linux"
@@ -95,7 +95,7 @@ export LANGUAGE=en_GB.UTF-8
 # ---------------------------------------------------------------------------
 
 # fixes for Bocconi thesis bibtex file after Mendeley sync
-alias bib="python3 $CLOUD/Bocconi\ Thesis/LaTeX\ thesis/bib.py"
+alias bib="python3 $CLOUD/Bocconi/LaTeX\ thesis/bib.py"
 
 # convert string to TITLE case
 tc() {
