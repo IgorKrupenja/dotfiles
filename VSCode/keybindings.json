@@ -17,10 +17,6 @@
         "command": "-workbench.action.editor.changeLanguageMode"
     },
     {
-        "key": "cmd+k cmd+l",
-        "command": "spellright.selectDictionary"
-    },
-    {
         "key": "shift+cmd+g",
         "command": "-editor.action.previousMatchFindAction",
         "when": "editorFocus"
@@ -127,5 +123,9 @@
         "key": "alt+right",
         "command": "-markdownExtended.MoveColumnRight",
         "when": "editorTextFocus && editorLangId == 'markdown'"
+    },
+    {
+        "key": "cmd+k cmd+l",
+        "command": "spellright.selectDictionary"
     }
 ]
