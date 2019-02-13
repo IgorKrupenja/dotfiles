@@ -144,7 +144,7 @@
     "php.suggest.basic": false,
     "latex-workshop.view.pdf.invert": 0.9,
     "python.pythonPath": "/usr/local/bin/python3",
-    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.colorTheme": "quietLight-plus-theme",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true
 }
