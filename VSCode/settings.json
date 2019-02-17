@@ -142,9 +142,9 @@
     "editor.fontSize": 12,
     // disable PHP built-in suggestions in favour plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     "python.pythonPath": "/usr/local/bin/python3",
-    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.colorTheme": "quietLight-plus-theme",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
     // enable slection of British English speller on macOS
