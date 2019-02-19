@@ -148,5 +148,7 @@
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
     // enable slection of British English speller on macOS
-    "spellright.groupDictionaries": false
+    "spellright.groupDictionaries": false,
+    "latex-workshop.view.autoFocus.enabled": false,
+    "latex-workshop.latex.autoBuild.run": "never"
 }
