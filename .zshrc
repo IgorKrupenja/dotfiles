@@ -198,6 +198,8 @@ alias ze="emacs -nw $DOTFILES"
 # ------------------------------------
 # IPython interpreter
 alias ipy="python3 -m IPython"
+# Nexcloud
+alias sshcl="ssh igor@krupenja.net"
 
 # ---------------------------------------------------------------------------
 # 4. SYSTEM INFORMATION
