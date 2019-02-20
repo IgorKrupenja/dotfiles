@@ -200,6 +200,7 @@ alias ze="emacs -nw $DOTFILES"
 alias ipy="python3 -m IPython"
 # Nexcloud
 alias sshcl="ssh igor@krupenja.net"
+alias fscl="sshfs igor@krupenja.net:/ /Volumes/cloud"
 # Mount home dir on enos
 alias fsenos="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
