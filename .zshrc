@@ -392,8 +392,6 @@ Darwin)
     alias ql="qlmanage -p &>/dev/null"
     # tmp Chrome with dark mode support
     alias chromed="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --enable-features=WebUIDarkMode"
-    # tmp remap caps to esc
-    alias esc="hidutil property --set '{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":0x700000039,\"HIDKeyboardModifierMappingDst\":0x700000029}]}'"
     ;;
 Linux)
     # apt
@@ -409,8 +407,6 @@ Linux)
     alias bak="$PROJECTS/OS/bash-snippets/backup-linux.sh"
     # xdg-open
     alias open="xdg-open &>/dev/null"
-    # scaling -- NB! does not work completely well
-    alias scale="$PROJECTS/OS/bash-snippets/xrandr.sh"
     ;;
 esac
 
