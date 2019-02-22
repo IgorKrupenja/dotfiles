@@ -1,6 +1,4 @@
 {
-    // disable welcome page
-    "workbench.startupEditor": "none",
     // indent on paste
     "editor.formatOnPaste": true,
     // icon theme = material
@@ -10,89 +8,41 @@
         // disable "No HTML" warnings
         "MD033": false
     },
-    // Macros -- currently NOT in use
-    "macros": {
-        // auto-indent code on paste - needed for Java
-        "indentOnPaste": [
-            "editor.action.clipboardPasteAction",
-            "editor.action.reindentlines"
-        ]
-    },
     // enable world wrap by default
     "editor.wordWrap": "on",
-    // TODO highlighting plugin
-    "todohighlight.keywordsPattern": "TODO",
-    "todohighlight.defaultStyle": {
-        "backgroundColor": "transparent",
-        "overviewRulerColor": "#ffab00",
-        "color": "#FF8600",
-        "isWholeLine": true,
-        "fontWeight": "bold"
+    // TO_DO highlighting
+    "todo-tree.defaultHighlight": {
+        "type": "text",
+        "foreground": "white",
+        "background": "#ef8a5b",
+        "rulerColour": "#ef8a5b",
+        "iconColour": "#ef8a5b",
+        "opacity": 100
     },
-    "git.enableSmartCommit": true,
     // hide activity bar
     "workbench.activityBar.visible": false,
-    "gitlens.advanced.messages": {
-        "suppressShowKeyBindingsNotice": true
-    },
-    "git.confirmSync": false,
     // gitlense settings mode
     "gitlens.settings.mode": "advanced",
     // blinking cursor in termianl
     "terminal.integrated.cursorBlinking": true,
-    // git push OK notification
-    "git.showPushSuccessNotification": true,
     // for XML formatting
     "xmlTools.splitAttributesOnFormat": true,
     // smaller tab width
     "workbench.editor.tabSizing": "shrink",
     // hide feedback :) icon
     "workbench.statusBar.feedback.visible": false,
-    "gitlens.menus": {
-        "editor": {
-            "blame": true,
-            "clipboard": true,
-            "compare": true,
-            "details": true,
-            "history": true,
-            "remote": true
-        },
-        "editorGroup": {
-            "blame": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        },
-        "editorTab": {
-            "compare": true,
-            "history": true,
-            "remote": true
-        },
-        "explorer": {
-            "compare": true,
-            "history": true,
-            "remote": true
-        }
-    },
-    "gitlens.keymap": "alternate",
     // open LaTeX preview inside VSCode
     "latex-workshop.view.pdf.viewer": "tab",
     // Enable linting LaTeX with ChkTeX.
     "latex-workshop.chktex.enabled": true,
-    // Disable auto build on save
-    "latex-workshop.latex.autoBuild.onSave.enabled": false,
-    // disable dark theme ugly icons and notifications
-    "materialTheme.showReloadNotification": false,
-    "materialTheme.autoApplyIcons": false,
-    // spellright -- speller
+    // speller language
     "spellright.language": [
-        "English"
+        "en_GB"
     ],
     // underline spelling mistakes in green
     "spellright.notificationClass": "information",
     // disable breadcrumbs for navigation
     "breadcrumbs.enabled": false,
-    "git.autofetch": true,
     // add brackets to function autocompletion in Python
     "python.autoComplete.addBrackets": true,
     // enabling autosave every 1000ms
@@ -103,8 +53,6 @@
     "python.linting.pydocstyleEnabled": true,
     // Execute forward synctex at cursor position after compiling LaTeX project.
     "latex-workshop.synctex.afterBuild.enabled": true,
-    // disable automatic opening of Latex sidebar on switch to tex file
-    "latex-workshop.view.autoActivateLatex.enabled": false,
     // make Pep8 underline color green for message type 'E'
     "python.linting.pep8CategorySeverity.E": "Warning",
     // prevent scrollbar from appearing for git blame - useful for LaTeX projects
@@ -117,38 +65,28 @@
     "gitlens.views.search.location": "scm",
     // enable smooth cursor animation
     "editor.cursorSmoothCaretAnimation": true,
-    // workaround to respect CapsLock to Escape mapping on Linux
-    "keyboard.dispatch": "keyCode",
-    // do not open Debug sidebar immediately on run
-    "debug.openDebug": "openOnDebugBreak",
-    // properly format idents in shell
+    // proper format for idents in shell
     "shellformat.flag": "-i 4",
-    "window.zoomLevel": 0,
-    // sync settings
-    "syncing.excludedSettings": [
-        "workbench.colorTheme",
-        "latex-workshop.view.pdf.invert",
-        "python.pythonPath",
-        "editor.selectionClipboard"
-    ],
-    // shells
-    "terminal.integrated.shell.linux": "/usr/bin/zsh",
-    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     // disable text drag-and-drop
     "editor.dragAndDrop": false,
     // Controls the font family.
-    "editor.fontFamily": "MonacoB2, Monaco, Hack, Menlo",
+    "editor.fontFamily": "MonacoB2, Monaco, Hack, Menlo, monospace",
     // Controls the font size in pixels.
     "editor.fontSize": 12,
-    // disable PHP built-in suggestions in favour plugin
+    // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
     "latex-workshop.view.pdf.invert": 0.9,
+    // python path
     "python.pythonPath": "/usr/local/bin/python3",
-    "workbench.colorTheme": "Material Theme Darker",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
-    // enable slection of British English speller on macOS
+    // enable selection of British English speller on macOS
     "spellright.groupDictionaries": false,
+    // disable activation of latex tab when switching to tex file
     "latex-workshop.view.autoFocus.enabled": false,
-    "latex-workshop.latex.autoBuild.run": "never"
+    // do not build latex automatically
+    "latex-workshop.latex.autoBuild.run": "never",
+    // disable Git Graph in status bar
+    "git-graph.showStatusBarItem": false,
+    "workbench.colorTheme": "Dainty – Ayu Mirage"
 }
