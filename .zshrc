@@ -200,7 +200,7 @@ alias ze="emacs -nw $DOTFILES"
 alias ipy="python3 -m IPython"
 # Nexcloud
 alias sshcl="ssh igor@krupenja.net"
-alias fscl="sshfs igor@krupenja.net:/ /Volumes/cloud"
+alias fscl="sshfs root@krupenja.net:/ /Volumes/cloud"
 # Mount home dir on enos
 alias fsenos="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
@@ -459,8 +459,6 @@ alias dot="cd $DOTFILES"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
-# SSH to virtual macOS machine
-alias sshv='ssh igor@macos-10.14.3.shared'
 alias sel="cd $PROJECTS/Selenium"
 
 # Calculator
