@@ -88,5 +88,11 @@
     "latex-workshop.latex.autoBuild.run": "never",
     // disable Git Graph in status bar
     "git-graph.showStatusBarItem": false,
-    "workbench.colorTheme": "Dainty – Ayu Mirage"
+    // disable welcome page
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Ayu Mirage",
+    // map file types to languages
+    "files.associations": {
+        "*.emacs": "lisp"
+    }
 }
