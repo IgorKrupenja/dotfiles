@@ -40,7 +40,7 @@
         "en_GB"
     ],
     // underline spelling mistakes in green
-    "spellright.notificationClass": "information",
+    "spellright.notificationClass": "warning",
     // disable breadcrumbs for navigation
     "breadcrumbs.enabled": false,
     // add brackets to function autocompletion in Python
@@ -75,7 +75,7 @@
     "editor.fontSize": 12,
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -90,9 +90,12 @@
     "git-graph.showStatusBarItem": false,
     // disable welcome page
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.colorTheme": "Brackets Light Pro Bold",
     // map file types to languages
     "files.associations": {
         "*.emacs": "lisp"
-    }
+    },
+    "java.configuration.checkProjectSettingsExclusions": false,
+    // disable autobuild on save
+    "java.autobuild.enabled": false
 }
