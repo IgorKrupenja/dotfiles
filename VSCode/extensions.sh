@@ -12,6 +12,7 @@ code --install-extension Equinusocio.vsc-material-theme
 code --install-extension eryouhao.brackets-light-pro
 code --install-extension felixfbecker.php-debug
 code --install-extension felixfbecker.php-intellisense
+code --install-extension formulahendry.auto-rename-tag
 code --install-extension foxundermoon.shell-format
 code --install-extension gio00.convertplist
 code --install-extension GrapeCity.gc-excelviewer
