@@ -127,5 +127,10 @@
     {
         "key": "cmd+k cmd+l",
         "command": "spellright.selectDictionary"
+    },
+    {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     }
 ]
