@@ -1,5 +1,5 @@
 behavior {
-    theme "Classic"
+    theme "Dark"
     dateFormat "%d/%m/%y %X"
 
     showActionBar false
