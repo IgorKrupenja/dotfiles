@@ -75,7 +75,7 @@
     "editor.fontSize": 12,
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -90,12 +90,11 @@
     "git-graph.showStatusBarItem": false,
     // disable welcome page
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Brackets Light Pro Bold",
+    "workbench.colorTheme": "Material Theme Darker",
     // map file types to languages
     "files.associations": {
         "*.emacs": "lisp"
     },
-    "java.configuration.checkProjectSettingsExclusions": false,
-    // disable autobuild on save
-    "java.autobuild.enabled": false
+    // tab close on the left
+    "workbench.editor.tabCloseButton": "left"
 }
