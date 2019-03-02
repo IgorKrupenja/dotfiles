@@ -96,5 +96,7 @@
         "*.emacs": "lisp"
     },
     // tab close on the left
-    "workbench.editor.tabCloseButton": "left"
+    "workbench.editor.tabCloseButton": "left",
+    // Automatically center the commit details view when it is opened.
+    "git-graph.autoCenterCommitDetailsView": false
 }
