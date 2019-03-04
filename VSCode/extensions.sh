@@ -15,7 +15,6 @@ code --install-extension felixfbecker.php-intellisense
 code --install-extension formulahendry.auto-rename-tag
 code --install-extension foxundermoon.shell-format
 code --install-extension gio00.convertplist
-code --install-extension GrapeCity.gc-excelviewer
 code --install-extension Gruntfuggly.todo-tree
 code --install-extension idleberg.applescript
 code --install-extension James-Yu.latex-workshop
