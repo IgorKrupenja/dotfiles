@@ -70,4 +70,5 @@ cask "veracrypt"
 cask "visual-studio-code"
 mas "qdigidoc4", id: 1370791134
 mas "Reeder", id: 880001334
+mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
