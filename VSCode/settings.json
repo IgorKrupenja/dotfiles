@@ -98,5 +98,9 @@
     // tab close on the left
     "workbench.editor.tabCloseButton": "left",
     // Automatically center the commit details view when it is opened.
-    "git-graph.autoCenterCommitDetailsView": false
+    "git-graph.autoCenterCommitDetailsView": false,
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
+    ]
 }
