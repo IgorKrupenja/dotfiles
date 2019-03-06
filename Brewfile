@@ -20,7 +20,7 @@ brew "iftop"
 brew "mas"
 brew "ncdu"
 brew "p7zip"
-brew "php@7.2"
+brew "php", restart_service: true
 brew "python"
 brew "shfmt"
 brew "speedtest-cli"
