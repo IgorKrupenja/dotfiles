@@ -155,5 +155,20 @@
     {
         "key": "ctrl+r",
         "command": "-workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.debug.stop",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "shift+f5",
+        "command": "-workbench.action.debug.stop",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "phpfmt.format",
+        "when": "editorLangId == 'php'"
     }
 ]

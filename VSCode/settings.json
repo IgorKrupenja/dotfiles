@@ -42,7 +42,7 @@
     // underline spelling mistakes in green
     "spellright.notificationClass": "warning",
     // disable breadcrumbs for navigation
-    "breadcrumbs.enabled": false,
+    "breadcrumbs.enabled": true,
     // add brackets to function autocompletion in Python
     "python.autoComplete.addBrackets": true,
     // enabling autosave every 1000ms
@@ -70,9 +70,7 @@
     // disable text drag-and-drop
     "editor.dragAndDrop": false,
     // Controls the font family.
-    "editor.fontFamily": "MonacoB2, Monaco, Hack, Menlo, monospace",
-    // Controls the font size in pixels.
-    "editor.fontSize": 12,
+    "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
     "latex-workshop.view.pdf.invert": 0.9,
@@ -102,5 +100,11 @@
     "spellright.documentTypes": [
         "latex",
         "plaintext"
+    ],
+    // do not open debug every time
+    "debug.openDebug": "openOnFirstSessionStart",
+    // make shortcuts for these commands work in terminal
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.openRecent"
     ]
 }
