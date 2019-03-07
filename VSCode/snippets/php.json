@@ -12,17 +12,33 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"Foreach loop Igor": {
+	"Foreach loop": {
 		"prefix": "foreach",
 		"body": [
-			// "foreach (${variables} as ${variable}) {",
-			// "",
-			// "{"
-			"foreach (\\$${variable}s as \\$${variable})  {",
-			// "\tconst ${element} = ${array}[${index}];",
+			"foreach (\\$${variable}s as \\$${variable}) {",
 			"\t$0",
 			"}"
 		],
 		"description": "Foreach loop"
+	},
+
+	"Foreach loop with key": {
+		"prefix": "foreachk",
+		"body": [
+			"foreach (\\$${variable}s as \\$as \\$key => \\$value) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Foreach loop"
+	},
+
+	"For loop": {
+		"prefix": "for",
+		"body": [
+			"for (\\$${i}=0; \\$${i} < ; \\$${i}++) {",
+			"\t$0",
+			"}"
+		],
+		"description": "For loop"
 	}
 }
