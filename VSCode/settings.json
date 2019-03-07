@@ -73,7 +73,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -88,7 +88,6 @@
     "git-graph.showStatusBarItem": false,
     // disable welcome page
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Material Theme Darker",
     // map file types to languages
     "files.associations": {
         "*.emacs": "lisp"
@@ -106,5 +105,12 @@
     // make shortcuts for these commands work in terminal
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.openRecent"
+    ],
+    "workbench.colorTheme": "quietLight-plus-theme",
+    // scope colors for brackets
+    "bracket-pair-colorizer-2.colors": [
+        "Orange",
+        "Orchid",
+        "LightSkyBlue"
     ]
 }
