@@ -29,8 +29,6 @@ brew "wget"
 brew "zsh"
 brew "dart-lang/dart/dart"
 brew "srkomodo/tap/shadowfox-updater"
-cask "playonmac"
-cask "porting-kit"
 mas "qdigidoc4", id: 1370791134
 mas "Reeder", id: 880001334
 mas "The Unarchiver", id: 425424353
