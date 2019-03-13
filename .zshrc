@@ -350,9 +350,15 @@ trelp() {
     trello show-cards -b Personal -l '🌅 Tomorrow'
     trello show-cards -b Personal -l '📆 This week'
 }
-trea() {
+
+tred() {
     trello add-card "$1" -b Personal -l '💣 Today'
 }
+
+tren() {
+    trello add-card "$1" -b Personal -l '🌆 Tonight'
+}
+
 # move to Done on Personal board
 trex() {
     trello move-card "$1" 5a785c3a56d2f82288d292e8
