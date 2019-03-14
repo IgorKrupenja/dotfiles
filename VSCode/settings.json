@@ -73,7 +73,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -106,7 +106,7 @@
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.openRecent"
     ],
-    "workbench.colorTheme": "quietLight-plus-theme",
+    "workbench.colorTheme": "Material Theme Darker",
     // scope colors for brackets
     "bracket-pair-colorizer-2.colors": [
         "Orange",
