@@ -344,7 +344,7 @@ Darwin)
     ;;
 esac
 
-trelp() {
+trel() {
     trello show-cards -b Personal -l '💣 Today'
     trello show-cards -b Personal -l '🌆 Tonight'
     trello show-cards -b Personal -l '🌅 Tomorrow'
