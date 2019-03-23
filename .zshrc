@@ -113,7 +113,7 @@ sc() {
 }
 
 # ---------------------------------------------------------------------------
-# 3. CODING
+# 3. DEVELOPMENT
 # ---------------------------------------------------------------------------
 
 # git
@@ -199,6 +199,9 @@ alias cre="EDITOR=nano crontab -e"
 alias zs="source $HOME/.zshrc"
 alias zc="code $DOTFILES"
 alias ze="emacs -nw $DOTFILES"
+
+# PHP
+alias phps="php -S localhost:8000"
 
 # Misc
 # ------------------------------------
