@@ -20,7 +20,6 @@ code --install-extension Gruntfuggly.todo-tree
 code --install-extension HookyQR.beautify
 code --install-extension idleberg.applescript
 code --install-extension James-Yu.latex-workshop
-code --install-extension kokororin.vscode-phpfmt
 code --install-extension mattn.Lisp
 code --install-extension mhutchie.git-graph
 code --install-extension mkaufman.HTMLHint
@@ -29,6 +28,7 @@ code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
 code --install-extension pranaygp.vscode-css-peek
 code --install-extension ritwickdey.LiveServer
+code --install-extension Sophisticode.php-formatter
 code --install-extension stuart.unique-window-colors
 code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
