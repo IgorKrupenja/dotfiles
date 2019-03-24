@@ -165,10 +165,5 @@
         "key": "shift+f5",
         "command": "-workbench.action.debug.stop",
         "when": "inDebugMode"
-    },
-    {
-        "key": "shift+alt+f",
-        "command": "phpfmt.format",
-        "when": "editorLangId == 'php'"
     }
 ]
