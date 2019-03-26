@@ -107,12 +107,18 @@
         "workbench.action.openRecent"
     ],
     "workbench.colorTheme": "quietLight-plus-theme",
+    // instant quick suggestions
+    "editor.quickSuggestionsDelay": 0,
     // scope colors for brackets
     "bracket-pair-colorizer-2.colors": [
         "Orange",
         "Orchid",
         "LightSkyBlue"
     ],
+    // "bracket-pair-colorizer-2.excludedLanguages": [
+    //     // to prevent delay on enter
+    //     "latex"
+    // ],
     "explorer.confirmDelete": false,
     "beautify.language": {
         "js": {
@@ -136,5 +142,43 @@
             "html",
             "php"
         ]
-    }
+    },
+    "cSpell.language": ",ru,lorem,lorem-ipsum,en-GB",
+    "cSpell.userWords": [
+        "AFME",
+        "Arial",
+        "Benos",
+        "Bitcoin",
+        "Blockchains",
+        "Blockchain’s",
+        "CCPs",
+        "CPMI",
+        "CSDs",
+        "Domanski",
+        "Euroclear",
+        "FICC",
+        "Fedwire",
+        "Hyperledger",
+        "Mainelli",
+        "NSCC",
+        "Nakamoto",
+        "Paech",
+        "Permissioned",
+        "Permissionless",
+        "SELIC",
+        "Satoshi",
+        "Tsai",
+        "blockchain",
+        "counterparties",
+        "counterparty",
+        "crowdfunding",
+        "cryptocurrencies",
+        "cryptocurrency",
+        "dematerialised",
+        "disintermediated",
+        "disintermediating",
+        "disintermediation",
+        "permisionless",
+        "siloed"
+    ]
 }
