@@ -27,8 +27,11 @@ code --install-extension ms-python.python
 code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
 code --install-extension pranaygp.vscode-css-peek
+code --install-extension rbalet.code-spell-checker-lorem
 code --install-extension ritwickdey.LiveServer
 code --install-extension Sophisticode.php-formatter
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension streetsidesoftware.code-spell-checker-russian
 code --install-extension stuart.unique-window-colors
 code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
