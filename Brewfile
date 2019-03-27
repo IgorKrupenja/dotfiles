@@ -29,6 +29,7 @@ brew "zsh"
 brew "dart-lang/dart/dart"
 brew "srkomodo/tap/shadowfox-updater"
 cask "google-chrome-dev"
+cask "iterm2-nightly"
 cask "sip"
 mas "qdigidoc4", id: 1370791134
 mas "Reeder", id: 880001334
