@@ -42,7 +42,7 @@
     // underline spelling mistakes in green
     "spellright.notificationClass": "warning",
     // disable breadcrumbs for navigation
-    "breadcrumbs.enabled": true,
+    "breadcrumbs.enabled": false,
     // add brackets to function autocompletion in Python
     "python.autoComplete.addBrackets": true,
     // enabling autosave every 1000ms
@@ -73,7 +73,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -106,7 +106,7 @@
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.openRecent"
     ],
-    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.colorTheme": "quietLight-plus-theme",
     // instant quick suggestions
     "editor.quickSuggestionsDelay": 0,
     // scope colors for brackets
