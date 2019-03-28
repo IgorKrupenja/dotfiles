@@ -126,7 +126,8 @@ alias gs="git status"
 alias glo="git log --graph --oneline"
 # git commmit with message
 alias gcm="git commit -m"
-alias gcam="git commit -a -m"
+# add all filess and commit
+alias gcam="git add -A && git commit -m"
 alias gc="git commit"
 alias gchm="git checkout master"
 alias gch="git checkout"
