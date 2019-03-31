@@ -1,5 +1,5 @@
 {
-    // indent on paste
+    // format on paste
     "editor.formatOnPaste": true,
     // icon theme = material
     "workbench.iconTheme": "material-icon-theme",
@@ -111,14 +111,10 @@
     "editor.quickSuggestionsDelay": 0,
     // scope colors for brackets
     "bracket-pair-colorizer-2.colors": [
-        "Orange",
+        "SandyBrown",
         "Orchid",
-        "LightSkyBlue"
+        "DodgerBlue"
     ],
-    // "bracket-pair-colorizer-2.excludedLanguages": [
-    //     // to prevent delay on enter
-    //     "latex"
-    // ],
     "explorer.confirmDelete": false,
     "beautify.language": {
         "js": {
@@ -180,5 +176,9 @@
         "disintermediation",
         "permisionless",
         "siloed"
-    ]
+    ],
+    // disable preview open
+    "workbench.editor.enablePreview": false,
+    "php-cs-fixer.executablePath": "php-cs-fixer",
+    "window.zoomLevel": 0
 }
