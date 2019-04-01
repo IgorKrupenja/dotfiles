@@ -89,10 +89,6 @@
         "command": "-workbench.action.terminal.new"
     },
     {
-        "key": "shift+enter",
-        "command": "workbench.action.terminal.runSelectedText"
-    },
-    {
         "key": "cmd+k cmd+l",
         "command": "spellright.selectDictionary"
     },
@@ -227,5 +223,19 @@
     {
         "key": "ctrl+shift+r",
         "command": "workbench.action.debug.selectandstart"
-    }
+    },
+    {
+        "key": "ctrl+r",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Start PHP server and open in Chrome",
+        "when": "editorLangId == 'php'"
+    },
+    {
+        "key": "cmd+j",
+        "command": "extension.jumpy-word"
+    },
+    {
+        "key": "cmd+j",
+        "command": "-workbench.action.togglePanel"
+    },
 ]

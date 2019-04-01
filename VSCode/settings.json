@@ -179,6 +179,6 @@
     ],
     // disable preview open
     "workbench.editor.enablePreview": false,
-    "php-cs-fixer.executablePath": "php-cs-fixer",
-    "window.zoomLevel": 0
+    // do not open webpage when Live Server is on
+    "liveServer.settings.NoBrowser": true,
 }
