@@ -22,7 +22,6 @@ code --install-extension HookyQR.beautify
 code --install-extension idleberg.applescript
 code --install-extension ikappas.phpcs
 code --install-extension James-Yu.latex-workshop
-code --install-extension kokororin.vscode-phpfmt
 code --install-extension mattn.Lisp
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mhutchie.git-graph
@@ -39,4 +38,5 @@ code --install-extension streetsidesoftware.code-spell-checker-russian
 code --install-extension stuart.unique-window-colors
 code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
+code --install-extension wmaurer.vscode-jumpy
 code --install-extension yzhang.markdown-all-in-one
