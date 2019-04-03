@@ -491,7 +491,7 @@ alias sel="cd $PROJECTS/Selenium/Nextcloud"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
-alias ddd="gdd bs=1M status=progess"
+alias ddd="gdd bs=1M status=progress"
 
 # Calculator
 # ------------------------------------
