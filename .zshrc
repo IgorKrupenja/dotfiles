@@ -139,6 +139,7 @@ alias ga="git add"
 alias gcl="git clone"
 alias gpt="git push origin --tags"
 alias gd="git diff"
+alias gdt="git difftool"
 alias gt="git tag"
 
 # git global status to check if any repos need commits/pushes

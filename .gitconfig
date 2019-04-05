@@ -18,3 +18,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 [core]
 	editor = code --wait
+[difftool]
+	prompt = false
