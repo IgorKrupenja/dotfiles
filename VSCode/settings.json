@@ -116,29 +116,6 @@
         "DodgerBlue"
     ],
     "explorer.confirmDelete": false,
-    "beautify.language": {
-        "js": {
-            "type": [
-                "javascript",
-                "json",
-                "jsonc"
-            ],
-            "filename": [
-                ".jshintrc",
-                ".jsbeautifyrc"
-            ]
-        },
-        "css": [
-            "css",
-            "less",
-            "scss"
-        ],
-        "html": [
-            "htm",
-            "html",
-            "php"
-        ]
-    },
     "cSpell.language": ",ru,lorem,lorem-ipsum,en-GB",
     "cSpell.userWords": [
         "AFME",
@@ -177,8 +154,9 @@
         "permisionless",
         "siloed"
     ],
-    // disable preview open
-    "workbench.editor.enablePreview": false,
     // do not open webpage when Live Server is on
     "liveServer.settings.NoBrowser": true,
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
 }

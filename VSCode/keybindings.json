@@ -195,12 +195,6 @@
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
     {
-        "key": "shift+alt+f",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Format PHP",
-        "when": "editorTextFocus && editorLangId == 'php'"
-    },
-    {
         "key": "ctrl+d",
         "command": "-deleteRight",
         "when": "textInputFocus && !editorReadonly"
@@ -225,17 +219,19 @@
         "command": "workbench.action.debug.selectandstart"
     },
     {
-        "key": "ctrl+r",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Start PHP server and open in Chrome",
-        "when": "editorLangId == 'php'"
-    },
-    {
         "key": "cmd+j",
         "command": "extension.jumpy-word"
     },
     {
         "key": "cmd+j",
         "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "workbench.action.replaceInFiles"
+    },
+    {
+        "key": "shift+cmd+h",
+        "command": "-workbench.action.replaceInFiles"
     },
 ]
