@@ -137,10 +137,12 @@ alias gl="git pull"
 alias gp="git push origin --all"
 alias ga="git add"
 alias gcl="git clone"
+alias gt="git tag"
 alias gpt="git push origin --tags"
+# delete a emote tag
+alias gpts="git push --delete origin"
 alias gd="git diff"
 alias gdt="git difftool"
-alias gt="git tag"
 
 # git global status to check if any repos need commits/pushes
 ggs() {
