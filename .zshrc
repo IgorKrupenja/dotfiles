@@ -402,6 +402,7 @@ Darwin)
     alias bcl="brew cask list"
     alias bs="brew search"
     alias br="brew rmtree"
+    alias bro="brew remove"
     alias bcr="brew cask remove"
     alias bdep="brew deps --installed"
     alias blv="brew leaves"
