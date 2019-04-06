@@ -19,7 +19,6 @@ code --install-extension foxundermoon.shell-format
 code --install-extension gio00.convertplist
 code --install-extension Gruntfuggly.todo-tree
 code --install-extension idleberg.applescript
-code --install-extension ikappas.phpcs
 code --install-extension James-Yu.latex-workshop
 code --install-extension mattn.Lisp
 code --install-extension mechatroner.rainbow-csv
