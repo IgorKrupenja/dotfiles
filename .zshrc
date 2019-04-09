@@ -123,9 +123,9 @@ alias gitssh="$PROJECTS/OS/bash-snippets/github-https-to-ssh.sh"
 # git status
 alias gs="git status"
 # normal git log - with timestamps
-alias glot="git log --graph"
+alias glot="git log --graph --all"
 # log with pretty graph
-alias glo="git log --graph --oneline"
+alias glo="git log --graph --oneline --all"
 # git commmit with message
 alias gcm="git commit -m"
 # add all filess and commit
