@@ -35,6 +35,6 @@ cask "shotcut"
 cask "sip"
 cask "skype"
 mas "com.abbyy.lingvo", id: 467622356
-mas "com.reederapp.rkit2.mac", id: 880001334
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
+mas "QReader.MarginStudyMac", id: 1423522373
