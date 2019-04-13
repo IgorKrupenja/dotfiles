@@ -31,7 +31,6 @@ brew "srkomodo/tap/shadowfox-updater"
 cask "google-chrome-canary"
 cask "google-chrome-dev"
 cask "iterm2-nightly"
-cask "shotcut"
 cask "sip"
 cask "skype"
 mas "com.abbyy.lingvo", id: 467622356
