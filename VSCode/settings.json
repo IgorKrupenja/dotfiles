@@ -20,7 +20,7 @@
         "opacity": 100
     },
     // hide activity bar
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     // gitlense settings mode
     "gitlens.settings.mode": "advanced",
     // blinking cursor in termianl
