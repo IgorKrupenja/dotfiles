@@ -31,8 +31,11 @@ brew "srkomodo/tap/shadowfox-updater"
 cask "google-chrome-canary"
 cask "google-chrome-dev"
 cask "iterm2-nightly"
+cask "semulov"
+cask "sequel-pro"
 cask "sip"
 cask "skype"
+cask "tableplus"
 mas "com.abbyy.lingvo", id: 467622356
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
