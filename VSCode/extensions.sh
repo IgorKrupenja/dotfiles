@@ -25,6 +25,7 @@ code --install-extension mechatroner.rainbow-csv
 code --install-extension mhutchie.git-graph
 code --install-extension mkaufman.HTMLHint
 code --install-extension ms-python.python
+code --install-extension mtxr.sqltools
 code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
 code --install-extension pranaygp.vscode-css-peek
