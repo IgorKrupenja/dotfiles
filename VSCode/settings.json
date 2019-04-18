@@ -20,7 +20,7 @@
         "opacity": 100
     },
     // hide activity bar
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     // gitlense settings mode
     "gitlens.settings.mode": "advanced",
     // blinking cursor in termianl
@@ -73,7 +73,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -106,7 +106,7 @@
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.openRecent"
     ],
-    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.colorTheme": "quietLight-plus-theme",
     // instant quick suggestions
     "editor.quickSuggestionsDelay": 0,
     // scope colors for brackets
@@ -128,6 +128,7 @@
         "CPMI",
         "CSDs",
         "Domanski",
+        "ESMA",
         "Euroclear",
         "FICC",
         "Fedwire",
@@ -142,6 +143,7 @@
         "SELIC",
         "Satoshi",
         "Tsai",
+        "anonymised",
         "blockchain",
         "counterparties",
         "counterparty",
@@ -171,5 +173,7 @@
     // to find TODOs in Latex
     "todo-tree.regex": "((//|#|<!--|;|/\\*|^|\\\\|%)\\s*($TAGS)|^\\s*- \\[ \\])",
     // disable preview from quisck open
-    "workbench.editor.enablePreviewFromQuickOpen": false 
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    // Remove SQL icon from status bar
+    "sqltools.showStatusbar": false,
 }

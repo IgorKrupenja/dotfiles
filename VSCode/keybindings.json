@@ -249,4 +249,9 @@
         "command": "-editor.action.showHover",
         "when": "editorTextFocus"
     },
+    {
+        "key": "shift+cmd+\\",
+        "command": "-editor.action.jumpToBracket",
+        "when": "editorTextFocus"
+    },
 ]
