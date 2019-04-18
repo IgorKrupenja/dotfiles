@@ -36,7 +36,6 @@ cask "sip"
 cask "skype"
 cask "tableplus"
 mas "com.abbyy.lingvo", id: 467622356
-mas "com.mpdigital.tyranny", id: 1136255439
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
 mas "QReader.MarginStudyMac", id: 1423522373
