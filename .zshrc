@@ -17,7 +17,7 @@
 
 # Paths
 # ------------------------------------
-export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools:/home/igor/.local/bin:/usr/local/sbin:$PATH
+export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:$HOME/flutter/bin:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools:/home/igor/.local/bin:/usr/local/sbin:/usr/local/opt/mysql-client/bin:$PATH
 
 # Various stuff for Perl and Latex
 PATH="/Users/igor/perl5/bin${PATH:+:${PATH}}"; export PATH;
