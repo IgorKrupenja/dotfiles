@@ -254,4 +254,19 @@
         "command": "-editor.action.jumpToBracket",
         "when": "editorTextFocus"
     },
+    {
+        "key": "ctrl+b",
+        "command": "editor.debug.action.toggleBreakpoint",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "f9",
+        "command": "-editor.debug.action.toggleBreakpoint",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-cursorLeft",
+        "when": "textInputFocus"
+    },
 ]
