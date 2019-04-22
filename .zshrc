@@ -140,7 +140,7 @@ alias gcl="git clone"
 alias gt="git tag"
 alias gpt="git push origin --tags"
 # delete a emote tag
-alias gpts="git push --delete origin"
+alias gptd="git push --delete origin"
 alias gd="git diff"
 alias gdt="git difftool"
 
