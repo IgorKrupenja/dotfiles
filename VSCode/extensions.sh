@@ -1,5 +1,6 @@
 code --install-extension aeschli.vscode-css-formatter
 code --install-extension alexanderte.dainty-vscode
+code --install-extension alexcvzz.vscode-sqlite
 code --install-extension arcticicestudio.nord-visual-studio-code
 code --install-extension ban.quietlight-plus
 code --install-extension ban.spellright
@@ -20,12 +21,13 @@ code --install-extension gio00.convertplist
 code --install-extension Gruntfuggly.todo-tree
 code --install-extension idleberg.applescript
 code --install-extension James-Yu.latex-workshop
+code --install-extension johnpapa.vscode-peacock
+code --install-extension lehni.vscode-titlebar-less-macos
 code --install-extension mattn.Lisp
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mhutchie.git-graph
 code --install-extension mkaufman.HTMLHint
 code --install-extension ms-python.python
-code --install-extension mtxr.sqltools
 code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
 code --install-extension pranaygp.vscode-css-peek
@@ -34,7 +36,6 @@ code --install-extension ritwickdey.LiveServer
 code --install-extension sleistner.vscode-fileutils
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension streetsidesoftware.code-spell-checker-russian
-code --install-extension stuart.unique-window-colors
 code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
 code --install-extension wmaurer.vscode-jumpy
