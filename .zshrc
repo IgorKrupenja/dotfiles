@@ -131,6 +131,7 @@ alias gcm="git commit -m"
 # add all filess and commit
 alias gcam="git add -A && git commit -m"
 alias gc="git commit"
+alias gb="git branch"
 alias gchm="git checkout master"
 alias gch="git checkout"
 alias gl="git pull"
