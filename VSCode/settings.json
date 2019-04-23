@@ -3,7 +3,7 @@
     "editor.formatOnPaste": true,
     // icon theme = material
     "workbench.iconTheme": "material-icon-theme",
-    // markdown linting plugin
+    // markdown lint plugin
     "markdownlint.config": {
         // disable "No HTML" warnings
         "MD033": false
@@ -23,7 +23,7 @@
     "workbench.activityBar.visible": false,
     // gitlense settings mode
     "gitlens.settings.mode": "advanced",
-    // blinking cursor in termianl
+    // blinking cursor in terminal
     "terminal.integrated.cursorBlinking": true,
     // for XML formatting
     "xmlTools.splitAttributesOnFormat": true,
@@ -39,7 +39,7 @@
     "breadcrumbs.enabled": false,
     // add brackets to function autocompletion in Python
     "python.autoComplete.addBrackets": true,
-    // enabling autosave every 1000ms
+    // enabling autosave
     "files.autoSave": "afterDelay",
     // lint Python files using pep8
     "python.linting.pep8Enabled": true,
@@ -67,7 +67,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -86,7 +86,7 @@
     },
     // tab close on the left
     "workbench.editor.tabCloseButton": "left",
-    // Automatically center the commit details view when it is opened.
+    // Automatically centre the commit details view when it is opened.
     "git-graph.autoCenterCommitDetailsView": false,
     // open debug view only on breaks
     "debug.openDebug": "openOnDebugBreak",
@@ -94,67 +94,15 @@
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.openRecent"
     ],
-    "workbench.colorTheme": "Material Theme Darker",
     // instant quick suggestions
     "editor.quickSuggestionsDelay": 0,
-    // scope colors for brackets
+    // scope colours for brackets
     "bracket-pair-colorizer-2.colors": [
         "SandyBrown",
         "Orchid",
         "DodgerBlue"
     ],
     "explorer.confirmDelete": false,
-    "cSpell.language": ",ru,lorem,lorem-ipsum,en-GB",
-    "cSpell.userWords": [
-        "AFME",
-        "Arial",
-        "Benos",
-        "Bitcoin",
-        "Blockchains",
-        "Blockchain’s",
-        "CCPs",
-        "CPMI",
-        "CSDs",
-        "Domanski",
-        "ESMA",
-        "Euroclear",
-        "FICC",
-        "Fedwire",
-        "Hyperledger",
-        "Mainelli",
-        "NSCC",
-        "Nakamoto",
-        "Paech",
-        "Permissioned",
-        "Permissionless",
-        "Proovige",
-        "SELIC",
-        "Satoshi",
-        "Tsai",
-        "anonymised",
-        "blockchain",
-        "counterparties",
-        "counterparty",
-        "crowdfunding",
-        "cryptocurrencies",
-        "cryptocurrency",
-        "dematerialised",
-        "disintermediated",
-        "disintermediating",
-        "disintermediation",
-        "permisionless",
-        "siloed"
-    ],
-    // Estonian spell-checking dictionary
-    "cSpell.dictionaryDefinitions": [
-        {
-            "name": "Estonian",
-            "path": "/Users/igor/OneDrive - TTU/Personal/Estonian.txt"
-        }
-    ],
-    "cSpell.dictionaries": [
-        "Estonian"
-    ],
     // do not open webpage when Live Server is turned on
     "liveServer.settings.NoBrowser": true,
     // disable preview from quick open
@@ -216,4 +164,29 @@
         "activityBar": "none",
     },
     "extensions.ignoreRecommendations": false,
+    // vertical ruler like IntelliJ
+    "editor.rulers": [
+        120
+    ],
+    "workbench.colorTheme": "quietLight-plus-theme",
+    // Power Mode
+    "powermode.enabled": true,
+    "powermode.enableShake": false,
+    "powermode.enableStatusBarComboCounter": false,
+    "powermode.enableStatusBarComboTimer": false,
+    // To enable British English spellchecking
+    "spellright.groupDictionaries": false,
+    // Underline settings for speller
+    "spellright.notificationClassByParser": {
+        "code": "hint",
+        "latex": "information"
+    },
+    // mode-specific speller settings
+    "spellright.spellContextByClass": {
+        "jsonc": "comments",
+    },
+    // New windows always maximised 
+    "window.newWindowDimensions": "maximized",
+    // hack to fix titlebar-less extension bug
+    "window.title": "."
 }
