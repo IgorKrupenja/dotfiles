@@ -345,7 +345,7 @@ tghus() {
     tg now
 }
 
-tgphy() {
+tgphys() {
     tg start "" @Physio
     tg now
 }
