@@ -1,5 +1,5 @@
 behavior {
-    theme "Igor"
+    theme "Classic"
     dateFormat "%d/%m/%y %X"
 
     showActionBar false
@@ -15,6 +15,7 @@ behavior {
     table {
         maxItemCount -1
         useAlternateColor false
+        colorHighlighting true
     }
 }
 
