@@ -16,6 +16,7 @@ brew "python"
 brew "htop"
 brew "httpd"
 brew "hub"
+brew "hunspell"
 brew "iftop"
 brew "mas"
 brew "mysql-client"
@@ -37,6 +38,7 @@ cask "phpstorm"
 cask "semulov"
 cask "sip"
 cask "skype"
+cask "sublime-text"
 mas "com.abbyy.lingvo", id: 467622356
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
