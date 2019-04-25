@@ -67,7 +67,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
@@ -98,9 +98,9 @@
     "editor.quickSuggestionsDelay": 0,
     // scope colours for brackets
     "bracket-pair-colorizer-2.colors": [
-        "SandyBrown",
-        "Orchid",
-        "DodgerBlue"
+        "PeachPuff",
+        "Plum",
+        "#cc9e72"
     ],
     "explorer.confirmDelete": false,
     // do not open webpage when Live Server is turned on
@@ -120,6 +120,10 @@
         {
             "name": "Azure Blue",
             "value": "#007fff"
+        },
+        {
+            "name": "C# Purple",
+            "value": "#68217A"
         },
         {
             "name": "Gatsby Purple",
@@ -168,7 +172,6 @@
     "editor.rulers": [
         120
     ],
-    "workbench.colorTheme": "quietLight-plus-theme",
     // Power Mode
     "powermode.enabled": true,
     "powermode.enableShake": false,
@@ -188,5 +191,23 @@
     // New windows always maximised 
     "window.newWindowDimensions": "maximized",
     // hack to fix titlebar-less extension bug
-    "window.title": "."
+    "window.title": ".",
+    "workbench.colorCustomizations": {
+        // make some window borders transparent for certain themes
+        "[Nord]": {
+            "sideBar.border": "#00000000",
+            "panel.border": "#00000000",
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00"
+        },
+        "[React Italic Theme]": {
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00"
+        },
+        "[Arc Dark]": {
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00"
+        }
+    },
+    "workbench.colorTheme": "Ambiance [beta]"
 }
