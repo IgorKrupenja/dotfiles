@@ -1,33 +1,33 @@
 {
-    // format on paste
     "editor.formatOnPaste": true,
-    // icon theme = material
     "workbench.iconTheme": "material-icon-theme",
-    // markdown lint plugin
     "markdownlint.config": {
         // disable "No HTML" warnings
         "MD033": false
     },
-    // enable world wrap by default
     "editor.wordWrap": "on",
-    // TO_DO highlighting
+    // to do highlighting
     "todo-tree.defaultHighlight": {
         "type": "text",
         "foreground": "white",
-        "background": "#ef8a5b",
-        "rulerColour": "#ef8a5b",
-        "iconColour": "#ef8a5b",
-        "opacity": 100
+        "background": "#ff5100",
+        "iconColour": "#ff5100",
+        // >100% opacity needed to make text selection visible
+        "opacity": 50,
+        // pastel colour in ruler to match opacity
+        "rulerColour": "#ffa88c",
     },
-    // hide activity bar
+    // supports Latex, Python, PHP, JS, Java, HTML, Markdown
+    "todo-tree.regex": "((%|#|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
+    // highlight to do items with no lag
+    "todo-tree.highlightDelay": 0,
+    "todo-tree.regexCaseSensitive": false,
+    // hide activity bar (the one on the left with icons)
     "workbench.activityBar.visible": false,
-    // gitlense settings mode
-    "gitlens.settings.mode": "advanced",
-    // blinking cursor in terminal
     "terminal.integrated.cursorBlinking": true,
-    // for XML formatting
+    // each XML attribute on new line when formatting
     "xmlTools.splitAttributesOnFormat": true,
-    // smaller tab width
+    // smaller tab WIDTH
     "workbench.editor.tabSizing": "shrink",
     // hide feedback :) icon
     "workbench.statusBar.feedback.visible": false,
@@ -35,21 +35,17 @@
     "latex-workshop.view.pdf.viewer": "tab",
     // Enable linting LaTeX with ChkTeX.
     "latex-workshop.chktex.enabled": true,
-    // disable breadcrumbs for navigation
     "breadcrumbs.enabled": false,
     // add brackets to function autocompletion in Python
     "python.autoComplete.addBrackets": true,
-    // enabling autosave
+    // autosave after 1000 ms delay
     "files.autoSave": "afterDelay",
-    // lint Python files using pep8
     "python.linting.pep8Enabled": true,
-    // lint Python files using pydocstyle    
     "python.linting.pydocstyleEnabled": true,
-    // Execute forward synctex at cursor position after compiling LaTeX project.
-    "latex-workshop.synctex.afterBuild.enabled": true,
-    // make Pep8 underline color green for message type 'E'
+    // make Pep8 underline colour green for message type 'E'
     "python.linting.pep8CategorySeverity.E": "Warning",
-    // prevent scrollbar from appearing for git blame - useful for LaTeX projects
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    // prevent scrollbar from appearing for inline git blame
     "gitlens.currentLine.scrollable": false,
     // show gitlens stuff in SCM/git view
     "gitlens.views.repositories.location": "scm",
@@ -57,22 +53,19 @@
     "gitlens.views.lineHistory.location": "scm",
     "gitlens.views.compare.location": "scm",
     "gitlens.views.search.location": "scm",
-    // enable smooth cursor animation
     "editor.cursorSmoothCaretAnimation": true,
-    // proper format for idents in shell
+    // four spaces for idents in shell script
     "shellformat.flag": "-i 4",
     // disable text drag-and-drop
     "editor.dragAndDrop": false,
-    // Controls the font family.
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
     "latex-workshop.view.pdf.invert": 0.9,
-    // python path
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
-    // disable activation of latex tab when switching to tex file
+    // disable activation of latex view when switching to tex file
     "latex-workshop.view.autoFocus.enabled": false,
     // do not build latex automatically
     "latex-workshop.latex.autoBuild.run": "never",
@@ -84,19 +77,17 @@
     "files.associations": {
         "*.emacs": "lisp"
     },
-    // tab close on the left
     "workbench.editor.tabCloseButton": "left",
-    // Automatically centre the commit details view when it is opened.
+    // disable movement in git graph view when clicking on a commit
     "git-graph.autoCenterCommitDetailsView": false,
-    // open debug view only on breaks
     "debug.openDebug": "openOnDebugBreak",
-    // make shortcuts for these commands work in terminal
+    // make shortcuts for some commands work in terminal
     "terminal.integrated.commandsToSkipShell": [
+        // ctrl + f
         "workbench.action.openRecent"
     ],
-    // instant quick suggestions
     "editor.quickSuggestionsDelay": 0,
-    // scope colours for brackets
+    // TODO needs better colours for dark/light themes
     "bracket-pair-colorizer-2.colors": [
         "PeachPuff",
         "Plum",
@@ -105,9 +96,8 @@
     "explorer.confirmDelete": false,
     // do not open webpage when Live Server is turned on
     "liveServer.settings.NoBrowser": true,
-    // disable preview from quick open
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    // Peacock: colorise window based on project
+    // Peacock colorises windows based on project
     "peacock.favoriteColors": [
         {
             "name": "Angular Red",
@@ -164,50 +154,130 @@
     ],
     "peacock.affectActivityBar": false,
     "peacock.affectStatusBar": true,
-    "peacock.elementAdjustments": {
-        "activityBar": "none",
-    },
-    "extensions.ignoreRecommendations": false,
     // vertical ruler like IntelliJ
     "editor.rulers": [
         120
     ],
-    // Power Mode
-    "powermode.enabled": true,
-    "powermode.enableShake": false,
-    "powermode.enableStatusBarComboCounter": false,
-    "powermode.enableStatusBarComboTimer": false,
-    // To enable British English spellchecking
+    // To enable British English spell-checking
     "spellright.groupDictionaries": false,
     // Underline settings for speller
     "spellright.notificationClassByParser": {
-        "code": "hint",
+        "code": "information",
         "latex": "information"
     },
-    // mode-specific speller settings
+    // mode-specific speller settings 
     "spellright.spellContextByClass": {
         "jsonc": "comments",
     },
-    // New windows always maximised 
     "window.newWindowDimensions": "maximized",
     // hack to fix titlebar-less extension bug
+    // also need to have checksum fixer extension enabled
+    // otherwise centre-top area of the window is not clickable
+    // see https://github.com/electron/electron/issues/14529
     "window.title": ".",
+    // fixes for various themes to make them flatter
     "workbench.colorCustomizations": {
-        // make some window borders transparent for certain themes
         "[Nord]": {
             "sideBar.border": "#00000000",
             "panel.border": "#00000000",
             "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00"
+            "widget.shadow": "#ffffff00",
+            "focusBorder": "#ffffff00"
         },
         "[React Italic Theme]": {
             "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00"
+            "widget.shadow": "#ffffff00",
+            "sideBar.border": "#00000000",
+            "panel.border": "#00000000",
+            "editorGroupHeader.tabsBorder": "#00000000",
+            "tab.border": "#00000000",
+            "sideBarSectionHeader.border": "#00000000"
+        },
+        "[Eva Light]": {
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00",
+            "focusBorder": "#ffffff00",
+            "panel.border": "#00000000",
+            "tab.border": "#00000000",
+            "editorGroupHeader.tabsBorder": "#00000000",
+            "sideBarSectionHeader.background": "#ffffff00"
+        },
+        "[Eva Dark]": {
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00",
+            "focusBorder": "#ffffff00",
+            "panel.border": "#00000000",
+            "tab.border": "#00000000",
+            "editorGroupHeader.tabsBorder": "#00000000",
+            "sideBarSectionHeader.background": "#ffffff00",
+            "sideBar.background": "#282c34",
+            "editorGroupHeader.tabsBackground": "#282c34",
+            "tab.inactiveBackground": "#282c34",
+            "tab.hoverBackground": "#00000000",
+            "tab.activeBorder": "#61668b"
         },
         "[Arc Dark]": {
+            "panel.border": "#00000000",
             "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00"
+            "widget.shadow": "#ffffff00",
+            "sideBar.background": "#2f343f",
+            "sideBarSectionHeader.background": "#ffffff00",
+            "focusBorder": "#ffffff00"
+        },
+        "[After Dark]": {
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00",
+            "panel.border": "#00000000",
+            "focusBorder": "#ffffff00"
+        },
+        "[quietLight-plus-theme]": {
+            "scrollbar.shadow": "#ffffff00",
+            "widget.shadow": "#ffffff00",
+            "focusBorder": "#ffffff00",
+            "panel.border": "#00000000"
+        },
+        "[Flat UI Minimal]": {
+            "focusBorder": "#ffffff00",
+            "panel.border": "#00000000",
+            "terminal.background": "#ffffff"
+        },
+    },
+    // fix comment colours for some themes
+    "editor.tokenColorCustomizations": {
+        "[Flat UI Minimal]": {
+            "comments": "#aaaaaa"
+        },
+        "[Summer Time]": {
+            "comments": "#676d95",
+            "textMateRules": [
+                {
+                    "scope": "punctuation.definition.comment",
+                    "settings": {
+                        "foreground": "#676d95"
+                    }
+                },
+            ]
+        },
+        "[quietLight-plus-theme]": {
+            "textMateRules": [
+                {
+                    "scope": "comment.block.documentation",
+                    "settings": {
+                        "foreground": "#aaaaaa"
+                    }
+                },
+            ]
+        },
+        "[Arc Dark]": {
+            "textMateRules": [
+                {
+                    "scope": "punctuation.definition.comment",
+                    "settings": {
+                        "foreground": "#747c83"
+                    }
+                },
+            ]
         }
     },
-    "workbench.colorTheme": "Ambiance [beta]"
+    "workbench.colorTheme": "Material Theme Darker"
 }
