@@ -1,5 +1,4 @@
 code --install-extension aeschli.vscode-css-formatter
-code --install-extension alexanderte.dainty-vscode
 code --install-extension alexcvzz.vscode-sqlite
 code --install-extension arcticicestudio.nord-visual-studio-code
 code --install-extension ban.quietlight-plus
@@ -16,11 +15,11 @@ code --install-extension DotJoshJohnson.xml
 code --install-extension eamodio.gitlens
 code --install-extension Equinusocio.vsc-material-theme
 code --install-extension felixfbecker.php-debug
+code --install-extension fisheva.eva-theme
 code --install-extension formulahendry.auto-rename-tag
 code --install-extension foxundermoon.shell-format
 code --install-extension gio00.convertplist
 code --install-extension Gruntfuggly.todo-tree
-code --install-extension hoovercj.vscode-power-mode
 code --install-extension idleberg.applescript
 code --install-extension James-Yu.latex-workshop
 code --install-extension johnpapa.vscode-peacock
@@ -34,11 +33,13 @@ code --install-extension ms-python.python
 code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
 code --install-extension pranaygp.vscode-css-peek
+code --install-extension pzuraq.theme-flat-ui-minimal
 code --install-extension ritwickdey.LiveServer
 code --install-extension sleistner.vscode-fileutils
 code --install-extension SolarLiner.linux-themes
 code --install-extension ssmi.after-dark
 code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
+code --install-extension wayou.vscode-todo-highlight
 code --install-extension wmaurer.vscode-jumpy
 code --install-extension yzhang.markdown-all-in-one
