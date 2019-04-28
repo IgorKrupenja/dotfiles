@@ -39,6 +39,7 @@ cask "semulov"
 cask "sip"
 cask "skype"
 cask "sublime-text"
+cask "visual-studio-code-insiders"
 mas "com.abbyy.lingvo", id: 467622356
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
