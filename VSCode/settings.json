@@ -8,13 +8,14 @@
     "editor.wordWrap": "on",
     // to do highlighting
     "todo-tree.defaultHighlight": {
-        "type": "text",
+        // todo this needs tweaking for dark themes
+        "type": "line",
         "foreground": "white",
         "background": "#ff5100",
-        "iconColour": "#ff5100",
         // >100% opacity needed to make text selection visible
         "opacity": 50,
-        // pastel colour in ruler to match opacity
+        // pastel icon and ruler colour to match opacity
+        "iconColour": "#ffa88c",
         "rulerColour": "#ffa88c",
     },
     // supports Latex, Python, PHP, JS, Java, HTML, Markdown
@@ -87,11 +88,14 @@
         "workbench.action.openRecent"
     ],
     "editor.quickSuggestionsDelay": 0,
-    // TODO needs better colours for dark/light themes
     "bracket-pair-colorizer-2.colors": [
-        "PeachPuff",
-        "Plum",
-        "#cc9e72"
+        // "GoldenRod", // more saturation: DarkOrange
+        // "Orchid", // Fuchsia
+        // "RoyalBlue" // Blue
+        // todo need something for dark themes
+        "#ab6526",
+        "#7a3e9d",
+        "#4b83cd",
     ],
     "explorer.confirmDelete": false,
     // do not open webpage when Live Server is turned on
@@ -148,12 +152,13 @@
             "value": "#4f5b93"
         },
         {
-            "name": "Black is the new black",
+            "name": "Terminal Black",
             "value": "#000000"
         }
     ],
     "peacock.affectActivityBar": false,
     "peacock.affectStatusBar": true,
+    "peacock.lightForegroundColor": "ffffff",
     // vertical ruler like IntelliJ
     "editor.rulers": [
         120
@@ -165,7 +170,7 @@
         "code": "information",
         "latex": "information"
     },
-    // mode-specific speller settings 
+    // mode-specific speller settings
     "spellright.spellContextByClass": {
         "jsonc": "comments",
     },
@@ -192,15 +197,6 @@
             "editorGroupHeader.tabsBorder": "#00000000",
             "tab.border": "#00000000",
             "sideBarSectionHeader.border": "#00000000"
-        },
-        "[Eva Light]": {
-            "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
-            "focusBorder": "#ffffff00",
-            "panel.border": "#00000000",
-            "tab.border": "#00000000",
-            "editorGroupHeader.tabsBorder": "#00000000",
-            "sideBarSectionHeader.background": "#ffffff00"
         },
         "[Eva Dark]": {
             "scrollbar.shadow": "#ffffff00",
@@ -230,23 +226,12 @@
             "panel.border": "#00000000",
             "focusBorder": "#ffffff00"
         },
-        "[quietLight-plus-theme]": {
-            "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
-            "focusBorder": "#ffffff00",
-            "panel.border": "#00000000"
-        },
-        "[Flat UI Minimal]": {
-            "focusBorder": "#ffffff00",
-            "panel.border": "#00000000",
-            "terminal.background": "#ffffff"
+        "[Flat White]": {
+            //todo test area
         },
     },
     // fix comment colours for some themes
     "editor.tokenColorCustomizations": {
-        "[Flat UI Minimal]": {
-            "comments": "#aaaaaa"
-        },
         "[Summer Time]": {
             "comments": "#676d95",
             "textMateRules": [
@@ -254,16 +239,6 @@
                     "scope": "punctuation.definition.comment",
                     "settings": {
                         "foreground": "#676d95"
-                    }
-                },
-            ]
-        },
-        "[quietLight-plus-theme]": {
-            "textMateRules": [
-                {
-                    "scope": "comment.block.documentation",
-                    "settings": {
-                        "foreground": "#aaaaaa"
                     }
                 },
             ]
@@ -279,5 +254,5 @@
             ]
         }
     },
-    "workbench.colorTheme": "Material Theme Darker"
+    "workbench.colorTheme": "Material Theme Darker",
 }
