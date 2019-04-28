@@ -178,6 +178,11 @@ ggs() {
 
 }
 
+# Github
+# ------------------------------------
+alias hi="hub issue"
+alias hic="hub issue create"
+
 # cht.sh
 # ------------------------------------
 # cheat sheets
