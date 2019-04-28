@@ -33,13 +33,10 @@ code --install-extension ms-python.python
 code --install-extension pepri.subtitles-editor
 code --install-extension PKief.material-icon-theme
 code --install-extension pranaygp.vscode-css-peek
-code --install-extension pzuraq.theme-flat-ui-minimal
 code --install-extension ritwickdey.LiveServer
 code --install-extension sleistner.vscode-fileutils
 code --install-extension SolarLiner.linux-themes
 code --install-extension ssmi.after-dark
-code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
-code --install-extension wayou.vscode-todo-highlight
 code --install-extension wmaurer.vscode-jumpy
 code --install-extension yzhang.markdown-all-in-one
