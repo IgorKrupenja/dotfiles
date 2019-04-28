@@ -181,7 +181,7 @@ ggs() {
 # Github
 # ------------------------------------
 alias hi="hub issue"
-alias hic="hub issue create"
+alias hic="hub issue create -m"
 
 # cht.sh
 # ------------------------------------
