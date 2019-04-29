@@ -62,7 +62,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
@@ -254,5 +254,5 @@
             ]
         }
     },
-    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.colorTheme": "Default Light+",
 }
