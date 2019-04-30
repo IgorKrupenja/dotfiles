@@ -9,7 +9,7 @@
     // to do highlighting
     "todo-tree.defaultHighlight": {
         // todo this needs tweaking for dark themes
-        "type": "line",
+        "type": "text",
         "foreground": "white",
         "background": "#ff5100",
         // >100% opacity needed to make text selection visible
@@ -62,7 +62,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
@@ -254,5 +254,5 @@
             ]
         }
     },
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Flat White",
 }
