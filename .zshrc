@@ -128,8 +128,6 @@ alias glot="git log --graph --all"
 alias glo="git log --graph --oneline --all"
 # git commmit with message
 alias gcm="git commit -m"
-# add all filess and commit
-alias gcam="git add -A && git commit -m"
 alias gc="git commit"
 alias gb="git branch"
 alias gchm="git checkout master"
