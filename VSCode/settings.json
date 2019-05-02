@@ -8,12 +8,11 @@
     "editor.wordWrap": "on",
     // to do highlighting
     "todo-tree.defaultHighlight": {
-        // todo this needs tweaking for dark themes
         "type": "text",
         "foreground": "white",
-        "background": "#ff5100",
-        // >100% opacity needed to make text selection visible
-        "opacity": 50,
+        "background": "#f08c66",
+        // <100% opacity needed to make text selection visible
+        "opacity": 100,
         // pastel icon and ruler colour to match opacity
         "iconColour": "#ffa88c",
         "rulerColour": "#ffa88c",
@@ -62,7 +61,7 @@
     "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
@@ -88,15 +87,6 @@
         "workbench.action.openRecent"
     ],
     "editor.quickSuggestionsDelay": 0,
-    "bracket-pair-colorizer-2.colors": [
-        // "GoldenRod", // more saturation: DarkOrange
-        // "Orchid", // Fuchsia
-        // "RoyalBlue" // Blue
-        // todo need something for dark themes
-        "#ab6526",
-        "#7a3e9d",
-        "#4b83cd",
-    ],
     "explorer.confirmDelete": false,
     // do not open webpage when Live Server is turned on
     "liveServer.settings.NoBrowser": true,
@@ -175,6 +165,15 @@
         "jsonc": "comments",
     },
     "window.newWindowDimensions": "maximized",
+    "bracket-pair-colorizer-2.colors": [
+        // todo need something for dark themes
+        "#82AAFF",
+        "#C792EA",
+        "#F78C6C",
+    ],
+    "bracket-pair-colorizer-2.excludedLanguages": [
+        "html"
+    ],
     // hack to fix titlebar-less extension bug
     // also need to have checksum fixer extension enabled
     // otherwise centre-top area of the window is not clickable
@@ -224,11 +223,9 @@
             "scrollbar.shadow": "#ffffff00",
             "widget.shadow": "#ffffff00",
             "panel.border": "#00000000",
-            "focusBorder": "#ffffff00"
+            "focusBorder": "#ffffff00",
         },
-        "[Flat White]": {
-            //todo test area
-        },
+        
     },
     // fix comment colours for some themes
     "editor.tokenColorCustomizations": {
@@ -254,5 +251,5 @@
             ]
         }
     },
-    "workbench.colorTheme": "Flat White",
+    "workbench.colorTheme": "Material Theme Darker"
 }
