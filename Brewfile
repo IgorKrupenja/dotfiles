@@ -34,6 +34,7 @@ brew "srkomodo/tap/shadowfox-updater"
 cask "datagrip"
 cask "google-chrome-dev"
 cask "iterm2-nightly"
+cask "microsoft-office"
 cask "phpstorm"
 cask "semulov"
 cask "sip"
@@ -41,6 +42,7 @@ cask "skype"
 cask "sublime-text"
 cask "visual-studio-code-insiders"
 mas "com.abbyy.lingvo", id: 467622356
+mas "com.readdle.smartemail-Mac", id: 1176895641
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
 mas "QReader.MarginStudyMac", id: 1423522373
