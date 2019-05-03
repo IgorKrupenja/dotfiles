@@ -419,8 +419,10 @@ Darwin)
     alias dark="$PROJECTS/OS/darkmode/darkmode.sh"
     # backup
     alias bak="$PROJECTS/OS/bash-snippets/backup-mac.sh"
+    # list all disks
+    alias dil='diskutil list'
     # eject all
-    alias eja='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
+    alias die='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
     # reboot with confirmation dialog
     alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
     # pip
