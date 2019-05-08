@@ -39,6 +39,7 @@ cask "phpstorm"
 cask "sip"
 cask "skype"
 cask "sublime-text"
+cask "virtualbox"
 cask "visual-studio-code-insiders"
 mas "com.abbyy.lingvo", id: 467622356
 mas "com.readdle.smartemail-Mac", id: 1176895641
