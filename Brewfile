@@ -36,12 +36,17 @@ cask "google-chrome-dev"
 cask "iterm2-nightly"
 cask "microsoft-office"
 cask "phpstorm"
+cask "playonmac"
+cask "porting-kit"
 cask "sip"
 cask "skype"
+cask "slack"
 cask "sublime-text"
-cask "virtualbox"
 cask "visual-studio-code-insiders"
+cask "wine-stable"
+cask "xquartz"
 mas "com.abbyy.lingvo", id: 467622356
+mas "com.IdeaPunch.ColorSlurp", id: 1287239339
 mas "com.readdle.smartemail-Mac", id: 1176895641
 mas "cx.c3.theunarchiver", id: 425424353
 mas "ee.ria.qdigidoc4", id: 1370791134
