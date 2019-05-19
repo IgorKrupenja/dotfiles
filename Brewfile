@@ -39,7 +39,6 @@ cask "phpstorm"
 cask "sip"
 cask "skype"
 cask "slack"
-cask "sublime-text"
 cask "visual-studio-code-insiders"
 cask "xquartz"
 mas "com.abbyy.lingvo", id: 467622356
