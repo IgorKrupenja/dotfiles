@@ -45,4 +45,5 @@ code --install-extension ssmi.after-dark
 code --install-extension teabyii.ayu
 code --install-extension Tyriar.lorem-ipsum
 code --install-extension wmaurer.vscode-jumpy
+code --install-extension yzane.markdown-pdf
 code --install-extension yzhang.markdown-all-in-one
