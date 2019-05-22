@@ -41,9 +41,9 @@ cask "skype"
 cask "slack"
 cask "visual-studio-code-insiders"
 cask "xquartz"
-mas "com.abbyy.lingvo", id: 467622356
-mas "com.IdeaPunch.ColorSlurp", id: 1287239339
-mas "com.readdle.smartemail-Mac", id: 1176895641
-mas "cx.c3.theunarchiver", id: 425424353
-mas "ee.ria.qdigidoc4", id: 1370791134
-mas "QReader.MarginStudyMac", id: 1423522373
+mas "ABBYY Lingvo European", id: 467622356
+mas "ColorSlurp", id: 1287239339
+mas "DigiDoc4 Client", id: 1370791134
+mas "MarginNote 3", id: 1423522373
+mas "Spark", id: 1176895641
+mas "The Unarchiver", id: 425424353
