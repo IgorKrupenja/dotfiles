@@ -499,7 +499,7 @@ alias p="cd $PROJECTS"
 alias scr="cd $PROJECTS/OS/bash-snippets"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/Reference"
-alias sel="cd $PROJECTS/Selenium/Nextcloud"
+alias ttu="cd $PROJECTS/TTU"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
