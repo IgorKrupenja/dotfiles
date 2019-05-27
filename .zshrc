@@ -285,7 +285,7 @@ Darwin)
     ;;
 esac
 # speedtest.net
-alias speed="speedtest"
+alias sp="speedtest"
 
 # ---------------------------------------------------------------------------
 # 5. TOGGL CLI
