@@ -298,7 +298,7 @@ alias tgn="tg now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
 # Stop
-alias tgx = "tg stop"
+alias tgx="tg stop"
 
 # Projects
 # ------------------------------------
