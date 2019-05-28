@@ -34,7 +34,6 @@ export PROJECTS="$HOME/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
-export MACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Mackup"
 export LINUX_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Linux"
 
 # key bindings
@@ -496,6 +495,7 @@ alias scr="cd $PROJECTS/OS/bash-snippets"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/Reference"
 alias ttu="cd $PROJECTS/TTU"
+alias ttum="cd $CLOUD/TTU"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
