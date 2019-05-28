@@ -87,7 +87,6 @@
         "workbench.action.openRecent"
     ],
     "editor.quickSuggestionsDelay": 0,
-    "explorer.confirmDelete": false,
     // do not open webpage when Live Server is turned on
     "liveServer.settings.NoBrowser": true,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -183,6 +182,7 @@
     // otherwise centre-top area of the window is not clickable
     // see https://github.com/electron/electron/issues/14529
     "window.title": ".",
+    "explorer.sortOrder": "filesFirst",
     // fixes for various themes to make them flatter
     "workbench.colorCustomizations": {
         "[Nord]": {
