@@ -9,6 +9,7 @@ code --install-extension bmewburn.vscode-intelephense-client
 code --install-extension brainfit.vscode-importmagic
 code --install-extension christian-kohler.path-intellisense
 code --install-extension CoenraadS.bracket-pair-colorizer-2
+code --install-extension ctf0.macros
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension DennisVash.summer-time
 code --install-extension DotJoshJohnson.xml
