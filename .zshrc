@@ -308,16 +308,6 @@ tgboc() {
     tg now
 }
 
-tgjav() {
-    tg start "ICD0019 Java" @TTU
-    tg now
-}
-
-tgweb() {
-    tg start "ICD0007 Web" @TTU
-    tg now
-}
-
 tgttu() {
     tg start "" @TTU
     tg now
