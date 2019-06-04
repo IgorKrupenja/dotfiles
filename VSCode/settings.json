@@ -169,7 +169,6 @@
     },
     "window.newWindowDimensions": "maximized",
     "bracket-pair-colorizer-2.colors": [
-        // todo need something for dark themes
         "#a2462e",
         "#7a3e9d",
         "#4384b9",
@@ -183,6 +182,21 @@
     // see https://github.com/electron/electron/issues/14529
     "window.title": ".",
     "explorer.sortOrder": "filesFirst",
+    "macros": {
+        // switch focus back on MD preview open
+        "showPreviewAndFocusBack": [
+            "markdown.showPreviewToSide",
+            {
+                "command": "$delay",
+                // TODO might need to increase for very large files
+                "args": {
+                    "delay": 600
+                }
+            },
+            "workbench.action.focusLeftGroup"
+        ]
+    },
+    // TODO need to remove most of the crap below
     // fixes for various themes to make them flatter
     "workbench.colorCustomizations": {
         "[Nord]": {
@@ -229,7 +243,6 @@
             "panel.border": "#00000000",
             "focusBorder": "#ffffff00",
         },
-        
     },
     // fix comment colours for some themes
     "editor.tokenColorCustomizations": {

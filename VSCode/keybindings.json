@@ -1,5 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
-[{
+[
+    {
         "key": "cmd+,",
         "command": "-workbench.action.openSettings"
     },
@@ -49,13 +50,13 @@
         "command": "-workbench.view.scm"
     },
     {
-        "key": "cmd+k cmd+v",
-        "command": "markdown.showPreviewToSide",
+        "key": "cmd+k v",
+        "command": "-markdown.showPreviewToSide",
         "when": "editorLangId == 'markdown'"
     },
     {
-        "key": "cmd+k v",
-        "command": "-markdown.showPreviewToSide",
+        "key": "cmd+k cmd+v",
+        "command": "macros.showPreviewAndFocusBack",
         "when": "editorLangId == 'markdown'"
     },
     {
