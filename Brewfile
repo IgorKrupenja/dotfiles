@@ -39,7 +39,6 @@ cask "phpstorm"
 cask "sip"
 cask "skype"
 cask "slack"
-cask "visual-studio-code-insiders"
 cask "xquartz"
 mas "ABBYY Lingvo European", id: 467622356
 mas "ColorSlurp", id: 1287239339
