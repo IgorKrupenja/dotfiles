@@ -251,7 +251,8 @@ Darwin)
         print "CPU      : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
         print "Memory   : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
         print "Swap     : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
-        print "Battery  : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')"
+        print "Battery  : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')\
+            , cycle count $(system_profiler SPPowerDataType | grep "Cycle Count" | awk '{print $3}')"
         print
     }
     ;;
