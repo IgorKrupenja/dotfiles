@@ -31,6 +31,8 @@ brew "trash"
 brew "wget"
 brew "zsh"
 brew "srkomodo/tap/shadowfox-updater"
+cask "cacher"
+cask "dash"
 cask "datagrip"
 cask "google-chrome"
 cask "iterm2-nightly"
@@ -43,6 +45,5 @@ cask "xquartz"
 mas "ABBYY Lingvo European", id: 467622356
 mas "ColorSlurp", id: 1287239339
 mas "DigiDoc4 Client", id: 1370791134
-mas "MarginNote 3", id: 1423522373
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
