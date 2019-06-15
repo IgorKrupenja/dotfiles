@@ -274,4 +274,5 @@
         }
     },
     "workbench.colorTheme": "Flat White",
+    "explorer.confirmDragAndDrop": false,
 }
