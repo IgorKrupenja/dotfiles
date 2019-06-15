@@ -23,6 +23,7 @@ code --install-extension gio00.convertplist
 code --install-extension Gruntfuggly.todo-tree
 code --install-extension Hyzeta.vscode-theme-github-light
 code --install-extension idleberg.applescript
+code --install-extension inu1255.easy-snippet
 code --install-extension James-Yu.latex-workshop
 code --install-extension johnpapa.vscode-peacock
 code --install-extension johnpapa.winteriscoming
