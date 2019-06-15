@@ -137,6 +137,7 @@ alias ga="git add"
 alias gcl="git clone"
 alias gt="git tag"
 alias gpt="git push origin --tags"
+alias gm='git mergetool'
 # delete a emote tag
 alias gptd="git push --delete origin"
 alias gd="git diff"
