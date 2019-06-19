@@ -40,12 +40,10 @@ cask "iterm2-nightly"
 cask "microsoft-edge-dev"
 cask "microsoft-office"
 cask "opera"
-cask "phpstorm"
 cask "sip"
 cask "skype"
 cask "telegram"
 cask "vivaldi"
-cask "xquartz"
 mas "ABBYY Lingvo European", id: 467622356
 mas "ColorSlurp", id: 1287239339
 mas "Dark Reader for Safari", id: 1438243180
