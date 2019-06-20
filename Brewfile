@@ -43,7 +43,9 @@ cask "opera"
 cask "sip"
 cask "skype"
 cask "telegram"
+cask "visual-studio-code-insiders"
 cask "vivaldi"
+cask "windscribe"
 mas "ABBYY Lingvo European", id: 467622356
 mas "ColorSlurp", id: 1287239339
 mas "Dark Reader for Safari", id: 1438243180
