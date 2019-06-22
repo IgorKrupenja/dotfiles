@@ -22,6 +22,11 @@
     // highlight to do items with no lag
     "todo-tree.highlightDelay": 0,
     "todo-tree.regexCaseSensitive": false,
+        "todo-tree.tags": [
+            "TODO",
+            "FIXME",
+            "==="
+        ],
     // hide activity bar (the one on the left with icons)
     "workbench.activityBar.visible": false,
     "terminal.integrated.cursorBlinking": true,
