@@ -302,4 +302,8 @@
         "command": "-markdown.extension.editing.toggleBold",
         "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
     },
+    {
+        "key": "cmd+. cmd+s",
+        "command": "-easySnippet.run"
+    },
 ]
