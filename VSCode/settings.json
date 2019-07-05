@@ -34,8 +34,6 @@
     "xmlTools.splitAttributesOnFormat": true,
     // smaller tab WIDTH
     "workbench.editor.tabSizing": "shrink",
-    // hide feedback :) icon
-    "workbench.statusBar.feedback.visible": false,
     // open LaTeX preview inside VSCode
     "latex-workshop.view.pdf.viewer": "tab",
     // Enable linting LaTeX with ChkTeX.
@@ -50,14 +48,6 @@
     // make Pep8 underline colour green for message type 'E'
     "python.linting.pep8CategorySeverity.E": "Warning",
     "latex-workshop.synctex.afterBuild.enabled": true,
-    // prevent scrollbar from appearing for inline git blame
-    "gitlens.currentLine.scrollable": false,
-    // show gitlens stuff in SCM/git view
-    "gitlens.views.repositories.location": "scm",
-    "gitlens.views.fileHistory.location": "scm",
-    "gitlens.views.lineHistory.location": "scm",
-    "gitlens.views.compare.location": "scm",
-    "gitlens.views.search.location": "scm",
     "editor.cursorSmoothCaretAnimation": true,
     // four spaces for idents in shell script
     "shellformat.flag": "-i 4",
@@ -280,4 +270,5 @@
     },
     "workbench.colorTheme": "Flat White",
     "explorer.confirmDragAndDrop": false,
+    "peacock.affectTitleBar": false,
 }
