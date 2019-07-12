@@ -300,43 +300,46 @@ alias tgn="tg now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
 # Stop
-alias tgx="tg stop"
+tgx() {
+    toggl now
+    toggl stop
+}
 
 # Projects
 # ------------------------------------
 
 tgboc() {
-    tg start "" @Bocconi
+    tg start -o Bocconi
     tg now
 }
 
 tgttu() {
-    tg start "" @TTU
+    tg start -o TTU
     tg now
 }
 
 tgcode() {
-    tg start "" @Coding
+    tg start -o Coding
     tg now
 }
 
 tgcar() {
-    tg start "" @Career
+    tg start -o Career
     tg now
 }
 
 tgin() {
-    tg start "Inna" @Work
+    tg start "Inna" -o Work
     tg now
 }
 
 tghus() {
-    tg start "Hustle" @Work
+    tg start "Hustle" -o Work
     tg now
 }
 
 tgphys() {
-    tg start "" @Physio
+    tg start -o Physio
     tg now
 }
 
