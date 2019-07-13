@@ -48,7 +48,7 @@ GREEN='\033[0;32m'
 # No color
 NC='\033[0m'
 
-# themes I like: bira, powerlevel9k/powerlevel9k
+# theme
 ZSH_THEME="bira"
 
 # display red dots while waiting for completion
@@ -209,10 +209,7 @@ alias cre="EDITOR=nano crontab -e"
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
 alias zc="code $DOTFILES"
-alias ze="emacs -nw $DOTFILES"
-
-# PHP
-alias phps="php -S localhost:8000"
+alias ze="emacs -nw $DOTFILES/.zshrc"
 
 # Misc
 # ------------------------------------
@@ -220,7 +217,7 @@ alias phps="php -S localhost:8000"
 alias ipy="python3 -m IPython"
 # Nexcloud
 alias sshcl="ssh igor@krupenja.net"
-alias fscl="sshfs root@krupenja.net:/ /Volumes/cloud"
+alias fscl="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
 # Mount home dir on enos
 alias fsenos="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
@@ -300,48 +297,14 @@ alias tgn="tg now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
 # Stop
-tgx() {
-    toggl now
-    toggl stop
-}
-
+alias tgx="toggl now && toggl stop"
 # Projects
-# ------------------------------------
-
-tgboc() {
-    tg start -o Bocconi
-    tg now
-}
-
-tgttu() {
-    tg start -o TTU
-    tg now
-}
-
-tgcode() {
-    tg start -o Coding
-    tg now
-}
-
-tgcar() {
-    tg start -o Career
-    tg now
-}
-
-tgin() {
-    tg start "Inna" -o Work
-    tg now
-}
-
-tghus() {
-    tg start "Hustle" -o Work
-    tg now
-}
-
-tgphys() {
-    tg start -o Physio
-    tg now
-}
+alias tgboc="tg start -o Bocconi && tg now"
+alias tgttu="tg start -o TTU && tg now"
+alias tgcode="tg start -o Coding && tg now"
+alias tgcar="tg start -o Career && tg now"
+alias tghus="tg start \"Hustle\" -o Work && tg now"
+alias tgphys="tg start -o Physio && tg now"
 
 # ---------------------------------------------------------------------------
 # 6. TRELLO CLI
@@ -415,15 +378,11 @@ Darwin)
     alias die='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
     # reboot with confirmation dialog
     alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
-    # pip
-    alias pip="pip3"
     # Show/hide hidden files in Finder
     alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
     # quick look
     alias ql="qlmanage -p &>/dev/null"
-    # tmp Chrome with dark mode support
-    alias chromed="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --enable-features=WebUIDarkMode"
     ;;
 Linux)
     # apt
@@ -444,12 +403,9 @@ esac
 
 # Aliases
 # ------------------------------------
+
 a() {
-    if [[ $@ == "" ]]; then
-        alias
-    else
-        alias | grep "$@"
-    fi
+    alias | grep "$1"
 }
 
 # Trash
@@ -474,13 +430,9 @@ te() {
 
 # Weather
 # ------------------------------------
-meteo() {
-    if [[ $@ == "" ]]; then
-        command curl wttr.in
-    else
-        command curl wttr.in/"$@"
-    fi
-}
+
+# could change ?I to ?T to remove colour completely
+alias met="curl -s \"wttr.in/$1?I\""
 
 # Shortcuts
 # ------------------------------------
