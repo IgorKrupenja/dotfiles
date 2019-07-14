@@ -20,18 +20,18 @@ SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 
 main_macos() {
     get_sudo_macos
-    # macos_prepare
-    # clone_repo
-    # install_sw_brew
-    # install_sw_pip
-    # install_sw_node
-    # install_sw_misc_macos
-    # zsh_config
+    macos_prepare
+    clone_repo
+    install_sw_brew
+    install_sw_pip
+    install_sw_node
+    install_sw_misc_macos
+    zsh_config
     link_dotfiles_common
     link_dotfiles_macos
-    #     common_settings
-    #     macos_settings
-    #     change_shell
+        common_settings
+        macos_settings
+        change_shell
 }
 
 main_linux() {
@@ -63,93 +63,29 @@ macos_prepare() {
 
 install_sw_apt() {
 
-    ##### Dropbox
-    sudo apt install -y nautilus-dropbox
-    echo ""
-    echo "**************** IMPORTANT ******************"
-    echo ""
-    echo "Dropbox window should appear"
-    echo "Login to Dropbox so that sync starts ASAP"
-    echo "Press any key to continue."
-    read -p ""
-
     # apt over https and curl
     sudo apt-get install -y apt-transport-https curl
-
-    ##### Add keys and repos
-    # VSCode
-    sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor >/tmp/microsoft.gpg
-    sudo install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    # Sublime Merge
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-    sudo echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-    # fman
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 9CFAF7EB
-    sudo echo "deb [arch=amd64] https://fman.io/updates/ubuntu/ stable main" | sudo tee /etc/apt/sources.list.d/fman.list
-    # Telegram
-    sudo add-apt-repository ppa:atareao/telegram -y
-    # Chrome
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-    # Spotify
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-    # Papirus icons
-    sudo add-apt-repository ppa:papirus/papirus
 
     ##### Update
     sudo apt-get update && sudo apt-get upgrade -y
 
     ##### Install
     sudo apt install -y git
-    sudo apt install -y code
-    sudo apt install -y sublime-merge
     sudo apt install -y emacs25
     sudo apt install -y python3-pip
-    # needed for gnome-calendar
-    sudo apt install -y evolution
-    sudo apt install -y gnome-calendar
     sudo apt install -y smem
     sudo apt install -y tcptrack
-    sudo apt install -y trash-cli
-    sudo apt install -y fman
-    sudo apt install -y transmission
-    sudo apt install -y terminator
-    sudo apt install -y libreoffice
-    sudo apt install -y spotify-client
-    sudo apt install -y gimp
-    # latex
-    sudo apt install -y texlive texlive-latex-extra latexmk texlive-bibtex-extra biber chktex texlive-fonts-extra texlive-extra-utils
-    sudo apt install -y gnome-tweaks
-    sudo apt install -y google-chrome-stable
     sudo apt install -y nodejs
     sudo apt install -y npm
-    # for mailspring
-    sudo apt install -y libsecret-1-dev gconf2 gir1.2-gnomekeyring-1.0
     sudo apt install -y zsh
-    # for cht.sh
-    sudo apt install -y rlwrap
-    sudo snap install shfmt
-    sudo apt install -y dconf-editor
-    sudo apt install -y papirus-icon-theme
-    # to install Gnome shell extensions
-    sudo apt install -y chrome-gnome-shell
-    sudo apt install -y goldendict
-    sudo apt install -y papirus-folders
     sudo apt install -y htop
     sudo apt install -y p7zip-full
     sudo apt install -y at
-    sudo apt install -y xbindkeys
-    # to style qt apps
-    sudo apt install -y qt5-style-plugins
-    sudo apt install -y telegram-desktop
-    # for terminatir-toggle
-    sudo apt install -y wmctrl xdotool
     sudo apt install -y speedtest-cli
     sudo apt install -y gcalcli
     sudo apt install -y caffeine
-
+    # for cht.sh
+    sudo apt install -y rlwrap
 }
 
 clone_repo() {
@@ -236,31 +172,6 @@ install_sw_misc_linux() {
     echo ""
     sudo curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     sudo chmod +x /usr/local/bin/cht.sh
-
-    # Mailspring
-    wget -O /tmp/mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
-    dpkg -i /tmp/mailspring.deb
-
-    # Mendeley
-    wget -O /tmp/mendeley.deb https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
-    dpkg -i /tmp/mendeley.deb
-
-    # Draw.io
-    wget -O /tmp/draw.deb https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb
-    dpkg -i /tmp/draw.deb
-
-    # Uniemoji
-    pip3 install python-Levenshtein
-    cd /tmp
-    git clone https://github.com/salty-horse/ibus-uniemoji.git
-    cd /tmp/ibus-uniemoji
-    sudo make install
-    ibus restart
-
-    # Stylish themes
-    cd /tmp
-    git clone https://github.com/vinceliuice/stylish-gtk-theme.git
-    stylish-gtk-theme/Install
 
 }
 
@@ -392,17 +303,8 @@ macos_settings() {
 linux_settings() {
     # Cleanup
     sudo apt autoremove -y
-    # Remove unwanted apps
-    sudo apt purge -y gnome-initial-setup gedit
-    sudo snap remove gnome-system-monitor gnome-logs gnome-characters gnome-calculator
-    # Change folder icon color
-    papirus-folders -C orange --theme Papirus-Dark
     # Caps additional escape
     setxkbmap -option caps:escape
-    # make VSCode default text editor
-    xdg-mime default code.desktop text/plain
-    # Load other settings from dconf-config.ini
-    dconf load / < $DOTFILES/dconf-settings.ini
 }
 
 change_shell() {
