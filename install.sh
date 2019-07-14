@@ -14,25 +14,24 @@ echo ""
 echo ""
 
 # Repo location
-BASEDIR="$HOME/Projects/OS"
-DOTFILES="$BASEDIR/dotfiles"
+DOTFILES="$HOME/OneDrive - TTU/Projects/OS/dotfiles"
 # Custom backup directory for securely stored stuff
 SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 
 main_macos() {
     get_sudo_macos
-    macos_prepare
-    clone_repo
-    install_sw_brew
-    install_sw_pip
-    install_sw_node
-    install_sw_misc_macos
-    zsh_config
+    # macos_prepare
+    # clone_repo
+    # install_sw_brew
+    # install_sw_pip
+    # install_sw_node
+    # install_sw_misc_macos
+    # zsh_config
     link_dotfiles_common
     link_dotfiles_macos
-    common_settings
-    macos_settings
-    change_shell
+    #     common_settings
+    #     macos_settings
+    #     change_shell
 }
 
 main_linux() {
@@ -164,8 +163,8 @@ clone_repo() {
         echo "*************************** Cloning dotfiles repo **************************"
         echo ""
         mkdir -p $DOTFILES
-        cd $BASEDIR
-        git clone https://github.com/krupenja/dotfiles.git
+        cd $DOTFILES
+        git clone https://github.com/krupenja/dotfiles.git .
         cd $DOTFILES
     fi
 }
@@ -276,46 +275,50 @@ zsh_config() {
 # Needs to be called after zsh_config
 link_dotfiles_common() {
 
-    dotfiles=(".zshrc" ".gitconfig" ".emacs" ".goldendict/config")
+    dotfiles=(".zshrc" ".gitconfig" ".emacs")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
-        ln -sv "$DOTFILES/${dotfile}" "$HOME/${dotfile}"
+        ln -sv "$DOTFILES/${dotfile}" $HOME/${dotfile}
     done
 
     # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
-    ln -sv $SECURE_BACKUP_DIR/.togglrc $HOME/
+    ln -sv "$SECURE_BACKUP_DIR/.togglrc" $HOME/
 
 }
 
 # Settings for macOS
 link_dotfiles_macos() {
-    
+
     # VSCode
     VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
-    files=("spellright.dict" "settings.json" "snippets" "keybindings.json")
+    files=("spellright.dict" "snippets" "keybindings.json")
     for file in "${files[@]}"; do
         # Backup any existing files
-        mv -fv $VSCODE_DIR/${file} $VSCODE_DIR/${file}.bak
-        ln -sv $DOTFILES/VSCode/${file} $VSCODE_DIR/${file}
+        mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
+        ln -sv "$DOTFILES/VSCode/${file}" "$VSCODE_DIR/${file}"
     done
+    # cannot symlink as breaks theme changes using dark script
+    mv -fv "$VSCODE_DIR/settings.json" "$VSCODE_DIR/settings.json.bak"
+    cp -Rf "$DOTFILES/VSCode/settings.json" "$VSCODE_DIR/"
 
     # iTerm
-    mv -f $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/dark.py $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/dark.py.bak
-    ln -sv $DOTFILES/iTerm/dark.py $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/
     mv -fv $HOME/Library/Preferences/com.googlecode.iterm2.plist $HOME/Library/Preferences/com.googlecode.iterm2.plist.bak
-    ln -sv $DOTFILES/iTerm/com.googlecode.iterm2.plist $HOME/Library/Preferences/com.googlecode.iterm2.plist
+    ln -sv "$DOTFILES/iTerm/com.googlecode.iterm2.plist" $HOME/Library/Preferences/com.googlecode.iterm2.plist
 
-    # SSH - macOS only
-    ln -sv $DOTFILES/.ssh/config ~/.ssh
-    # Marta - macOS only
-    cp -Rf $DOTFILES/Marta $HOME/Library/Application\ Support/
+    # SSH
+    mv -fv $HOME/.ssh/config ~/.ssh/config.bak
+    ln -sv "$DOTFILES/.ssh/config" $HOME/.ssh
+    # Marta
+    # cannot symlink as breaks theme changes using dark script
+    mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
+    cp -Rf "$DOTFILES/Marta/" $HOME/Library/Application\ Support/org.yanex.marta
     # Trello CLI
-    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
-    mkdir -p $HOME/.trello-cli/
-    ln -sv $SECURE_BACKUP_DIR/.trello-cli/config-mac.json $HOME/.trello-cli/config.json
-    ln -sv $SECURE_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
+    mv -fv $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
+    mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
+    ln -sv "$SECURE_BACKUP_DIR/.trello-cli/config-mac.json" $HOME/.trello-cli/config.json
+    ln -sv "$SECURE_BACKUP_DIR/.trello-cli/authentication.json" $HOME/.trello-cli/
 }
 
 link_dotfiles_linux() {
@@ -328,15 +331,14 @@ link_dotfiles_linux() {
     ln -sv $SECURE_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
 }
 
-
 common_settings() {
 
     echo ""
     echo "********** Goldendict dictionaries **********"
     echo ""
-    mkdir -p /$HOME/.goldendict/dictionaries 
+    mkdir -p /$HOME/.goldendict/dictionaries
     wget -O /tmp/golden.zip https://dl.dropboxusercontent.com/s/d0bzv5wa83em1kj/dictionaries_with_sound.zip
-    7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries 
+    7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries
 
     # refresh Trello CLI to get a list of boards
     trello refresh
@@ -348,9 +350,6 @@ macos_settings() {
     # crontab
     crontab -l >$HOME/.crontab.bak
     crontab $DOTFILES/.crontab-mac
-
-    # dark mode for iTerm
-    ln -sv $DOTFILES/iTerm/dark.py $HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/
 
     # Thanks to Mathias Bynens! https://mths.be/macos
 
@@ -403,7 +402,7 @@ linux_settings() {
     # make VSCode default text editor
     xdg-mime default code.desktop text/plain
     # Load other settings from dconf-config.ini
-    dconf load / <$DOTFILES/dconf-settings.ini
+    dconf load / < $DOTFILES/dconf-settings.ini
 }
 
 change_shell() {
