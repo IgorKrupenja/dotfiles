@@ -30,7 +30,7 @@ PERL_MB_OPT="--install_base \"/Users/igor/perl5\""; export PERL_MB_OPT;PERL_MM_O
 
 # exports
 export ZSH="$HOME/.oh-my-zsh"
-export PROJECTS="$HOME/OneDrive - TTU/Projects/"
+export PROJECTS="$HOME/OneDrive\ -\ TTU/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
@@ -118,7 +118,7 @@ sc() {
 # git
 # ------------------------------------
 # move Github repo from HTTPS to SSH
-alias gitssh="$PROJECTS/OS/bash-snippets/github-https-to-ssh.sh"
+alias gssh="$PROJECTS/OS/bash-snippets/github-https-to-ssh.sh"
 # git status
 alias gs="git status"
 # normal git log - with timestamps
@@ -153,7 +153,7 @@ ggs() {
     repos=()
     while IFS= read -r line; do
         repos+=("$line")
-    done < <(find $PROJECTS -name .git | sed 's/.git//')
+    done < <(find $HOME/OneDrive\ -\ TTU/Projects/ -name .git | sed 's/.git//')
 
     # navigate to each repo and echo status
     for repo in "${repos[@]}"; do
