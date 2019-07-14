@@ -383,6 +383,9 @@ Darwin)
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
     # quick look
     alias ql="qlmanage -p &>/dev/null"
+    # img tools
+    alias lsi="imgls"
+    alias cati="imgcat"
     ;;
 Linux)
     # apt
