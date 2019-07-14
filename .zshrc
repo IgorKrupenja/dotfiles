@@ -30,7 +30,7 @@ PERL_MB_OPT="--install_base \"/Users/igor/perl5\""; export PERL_MB_OPT;PERL_MM_O
 
 # exports
 export ZSH="$HOME/.oh-my-zsh"
-export PROJECTS="$HOME/Projects/"
+export PROJECTS="$HOME/OneDrive - TTU/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
@@ -215,9 +215,9 @@ alias ze="emacs -nw $DOTFILES/.zshrc"
 # ------------------------------------
 # IPython interpreter
 alias ipy="python3 -m IPython"
-# Nexcloud
-alias sshcl="ssh igor@krupenja.net"
-alias fscl="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
+# krupenja.net
+alias sshk="ssh igor@krupenja.net"
+alias fsk="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
 # Mount home dir on enos
 alias fsenos="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
@@ -317,29 +317,29 @@ Darwin)
 esac
 
 trel() {
-    trello show-cards -b Personal -l '💣 Today'
-    trello show-cards -b Personal -l '🌆 Tonight'
-    trello show-cards -b Personal -l '🌅 Tomorrow'
-    trello show-cards -b Personal -l '📆 This week'
+    trello show-cards -b "💪 Get shit done" -l '💣 Today'
+    trello show-cards -b "💪 Get shit done" -l '🌆 Tonight'
+    trello show-cards -b "💪 Get shit done" -l '🌅 Tomorrow'
+    trello show-cards -b "💪 Get shit done" -l '📆 This week'
 }
 
 tred() {
-    trello add-card "$1" -b Personal -l '💣 Today'
+    trello add-card "$1" -b "💪 Get shit done" -l '💣 Today'
 }
 
 tren() {
-    trello add-card "$1" -b Personal -l '🌆 Tonight'
+    trello add-card "$1" -b "💪 Get shit done" -l '🌆 Tonight'
 }
 
 tred!() {
-    trello add-card "$1" -b Personal -l '💣 Today' -g 5c56f3491be0121b5865f2d7
+    trello add-card "$1" -b "💪 Get shit done" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
 }
 
 tren!() {
-    trello add-card "$1" -b Personal -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
+    trello add-card "$1" -b "💪 Get shit done" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
 }
 
-# move to Done on Personal board
+# move to Done on "💪 Get shit done" board
 trex() {
     trello move-card "$1" 5a785c3a56d2f82288d292e8
 }
