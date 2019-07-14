@@ -410,6 +410,8 @@ a() {
 
 # Trash
 # ------------------------------------
+alias t="trash"
+#empty
 te() {
     case $(uname) in
     Darwin)
