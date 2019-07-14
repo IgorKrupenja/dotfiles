@@ -368,6 +368,8 @@ Darwin)
     alias bd="brew cleanup; brew doctor"
     # cd to trash
     alias cdtr="cd $HOME/.Trash"
+    alias lst="ls $HOME/.Trash"
+    alias lat="la $HOME/.Trash"
     # dark mode
     alias dark="$PROJECTS/OS/darkmode/darkmode.sh"
     # backup
