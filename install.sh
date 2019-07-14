@@ -25,13 +25,11 @@ main_macos() {
     install_sw_brew
     install_sw_pip
     install_sw_node
-    install_sw_misc_macos
     zsh_config
     link_dotfiles_common
     link_dotfiles_macos
-        common_settings
-        macos_settings
-        change_shell
+    macos_settings
+    change_shell
 }
 
 main_linux() {
@@ -43,7 +41,6 @@ main_linux() {
     zsh_config
     link_dotfiles_common
     link_dotfiles_linux
-    common_settings
     linux_settings
     change_shell
 }
@@ -56,7 +53,7 @@ get_sudo_macos() {
 }
 
 macos_prepare() {
-    # Install brew
+    # Install brew AND GIT
     # Will also install xcode-tools, including git - needed to clone repo
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 }
@@ -152,16 +149,6 @@ install_sw_misc_macos() {
     echo ""
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
-
-    # Goldendict
-    # get download URL from Github releases page
-    dmg_url=$(wget -qO - https://github.com/goldendict/goldendict/wiki/Early-Access-Builds-for-Mac-OS-X | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep .dmg | head -n 2 | tail -1)
-    wget -O /tmp/goldendict.dmg $dmg_url
-    hdiutil attach /tmp/goldendict.dmg
-    cp -Rfv /Volumes/goldendict/GoldenDict.app /Applications
-    # get last mounted volume and unmount
-    last_mount=$(df -h | tail -1)
-    hdiutil unmount $(echo ${last_mount##\/*\ })
 }
 
 install_sw_misc_linux() {
@@ -240,20 +227,6 @@ link_dotfiles_linux() {
     mkdir -p $HOME/.trello-cli/
     treln -sv $SECURE_BACKUP_DIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
     ln -sv $SECURE_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
-}
-
-common_settings() {
-
-    echo ""
-    echo "********** Goldendict dictionaries **********"
-    echo ""
-    mkdir -p /$HOME/.goldendict/dictionaries
-    wget -O /tmp/golden.zip https://dl.dropboxusercontent.com/s/d0bzv5wa83em1kj/dictionaries_with_sound.zip
-    7z x /tmp/golden.zip -o$HOME/.goldendict/dictionaries
-
-    # refresh Trello CLI to get a list of boards
-    trello refresh
-
 }
 
 macos_settings() {
