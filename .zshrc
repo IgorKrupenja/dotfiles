@@ -101,7 +101,7 @@ export LANGUAGE=en_GB.UTF-8
 
 # fixes for Bocconi thesis bibtex file after Mendeley sync
 alias bib="python3 $CLOUD/Bocconi/LaTeX\ thesis/bib.py"
-
+alias thcl="find \"$HOME/OneDrive - TTU/Bocconi/LaTeX thesis/\" -type f -maxdepth 1 ! -name .gitignore ! -name bib.py ! -name LF1801885.tex ! -name library.bib -exec trash {} \;"
 # convert string to TITLE case
 tc() {
     echo "$1" | python3 -c "print('$1'.title())"
