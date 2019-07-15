@@ -339,6 +339,10 @@ tren!() {
     trello add-card "$1" -b "💪 Get shit done" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
 }
 
+tref() {
+    trello add-card "$1" -b "💪 Get shit done" -l '📈 Further ahead'
+}
+
 # move to Done on "💪 Get shit done" board
 trex() {
     trello move-card "$1" 5a785c3a56d2f82288d292e8
