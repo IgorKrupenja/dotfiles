@@ -439,6 +439,24 @@ te() {
     esac
 }
 
+# World clock
+# ------------------------------------
+
+wcl() {
+    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Milan" "Europe/Tallinn"\
+    "Europe/Moscow" "Asia/Singapore")
+    OUTPUT=""
+    
+    for loc in ${TIME_ZONES[@]}; do
+        CITY=`echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/\// /g' | awk '{ print $2 }'`
+        CUR_TIME=`TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }'`
+        TEMP=`awk -v l="$CITY" -v t="$CUR_TIME" 'BEGIN { print l "\t" t }'`
+        OUTPUT="${OUTPUT}\n${TEMP}"
+    done
+    
+    echo $OUTPUT | column -t | tr '_' ' '
+}
+
 # Weather
 # ------------------------------------
 
