@@ -25,7 +25,7 @@ PERL5LIB="/Users/igor/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="/Users/igor/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/igor/perl5\""; export PERL_MB_OPT;PERL_MM_OPT="INSTALL_BASE=/Users/igor/perl5"; export PERL_MM_OPT;
 
-# oh-my-zsh
+# zsh and oh-my-zsh
 # ------------------------------------
 
 # exports
@@ -54,6 +54,8 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
+# disable % at EOL
+PROMPT_EOL_MARK=''
 # Plugins
 plugins=(
     # git
@@ -76,14 +78,15 @@ source $ZSH/oh-my-zsh.sh
 source ~/.iterm2_shell_integration.zsh
 # for powerlevel theme
 source $HOME/OneDrive\ -\ TTU/Projects/OS/dotfiles/oh-my-zsh/p10k-lean.zsh
+
+# Utilities
+# ------------------------------------
+# less: do not clear screen on exit
+export LESS=-XFR
 # for z dir navigation
 . /usr/local/etc/profile.d/z.sh
 # fuck
 eval $(thefuck --alias)
-
-# less -- do not clear screen on exit
-# ------------------------------------
-export LESS=-XFR
 
 # Editors
 # ------------------------------------
@@ -484,6 +487,9 @@ alias w="which"
 alias mkdir='mkdir -pv'
 alias ddd="gdd bs=1M status=progress"
 alias f="fuck"
+# ls with dirs first
+alias lad="gls -lAh --group-directories-first --color"
+alias lsd="gls --group-directories-first --color"
 
 # Calculator
 # ------------------------------------
