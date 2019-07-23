@@ -76,6 +76,10 @@ source $ZSH/oh-my-zsh.sh
 source ~/.iterm2_shell_integration.zsh
 # for powerlevel theme
 source $HOME/OneDrive\ -\ TTU/Projects/OS/dotfiles/oh-my-zsh/p10k-lean.zsh
+# for z dir navigation
+. /usr/local/etc/profile.d/z.sh
+# fuck
+eval $(thefuck --alias)
 
 # less -- do not clear screen on exit
 # ------------------------------------
@@ -479,6 +483,7 @@ alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
 alias ddd="gdd bs=1M status=progress"
+alias f="fuck"
 
 # Calculator
 # ------------------------------------
