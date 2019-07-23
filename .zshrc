@@ -49,7 +49,8 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 # theme
-ZSH_THEME="bira"
+# ZSH_THEME="bira"
+ZSH_THEME=powerlevel10k/powerlevel10k
 
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -73,6 +74,8 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source ~/.iterm2_shell_integration.zsh
+# for powerlevel theme
+source ~/p10k-lean.zsh
 
 # less -- do not clear screen on exit
 # ------------------------------------
@@ -243,15 +246,15 @@ Linux)
 Darwin)
     st() {
         print
-        print "Date     : $(date -R)"
-        print "Kernel   : $(uname -r)"
-        print "Uptime   : $(uptime)"
-        print "CPU      : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
-        print "Memory   : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
-        print "Swap     : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
-        print "Battery  : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')\
-            , cycle count $(system_profiler SPPowerDataType | grep "Cycle Count" | awk '{print $3}')"
-        print
+        print "Date        : $(date -R)"
+        print "Kernel      : $(uname -r)"
+        print "Uptime      : $(uptime)"
+        print "CPU         : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
+        print "Memory      : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
+        print "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
+        print "Battery     : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p'), cycle count $(system_profiler SPPowerDataType | grep "Cycle Count" | awk '{print $3}')"
+        print "Internal IP : $(ipconfig getifaddr en0)"
+        print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')"
     }
     ;;
 esac
