@@ -488,6 +488,12 @@ alias f="fuck"
 # ls with dirs first
 alias lad="gls -lAh --group-directories-first --color"
 alias lsd="gls --group-directories-first --color"
+# display terminal colors
+co() {
+    for i in {0..255}; 
+        do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'};
+    done
+}
 
 # Calculator
 # ------------------------------------
