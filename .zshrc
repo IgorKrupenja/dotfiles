@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source ~/.iterm2_shell_integration.zsh
 # for powerlevel theme
-source ~/p10k-lean.zsh
+source $HOME/OneDrive\ -\ TTU/Projects/OS/dotfiles/oh-my-zsh/p10k-lean.zsh
 
 # less -- do not clear screen on exit
 # ------------------------------------
