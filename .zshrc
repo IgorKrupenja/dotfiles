@@ -58,11 +58,9 @@ COMPLETION_WAITING_DOTS="true"
 PROMPT_EOL_MARK=''
 # Plugins
 plugins=(
-    # git
     web-search
     colored-man-pages
     extract
-    osx
     # the two below need to be installed separately
     zsh-syntax-highlighting
     zsh-autosuggestions
