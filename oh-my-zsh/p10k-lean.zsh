@@ -217,9 +217,9 @@ fi
   # *42 if have stashes.
   vcs+='${${VCS_STATUS_STASHES:#0}:+ %10F*${VCS_STATUS_STASHES}}'
   # 'merge' if the repo is in an unusual state.
-  vcs+='${VCS_STATUS_ACTION:+ %196F${VCS_STATUS_ACTION//\%/%%}}'
+  vcs+='${VCS_STATUS_ACTION:+ %000F${VCS_STATUS_ACTION//\%/%%}}'
   # ~42 if have merge conflicts.
-  vcs+='${${VCS_STATUS_NUM_CONFLICTED:#0}:+ %196F~${VCS_STATUS_NUM_CONFLICTED}}'
+  vcs+='${${VCS_STATUS_NUM_CONFLICTED:#0}:+ %000F~${VCS_STATUS_NUM_CONFLICTED}}'
   # +42 if have staged changes.
   vcs+='${${VCS_STATUS_NUM_STAGED:#0}:+ %11F+${VCS_STATUS_NUM_STAGED}}'
   # !42 if have unstaged changes.
