@@ -313,6 +313,9 @@ alias tgcode="tg start -o Coding && tg now"
 alias tgcar="tg start -o Career && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
+tgl() {
+    tg ls -s $(date "+%m/%d/%y") -f +project
+}
 
 # ---------------------------------------------------------------------------
 # 6. TRELLO CLI
