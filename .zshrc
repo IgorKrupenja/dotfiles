@@ -403,6 +403,10 @@ Darwin)
     # img tools
     alias lsi="imgls"
     alias cati="imgcat"
+    alias ddd="gdd bs=1M status=progress"
+    # ls with dirs first
+    alias lad="gls -lAh --group-directories-first --color"
+    alias lsd="gls --group-directories-first --color"
     ;;
 Linux)
     # apt
@@ -486,11 +490,7 @@ alias ttum="cd $CLOUD/TTU"
 alias w="which"
 # recursive mkdir
 alias mkdir='mkdir -pv'
-alias ddd="gdd bs=1M status=progress"
 alias f="fuck"
-# ls with dirs first
-alias lad="gls -lAh --group-directories-first --color"
-alias lsd="gls --group-directories-first --color"
 # display terminal colors
 co() {
     for i in {0..255}; 
