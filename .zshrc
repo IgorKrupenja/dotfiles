@@ -17,7 +17,7 @@
 
 # Paths
 # ------------------------------------
-export PATH=:$HOME/.ruby/bin:$HOME/bin:/usr/local/bin:/home/igor/.local/bin:/usr/local/sbin:/usr/local/opt/mysql-client/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH
 
 # Various stuff for Perl and Latex
 PATH="/Users/igor/perl5/bin${PATH:+:${PATH}}"; export PATH;
