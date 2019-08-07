@@ -49,7 +49,6 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 # theme
-# ZSH_THEME="bira"
 ZSH_THEME=powerlevel10k/powerlevel10k
 
 # display red dots while waiting for completion
@@ -67,9 +66,9 @@ plugins=(
 )
 # disable paste highlight
 zle_highlight+=(paste:none)
-# workaround for slow paste bug
+# faster paste 
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
-# IMPORTNANT! Two lines below should stay at the bottom of configuration
+# IMPORTNANT! Three lines below should stay at the bottom of configuration
 # Source default config
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
