@@ -34,7 +34,6 @@ export PROJECTS="$HOME/OneDrive\ -\ TTU/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
-export LINUX_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Linux"
 
 # key bindings
 # these are needed for alt + arrow to work in IntelliJ terminal
