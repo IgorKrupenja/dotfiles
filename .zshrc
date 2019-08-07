@@ -218,10 +218,15 @@ alias zs="source $HOME/.zshrc"
 alias zc="code $DOTFILES"
 alias ze="emacs -nw $DOTFILES/.zshrc"
 
-# Misc
+# python
 # ------------------------------------
-# IPython interpreter
-alias ipy="python3 -m IPython"
+alias pipi="pip install"
+alias pipdep="pipdeptree"
+alias pipu="pip uninstall"
+alias pips="pip show"
+
+# SSH
+# ------------------------------------
 # krupenja.net
 alias sshk="ssh igor@krupenja.net"
 alias fsk="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
