@@ -122,16 +122,16 @@ install_sw_pip() {
     echo ""
     echo "**************************** Installing from pip ***************************"
     echo ""
-    pip3 install togglCli
     # for linting in VSCode
-    pip3 install autopep8
     pip3 install pep8
     pip3 install pylint
     pip3 install pydocstyle
     # other
-    pip3 install pip-autoremove
     pip3 install pipdeptree
     pip3 install ipython
+    pip3 install togglCli
+    pip3 install gcalcli
+    pip3 install haxor-news
 }
 
 install_sw_node() {
