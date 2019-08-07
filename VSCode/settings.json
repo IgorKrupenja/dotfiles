@@ -5,7 +5,9 @@
         // disable "No HTML" warnings
         "MD033": false
     },
-    "editor.wordWrap": "on",
+    "[latex]": {
+        "editor.wordWrap": "on"
+    },
     // to do highlighting
     "todo-tree.defaultHighlight": {
         "type": "text",
@@ -22,11 +24,10 @@
     // highlight to do items with no lag
     "todo-tree.highlightDelay": 0,
     "todo-tree.regexCaseSensitive": false,
-        "todo-tree.tags": [
-            "TODO",
-            "FIXME",
-            "==="
-        ],
+    "todo-tree.tags": [
+        "TODO",
+        "FIXME"
+    ],
     // hide activity bar (the one on the left with icons)
     "workbench.activityBar.visible": false,
     "terminal.integrated.cursorBlinking": true,
@@ -53,11 +54,10 @@
     "shellformat.flag": "-i 4",
     // disable text drag-and-drop
     "editor.dragAndDrop": false,
-    "editor.fontFamily": "MonacoB2, Monaco, Hack, monospace",
+    "editor.fontFamily": "'MonacoB Nerd Font', Monego, MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
     "latex-workshop.view.pdf.invert": 0,
-    "python.pythonPath": "/usr/local/bin/python3",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
     // disable activation of latex view when switching to tex file
@@ -181,8 +181,7 @@
     // otherwise centre-top area of the window is not clickable
     // see https://github.com/electron/electron/issues/14529
     "window.title": ".",
-    "explorer.sortOrder": "filesFirst",
-    "macros": {
+    "macros.list": {
         // switch focus back on MD preview open
         "showPreviewAndFocusBack": [
             "markdown.showPreviewToSide",
@@ -206,37 +205,6 @@
             "widget.shadow": "#ffffff00",
             "focusBorder": "#ffffff00"
         },
-        "[React Italic Theme]": {
-            "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
-            "sideBar.border": "#00000000",
-            "panel.border": "#00000000",
-            "editorGroupHeader.tabsBorder": "#00000000",
-            "tab.border": "#00000000",
-            "sideBarSectionHeader.border": "#00000000"
-        },
-        "[Eva Dark]": {
-            "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
-            "focusBorder": "#ffffff00",
-            "panel.border": "#00000000",
-            "tab.border": "#00000000",
-            "editorGroupHeader.tabsBorder": "#00000000",
-            "sideBarSectionHeader.background": "#ffffff00",
-            "sideBar.background": "#282c34",
-            "editorGroupHeader.tabsBackground": "#282c34",
-            "tab.inactiveBackground": "#282c34",
-            "tab.hoverBackground": "#00000000",
-            "tab.activeBorder": "#61668b"
-        },
-        "[Arc Dark]": {
-            "panel.border": "#00000000",
-            "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
-            "sideBar.background": "#2f343f",
-            "sideBarSectionHeader.background": "#ffffff00",
-            "focusBorder": "#ffffff00"
-        },
         "[After Dark]": {
             "scrollbar.shadow": "#ffffff00",
             "widget.shadow": "#ffffff00",
@@ -256,19 +224,9 @@
                     }
                 },
             ]
-        },
-        "[Arc Dark]": {
-            "textMateRules": [
-                {
-                    "scope": "punctuation.definition.comment",
-                    "settings": {
-                        "foreground": "#747c83"
-                    }
-                },
-            ]
         }
     },
-    "workbench.colorTheme": "Flat White",
     "explorer.confirmDragAndDrop": false,
     "peacock.affectTitleBar": false,
+    "workbench.colorTheme": "Flat White",
 }
