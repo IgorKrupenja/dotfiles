@@ -519,6 +519,8 @@ co() {
         do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'};
     done
 }
+# coloured cat
+alias ccat='pygmentize -g'
 
 # Calculator
 # ------------------------------------
