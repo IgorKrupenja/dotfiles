@@ -229,4 +229,5 @@
     "explorer.confirmDragAndDrop": false,
     "peacock.affectTitleBar": false,
     "workbench.colorTheme": "Material Theme Darker",
+    "material-icon-theme.saturation": 1,
 }
