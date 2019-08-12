@@ -228,6 +228,6 @@
     },
     "explorer.confirmDragAndDrop": false,
     "peacock.affectTitleBar": false,
+    "editor.renderWhitespace": "selection",
     "workbench.colorTheme": "Material Theme Darker",
-    "material-icon-theme.saturation": 1,
 }
