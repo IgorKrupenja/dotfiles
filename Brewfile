@@ -20,6 +20,7 @@ cask "fork"
 cask "iterm2"
 cask "mactex-no-gui"
 cask "sourcetree"
+cask "tor-browser"
 cask "zoomus"
 mas "ABBYY Lingvo European", id: 467622356
 mas "ColorSlurp", id: 1287239339
