@@ -211,7 +211,7 @@ alias suemacs="sudo emacs -nw"
 # crontab
 alias cre="EDITOR=nano crontab -e"
 
-# zsh
+# zsh & dotfiles
 # ------------------------------------
 alias zs="source $HOME/.zshrc"
 alias zc="code $DOTFILES"
@@ -429,6 +429,7 @@ Darwin)
     # ls with dirs first
     alias lad="gls -lAh --group-directories-first --color"
     alias lsd="gls --group-directories-first --color"
+    alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
     ;;
 Linux)
     # apt
@@ -444,6 +445,7 @@ Linux)
     alias bak="$PROJECTS/OS/bash-snippets/backup-linux.sh"
     # xdg-open
     alias open="xdg-open &>/dev/null"
+    alias mc='. /usr/lib/mc/mc-wrapper.sh'
     ;;
 esac
 
@@ -522,7 +524,6 @@ co() {
 # coloured cat
 alias ccat='pygmentize -g'
 # mc
-alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 
 # Calculator
 # ------------------------------------
