@@ -82,8 +82,10 @@ clone_repo() {
     # Clone repo if not already cloned
     if [[ -d $DOTFILES/.git ]]; then
         echo ""
-        echo "********************** dotfiles repo already exists! **********************"
+        echo "********************** dotfiles repo already exists! ***********************"
+        echo "************************** pulling from existing ***************************"
         echo ""
+        git pull
     else
         echo ""
         echo "*************************** Cloning dotfiles repo **************************"
