@@ -521,6 +521,8 @@ co() {
 }
 # coloured cat
 alias ccat='pygmentize -g'
+# mc
+alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 
 # Calculator
 # ------------------------------------
