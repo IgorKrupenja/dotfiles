@@ -62,8 +62,12 @@ install_sw_apt() {
     sudo apt-get update && sudo apt-get upgrade -y
 
     ##### Install
+    # emacs
+    sudo add-apt-repository ppa:kelleyk/emacs
+    sudo apt update
+    sudo apt install -y emacs26
+    # other
     sudo apt install -y git
-    sudo apt install -y emacs25
     sudo apt install -y smem
     sudo apt install -y tcptrack
     sudo apt install -y zsh
