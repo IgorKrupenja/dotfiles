@@ -65,7 +65,7 @@ install_sw_apt() {
     # emacs
     sudo add-apt-repository ppa:kelleyk/emacs
     sudo apt update
-    sudo apt install -y emacs26
+    sudo apt install -y emacs26-nox
     # other
     sudo apt install -y git
     sudo apt install -y smem
