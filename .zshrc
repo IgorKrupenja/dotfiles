@@ -411,9 +411,9 @@ Darwin)
     alias bu="brew upgrade && brew cask upgrade"
     alias bd="brew cleanup; brew doctor"
     # cd to trash
-    alias cdtr="cd $HOME/.Trash"
-    alias lst="ls $HOME/.Trash"
-    alias lat="la $HOME/.Trash"
+    alias tcd="cd $HOME/.Trash"
+    alias tls="ls $HOME/.Trash"
+    alias tla="la $HOME/.Trash"
     # dark mode
     alias dark="$PROJECTS/OS/darkmode/darkmode.sh"
     # backup
@@ -445,7 +445,7 @@ Linux)
     alias aptrm="sudo apt purge"
     alias aptcl="sudo apt autoremove"
     # cd to trash
-    alias cdtr="cd $HOME/.local/share/Trash/files"
+    alias tcd="cd $HOME/.local/share/Trash/files"
     # dark mode
     alias dark="$PROJECTS/OS/darkmode-linux/darkmode.sh"
     # backup
