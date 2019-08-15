@@ -69,7 +69,6 @@ install_sw_apt() {
     ##### Install
     sudo apt install -y git
     sudo apt install -y emacs25
-    sudo apt install -y python3-pip
     sudo apt install -y smem
     sudo apt install -y tcptrack
     sudo apt install -y nodejs
@@ -77,10 +76,9 @@ install_sw_apt() {
     sudo apt install -y zsh
     sudo apt install -y htop
     sudo apt install -y p7zip-full
-    sudo apt install -y at
     sudo apt install -y speedtest-cli
     sudo apt install -y gcalcli
-    sudo apt install -y caffeine
+    sudo apt install -y mc
     # for cht.sh
     sudo apt install -y rlwrap
 }
