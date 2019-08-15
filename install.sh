@@ -13,7 +13,7 @@ echo ""
 echo ""
 
 # Repo location
-DOTFILES="$HOME/OneDrive - TTU/Projects/OS/dotfiles"
+DOTFILES="$HOME/Projects/OS/dotfiles"
 # Custom backup directory for securely stored stuff
 SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 
