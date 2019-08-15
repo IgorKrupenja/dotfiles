@@ -216,6 +216,13 @@ alias cre="EDITOR=nano crontab -e"
 alias zs="source $HOME/.zshrc"
 alias zc="code $DOTFILES"
 alias ze="emacs -nw $DOTFILES/.zshrc"
+# pull dotfiles
+dpl() {
+    current_dir=$(pwd)
+    cd $DOTFILES
+    git pull
+    cd $current_dir
+}
 
 # python
 # ------------------------------------
