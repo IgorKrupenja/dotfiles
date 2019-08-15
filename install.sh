@@ -85,6 +85,7 @@ clone_repo() {
         echo "********************** dotfiles repo already cloned! ***********************"
         echo "************************** pulling from existing ***************************"
         echo ""
+        cd $DOTFILES
         git pull
     else
         echo ""
