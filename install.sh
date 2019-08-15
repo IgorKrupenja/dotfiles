@@ -8,7 +8,6 @@ echo "#                                             #"
 echo "###############################################"
 echo ""
 echo ""
-echo "******* Suggest to use fast connection ********"
 echo ""
 echo ""
 echo ""
@@ -132,7 +131,6 @@ install_sw_node() {
 }
 
 install_sw_misc_macos() {
-
     # cht.sh
     echo ""
     echo "****************************** Installing cht.sh ****************************"
@@ -147,23 +145,23 @@ zsh_config() {
     # Install plug-ins
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # iTerm shell integrations
+    curl -L https://iterm2.com/shell_integration/zsh \
+        -o ~/.iterm2_shell_integration.zsh
 }
 
 # Needs to be called after zsh_config
 link_dotfiles_common() {
-
     dotfiles=(".zshrc" ".gitconfig" ".emacs")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
         ln -sv "$DOTFILES/${dotfile}" $HOME/${dotfile}
     done
-
 }
 
 # Settings for macOS
 link_dotfiles_macos() {
-
     # VSCode
     VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
     files=("spellright.dict" "snippets" "keybindings.json")
@@ -179,7 +177,6 @@ link_dotfiles_macos() {
     # iTerm
     mv -fv $HOME/Library/Preferences/com.googlecode.iterm2.plist $HOME/Library/Preferences/com.googlecode.iterm2.plist.bak
     ln -sv "$DOTFILES/iTerm/com.googlecode.iterm2.plist" $HOME/Library/Preferences/com.googlecode.iterm2.plist
-
     # SSH
     mv -fv $HOME/.ssh/config ~/.ssh/config.bak
     ln -sv "$DOTFILES/.ssh/config" $HOME/.ssh
@@ -256,7 +253,7 @@ change_shell() {
     echo "#                                             #"
     echo "###############################################"
     echo ""
-    echo "Reopen terminal to get zsh shell."
+    echo "Reopen terminal or SSH session to get zsh shell."
     exit
 }
 
