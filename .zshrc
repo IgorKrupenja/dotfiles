@@ -217,7 +217,7 @@ alias zs="source $HOME/.zshrc"
 alias zc="code $DOTFILES"
 alias ze="emacs -nw $DOTFILES/.zshrc"
 # pull dotfiles
-dpl() {
+zl() {
     current_dir=$(pwd)
     cd $DOTFILES
     git pull
