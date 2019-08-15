@@ -82,7 +82,7 @@ clone_repo() {
     # Clone repo if not already cloned
     if [[ -d $DOTFILES/.git ]]; then
         echo ""
-        echo "********************** dotfiles repo already exists! ***********************"
+        echo "********************** dotfiles repo already cloned! ***********************"
         echo "************************** pulling from existing ***************************"
         echo ""
         git pull
@@ -147,7 +147,7 @@ install_sw_misc_macos() {
 
 zsh_config() {
     # Install oh-my-zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     # Install plug-ins
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
