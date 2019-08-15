@@ -30,7 +30,7 @@ PERL_MB_OPT="--install_base \"/Users/igor/perl5\""; export PERL_MB_OPT;PERL_MM_O
 
 # exports
 export ZSH="$HOME/.oh-my-zsh"
-export PROJECTS="$HOME/OneDrive\ -\ TTU/Projects/"
+export PROJECTS="$HOME/Projects/"
 export DOTFILES="$PROJECTS/OS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source ~/.iterm2_shell_integration.zsh
 # for powerlevel theme
-source $HOME/OneDrive\ -\ TTU/Projects/OS/dotfiles/oh-my-zsh/p10k-lean.zsh
+source $DOTFILES/oh-my-zsh/p10k-lean.zsh
 
 # Utilities
 # ------------------------------------
@@ -159,7 +159,7 @@ ggs() {
     repos=()
     while IFS= read -r line; do
         repos+=("$line")
-    done < <(find $HOME/OneDrive\ -\ TTU/Projects/ -name .git | sed 's/.git//')
+    done < <(find $PROJECTS/ -name .git | sed 's/.git//')
 
     # navigate to each repo and echo status
     for repo in "${repos[@]}"; do
