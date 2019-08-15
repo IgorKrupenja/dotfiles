@@ -35,12 +35,8 @@ main_macos() {
 main_linux() {
     install_sw_apt
     clone_repo
-    install_sw_pip
-    install_sw_node
-    install_sw_misc_linux
     zsh_config
     link_dotfiles_common
-    link_dotfiles_linux
     linux_settings
     change_shell
 }
@@ -71,16 +67,12 @@ install_sw_apt() {
     sudo apt install -y emacs25
     sudo apt install -y smem
     sudo apt install -y tcptrack
-    sudo apt install -y nodejs
-    sudo apt install -y npm
     sudo apt install -y zsh
     sudo apt install -y htop
     sudo apt install -y p7zip-full
     sudo apt install -y speedtest-cli
-    sudo apt install -y gcalcli
     sudo apt install -y mc
-    # for cht.sh
-    sudo apt install -y rlwrap
+
 }
 
 clone_repo() {
@@ -149,17 +141,6 @@ install_sw_misc_macos() {
     chmod +x /usr/local/bin/cht.sh
 }
 
-install_sw_misc_linux() {
-
-    # cht.sh
-    echo ""
-    echo "****************************** Installing cht.sh ****************************"
-    echo ""
-    sudo curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
-    sudo chmod +x /usr/local/bin/cht.sh
-
-}
-
 zsh_config() {
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g')"
@@ -177,10 +158,6 @@ link_dotfiles_common() {
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
         ln -sv "$DOTFILES/${dotfile}" $HOME/${dotfile}
     done
-
-    # Toggl CLI
-    mv -f $HOME/.togglrc $HOME/.togglrc.bak
-    ln -sv "$SECURE_BACKUP_DIR/.togglrc" $HOME/
 
 }
 
@@ -215,16 +192,9 @@ link_dotfiles_macos() {
     mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
     ln -sv "$SECURE_BACKUP_DIR/.trello-cli/config-mac.json" $HOME/.trello-cli/config.json
     ln -sv "$SECURE_BACKUP_DIR/.trello-cli/authentication.json" $HOME/.trello-cli/
-}
-
-link_dotfiles_linux() {
-    # VSCode dictionary
-    ln -sv $DOTFILES/VSCode/spellright.dict $HOME/.config/Code/User/
-    # Trello CLI
-    mv -f $HOME/.trello-cli $HOME/.trello-cli.bak
-    mkdir -p $HOME/.trello-cli/
-    treln -sv $SECURE_BACKUP_DIR/.trello-cli/config-linux.json $HOME/.trello-cli/config.json
-    ln -sv $SECURE_BACKUP_DIR/.trello-cli/authentication.json $HOME/.trello-cli/
+    # Toggl CLI
+    mv -f $HOME/.togglrc $HOME/.togglrc.bak
+    ln -sv "$SECURE_BACKUP_DIR/.togglrc" $HOME/
 }
 
 macos_settings() {
@@ -274,8 +244,6 @@ macos_settings() {
 linux_settings() {
     # Cleanup
     sudo apt autoremove -y
-    # Caps additional escape
-    setxkbmap -option caps:escape
 }
 
 change_shell() {
