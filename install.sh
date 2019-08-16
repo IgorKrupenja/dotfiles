@@ -170,12 +170,12 @@ link_dotfiles_common() {
     # zsh
     mv -fv $HOME/.zshrc $HOME/.zshrc.bak
     ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
-
-    dotfiles=(".zshrc" ".gitconfig" ".emacs")
+    # misc
+    dotfiles=(".gitconfig" ".emacs")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
-        ln -sv "$DOTFILES/${dotfile}" $HOME/${dotfile}
+        ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
     done
 }
 
@@ -198,7 +198,7 @@ link_dotfiles_macos() {
     defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
     # SSH
     mv -fv $HOME/.ssh/config ~/.ssh/config.bak
-    ln -sv "$DOTFILES/.ssh/config" $HOME/.ssh
+    ln -sv $DOTFILES/ssh/config $HOME/.ssh
     # Marta
     # cannot symlink as breaks theme changes using dark script
     mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
