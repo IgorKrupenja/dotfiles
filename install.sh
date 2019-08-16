@@ -138,6 +138,8 @@ install_sw_node() {
     echo "**************************** Installing from npm ***************************"
     echo ""
     sudo npm install -g trello-cli
+    sudo npm install -g cash-cli
+    sudo npm install -g generator-code
 }
 
 install_sw_misc_macos() {
