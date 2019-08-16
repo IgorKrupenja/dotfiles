@@ -1,0 +1,9 @@
+{
+  "apt install -y": {
+    "prefix": "apty",
+    "description": "apt install -y",
+    "body": [
+      "sudo apt install -y "
+    ]
+  }
+}
