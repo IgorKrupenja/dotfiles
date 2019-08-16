@@ -1,0 +1,32 @@
+# TODO preamble
+
+# System info
+st() {
+    print
+    print "Date     : "$(date "+%Y-%m-%d %H:%M:%S")
+    print $(timedatectl | grep "Time zone")
+    print "Kernel   : $(uname -s -r)"
+    print "Uptime   : $(uptime -p)"
+    print "Resources: CPU $(LC_ALL=C top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')%, RAM $(free -m | awk '/Mem:/ { printf("%3.1f%%", $3/$2*100) }')"
+    print "Battery  : $(upower -i $(upower -e | grep '/battery') | grep --color=never percentage | xargs | cut -d' ' -f2 | sed s/%//)%"
+    print
+}
+
+# total memory usage for an app
+alias memuse="smem -tkP"
+
+# network usage stats
+alias net="sudo tcptrack -i wlp2s0"
+
+# wifi network list
+alias wifi="iwlist scan > /dev/null 2>&1 && nmcli dev wifi"
+
+# apt
+alias aptup="sudo apt update && sudo apt upgrade"
+alias aptadd="sudo apt install"
+alias aptrm="sudo apt purge"
+alias aptcl="sudo apt autoremove"
+# cd to trash
+alias tcd="cd $HOME/.local/share/Trash/files"
+# mc
+alias mc='. /usr/lib/mc/mc-wrapper.sh'
