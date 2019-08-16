@@ -16,13 +16,6 @@ if [[ $(git diff Brewfile) ]]; then
     git commit -m "Updated Brewfile"
 fi
 
-# crontab
-crontab -l > "$DOTFILES"/.crontab-mac
-if [[ $(git diff .crontab-mac) ]]; then
-    git add .crontab-mac
-    git commit -m "Update macOS crontab"
-fi
-
 # Marta
 cp -Rf $HOME/Library/Application\ Support/org.yanex.marta/* "$DOTFILES"/marta/
 if [[ $(git diff marta) ]]; then

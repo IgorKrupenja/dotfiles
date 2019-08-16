@@ -216,8 +216,8 @@ link_dotfiles_macos() {
 macos_settings() {
 
     # crontab
-    crontab -l >$HOME/.crontab.bak
-    crontab $DOTFILES/.crontab-mac
+    (crontab -l ; echo "0 22 * * * sh /Users/igor/Onedrive\ -\ TTU/Projects/OS/bash-snippets/backup-mac.sh >/dev/null 2>&1") | crontab -
+    (crontab -l ; echo "0 17 * * * /Users/igor/Applications/trello-cli/bin/trello refresh >/dev/null 2>&1") | crontab -
 
     # Thanks to Mathias Bynens! https://mths.be/macos
 
