@@ -67,9 +67,9 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # Source default omz config
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
-source $HOME/.iterm2_shell_integration.zsh
+source $DOTFILES/zsh/.iterm2_shell_integration.zsh
 # for powerlevel theme
-source $DOTFILES/oh-my-zsh/p10k-lean.zsh
+source $DOTFILES/zsh/p10k-lean.zsh
 
 #############################################################################
 # NAVIGATION & FILE MANAGEMENT
@@ -480,5 +480,5 @@ alias thcl="find \"$HOME/OneDrive - TTU/Bocconi/LaTeX thesis/\" -type f -maxdept
 
 case "$OSTYPE" in
   linux*)
-    source $DOTFILES/.zsh_linux
+    source $DOTFILES/zsh/.zsh_linux
 esac

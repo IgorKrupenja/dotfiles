@@ -162,12 +162,15 @@ zsh_config() {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     # iTerm shell integrations
-    curl -L https://iterm2.com/shell_integration/zsh \
-        -o ~/.iterm2_shell_integration.zsh
+    curl -L https://iterm2.com/shell_integration/zsh -o $DOTFILES/zsh/.iterm2_shell_integration.zsh
 }
 
 # Needs to be called after zsh_config
 link_dotfiles_common() {
+    # zsh
+    mv -fv $HOME/.zshrc $HOME/.zshrc.bak
+    ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
+
     dotfiles=(".zshrc" ".gitconfig" ".emacs")
     for dotfile in "${dotfiles[@]}"; do
         # Backup any existing dotfiles
@@ -184,22 +187,22 @@ link_dotfiles_macos() {
     for file in "${files[@]}"; do
         # Backup any existing files
         mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
-        ln -sv "$DOTFILES/VSCode/${file}" "$VSCODE_DIR/${file}"
+        ln -sv "$DOTFILES/vscode/${file}" "$VSCODE_DIR/${file}"
     done
     # cannot symlink as breaks theme changes using dark script
     mv -fv "$VSCODE_DIR/settings.json" "$VSCODE_DIR/settings.json.bak"
-    cp -Rf "$DOTFILES/VSCode/settings.json" "$VSCODE_DIR/"
+    cp -Rf "$DOTFILES/vscode/settings.json" "$VSCODE_DIR/"
 
     # iTerm
-    mv -fv $HOME/Library/Preferences/com.googlecode.iterm2.plist $HOME/Library/Preferences/com.googlecode.iterm2.plist.bak
-    ln -sv "$DOTFILES/iTerm/com.googlecode.iterm2.plist" $HOME/Library/Preferences/com.googlecode.iterm2.plist
+    defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
+    defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
     # SSH
     mv -fv $HOME/.ssh/config ~/.ssh/config.bak
     ln -sv "$DOTFILES/.ssh/config" $HOME/.ssh
     # Marta
     # cannot symlink as breaks theme changes using dark script
     mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
-    cp -Rf "$DOTFILES/Marta/" $HOME/Library/Application\ Support/org.yanex.marta
+    cp -Rf "$DOTFILES/marta/" $HOME/Library/Application\ Support/org.yanex.marta
     # Trello CLI
     mv -fv $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
