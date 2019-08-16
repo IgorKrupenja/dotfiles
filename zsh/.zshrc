@@ -227,8 +227,6 @@ tgl() {
 # TRELLO CLI
 # ---------------------------------------------------------------------------
 
-alias trello="$HOME/Applications/trello-cli/bin/trello"
-
 trel() {
     trello show-cards -b "💪 Get shit done" -l '💣 Today'
     trello show-cards -b "💪 Get shit done" -l '🌆 Tonight'
