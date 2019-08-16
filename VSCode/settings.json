@@ -12,9 +12,9 @@
     "todo-tree.defaultHighlight": {
         "type": "text",
         "foreground": "white",
-        "background": "#ff5100",
+        "background": "#f08c66",
         // <100% opacity needed to make text selection visible
-        "opacity": 50,
+        "opacity": 100,
         // pastel icon and ruler colour to match opacity
         "iconColour": "#ffa88c",
         "rulerColour": "#ffa88c",
@@ -57,7 +57,7 @@
     "editor.fontFamily": "'MonacoB Nerd Font', Monego, MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
     // disable activation of latex view when switching to tex file
@@ -168,9 +168,9 @@
     },
     "window.newWindowDimensions": "maximized",
     "bracket-pair-colorizer-2.colors": [
-        "#a2462e",
-        "#7a3e9d",
-        "#4384b9",
+        "#82AAFF",
+        "#C792EA",
+        "#F78C6C",
     ],
     "bracket-pair-colorizer-2.excludedLanguages": [
         "html"
@@ -229,5 +229,5 @@
     "explorer.confirmDragAndDrop": false,
     "peacock.affectTitleBar": false,
     "editor.renderWhitespace": "selection",
-    "workbench.colorTheme": "Flat White",
+    "workbench.colorTheme": "Material Theme Darker",
 }
