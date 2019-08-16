@@ -4,13 +4,13 @@
 
 # Path variables
 # ---------------------------------------------------------------------------
-export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH
-# variables
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects/"
-export DOTFILES="$PROJECTS/OS/dotfiles"
+export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
+# PATH
+export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$PATH
 # Various stuff for Perl and Latex
 PATH="/Users/igor/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/igor/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -189,22 +189,16 @@ co() {
     done
 }
 
-# Aliases & which
+# Misc
 # ---------------------------------------------------------------------------
+# aliases
 a() {
     alias | grep "$1"
 }
 # which
 alias w="which"
-
-# Misc
-# ---------------------------------------------------------------------------
 # reboot with confirmation dialog
 alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
-# dark mode
-alias dark="$PROJECTS/OS/darkmode/darkmode.sh"
-# manually trigger backup, normally automated
-alias bak="$PROJECTS/OS/bash-snippets/backup-mac.sh"
 
 #############################################################################
 # CLI TOOLS
@@ -361,8 +355,6 @@ zl() {
 
 # git
 # ---------------------------------------------------------------------------
-# move Github repo from HTTPS to SSH
-alias gssh="$PROJECTS/OS/bash-snippets/github-https-to-ssh.sh"
 # git status
 alias gs="git status"
 # normal git log - with timestamps

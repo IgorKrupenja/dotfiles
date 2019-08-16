@@ -1,0 +1,56 @@
+#!/bin/bash
+
+################### Preparation
+
+# echo in case run from shell
+echo "Backup in progress. Please wait..."
+
+################### Backup
+
+cd "$DOTFILES"
+
+# Brewfile dump
+brew bundle dump --force
+if [[ $(git diff Brewfile) ]]; then
+    git add Brewfile
+    git commit -m "Updated Brewfile"
+fi
+
+# crontab
+crontab -l > "$DOTFILES"/.crontab-mac
+if [[ $(git diff .crontab-mac) ]]; then
+    git add .crontab-mac
+    git commit -m "Update macOS crontab"
+fi
+
+# Marta
+cp -Rf $HOME/Library/Application\ Support/org.yanex.marta/* "$DOTFILES"/marta/
+if [[ $(git diff marta) ]]; then
+    git add Marta/*
+    git commit -m "Update Marta settings"
+fi
+
+# VSCode
+cp -Rf $HOME/Library/Application\ Support/Code/User/settings.json "$DOTFILES"/vscode/
+if [[ $(git diff VSCode) ]]; then
+    git add VSCode/*
+    git commit -m "Updated VSCode settings"
+fi
+
+mkdir -p "$DOTFILES"/VSCode/
+code --list-extensions | xargs -L 1 echo code --install-extension > "$DOTFILES"/VSCode/extensions.sh
+chmod +x "$DOTFILES"/VSCode/extensions.sh
+if [[ $(git diff VSCode/extensions.sh) ]]; then
+    git add VSCode/extensions.sh
+    git commit -m "Update VSCode extensions"
+fi
+
+git push
+
+#################### Notifications
+
+# Displaying toast and playing sound
+osascript -e 'display notification "Backup complete" with title "cron" sound name "Glass"'
+
+# echo in case run from shell
+echo "Backup complete."
