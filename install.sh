@@ -212,6 +212,10 @@ link_dotfiles_macos() {
     # Toggl CLI
     mv -f $HOME/.togglrc $HOME/.togglrc.bak
     ln -sv "$SECURE_BACKUP_DIR/.togglrc" $HOME/
+    # fix white-on-white text
+    cd $HOME/Projects
+    git clone https://github.com/krupenja/toggl-cli.git 
+    mv -fv /Users/igor/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
 }
 
 macos_settings() {
