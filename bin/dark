@@ -142,7 +142,7 @@ fi
 
 ################################# cht.sh
 
-conf=/Users/igor/.cht.sh/cht.sh.conf
+conf=$HOME/.cht.sh/cht.sh.conf
 
 if [ "$isDarkModeOn" = false ]; then
     sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
