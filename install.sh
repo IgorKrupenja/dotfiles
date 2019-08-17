@@ -188,6 +188,8 @@ dotfiles_common() {
     # zsh
     mv -fv $HOME/.zshrc $HOME/.zshrc.bak
     ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
+    #mc
+    ln -sv $DOTFILES/mc $HOME/.config/mc
     # misc
     dotfiles=(".gitconfig" ".emacs")
     for dotfile in ${dotfiles[@]}; do
@@ -247,6 +249,7 @@ macos_settings() {
     # cannot symlink as breaks theme changes using dark script
     mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
     cp -Rf $DOTFILES/marta/ $HOME/Library/Application\ Support/org.yanex.marta
+    # for CLI
     ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
     # Thanks to Mathias Bynens for the stuff below! https://mths.be/macos
