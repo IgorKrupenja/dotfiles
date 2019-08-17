@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo ""
-echo "###############################################"
-echo "#                                             #"
-echo "#              DOTFILES INSTALL               #"
-echo "#                                             #"
-echo "###############################################"
+echo "############################################################################"
+echo "#                                                                          #"
+echo "#                             DOTFILES INSTALL                             #"
+echo "#                                                                          #"
+echo "############################################################################"
 echo ""
+echo "*************************** Use fast connection! ***************************"
 echo ""
-echo ""
-echo ""
-echo ""
+
+exec > >(tee -a "/tmp/dotfiles-install-$(date +"%Y%m%d%H%M").log") 2>&1
 
 # Repo location
 DOTFILES="$HOME/Projects/dotfiles"
