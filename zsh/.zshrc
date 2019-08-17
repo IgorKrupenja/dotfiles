@@ -336,9 +336,6 @@ else
     export EDITOR='code'
 fi
 
-# crontab
-alias cre="EDITOR=nano crontab -e"
-
 # VSCode
 c() {
     if [[ $@ == "" ]]; then
@@ -351,6 +348,9 @@ c() {
 # emacs
 alias emacs="emacs -nw"
 alias suemacs="sudo emacs -nw"
+
+# crontab
+alias cre="EDITOR=emacs crontab -e"
 
 # zsh & dotfiles
 alias zs="source $HOME/.zshrc"
