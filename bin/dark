@@ -1,18 +1,7 @@
 #!/bin/bash
 
-################################# Getting active app   
+################################# Get dark mode state
 
-myApp=$(
-    osascript <<EOT
-	tell application "System Events"
-    	set activeApp to name of first application process whose frontmost is true
-	end tell
-EOT
-)
-
-################################# getting current dark mode state
-
-# Need this for settting dark mode manually in some apps
 isDarkModeOn=$(
     osascript <<EOT
 	tell application id "com.apple.systemevents"
@@ -51,20 +40,22 @@ osascript -e '
 
 ################################# Marta
 
-if grep -q "theme \"Igor\"" /Users/igor/Library/Application\ Support/org.yanex.marta/conf.marco; then
-    sed -i '' 's/theme "Igor"/theme "Classic"/g' /Users/igor/Library/Application\ Support/org.yanex.marta/conf.marco
+conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
+
+if [ "$isDarkModeOn" = false ]; then
+    sed -i '' -e 's/theme "Classic"/theme "Igor"/g' "$conf"
 else
-    sed -i '' 's/theme "Classic"/theme "Igor"/g' /Users/igor/Library/Application\ Support/org.yanex.marta/conf.marco
+    sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
 fi
 
 ################################# PDF Expert
 
-if [ "$isDarkModeOn" = true ]; then
-    osascript -e '
+if [ "$isDarkModeOn" = false ]; then
+	osascript -e '
 		if application "PDF Expert" is running then
     		tell application "PDF Expert" to activate
 			tell application "System Events"
-				keystroke "z" using {option down, command down}
+				keystroke "n" using {option down, command down}
 			end tell
 		end if
 		'
@@ -73,7 +64,7 @@ else
 		if application "PDF Expert" is running then
     		tell application "PDF Expert" to activate
 			tell application "System Events"
-				keystroke "n" using {option down, command down}
+				keystroke "z" using {option down, command down}
 			end tell
 		end if
 		'
@@ -111,46 +102,52 @@ fi
 
 ################################# VSCode
 
-if grep -q "\"workbench.colorTheme\": \"Flat White\"" /Users/igor/Library/Application\ Support/Code/User/settings.json; then
+json=$HOME/Library/Application\ Support/Code/User/settings.json
+
+if [ "$isDarkModeOn" = false ]; then
 	# theme
-    sed -i '' 's/"workbench.colorTheme": "Flat White"/"workbench.colorTheme": "Material Theme Darker"/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+    sed -i '' 's/"workbench.colorTheme": "Flat White"/"workbench.colorTheme": "Material Theme Darker"/g' "$json"
     # Colours for bracket highlighting
-	sed -i '' 's/#a2462e/#82AAFF/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
-    sed -i '' 's/#7a3e9d/#C792EA/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
-    sed -i '' 's/#4384b9/#F78C6C/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+	sed -i '' 's/#a2462e/#82AAFF/g' "$json"
+    sed -i '' 's/#7a3e9d/#C792EA/g' "$json"
+    sed -i '' 's/#4384b9/#F78C6C/g' "$json"
 	# To do highlighting
-    sed -i '' 's/#ff5100/#f08c66/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
-    sed -i '' 's/"opacity": 50/"opacity": 100/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+    sed -i '' 's/#ff5100/#f08c66/g' "$json"
+    sed -i '' 's/"opacity": 50/"opacity": 100/g' "$json"
 	# LaTeX PDF preview 
-	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
 else
 	# theme
-    sed -i '' 's/"workbench.colorTheme": "Material Theme Darker"/"workbench.colorTheme": "Flat White"/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+    sed -i '' 's/"workbench.colorTheme": "Material Theme Darker"/"workbench.colorTheme": "Flat White"/g' "$json"
     # Colours for bracket highlighting
-	sed -i '' 's/#82AAFF/#a2462e/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
-    sed -i '' 's/#C792EA/#7a3e9d/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
-    sed -i '' 's/#F78C6C/#4384b9/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+	sed -i '' 's/#82AAFF/#a2462e/g' "$json"
+    sed -i '' 's/#C792EA/#7a3e9d/g' "$json"
+    sed -i '' 's/#F78C6C/#4384b9/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#f08c66/#ff5100/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
-    sed -i '' 's/"opacity": 100/"opacity": 50/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+	sed -i '' 's/#f08c66/#ff5100/g' "$json"
+    sed -i '' 's/"opacity": 100/"opacity": 50/g' "$json"
 	# LaTeX PDF preview 
-	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' /Users/igor/Library/Application\ Support/Code/User/settings.json
+	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' "$json"
 fi
 
 ################################# Sublime Merge
 
-if grep -q "Merge.sublime-theme" /Users/igor/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings; then
-    sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' /Users/igor/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
+sett=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
+
+if [ "$isDarkModeOn" = false ]; then
+    sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$sett"
 else
-    sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' /Users/igor/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
+    sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$sett"
 fi
 
 ################################# cht.sh
 
-if grep -q "style=lovelace" /Users/igor/.cht.sh/cht.sh.conf; then
-    sed -i '' 's/style=lovelace/style=paraiso-dark/g' /Users/igor/.cht.sh/cht.sh.conf
+conf=/Users/igor/.cht.sh/cht.sh.conf
+
+if [ "$isDarkModeOn" = false ]; then
+    sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
 else
-    sed -i '' 's/style=paraiso-dark/style=lovelace/g' /Users/igor/.cht.sh/cht.sh.conf
+    sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
 fi
 
 ################################# Mailspring
@@ -168,8 +165,3 @@ fi
 
 # # reopen Mailspring
 # open -a /Applications/Mailspring.app -g --args --background
-
-################################# Restore active app
-
-# reading app name from variable and restoring window
-osascript -e 'on run {activeApp}' -e 'tell application activeApp to activate' -e 'end run' "$myApp"
