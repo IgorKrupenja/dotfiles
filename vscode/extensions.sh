@@ -37,6 +37,7 @@ code --install-extension pranaygp.vscode-css-peek
 code --install-extension ramyaraoa.show-offset
 code --install-extension ritwickdey.LiveServer
 code --install-extension sdras.night-owl
+code --install-extension Shan.code-settings-sync
 code --install-extension sleistner.vscode-fileutils
 code --install-extension ssmi.after-dark
 code --install-extension teabyii.ayu
