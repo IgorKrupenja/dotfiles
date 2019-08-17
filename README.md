@@ -1,8 +1,7 @@
 <div align="center">
     <h1>dotfiles</h1>
     <p>There's no place like <b><code>~</code></b> !</p>
-    <p style="font-size:50px; margin: 0; padding: 0;">~/.*</p>
-    <!-- <img src="home.png"> -->
+    <img src="./home.svg">
     <br><br>
     </p>
 </div>
