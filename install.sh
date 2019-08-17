@@ -164,7 +164,7 @@ clone_repo() {
 
 zsh_config() {
     echo ""
-    echo "******************************* Configuring zsh ********************************"
+    echo "***************************** Configuring zsh ******************************"
     echo ""
     # Remove any existing install first
     rm -rf /home/igor/.oh-my-zsh
@@ -182,7 +182,7 @@ zsh_config() {
 # Needs to be called after zsh_config
 dotfiles_common() {
     echo ""
-    echo "***************************** Installing dotfiles ******************************"
+    echo "*************************** Installing dotfiles ****************************"
     echo ""
     # zsh
     mv -fv $HOME/.zshrc $HOME/.zshrc.bak
