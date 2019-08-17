@@ -42,6 +42,10 @@ export LANGUAGE=en_GB.UTF-8
 # ZSH
 #############################################################################
 
+# theme
+ZSH_THEME=powerlevel10k/powerlevel10k
+# theme settings
+source $DOTFILES/zsh/p10k-lean.zsh
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 # disable % at EOL
@@ -64,10 +68,6 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source $DOTFILES/zsh/.iterm2_shell_integration.zsh
-# theme
-ZSH_THEME=powerlevel10k/powerlevel10k
-# theme settings
-source $DOTFILES/zsh/p10k-lean.zsh
 
 #############################################################################
 # NAVIGATION & FILE MANAGEMENT
