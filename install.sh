@@ -172,7 +172,7 @@ link_dotfiles_common() {
     ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
     # misc
     dotfiles=(".gitconfig" ".emacs")
-    for dotfile in "${dotfiles[@]}"; do
+    for dotfile in ${dotfiles[@]}; do
         # Backup any existing dotfiles
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
         ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
@@ -184,17 +184,17 @@ link_dotfiles_macos() {
     # VSCode
     VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
     files=("spellright.dict" "snippets" "keybindings.json")
-    for file in "${files[@]}"; do
+    for file in ${files[@]}; do
         # Backup any existing files
         mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
         ln -sv "$DOTFILES/vscode/${file}" "$VSCODE_DIR/${file}"
     done
     # cannot symlink as breaks theme changes using dark script
-    mv -fv "$VSCODE_DIR/settings.json" "$VSCODE_DIR/settings.json.bak"
-    cp -Rf "$DOTFILES/vscode/settings.json" "$VSCODE_DIR/"
+    mv -fv $VSCODE_DIR/settings.json $VSCODE_DIR/settings.json.bak
+    cp -Rf $DOTFILES/vscode/settings.json $VSCODE_DIR/
 
     # iTerm
-    defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
+    defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
     defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
     # SSH
     mv -fv $HOME/.ssh/config ~/.ssh/config.bak
@@ -202,7 +202,7 @@ link_dotfiles_macos() {
     # Marta
     # cannot symlink as breaks theme changes using dark script
     mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
-    cp -Rf "$DOTFILES/marta/" $HOME/Library/Application\ Support/org.yanex.marta
+    cp -Rf $DOTFILES/marta/ $HOME/Library/Application\ Support/org.yanex.marta
     # Trello CLI
     mv -fv $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
