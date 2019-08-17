@@ -10,6 +10,7 @@ echo ""
 echo "*************************** Use fast connection! ***************************"
 echo ""
 
+# Write log
 exec > >(tee -a "/tmp/dotfiles-install-$(date +"%Y%m%d%H%M").log") 2>&1
 
 # Repo location
