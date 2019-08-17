@@ -36,7 +36,7 @@ main_linux() {
     clone_repo
     zsh_config
     link_dotfiles_common
-    linux_settings
+    linux_misc
     change_shell
 }
 
@@ -262,7 +262,9 @@ macos_settings() {
 }
 
 # Needs to be called after link_dotfiles_common
-linux_settings() {
+linux_misc() {
+    # Install z
+    wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/z.sh
     # Cleanup
     sudo apt autoremove -y
 }
