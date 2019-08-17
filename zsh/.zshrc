@@ -27,7 +27,11 @@ bindkey "\e\eOC" forward-word
 # less: do not clear screen on exit
 export LESS=-XFR
 # for z dir navigation
-source /usr/local/etc/profile.d/z.sh
+# only source on macOS to avoid error in Linux
+case "$OSTYPE" in
+    darwin*)
+        source /usr/local/etc/profile.d/z.sh
+esac
 # fuck
 eval $(thefuck --alias)
 
@@ -129,7 +133,15 @@ alias mkdir='mkdir -pv'
 # thefuck
 alias f="fuck"
 # open Marta in current dir
-alias m="marta ."
+# alias m="marta ."
+m() {
+    if [[ $@ == "" ]]; then
+        command marta .
+    else
+        command marta "$@"
+    fi
+}
+
 
 #############################################################################
 # SYSTEM
@@ -438,12 +450,12 @@ alias pipu="pip uninstall"
 alias pips="pip show"
 # pip zsh completion
 function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
+    local words cword
+    read -Ac words
+    read -cn cword
+    reply=( $( COMP_WORDS="$words[*]" \
+               COMP_CWORD=$(( cword-1 )) \
+               PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
 
@@ -470,6 +482,6 @@ alias thcl="find \"$HOME/OneDrive - TTU/Bocconi/LaTeX thesis/\" -type f -maxdept
 #############################################################################
 
 case "$OSTYPE" in
-  linux*)
-    source $DOTFILES/zsh/.zsh_linux
+    linux*)
+        source $DOTFILES/zsh/.zsh_linux
 esac
