@@ -3,7 +3,7 @@
 echo ""
 echo "############################################################################"
 echo "#                                                                          #"
-echo "#                             DOTFILES INSTALL                             #"
+echo "#                        krupenja/dotfiles INSTALL                         #"
 echo "#                                                                          #"
 echo "############################################################################"
 echo ""
@@ -18,15 +18,16 @@ DOTFILES="$HOME/Projects/dotfiles"
 SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 
 main_macos() {
-    get_sudo_macos
+    macos_get_sudo
     macos_prepare
-    clone_repo
     install_sw_brew
     install_sw_pip
     install_sw_node
+    install_sw_misc
+    clone_repo
     zsh_config
-    link_dotfiles_common
-    link_dotfiles_macos
+    dotfiles_common
+    dotfiles_macos
     macos_settings
     change_shell
 }
@@ -35,25 +36,32 @@ main_linux() {
     install_sw_apt
     clone_repo
     zsh_config
-    link_dotfiles_common
+    dotfiles_common
     linux_misc
     change_shell
 }
 
 # Ask for password only once
-get_sudo_macos() {
+macos_get_sudo() {
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
         sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
         sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
 
 macos_prepare() {
+    echo ""
+    echo "************************** Installing brew and git *************************"
+    echo ""
     # Install brew AND GIT
     # Will also install xcode-tools, including git - needed to clone repo
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 }
 
 install_sw_apt() {
+
+    echo ""
+    echo "************************** Installing apt packages *************************"
+    echo ""
 
     # apt over https and curl
     sudo apt-get install -y apt-transport-https curl
@@ -81,32 +89,12 @@ install_sw_apt() {
 
 }
 
-clone_repo() {
-    # Clone repo if not already cloned
-    if [[ -d $DOTFILES/.git ]]; then
-        echo ""
-        echo "********************** dotfiles repo already cloned! ***********************"
-        echo "************************** pulling from existing ***************************"
-        echo ""
-        cd $DOTFILES
-        git pull
-    else
-        echo ""
-        echo "*************************** Cloning dotfiles repo **************************"
-        echo ""
-        mkdir -p $DOTFILES
-        cd $DOTFILES
-        git clone https://github.com/krupenja/dotfiles.git .
-        cd $DOTFILES
-    fi
-}
-
 install_sw_brew() {
     # Install OneDrive first so that sync could start ASAP
     brew cask install onedrive
     open /Applications/OneDrive.app/
     # Promt to log into OneDrive
-    echo "**************** IMPORTANT ******************"
+    echo "************************** IMPORTANT: ONEDRIVE LOGIN ***************************"
     echo ""
     echo "OneDrive window should appear"
     echo "Login to OneDrive so that sync starts ASAP"
@@ -114,6 +102,9 @@ install_sw_brew() {
     read -p ""
     say "Attention required"
     # Install formulae and casks from Brewfile
+    echo ""
+    echo "************************* Installing brew packages *************************"
+    echo ""
     brew bundle
 }
 
@@ -142,16 +133,39 @@ install_sw_node() {
     sudo npm install -g generator-code
 }
 
-install_sw_misc_macos() {
+install_sw_misc() {
     # cht.sh
     echo ""
-    echo "****************************** Installing cht.sh ****************************"
+    echo "***************************** Installing cht.sh ****************************"
     echo ""
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
 }
 
+clone_repo() {
+    # Clone repo if not already cloned
+    if [[ -d $DOTFILES/.git ]]; then
+        echo ""
+        echo "********************** Dotfiles repo already cloned ************************"
+        echo "************************* Pulling latest changes ***************************"
+        echo ""
+        cd $DOTFILES
+        git pull
+    else
+        echo ""
+        echo "************************** Cloning dotfiles repo ***************************"
+        echo ""
+        mkdir -p $DOTFILES
+        cd $DOTFILES
+        git clone https://github.com/krupenja/dotfiles.git .
+        cd $DOTFILES
+    fi
+}
+
 zsh_config() {
+    echo ""
+    echo "******************************* Configuring zsh ********************************"
+    echo ""
     # Remove any existing install first
     rm -rf /home/igor/.oh-my-zsh
     # Install oh-my-zsh
@@ -166,7 +180,10 @@ zsh_config() {
 }
 
 # Needs to be called after zsh_config
-link_dotfiles_common() {
+dotfiles_common() {
+    echo ""
+    echo "***************************** Installing dotfiles ******************************"
+    echo ""
     # zsh
     mv -fv $HOME/.zshrc $HOME/.zshrc.bak
     ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
@@ -180,30 +197,10 @@ link_dotfiles_common() {
 }
 
 # Settings for macOS
-link_dotfiles_macos() {
-    # VSCode
-    VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
-    files=("spellright.dict" "snippets" "keybindings.json")
-    for file in ${files[@]}; do
-        # Backup any existing files
-        mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
-        ln -sv "$DOTFILES/vscode/${file}" "$VSCODE_DIR/${file}"
-    done
-    # cannot symlink as breaks theme changes using dark script
-    mv -fv $VSCODE_DIR/settings.json $VSCODE_DIR/settings.json.bak
-    cp -Rf $DOTFILES/vscode/settings.json $VSCODE_DIR/
-
-    # iTerm
-    defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
-    defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+dotfiles_macos() {
     # SSH
     mv -fv $HOME/.ssh/config ~/.ssh/config.bak
     ln -sv $DOTFILES/ssh/config $HOME/.ssh
-    # Marta
-    # cannot symlink as breaks theme changes using dark script
-    mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
-    cp -Rf $DOTFILES/marta/ $HOME/Library/Application\ Support/org.yanex.marta
-    ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     # Trello CLI
     mv -fv $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
@@ -220,11 +217,38 @@ link_dotfiles_macos() {
 
 macos_settings() {
 
+    echo ""
+    echo "*************************** Restoring macOS settings ***************************"
+    echo ""
+
+
     # crontab
     (crontab -l ; echo "0 22 * * * sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1") | crontab -
     (crontab -l ; echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1") | crontab -
 
-    # Thanks to Mathias Bynens! https://mths.be/macos
+     # VSCode
+    VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
+    files=("spellright.dict" "snippets" "keybindings.json")
+    for file in ${files[@]}; do
+        # Backup any existing files
+        mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
+        ln -sv "$DOTFILES/vscode/${file}" "$VSCODE_DIR/${file}"
+    done
+    # cannot symlink as breaks theme changes using dark script
+    mv -fv $VSCODE_DIR/settings.json $VSCODE_DIR/settings.json.bak
+    cp -Rf $DOTFILES/vscode/settings.json $VSCODE_DIR/
+
+    # iTerm
+    defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
+    defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+
+    # Marta
+    # cannot symlink as breaks theme changes using dark script
+    mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
+    cp -Rf $DOTFILES/marta/ $HOME/Library/Application\ Support/org.yanex.marta
+    ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
+
+    # Thanks to Mathias Bynens for the stuff below! https://mths.be/macos
 
     # fix for font smoothing in Chromium/Electron
     defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
@@ -271,15 +295,23 @@ linux_misc() {
 
 change_shell() {
 
+    echo ""
+    echo "************************** Changing shell to zsh ***************************"
+    echo "************************ Enter sudo password again *************************"
+    echo ""
     sudo sh -c "echo $(which zsh) >> /etc/shells"
     chsh -s "$(which zsh)"
-    echo "###############################################"
-    echo "#                                             #"
-    echo "#         DOTFILES INSTALL COMPLETE!          #"
-    echo "#                                             #"
-    echo "###############################################"
+
     echo ""
-    echo "Reopen terminal or SSH session to get zsh shell."
+    echo "############################################################################"
+    echo "#                                                                          #"
+    echo "#                             INSTALL FINISHED                             #"
+    echo "#                                                                          #"
+    echo "############################################################################"
+    echo ""
+    echo "************* Restart terminal or SSH session to get zsh shell *************"
+    echo ""
+
     exit
 }
 
