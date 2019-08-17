@@ -114,7 +114,7 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias ql="qlmanage -p &>/dev/null"
 # img tools
 alias lsi="imgls"
-alias cati="imgcat"
+alias icat="imgcat"
 # syntax-highlighted cat
 alias ccat='pygmentize -g'
 # dd with progress
