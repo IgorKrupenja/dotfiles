@@ -72,20 +72,20 @@ install_sw_apt() {
     ##### Install
     # emacs
     echo | sudo add-apt-repository ppa:kelleyk/emacs
-    sudo apt update
-    sudo apt install -y emacs26-nox
+    sudo apt-get update
+    sudo apt-get install -y emacs26-nox
     # thefuck
-    sudo apt install -y python3-dev python3-pip python3-setuptools
+    sudo apt-get install -y python3-dev python3-pip python3-setuptools
     sudo pip3 install thefuck
     # other
-    sudo apt install -y git
-    sudo apt install -y smem
-    sudo apt install -y tcptrack
-    sudo apt install -y zsh
-    sudo apt install -y htop
-    sudo apt install -y p7zip-full
-    sudo apt install -y speedtest-cli
-    sudo apt install -y mc
+    sudo apt-get install -y git
+    sudo apt-get install -y smem
+    sudo apt-get install -y tcptrack
+    sudo apt-get install -y zsh
+    sudo apt-get install -y htop
+    sudo apt-get install -y p7zip-full
+    sudo apt-get install -y speedtest-cli
+    sudo apt-get install -y mc
 
 }
 
