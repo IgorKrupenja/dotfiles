@@ -8,7 +8,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects/"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
-export SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
 # PATH
 export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$PATH
 # Various stuff for Perl and Latex
@@ -19,7 +18,7 @@ PERL_MB_OPT="--install_base \"/Users/igor/perl5\""; export PERL_MB_OPT;PERL_MM_O
 
 # Key bindings
 # ---------------------------------------------------------------------------
-# these are needed for alt + arrow to work in IntelliJ terminal
+# these are needed for alt + left/right to work in IntelliJ terminal
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
 
@@ -28,7 +27,7 @@ bindkey "\e\eOC" forward-word
 # less: do not clear screen on exit
 export LESS=-XFR
 # for z dir navigation
-. /usr/local/etc/profile.d/z.sh
+source /usr/local/etc/profile.d/z.sh
 # fuck
 eval $(thefuck --alias)
 
@@ -42,9 +41,6 @@ export LANGUAGE=en_GB.UTF-8
 #############################################################################
 # ZSH
 #############################################################################
-
-# theme
-ZSH_THEME=powerlevel10k/powerlevel10k
 
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -68,7 +64,9 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source $DOTFILES/zsh/.iterm2_shell_integration.zsh
-# for powerlevel theme
+# theme
+ZSH_THEME=powerlevel10k/powerlevel10k
+# theme settings
 source $DOTFILES/zsh/p10k-lean.zsh
 
 #############################################################################
@@ -79,10 +77,8 @@ source $DOTFILES/zsh/p10k-lean.zsh
 # ---------------------------------------------------------------------------
 alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
-alias scr="cd $PROJECTS/OS/bash-snippets"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/Reference"
-alias ttu="cd $PROJECTS/TTU"
 
 # Trash
 # ---------------------------------------------------------------------------
@@ -207,7 +203,7 @@ alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
 # CLI TOOLS
 #############################################################################
 
-# TOGGL CLI
+# Toggl CLI
 # ---------------------------------------------------------------------------
 alias tg="toggl"
 alias tgr="tg continue; tg now"
@@ -227,7 +223,7 @@ tgl() {
     tg ls -s $(date "+%m/%d/%y") -f +project
 }
 
-# TRELLO CLI
+# Trello CLI
 # ---------------------------------------------------------------------------
 
 trel() {
@@ -387,13 +383,13 @@ ggs() {
     red='\033[0;31m'
     yellow='\033[1;33m'
     green='\033[0;32m'
-    # No color
+    # no color
     nc='\033[0m'
 
     # store current dir
     current_dir=$(pwd)
 
-    # Store names of git repos from $PROJECTS in an array
+    # store names of git repos from $PROJECTS in an array
     repos=()
     while IFS= read -r line; do
         repos+=("$line")
