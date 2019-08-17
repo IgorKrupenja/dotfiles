@@ -203,6 +203,7 @@ link_dotfiles_macos() {
     # cannot symlink as breaks theme changes using dark script
     mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
     cp -Rf $DOTFILES/marta/ $HOME/Library/Application\ Support/org.yanex.marta
+    ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
     # Trello CLI
     mv -fv $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
     mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
