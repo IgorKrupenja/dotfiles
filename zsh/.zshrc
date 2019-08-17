@@ -128,6 +128,8 @@ alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 alias mkdir='mkdir -pv'
 # thefuck
 alias f="fuck"
+# open Marta in current dir
+alias m="marta ."
 
 #############################################################################
 # SYSTEM
