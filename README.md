@@ -8,7 +8,7 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles. Both macOS and Linux are supported.
+A repository to store some of my dotfiles. Primarily for macOS, limited Ubuntu Server 18.04 support.
 
 ## Requirements
 
@@ -16,16 +16,8 @@ Can be installed on clean systems without git or Xcode Command Line Tools.
 
 ## Installation
 
-macOS:
+macOS or Ubuntu Server 18.04:
 
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install.sh)"
 ```
-
-Linux:
-
-```shell
-bash -c "$(wget -O- https://raw.githubusercontent.com/krupenja/dotfiles/master/install.sh)"
-```
-
-The process is completely automated aside from requesting Dropbox login to retrieven application settings backed up using Mackup.
