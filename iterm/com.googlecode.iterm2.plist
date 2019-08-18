@@ -2695,7 +2695,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>218 428 592 584 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1145 67 640 777 0 0 1920 1057 </string>
+	<string>0 0 960 1057 0 0 1920 1057 </string>
 	<key>NeverWarnAboutOverrides</key>
 	<true/>
 	<key>NeverWarnAboutOverrides_selection</key>
@@ -3707,7 +3707,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1280, 800}}</string>
 		<key>topLeft</key>
-		<string>{0, 698}</string>
+		<string>{269, 595}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -3716,7 +3716,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>587583374.071697</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>121</integer>
+	<integer>138</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3727,6 +3727,11 @@
 	<true/>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
+	<key>NoSyncPersistentRateLimitedUpdates</key>
+	<dict>
+		<key>CheckForUpdatedPythonRuntime</key>
+		<real>587939227.32031</real>
+	</dict>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
