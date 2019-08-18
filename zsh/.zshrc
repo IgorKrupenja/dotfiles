@@ -67,7 +67,6 @@ plugins=(
 zle_highlight+=(paste:none)
 # faster paste 
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
-# IMPORTNANT! Three lines below should stay at the bottom of configuration
 # Source default omz config
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
