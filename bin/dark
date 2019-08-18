@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Cannot be run on Linux
+case "$OSTYPE" in
+    linux*)
+        echo "ERROR: Script does not support Linux!"
+		exit 1
+esac
+
 ################################# Get dark mode state
 
 isDarkModeOn=$(
