@@ -42,7 +42,7 @@ if [[ $(git diff vscode/extensions.sh) ]]; then
     git commit -m "Update VSCode extensions"
 fi
 
-# push iTerm plist if there are changes
+# commit iTerm plist if there are changes
 if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
     git add iterm/com.googlecode.iterm2.plist
     git commit -m "Update iTerm settings"
@@ -51,6 +51,7 @@ fi
 # push
 echo ""
 echo "Pushing to dotfiles repo:"
+echo "-------------------------"
 git push
 
 #################### Notifications
