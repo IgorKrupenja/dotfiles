@@ -127,4 +127,8 @@ keyBindings {
     Space {
         id "core.select.move.down"
     }
+    
+    "Ctrl+Tab" {
+        id "core.activate.next.tab"
+    }
 }
