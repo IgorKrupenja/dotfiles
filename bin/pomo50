@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sleep 3000; osascript -e 'display notification "Take a break!" with title "Pomodoro"'

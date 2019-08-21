@@ -140,7 +140,21 @@ m() {
         command marta "$@"
     fi
 }
-
+# find
+ff() {
+    if [[ $2 == "" ]]; then
+        command find . -iname "*$1*"
+    else
+        command find "$1" -iname "*$2*"
+    fi
+}
+sf() {
+    if [[ $2 == "" ]]; then
+        command sudo find . -iname "*$1*"
+    else
+        command sudo find "$1" -iname "*$2*"
+    fi
+}
 
 #############################################################################
 # SYSTEM
@@ -223,18 +237,35 @@ alias tgr="tg continue; tg now"
 alias tgn="tg now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
-# Stop
-alias tgx="toggl now && toggl stop"
 # Projects
-alias tgboc="tg start -o Bocconi && tg now"
 alias tgttu="tg start -o TTU && tg now"
 alias tgcode="tg start -o Coding && tg now"
 alias tgcar="tg start -o Career && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
+tgboc() {
+    tg start -o Bocconi && tg now
+    # start 50 min pomodoro timer
+    # using a hack with external script as `at` command seems to be broken on macOS
+    bash -c "nohup pomo50 > /dev/null 2>&1 & disown"
+}
+# list history for today
 tgl() {
     tg ls -s $(date "+%m/%d/%y") -f +project
 }
+# Stop
+tgx() {
+    toggl now && toggl stop
+    # reset pomodoro timer
+    if [[ $(pgrep -f "pomo50") ]]; then
+        pkill -f "pomo50"
+    fi
+}
+# aliases below are needed to support accidental alt+t input -- happens when switching to terminal with alt+space
+alias †gn=tgn
+alias †gx=tgx
+alias †gcode=tgcode
+alias †gboc=tgboc
 
 # Trello CLI
 # ---------------------------------------------------------------------------
