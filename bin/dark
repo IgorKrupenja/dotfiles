@@ -117,7 +117,7 @@ if [ "$isDarkModeOn" = false ]; then
     sed -i '' 's/"workbench.colorTheme": "Flat White"/"workbench.colorTheme": "Material Theme Darker"/g' "$json"
     # Colours for bracket highlighting
 	sed -i '' 's/#399ee6/#82AAFF/g' "$json"
-    sed -i '' 's/#55b4d4/#C792EA/g' "$json"
+    sed -i '' 's/#ec8a00/#C792EA/g' "$json"
     sed -i '' 's/#a37acc/#F78C6C/g' "$json"
 	# To do highlighting
     sed -i '' 's/#ec8a00/#f08c66/g' "$json"
@@ -128,7 +128,7 @@ else
     sed -i '' 's/"workbench.colorTheme": "Material Theme Darker"/"workbench.colorTheme": "Flat White"/g' "$json"
     # Colours for bracket highlighting
 	sed -i '' 's/#82AAFF/#399ee6/g' "$json"
-    sed -i '' 's/#C792EA/#55b4d4/g' "$json"
+    sed -i '' 's/#C792EA/#ec8a00/g' "$json"
     sed -i '' 's/#F78C6C/#a37acc/g' "$json"
 	# To do highlighting
 	sed -i '' 's/#f08c66/#ec8a00/g' "$json"
