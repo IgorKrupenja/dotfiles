@@ -11,13 +11,13 @@
     // to do highlighting
     "todo-tree.defaultHighlight": {
         "type": "text",
-        "foreground": "white",
-        "background": "#f08c66",
-        // <100% opacity needed to make text selection visible
-        "opacity": 100,
-        // pastel icon and ruler colour to match opacity
-        "iconColour": "#ffa88c",
-        "rulerColour": "#ffa88c",
+        "foreground": "#a37acc",
+        "background": "#ffffff",
+        "iconColour": "#a37acc",
+        "rulerColour": "#a37acc",
+        "fontWeight": "bold",
+        "textDecoration": "dashed underline overline",
+        "opacity": "0"
     },
     // supports Latex, Python, PHP, JS, Java, HTML, Markdown
     "todo-tree.regex": "((%|#|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
@@ -57,7 +57,7 @@
     "editor.fontFamily": "'MonacoB Nerd Font', Monego, MonacoB2, Monaco, Hack, monospace",
     // disable PHP built-in suggestions in favour of plugin
     "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
     // disable activation of latex view when switching to tex file
@@ -84,7 +84,7 @@
     "editor.quickSuggestionsDelay": 0,
     // do not open webpage when Live Server is turned on
     "liveServer.settings.NoBrowser": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
     // Peacock colorises windows based on project
     "peacock.favoriteColors": [
         {
@@ -168,9 +168,9 @@
     },
     "window.newWindowDimensions": "maximized",
     "bracket-pair-colorizer-2.colors": [
-        "#82AAFF",
-        "#C792EA",
-        "#F78C6C",
+        "#55b4d4",
+        "#f2ae49",
+        "#a37acc",
     ],
     "bracket-pair-colorizer-2.excludedLanguages": [
         "html"
@@ -200,9 +200,9 @@
     "workbench.colorCustomizations": {
         "[Nord]": {
             "sideBar.border": "#00000000",
-            "panel.border": "#00000000",
             "scrollbar.shadow": "#ffffff00",
             "widget.shadow": "#ffffff00",
+            "panel.border": "#00000000",
             "focusBorder": "#ffffff00"
         },
         "[After Dark]": {
@@ -229,11 +229,23 @@
     "explorer.confirmDragAndDrop": false,
     "peacock.affectTitleBar": true,
     "editor.renderWhitespace": "selection",
-    "autoDarkMode.darkTheme": "Material Theme Darker",
-    "autoDarkMode.lightTheme": "Flat White",
-    "workbench.colorTheme": "Material Theme Darker",
-    "sync.gist": "441a3ae6ddbe84e58866069586c0b5dc",
-    "sync.autoDownload": true,
-    "sync.autoUpload": true,
-    "sync.quietSync": true,
+    "git-graph.fetchAvatars": true,
+    "editor.scrollBeyondLastLine": false,
+    "material-icon-theme.activeIconPack": "react_redux",
+    "workbench.colorTheme": "Flat White",
+    "git-graph.graphColours": [
+        "#399ee6",
+        "#a37acc",
+        "#f51818",
+        "#cc821a",
+        "#6c7680",
+        "#f77a7a",
+        "#55b4d4",
+        "#ec8a00",
+        "#99bf4d",
+        "#f2ae49",
+        "#abb0b6",
+        "#4cbf99"
+    ],
+    "material-icon-theme.folders.color": "#959da6",
 }
