@@ -6,6 +6,7 @@ code --install-extension ban.spellright
 code --install-extension bierner.markdown-mermaid
 code --install-extension bmewburn.vscode-intelephense-client
 code --install-extension brainfit.vscode-importmagic
+code --install-extension bubersson.theme-hop-light
 code --install-extension christian-kohler.path-intellisense
 code --install-extension CoenraadS.bracket-pair-colorizer-2
 code --install-extension ctf0.macros
@@ -23,9 +24,11 @@ code --install-extension Gruntfuggly.todo-tree
 code --install-extension idleberg.applescript
 code --install-extension inu1255.easy-snippet
 code --install-extension James-Yu.latex-workshop
+code --install-extension jeff-hykin.better-shellscript-syntax
 code --install-extension johnpapa.vscode-peacock
 code --install-extension lehni.vscode-fix-checksums
 code --install-extension lehni.vscode-titlebar-less-macos
+code --install-extension loilo.snazzy-light
 code --install-extension mattn.Lisp
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mhutchie.git-graph
@@ -37,10 +40,10 @@ code --install-extension pranaygp.vscode-css-peek
 code --install-extension ramyaraoa.show-offset
 code --install-extension ritwickdey.LiveServer
 code --install-extension sdras.night-owl
-code --install-extension Shan.code-settings-sync
 code --install-extension sleistner.vscode-fileutils
 code --install-extension ssmi.after-dark
 code --install-extension teabyii.ayu
+code --install-extension tecosaur.latex-utilities
 code --install-extension Tyriar.lorem-ipsum
 code --install-extension wmaurer.vscode-jumpy
 code --install-extension yzane.markdown-pdf
