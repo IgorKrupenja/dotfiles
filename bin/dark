@@ -112,26 +112,25 @@ fi
 json=$HOME/Library/Application\ Support/Code/User/settings.json
 
 if [ "$isDarkModeOn" = false ]; then
-	# TODO test This is a test
 	# theme
     sed -i '' 's/"workbench.colorTheme": "Flat White"/"workbench.colorTheme": "Material Theme Darker"/g' "$json"
     # Colours for bracket highlighting
-	sed -i '' 's/#399ee6/#82AAFF/g' "$json"
-    sed -i '' 's/#ec8a00/#C792EA/g' "$json"
+	sed -i '' 's/#55b4d4/#82AAFF/g' "$json"
+    sed -i '' 's/#f2ae49/#C792EA/g' "$json"
     sed -i '' 's/#a37acc/#F78C6C/g' "$json"
 	# To do highlighting
-    sed -i '' 's/#ec8a00/#f08c66/g' "$json"
+    sed -i '' 's/#a37acc/#f08c66/g' "$json"
 	# LaTeX PDF preview 
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
 else
 	# theme
     sed -i '' 's/"workbench.colorTheme": "Material Theme Darker"/"workbench.colorTheme": "Flat White"/g' "$json"
     # Colours for bracket highlighting
-	sed -i '' 's/#82AAFF/#399ee6/g' "$json"
-    sed -i '' 's/#C792EA/#ec8a00/g' "$json"
+	sed -i '' 's/#82AAFF/#55b4d4/g' "$json"
+    sed -i '' 's/#C792EA/#f2ae49/g' "$json"
     sed -i '' 's/#F78C6C/#a37acc/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#f08c66/#ec8a00/g' "$json"
+	sed -i '' 's/#f08c66/#a37acc/g' "$json"
 	# LaTeX PDF preview 
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' "$json"
 fi
