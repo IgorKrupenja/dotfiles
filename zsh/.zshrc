@@ -132,7 +132,6 @@ alias mkdir='mkdir -pv'
 # thefuck
 alias f="fuck"
 # open Marta in current dir
-# alias m="marta ."
 m() {
     if [[ $@ == "" ]]; then
         command marta .
