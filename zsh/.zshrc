@@ -161,18 +161,35 @@ sf() {
 
 # Homebrew
 # ---------------------------------------------------------------------------
+alias bif="brew info"
+alias bcif="brew cask info"
 alias bi="brew install"
 alias bci="brew cask install"
 alias bl="brew list"
 alias bcl="brew cask list"
 alias bs="brew search"
 alias br="brew rmtree"
-alias bro="brew remove"
 alias bcr="brew cask remove"
-alias bdep="brew deps --installed"
+bdep() {
+    if [[ $@ == "" ]]; then
+        brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
+    else
+        command brew rmtree --dry-run "$@"
+    fi   
+}
 alias blv="brew leaves"
-alias bul="brew update --verbose && brew outdated && brew cask outdated"
-alias bu="brew upgrade && brew cask upgrade"
+alias bul="brew outdated && brew cask outdated"
+# alias bu="brew update --verbose && brew upgrade && brew cask upgrade"
+bu() {
+    echo -e "\e[4mUpdating Homebrew:\e[0m"
+    brew update --verbose
+    echo ""
+    echo -e "\e[4mUpdating brew packages:\e[0m" 
+    brew upgrade
+    echo ""
+    echo -e "\e[4mUpdating brew casks:\e[0m" 
+    brew cask upgrade
+}
 alias bd="brew cleanup; brew doctor"
 
 # System info
