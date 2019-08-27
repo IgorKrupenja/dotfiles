@@ -263,7 +263,7 @@ tgboc() {
     tg start -o Bocconi && tg now
     # start 50 min pomodoro timer
     # using a hack with external script as `at` command seems to be broken on macOS
-    bash -c "nohup pomo50 > /dev/null 2>&1 & disown"
+    bash -c "nohup pomo 3000 > /dev/null 2>&1 & disown"
 }
 # list history for today
 tgl() {
