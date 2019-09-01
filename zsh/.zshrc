@@ -179,7 +179,6 @@ bdep() {
 }
 alias blv="brew leaves"
 alias bul="brew outdated && brew cask outdated"
-# alias bu="brew update --verbose && brew upgrade && brew cask upgrade"
 bu() {
     echo -e "\e[4mUpdating Homebrew:\e[0m"
     brew update --verbose
@@ -282,6 +281,7 @@ alias †gn=tgn
 alias †gx=tgx
 alias †gcode=tgcode
 alias †gboc=tgboc
+alias †gcar=tgcar
 
 # Trello CLI
 # ---------------------------------------------------------------------------
@@ -337,7 +337,7 @@ alias calm="gcalcli calm --military --mon"
 # World clock
 # ---------------------------------------------------------------------------
 wcl() {
-    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Tallinn"\
+    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Tallinn" \
     "Europe/Moscow" "Asia/Singapore")
     OUTPUT=""
     
@@ -520,7 +520,7 @@ alias fsitc="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 # fixes for Bocconi thesis bibtex file after Mendeley sync
 alias bib="python3 $CLOUD/Bocconi/LaTeX\ thesis/bib.py"
 # clean up in case of build fails
-alias thcl="find \"$HOME/OneDrive - TTU/Bocconi/LaTeX thesis/\" -type f -maxdepth 1 ! -name .gitignore ! -name bib.py ! -name LF1801885.tex ! -name library.bib -exec trash {} \;"
+alias thcl="find \"$HOME/OneDrive - TTU/Bocconi/LaTeX thesis/\" -type f -maxdepth 1 ! -name .gitignore ! -name bib.py ! -name abstract.txt ! -name LF1801885.tex ! -name library.bib -exec trash {} \;"
 
 #############################################################################
 # LINUX
