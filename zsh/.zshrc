@@ -276,7 +276,8 @@ tgx() {
         pkill -f "pomo50"
     fi
 }
-# aliases below are needed to support accidental alt+t input -- happens when switching to terminal with alt+space
+# aliases below are needed to support accidental alt+t input 
+# occasionally happens when switching to terminal with alt+space
 alias †gn=tgn
 alias †gx=tgx
 alias †gcode=tgcode
