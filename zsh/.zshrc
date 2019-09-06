@@ -253,7 +253,7 @@ alias tgn="tg now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
 # Projects
-alias tgttu="tg start -o TTU && tg now"
+alias tgtt="tg start -o TalTech && tg now"
 alias tgcode="tg start -o Coding && tg now"
 alias tgcar="tg start -o Career && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
@@ -282,6 +282,7 @@ alias †gx=tgx
 alias †gcode=tgcode
 alias †gboc=tgboc
 alias †gcar=tgcar
+alias †gtt=tgtt
 
 # Trello CLI
 # ---------------------------------------------------------------------------
