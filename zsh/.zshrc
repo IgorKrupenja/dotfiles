@@ -258,6 +258,13 @@ alias tgcode="tg start -o Coding && tg now"
 alias tgcar="tg start -o Career && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
+# TalTech subjects
+alias tgos="tg start \"OS\" -o TalTech && tg now"
+alias tgpy="tg start \"Python\" -o TalTech && tg now"
+alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now"
+alias tgeng="tg start \"English\" -o TalTech && tg now"
+alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
+
 tgboc() {
     tg start -o Bocconi && tg now
     # start 50 min pomodoro timer
@@ -309,6 +316,14 @@ tred!() {
 
 tren!() {
     trello add-card "$1" -b "💪 Get shit done" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
+}
+
+tredt() {
+    trello add-card "$1" -b "💪 Get shit done" -l '💣 Today' -g 5b7c3a417b03a914551de144
+}
+
+trent() {
+    trello add-card "$1" -b "💪 Get shit done" -l '🌆 Tonight' -g 5b7c3a417b03a914551de144
 }
 
 tref() {
