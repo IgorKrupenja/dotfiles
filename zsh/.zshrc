@@ -129,6 +129,10 @@ alias lsd="gls --group-directories-first --color"
 alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 # recursive mkdir
 alias mkdir='mkdir -pv'
+# touch with dir creation
+touch() {
+    mkdir -p "$(dirname "$1")" && touch "$1";
+}
 # thefuck
 alias f="fuck"
 # open Marta in current dir
