@@ -107,6 +107,36 @@ else
 		'
 fi
 
+################################# PyCharm
+
+# Uses a hacky approach with sending keystrokes from AppleScript
+# Will only work if PyCharm is already running
+if [ "$isDarkModeOn" = false ]; then
+    osascript -e '
+		if application "PyCharm" is running then
+		    tell application "PyCharm" to activate
+			tell application "System Events"
+				keystroke "`" using {control down}
+				keystroke "5"
+				delay 0.4
+				keystroke "5"
+			end tell
+		end if
+		'
+else
+    osascript -e '
+		if application "PyCharm" is running then
+		  tell application "PyCharm" to activate
+			tell application "System Events"
+				keystroke "`" using {control down}
+				keystroke "5"
+				delay 0.4
+				keystroke "1"
+			end tell
+		end if
+		'
+fi
+
 ################################# VSCode
 
 json=$HOME/Library/Application\ Support/Code/User/settings.json
