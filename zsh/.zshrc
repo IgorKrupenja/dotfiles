@@ -266,7 +266,7 @@ alias tgphys="tg start -o Physio && tg now"
 alias tgos="tg start \"OS\" -o TalTech && tg now"
 alias tgpy="tg start \"Python\" -o TalTech && tg now"
 alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now"
-alias tgeng="tg start \"English\" -o TalTech && tg now"
+alias tgen="tg start \"English\" -o TalTech && tg now"
 alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
 
 tgboc() {
