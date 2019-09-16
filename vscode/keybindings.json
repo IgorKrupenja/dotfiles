@@ -237,11 +237,6 @@
     },
     {
         "key": "cmd+i",
-        "command": "-markdown.extension.editing.toggleItalic",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
-    },
-    {
-        "key": "cmd+i",
         "command": "editor.action.showHover",
         "when": "editorTextFocus"
     },
@@ -284,26 +279,12 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+r",
-        "command": "sqlite.runDocumentQuery",
-        "when": "editorLangId =~ /(sql|sqlite)/"
-    },
-    {
-        "key": "shift+cmd+q",
-        "command": "-sqlite.runDocumentQuery",
-        "when": "editorLangId =~ /(sql|sqlite)/"
-    },
-    {
         "key": "ctrl+a",
         "command": "cursorLineStart"
     },
     {
-        "key": "cmd+b",
-        "command": "-markdown.extension.editing.toggleBold",
-        "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
-    },
-    {
-        "key": "cmd+. cmd+s",
-        "command": "-easySnippet.run"
+        "key": "cmd+k cmd+b",
+        "command": "macros.showLockedPreviewAndFocusBack",
+        "when": "editorLangId == 'markdown'"
     },
 ]
