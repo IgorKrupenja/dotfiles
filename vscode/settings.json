@@ -3,71 +3,33 @@
     "workbench.iconTheme": "material-icon-theme",
     "markdownlint.config": {
         // disable "No HTML" warnings
-        "MD033": false
+        "MD033": false,
+        // disable "no trailing newline"
+        "MD047": false
     },
     "[latex]": {
         "editor.wordWrap": "on"
     },
-    // to do highlighting
-    "todo-tree.defaultHighlight": {
-        "type": "text",
-        "foreground": "#a37acc",
-        "background": "#ffffff",
-        "iconColour": "#a37acc",
-        "rulerColour": "#a37acc",
-        "fontWeight": "bold",
-        "textDecoration": "dashed underline overline",
-        "opacity": "0"
-    },
-    // supports Latex, Python, PHP, JS, Java, HTML, Markdown
-    "todo-tree.regex": "((%|#|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
-    // highlight to do items with no lag
-    "todo-tree.highlightDelay": 0,
-    "todo-tree.regexCaseSensitive": false,
-    "todo-tree.tags": [
-        "TODO",
-        "FIXME"
-    ],
-    // hide activity bar (the one on the left with icons)
-    "workbench.activityBar.visible": false,
     "terminal.integrated.cursorBlinking": true,
     // each XML attribute on new line when formatting
     "xmlTools.splitAttributesOnFormat": true,
-    // smaller tab WIDTH
-    "workbench.editor.tabSizing": "shrink",
-    // open LaTeX preview inside VSCode
-    "latex-workshop.view.pdf.viewer": "tab",
-    // Enable linting LaTeX with ChkTeX.
-    "latex-workshop.chktex.enabled": true,
-    "breadcrumbs.enabled": false,
     // add brackets to function autocompletion in Python
     "python.autoComplete.addBrackets": true,
-    // autosave after 1000 ms delay
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "onFocusChange",
     "python.linting.pep8Enabled": true,
     "python.linting.pydocstyleEnabled": true,
     // make Pep8 underline colour green for message type 'E'
     "python.linting.pep8CategorySeverity.E": "Warning",
-    "latex-workshop.synctex.afterBuild.enabled": true,
     "editor.cursorSmoothCaretAnimation": true,
-    // four spaces for idents in shell script
-    "shellformat.flag": "-i 4",
     // disable text drag-and-drop
     "editor.dragAndDrop": false,
-    "editor.fontFamily": "'MonacoB Nerd Font', Monego, MonacoB2, Monaco, Hack, monospace",
-    // disable PHP built-in suggestions in favour of plugin
-    "php.suggest.basic": false,
-    "latex-workshop.view.pdf.invert": 0,
+    "editor.fontFamily": "'MonacoB Nerd Font', Monego, MonacoB, Monaco, Hack, monospace",
     // good ol' dual-pane settings editor
     "workbench.settings.useSplitJSON": true,
-    // disable activation of latex view when switching to tex file
-    "latex-workshop.view.autoFocus.enabled": false,
-    // do not build latex automatically
-    "latex-workshop.latex.autoBuild.run": "never",
     // disable Git Graph in status bar
     "git-graph.showStatusBarItem": false,
     // disable welcome page
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     // map file types to languages
     "files.associations": {
         "*.emacs": "lisp"
@@ -75,116 +37,53 @@
     "workbench.editor.tabCloseButton": "left",
     // disable movement in git graph view when clicking on a commit
     "git-graph.autoCenterCommitDetailsView": false,
-    "debug.openDebug": "openOnDebugBreak",
     // make shortcuts for some commands work in terminal
     "terminal.integrated.commandsToSkipShell": [
         // ctrl + f
         "workbench.action.openRecent"
     ],
     "editor.quickSuggestionsDelay": 0,
-    // do not open webpage when Live Server is turned on
-    "liveServer.settings.NoBrowser": true,
-    "workbench.editor.enablePreviewFromQuickOpen": true,
-    // Peacock colorises windows based on project
-    "peacock.favoriteColors": [
-        {
-            "name": "Angular Red",
-            "value": "#b52e31"
-        },
-        {
-            "name": "Auth0 Orange",
-            "value": "#eb5424"
-        },
-        {
-            "name": "Azure Blue",
-            "value": "#007fff"
-        },
-        {
-            "name": "C# Purple",
-            "value": "#68217A"
-        },
-        {
-            "name": "Gatsby Purple",
-            "value": "#639"
-        },
-        {
-            "name": "Go Cyan",
-            "value": "#5dc9e2"
-        },
-        {
-            "name": "Java Blue-Gray",
-            "value": "#557c9b"
-        },
-        {
-            "name": "JavaScript Yellow",
-            "value": "#f9e64f"
-        },
-        {
-            "name": "Mandalorian Blue",
-            "value": "#1857a4"
-        },
-        {
-            "name": "Node Green",
-            "value": "#215732"
-        },
-        {
-            "name": "React Blue",
-            "value": "#00b3e6"
-        },
-        {
-            "name": "Something Different",
-            "value": "#832561"
-        },
-        {
-            "name": "Vue Green",
-            "value": "#42b883"
-        },
-        {
-            "name": "PHP Purple",
-            "value": "#4f5b93"
-        },
-        {
-            "name": "Terminal Black",
-            "value": "#000000"
-        }
-    ],
-    "peacock.affectActivityBar": false,
-    "peacock.affectStatusBar": true,
-    "peacock.lightForegroundColor": "ffffff",
     // vertical ruler like IntelliJ
     "editor.rulers": [
         120
     ],
     // To enable British English spell-checking
     "spellright.groupDictionaries": false,
-    // Underline settings for speller
-    "spellright.notificationClassByParser": {
-        "code": "information",
-        "latex": "information"
-    },
-    // mode-specific speller settings
-    "spellright.spellContextByClass": {
-        "jsonc": "comments",
-    },
+    // Underline colour for speller
+    "spellright.notificationClass": "information",
     "window.newWindowDimensions": "maximized",
     "bracket-pair-colorizer-2.colors": [
         "#55b4d4",
         "#f2ae49",
         "#a37acc",
     ],
+    // TODO do I need this?
     "bracket-pair-colorizer-2.excludedLanguages": [
-        "html"
+        // "html"
     ],
     "editor.minimap.renderCharacters": false,
     // hack to fix titlebar-less extension bug
     // also need to have checksum fixer extension enabled
     // otherwise centre-top area of the window is not clickable
     // see https://github.com/electron/electron/issues/14529
-    "window.title": ".",
+    // disabled for now as titlebar-less extension is broken anyway
+    // "window.title": ".",
     "macros.list": {
         // switch focus back on MD preview open
         "showPreviewAndFocusBack": [
             "markdown.showPreviewToSide",
+            {
+                "command": "$delay",
+                // TODO might need to increase for very large files
+                "args": {
+                    "delay": 600
+                }
+            },
+            "workbench.action.focusLeftGroup"
+        ],
+        // switch focus back on LOCKED MD preview open
+        "showLockedPreviewAndFocusBack": [
+            "markdown.showLockedPreviewToSide",
             {
                 "command": "$delay",
                 // TODO might need to increase for very large files
@@ -201,15 +100,11 @@
         "[Nord]": {
             "sideBar.border": "#00000000",
             "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
             "panel.border": "#00000000",
-            "focusBorder": "#ffffff00"
+            // "editor.background": "#1C2027"
         },
-        "[After Dark]": {
-            "scrollbar.shadow": "#ffffff00",
-            "widget.shadow": "#ffffff00",
-            "panel.border": "#00000000",
-            "focusBorder": "#ffffff00",
+        "[One Monokai 80s]": {
+            // "editor.background": "#212121"
         },
     },
     // fix comment colours for some themes
@@ -226,13 +121,9 @@
             ]
         }
     },
-    "explorer.confirmDragAndDrop": false,
-    "peacock.affectTitleBar": true,
     "editor.renderWhitespace": "selection",
     "git-graph.fetchAvatars": true,
-    "editor.scrollBeyondLastLine": false,
     "material-icon-theme.activeIconPack": "react_redux",
-    "workbench.colorTheme": "Flat White",
     "git-graph.graphColours": [
         "#399ee6",
         "#a37acc",
@@ -247,5 +138,85 @@
         "#abb0b6",
         "#4cbf99"
     ],
+    // TODO might need to change
     "material-icon-theme.folders.color": "#959da6",
+    "editor.matchBrackets": false,
+    "editor.autoClosingOvertype": "always",
+    "[markdown]": {
+        "editor.quickSuggestions": true,
+        "editor.wordWrap": "on",
+        "editor.wordBasedSuggestions": false
+    },
+    "spellright.language": [
+        "en",
+        "en_GB"
+    ],
+    // workaround to fix jumpy markdown ediitng
+    // see https://github.com/microsoft/vscode/issues/69467
+    "markdown.preview.scrollEditorWithPreview": false,
+    "todo-tree.highlights.defaultHighlight": {
+        "type": "text",
+        "foreground": "#a37acc",
+        "background": "#ffffff",
+        "iconColour": "#a37acc",
+        "rulerColour": "#a37acc",
+        "fontWeight": "bold",
+        "textDecoration": "dashed underline overline",
+        "opacity": "0"
+    },
+    "todo-tree.highlights.highlightDelay": 0,
+    "todo-tree.regex.regex": "((%|#|/*|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
+    "todo-tree.regex.regexCaseSensitive": false,
+    "editor.tabSize": 2,
+    // smoother cursor blink animation
+    "editor.cursorBlinking": "smooth",
+    // TODO experimental
+    "editor.formatOnType": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "workbench.activityBar.visible": true,
+    "breadcrumbs.enabled": false,
+    "color-manager.languages": [
+        "css",
+        "html",
+        "javascript",
+        "json",
+        "scss"
+    ],
+    "workbench.editor.tabSizing": "shrink",
+    "zenMode.fullScreen": false,
+    "window.restoreWindows": "all",
+    "[css]": {
+        "editor.formatOnPaste": false
+    },
+    // properly format text in HTML with line breaks
+    // "html.format.preserveNewLines": false,
+    "editor.minimap.enabled": false,
+    "highlight-matching-tag.highlightFromContent": true,
+    "highlight-matching-tag.highlightSelfClosing": true,
+    "highlight-matching-tag.styles": {
+        "opening": {
+            "name": {
+                "underline": "#D68400"
+            }
+        },
+        "closing": {
+            "name": {
+                "underline": "#D68400"
+            }
+        }
+    },
+    // needed for customizeUI to inline title bar
+    "window.titleBarStyle": "native",
+    "customizeUI.titleBar": "inline",
+    "customizeUI.activityBar": "bottom",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "html",
+        "css"
+    ],
+    "workbench.colorTheme": "Flat White",
 }
