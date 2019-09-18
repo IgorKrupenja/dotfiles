@@ -27,7 +27,7 @@ environment {
 etty {
     useMainThemeColors true
     fonts {
-        normal [ "Hack" 12 ]
+        normal [ "MonacoB Nerd Font" 12 ]
     }
 }
 
