@@ -16,7 +16,7 @@ exec > >(tee -a "/tmp/dotfiles-install-$(date +"%Y%m%d%H%M").log") 2>&1
 # Repo location
 DOTFILES="$HOME/Projects/dotfiles"
 # Custom backup directory for securely stored stuff
-SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Backups/Mac/Custom"
+SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Archive/Recent/Mac/"
 
 main_macos() {
     macos_get_sudo
