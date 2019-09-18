@@ -18,7 +18,7 @@ cd $DOTFILES
 brew bundle dump --force
 if [[ $(git diff Brewfile) ]]; then
     git add Brewfile
-    git commit -m "Updated Brewfile"
+    git commit -m "Update Brewfile"
 fi
 
 # Marta
@@ -32,7 +32,7 @@ fi
 cp -Rf $HOME/Library/Application\ Support/Code/User/settings.json $DOTFILES/vscode/
 if [[ $(git diff vscode/settings.json) ]]; then
     git add vscode/settings.json
-    git commit -m "Updated VSCode settings"
+    git commit -m "Update VSCode settings"
 fi
 
 code --list-extensions | xargs -L 1 echo code --install-extension > $DOTFILES/vscode/extensions.sh
@@ -40,6 +40,11 @@ chmod +x $DOTFILES/vscode/extensions.sh
 if [[ $(git diff vscode/extensions.sh) ]]; then
     git add vscode/extensions.sh
     git commit -m "Update VSCode extensions"
+fi
+
+if [[ $(git diff vscode/keybindings.json) ]]; then
+    git add vscode/keybindings.json
+    git commit -m "Update VSCode keybindings"
 fi
 
 # commit iTerm plist if there are changes
