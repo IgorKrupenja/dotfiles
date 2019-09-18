@@ -33,18 +33,6 @@ osascript -e '
 	end tell
 	'
 
-################################# Chrome
-
-# Requires: Dark Reader plugin
-
-# Will only work if Chrome is already running
-# Dark Reader using global shortcut
-osascript -e '
-  tell application "System Events"
-	  keystroke "d" using {control down, shift down}
-  end tell
-'
-
 ################################# Marta
 
 conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
@@ -150,7 +138,7 @@ if [ "$isDarkModeOn" = false ]; then
     sed -i '' 's/#a37acc/#F78C6C/g' "$json"
 	# To do highlighting
     sed -i '' 's/#a37acc/#f08c66/g' "$json"
-	# LaTeX PDF preview 
+	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
 else
 	# theme
@@ -161,7 +149,7 @@ else
     sed -i '' 's/#F78C6C/#a37acc/g' "$json"
 	# To do highlighting
 	sed -i '' 's/#f08c66/#a37acc/g' "$json"
-	# LaTeX PDF preview 
+	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' "$json"
 fi
 
