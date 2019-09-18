@@ -30,3 +30,5 @@
 [mergetool "smerge"]
 	cmd = smerge mergetool "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 	trustExitCode = true
+[credential]
+	helper = store
