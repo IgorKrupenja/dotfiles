@@ -21,7 +21,7 @@ osascript -e '
 ################################# variable for other apps
 
 # define variable if need to set dark theme in other apps
-# 2>/dev/null to supress error if dark mode is off
+# 2>/dev/null to suppress error if dark mode is off
 if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
 	set_dark=true
 fi
@@ -140,19 +140,3 @@ if [ "$set_dark" = true ]; then
 else
 	sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
 fi
-
-################################# Mailspring
-
-# # Quit Mailspring
-# osascript -e 'quit app "Mailspring.app"'
-# sleep 1
-
-# # theme change
-# if grep -q "\"theme\": \"ui-light\"" /Users/igor/Library/Application\ Support/Mailspring/config.json; then
-#     sed -i '' 's/"theme": "ui-light"/"theme": "ui-dark"/g' /Users/igor/Library/Application\ Support/Mailspring/config.json
-# else
-#     sed -i '' 's/"theme": "ui-dark"/"theme": "ui-light"/g' /Users/igor/Library/Application\ Support/Mailspring/config.json
-# fi
-
-# # reopen Mailspring
-# open -a /Applications/Mailspring.app -g --args --background
