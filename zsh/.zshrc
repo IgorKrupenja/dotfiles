@@ -391,8 +391,8 @@ alias calm="gcalcli calm --military --mon"
 # World clock
 # ---------------------------------------------------------------------------
 wcl() {
-    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Tallinn" \
-    "Europe/Moscow" "Asia/Singapore")
+    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna" \
+    "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
     OUTPUT=""
 
     for loc in ${TIME_ZONES[@]}; do
