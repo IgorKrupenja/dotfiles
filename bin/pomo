@@ -1,3 +1,17 @@
 #!/bin/bash
 
 sleep "$@"; osascript -e 'display notification "Take a break!" with title "Pomodoro" sound name "Ping"'
+
+############### USAGE
+
+#### Starting a timer
+
+# using a hack with external script as `at` command seems to be broken on macOS
+# replace 3000 with needed interval in sec:
+# bash -c "nohup pomo 3000 > /dev/null 2>&1 & disown"
+
+#### Stopping a timer
+
+# if [[ $(pgrep -f "pomo") ]]; then
+#         pkill -f "pomo"
+# fi

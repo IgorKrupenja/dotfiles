@@ -304,22 +304,13 @@ alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
 
 tgboc() {
     tg start -o Bocconi && tg now
-    # start 50 min pomodoro timer
-    # using a hack with external script as `at` command seems to be broken on macOS
-    # bash -c "nohup pomo 3000 > /dev/null 2>&1 & disown"
 }
 # list history for today
 tgl() {
     tg ls -s $(date "+%m/%d/%y") -f +project
 }
 # Stop
-tgx() {
-    toggl now && toggl stop
-    # reset pomodoro timer
-    if [[ $(pgrep -f "pomo50") ]]; then
-        pkill -f "pomo50"
-    fi
-}
+alias tgx="toggl now && toggl stop"
 # aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
 alias †gn=tgn
