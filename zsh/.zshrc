@@ -5,7 +5,7 @@
 # Path variables
 # ---------------------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
-export PROJECTS="$HOME/Projects/"
+export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
