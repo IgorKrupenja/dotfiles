@@ -10,11 +10,6 @@ export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
 export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$PATH
-# Various stuff for Perl and Latex
-PATH="/Users/igor/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/igor/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/igor/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/igor/perl5\""; export PERL_MB_OPT;PERL_MM_OPT="INSTALL_BASE=/Users/igor/perl5"; export PERL_MM_OPT;
 
 # Key bindings
 # ---------------------------------------------------------------------------
@@ -533,15 +528,6 @@ alias sshk="ssh igor@krupenja.net"
 alias fsk="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
 # Mount home dir on enos
 alias fsitc="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
-
-#############################################################################
-# THESIS
-#############################################################################
-
-# fixes for Bocconi thesis bibtex file after Mendeley sync
-alias bib="python3 $CLOUD/Bocconi/LaTeX\ thesis/bib.py"
-# clean up in case of build fails
-alias thcl="find \"$HOME/OneDrive - TTU/Bocconi/LaTeX thesis/\" -type f -maxdepth 1 ! -name .gitignore ! -name bib.py ! -name abstract.txt ! -name LF1801885.tex ! -name library.bib -exec trash {} \;"
 
 #############################################################################
 # LINUX
