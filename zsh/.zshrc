@@ -190,6 +190,44 @@ bu() {
 }
 alias bd="brew cleanup; brew doctor"
 
+# Display
+# ---------------------------------------------------------------------------
+alias srx="/Applications/RDM.app/Contents/MacOS/SetResX"
+# zoom out built-in display
+lzo() {
+    # check if two displays present
+    if srx -ld | wc -l | grep -q "2"; then
+        srx -w 1440 -h 900 -s 2.0 -d 1
+    else
+        srx -w 1440 -h 900 -s 2.0
+    fi
+}
+# zoom in built-in display
+lzi() {
+    if srx -ld | wc -l | grep -q "2"; then
+        srx -w 1280 -h 800 -s 2.0 -d 1
+    else
+        srx -w 1280 -h 800 -s 2.0
+    fi
+}
+# zoom out external monitor
+mzo() {
+    # check if two displays present
+    if srx -ld | wc -l | grep -q "2"; then
+        /Applications/RDM.app/Contents/MacOS/SetResX -w 2560 -h 1440 -s 1.0
+    else
+        echo "External monitor not connected!"
+    fi
+}
+# zoom in external monitor
+mzi() {
+    if srx -ld | wc -l | grep -q "2"; then
+        /Applications/RDM.app/Contents/MacOS/SetResX -w 2048 -h 1152 -s 2.0
+    else
+        echo "External monitor not connected!"
+    fi
+}
+
 # System info
 # ---------------------------------------------------------------------------
 # status
@@ -308,7 +346,7 @@ tred() {
 tren() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight'
 }
-
+# important label
 tred!() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
 }
@@ -316,7 +354,7 @@ tred!() {
 tren!() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
 }
-
+# TalTech label
 tredt() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5b7c3a417b03a914551de144
 }
