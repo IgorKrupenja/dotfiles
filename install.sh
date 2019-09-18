@@ -214,7 +214,7 @@ dotfiles_macos() {
     ln -sv "$SECURE_BACKUP_DIR/.togglrc" $HOME/
     # fix white-on-white text
     cd $HOME/Projects
-    git clone https://github.com/krupenja/toggl-cli.git 
+    git clone https://github.com/krupenja/toggl-cli.git
     mv -fv /Users/igor/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
 }
 
@@ -223,7 +223,6 @@ macos_settings() {
     echo ""
     echo "*************************** Restoring macOS settings ***************************"
     echo ""
-
 
     # crontab
     (crontab -l ; echo "0 22 * * * sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1") | crontab -
