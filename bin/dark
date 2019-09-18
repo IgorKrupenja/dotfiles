@@ -2,15 +2,16 @@
 
 # Cannot be run on Linux
 case "$OSTYPE" in
-    linux*)
-        echo "ERROR: Script does not support Linux!"
-		exit 1
+linux*)
+	echo "ERROR: Script does not support Linux!"
+	exit 1
+	;;
 esac
 
 ################################# Get dark mode state
 
 isDarkModeOn=$(
-    osascript <<EOT
+	osascript <<EOT
 	tell application id "com.apple.systemevents"
 		tell appearance preferences
 			set isDarkModeOn to dark mode
@@ -38,9 +39,9 @@ osascript -e '
 conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
 
 if [ "$isDarkModeOn" = false ]; then
-    sed -i '' -e 's/theme "Classic"/theme "Igor"/g' "$conf"
+	sed -i '' -e 's/theme "Classic"/theme "Igor"/g' "$conf"
 else
-    sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
+	sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
 fi
 
 ################################# PDF Expert
@@ -55,7 +56,7 @@ if [ "$isDarkModeOn" = false ]; then
 		end if
 		'
 else
-    osascript -e '
+	osascript -e '
 		if application "PDF Expert" is running then
     		tell application "PDF Expert" to activate
 			tell application "System Events"
@@ -65,65 +66,40 @@ else
 		'
 fi
 
-################################# IntelliJ IDEA
+################################# JetBrains IDEs
 
 # Uses a hacky approach with sending keystrokes from AppleScript
-# Will only work if IntelliJ IDEA is already running
-if [ "$isDarkModeOn" = false ]; then
-    osascript -e '
-		if application "IntelliJ IDEA" is running then
-		    tell application "IntelliJ IDEA" to activate
+# Will only work if IDEs are already running
+
+ides=("IntelliJ IDEA" "PyCharm")
+
+for ide in "${ides[@]}"; do
+	if [ "$isDarkModeOn" = false ]; then
+		osascript <<EOF
+		if application "$ide" is running then
+		  tell application "$ide" to activate
 			tell application "System Events"
-				keystroke "`" using {control down}
+				keystroke "\`" using {control down}
 				keystroke "5"
 				delay 0.4
-				keystroke "2"
+				keystroke "5"
 			end tell
 		end if
-		'
-else
-    osascript -e '
-		if application "IntelliJ IDEA" is running then
-		  tell application "IntelliJ IDEA" to activate
+EOF
+	else
+		osascript <<EOF
+		if application "$ide" is running then
+		  tell application "$ide" to activate
 			tell application "System Events"
-				keystroke "`" using {control down}
+				keystroke "\`" using {control down}
 				keystroke "5"
 				delay 0.4
 				keystroke "1"
 			end tell
 		end if
-		'
-fi
-
-################################# PyCharm
-
-# Uses a hacky approach with sending keystrokes from AppleScript
-# Will only work if PyCharm is already running
-if [ "$isDarkModeOn" = false ]; then
-    osascript -e '
-		if application "PyCharm" is running then
-		    tell application "PyCharm" to activate
-			tell application "System Events"
-				keystroke "`" using {control down}
-				keystroke "5"
-				delay 0.4
-				keystroke "5"
-			end tell
-		end if
-		'
-else
-    osascript -e '
-		if application "PyCharm" is running then
-		  tell application "PyCharm" to activate
-			tell application "System Events"
-				keystroke "`" using {control down}
-				keystroke "5"
-				delay 0.4
-				keystroke "1"
-			end tell
-		end if
-		'
-fi
+EOF
+	fi
+done
 
 ################################# VSCode
 
@@ -131,22 +107,22 @@ json=$HOME/Library/Application\ Support/Code/User/settings.json
 
 if [ "$isDarkModeOn" = false ]; then
 	# theme
-    sed -i '' 's/"workbench.colorTheme": "Flat White"/"workbench.colorTheme": "Material Theme Darker"/g' "$json"
-    # Colours for bracket highlighting
+	sed -i '' 's/"workbench.colorTheme": "Flat White"/"workbench.colorTheme": "Material Theme Darker"/g' "$json"
+	# Colours for bracket highlighting
 	sed -i '' 's/#55b4d4/#82AAFF/g' "$json"
-    sed -i '' 's/#f2ae49/#C792EA/g' "$json"
-    sed -i '' 's/#a37acc/#F78C6C/g' "$json"
+	sed -i '' 's/#f2ae49/#C792EA/g' "$json"
+	sed -i '' 's/#a37acc/#F78C6C/g' "$json"
 	# To do highlighting
-    sed -i '' 's/#a37acc/#f08c66/g' "$json"
+	sed -i '' 's/#a37acc/#f08c66/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
 else
 	# theme
-    sed -i '' 's/"workbench.colorTheme": "Material Theme Darker"/"workbench.colorTheme": "Flat White"/g' "$json"
-    # Colours for bracket highlighting
+	sed -i '' 's/"workbench.colorTheme": "Material Theme Darker"/"workbench.colorTheme": "Flat White"/g' "$json"
+	# Colours for bracket highlighting
 	sed -i '' 's/#82AAFF/#55b4d4/g' "$json"
-    sed -i '' 's/#C792EA/#f2ae49/g' "$json"
-    sed -i '' 's/#F78C6C/#a37acc/g' "$json"
+	sed -i '' 's/#C792EA/#f2ae49/g' "$json"
+	sed -i '' 's/#F78C6C/#a37acc/g' "$json"
 	# To do highlighting
 	sed -i '' 's/#f08c66/#a37acc/g' "$json"
 	# LaTeX PDF preview
@@ -158,9 +134,9 @@ fi
 sett=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
 
 if [ "$isDarkModeOn" = false ]; then
-    sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$sett"
+	sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$sett"
 else
-    sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$sett"
+	sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$sett"
 fi
 
 ################################# cht.sh
@@ -168,9 +144,9 @@ fi
 conf=$HOME/.cht.sh/cht.sh.conf
 
 if [ "$isDarkModeOn" = false ]; then
-    sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
+	sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
 else
-    sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
+	sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
 fi
 
 ################################# Mailspring
