@@ -65,7 +65,7 @@ plugins=(
 )
 # disable paste highlight
 zle_highlight+=(paste:none)
-# faster paste 
+# faster paste
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # Source default omz config
 source $ZSH/oh-my-zsh.sh
@@ -92,7 +92,7 @@ alias tla="la $HOME/.Trash"
 # empty trash
 te() {
     osascript <<-EOF
-	tell application "Finder" 
+	tell application "Finder"
 		set itemCount to count of items in the trash
 		if itemCount > 0 then
 			empty the trash
@@ -179,18 +179,18 @@ bdep() {
         brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
     else
         command brew rmtree --dry-run "$@"
-    fi   
+    fi
 }
 alias blv="brew leaves"
-alias bul="brew outdated && brew cask outdated"
+alias bul="brew update && brew outdated && brew cask outdated"
 bu() {
     echo -e "\e[4mUpdating Homebrew:\e[0m"
     brew update --verbose
     echo ""
-    echo -e "\e[4mUpdating brew packages:\e[0m" 
+    echo -e "\e[4mUpdating brew packages:\e[0m"
     brew upgrade
     echo ""
-    echo -e "\e[4mUpdating brew casks:\e[0m" 
+    echo -e "\e[4mUpdating brew casks:\e[0m"
     brew cask upgrade
 }
 alias bd="brew cleanup; brew doctor"
@@ -229,7 +229,7 @@ alias net="sudo iftop -B"
 alias sp="speedtest"
 # display terminal colors
 co() {
-    for i in {0..255}; 
+    for i in {0..255};
         do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'};
     done
 }
@@ -287,7 +287,7 @@ tgx() {
         pkill -f "pomo50"
     fi
 }
-# aliases below are needed to support accidental alt+t input 
+# aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
 alias †gn=tgn
 alias †gx=tgx
@@ -361,14 +361,14 @@ wcl() {
     TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Tallinn" \
     "Europe/Moscow" "Asia/Singapore")
     OUTPUT=""
-    
+
     for loc in ${TIME_ZONES[@]}; do
         CITY=`echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{ print $2 }'`
         CUR_TIME=`TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }'`
         TEMP=`awk -v l="$CITY" -v t="$CUR_TIME" 'BEGIN { print l "\t" t }'`
         OUTPUT="${OUTPUT}\n${TEMP}"
     done
-    
+
     echo $OUTPUT | column -t | tr '_' ' '
 }
 
