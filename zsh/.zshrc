@@ -29,6 +29,8 @@ case "$OSTYPE" in
 esac
 # fuck
 eval $(thefuck --alias)
+# fzf for navi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Locale
 # ---------------------------------------------------------------------------
