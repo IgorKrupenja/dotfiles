@@ -225,7 +225,7 @@ macos_settings() {
     echo ""
 
     # crontab
-    (crontab -l ; echo "0 22 * * * sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1") | crontab -
+    (crontab -l ; echo "0 22 * * 0 sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1") | crontab -
     (crontab -l ; echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1") | crontab -
 
      # VSCode
