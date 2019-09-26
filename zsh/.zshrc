@@ -284,7 +284,7 @@ alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
 # CLI TOOLS
 #############################################################################
 
-# Toggl CLI
+# Toggl & SelfControl
 # ---------------------------------------------------------------------------
 alias tg="toggl"
 alias tgr="tg continue; tg now"
@@ -303,6 +303,14 @@ alias tgpy="tg start \"Python\" -o TalTech && tg now"
 alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now"
 alias tgen="tg start \"English\" -o TalTech && tg now"
 alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
+# Coding, focus mode
+tgf() {
+    tgcode
+    bash -c "nohup pomo 120 > /dev/null 2>&1 & disown"
+    killall Discord > /dev/null 2>&1
+    killall Reeder > /dev/null 2>&1
+    sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
+}
 
 tgboc() {
     tg start -o Bocconi && tg now
@@ -321,6 +329,9 @@ alias †gcode=tgcode
 alias †gboc=tgboc
 alias †gcar=tgcar
 alias †gtt=tgtt
+
+# ban distractive websites in SelfControl
+alias ban="defaults write org.eyebeam.SelfControl HostBlacklist -array-add"
 
 # Trello CLI
 # ---------------------------------------------------------------------------
