@@ -307,7 +307,7 @@ alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
 # Coding, focus mode
 tgf() {
     tgcode
-    bash -c "nohup pomo 120 > /dev/null 2>&1 & disown"
+    bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
     killall Discord > /dev/null 2>&1
     killall Reeder > /dev/null 2>&1
     sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
@@ -469,6 +469,22 @@ zl() {
     cd $current_dir
 }
 
+# npm and ESLint
+# ---------------------------------------------------------------------------
+# Initialise ESLint for simple tutorial JS projects
+esi() {
+    echo "\nnode_modules" >> .gitignore
+    npm init -y
+    npm i --save-dev eslint
+    npm i --save-dev eslint-plugin-import
+    npm i --save-dev eslint-config-airbnb-base
+    npm i --save-dev eslint-plugin-only-warn
+    ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
+    ga .
+    gcm "Initialise ESLint"
+    # eslint --init
+}
+
 # git
 # ---------------------------------------------------------------------------
 # git status
@@ -477,7 +493,7 @@ alias gs="git status"
 alias glot="git log --graph --all"
 # log with pretty graph
 alias glo="git log --graph --oneline --all"
-# git commmit with message
+# git commit with message
 alias gcm="git commit -m"
 alias gc="git commit"
 alias gb="git branch"
