@@ -79,7 +79,7 @@ alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/reference"
-alias top="cd $PROJECTS/rop"
+alias top="cd $PROJECTS/top"
 
 # Trash
 # ---------------------------------------------------------------------------
@@ -321,7 +321,12 @@ tgl() {
     tg ls -s $(date "+%m/%d/%y") -f +project
 }
 # Stop
-alias tgx="toggl now && toggl stop"
+tgx() {
+    toggl now && toggl stop
+    if [[ $(pgrep -f "pomo") ]]; then
+        pkill -f "pomo"
+    fi
+}
 # aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
 alias †gn=tgn
@@ -333,6 +338,8 @@ alias †gtt=tgtt
 
 # ban distractive websites in SelfControl
 alias ban="defaults write org.eyebeam.SelfControl HostBlacklist -array-add"
+# list banned sites
+alias banls="defaults read org.eyebeam.SelfControl HostBlacklist"
 
 # Trello CLI
 # ---------------------------------------------------------------------------
