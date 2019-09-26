@@ -78,7 +78,8 @@ source $DOTFILES/zsh/.iterm2_shell_integration.zsh
 alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
-alias ref="cd $PROJECTS/Reference"
+alias ref="cd $PROJECTS/reference"
+alias top="cd $PROJECTS/rop"
 
 # Trash
 # ---------------------------------------------------------------------------
