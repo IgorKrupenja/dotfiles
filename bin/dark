@@ -74,7 +74,7 @@ for ide in "${ides[@]}"; do
 				keystroke "\`" using {control down}
 				keystroke "5"
 				delay 0.4
-				keystroke "5"
+				keystroke "4"
 			end tell
 		end if
 EOF
@@ -87,6 +87,11 @@ EOF
 				keystroke "5"
 				delay 0.4
 				keystroke "1"
+				delay 0.4
+				keystroke "\`" using {control down}
+				keystroke "1"
+				delay 0.4
+				keystroke "9"
 			end tell
 		end if
 EOF
