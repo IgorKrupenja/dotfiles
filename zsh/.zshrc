@@ -403,6 +403,14 @@ alias calm="gcalcli calm --military --mon"
 # World clock
 # ---------------------------------------------------------------------------
 wcl() {
+    if [[ $@ == "" ]]; then
+        world_clock
+    else
+        world_clock | grep -iF "$@"
+    fi
+}
+
+world_clock() {
     TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna" \
     "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
     OUTPUT=""
@@ -474,22 +482,6 @@ zl() {
     cd $DOTFILES
     git pull
     cd $current_dir
-}
-
-# npm and ESLint
-# ---------------------------------------------------------------------------
-# Initialise ESLint for simple tutorial JS projects
-esi() {
-    echo "\nnode_modules" >> .gitignore
-    npm init -y
-    npm i --save-dev eslint
-    npm i --save-dev eslint-plugin-import
-    npm i --save-dev eslint-config-airbnb-base
-    npm i --save-dev eslint-plugin-only-warn
-    ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
-    ga .
-    gcm "Initialise ESLint"
-    # eslint --init
 }
 
 # git
@@ -572,6 +564,7 @@ fpath=($HOME/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
 # python
 # ---------------------------------------------------------------------------
+alias ipy="ipython"
 alias pipi="pip install"
 alias pipdep="pipdeptree"
 alias pipu="pip uninstall"
@@ -586,6 +579,22 @@ function _pip_completion {
                PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
+
+# JS
+# ---------------------------------------------------------------------------
+# Initialise ESLint for simple tutorial JS projects
+esi() {
+    echo "\nnode_modules" >> .gitignore
+    npm init -y
+    npm i --save-dev eslint
+    npm i --save-dev eslint-plugin-import
+    npm i --save-dev eslint-config-airbnb-base
+    npm i --save-dev eslint-plugin-only-warn
+    ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
+    ga .
+    gcm "Initialise ESLint"
+    # eslint --init
+}
 
 # SSH
 # ---------------------------------------------------------------------------
