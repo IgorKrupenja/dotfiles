@@ -68,16 +68,6 @@
         "command": "-workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "cmd+k cmd+v",
-        "command": "latex-workshop.view",
-        "when": "editorTextFocus && editorLangId == 'latex'"
-    },
-    {
-        "key": "cmd+k cmd+b",
-        "command": "latex-workshop.build",
-        "when": "editorTextFocus && editorLangId == 'latex'"
-    },
-    {
         "key": "cmd+r",
         "command": "editor.action.startFindReplaceAction"
     },
@@ -253,11 +243,6 @@
     {
         "key": "ctrl+b",
         "command": "editor.debug.action.toggleBreakpoint",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "f9",
-        "command": "-editor.debug.action.toggleBreakpoint",
         "when": "editorTextFocus"
     },
     {
