@@ -108,9 +108,9 @@ if [ "$set_dark" = true ]; then
 	# Colours for bracket highlighting
 	sed -i '' 's/#55b4d4/#83A2C2/g' "$json"
 	sed -i '' 's/#f2ae49/#91BDBC/g' "$json"
-	sed -i '' 's/#a37acc/#A4C08D/g' "$json"
+	sed -i '' 's/#a37acc/#b48ead/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#a37acc/#f08c66/g' "$json"
+	sed -i '' 's/#a37acc/#b48ead/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
 else
@@ -119,9 +119,9 @@ else
 	# Colours for bracket highlighting
 	sed -i '' 's/#83A2C2/#55b4d4/g' "$json"
 	sed -i '' 's/#91BDBC/#f2ae49/g' "$json"
-	sed -i '' 's/#A4C08D/#a37acc/g' "$json"
+	sed -i '' 's/#b48ead/#a37acc/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#f08c66/#a37acc/g' "$json"
+	sed -i '' 's/#b48ead/#a37acc/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' "$json"
 fi
