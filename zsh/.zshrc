@@ -591,9 +591,8 @@ esi() {
     npm i --save-dev eslint-config-airbnb-base
     npm i --save-dev eslint-plugin-only-warn
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
-    ga .
+    ga .gitignore package.json package-lock.json .eslintrc.json
     gcm "Initialise ESLint"
-    # eslint --init
 }
 
 # SSH
