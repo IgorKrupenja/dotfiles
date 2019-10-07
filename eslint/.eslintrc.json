@@ -19,6 +19,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-else-return": "off"
+        "no-else-return": "off",
+        "no-restricted-syntax": "off"
     }
 }
