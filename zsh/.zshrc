@@ -225,7 +225,7 @@ mzo() {
 # zoom in external monitor
 mzi() {
     if srx -ld | wc -l | grep -q "2"; then
-        /Applications/RDM.app/Contents/MacOS/SetResX -w 2048 -h 1152 -s 2.0
+        /Applications/RDM.app/Contents/MacOS/SetResX -w 2200 -h 1237 -s 2.0
     else
         echo "External monitor not connected!"
     fi
