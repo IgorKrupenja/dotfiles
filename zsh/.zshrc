@@ -430,7 +430,7 @@ world_clock() {
 # could change ?I to ?T to remove colour completely
 alias met="curl -s \"wttr.in/$1?I\""
 
-# String operations
+# Misc
 # ---------------------------------------------------------------------------
 # convert string to TITLE case
 tc() {
@@ -439,6 +439,10 @@ tc() {
 # convert string to SENTENCE case
 sc() {
     echo "$1" | python3 -c "print('$1'.capitalize())"
+}
+# convert mov to gif
+mgif() {
+    ffmpeg -i "$1" -pix_fmt rgb8 -r 10 output.gif
 }
 
 #############################################################################
@@ -580,7 +584,7 @@ function _pip_completion {
 }
 compctl -K _pip_completion pip
 
-# JS
+# Web
 # ---------------------------------------------------------------------------
 # Initialise ESLint for simple tutorial JS projects
 esi() {
@@ -593,6 +597,11 @@ esi() {
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
     ga .gitignore package.json package-lock.json .eslintrc.json
     gcm "Initialise ESLint"
+}
+# close Chrome and re-open with remote debug on
+crdbg() {
+    pkill -a -i "Google Chrome"
+    nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9229 > /dev/null 2>&1 & disown
 }
 
 # SSH
