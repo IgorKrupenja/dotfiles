@@ -26,6 +26,15 @@ if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
 	set_dark=true
 fi
 
+################################# Dark Reader forChrome
+
+# Will only work if Chrome is already running
+osascript -e '
+  tell application "System Events"
+	  keystroke "d" using {control down, shift down}
+  end tell
+'
+
 ################################# Marta
 
 conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
@@ -90,7 +99,7 @@ EOF
 				delay 0.4
 				keystroke "\`" using {control down}
 				keystroke "1"
-				delay 0.4
+				delay 0.6
 				keystroke "9"
 			end tell
 		end if
