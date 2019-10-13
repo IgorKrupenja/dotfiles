@@ -306,6 +306,7 @@ alias tgen="tg start \"English\" -o TalTech && tg now"
 alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
 # Coding, focus mode
 tgf() {
+    stop_pomo
     tgcode
     bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
     killall Discord > /dev/null 2>&1
@@ -321,11 +322,14 @@ tgl() {
     tg ls -s $(date "+%m/%d/%y") -f +project
 }
 # Stop
-tgx() {
-    toggl now && toggl stop
-    if [[ $(pgrep -f "pomo") ]]; then
+stop_pomo() {
+        if [[ $(pgrep -f "pomo") ]]; then
         pkill -f "pomo"
     fi
+}
+tgx() {
+    toggl now && toggl stop
+    stop_pomo
 }
 # aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
