@@ -588,7 +588,7 @@ function _pip_completion {
 }
 compctl -K _pip_completion pip
 
-# Web
+# Web & JS
 # ---------------------------------------------------------------------------
 # Initialise ESLint for simple tutorial JS projects
 esi() {
@@ -607,6 +607,8 @@ crdbg() {
     pkill -a -i "Google Chrome"
     nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9229 > /dev/null 2>&1 & disown
 }
+# jasmine
+alias jm="jasmine"
 
 # SSH
 # ---------------------------------------------------------------------------
