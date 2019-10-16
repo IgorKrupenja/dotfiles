@@ -605,7 +605,7 @@ esi() {
 # close Chrome and re-open with remote debug on
 crdbg() {
     pkill -a -i "Google Chrome"
-    nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9229 > /dev/null 2>&1 & disown
+    nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 > /dev/null 2>&1 & disown
 }
 # jasmine
 alias jm="jasmine"
