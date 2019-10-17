@@ -90,7 +90,7 @@
     },
     {
         "key": "ctrl+d",
-        "command": "workbench.action.debug.start",
+        "command": "macros.debugWithDebugConsoleOpen",
         "when": "!inDebugMode"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
         "key": "ctrl+r",
-        "command": "workbench.action.debug.run",
+        "command": "macros.runWithDebugConsoleOpen",
         "when": "!inDebugMode"
     },
     {
