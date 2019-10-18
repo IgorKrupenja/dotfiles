@@ -199,7 +199,6 @@ dotfiles_common() {
     done
 }
 
-# Settings for macOS
 dotfiles_macos() {
     # SSH
     mv -fv $HOME/.ssh/config ~/.ssh/config.bak
@@ -228,26 +227,22 @@ macos_settings() {
     (crontab -l ; echo "0 22 * * 0 sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1") | crontab -
     (crontab -l ; echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1") | crontab -
 
-     # VSCode
+    # VSCode
     VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
-    files=("spellright.dict" "snippets" "keybindings.json")
+    files=("spellright.dict" "snippets" "keybindings.json" "settings.json")
     for file in ${files[@]}; do
         # Backup any existing files
         mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
         ln -sv "$DOTFILES/vscode/${file}" "$VSCODE_DIR/${file}"
     done
-    # cannot symlink as breaks theme changes using dark script
-    mv -fv $VSCODE_DIR/settings.json $VSCODE_DIR/settings.json.bak
-    cp -Rf $DOTFILES/vscode/settings.json $VSCODE_DIR/
 
     # iTerm
     defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
     defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
     # Marta
-    # cannot symlink as breaks theme changes using dark script
     mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
-    cp -Rf $DOTFILES/marta/ $HOME/Library/Application\ Support/org.yanex.marta
+    ln -sv $DOTFILES/marta $HOME/Library/Application\ Support/org.yanex.marta
     # for CLI
     ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
