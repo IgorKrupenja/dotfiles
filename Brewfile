@@ -1,9 +1,14 @@
 tap "beeftornado/rmtree"
+tap "denisidoro/tools"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/core"
 brew "coreutils"
+brew "emacs"
+brew "ffmpeg"
 brew "git"
 brew "htop"
 brew "hub"
@@ -22,17 +27,15 @@ cask "avibrazil-rdm"
 cask "fork"
 cask "gitkraken"
 cask "iterm2"
+cask "logitech-options"
 cask "lunar"
 cask "pycharm"
+cask "rightfont"
+cask "selfcontrol"
+cask "skyfonts"
 cask "slack"
 cask "sourcetree"
-cask "switchresx"
 cask "tor-browser"
+cask "typeface"
 cask "virtualbox"
 cask "zoomus"
-mas "ABBYY Lingvo European", id: 467622356
-mas "ColorSlurp", id: 1287239339
-mas "Dark Reader for Safari", id: 1438243180
-mas "DigiDoc4 Client", id: 1370791134
-mas "Spark", id: 1176895641
-mas "The Unarchiver", id: 425424353
