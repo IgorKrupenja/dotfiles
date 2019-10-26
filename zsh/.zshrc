@@ -296,6 +296,7 @@ alias tgw="open https://www.toggl.com/app/timer"
 alias tgtt="tg start -o TalTech && tg now"
 alias tgcode="tg start -o Coding && tg now"
 alias tgcar="tg start -o Career && tg now"
+alias tgsoc="tg start -o Social && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
 # TalTech subjects
