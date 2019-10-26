@@ -122,6 +122,8 @@ if [ "$set_dark" = true ]; then
 	sed -i '' 's/#a37acc/#b48ead/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
+	# Icons saturation
+	sed -i '' 's/"material-icon-theme.saturation": 0.8,/"material-icon-theme.saturation": 0.6,/g' "$json"
 else
 	# theme
 	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "Hop Light"/g' "$json"
@@ -133,6 +135,8 @@ else
 	sed -i '' 's/#b48ead/#a37acc/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' "$json"
+	# Icons saturation
+	sed -i '' 's/"material-icon-theme.saturation": 0.6,/"material-icon-theme.saturation": 0.8,/g' "$json"
 fi
 
 ################################# Sublime Merge
