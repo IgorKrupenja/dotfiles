@@ -100,7 +100,7 @@ EOF
 				keystroke "\`" using {control down}
 				keystroke "1"
 				delay 0.6
-				keystroke "9"
+				keystroke "3"
 			end tell
 		end if
 EOF
@@ -113,7 +113,7 @@ json=$HOME/Library/Application\ Support/Code/User/settings.json
 
 if [ "$set_dark" = true ]; then
 	# theme
-	sed -i '' 's/"workbench.colorTheme": "Hop Light"/"workbench.colorTheme": "Nord"/g' "$json"
+	sed -i '' 's/"workbench.colorTheme": "RealGithub"/"workbench.colorTheme": "Nord"/g' "$json"
 	# Colours for bracket highlighting
 	sed -i '' 's/#55b4d4/#83A2C2/g' "$json"
 	sed -i '' 's/#f2ae49/#91BDBC/g' "$json"
@@ -126,7 +126,7 @@ if [ "$set_dark" = true ]; then
 	sed -i '' 's/"material-icon-theme.saturation": 0.8,/"material-icon-theme.saturation": 0.6,/g' "$json"
 else
 	# theme
-	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "Hop Light"/g' "$json"
+	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "RealGithub"/g' "$json"
 	# Colours for bracket highlighting
 	sed -i '' 's/#83A2C2/#55b4d4/g' "$json"
 	sed -i '' 's/#91BDBC/#f2ae49/g' "$json"
