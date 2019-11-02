@@ -578,6 +578,7 @@ alias pipi="pip install"
 alias pipdep="pipdeptree"
 alias pipu="pip uninstall"
 alias pips="pip show"
+alias ch="charm"
 # pip zsh completion
 function _pip_completion {
     local words cword
