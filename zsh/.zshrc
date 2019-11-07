@@ -611,6 +611,8 @@ crdbg() {
 }
 # jasmine
 alias jm="jasmine"
+# Can I use
+alias ciu="caniuse"
 
 # SSH
 # ---------------------------------------------------------------------------
