@@ -598,6 +598,7 @@ esi() {
     npm init -y
     npm i --save-dev eslint
     npm i --save-dev eslint-plugin-import
+    npm i --save-dev eslint-plugin-html
     npm i --save-dev eslint-config-airbnb-base
     npm i --save-dev eslint-plugin-only-warn
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
