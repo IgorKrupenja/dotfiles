@@ -264,11 +264,6 @@ alias net="sudo iftop -B"
 # speedtest.net
 alias sp="speedtest"
 # display terminal colors
-co() {
-    for i in {0..255};
-        do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'};
-    done
-}
 
 # Misc
 # ---------------------------------------------------------------------------
