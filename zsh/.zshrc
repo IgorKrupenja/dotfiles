@@ -592,9 +592,11 @@ compctl -K _pip_completion pip
 
 # Web & JS
 # ---------------------------------------------------------------------------
-# Initialise ESLint for simple tutorial JS projects
-esi() {
-    echo "\nnode_modules" >> .gitignore
+# Prepare dir for web dev using a simple template
+tpl() {
+    # gitignore
+    echo ".vscode\nnode_modules" >> .gitignore
+    # simple ESLint settings
     npm init -y
     npm i --save-dev eslint
     npm i --save-dev eslint-plugin-import
@@ -602,8 +604,14 @@ esi() {
     npm i --save-dev eslint-config-airbnb-base
     npm i --save-dev eslint-plugin-only-warn
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
-    ga .gitignore package.json package-lock.json .eslintrc.json
-    gcm "Initialise ESLint"
+    # files
+    mkf "styles/style.css"
+    mkf "scripts/main.js"
+    cp $DOTFILES/templates/index.html index.html
+    # git
+    git init
+    ga .
+    gcm "Initial commit 🚀"
 }
 # close Chrome and re-open with remote debug on
 crdbg() {
