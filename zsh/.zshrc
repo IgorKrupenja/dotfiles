@@ -602,6 +602,7 @@ tpl() {
     # files
     mkf "styles/style.css"
     mkf "scripts/main.js"
+    mkdir "images"
     cp $DOTFILES/templates/index.html index.html
     # git
     git init
