@@ -590,7 +590,7 @@ compctl -K _pip_completion pip
 # Prepare dir for web dev using a simple template
 tpl() {
     # gitignore
-    echo ".vscode\nnode_modules" >> .gitignore
+    echo ".vscode\nnode_modules\n.DS_Store" >> .gitignore
     # simple ESLint settings
     npm init -y
     npm i --save-dev eslint
