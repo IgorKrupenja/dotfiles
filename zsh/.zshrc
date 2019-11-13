@@ -445,7 +445,7 @@ mgif() {
     ffmpeg -i "$1" -pix_fmt rgb8 -r 10 output.gif
 }
 # stopwatch
-alias td="termdown"
+alias sw="termdown"
 
 #############################################################################
 # DEVELOPMENT
