@@ -115,22 +115,42 @@ if [ "$set_dark" = true ]; then
 	# theme
 	sed -i '' 's/"workbench.colorTheme": "RealGithub"/"workbench.colorTheme": "Nord"/g' "$json"
 	# Colours for bracket highlighting
-	sed -i '' 's/#55b4d4/#83A2C2/g' "$json"
-	sed -i '' 's/#f2ae49/#91BDBC/g' "$json"
-	sed -i '' 's/#a37acc/#b48ead/g' "$json"
+	sed -i '' 's/#a71d5d/#83A2C2/g' "$json"
+	sed -i '' 's/#0086b3/#91BDBC/g' "$json"
+	sed -i '' 's/#795da3/#b48ead/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#a37acc/#b48ead/g' "$json"
+	sed -i '' 's/#ed6a43/#b48eae/g' "$json"
+	sed -i '' 's/"opacity": "10"/"opacity": "20"/g' "$json"
+	# git graph
+	sed -i '' 's/#000000/#4c566a/g' "$json"
+	sed -i '' 's/#cf2227/#c15e69/g' "$json"
+	sed -i '' 's/#08be00/#a5bf8a/g' "$json"
+	sed -i '' 's/#979900/#edcb87/g' "$json"
+	sed -i '' 's/#0052aa/#81a3c4/g' "$json"
+	sed -i '' 's/#bd00c1/#b58faf/g' "$json"
+	sed -i '' 's/#009bc0/#88c2d2/g' "$json"
+	sed -i '' 's/#545454/#e6eaf1/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0,/"latex-workshop.view.pdf.invert": 0.9,/g' "$json"
 else
 	# theme
 	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "RealGithub"/g' "$json"
 	# Colours for bracket highlighting
-	sed -i '' 's/#83A2C2/#55b4d4/g' "$json"
-	sed -i '' 's/#91BDBC/#f2ae49/g' "$json"
-	sed -i '' 's/#b48ead/#a37acc/g' "$json"
+	sed -i '' 's/#83A2C2/#a71d5d/g' "$json"
+	sed -i '' 's/#91BDBC/#0086b3/g' "$json"
+	sed -i '' 's/#b48ead/#795da3/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#b48ead/#a37acc/g' "$json"
+	sed -i '' 's/#b48eae/#ed6a43/g' "$json"
+	sed -i '' 's/"opacity": "20"/"opacity": "10"/g' "$json"
+	# git graph
+	sed -i '' 's/#4c566a/#000000/g' "$json"
+	sed -i '' 's/#c15e69/#cf2227/g' "$json"
+	sed -i '' 's/#a5bf8a/#08be00/g' "$json"
+	sed -i '' 's/#edcb87/#979900/g' "$json"
+	sed -i '' 's/#81a3c4/#0052aa/g' "$json"
+	sed -i '' 's/#b58faf/#bd00c1/g' "$json"
+	sed -i '' 's/#88c2d2/#009bc0/g' "$json"
+	sed -i '' 's/#e6eaf1/#545454/g' "$json"
 	# LaTeX PDF preview
 	sed -i '' 's/"latex-workshop.view.pdf.invert": 0.9,/"latex-workshop.view.pdf.invert": 0,/g' "$json"
 fi
