@@ -119,7 +119,7 @@ alias icat="imgcat"
 # syntax-highlighted cat
 alias ccat='pygmentize -g'
 # dd with progress
-alias ddd="gdd bs=1M status=progress"
+alias ddd="sudo gdd bs=1M status=progress"
 # ls/la with dirs first
 alias lad="gls -lAh --group-directories-first --color"
 alias lsd="gls --group-directories-first --color"
