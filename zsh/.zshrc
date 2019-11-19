@@ -589,7 +589,7 @@ alias ciu="caniuse"
 alias sshk="ssh igor@krupenja.net"
 alias fsk="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
 # Mount home dir on enos
-alias fsitc="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
+alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
 #############################################################################
 # LINUX
