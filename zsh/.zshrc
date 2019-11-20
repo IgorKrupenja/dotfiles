@@ -79,7 +79,7 @@ alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/reference"
-alias top="cd $PROJECTS/top"
+alias o="cd $PROJECTS/top"
 
 # Trash
 # ---------------------------------------------------------------------------
@@ -214,7 +214,7 @@ st() {
     print "Memory      : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
     print "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
     print "Battery     : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')," \
-        "cycle count $(system_profiler SPPowerDataType | grep "Cycle Count" | awk '{print $3}')"
+        "cycle count $(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')"
     print "Hostname    : $(uname -n)"
     print "Internal IP : $(ipconfig getifaddr en0)"
     print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')"
