@@ -538,6 +538,9 @@ alias pipdep="pipdeptree"
 alias pipu="pip uninstall"
 alias pips="pip show"
 alias ch="charm"
+# Venv
+alias dj="source ~/.virtualenvs/djangodev/bin/activate"
+alias dje="deactivate"
 # pip zsh completion
 function _pip_completion {
     local words cword
