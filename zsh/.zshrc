@@ -29,8 +29,6 @@ case "$OSTYPE" in
 esac
 # fuck
 eval $(thefuck --alias)
-# fzf for navi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Locale
 # ---------------------------------------------------------------------------
@@ -144,16 +142,16 @@ m() {
 # find
 ff() {
     if [[ $2 == "" ]]; then
-        command find . -iname "*$1*"
+        command find . -iname "*$1*" 2>/dev/null
     else
-        command find "$1" -iname "*$2*"
+        command find "$1" -iname "*$2*" 2>/dev/null
     fi
 }
 sf() {
     if [[ $2 == "" ]]; then
-        command sudo find . -iname "*$1*"
+        command sudo find . -iname "*$1*" 2>/dev/null
     else
-        command sudo find "$1" -iname "*$2*"
+        command sudo find "$1" -iname "*$2*" 2>/dev/null
     fi
 }
 
@@ -237,6 +235,8 @@ a() {
 alias w="which"
 # reboot with confirmation dialog
 alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
+# manage Finder sidebar items
+alias side="mysides"
 
 #############################################################################
 # CLI TOOLS
@@ -472,7 +472,7 @@ alias gcl="git clone"
 alias gt="git tag"
 alias gpt="git push origin --tags"
 alias gmt='git mergetool'
-# delete a emote tag
+# delete a remote tag
 alias gptd="git push --delete origin"
 alias gd="git diff"
 alias gdt="git difftool"
