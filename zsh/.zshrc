@@ -79,7 +79,7 @@ alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/reference"
-alias o="cd $PROJECTS/top"
+alias o="cd $PROJECTS/odin"
 
 # Trash
 # ---------------------------------------------------------------------------
