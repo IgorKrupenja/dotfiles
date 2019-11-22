@@ -462,7 +462,6 @@ alias glot="git log --graph --all"
 alias glo="git log --graph --oneline --all"
 # git commit with message
 alias gcm="git commit -m"
-alias gc="git commit"
 alias gb="git branch"
 alias gchm="git checkout master"
 alias gch="git checkout"
