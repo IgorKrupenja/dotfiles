@@ -271,10 +271,6 @@ tgf() {
     killall Reeder > /dev/null 2>&1
     sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
 }
-
-tgboc() {
-    tg start -o Bocconi && tg now
-}
 # list history for today
 tgl() {
     tg ls -s $(date "+%m/%d/%y") -f +project
@@ -294,7 +290,6 @@ tgx() {
 alias †gn=tgn
 alias †gx=tgx
 alias †gcode=tgcode
-alias †gboc=tgboc
 alias †gcar=tgcar
 alias †gtt=tgtt
 
@@ -355,6 +350,7 @@ calc() {
     calc="${calc//x/*}"
     bc -l <<<"scale=10;$calc"
 }
+alias ca="calc"
 
 # Calendar
 # ---------------------------------------------------------------------------
