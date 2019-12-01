@@ -26,7 +26,7 @@ if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
 	set_dark=true
 fi
 
-################################# Dark Reader forChrome
+################################# Dark Reader for Chrome
 
 # Will only work if Chrome is already running
 osascript -e '
