@@ -70,8 +70,6 @@ fi
 # Uses a hacky approach with sending keystrokes from AppleScript
 # Will only work if IDEs are already running
 
-# if [[ $(pgrep $ide) ]]; then
-
 ides=("pycharm" "intellij")
 
 for ide in "${ides[@]}"; do
