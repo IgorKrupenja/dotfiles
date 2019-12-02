@@ -109,11 +109,12 @@ done
 
 ################################# VSCode
 
+# TODO test this is a test
 json=$HOME/Library/Application\ Support/Code/User/settings.json
 
 if [ "$set_dark" = true ]; then
 	# theme
-	sed -i '' 's/"workbench.colorTheme": "RealGithub"/"workbench.colorTheme": "Nord"/g' "$json"
+	sed -i '' 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Nord"/g' "$json"
 	# Colours for bracket highlighting
 	sed -i '' 's/#a71d5d/#83A2C2/g' "$json"
 	sed -i '' 's/#0086b3/#91BDBC/g' "$json"
@@ -132,7 +133,7 @@ if [ "$set_dark" = true ]; then
 	sed -i '' 's/#545454/#e6eaf1/g' "$json"
 else
 	# theme
-	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "RealGithub"/g' "$json"
+	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "Night Owl Light (No Italics)"/g' "$json"
 	# Colours for bracket highlighting
 	sed -i '' 's/#83A2C2/#a71d5d/g' "$json"
 	sed -i '' 's/#91BDBC/#0086b3/g' "$json"

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+json=$HOME/Library/Application\ Support/Code/User/settings.json
+
+# theme
+sed -i '' 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Nord"/g' "$json"
+# Colours for bracket highlighting
+sed -i '' 's/#a71d5d/#83A2C2/g' "$json"
+sed -i '' 's/#0086b3/#91BDBC/g' "$json"
+sed -i '' 's/#795da3/#b48ead/g' "$json"
+# To do highlighting
+sed -i '' 's/#ed6a43/#b48eae/g' "$json"
+sed -i '' 's/"opacity": "10"/"opacity": "20"/g' "$json"
+# git graph
+sed -i '' 's/#000000/#4c566a/g' "$json"
+sed -i '' 's/#cf2227/#c15e69/g' "$json"
+sed -i '' 's/#08be00/#a5bf8a/g' "$json"
+sed -i '' 's/#979900/#edcb87/g' "$json"
+sed -i '' 's/#0052aa/#81a3c4/g' "$json"
+sed -i '' 's/#bd00c1/#b58faf/g' "$json"
+sed -i '' 's/#009bc0/#88c2d2/g' "$json"
+sed -i '' 's/#545454/#e6eaf1/g' "$json"
