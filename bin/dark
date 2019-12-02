@@ -1,117 +1,83 @@
 #!/bin/bash
 
 # Cannot be run on Linux
-echo ""
-echo "============================"
-echo "Linux test:"
-time {
-	case "$OSTYPE" in
-	linux*)
-		echo "ERROR: Script does not support Linux!"
-		exit 1
-		;;
-	esac
-}
+case "$OSTYPE" in
+linux*)
+	echo "ERROR: Script does not support Linux!"
+	exit 1
+	;;
+esac
 
 ################################# change macOS theme
 
-echo ""
-echo "============================"
-echo "macOS:"
-time {
-	osascript -e '
+osascript -e '
 	tell application "System Events"
 		tell appearance preferences
 			set dark mode to not dark mode
 		end tell
 	end tell
 '
-}
 
 ################################# variable for other apps
 
-echo ""
-echo "============================"
-echo "Variable for other apps:"
-time {
-	# define variable if need to set dark theme in other apps
-	# 2>/dev/null to suppress error if dark mode is off
-	if defaults read -g AppleInterfaceStyle 2>/dev/null | grep -q "Dark"; then
-		set_dark=true
-	fi
-}
+# define variable if need to set dark theme in other apps
+# 2>/dev/null to suppress error if dark mode is off
+if [[ $(defaults read -g AppleInterfaceStyle 2>/dev/null) == "Dark" ]]; then
+	set_dark=true
+fi
 
 ################################# Dark Reader for Chrome
 
-echo ""
-echo "============================"
-echo "Chrome:"
-time {
-	# Will only work if Chrome is already running
-	osascript -e '
+# Will only work if Chrome is already running
+osascript -e '
   tell application "System Events"
 	  keystroke "d" using {control down, shift down}
   end tell
 '
-}
 
 ################################# Marta
 
-echo ""
-echo "============================"
-echo "Marta:"
-time {
-	conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
+conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
 
-	if [ "$set_dark" = true ]; then
-		sed -i '' -e 's/theme "Classic"/theme "Igor"/g' "$conf"
-	else
-		sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
-	fi
-}
+if [ "$set_dark" = true ]; then
+	sed -i '' -e 's/theme "Classic"/theme "Igor"/g' "$conf"
+else
+	sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
+fi
 
 ################################# PDF Expert
 
-echo ""
-echo "============================"
-echo "PDF Expert:"
-time {
+if [[ $(pgrep "PDF Expert") ]]; then
 	if [ "$set_dark" = true ]; then
 		osascript -e '
-		if application "PDF Expert" is running then
     		tell application "PDF Expert" to activate
-			tell application "System Events"
-				keystroke "n" using {option down, command down}
-			end tell
-		end if
-		'
+				tell application "System Events"
+					keystroke "n" using {option down, command down}
+				end tell
+			'
 	else
 		osascript -e '
-		if application "PDF Expert" is running then
     		tell application "PDF Expert" to activate
-			tell application "System Events"
-				keystroke "z" using {option down, command down}
-			end tell
-		end if
-		'
+				tell application "System Events"
+					keystroke "z" using {option down, command down}
+				end tell
+			'
 	fi
-}
+fi
 
 ################################# JetBrains IDEs
 
 # Uses a hacky approach with sending keystrokes from AppleScript
 # Will only work if IDEs are already running
 
-echo ""
-echo "============================"
-echo "Intellij:"
-time {
-	ides=("IntelliJ IDEA" "PyCharm")
+# if [[ $(pgrep $ide) ]]; then
 
-	for ide in "${ides[@]}"; do
+ides=("pycharm" "intellij")
+
+for ide in "${ides[@]}"; do
+	if [[ $(pgrep $ide) ]]; then
 		if [ "$set_dark" = true ]; then
 			osascript <<EOF
-		if application "$ide" is running then
 		  tell application "$ide" to activate
 			tell application "System Events"
 				keystroke "\`" using {control down}
@@ -119,11 +85,9 @@ time {
 				delay 0.4
 				keystroke "4"
 			end tell
-		end if
 EOF
 		else
 			osascript <<EOF
-		if application "$ide" is running then
 		  tell application "$ide" to activate
 			tell application "System Events"
 				keystroke "\`" using {control down}
@@ -136,87 +100,71 @@ EOF
 				delay 0.6
 				keystroke "3"
 			end tell
-		end if
 EOF
 		fi
-	done
-}
+	fi
+done
 
 ################################# VSCode
 
-echo ""
-echo "============================"
-echo "VSCOde:"
-time {
-	json=$HOME/Library/Application\ Support/Code/User/settings.json
+json=$HOME/Library/Application\ Support/Code/User/settings.json
 
-	if [ "$set_dark" = true ]; then
-		# theme
-		sed -i '' 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Nord"/g' "$json"
-		# Colours for bracket highlighting
-		sed -i '' 's/#a71d5d/#83A2C2/g' "$json"
-		sed -i '' 's/#0086b3/#91BDBC/g' "$json"
-		sed -i '' 's/#795da3/#b48ead/g' "$json"
-		# To do highlighting
-		sed -i '' 's/#ed6a43/#b48eae/g' "$json"
-		sed -i '' 's/"opacity": "10"/"opacity": "20"/g' "$json"
-		# git graph
-		sed -i '' 's/#000000/#4c566a/g' "$json"
-		sed -i '' 's/#cf2227/#c15e69/g' "$json"
-		sed -i '' 's/#08be00/#a5bf8a/g' "$json"
-		sed -i '' 's/#979900/#edcb87/g' "$json"
-		sed -i '' 's/#0052aa/#81a3c4/g' "$json"
-		sed -i '' 's/#bd00c1/#b58faf/g' "$json"
-		sed -i '' 's/#009bc0/#88c2d2/g' "$json"
-		sed -i '' 's/#545454/#e6eaf1/g' "$json"
-	else
-		# theme
-		sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "Night Owl Light (No Italics)"/g' "$json"
-		# Colours for bracket highlighting
-		sed -i '' 's/#83A2C2/#a71d5d/g' "$json"
-		sed -i '' 's/#91BDBC/#0086b3/g' "$json"
-		sed -i '' 's/#b48ead/#795da3/g' "$json"
-		# To do highlighting
-		sed -i '' 's/#b48eae/#ed6a43/g' "$json"
-		sed -i '' 's/"opacity": "20"/"opacity": "10"/g' "$json"
-		# git graph
-		sed -i '' 's/#4c566a/#000000/g' "$json"
-		sed -i '' 's/#c15e69/#cf2227/g' "$json"
-		sed -i '' 's/#a5bf8a/#08be00/g' "$json"
-		sed -i '' 's/#edcb87/#979900/g' "$json"
-		sed -i '' 's/#81a3c4/#0052aa/g' "$json"
-		sed -i '' 's/#b58faf/#bd00c1/g' "$json"
-		sed -i '' 's/#88c2d2/#009bc0/g' "$json"
-		sed -i '' 's/#e6eaf1/#545454/g' "$json"
-	fi
-}
+if [ "$set_dark" = true ]; then
+	# theme
+	sed -i '' 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Nord"/g' "$json"
+	# Colours for bracket highlighting
+	sed -i '' 's/#a71d5d/#83A2C2/g' "$json"
+	sed -i '' 's/#0086b3/#91BDBC/g' "$json"
+	sed -i '' 's/#795da3/#b48ead/g' "$json"
+	# To do highlighting
+	sed -i '' 's/#ed6a43/#b48eae/g' "$json"
+	sed -i '' 's/"opacity": "10"/"opacity": "20"/g' "$json"
+	# git graph
+	sed -i '' 's/#000000/#4c566a/g' "$json"
+	sed -i '' 's/#cf2227/#c15e69/g' "$json"
+	sed -i '' 's/#08be00/#a5bf8a/g' "$json"
+	sed -i '' 's/#979900/#edcb87/g' "$json"
+	sed -i '' 's/#0052aa/#81a3c4/g' "$json"
+	sed -i '' 's/#bd00c1/#b58faf/g' "$json"
+	sed -i '' 's/#009bc0/#88c2d2/g' "$json"
+	sed -i '' 's/#545454/#e6eaf1/g' "$json"
+else
+	# theme
+	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "Night Owl Light (No Italics)"/g' "$json"
+	# Colours for bracket highlighting
+	sed -i '' 's/#83A2C2/#a71d5d/g' "$json"
+	sed -i '' 's/#91BDBC/#0086b3/g' "$json"
+	sed -i '' 's/#b48ead/#795da3/g' "$json"
+	# To do highlighting
+	sed -i '' 's/#b48eae/#ed6a43/g' "$json"
+	sed -i '' 's/"opacity": "20"/"opacity": "10"/g' "$json"
+	# git graph
+	sed -i '' 's/#4c566a/#000000/g' "$json"
+	sed -i '' 's/#c15e69/#cf2227/g' "$json"
+	sed -i '' 's/#a5bf8a/#08be00/g' "$json"
+	sed -i '' 's/#edcb87/#979900/g' "$json"
+	sed -i '' 's/#81a3c4/#0052aa/g' "$json"
+	sed -i '' 's/#b58faf/#bd00c1/g' "$json"
+	sed -i '' 's/#88c2d2/#009bc0/g' "$json"
+	sed -i '' 's/#e6eaf1/#545454/g' "$json"
+fi
 
 ################################# Sublime Merge
 
-echo ""
-echo "============================"
-echo "Sublime Merge:"
-time {
-	sett=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
+sett=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
 
-	if [ "$set_dark" = true ]; then
-		sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$sett"
-	else
-		sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$sett"
-	fi
-}
+if [ "$set_dark" = true ]; then
+	sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$sett"
+else
+	sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$sett"
+fi
 
 ################################# cht.sh
 
-echo ""
-echo "============================"
-echo "cht.sh:"
-time {
-	conf=$HOME/.cht.sh/cht.sh.conf
+conf=$HOME/.cht.sh/cht.sh.conf
 
-	if [ "$set_dark" = true ]; then
-		sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
-	else
-		sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
-	fi
-}
+if [ "$set_dark" = true ]; then
+	sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
+else
+	sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
+fi
