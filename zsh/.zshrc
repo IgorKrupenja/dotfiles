@@ -386,7 +386,7 @@ world_clock() {
 # Weather
 # ---------------------------------------------------------------------------
 # could change ?I to ?T to remove colour completely
-alias met="curl -s \"wttr.in/$1?I\""
+alias met="curl -s \"wttr.in/$1\""
 
 # Misc
 # ---------------------------------------------------------------------------
