@@ -114,6 +114,7 @@ install_sw_pip() {
     echo "**************************** Installing from pip ***************************"
     echo ""
     # for linting in VSCode
+    pip3 install autopep8
     pip3 install pep8
     pip3 install pylint
     pip3 install pydocstyle
@@ -121,6 +122,8 @@ install_sw_pip() {
     pip3 install pipdeptree
     pip3 install ipython
     pip3 install togglCli
+    pip3 install pytz
+    pip3 install termdown
     pip3 install gcalcli
     pip3 install haxor-news
 }
@@ -131,7 +134,10 @@ install_sw_node() {
     echo ""
     sudo npm install -g trello-cli
     sudo npm install -g cash-cli
-    sudo npm install -g generator-code
+    sudo npm install -g bash-language-server
+    sudo npm install -g eslint
+    sudo npm install -g stylelint
+    sudo npm install -g stylelint-config-recommended
 }
 
 install_sw_misc() {
@@ -224,8 +230,14 @@ macos_settings() {
     echo ""
 
     # crontab
-    (crontab -l ; echo "0 22 * * 0 sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1") | crontab -
-    (crontab -l ; echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1") | crontab -
+    (
+        crontab -l
+        echo "0 22 * * 0 sh /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1"
+    ) | crontab -
+    (
+        crontab -l
+        echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1"
+    ) | crontab -
 
     # VSCode
     VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
