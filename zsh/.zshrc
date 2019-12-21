@@ -211,11 +211,11 @@ st() {
     print "CPU         : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
     print "Memory      : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
     print "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
-    print "Battery     : $(pmset -g ps | sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')," \
+    print "Battery     : $(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-7 | sed 's/;/,/2');" \
         "cycle count $(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')"
     print "Hostname    : $(uname -n)"
     print "Internal IP : $(ipconfig getifaddr en0)"
-    print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')"
+    print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"
 }
 # wifi network list
 alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
@@ -237,6 +237,8 @@ alias w="which"
 alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
 # manage Finder sidebar items
 alias side="mysides"
+# htop with sudo
+alias htop="sudo htop"
 
 #############################################################################
 # CLI TOOLS
@@ -374,7 +376,7 @@ world_clock() {
     OUTPUT=""
 
     for loc in ${TIME_ZONES[@]}; do
-        CITY=`echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{ print $2 }'`
+        CITY=`echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}'`
         CUR_TIME=`TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }'`
         TEMP=`awk -v l="$CITY" -v t="$CUR_TIME" 'BEGIN { print l "\t" t }'`
         OUTPUT="${OUTPUT}\n${TEMP}"
@@ -580,6 +582,11 @@ crdbg() {
 alias jm="jasmine"
 # Can I use
 alias ciu="caniuse"
+# npm
+alias ngl="npm -g list --depth=0"
+alias ngo="npm -g outdated"
+alias ngu="npm -g update"
+alias ngi="npm -g install"
 
 # SSH
 # ---------------------------------------------------------------------------
