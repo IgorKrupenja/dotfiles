@@ -568,6 +568,7 @@ tpl() {
     mkf "scripts/main.js"
     mkdir "images"
     cp $DOTFILES/templates/index.html index.html
+    cp $DOTFILES/templates/favicon.png images/favicon.png
     # git
     git init
     ga .
