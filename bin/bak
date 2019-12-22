@@ -52,6 +52,12 @@ if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
     git commit -m "Update iTerm settings"
 fi
 
+# ESLint
+if [[ $(git diff eslint) ]]; then
+    git add eslint
+    git commit -m "Update ESLint settings"
+fi
+
 # push
 echo ""
 echo "Pushing to dotfiles repo:"
