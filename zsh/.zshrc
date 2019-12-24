@@ -251,6 +251,7 @@ alias tgr="tg continue; tg now"
 alias tgn="tg now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
+
 # Projects
 alias tgtt="tg start -o TalTech && tg now"
 alias tgcode="tg start -o Coding && tg now"
@@ -261,25 +262,24 @@ alias tgphys="tg start -o Physio && tg now"
 # TalTech subjects
 alias tgos="tg start \"OS\" -o TalTech && tg now"
 alias tgpy="tg start \"Python\" -o TalTech && tg now"
-alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now"
 alias tgen="tg start \"English\" -o TalTech && tg now"
-alias tgmat="tg start \"DiskMat\" -o TalTech && tg now"
-# Coding, focus mode
-tgf() {
+
+# Focus mode
+focus() {
     stop_pomo
-    tgcode
     bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
     killall Discord > /dev/null 2>&1
     killall Reeder > /dev/null 2>&1
     sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
 }
-# list history for today
-tgl() {
-    tg ls -s $(date "+%m/%d/%y") -f +project
-}
+# Projects with focus
+alias tgf="tgcode && focus"
+alias tgmat="tg start \"DiskMat\" -o TalTech && tg now && focus"
+alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now && focus"
+
 # Stop
 stop_pomo() {
-        if [[ $(pgrep -f "pomo") ]]; then
+    if [[ $(pgrep -f "pomo") ]]; then
         pkill -f "pomo"
     fi
 }
@@ -287,6 +287,12 @@ tgx() {
     toggl now && toggl stop
     stop_pomo
 }
+
+# list history for today
+tgl() {
+    tg ls -s $(date "+%m/%d/%y") -f +project
+}
+
 # aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
 alias †gn=tgn

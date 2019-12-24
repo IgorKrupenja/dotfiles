@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sleep "$@"; osascript -e 'display notification "Take a break!" with title "Pomodoro" sound name "Ping"'
+sleep "$1"
+osascript -e 'display notification "Take a break!" with title "Pomodoro" sound name "Ping"'
 
 ############### USAGE
 
