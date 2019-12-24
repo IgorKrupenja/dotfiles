@@ -270,7 +270,9 @@ focus() {
     bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
     killall Discord > /dev/null 2>&1
     killall Reeder > /dev/null 2>&1
-    sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
+    if [[ $(defaults read org.eyebeam.SelfControl BlockStartedDate) == "4001-01-01 00:00:00 +0000" ]]; then
+        sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
+    fi
 }
 # Projects with focus
 alias tgf="tgcode && focus"
