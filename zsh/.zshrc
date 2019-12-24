@@ -327,19 +327,19 @@ tred() {
 tren() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight'
 }
+
 # important label
 tred!() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
 }
-
 tren!() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
 }
+
 # TalTech label
 tredt() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5b7c3a417b03a914551de144
 }
-
 trent() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5b7c3a417b03a914551de144
 }
@@ -351,6 +351,20 @@ tref() {
 # move to Done on "📥 Daily Kanban" board
 trex() {
     trello move-card "$1" 5a785c3a56d2f82288d292e8
+}
+
+# cards to add extra time in Toggl
+codep() {
+    trello add-card "Add $1 min coding" -b "📥 Daily Kanban" -l '🌆 Tonight'
+}
+pyp() {
+    trello add-card "Add $1 min Python" -b "📥 Daily Kanban" -l '🌆 Tonight'
+}
+carp() {
+    trello add-card "Add $1 min career" -b "📥 Daily Kanban" -l '🌆 Tonight'
+}
+socp() {
+    trello add-card "Add $1 min social" -b "📥 Daily Kanban" -l '🌆 Tonight'
 }
 
 # Calculator
