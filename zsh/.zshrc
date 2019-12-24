@@ -106,7 +106,7 @@ alias die='osascript -e "tell application \"Finder\" to eject (every disk whose 
 
 # Misc
 # ---------------------------------------------------------------------------
-# du
+alias df="df -h"
 alias du="du -h -d 1"
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
