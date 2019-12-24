@@ -197,13 +197,19 @@ alias bd="brew cleanup; brew doctor"
 # ---------------------------------------------------------------------------
 # status
 st() {
-    # get uptiime
+    # build uptime string
     boottime=$(sysctl -n kern.boottime | awk '{print $4}' | sed 's/,//g')
     unixtime=$(date +%s)
     timeAgo=$(($unixtime - $boottime))
     uptime=$(awk -v time=$timeAgo 'BEGIN { seconds = time % 60; minutes = int(time / 60 % 60);
         hours = int(time / 60 / 60 % 24); days = int(time / 60 / 60 / 24);
         printf("%.0f days, %.0f hours, %.0f minutes, %.0f seconds", days, hours, minutes, seconds); exit }')
+    # build battery string components
+    time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | cut -d ' ' -f 2) +%s)
+    time_on=$(date -ujf %s $(($(date +%s) - $time_batt_change)) +%T)
+    batt_perc=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-5 | sed 's/;//2')
+    batt_remain=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 6-7)
+    batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
     # show data
     print "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
     print "Uptime      : $uptime"
@@ -213,8 +219,7 @@ st() {
     print "CPU         : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
     print "Memory      : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
     print "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
-    print "Battery     : $(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-7 | sed 's/;/,/2');" \
-        "cycle count $(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')"
+    print "Battery     : $batt_perc for $time_on, $batt_remain; cycle count $batt_cycles"
     print "Hostname    : $(uname -n)"
     print "Internal IP : $(ipconfig getifaddr en0)"
     print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"
