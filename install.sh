@@ -203,6 +203,7 @@ dotfiles_common() {
         mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
         ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
     done
+    touch $HOME/.hushlogin
 }
 
 dotfiles_macos() {
