@@ -387,8 +387,12 @@ world_clock() {
 
 # Weather
 # ---------------------------------------------------------------------------
-# could change ?I to ?T to remove colour completely
-alias met="curl -s \"wttr.in/$1\""
+met() {
+    # '$1 $2 $3 $4' is a hack ofc, no idea why $@ does not work with curl
+    curl -s v2.wttr.in/"$1 $2 $3 $4" | sed 's/18      /18     0/g'
+}
+# old version
+alias meto="curl -s \"wttr.in/$1\""
 
 # Misc
 # ---------------------------------------------------------------------------
