@@ -206,9 +206,18 @@ st() {
         printf("%.0f days, %.0f hours, %.0f minutes, %.0f seconds", days, hours, minutes, seconds); exit }')
     # build battery string components
     time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | cut -d ' ' -f 2) +%s)
-    time_on=$(date -ujf %s $(($(date +%s) - $time_batt_change)) +%T)
+    time_on=$(($(date +%s) - $time_batt_change))
+    unset hours
+    if [[ $(($time_on/3600)) != 0 ]]; then
+        hours="$(($time_on/3600))h "
+    fi
+    unset mins
+    if [[ $(($time_on/60)) != 0 ]]; then
+        mins="$(($time_on/60))m "
+    fi
+    secs="$(($time_on%60))s"
     batt_perc=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-5 | sed 's/;//2')
-    batt_remain=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 6-7)
+    batt_remain=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
     batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
     # show data
     print "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
@@ -219,7 +228,7 @@ st() {
     print "CPU         : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
     print "Memory      : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
     print "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
-    print "Battery     : $batt_perc for $time_on, $batt_remain; cycle count $batt_cycles"
+    print "Battery     : $batt_perc for $hours$mins$secs, $batt_remain; cycle count $batt_cycles"
     print "Hostname    : $(uname -n)"
     print "Internal IP : $(ipconfig getifaddr en0)"
     print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"
