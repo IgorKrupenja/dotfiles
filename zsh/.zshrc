@@ -204,6 +204,7 @@ st() {
     uptime=$(awk -v time=$timeAgo 'BEGIN { seconds = time % 60; minutes = int(time / 60 % 60);
         hours = int(time / 60 / 60 % 24); days = int(time / 60 / 60 / 24);
         printf("%.0f days, %.0f hours, %.0f minutes, %.0f seconds", days, hours, minutes, seconds); exit }')
+
     # build battery string components
     time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | cut -d ' ' -f 2) +%s)
     time_on=$(($(date +%s) - $time_batt_change))
@@ -219,6 +220,7 @@ st() {
     batt_perc=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-5 | sed 's/;//2')
     batt_remain=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
     batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
+
     # show data
     print "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
     print "Uptime      : $uptime"
@@ -308,7 +310,19 @@ tgx() {
 
 # list history for today
 tgl() {
-    tg ls -s $(date "+%m/%d/%y") -f +project
+    raw_data=$(tg ls -s $(date "+%m/%d/%y") -f +project)
+    echo $raw_data
+    times=($(echo $raw_data | grep / | cut -c 16-24 | fmt | tr ' ' '\n'))
+    epoch='1970-01-01'
+
+    sum=0
+    for i in $times
+    do
+        sum="$(date -ujf "%Y-%m-%d %H:%M:%S" "$epoch $i" +%s) + $sum"
+    done
+
+    echo " --------------------------------------------------------------------------------------"
+    echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
 }
 
 # aliases below are needed to support accidental alt+t input
