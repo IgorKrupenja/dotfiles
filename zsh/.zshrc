@@ -312,10 +312,11 @@ tgx() {
 tgl() {
     raw_data=$(tg ls -s $(date "+%m/%d/%y") -f +project)
     echo $raw_data
-    times=($(echo $raw_data | grep / | cut -c 16-24 | fmt | tr ' ' '\n'))
-    epoch='1970-01-01'
 
+    times=($(echo $raw_data | grep / | cut -c 16-24))
+    epoch='1970-01-01'
     sum=0
+
     for i in $times
     do
         sum="$(date -ujf "%Y-%m-%d %H:%M:%S" "$epoch $i" +%s) + $sum"
