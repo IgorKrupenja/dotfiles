@@ -121,5 +121,55 @@
     {
         "key": "cmd+k cmd+c",
         "command": "html-css-class-completion.cache"
+    },
+    {
+        "key": "shift+cmd+a",
+        "command": "cacher.createSnippet",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+c",
+        "command": "-cacher.createSnippet",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "-workbench.action.files.saveAs"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "-workbench.action.files.saveLocalFile",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "cacher.insertSnippet",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+i",
+        "command": "-cacher.insertSnippet",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+o",
+        "command": "-cacher.openSnippet"
+    },
+    {
+        "key": "shift+alt+p",
+        "command": "-cacher.openSnippetPage"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "-search.action.rerunEditorSearch",
+        "when": "editorLangId == 'search-result' && editorLangId == 'search-result'"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "cacher.refresh"
+    },
+    {
+        "key": "shift+alt+r",
+        "command": "-cacher.refresh"
     }
 ]
