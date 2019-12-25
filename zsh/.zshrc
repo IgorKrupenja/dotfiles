@@ -209,13 +209,13 @@ st() {
     time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | cut -d ' ' -f 2) +%s)
     time_on=$(($(date +%s) - $time_batt_change))
     unset hours
-    if [[ $(($time_on/3600)) != 0 ]]; then
-        hours="$(($time_on/3600))h "
-        hours_int=$(($time_on/3600))
+    if [[ $(($time_on / 3600)) != 0 ]]; then
+        hours="$(($time_on / 3600))h "
+        hours_int=$(($time_on / 3600))
     fi
     unset mins
-    if [[ $(($time_on/60)) != 0 ]]; then
-        mins="$(($time_on / 60 - $hours_int * 60))m "
+    if [[ $(($time_on / 60)) != 0 ]]; then
+        mins="$(($time_on / 60 % 60))m "
     fi
     secs="$(($time_on%60))s"
     batt_perc=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-5 | sed 's/;//2')
