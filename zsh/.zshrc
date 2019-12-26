@@ -408,6 +408,12 @@ calc() {
 }
 alias ca="calc"
 
+# Unit converter
+# ---------------------------------------------------------------------------
+un() {
+    units "$1 $2" $3
+}
+
 # Calendar
 # ---------------------------------------------------------------------------
 alias cala="gcalcli agenda --military --details=length --details=location"
