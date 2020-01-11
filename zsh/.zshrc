@@ -278,10 +278,13 @@ alias tgcar="tg start -o Career && tg now"
 alias tgsoc="tg start -o Social && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
-# TalTech subjects
-alias tgos="tg start \"OS\" -o TalTech && tg now"
+# TalTech
+alias tgttu="tgtt"
 alias tgpy="tg start \"Python\" -o TalTech && tg now"
-alias tgen="tg start \"English\" -o TalTech && tg now"
+alias tgen="tg start \"English II\" -o TalTech && tg now"
+alias tgnet="tg start \"Networks\" -o TalTech && tg now"
+alias tgasp="tg start \"Aspektid\" -o TalTech && tg now"
+alias tghw="tg start \"Arvutid\" -o TalTech && tg now"
 
 # Focus mode
 focus() {
@@ -295,7 +298,6 @@ focus() {
 }
 # Projects with focus
 alias tgf="tgcode && focus"
-alias tgmat="tg start \"DiskMat\" -o TalTech && tg now && focus"
 alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now && focus"
 
 # Stop
