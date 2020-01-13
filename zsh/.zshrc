@@ -280,7 +280,7 @@ alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
 # TalTech
 alias tgttu="tgtt"
-alias tgpy="tg start \"Python\" -o TalTech && tg now"
+alias tgpy="tg start \"Python II\" -o TalTech && tg now"
 alias tgen="tg start \"English II\" -o TalTech && tg now"
 alias tgnet="tg start \"Networks\" -o TalTech && tg now"
 alias tgasp="tg start \"Aspektid\" -o TalTech && tg now"
