@@ -334,6 +334,7 @@ tgl() {
 alias †gn=tgn
 alias †gx=tgx
 alias †gcode=tgcode
+alias †gf=tgf
 alias †gcar=tgcar
 alias †gtt=tgtt
 
