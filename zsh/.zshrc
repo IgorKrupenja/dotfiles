@@ -24,8 +24,9 @@ export LESS=-XFR
 # for z dir navigation
 # only source on macOS to avoid error in Linux
 case "$OSTYPE" in
-    darwin*)
-        source /usr/local/etc/profile.d/z.sh
+darwin*)
+    source /usr/local/etc/profile.d/z.sh
+    ;;
 esac
 # fuck
 eval $(thefuck --alias)
@@ -108,8 +109,8 @@ alias dil='diskutil list'
 alias diu='diskutil unmount'
 # eject all
 die() {
-osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
-/Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
+    osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
+    /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
 }
 
 # Misc
@@ -137,7 +138,7 @@ alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 alias mkdir='mkdir -pv'
 # touch with dir creation
 mkf() {
-    mkdir -p "$(dirname "$1")" && touch "$1";
+    mkdir -p "$(dirname "$1")" && touch "$1"
 }
 # thefuck
 alias f="fuck"
@@ -225,7 +226,7 @@ st() {
     if [[ $(($time_on / 60)) != 0 ]]; then
         mins="$(($time_on / 60 % 60))m "
     fi
-    secs="$(($time_on%60))s"
+    secs="$(($time_on % 60))s"
     batt_info=$(pmset -g ps | grep Internal | sed $'s/\t/ /g')
     batt_perc=$(echo $batt_info | cut -d ' ' -f 4-5 | sed 's/;//2')
     batt_remain=$(echo $batt_info | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
@@ -299,10 +300,10 @@ alias tghw="tg start \"Arvutid\" -o TalTech && tg now"
 focus() {
     stop_pomo
     bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
-    killall Discord > /dev/null 2>&1
-    killall Reeder > /dev/null 2>&1
+    killall Discord >/dev/null 2>&1
+    killall Reeder >/dev/null 2>&1
     if [[ $(defaults read org.eyebeam.SelfControl BlockStartedDate) == "4001-01-01 00:00:00 +0000" ]]; then
-        sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install > /dev/null 2>&1
+        sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install >/dev/null 2>&1
     fi
 }
 # Projects with focus
@@ -329,8 +330,7 @@ tgl() {
     epoch='1970-01-01'
     sum=0
 
-    for i in $times
-    do
+    for i in $times; do
         sum="$(date -ujf "%Y-%m-%d %H:%M:%S" "$epoch $i" +%s) + $sum"
     done
 
@@ -371,10 +371,10 @@ tren() {
 }
 
 # important label
-tred!() {
+tredi() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
 }
-tren!() {
+treni() {
     trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
 }
 
@@ -444,14 +444,14 @@ wcl() {
 }
 
 world_clock() {
-    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna" \
-    "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
+    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna"
+        "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
     OUTPUT=""
 
     for loc in ${TIME_ZONES[@]}; do
-        CITY=`echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}'`
-        CUR_TIME=`TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }'`
-        TEMP=`awk -v l="$CITY" -v t="$CUR_TIME" 'BEGIN { print l "\t" t }'`
+        CITY=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
+        CUR_TIME=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }')
+        TEMP=$(awk -v l="$CITY" -v t="$CUR_TIME" 'BEGIN { print l "\t" t }')
         OUTPUT="${OUTPUT}\n${TEMP}"
     done
 
@@ -615,13 +615,13 @@ alias ch="charm"
 alias dj="source ~/.virtualenvs/djangodev/bin/activate"
 alias dje="deactivate"
 # pip zsh completion
-function _pip_completion {
+function _pip_completion() {
     local words cword
     read -Ac words
     read -cn cword
-    reply=( $( COMP_WORDS="$words[*]" \
-               COMP_CWORD=$(( cword-1 )) \
-               PIP_AUTO_COMPLETE=1 $words[1] ) )
+    reply=($(COMP_WORDS="$words[*]" \
+        COMP_CWORD=$((cword - 1)) \
+        PIP_AUTO_COMPLETE=1 $words[1]))
 }
 compctl -K _pip_completion pip
 
@@ -630,7 +630,7 @@ compctl -K _pip_completion pip
 # Prepare dir for web dev using a simple template
 tpl() {
     # gitignore
-    echo ".vscode\nnode_modules\n.DS_Store" >> .gitignore
+    echo ".vscode\nnode_modules\n.DS_Store" >>.gitignore
     # simple ESLint settings
     npm init -y
     npm i --save-dev eslint
@@ -655,7 +655,8 @@ tpl() {
 # close Chrome and re-open with remote debug on
 crdbg() {
     osascript -e 'quit app "Google Chrome.app"'
-    nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 > /dev/null 2>&1 & disown
+    nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 >/dev/null 2>&1 &
+    disown
 }
 # jasmine
 alias jm="jasmine"
@@ -681,6 +682,7 @@ alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 #############################################################################
 
 case "$OSTYPE" in
-    linux*)
-        source $DOTFILES/zsh/.zsh_linux
+linux*)
+    source $DOTFILES/zsh/.zsh_linux
+    ;;
 esac
