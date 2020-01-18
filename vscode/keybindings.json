@@ -171,5 +171,17 @@
     {
         "key": "shift+alt+r",
         "command": "-cacher.refresh"
+    },
+    {
+        "key": "cmd+k cmd+m",
+        "command": "-workbench.extensions.action.showRecommendedKeymapExtensions"
+    },
+    {
+        "key": "cmd+k cmd+m",
+        "command": "workbench.action.editor.changeLanguageMode"
+    },
+    {
+        "key": "cmd+k m",
+        "command": "-workbench.action.editor.changeLanguageMode"
     }
 ]

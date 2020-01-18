@@ -240,13 +240,13 @@ alias tgn="tg now"
 alias tgw="open https://www.toggl.com/app/timer"
 
 # Projects
-alias tgtt="tg start -o TalTech && tg now"
 alias tgcode="tg start -o Coding && tg now"
 alias tgcar="tg start -o Career && tg now"
 alias tgsoc="tg start -o Social && tg now"
 alias tghus="tg start \"Hustle\" -o Work && tg now"
 alias tgphys="tg start -o Physio && tg now"
 # TalTech
+alias tgtt="tg start -o TalTech && tg now"
 alias tgttu="tgtt"
 alias tgpy="tg start \"Python II\" -o TalTech && tg now"
 alias tgen="tg start \"English II\" -o TalTech && tg now"
@@ -594,8 +594,8 @@ tpl() {
     npm i --save-dev eslint eslint-plugin-import eslint-plugin-html eslint-config-airbnb-base eslint-plugin-only-warn
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
     # files
-    mkdir styles scripts
-    touch styles/style.css scripts/main.js
+    mkdir styles scripts styles/scss
+    touch styles/style.css styles/scss/style.scss scripts/main.js
     mkdir "images"
     cp $DOTFILES/templates/index.html index.html
     cp $DOTFILES/templates/favicon.png images/favicon.png
