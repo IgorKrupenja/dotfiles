@@ -631,15 +631,17 @@ tpl() {
     npm i --save-dev eslint-plugin-only-warn
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
     # files
-    mkf "styles/style.css"
-    mkf "scripts/main.js"
+    mkdir styles scripts
+    touch styles/style.css scripts/main.js
     mkdir "images"
     cp $DOTFILES/templates/index.html index.html
     cp $DOTFILES/templates/favicon.png images/favicon.png
     # git
     git init
-    ga .
-    gcm "Initial commit 🚀"
+    git add .
+    git commit -m "Initial commit 🚀"
+    git remote add origin git@github.com:krupenja/${PWD##*/}.git
+    git push -u origin master
 }
 # close Chrome and re-open with remote debug on
 crdbg() {
