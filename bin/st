@@ -20,7 +20,7 @@ time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | 
 batt_time=$(get_time_difference "$unix_time" "$time_batt_change")
 batt_info=$(pmset -g ps | grep Internal | sed $'s/\t/ /g')
 batt_perc=$(echo "$batt_info" | cut -d ' ' -f 4-5 | sed 's/;//2')
-batt_remain=$(echo "$batt_info" | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
+batt_remain=$(echo "$batt_info" | cut -d ' ' -f 6-7 | sed 's/:/h /g'g)
 batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
 
 # build CPU/RAM info helper string
