@@ -97,12 +97,20 @@ te() {
 	EOF
 }
 
-# diskutil
+# diskutil & VeraCrypt
 # ---------------------------------------------------------------------------
+vcm() {
+    dir="$*"
+    mountpoint=${dir##*/}
+    /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -t --mount --protect-hidden=no -k="" --pim=0 $dir /Volumes/$mountpoint
+}
 alias dil='diskutil list'
 alias diu='diskutil unmount'
 # eject all
-alias die='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
+die() {
+osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
+/Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
+}
 
 # Misc
 # ---------------------------------------------------------------------------
@@ -218,8 +226,9 @@ st() {
         mins="$(($time_on / 60 % 60))m "
     fi
     secs="$(($time_on%60))s"
-    batt_perc=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 4-5 | sed 's/;//2')
-    batt_remain=$(pmset -g ps | grep Internal | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
+    batt_info=$(pmset -g ps | grep Internal | sed $'s/\t/ /g')
+    batt_perc=$(echo $batt_info | cut -d ' ' -f 4-5 | sed 's/;//2')
+    batt_remain=$(echo $batt_info | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
     batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
 
     # show data
@@ -402,13 +411,14 @@ socp() {
 
 # Calculator
 # ---------------------------------------------------------------------------
-calc() {
-    # use either + or p to sum
+calculator() {
+    # use + or p to sum
     local calc="${*//p/+}"
-    # use x to multiply
+    # use x or * to multiply
     calc="${calc//x/*}"
-    bc -l <<<"scale=10;$calc"
+    echo $calc | bc
 }
+alias calc='noglob calculator'
 alias ca="calc"
 
 # Unit converter
@@ -451,8 +461,7 @@ world_clock() {
 # Weather
 # ---------------------------------------------------------------------------
 met() {
-    # '$1 $2 $3 $4' is a hack ofc, no idea why $@ does not work with curl
-    curl -s v2.wttr.in/"$1 $2 $3 $4" | sed 's/18      /18     0/g'
+    curl -s v2.wttr.in/"$*"
 }
 # old version
 alias meto="curl -s \"wttr.in/$1\""
@@ -461,11 +470,11 @@ alias meto="curl -s \"wttr.in/$1\""
 # ---------------------------------------------------------------------------
 # convert string to TITLE case
 tc() {
-    echo "$1" | python3 -c "print('$1'.title())"
+    echo "$*" | python3 -c "print('$*'.title())"
 }
 # convert string to SENTENCE case
 sc() {
-    echo "$1" | python3 -c "print('$1'.capitalize())"
+    echo "$*" | python3 -c "print('$*'.capitalize())"
 }
 # convert mov to gif
 mgif() {
