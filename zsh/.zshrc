@@ -109,8 +109,8 @@ alias dil='diskutil list'
 alias diu='diskutil unmount'
 # eject all
 die() {
-    osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
     /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
+    osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
 }
 
 # Misc
