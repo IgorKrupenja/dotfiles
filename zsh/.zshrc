@@ -321,36 +321,36 @@ trel() {
 }
 
 tred() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today'
+    trello add-card "$*" -b "📥 Daily Kanban" -l '💣 Today'
 }
 
 tren() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight'
+    trello add-card "$*" -b "📥 Daily Kanban" -l '🌆 Tonight'
 }
 
 # important label
 tredi() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
+    trello add-card "$*" -b "📥 Daily Kanban" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
 }
 treni() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
+    trello add-card "$*" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
 }
 
 # TalTech label
 tredt() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '💣 Today' -g 5b7c3a417b03a914551de144
+    trello add-card "$*" -b "📥 Daily Kanban" -l '💣 Today' -g 5b7c3a417b03a914551de144
 }
 trent() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5b7c3a417b03a914551de144
+    trello add-card "$*" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5b7c3a417b03a914551de144
 }
 
 tref() {
-    trello add-card "$1" -b "📥 Daily Kanban" -l '📈 Further ahead'
+    trello add-card "$*" -b "📥 Daily Kanban" -l '📈 Further ahead'
 }
 
 # move to Done on "📥 Daily Kanban" board
 trex() {
-    trello move-card "$1" 5a785c3a56d2f82288d292e8
+    trello move-card "$*" 5a785c3a56d2f82288d292e8
 }
 
 # cards to add extra time in Toggl
