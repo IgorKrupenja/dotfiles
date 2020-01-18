@@ -591,11 +591,7 @@ tpl() {
     echo ".vscode\nnode_modules\n.DS_Store" >>.gitignore
     # simple ESLint settings
     npm init -y
-    npm i --save-dev eslint
-    npm i --save-dev eslint-plugin-import
-    npm i --save-dev eslint-plugin-html
-    npm i --save-dev eslint-config-airbnb-base
-    npm i --save-dev eslint-plugin-only-warn
+    npm i --save-dev eslint eslint-plugin-import eslint-plugin-html eslint-config-airbnb-base eslint-plugin-only-warn
     ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
     # files
     mkdir styles scripts
