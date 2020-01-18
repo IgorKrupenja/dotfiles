@@ -259,8 +259,10 @@ macos_settings() {
     # for CLI
     ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
-    # Map key to the left of 1 to tilde (~)
+    # Map key to the left of Z to tilde (~)
     ln -sv $DOTFILES/misc/com.user.tilde.plist $HOME/Library/LaunchAgents/com.user.tilde.plist
+    # Run cacher server on startup
+    ln -sv $DOTFILES/misc/com.user.cacher-server.plist $HOME/Library/LaunchAgents/com.user.cacher-server.plist
 
     # Thanks to Mathias Bynens for the stuff below! https://mths.be/macos
 
