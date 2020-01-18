@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# return time difference between two times in human-readable format
+get_time_difference() {
+  time_ago=$(($1 - $2))
+  awk -v time=$time_ago 'BEGIN { seconds = time % 60; minutes = int(time / 60 % 60);
+        hours = int(time / 60 / 60 % 24); days = int(time / 60 / 60 / 24);
+        printf("%.0fd %.0fh %.0fm %.0fs", days, hours, minutes, seconds); exit }'
+}
+
+# get current time
+unix_time=$(date +%s)
+
+# build uptime string
+boot_time=$(sysctl -n kern.boottime | awk '{print $4}' | sed 's/,//g')
+uptime=$(get_time_difference "$unix_time" "$boot_time")
+
+# build battery info strings
+time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | cut -d ' ' -f 2) +%s)
+batt_time=$(get_time_difference "$unix_time" "$time_batt_change")
+batt_info=$(pmset -g ps | grep Internal | sed $'s/\t/ /g')
+batt_perc=$(echo "$batt_info" | cut -d ' ' -f 4-5 | sed 's/;//2')
+batt_remain=$(echo "$batt_info" | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
+batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
+
+# build CPU/RAM info helper string
+top_info=$(top -l 1)
+
+# show data
+echo "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
+echo "Uptime      : $uptime"
+echo "OS          : macOS $(sw_vers -productVersion)"
+echo "Kernel      : $(uname -s -r)"
+echo "Model       : MacBook Pro 13\" Mid-2014"
+echo "CPU         : $(echo $top_info | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
+echo "Memory      : $(echo $top_info | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
+echo "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
+echo "Battery     : $batt_perc for $batt_time, $batt_remain; cycle count $batt_cycles"
+echo "Hostname    : $(uname -n)"
+echo "Internal IP : $(ipconfig getifaddr en0)"
+echo "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"

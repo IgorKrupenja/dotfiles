@@ -204,48 +204,6 @@ alias bd="brew cleanup; brew doctor"
 
 # System info
 # ---------------------------------------------------------------------------
-# status
-st() {
-    # build uptime string
-    boottime=$(sysctl -n kern.boottime | awk '{print $4}' | sed 's/,//g')
-    unixtime=$(date +%s)
-    timeAgo=$(($unixtime - $boottime))
-    uptime=$(awk -v time=$timeAgo 'BEGIN { seconds = time % 60; minutes = int(time / 60 % 60);
-        hours = int(time / 60 / 60 % 24); days = int(time / 60 / 60 / 24);
-        printf("%.0fd %.0fh %.0fm %.0fs", days, hours, minutes, seconds); exit }')
-
-    # build battery string components
-    time_batt_change=$(date -jf%T $(pmset -g log | grep -w 'Using Batt' | tail -1 | cut -d ' ' -f 2) +%s)
-    time_on=$(($(date +%s) - $time_batt_change))
-    unset hours
-    if [[ $(($time_on / 3600)) != 0 ]]; then
-        hours="$(($time_on / 3600))h "
-        hours_int=$(($time_on / 3600))
-    fi
-    unset mins
-    if [[ $(($time_on / 60)) != 0 ]]; then
-        mins="$(($time_on / 60 % 60))m "
-    fi
-    secs="$(($time_on % 60))s"
-    batt_info=$(pmset -g ps | grep Internal | sed $'s/\t/ /g')
-    batt_perc=$(echo $batt_info | cut -d ' ' -f 4-5 | sed 's/;//2')
-    batt_remain=$(echo $batt_info | sed $'s/\t/ /g' | cut -d ' ' -f 6-7 | sed 's/:/h /g' | sed 's/ remaining/m remaining/g')
-    batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
-
-    # show data
-    print "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
-    print "Uptime      : $uptime"
-    print "OS          : macOS $(sw_vers -productVersion)"
-    print "Kernel      : $(uname -s -r)"
-    print "Model       : MacBook Pro 13\" Mid-2014"
-    print "CPU         : $(top -l 1 | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
-    print "Memory      : $(top -l 1 | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
-    print "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
-    print "Battery     : $batt_perc for $hours$mins$secs, $batt_remain; cycle count $batt_cycles"
-    print "Hostname    : $(uname -n)"
-    print "Internal IP : $(ipconfig getifaddr en0)"
-    print "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"
-}
 # wifi network list
 alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
 # network usage stats
