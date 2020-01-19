@@ -221,7 +221,7 @@ a() {
 # which
 alias w="which"
 # reboot with confirmation dialog
-alias reboot='osascript -e "tell app \"loginwindow\" to «event aevtrrst»"'
+alias reboot="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'"
 # manage Finder sidebar items
 alias side="mysides"
 # htop with sudo
@@ -365,7 +365,7 @@ calculator() {
     calc="${calc//x/*}"
     echo $calc | bc
 }
-alias calc='noglob calculator'
+alias calc="noglob calculator"
 alias ca="calc"
 
 # Unit converter
@@ -391,18 +391,18 @@ wcl() {
 }
 
 world_clock() {
-    TIME_ZONES=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna"
+    time_zones=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna"
         "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
-    OUTPUT=""
+    output=""
 
-    for loc in ${TIME_ZONES[@]}; do
-        CITY=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
-        CUR_TIME=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }')
-        TEMP=$(awk -v l="$CITY" -v t="$CUR_TIME" 'BEGIN { print l "\t" t }')
-        OUTPUT="${OUTPUT}\n${TEMP}"
+    for loc in ${time_zones[@]}; do
+        city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
+        current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }')
+        temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
+        output="${output}\n${temp}"
     done
 
-    echo $OUTPUT | column -t | tr '_' ' '
+    echo $output | column -t | tr '_' ' '
 }
 
 # Weather
