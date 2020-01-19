@@ -233,26 +233,28 @@ alias htop="sudo htop"
 
 # Toggl & SelfControl
 # ---------------------------------------------------------------------------
-alias tg="toggl"
-alias tgr="tg continue; tg now"
-alias tgn="tg now"
+alias tgr="toggl continue; toggl now"
+alias tgn="toggl now"
 # Open in browser
 alias tgw="open https://www.toggl.com/app/timer"
 
 # Projects
-alias tgcode="tg start -o Coding && tg now"
-alias tgcar="tg start -o Career && tg now"
-alias tgsoc="tg start -o Social && tg now"
-alias tghus="tg start \"Hustle\" -o Work && tg now"
-alias tgphys="tg start -o Physio && tg now"
+tgs() {
+    toggl start $2 -o $1 && tgn
+}
+alias tgcode="tgs Coding"
+alias tgcar="tgs Career"
+alias tgsoc="tgs Social"
+alias tghus="tgs Work Hustle"
+alias tgphys="tgs Physio"
 # TalTech
-alias tgtt="tg start -o TalTech && tg now"
+alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
-alias tgpy="tg start \"Python II\" -o TalTech && tg now"
-alias tgen="tg start \"English II\" -o TalTech && tg now"
-alias tgnet="tg start \"Networks\" -o TalTech && tg now"
-alias tgasp="tg start \"Aspektid\" -o TalTech && tg now"
-alias tghw="tg start \"Arvutid\" -o TalTech && tg now"
+alias tgpy="tgtt 'Python II'"
+alias tgen="tgtt 'English II'"
+alias tgnet="tgtt Networks"
+alias tgasp="tgtt Aspektid"
+alias tghw="tgtt Arvutid"
 
 # Focus mode
 focus() {
@@ -266,7 +268,6 @@ focus() {
 }
 # Projects with focus
 alias tgf="tgcode && focus"
-alias tgsis="tg start \"Sissejuhatus\" -o TalTech && tg now && focus"
 
 # Stop
 stop_pomo() {
@@ -274,14 +275,11 @@ stop_pomo() {
         pkill -f "pomo"
     fi
 }
-tgx() {
-    toggl now && toggl stop
-    stop_pomo
-}
+alias tgx="tgn && toggl stop && stop_pomo"
 
 # list history for today
 tgl() {
-    raw_data=$(tg ls -s $(date "+%m/%d/%y") -f +project)
+    raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
     echo $raw_data
 
     times=($(echo $raw_data | grep / | cut -c 16-24))
@@ -313,59 +311,50 @@ alias banls="defaults read org.eyebeam.SelfControl HostBlacklist"
 # Trello CLI
 # ---------------------------------------------------------------------------
 
+# list cards
+trls() {
+    trello show-cards -b "📥 Daily Kanban" -l $1
+}
 trel() {
-    trello show-cards -b "📥 Daily Kanban" -l '💣 Today'
-    trello show-cards -b "📥 Daily Kanban" -l '🌆 Tonight'
-    trello show-cards -b "📥 Daily Kanban" -l '🌅 Tomorrow'
-    trello show-cards -b "📥 Daily Kanban" -l '📆 This week'
+    trls '💣 Today'
+    trls '🌆 Tonight'
+    trls '🌅 Tomorrow'
+    trls '📆 This week'
 }
 
-tred() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '💣 Today'
+# add cards
+tradd() {
+    if [[ $2 == "add-label" ]]; then
+        title="${@:4}"
+        trello add-card $title -b "📥 Daily Kanban" -l $1 -g $3
+    else
+        title="${@:2}"
+        trello add-card $title -b "📥 Daily Kanban" -l $1
+    fi
 }
-
-tren() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '🌆 Tonight'
-}
-
-# important label
-tredi() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '💣 Today' -g 5c56f3491be0121b5865f2d7
-}
-treni() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5c56f3491be0121b5865f2d7
-}
-
+alias tred="tradd '💣 Today'"
+alias tren="tradd '🌆 Tonight'"
+alias tref="tradd '📈 Further ahead'"
+# Important label
+alias tredi="tred add-label 5c56f3491be0121b5865f2d7"
+alias treni="tren add-label 5c56f3491be0121b5865f2d7"
 # TalTech label
-tredt() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '💣 Today' -g 5b7c3a417b03a914551de144
-}
-trent() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '🌆 Tonight' -g 5b7c3a417b03a914551de144
-}
-
-tref() {
-    trello add-card "$*" -b "📥 Daily Kanban" -l '📈 Further ahead'
-}
+alias tredt="tred add-label 5b7c3a417b03a914551de144"
+alias trent="tren add-label 5b7c3a417b03a914551de144"
 
 # move to Done on "📥 Daily Kanban" board
 trex() {
     trello move-card "$*" 5a785c3a56d2f82288d292e8
 }
 
-# cards to add extra time in Toggl
-codep() {
-    trello add-card "Add $1 min coding" -b "📥 Daily Kanban" -l '🌆 Tonight'
+# cards with reminder to add extra time in Toggl
+extra() {
+    tren "Add $2 min $1"
 }
-pyp() {
-    trello add-card "Add $1 min Python" -b "📥 Daily Kanban" -l '🌆 Tonight'
-}
-carp() {
-    trello add-card "Add $1 min career" -b "📥 Daily Kanban" -l '🌆 Tonight'
-}
-socp() {
-    trello add-card "Add $1 min social" -b "📥 Daily Kanban" -l '🌆 Tonight'
-}
+alias codep="extra coding"
+alias pyp="extra Python"
+alias carp="extra career"
+alias socp="extra social"
 
 # Calculator
 # ---------------------------------------------------------------------------
