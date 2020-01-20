@@ -240,15 +240,6 @@ macos_settings() {
         echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1"
     ) | crontab -
 
-    # VSCode
-    VSCODE_DIR=$HOME/Library/Application\ Support/Code/User
-    files=("spellright.dict" "snippets" "keybindings.json" "settings.json")
-    for file in ${files[@]}; do
-        # Backup any existing files
-        mv -fv "$VSCODE_DIR/${file}" "$VSCODE_DIR/${file}-$(date +"%Y%m%d%H%M").bak"
-        ln -sv "$DOTFILES/vscode/${file}" "$VSCODE_DIR/${file}"
-    done
-
     # iTerm
     defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
     defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true

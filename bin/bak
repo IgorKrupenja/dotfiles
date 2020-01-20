@@ -28,24 +28,6 @@ if [[ $(git diff marta) ]]; then
     git commit -m "Update Marta settings"
 fi
 
-# VSCode
-if [[ $(git diff vscode/settings.json) ]]; then
-    git add vscode/settings.json
-    git commit -m "Update VSCode settings"
-fi
-
-code --list-extensions | xargs -L 1 echo code --install-extension >$DOTFILES/vscode/extensions.sh
-chmod +x $DOTFILES/vscode/extensions.sh
-if [[ $(git diff vscode/extensions.sh) ]]; then
-    git add vscode/extensions.sh
-    git commit -m "Update VSCode extensions"
-fi
-
-if [[ $(git diff vscode/keybindings.json) ]]; then
-    git add vscode/keybindings.json
-    git commit -m "Update VSCode keybindings"
-fi
-
 # commit iTerm plist if there are changes
 if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
     git add iterm/com.googlecode.iterm2.plist
