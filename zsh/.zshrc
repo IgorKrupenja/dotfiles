@@ -243,6 +243,7 @@ tgs() {
     toggl start $2 -o $1 && tgn
 }
 alias tgcode="tgs Coding"
+alias tgc="tgcode"
 alias tgcar="tgs Career"
 alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
