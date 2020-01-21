@@ -342,6 +342,10 @@ alias treni="tren add-label 5c56f3491be0121b5865f2d7"
 # TalTech label
 alias tredt="tred add-label 5b7c3a417b03a914551de144"
 alias trent="tren add-label 5b7c3a417b03a914551de144"
+# Coding board
+trec() {
+    trello add-card "$*" -b "🛠 Coding" -l "🏃 In progress"
+}
 
 # move to Done on "📥 Daily Kanban" board
 trex() {
