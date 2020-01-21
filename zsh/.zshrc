@@ -364,7 +364,7 @@ calculator() {
     local calc="${*//p/+}"
     # use x or * to multiply
     calc="${calc//x/*}"
-    echo $calc | bc
+    echo "scale=10;$calc" | bc
 }
 alias calc="noglob calculator"
 alias ca="calc"
