@@ -624,6 +624,10 @@ alias fsk="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
 # Mount home dir on enos
 alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
+# Misc
+# ---------------------------------------------------------------------------
+alias cac="cacher run-server:start -o https://app.cacher.io -p 30069 -t eg0MNUXE1Y3y6lIUVvZr >/dev/null 2>&1 & disown"
+
 #############################################################################
 # LINUX
 # must stay at the end of file
