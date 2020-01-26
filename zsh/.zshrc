@@ -253,7 +253,7 @@ alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
 alias tgpy="tgtt 'Python II'"
 alias tgen="tgtt 'English II'"
-alias tgnet="tgtt Networks"
+alias tgalg="tgtt Algorithms"
 alias tgasp="tgtt Aspektid"
 alias tghw="tgtt Arvutid"
 
