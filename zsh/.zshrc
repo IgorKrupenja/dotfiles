@@ -590,8 +590,9 @@ tpl() {
         cp $DOTFILES/templates/${file} ./
     done
     vsccode_files=("tasks.json" "launch.json")
+    mkdir .vscode
     for file in ${vsccode_files[@]}; do
-        cp $DOTFILES/templates/${file} ./.vscode/
+        cp $DOTFILES/templates/${file} .vscode/
     done
     # Template files
     mkdir styles scripts styles/scss
