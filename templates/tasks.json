@@ -1,0 +1,33 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start SASS watcher",
+      "type": "shell",
+      "command": "sass",
+      "args": ["--watch", "styles/scss:styles"],
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Terminal",
+      "type": "process",
+      "command": "/bin/zsh",
+      "args": ["-l"],
+      "presentation": {
+        "echo": false,
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Prepare SASS watcher",
+      "dependsOn": ["Start SASS watcher", "Terminal"],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}

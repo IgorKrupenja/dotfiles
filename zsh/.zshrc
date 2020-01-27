@@ -581,13 +581,19 @@ compctl -K _pip_completion pip
 # ---------------------------------------------------------------------------
 # Prepare dir for web dev using a simple template
 tpl() {
-    # gitignore
-    echo ".vscode\nnode_modules\n.DS_Store" >>.gitignore
-    # simple ESLint settings
+    # install ESLint
     npm init -y
     npm i --save-dev eslint eslint-plugin-import eslint-plugin-html eslint-config-airbnb-base eslint-plugin-only-warn
-    ln -sv $PROJECTS/dotfiles/eslint/.eslintrc.json ./
-    # files
+    # Settings files
+    root_files=(".gitignore" ".eslintrc.json")
+    for file in ${root_files[@]}; do
+        cp $DOTFILES/templates/${file} ./
+    done
+    vsccode_files=("tasks.json" "launch.json")
+    for file in ${vsccode_files[@]}; do
+        cp $DOTFILES/templates/${file} ./.vscode/
+    done
+    # Template files
     mkdir styles scripts styles/scss
     touch styles/style.css styles/scss/style.scss scripts/main.js
     mkdir "images"
