@@ -8,11 +8,11 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles. Primarily for macOS, limited Ubuntu Server 18.04 support.
+A repository to store some of my settings and dotfiles. Primarily for macOS, limited Ubuntu Server 18.04 support.
 
 ## Requirements
 
-Can be installed on clean systems without git or Xcode Command Line Tools.
+Install script can be run on clean systems without git or Xcode Command Line Tools.
 
 ## Installation
 
