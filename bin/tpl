@@ -19,7 +19,7 @@ fi
 mkdir -p app/assets/images app/assets/fonts app/assets/styles/scss
 touch app/assets/styles/scss/style.scss app/main.$project_type
 cp $DOTFILES/dev-templates/favicon.png app/favicon.png
-cp $DOTFILES/dev-templates/$project_type/index.html app/index.html
+cp $DOTFILES/dev-templates/index.html app/index.html
 
 # install ESLint
 npm init -y
