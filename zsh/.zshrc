@@ -579,37 +579,13 @@ compctl -K _pip_completion pip
 
 # Web & JS
 # ---------------------------------------------------------------------------
-# Prepare dir for web dev using a simple template
-tpl() {
-    # install ESLint
-    npm init -y
-    npm i --save-dev eslint eslint-plugin-import eslint-plugin-html eslint-config-airbnb-base eslint-plugin-only-warn
-    # Settings files
-    root_files=(".gitignore" ".eslintrc.json")
-    for file in ${root_files[@]}; do
-        cp $DOTFILES/templates/${file} ./
-    done
-    vsccode_files=("tasks.json" "launch.json")
-    mkdir .vscode
-    for file in ${vsccode_files[@]}; do
-        cp $DOTFILES/templates/${file} .vscode/
-    done
-    # Template files
-    mkdir styles scripts styles/scss
-    touch styles/style.css styles/scss/style.scss scripts/main.js
-    mkdir "images"
-    cp $DOTFILES/templates/index.html index.html
-    cp $DOTFILES/templates/favicon.png images/favicon.png
-    # git
-    git init
-    git add .
-    git commit -m "Initial commit 🚀"
-    git remote add origin git@github.com:krupenja/${PWD##*/}.git
-    git push -u origin master
-}
+# Prepare dir for web dev using a simple template generator
+alias tplt="tpl ts"
+alias tplj="tpl js"
 # close Chrome and re-open with remote debug on
 crdbg() {
     osascript -e 'quit app "Google Chrome.app"'
+    sleep 1
     nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 >/dev/null 2>&1 &
     disown
 }

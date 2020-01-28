@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# colors for output
+red='\033[0;31m'
+yellow='\033[1;33m'
+green='\033[0;32m'
+# no color
+nc='\033[0m'
+
+# Check that argument is valid
+if [[ $* == "ts" || $* == "js" ]]; then
+  project_type="$*"
+else
+  echo -e "${red}ERROR: Invalid argument\nSupported arguments: ts, js${nc}"
+  exit 1
+fi
+
+# Create file and folder structure
+mkdir -p app/assets/images app/assets/fonts app/assets/styles/scss
+touch app/assets/styles/scss/style.scss app/main.$project_type
+cp $DOTFILES/dev-templates/favicon.png app/favicon.png
+cp $DOTFILES/dev-templates/$project_type/index.html app/index.html
+
+# install ESLint
+npm init -y
+if [[ $project_type == "ts" ]]; then
+  npm i --save-dev eslint eslint-plugin-import typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
+elif [[ $project_type == "js" ]]; then
+  npm i --save-dev eslint eslint-plugin-import eslint-plugin-html eslint-config-airbnb-base eslint-plugin-only-warn
+fi
+
+# Settings files
+root_files=(".gitignore" ".eslintrc.json" "tsconfig.json")
+for file in ${root_files[@]}; do
+  cp $DOTFILES/dev-templates/$project_type/$file ./
+done
+
+vsccode_files=("tasks.json")
+mkdir .vscode
+for file in ${vsccode_files[@]}; do
+  cp $DOTFILES/dev-templates/$project_type/$file .vscode/
+done
+
+cp $DOTFILES/dev-templates/launch.json .vscode/
+
+# git
+git init
+git add .
+git commit -m "Initial commit 🚀"
+git remote add origin git@github.com:krupenja/${PWD##*/}.git
+git push -u origin master

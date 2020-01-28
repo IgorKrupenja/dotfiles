@@ -4,12 +4,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start SASS watcher",
+      "label": "SASS watcher",
       "type": "shell",
       "command": "sass",
-      "args": ["--watch", "styles/scss:styles"],
+      "args": ["--watch", "app/assets/styles/scss:styles"],
       "presentation": {
-        "reveal": "silent"
+        "reveal": "never"
       }
     },
     {
@@ -17,14 +17,18 @@
       "type": "process",
       "command": "/bin/zsh",
       "args": ["-l"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "presentation": {
         "echo": false,
         "reveal": "silent"
       }
     },
     {
-      "label": "Prepare SASS watcher",
-      "dependsOn": ["Start SASS watcher", "Terminal"],
+      "label": "Prepare watchers",
+      "dependsOn": ["SASS watcher", "Terminal"],
       "runOptions": {
         "runOn": "folderOpen"
       }

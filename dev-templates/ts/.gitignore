@@ -1,0 +1,7 @@
+.vscode
+node_modules
+.DS_Store
+app/assets/styles/*.css
+app/assets/styles/*.css.map
+app/*.js
+app/*.js.map
