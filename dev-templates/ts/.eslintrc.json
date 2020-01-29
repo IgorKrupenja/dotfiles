@@ -9,7 +9,8 @@
   "rules": {
     "quotes": ["warn", "single"],
     "@typescript-eslint/no-inferrable-types": "warn",
-    "@typescript-eslint/type-annotation-spacing": "warn"
+    "@typescript-eslint/type-annotation-spacing": "warn",
+    "no-extra-semi": "warn"
   },
   "extends": [
     "eslint:recommended",

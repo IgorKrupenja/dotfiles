@@ -16,8 +16,8 @@ else
 fi
 
 # Create file and folder structure
-mkdir -p app/assets/images app/assets/fonts app/assets/styles/scss
-touch app/assets/styles/scss/style.scss app/main.$project_type
+mkdir -p app/assets/images app/assets/fonts app/assets/scss
+touch app/assets/scss/main.scss app/main.$project_type
 cp $DOTFILES/dev-templates/favicon.png app/favicon.png
 cp $DOTFILES/dev-templates/index.html app/index.html
 
@@ -43,9 +43,12 @@ done
 
 cp $DOTFILES/dev-templates/launch.json .vscode/
 
-# git
+# Git
 git init
 git add .
 git commit -m "Initial commit 🚀"
 git remote add origin git@github.com:krupenja/${PWD##*/}.git
 git push -u origin master
+
+# Open VSCode
+code .
