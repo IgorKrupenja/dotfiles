@@ -10,7 +10,11 @@
     "quotes": ["warn", "single"],
     "@typescript-eslint/no-inferrable-types": "warn",
     "@typescript-eslint/type-annotation-spacing": "warn",
-    "no-extra-semi": "warn"
+    "no-extra-semi": "warn",
+    "prefer-const": "warn",
+    "@typescript-eslint/camelcase": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "no-empty": "warn"
   },
   "extends": [
     "eslint:recommended",

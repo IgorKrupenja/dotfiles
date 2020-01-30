@@ -9,15 +9,15 @@
       "request": "attach",
       "name": "Attach to Chrome",
       "port": 9222,
-      "webRoot": "${workspaceFolder}",
-      "urlFilter": "127.0.0.1:5500"
+      "webRoot": "${workspaceFolder}/app",
+      "urlFilter": "localhost:5500"
     },
     {
       "name": "Launch Chrome with debug profile",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:5500",
-      "webRoot": "${workspaceFolder}",
+      "webRoot": "${workspaceFolder}/app",
       "userDataDir": "/Users/igor/Projects/vscode-chrome-debug-userdatadir"
     }
   ]

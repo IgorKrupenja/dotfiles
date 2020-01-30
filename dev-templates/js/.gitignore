@@ -1,5 +1,7 @@
 .vscode
 node_modules
 .DS_Store
-styles/*.css
-styles/*.css.map
+app/assets/scss/*.css
+app/assets/scss/*.css.map
+app/test.js
+test.js

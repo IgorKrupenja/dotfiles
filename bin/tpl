@@ -26,7 +26,7 @@ npm init -y
 if [[ $project_type == "ts" ]]; then
   npm i --save-dev eslint eslint-plugin-import typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
 elif [[ $project_type == "js" ]]; then
-  npm i --save-dev eslint eslint-plugin-import eslint-plugin-html eslint-config-airbnb-base eslint-plugin-only-warn
+  npm i --save-dev eslint eslint-plugin-import eslint-config-airbnb-base
 fi
 
 # Settings files
