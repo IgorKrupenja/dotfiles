@@ -55,6 +55,7 @@ macos_prepare() {
     echo ""
     # Install brew AND GIT
     # Will also install xcode-tools, including git - needed to clone repo
+    # So running xcode-select --install separately IS NOT required
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
 }
 
