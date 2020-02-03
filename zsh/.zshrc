@@ -520,6 +520,12 @@ gmtc() {
     git push origin --tags
 }
 
+# Init with adding a remote
+gi() {
+    git init
+    git remote origin add $1
+}
+
 # git global status to check if any repos need commits/pushes
 ggs() {
 
