@@ -105,7 +105,7 @@ done
 
 ################################# VSCode
 
-json=$HOME/Library/Application\ Support/Code/User/settings.json
+json=$HOME/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
 
 if [ "$set_dark" = true ]; then
 	# theme
