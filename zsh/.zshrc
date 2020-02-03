@@ -503,6 +503,23 @@ alias gptd="git push --delete origin"
 alias gd="git diff"
 alias gdt="git difftool"
 
+# Commit changes and move the last used tag to the new commit
+gmtc() {
+    # get the last used tag from current branch and save in a variable
+    tag=$(git describe --tags)
+    # delete the tag locally and remotely
+    git push --delete origin $tag
+    git tag -d $tag
+    # commit with message passed as an argument
+    git commit -m "$*"
+    # add the tag
+    git tag $tag
+    # push changes
+    git push origin --all
+    # push tag
+    git push origin --tags
+}
+
 # git global status to check if any repos need commits/pushes
 ggs() {
 
