@@ -451,6 +451,7 @@ else
 fi
 
 # VSCode
+alias code="code-insiders"
 c() {
     if [[ $@ == "" ]]; then
         command code .
