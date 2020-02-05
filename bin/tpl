@@ -21,8 +21,9 @@ touch app/assets/scss/main.scss app/main.$project_type
 cp $DOTFILES/dev-templates/favicon.png app/favicon.png
 cp $DOTFILES/dev-templates/index.html app/index.html
 
-# install ESLint
+# npm
 npm init -y
+# ESLint
 if [[ $project_type == "ts" ]]; then
   npm i --save-dev eslint eslint-plugin-import typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
 elif [[ $project_type == "js" ]]; then
