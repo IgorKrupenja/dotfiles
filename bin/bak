@@ -35,9 +35,9 @@ if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
 fi
 
 # ESLint
-if [[ $(git diff eslint) ]]; then
+if [[ $(git diff dev-templates) ]]; then
     git add eslint
-    git commit -m "Update ESLint settings"
+    git commit -m "Update development templates"
 fi
 
 # push
