@@ -36,7 +36,7 @@ fi
 
 # ESLint
 if [[ $(git diff dev-templates) ]]; then
-    git add dev-templates
+    git add dev-templates/*
     git commit -m "Update development templates"
 fi
 
