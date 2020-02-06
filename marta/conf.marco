@@ -1,5 +1,5 @@
 behavior {
-    theme "Igor"
+    theme "Classic"
     dateFormat "%d/%m/%y %X"
 
     showActionBar false
@@ -21,7 +21,7 @@ behavior {
 
 environment {
     terminal "iTerm"
-    textEditor "Visual Studio Code"
+    textEditor "Visual Studio Code - Insiders"
 }
 
 etty {
