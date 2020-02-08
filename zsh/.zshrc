@@ -454,9 +454,9 @@ fi
 alias codei="code-insiders"
 c() {
     if [[ $@ == "" ]]; then
-        command codei .
+        code-insiders .
     else
-        command codei "$@"
+        code-insiders "$@"
     fi
 }
 
