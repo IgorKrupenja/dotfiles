@@ -451,12 +451,12 @@ else
 fi
 
 # VSCode
-alias code="code-insiders"
+alias codei="code-insiders"
 c() {
     if [[ $@ == "" ]]; then
-        command code .
+        command codei .
     else
-        command code "$@"
+        command codei "$@"
     fi
 }
 
