@@ -12,6 +12,7 @@ tap "sass/sass"
 cask "osxfuse"
 brew "bfg"
 brew "python"
+brew "cloc"
 brew "coreutils"
 brew "emacs"
 brew "ffmpeg"
@@ -39,10 +40,12 @@ cask "drawio"
 cask "firefox-nightly"
 cask "font-fira-code"
 cask "google-chrome"
+cask "inkscape"
 cask "iterm2"
 cask "logitech-options"
 cask "lunar"
 cask "macupdater"
+cask "microsoft-edge"
 cask "microsoft-office"
 cask "mysides"
 cask "pycharm"
@@ -56,6 +59,7 @@ cask "virtualbox"
 cask "visual-studio-code-insiders"
 cask "wireshark"
 mas "ABBYY Lingvo European", id: 467622356
+mas "BlueMail", id: 1458754578
 mas "Dark Reader for Safari", id: 1438243180
 mas "DigiDoc4 Client", id: 1370791134
 mas "The Unarchiver", id: 425424353
