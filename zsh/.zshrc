@@ -165,6 +165,14 @@ sf() {
         command sudo find "$1" -iname "*$2*" 2>/dev/null
     fi
 }
+# rename with index
+rn() {
+    i=1
+    for file in *.*; do
+        ext="${file##*.}"
+        mv "$file" "$*-$((i++)).$ext"
+    done
+}
 
 #############################################################################
 # SYSTEM
@@ -451,12 +459,12 @@ else
 fi
 
 # VSCode
-alias codei="code-insiders"
+# alias codei="code-insiders"
 c() {
     if [[ $@ == "" ]]; then
-        code-insiders .
+        code .
     else
-        code-insiders "$@"
+        code "$@"
     fi
 }
 
@@ -485,6 +493,7 @@ zl() {
 alias gs="git status"
 # normal git log - with timestamps
 alias glot="git log --graph --all"
+alias glof="glot"
 # log with pretty graph
 alias glo="git log --graph --oneline --all"
 # git commit with message

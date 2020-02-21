@@ -1,34 +1,28 @@
 [user]
-	email = igor.krupenja@gmail.com
-	name = Igor Krupenja
+  email = igor.krupenja@gmail.com
+  name = Igor Krupenja
 [color]
-	ui = auto
+  ui = auto
 [push]
-	default = upstream
-	followTags = true
+  default = upstream
+  followTags = true
 [core]
-	editor = code --wait
-	excludesfile = /Users/igor/.gitignore_global
+  editor = code --wait
+  excludesfile = /Users/igor/.gitignore_global
 [diff]
-    tool = vscode
+  tool = vscode
 [difftool]
-	prompt = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  prompt = false
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-	conflictstyle = diff3
-    tool = smerge
+  conflictstyle = diff3
+  tool = smerge
 [mergetool "intellij"]
-    cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
-    trustExitCode = true
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+  trustExitCode = true
 [mergetool "smerge"]
-	cmd = smerge mergetool "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
-	trustExitCode = true
+  cmd = smerge mergetool "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+  trustExitCode = true
 [credential]
-	helper = store
+  helper = store
