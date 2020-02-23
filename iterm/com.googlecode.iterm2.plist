@@ -4017,7 +4017,7 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>1080 966 400 129 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 234 620 464 0 0 1280 777 </string>
+	<string>51 234 620 464 0 0 1280 777 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -4025,7 +4025,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>218 428 592 584 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 640 777 0 0 1280 777 </string>
+	<string>1280 0 1274 1417 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>364 158 570 438 0 0 2560 1417 </string>
 	<key>NeverWarnAboutOverrides</key>
@@ -5043,6 +5043,7 @@
 		<string>3.3.5</string>
 		<string>3.3.7</string>
 		<string>3.3.20190122-nightly</string>
+		<string>3.3.9</string>
 		<string>3.3.2</string>
 		<string>3.3.4</string>
 	</array>
@@ -5070,9 +5071,9 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1280, 800}}</string>
+		<string>{{0, 0}, {2560, 1440}}</string>
 		<key>topLeft</key>
-		<string>{120, 697}</string>
+		<string>{269, 595}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -5083,7 +5084,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>587583374.071697</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>184</integer>
+	<integer>199</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -5785,6 +5786,8 @@
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -5822,6 +5825,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/igor/Projects/dotfiles/iterm</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>ProportionalScrollWheelReporting</key>
@@ -5839,9 +5844,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-04T09:51:21Z</date>
+	<date>2020-02-20T12:44:00Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>3712397671</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>Secure Input</key>
@@ -5863,7 +5870,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.3.8</string>
+	<string>3.3.9</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>6</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
