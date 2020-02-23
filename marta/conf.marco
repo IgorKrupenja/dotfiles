@@ -21,7 +21,7 @@ behavior {
 
 environment {
     terminal "iTerm"
-    textEditor "Visual Studio Code - Insiders"
+    textEditor "Visual Studio Code"
 }
 
 etty {
