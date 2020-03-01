@@ -49,6 +49,7 @@ cask "macupdater"
 cask "microsoft-edge"
 cask "microsoft-office"
 cask "mysides"
+cask "openmtp"
 cask "pycharm"
 cask "selfcontrol"
 cask "sip"
@@ -58,9 +59,4 @@ cask "tor-browser"
 cask "veracrypt"
 cask "virtualbox"
 cask "visual-studio-code-insiders"
-cask "webstorm"
 cask "wireshark"
-mas "ABBYY Lingvo European", id: 467622356
-mas "Dark Reader for Safari", id: 1438243180
-mas "DigiDoc4 Client", id: 1370791134
-mas "The Unarchiver", id: 425424353
