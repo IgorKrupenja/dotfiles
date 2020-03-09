@@ -1,4 +1,15 @@
 #############################################################################
+# POWERLEVEL INSTANT PROMPT
+#############################################################################
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#############################################################################
 # ENVIRONMENT CONFIGURATION
 #############################################################################
 
@@ -43,9 +54,9 @@ export LANGUAGE=en_GB.UTF-8
 #############################################################################
 
 # theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 ZSH_THEME=powerlevel10k/powerlevel10k
-# theme settings
-source $DOTFILES/zsh/p10k-lean.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 # disable % at EOL
@@ -477,7 +488,7 @@ alias suemacs="sudo emacs -nw"
 alias cre="EDITOR=emacs crontab -e"
 
 # zsh & dotfiles
-alias zs="source $HOME/.zshrc"
+alias zs="exec zsh"
 alias zc="code $DOTFILES"
 alias ze="emacs -nw $DOTFILES/.zshrc"
 # pull dotfiles
