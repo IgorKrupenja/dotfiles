@@ -43,22 +43,22 @@ fi
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
       # =========================[ Line #1 ]=========================
       status                  # exit code of the last command
-      command_execution_time  # duration of the last command
       background_jobs         # presence of background jobs
       virtualenv            # python virtual environment (https://docs.python.org/3/library/venv.html)
       # anaconda              # conda environment (https://conda.io/)
       # pyenv                 # python environment (https://github.com/pyenv/pyenv)
       # nodenv                # node.js version from nodenv (https://github.com/nodenv/nodenv)
-      # nvm                   # node.js version from nvm (https://github.com/nvm-sh/nvm)
+      nvm                   # node.js version from nvm (https://github.com/nvm-sh/nvm)
       # nodeenv               # node.js environment (https://github.com/ekalinin/nodeenv)
       # node_version          # node.js version
       # kubecontext           # current kubernetes context (https://kubernetes.io/)
       context                 # user@host
       # =========================[ Line #2 ]=========================
       newline
+      command_execution_time  # duration of the last command
       # public_ip             # public IP address
       # battery               # internal battery
-      time                  # current time
+      # time                  # current time
   )
 
   # Basic style options that define the overall look of your prompt.
@@ -274,7 +274,7 @@ fi
   # Show this many fractional digits. Zero means round to seconds.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
   # Execution time color.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=10
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=11
   # Duration format: 1d 2h 3m 4s.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
 
@@ -320,7 +320,7 @@ fi
   typeset -g POWERLEVEL9K_NODENV_PROMPT_ALWAYS_SHOW=false
 
   # Nvm color.
-  typeset -g POWERLEVEL9K_NVM_FOREGROUND=2
+  typeset -g POWERLEVEL9K_NVM_FOREGROUND=5
 
   # Nodeenv color.
   typeset -g POWERLEVEL9K_NODEENV_FOREGROUND=2

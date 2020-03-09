@@ -9,7 +9,7 @@ export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
-export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$HOME/.flutter-sdk/bin:$PATH
 
 # Key bindings
 # ---------------------------------------------------------------------------
@@ -255,7 +255,7 @@ alias tgc="tgcode"
 alias tgcar="tgs Career"
 alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
-alias tgprep="tgs Work 'Prepper: prep'"
+alias tgp="tgs Work 'Prepper'"
 alias tgphys="tgs Physio"
 # TalTech
 alias tgtt="tgs TalTech"
@@ -627,6 +627,14 @@ crdbg() {
 alias jm="jasmine"
 # Can I use
 alias ciu="caniuse"
+# Node
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+alias n10="nvm use 10"
+alias n12="nvm use 12"
+alias n13="nvm use 13"
 # npm
 alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
