@@ -646,6 +646,7 @@ export NVM_DIR="$HOME/.nvm"
 alias n10="nvm use 10"
 alias n12="nvm use 12"
 alias n13="nvm use 13"
+alias nd="nvm use default"
 # npm
 alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
