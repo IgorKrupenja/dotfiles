@@ -46,6 +46,7 @@ cask "font-fira-code"
 cask "google-chrome"
 cask "google-cloud-sdk"
 cask "iterm2"
+cask "java"
 cask "logitech-options"
 cask "lunar"
 cask "macupdater"
@@ -66,5 +67,6 @@ cask "wireshark"
 mas "ABBYY Lingvo European", id: 467622356
 mas "Dark Reader for Safari", id: 1438243180
 mas "DigiDoc4 Client", id: 1370791134
+mas "Menu World Time", id: 1446377255
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
