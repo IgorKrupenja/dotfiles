@@ -20,7 +20,8 @@ export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
-export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$HOME/.flutter-sdk/bin:$PATH
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$HOME/.flutter-sdk/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # Key bindings
 # ---------------------------------------------------------------------------
@@ -621,6 +622,20 @@ function _pip_completion() {
         PIP_AUTO_COMPLETE=1 $words[1]))
 }
 compctl -K _pip_completion pip
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # Web & JS
 # ---------------------------------------------------------------------------
@@ -647,11 +662,34 @@ alias n10="nvm use 10"
 alias n12="nvm use 12"
 alias n13="nvm use 13"
 alias nd="nvm use default"
-# npm
+# npm global
 alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
 alias ngu="npm -g update"
 alias ngi="npm -g install"
+# npm local
+alias npl="npm list --depth=0"
+alias npo="npm outdated"
+alias npu="npm update"
+alias npi="npm install"
+
+# Prepper app
+# ---------------------------------------------------------------------------
+PREPPER="$HOME/Projects/prepper"
+alias prep="cd $PREPPER"
+alias cdf="cd $PREPPER/cloud_functions/functions"
+alias cdgas="cd $PREPPER/cloud_functions/functions/sheets-admin/gas"
+fd() {
+    firebase deploy --only functions
+    osascript -e 'display notification "Backup complete" with title "cron" sound name "Glass"'
+}
+alias fbak="gcloud firestore export gs://prepper.appspot.com"
+fps() {
+    gcloud pubsub topics publish $1 --message "${@:2}"
+}
+
+alias cpush="clasp push"
+alias dep="fd && cpush"
 
 # SSH
 # ---------------------------------------------------------------------------
