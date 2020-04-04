@@ -676,20 +676,24 @@ alias npi="npm install"
 # Prepper app
 # ---------------------------------------------------------------------------
 PREPPER="$HOME/Projects/prepper"
-alias prep="cd $PREPPER"
+alias cdp="cd $PREPPER"
 alias cdf="cd $PREPPER/cloud_functions/functions"
-alias cdgas="cd $PREPPER/cloud_functions/functions/sheets-admin/gas"
+alias cdg="cd $PREPPER/cloud_functions/functions/sheets-admin/gas"
 fd() {
     firebase deploy --only functions
-    osascript -e 'display notification "Backup complete" with title "cron" sound name "Glass"'
+    osascript -e 'display notification "Firebase deploy complete!" with title "Firebase" sound name "Ping"'
 }
 alias fbak="gcloud firestore export gs://prepper.appspot.com"
 fps() {
-    gcloud pubsub topics publish $1 --message "${@:2}"
+    gcloud pubsub topics publish $1 --message $2
 }
-
 alias cpush="clasp push"
-alias dep="fd && cpush"
+alias dep="cdgas && cpush && cd - && fd"
+apk() {
+    adb uninstall com.palm83.prepper
+    echo "Build date: $(GetFileInfo -d $HOME/OneDrive/prepper/release/app-release.apk)"
+    adb install $HOME/OneDrive/prepper/release/app-release.apk
+}
 
 # SSH
 # ---------------------------------------------------------------------------
