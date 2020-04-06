@@ -49,7 +49,7 @@ git push
 #################### Notifications
 
 # Displaying toast and playing sound
-osascript -e 'display notification "Backup complete" with title "cron" sound name "Glass"'
+osascript -e 'display notification "Backup complete" with title "cron" sound name "Ping"'
 
 # echo in case run from shell
 echo ""

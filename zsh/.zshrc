@@ -672,6 +672,8 @@ alias npl="npm list --depth=0"
 alias npo="npm outdated"
 alias npu="npm update"
 alias npi="npm install"
+alias nplp="npm list -prod -depth 0"
+alias npld="npm list -dev -depth 0"
 
 # Prepper app
 # ---------------------------------------------------------------------------
@@ -680,18 +682,28 @@ alias cdp="cd $PREPPER"
 alias cdf="cd $PREPPER/cloud_functions/functions"
 alias cdg="cd $PREPPER/cloud_functions/functions/sheets-admin/gas"
 fd() {
-    firebase deploy --only functions
-    osascript -e 'display notification "Firebase deploy complete!" with title "Firebase" sound name "Ping"'
+    cdf
+    if firebase deploy --only functions; then
+        cd -
+        osascript -e 'display notification "Firebase deploy complete!" with title "Firebase" sound name "Ping"'
+    else
+        cd -
+        osascript -e 'display notification "Firebase deploy failed!" with title "Firebase" sound name "Glass"'
+    fi
 }
 alias fbak="gcloud firestore export gs://prepper.appspot.com"
 fps() {
     gcloud pubsub topics publish $1 --message $2
 }
-alias cpush="clasp push"
-alias dep="cdgas && cpush && cd - && fd"
-apk() {
+alias cpush="cdgas && clasp push && cd -"
+alias dep="fd && cpush"
+apkd() {
+    echo "Build date: $(stat -f "%Sm" $HOME/OneDrive/prepper/release/app-release.apk | rev | cut -d' ' -f2- | rev)"
+}
+apki() {
+    apkd
+    echo "Uninstalling previous Prepper build:"
     adb uninstall com.palm83.prepper
-    echo "Build date: $(GetFileInfo -d $HOME/OneDrive/prepper/release/app-release.apk)"
     adb install $HOME/OneDrive/prepper/release/app-release.apk
 }
 
