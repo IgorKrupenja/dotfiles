@@ -1,5 +1,5 @@
 #############################################################################
-# POWERLEVEL INSTANT PROMPT
+# ZSH POWERLEVEL THEME INSTANT PROMPT
 #############################################################################
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -267,7 +267,7 @@ alias tgc="tgcode"
 alias tgcar="tgs Career"
 alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
-alias tgp="tgs Work 'Prepper'"
+alias tgp="tgs Prepper"
 alias tgphys="tgs Physio"
 # TalTech
 alias tgtt="tgs TalTech"
@@ -657,7 +657,7 @@ alias ciu="caniuse"
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash _completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n10="nvm use 10"
 alias n12="nvm use 12"
 alias n13="nvm use 13"
@@ -695,7 +695,7 @@ alias fbak="gcloud firestore export gs://prepper.appspot.com"
 fps() {
     gcloud pubsub topics publish $1 --message $2
 }
-alias cpush="cdgas && clasp push && cd -"
+alias cpush="cdg && clasp push && cd -"
 alias dep="fd && cpush"
 apkd() {
     echo "Build date: $(stat -f "%Sm" $HOME/OneDrive/prepper/release/app-release.apk | rev | cut -d' ' -f2- | rev)"
@@ -703,8 +703,8 @@ apkd() {
 apki() {
     apkd
     echo "Uninstalling previous Prepper build:"
-    adb uninstall com.palm83.prepper
-    adb install $HOME/OneDrive/prepper/release/app-release.apk
+    adb -s 3f8f68620504 uninstall com.palm83.prepper
+    adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
 }
 
 # SSH
