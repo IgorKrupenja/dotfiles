@@ -120,7 +120,9 @@ install_sw_brew() {
     echo ""
     echo "************************* Installing brew packages *************************"
     echo ""
+    cd $DOTFILES/install
     brew bundle
+    cd $DOTFILES
 }
 
 install_sw_pip() {
@@ -155,6 +157,9 @@ install_sw_misc() {
     echo ""
     curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
     chmod +x /usr/local/bin/cht.sh
+    mkdir $HOME/.cht.sh
+    backup_file $HOME/.cht.sh/cht.sh.conf
+    ln -sv $DOTFILES/misc/cht.sh.conf $HOME/.cht.sh/cht.sh.conf
 }
 
 zsh_config() {
@@ -162,7 +167,7 @@ zsh_config() {
     echo "***************************** Configuring zsh ******************************"
     echo ""
     # Remove any existing install first
-    rm -rf /home/igor/.oh-my-zsh
+    rm -rf $HOME/.oh-my-zsh
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
     # Install theme
@@ -198,8 +203,8 @@ dotfiles_common() {
 
 dotfiles_macos() {
     # SSH
-    backup_file ~/.ssh/config
-    mkdir ~/.ssh/
+    backup_file $HOME/.ssh/config
+    mkdir $HOME/.ssh/
     ln -sv $DOTFILES/ssh/config $HOME/.ssh/config
     # Toggl CLI
     # fix white-on-white text
