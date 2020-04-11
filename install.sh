@@ -15,17 +15,21 @@ exec > >(tee -a "/tmp/dotfiles-install-$(date +"%Y%m%d%H%M").log") 2>&1
 
 # Repo location
 DOTFILES="$HOME/Projects/dotfiles"
-# Custom backup directory for securely stored stuff
-SECURE_BACKUP_DIR="$HOME/OneDrive - TTU/Archive/Recent/Mac/"
+
+backup_file() {
+    if [ -e $1 ]; then
+        mv -fv $1 $1.bak
+    fi
+}
 
 main_macos() {
     macos_get_sudo
     macos_prepare
+    clone_repo
     install_sw_brew
     install_sw_pip
     install_sw_node
     install_sw_misc
-    clone_repo
     zsh_config
     dotfiles_common
     dotfiles_macos
@@ -53,10 +57,30 @@ macos_prepare() {
     echo ""
     echo "************************** Installing brew and git *************************"
     echo ""
-    # Install brew AND GIT
+    # Install brew AND git
     # Will also install xcode-tools, including git - needed to clone repo
     # So running xcode-select --install separately IS NOT required
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+}
+
+clone_repo() {
+    # Clone repo if not already cloned
+    if [[ -d $DOTFILES/.git ]]; then
+        echo ""
+        echo "********************** Dotfiles repo already cloned ************************"
+        echo "************************* Pulling latest changes ***************************"
+        echo ""
+        cd $DOTFILES
+        git pull
+    else
+        echo ""
+        echo "************************** Cloning dotfiles repo ***************************"
+        echo ""
+        mkdir -p $DOTFILES
+        cd $DOTFILES
+        git clone https://github.com/krupenja/dotfiles.git .
+        cd $DOTFILES
+    fi
 }
 
 install_sw_apt() {
@@ -92,17 +116,6 @@ install_sw_apt() {
 }
 
 install_sw_brew() {
-    # Install OneDrive first so that sync could start ASAP
-    brew cask install onedrive
-    open /Applications/OneDrive.app/
-    # Promt to log into OneDrive
-    echo "************************** IMPORTANT: ONEDRIVE LOGIN ***************************"
-    echo ""
-    echo "OneDrive window should appear"
-    echo "Login to OneDrive so that sync starts ASAP"
-    echo "Press any key to continue."
-    read -p ""
-    say "Attention required"
     # Install formulae and casks from Brewfile
     echo ""
     echo "************************* Installing brew packages *************************"
@@ -126,12 +139,13 @@ install_sw_node() {
     echo ""
     echo "**************************** Installing from npm ***************************"
     echo ""
-    sudo npm install -g trello-cli
-    sudo npm install -g cash-cli
-    sudo npm install -g bash-language-server
-    sudo npm install -g eslint
-    sudo npm install -g stylelint
-    sudo npm install -g stylelint-config-recommended
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    backup_file $HOME/.nvm/default-packages
+    ln -sv $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
+    nvm install 12
+    nvm install 8
+    nvm install 10
+    nvm install 13
 }
 
 install_sw_misc() {
@@ -143,26 +157,6 @@ install_sw_misc() {
     chmod +x /usr/local/bin/cht.sh
 }
 
-clone_repo() {
-    # Clone repo if not already cloned
-    if [[ -d $DOTFILES/.git ]]; then
-        echo ""
-        echo "********************** Dotfiles repo already cloned ************************"
-        echo "************************* Pulling latest changes ***************************"
-        echo ""
-        cd $DOTFILES
-        git pull
-    else
-        echo ""
-        echo "************************** Cloning dotfiles repo ***************************"
-        echo ""
-        mkdir -p $DOTFILES
-        cd $DOTFILES
-        git clone https://github.com/krupenja/dotfiles.git .
-        cd $DOTFILES
-    fi
-}
-
 zsh_config() {
     echo ""
     echo "***************************** Configuring zsh ******************************"
@@ -172,7 +166,9 @@ zsh_config() {
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
     # Install theme
-    git clone https://github.com/romkatv/powerlevel10k.git /home/igor/.oh-my-zsh/custom/themes/powerlevel10k
+    git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+    backup_file $HOME/.p10k.zsh
+    ln -sv $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
     # Install plug-ins
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -186,7 +182,7 @@ dotfiles_common() {
     echo "*************************** Installing dotfiles ****************************"
     echo ""
     # zsh
-    mv -fv $HOME/.zshrc $HOME/.zshrc.bak
+    backup_file $HOME/.zshrc
     ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
     #mc
     ln -sv $DOTFILES/mc $HOME/.config/mc
@@ -194,7 +190,7 @@ dotfiles_common() {
     dotfiles=(".gitconfig" ".emacs")
     for dotfile in ${dotfiles[@]}; do
         # Backup any existing dotfiles
-        mv -f $HOME/${dotfile} $HOME/${dotfile}.bak
+        backup_file $HOME/${dotfile}
         ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
     done
     touch $HOME/.hushlogin
@@ -202,20 +198,14 @@ dotfiles_common() {
 
 dotfiles_macos() {
     # SSH
-    mv -fv $HOME/.ssh/config ~/.ssh/config.bak
-    ln -sv $DOTFILES/ssh/config $HOME/.ssh
-    # Trello CLI
-    mv -fv $HOME/.trello-cli/config.json $HOME/.trello-cli/config.json.bak
-    mv -fv $HOME/.trello-cli/authentication.json $HOME/.trello-cli/authentication.json.bak
-    ln -sv "$SECURE_BACKUP_DIR/.trello-cli/config-mac.json" $HOME/.trello-cli/config.json
-    ln -sv "$SECURE_BACKUP_DIR/.trello-cli/authentication.json" $HOME/.trello-cli/
+    backup_file ~/.ssh/config
+    mkdir ~/.ssh/
+    ln -sv $DOTFILES/ssh/config $HOME/.ssh/config
     # Toggl CLI
-    mv -f $HOME/.togglrc $HOME/.togglrc.bak
-    ln -sv "$SECURE_BACKUP_DIR/.togglrc" $HOME/
     # fix white-on-white text
     cd $HOME/Projects
     git clone https://github.com/krupenja/toggl-cli.git
-    mv -fv /Users/igor/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
+    cp -v /Users/igor/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
 }
 
 macos_settings() {
@@ -281,7 +271,11 @@ macos_settings() {
     defaults write com.apple.dock show-recents -bool false
     # Check for software updates daily, not just once per week
     defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
+    # Dock magnification effect
+    defaults write com.apple.dock magnification -bool true
+    defaults write com.apple.dock largesize -int 64
+    # restart Dock to apply changes
+    killall Dock
 }
 
 # Needs to be called after link_dotfiles_common
@@ -293,14 +287,6 @@ linux_misc() {
 }
 
 change_shell() {
-
-    echo ""
-    echo "************************** Changing shell to zsh ***************************"
-    echo "************************ Enter sudo password again *************************"
-    echo ""
-    sudo sh -c "echo $(which zsh) >> /etc/shells"
-    chsh -s "$(which zsh)"
-
     echo ""
     echo "############################################################################"
     echo "#                                                                          #"
@@ -308,7 +294,7 @@ change_shell() {
     echo "#                                                                          #"
     echo "############################################################################"
     echo ""
-    echo "************* Restart terminal or SSH session to get zsh shell *************"
+    echo "*********** Restart terminal or SSH session to update zsh config ***********"
     echo ""
 
     exit

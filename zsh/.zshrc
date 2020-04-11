@@ -53,9 +53,7 @@ export LANGUAGE=en_GB.UTF-8
 #############################################################################
 # ZSH
 #############################################################################
-
-# theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# theme - note that these need to come before sourcing omz
 ZSH_THEME=powerlevel10k/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # display red dots while waiting for completion
@@ -75,6 +73,8 @@ plugins=(
 zle_highlight+=(paste:none)
 # faster paste
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+# Fix for "Insecure completion-dependent directories detected" issue
+ZSH_DISABLE_COMPFIX=true
 # Source default omz config
 source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
@@ -335,7 +335,7 @@ alias banls="defaults read org.eyebeam.SelfControl HostBlacklist"
 
 # list cards
 trls() {
-    trello show-cards -b "📥 Daily Kanban" -l $1
+    trello show-cards -b "📥 Personal" -l $1
 }
 trel() {
     trls '💣 Today'
@@ -348,10 +348,10 @@ trel() {
 tradd() {
     if [[ $2 == "add-label" ]]; then
         title="${@:4}"
-        trello add-card $title -b "📥 Daily Kanban" -l $1 -g $3
+        trello add-card $title -b "📥 Personal" -l $1 -g $3
     else
         title="${@:2}"
-        trello add-card $title -b "📥 Daily Kanban" -l $1
+        trello add-card $title -b "📥 Personal" -l $1
     fi
 }
 alias tred="tradd '💣 Today'"
@@ -368,7 +368,7 @@ trec() {
     trello add-card "$*" -b "🛠 Coding" -l "🏃 In progress"
 }
 
-# move to Done on "📥 Daily Kanban" board
+# move to Done on "📥 Personal" board
 trex() {
     trello move-card "$*" 5a785c3a56d2f82288d292e8
 }
