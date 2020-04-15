@@ -210,7 +210,7 @@ dotfiles_macos() {
     # fix white-on-white text
     cd $HOME/Projects
     git clone https://github.com/krupenja/toggl-cli.git
-    cp -v /Users/igor/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
+    cp -v $HOME/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
 }
 
 macos_settings() {
@@ -228,6 +228,14 @@ macos_settings() {
         crontab -l
         echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1"
     ) | crontab -
+
+    # hosts
+    backup_file /etc/hosts
+    cp -v $DOTFILES/misc/hosts /etc/hosts
+
+    # iina
+    backup_file $HOME/Library/Preferences/com.colliderli.iina.plist
+    ln -sv $DOTFILES/misc/com.colliderli.iina.plist $HOME/Library/Preferences/com.colliderli.iina.plist
 
     # iTerm
     defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm

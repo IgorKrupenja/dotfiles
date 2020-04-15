@@ -26,3 +26,5 @@
   trustExitCode = true
 [credential]
   helper = store
+[http]
+	cookiefile = /Users/igor/.gitcookies

@@ -1,0 +1,63 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+
+# Block Twitter
+0.0.0.0 www.twitter.com
+0.0.0.0 www.twittter.com
+0.0.0.0 www.twttr.com
+0.0.0.0 www.twitter.fr
+0.0.0.0 www.twitter.jp
+0.0.0.0 www.twitter.rs
+0.0.0.0 www.twitter.uz
+0.0.0.0 twitter.biz
+0.0.0.0 twitter.dk
+0.0.0.0 twitter.events
+0.0.0.0 twitter.ie
+0.0.0.0 twitter.je
+0.0.0.0 twitter.mobi
+0.0.0.0 twitter.nu
+0.0.0.0 twitter.pro
+0.0.0.0 twitter.su
+0.0.0.0 twitter.vn
+0.0.0.0 twitter.com
+0.0.0.0 *.twitter.com
+0.0.0.0 twitter.gd
+0.0.0.0 twitter.im
+0.0.0.0 twitter.hk
+0.0.0.0 twitter.jp
+0.0.0.0 twitter.ch
+0.0.0.0 twitter.pt
+0.0.0.0 twitter.rs
+0.0.0.0 www.twitter.com.br
+0.0.0.0 twitter.ae
+0.0.0.0 twitter.eus
+0.0.0.0 twitter.hk
+0.0.0.0 ns1.p34.dynect.net
+0.0.0.0 ns2.p34.dynect.net
+0.0.0.0 ns3.p34.dynect.net
+0.0.0.0 ns4.p34.dynect.net
+0.0.0.0 d01-01.ns.twtrdns.net
+0.0.0.0 d01-02.ns.twtrdns.net
+0.0.0.0 a.r06.twtrdns.net
+0.0.0.0 b.r06.twtrdns.net
+0.0.0.0 c.r06.twtrdns.net
+0.0.0.0 d.r06.twtrdns.net
+0.0.0.0 api-34-0-0.twitter.com
+0.0.0.0 api-47-0-0.twitter.com
+0.0.0.0 cheddar.twitter.com
+0.0.0.0 goldenglobes.twitter.com
+0.0.0.0 mx003.twitter.com
+0.0.0.0 pop-api.twitter.com
+0.0.0.0 spring-chicken-an.twitter.com
+0.0.0.0 spruce-goose-ae.twitter.com
+0.0.0.0 takeflight.twitter.com
+0.0.0.0 www2.twitter.com
+0.0.0.0 m.twitter.com
+0.0.0.0 mobile.twitter.com
