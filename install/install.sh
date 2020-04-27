@@ -28,11 +28,11 @@ main_macos() {
     clone_repo
     install_sw_brew
     install_sw_pip
-    install_sw_node
     install_sw_misc
     zsh_config
     dotfiles_common
     dotfiles_macos
+    install_sw_node
     macos_settings
     change_shell
 }
@@ -84,7 +84,6 @@ clone_repo() {
 }
 
 install_sw_apt() {
-
     echo ""
     echo "************************** Installing apt packages *************************"
     echo ""
@@ -144,10 +143,11 @@ install_sw_node() {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     backup_file $HOME/.nvm/default-packages
     ln -sv $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
-    nvm install 12
     nvm install 8
     nvm install 10
+    nvm install 12
     nvm install 13
+    nvm alias default 12
 }
 
 install_sw_misc() {
@@ -214,7 +214,6 @@ dotfiles_macos() {
 }
 
 macos_settings() {
-
     echo ""
     echo "*************************** Restoring macOS settings ***************************"
     echo ""
@@ -247,7 +246,7 @@ macos_settings() {
     # for CLI
     ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
-    # Map key to the left of Z to tilde (~)
+    # Map key to the left of 1 to tilde (~)
     ln -sv $DOTFILES/misc/com.user.tilde.plist $HOME/Library/LaunchAgents/com.user.tilde.plist
 
     # Thanks to Mathias Bynens for the stuff below! https://mths.be/macos

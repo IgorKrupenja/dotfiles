@@ -13,14 +13,15 @@ echo "Backup in progress. Please wait..."
 
 ################### Backup
 
-cd $DOTFILES
-
 # Brewfile dump
+cd $DOTFILES/install
 brew bundle dump --force
 if [[ $(git diff Brewfile) ]]; then
     git add Brewfile
     git commit -m "Update Brewfile"
 fi
+
+cd $DOTFILES
 
 # Marta
 if [[ $(git diff marta) ]]; then
