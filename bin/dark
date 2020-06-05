@@ -26,15 +26,6 @@ if [[ $(defaults read -g AppleInterfaceStyle 2>/dev/null) == "Dark" ]]; then
 	set_dark=true
 fi
 
-################################# Dark Reader for Chrome
-
-# Will only work if Chrome is already running
-osascript -e '
-  tell application "System Events"
-	  keystroke "d" using {control down, shift down}
-  end tell
-'
-
 ################################# Marta
 
 conf=$HOME/Library/Application\ Support/org.yanex.marta/conf.marco
