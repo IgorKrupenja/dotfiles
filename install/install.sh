@@ -34,7 +34,7 @@ main_macos() {
     dotfiles_macos
     install_sw_node
     macos_settings
-    change_shell
+    display_success_message
 }
 
 main_linux() {
@@ -43,7 +43,7 @@ main_linux() {
     zsh_config
     dotfiles_common
     linux_misc
-    change_shell
+    display_success_message
 }
 
 # Ask for password only once
@@ -288,6 +288,9 @@ macos_settings() {
     defaults write com.apple.dock largesize -int 64
     # restart Dock to apply changes
     killall Dock
+
+    # Ask for sudo password in the future
+    sudo dscl . -delete /Groups/wheel GroupMembership $(whoami)
 }
 
 # Needs to be called after link_dotfiles_common
@@ -298,7 +301,7 @@ linux_misc() {
     sudo apt autoremove -y
 }
 
-change_shell() {
+display_success_message() {
     echo ""
     echo "############################################################################"
     echo "#                                                                          #"
