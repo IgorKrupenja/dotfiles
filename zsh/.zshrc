@@ -503,7 +503,7 @@ zl() {
 # git
 # ---------------------------------------------------------------------------
 # git status
-alias gs="git status"
+alias gst="git status"
 # normal git log - with timestamps
 alias glot="git log --graph --all"
 alias glof="glot"
@@ -606,7 +606,8 @@ fpath=($HOME/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 alias ipy="ipython"
 alias pipi="pip install"
 alias pipdep="pipdeptree"
-alias pipu="pip uninstall"
+alias pipl="pip freeze"
+alias pipu="pip-autoremove -y"
 alias pips="pip show"
 alias ch="charm"
 # Venv
