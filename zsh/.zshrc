@@ -384,14 +384,10 @@ alias socp="extra social"
 
 # Calculator
 # ---------------------------------------------------------------------------
-calculator() {
-    # use + or p to sum
-    local calc="${*//p/+}"
-    # use x or * to multiply
-    calc="${calc//x/*}"
-    echo "scale=10;$calc" | bc
+pcalc() {
+    python -c "from math import *; print($*)"
 }
-alias calc="noglob calculator"
+alias calc="noglob pcalc"
 alias ca="calc"
 
 # Unit converter
