@@ -99,43 +99,43 @@ done
 json=$HOME/Library/Application\ Support/Code/User/settings.json
 
 if [ "$set_dark" = true ]; then
-	# theme
+	# Night Owl Light -> Nord
 	sed -i '' 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Nord"/g' "$json"
 	# Colours for bracket highlighting
-	sed -i '' 's/#a71d5d/#83A2C2/g' "$json"
-	sed -i '' 's/#0086b3/#91BDBC/g' "$json"
-	sed -i '' 's/#795da3/#b48ead/g' "$json"
+	sed -i '' 's/"#0c969b", "#4876d6", "#994cc3"/"#83A2C2", "#91BDBC", "#b48ead"/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#ed6a43/#b48eae/g' "$json"
+	sed -i '' 's/#d6438a/#b48eae/g' "$json"
 	sed -i '' 's/"opacity": "10"/"opacity": "20"/g' "$json"
 	# git graph
-	sed -i '' 's/#000000/#4c566a/g' "$json"
-	sed -i '' 's/#cf2227/#c15e69/g' "$json"
-	sed -i '' 's/#08be00/#a5bf8a/g' "$json"
-	sed -i '' 's/#979900/#edcb87/g' "$json"
-	sed -i '' 's/#0052aa/#81a3c4/g' "$json"
-	sed -i '' 's/#bd00c1/#b58faf/g' "$json"
-	sed -i '' 's/#009bc0/#88c2d2/g' "$json"
-	sed -i '' 's/#545454/#e6eaf1/g' "$json"
+	sed -i '' 's/#de3d3b/#bf616a/g' "$json"
+	sed -i '' 's/#08916a/#a3be8c/g' "$json"
+	sed -i '' 's/#E0AF02/#ebcb8b/g' "$json"
+	sed -i '' 's/#288ed7/#81a1c1/g' "$json"
+	sed -i '' 's/#d6438a/#b48ead/g' "$json"
+	sed -i '' 's/#49d0c5/#88c0d0/g' "$json"
+	sed -i '' 's/#994cc3/#e5e9f0/g' "$json"
+	sed -i '' 's/#403f53/#4c566a/g' "$json"
+	# matching tags underline
+	sed -i '' 's/"underline": "#0c969b"/"underline": "#b58faf"/g' "$json"
 else
-	# theme
+	# Nord -> Night Owl Light
 	sed -i '' 's/"workbench.colorTheme": "Nord"/"workbench.colorTheme": "Night Owl Light (No Italics)"/g' "$json"
 	# Colours for bracket highlighting
-	sed -i '' 's/#83A2C2/#a71d5d/g' "$json"
-	sed -i '' 's/#91BDBC/#0086b3/g' "$json"
-	sed -i '' 's/#b48ead/#795da3/g' "$json"
+	sed -i '' 's/"#83A2C2", "#91BDBC", "#b48ead"/"#0c969b", "#4876d6", "#994cc3"/g' "$json"
 	# To do highlighting
-	sed -i '' 's/#b48eae/#ed6a43/g' "$json"
+	sed -i '' 's/#b48eae/#d6438a/g' "$json"
 	sed -i '' 's/"opacity": "20"/"opacity": "10"/g' "$json"
 	# git graph
-	sed -i '' 's/#4c566a/#000000/g' "$json"
-	sed -i '' 's/#c15e69/#cf2227/g' "$json"
-	sed -i '' 's/#a5bf8a/#08be00/g' "$json"
-	sed -i '' 's/#edcb87/#979900/g' "$json"
-	sed -i '' 's/#81a3c4/#0052aa/g' "$json"
-	sed -i '' 's/#b58faf/#bd00c1/g' "$json"
-	sed -i '' 's/#88c2d2/#009bc0/g' "$json"
-	sed -i '' 's/#e6eaf1/#545454/g' "$json"
+	sed -i '' 's/#bf616a/#de3d3b/g' "$json"
+	sed -i '' 's/#a3be8c/#08916a/g' "$json"
+	sed -i '' 's/#ebcb8b/#E0AF02/g' "$json"
+	sed -i '' 's/#81a1c1/#288ed7/g' "$json"
+	sed -i '' 's/#b48ead/#d6438a/g' "$json"
+	sed -i '' 's/#88c0d0/#49d0c5/g' "$json"
+	sed -i '' 's/#e5e9f0/#994cc3/g' "$json"
+	sed -i '' 's/#4c566a/#403f53/g' "$json"
+	# matching tags underline
+	sed -i '' 's/"underline": "#b58faf"/"underline": "#0c969b"/g' "$json"
 fi
 
 ################################# Sublime Merge
