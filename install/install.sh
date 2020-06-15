@@ -254,9 +254,6 @@ macos_settings() {
     ln -sv $DOTFILES/misc/com.user.tilde.plist $HOME/Library/LaunchAgents/com.user.tilde.plist
     tilde
 
-    # SelfControl
-    defaults write org.eyebeam.SelfControl BlockStartedDate "4001-01-01 00:00:00 +0000"
-
     # Projects folder icon
     fileicon set $HOME/Projects /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
 
