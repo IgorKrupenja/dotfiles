@@ -48,6 +48,7 @@ main_linux() {
 
 # Ask for password only once
 macos_get_sudo() {
+    echo "Please enter sudo password:"
     printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
         sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
         sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
@@ -146,7 +147,7 @@ install_sw_node() {
     nvm install 8
     nvm install 10
     nvm install 12
-    nvm install 13
+    nvm install 14
     nvm alias default 12
 }
 
@@ -220,11 +221,11 @@ macos_settings() {
 
     # crontab
     (
-        crontab -l
+        crontab -l >/dev/null 2>&1
         echo "0 22 * * 0 . $HOME/.zshrc; /Users/igor/Projects/dotfiles/bin/bak >/dev/null 2>&1"
     ) | crontab -
     (
-        crontab -l
+        crontab -l >/dev/null 2>&1
         echo "0 17 * * * /usr/local/bin/trello refresh >/dev/null 2>&1"
     ) | crontab -
 
@@ -241,15 +242,25 @@ macos_settings() {
     defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
     # Marta
-    mv $HOME/Library/Application\ Support/org.yanex.marta $HOME/Library/Application\ Support/org.yanex.marta-$(date +"%Y%m%d%H%M").bak
+    $marta_dir="$HOME/Library/Application\ Support/org.yanex.marta"
+    if [ -e $marta_dir ]; then
+        mv -fv $marta_dir $marta_dir-$(date +"%Y%m%d%H%M").bak
+    fi
     ln -sv $DOTFILES/marta $HOME/Library/Application\ Support/org.yanex.marta
     # for CLI
     ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
     # Map key to the left of 1 to tilde (~)
     ln -sv $DOTFILES/misc/com.user.tilde.plist $HOME/Library/LaunchAgents/com.user.tilde.plist
+    tilde
 
-    # Thanks to Mathias Bynens for the stuff below! https://mths.be/macos
+    # SelfControl
+    defaults write org.eyebeam.SelfControl BlockStartedDate "4001-01-01 00:00:00 +0000"
+
+    # Projects folder icon
+    fileicon set $HOME/Projects /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
+
+    # macOS defaults below, thanks to Mathias Bynens! https://mths.be/macos
 
     # fix for font smoothing in Chromium/Electron
     defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE

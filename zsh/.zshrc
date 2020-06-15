@@ -272,33 +272,6 @@ alias tgphys="tgs Physio"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
-alias tgpy="tgtt 'Python II'"
-alias tgen="tgtt 'English II'"
-alias tgnet="tgtt Networks"
-alias tgasp="tgtt Aspektid"
-alias tghw="tgtt Arvutid"
-
-# Focus mode
-focus() {
-    stop_pomo
-    bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
-    killall Discord >/dev/null 2>&1
-    killall Reeder >/dev/null 2>&1
-    if [[ $(defaults read org.eyebeam.SelfControl BlockStartedDate) == "4001-01-01 00:00:00 +0000" ]]; then
-        sudo /Applications/SelfControl.app/Contents/MacOS/org.eyebeam.SelfControl $(id -u $(whoami)) --install >/dev/null 2>&1
-    fi
-}
-# Projects with focus
-alias tgf="tgcode && focus"
-
-# Stop
-stop_pomo() {
-    if [[ $(pgrep -f "pomo") ]]; then
-        pkill -f "pomo"
-    fi
-}
-alias tgx="tgn && toggl stop && stop_pomo"
-
 # list history for today
 tgl() {
     raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
@@ -315,7 +288,6 @@ tgl() {
     echo " --------------------------------------------------------------------------------------"
     echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
 }
-
 # aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
 alias †gn=tgn
@@ -325,10 +297,24 @@ alias †gf=tgf
 alias †gcar=tgcar
 alias †gtt=tgtt
 
-# ban distractive websites in SelfControl
-alias ban="defaults write org.eyebeam.SelfControl HostBlacklist -array-add"
-# list banned sites
-alias banls="defaults read org.eyebeam.SelfControl HostBlacklist"
+# Focus mode
+focus() {
+    stop_pomo
+    # start pomodoro timer
+    bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
+    killall Discord >/dev/null 2>&1
+    killall Reeder >/dev/null 2>&1
+    # todo fix #111 here
+}
+alias tgf="tgcode && focus"
+
+# Stop Toggl activity and pomodoro timer
+stop_pomo() {
+    if [[ $(pgrep -f "pomo") ]]; then
+        pkill -f "pomo"
+    fi
+}
+alias tgx="tgn && toggl stop && stop_pomo"
 
 # Trello CLI
 # ---------------------------------------------------------------------------
@@ -437,6 +423,7 @@ alias meto="curl -s \"wttr.in/$1\""
 
 # Misc
 # ---------------------------------------------------------------------------
+alias cr="xattr -cr"
 # convert string to TITLE case
 tc() {
     echo "$*" | python3 -c "print('$*'.title())"
@@ -446,11 +433,21 @@ sc() {
     echo "$*" | python3 -c "print('$*'.capitalize())"
 }
 # convert mov to gif
-mgif() {
+togif() {
     ffmpeg -i "$1" -pix_fmt rgb8 -r 10 output.gif
 }
 # stopwatch
 alias sw="termdown -a"
+# merge PDFs with ghostscript
+mpdf() {
+    # todo maybe gs
+    if [[ $@ == "" ]]; then
+        gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf *
+    else
+        gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf "$@"
+    fi
+}
+
 
 #############################################################################
 # DEVELOPMENT

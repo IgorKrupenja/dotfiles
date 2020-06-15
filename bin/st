@@ -31,7 +31,7 @@ echo "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8
 echo "Uptime      : $uptime"
 echo "OS          : macOS $(sw_vers -productVersion)"
 echo "Kernel      : $(uname -s -r)"
-echo "Model       : MacBook Pro 13\" Mid-2014"
+echo "Model       : MacBook Pro 16-inch 2019"
 echo "CPU         : $(echo "$top_info" | grep -E "^CPU" | sed -n 's/CPU usage: //p')"
 echo "Memory      : $(echo "$top_info" | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
 echo "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"

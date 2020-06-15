@@ -35,6 +35,12 @@ if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
     git commit -m "Update iTerm settings"
 fi
 
+# commit IINA plist if there are changes
+if [[ $(git diff misc/com.colliderli.iina.plist) ]]; then
+    git add misc/com.colliderli.iina.plist
+    git commit -m "Update IINA settings"
+fi
+
 # ESLint
 if [[ $(git diff dev-templates) ]]; then
     git add dev-templates/*
