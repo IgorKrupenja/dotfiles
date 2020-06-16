@@ -112,7 +112,6 @@ install_sw_apt() {
     sudo apt-get install -y p7zip-full
     sudo apt-get install -y speedtest-cli
     sudo apt-get install -y mc
-
 }
 
 install_sw_brew() {
@@ -134,7 +133,7 @@ install_sw_pip() {
     pip3 install togglCli
     pip3 install termdown
     pip3 install gcalcli
-    pip3 install haxor-news
+    pip3 install pip-autoremove
 }
 
 install_sw_node() {
