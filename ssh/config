@@ -2,3 +2,5 @@ Host *
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile ~/.ssh/id_rsa
+
+UserKnownHostsFile ~/.ssh/known_hosts

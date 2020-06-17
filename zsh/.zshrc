@@ -91,6 +91,7 @@ alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
 alias ref="cd $PROJECTS/reference"
 alias o="cd $PROJECTS/odin"
+alias dd="cd $PROJECTS/beach-bar"
 
 # Trash
 # ---------------------------------------------------------------------------
@@ -272,7 +273,7 @@ alias tgphys="tgs Physio"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
-# list history for today
+#  history for today and this week
 tgl() {
     raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
     echo $raw_data
@@ -288,6 +289,7 @@ tgl() {
     echo " --------------------------------------------------------------------------------------"
     echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
 }
+alias tglw="toggl sum"
 # aliases below are needed to support accidental alt+t input
 # occasionally happens when switching to terminal with alt+space
 alias †gn=tgn
@@ -448,7 +450,6 @@ mpdf() {
     fi
 }
 
-
 #############################################################################
 # DEVELOPMENT
 #############################################################################
@@ -582,11 +583,6 @@ ggs() {
 
 }
 
-# Github
-# ---------------------------------------------------------------------------
-alias hi="hub issue"
-alias hic="hub issue create -m"
-
 # cht.sh
 # ---------------------------------------------------------------------------
 # cheat sheets
@@ -618,7 +614,7 @@ function _pip_completion() {
 compctl -K _pip_completion pip
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -650,7 +646,7 @@ alias ciu="caniuse"
 # Node
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                    # This loads nvm
 [ -s "$NVM_DIR/bash _completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n10="nvm use 10"
 alias n12="nvm use 12"
