@@ -3834,6 +3834,8 @@
 	<string>8A2592B5-294E-4848-9BB0-DBD09F5AF62D</string>
 	<key>DimOnlyText</key>
 	<true/>
+	<key>DisableWindowSizeSnap</key>
+	<true/>
 	<key>EnableAPIServer</key>
 	<true/>
 	<key>EnableAPIServer_selection</key>
@@ -3994,7 +3996,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 768 620 392 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>713 206 768 937 0 0 2560 1417 </string>
+	<string>0 0 896 1097 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>228 115 650 497 0 0 1792 1097 </string>
 	<key>NeverWarnAboutOverrides</key>
@@ -4823,7 +4825,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MonacoBNerdFontComplete- 12</string>
+			<string>MonacoBNerdFontComplete- 13</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -5026,14 +5028,14 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {2560, 1440}}</string>
+		<string>{{0, 0}, {1792, 1120}}</string>
 		<key>topLeft</key>
-		<string>{0, 1417}</string>
+		<string>{347, 1017}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>A566085C-7A7B-47E2-8C8C-F3064B80DD4F</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>58</integer>
+	<integer>71</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -5856,7 +5858,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-06-14T11:32:49Z</date>
+	<date>2020-06-19T11:32:55Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
