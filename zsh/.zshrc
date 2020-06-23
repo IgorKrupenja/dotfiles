@@ -544,44 +544,8 @@ gi() {
 }
 
 # git global status to check if any repos need commits/pushes
-ggs() {
-
-    # colors for output
-    red='\033[0;31m'
-    yellow='\033[1;33m'
-    green='\033[0;32m'
-    # no color
-    nc='\033[0m'
-
-    # store current dir
-    current_dir=$(pwd)
-
-    # store names of git repos from $PROJECTS in an array
-    repos=()
-    while IFS= read -r line; do
-        repos+=("$line")
-    done < <(find $PROJECTS/ -name .git | sed 's/.git//')
-
-    # navigate to each repo and echo status
-    for repo in "${repos[@]}"; do
-        cd ${repo}
-        # ${PWD##*/} to get dir name w/o full path
-        if [[ $(git diff) ]]; then
-            echo "${red}${PWD##*/}: need to commit${nc}"
-        elif git status | grep -q "Untracked files"; then
-            echo "${red}${PWD##*/}: need to commit${nc}"
-        elif git status | grep -q "Changes to be committed"; then
-            echo "${red}${PWD##*/}: need to commit${nc}"
-        elif git status | grep -q "branch is ahead"; then
-            echo "${yellow}${PWD##*/}: need to push${nc}"
-        else
-            echo "${green}${PWD##*/}: up-to-date${nc}"
-        fi
-    done
-
-    cd $current_dir
-
-}
+alias ggst="global-git-status.sh"
+alias ggs="ggst"
 
 # cht.sh
 # ---------------------------------------------------------------------------
