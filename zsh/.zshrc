@@ -268,6 +268,7 @@ alias tgc="tgcode"
 alias tgcar="tgs Career"
 alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
+alias tgsel="tgs Work Selling"
 alias tgp="tgs Prepper"
 alias tgphys="tgs Physio"
 # TalTech
@@ -444,9 +445,13 @@ alias sw="termdown -a"
 mpdf() {
     # todo maybe gs
     if [[ $@ == "" ]]; then
-        gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf *
+        unalias gs &&
+        gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf * &&
+        alias gs="ggs"
     else
+        unalias gs &&
         gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf "$@"
+        alias gs="ggs"
     fi
 }
 
@@ -498,6 +503,7 @@ zl() {
 # ---------------------------------------------------------------------------
 # git status
 alias gst="git status"
+alias gs="gst"
 # normal git log - with timestamps
 alias glot="git log --graph --all"
 alias glof="glot"
