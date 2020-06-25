@@ -443,16 +443,13 @@ togif() {
 alias sw="termdown -a"
 # merge PDFs with ghostscript
 mpdf() {
-    # todo maybe gs
+    unalias gs
     if [[ $@ == "" ]]; then
-        unalias gs &&
         gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf * &&
-        alias gs="ggs"
     else
-        unalias gs &&
         gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf "$@"
-        alias gs="ggs"
     fi
+    alias gs="ggs"
 }
 
 #############################################################################
