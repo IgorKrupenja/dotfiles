@@ -547,7 +547,7 @@ gi() {
 }
 
 # git global status to check if any repos need commits/pushes
-alias ggst="global-git-status.sh"
+alias ggst="git-global-status.sh"
 alias ggs="ggst"
 
 # cht.sh
