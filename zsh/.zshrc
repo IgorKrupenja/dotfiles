@@ -624,6 +624,7 @@ alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
 alias ngu="npm -g update"
 alias ngi="npm -g install"
+alias ngun="npm -g uninstall"
 # npm local
 alias npl="npm list --depth=0"
 alias npo="npm outdated"
@@ -632,6 +633,7 @@ alias npi="npm install --save-prod"
 alias npid="npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
+alias npun="npm uninstall"
 
 # Prepper app
 # ---------------------------------------------------------------------------
