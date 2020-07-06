@@ -636,7 +636,9 @@ alias npid="npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
-alias nss="npm run dev-server"
+alias nps="npm run serve"
+alias npb="npm run build"
+alias npr="npm run"
 
 # Prepper app
 # ---------------------------------------------------------------------------
