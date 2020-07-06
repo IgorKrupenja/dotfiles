@@ -111,7 +111,7 @@ light_values=(
 	# Highlight matching tag
 	'"underline": "#0c969b"'
 	# Draw.io
-	"hediet.vscode-drawio.theme": "Kennedy"
+	'"hediet.vscode-drawio.theme": "Kennedy"'
 )
 dark_values=(
 	'"workbench.colorTheme": "Nord"'
@@ -126,7 +126,7 @@ dark_values=(
 	# Highlight matching tag
 	'"underline": "#b58faf"'
 	# Draw.io
-	"hediet.vscode-drawio.theme": "dark"
+	'"hediet.vscode-drawio.theme": "dark"'
 )
 
 for i in ${!light_values[@]}; do
