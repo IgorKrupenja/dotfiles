@@ -21,7 +21,7 @@ export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$HOME/.flutter-sdk/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # Key bindings
 # ---------------------------------------------------------------------------
@@ -292,14 +292,6 @@ tgl() {
     echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
 }
 alias tglw="toggl sum"
-# aliases below are needed to support accidental alt+t input
-# occasionally happens when switching to terminal with alt+space
-alias †gn=tgn
-alias †gx=tgx
-alias †gcode=tgcode
-alias †gf=tgf
-alias †gcar=tgcar
-alias †gtt=tgtt
 
 # Focus mode
 focus() {
@@ -563,13 +555,12 @@ fpath=($HOME/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 alias ipy="ipython"
 alias pipi="pip install"
 alias pipdep="pipdeptree"
-alias pipl="pip freeze"
+alias pipl="pip list"
+alias piplo="pip list -o"
+# remove with unused dependencies
 alias pipu="pip-autoremove -y"
 alias pips="pip show"
 alias ch="charm"
-# Venv
-alias dj="source ~/.virtualenvs/djangodev/bin/activate"
-alias dje="deactivate"
 # pip zsh completion
 function _pip_completion() {
     local words cword
@@ -636,9 +627,13 @@ alias npid="npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
+alias npr="npm run"
 alias nps="npm run serve"
 alias npb="npm run build"
-alias npr="npm run"
+alias npt="npm run test"
+alias npd="npm run dev"
+alias npbd="npm run build:dev"
+alias npbp="npm run build:prod"
 
 # Prepper app
 # ---------------------------------------------------------------------------
