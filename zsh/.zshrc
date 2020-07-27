@@ -533,11 +533,15 @@ gmtc() {
     git push origin --tags
 }
 
-# Init with adding a remote
-gi() {
-    git init
-    git remote origin add $1
+# Interactive rebase
+gir() {
+    if [[ $@ == "" ]]; then
+        git rebase -i HEAD~5
+    else
+        git rebase -i HEAD~$@
+    fi
 }
+alias girr="git rebase -i --root"
 
 # git global status to check if any repos need commits/pushes
 alias ggst="git-global-status.sh"
