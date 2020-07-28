@@ -592,9 +592,6 @@ unset __conda_setup
 
 # Web & JS
 # ---------------------------------------------------------------------------
-# Prepare dir for web dev using a simple template generator
-alias tplt="tpl ts"
-alias tplj="tpl js"
 # close Chrome and re-open with remote debug on
 crdbg() {
     osascript -e 'quit app "Google Chrome.app"'

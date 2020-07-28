@@ -1,7 +1,0 @@
-.vscode
-node_modules
-.DS_Store
-app/assets/scss/*.css
-app/assets/scss/*.css.map
-app/test.js
-test.js
