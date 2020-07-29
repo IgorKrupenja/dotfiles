@@ -500,7 +500,6 @@ alias glof="glot"
 # log with pretty graph
 alias glo="git log --graph --oneline --all"
 # git commit with message
-# alias gcm="git commit -m"
 gcm() {
     git commit -m "$*"
 }
@@ -509,7 +508,7 @@ alias gchm="git checkout master"
 alias gch="git checkout"
 alias gl="git pull"
 alias gp="git pull && git remote | xargs -L1 git push --all"
-alias grp+="git push origin +master"
+alias gp+="git push origin +master"
 alias ga="git add"
 alias gcl="git clone"
 alias gt="git tag"
@@ -519,6 +518,8 @@ alias gmt='git mergetool'
 alias gptd="git push --delete origin"
 alias gd="git diff"
 alias gdt="git difftool"
+alias gsh="git stash"
+alias gshp="git stash pop"
 
 # Commit changes and move the last used tag to the new commit
 gmtc() {
