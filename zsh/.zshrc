@@ -271,7 +271,7 @@ alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
 alias tgsel="tgs Work Selling"
 alias tgp="tgs Prepper"
-alias tgphys="tgs Physio"
+alias tgphys="tgs Physio/Exercise"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
@@ -505,7 +505,6 @@ gcm() {
 }
 alias gb="git branch"
 alias gchm="git checkout master"
-alias gch="git checkout"
 alias gl="git pull"
 alias gp="git pull && git remote | xargs -L1 git push --all"
 alias gp+="git push origin +master"
@@ -520,6 +519,11 @@ alias gd="git diff"
 alias gdt="git difftool"
 alias gsh="git stash"
 alias gshp="git stash pop"
+# alias gch="git checkout"
+# safe git checkout
+gch() {
+    git stash; git stash apply; git checkout "$@"
+}
 
 # Commit changes and move the last used tag to the new commit
 gmtc() {
