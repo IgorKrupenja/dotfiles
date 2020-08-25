@@ -298,24 +298,7 @@ tgl() {
 }
 alias tglw="toggl sum"
 
-# Focus mode
-focus() {
-    stop_pomo
-    # start pomodoro timer
-    bash -c "nohup pomo 3600 > /dev/null 2>&1 & disown"
-    killall Discord >/dev/null 2>&1
-    killall Reeder >/dev/null 2>&1
-    # todo fix #111 here
-}
-alias tgf="tgcode && focus"
-
-# Stop Toggl activity and pomodoro timer
-stop_pomo() {
-    if [[ $(pgrep -f "pomo") ]]; then
-        pkill -f "pomo"
-    fi
-}
-alias tgx="tgn && toggl stop && stop_pomo"
+alias tgx="tgn && toggl stop"
 
 # Trello CLI
 # ---------------------------------------------------------------------------
