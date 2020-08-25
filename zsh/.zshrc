@@ -275,6 +275,11 @@ alias tgphys="tgs Physio/Exercise"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
+alias tgdb="tgtt Databases"
+alias tgk="tgtt C#"
+alias tgjav="tgtt 'Java Web'"
+alias tgweb="tgtt Veebihaldus"
+alias tgf="tgtt Physics"
 #  history for today and this week
 tgl() {
     raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
