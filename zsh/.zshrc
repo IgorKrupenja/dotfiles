@@ -632,6 +632,7 @@ alias npt="npm run test"
 alias npd="npm run dev"
 alias npbd="npm run build-dev"
 alias npbp="npm run build-prod"
+alias npcl="npm run cloc"
 
 # Prepper app
 # ---------------------------------------------------------------------------
