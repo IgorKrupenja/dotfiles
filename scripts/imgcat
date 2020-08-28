@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # by George Nachman https://www.iterm2.com/documentation-images.html
+
 # tmux requires unrecognized OSC sequences to be wrapped with DCS tmux;
 # <sequence> ST, and for all ESCs in <sequence> to be replaced with ESC ESC. It
 # only accepts ESC backslash for ST. We use TERM instead of TMUX because TERM
@@ -55,7 +56,7 @@ function b64_decode() {
 #   inline: 0 or 1
 #   base64contents: Base64-encoded contents
 #   print_filename: If non-empty, print the filename
-#                   before outputting the image
+#     before outputting the image
 function print_image() {
     print_osc
     printf '1337;File='

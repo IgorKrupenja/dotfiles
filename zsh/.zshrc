@@ -21,7 +21,7 @@ export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/bin:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/scripts:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # Key bindings
 # ---------------------------------------------------------------------------
@@ -37,18 +37,11 @@ export LESS=-XFR
 # only source on macOS to avoid error in Linux
 case "$OSTYPE" in
 darwin*)
-    source /usr/local/etc/profile.d/z.sh
-    ;;
+  source /usr/local/etc/profile.d/z.sh
+  ;;
 esac
 # fuck
 eval $(thefuck --alias)
-
-# Locale
-# ---------------------------------------------------------------------------
-# required by gcalcli on macOS
-export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
-export LANGUAGE=en_GB.UTF-8
 
 #############################################################################
 # ZSH
@@ -62,13 +55,13 @@ COMPLETION_WAITING_DOTS="true"
 PROMPT_EOL_MARK=''
 # Plugins
 plugins=(
-    web-search
-    colored-man-pages
-    extract
-    # the two below need to be installed separately
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zsh-better-npm-completion
+  web-search
+  colored-man-pages
+  extract
+  # the two below need to be installed separately
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh-better-npm-completion
 )
 # disable paste highlight
 zle_highlight+=(paste:none)
@@ -90,9 +83,6 @@ source $DOTFILES/zsh/.iterm2_shell_integration.zsh
 alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
-alias ref="cd $PROJECTS/reference"
-alias o="cd $PROJECTS/odin"
-alias dd="cd $PROJECTS/beach-bar"
 
 # Trash
 # ---------------------------------------------------------------------------
@@ -102,7 +92,7 @@ alias tls="ls $HOME/.Trash"
 alias tla="la $HOME/.Trash"
 # empty trash
 te() {
-    osascript <<-EOF
+  osascript <<-EOF
 	tell application "Finder"
 		set itemCount to count of items in the trash
 		if itemCount > 0 then
@@ -115,16 +105,16 @@ te() {
 # diskutil & VeraCrypt
 # ---------------------------------------------------------------------------
 vcm() {
-    dir="$*"
-    mountpoint=${dir##*/}
-    /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -t --mount --protect-hidden=no -k="" --pim=0 $dir /Volumes/$mountpoint
+  dir="$*"
+  mountpoint=${dir##*/}
+  /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -t --mount --protect-hidden=no -k="" --pim=0 $dir /Volumes/$mountpoint
 }
 alias dil='diskutil list'
 alias diu='diskutil unmount'
 # eject all
 die() {
-    /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
-    osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
+  /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
+  osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
 }
 
 # Misc
@@ -152,40 +142,40 @@ alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 alias mkdir='mkdir -pv'
 # touch with dir creation
 mkf() {
-    mkdir -p "$(dirname "$1")" && touch "$1"
+  mkdir -p "$(dirname "$1")" && touch "$1"
 }
 # thefuck
 alias f="fuck"
 # open Marta in current dir
 m() {
-    if [[ $@ == "" ]]; then
-        command marta .
-    else
-        command marta "$@"
-    fi
+  if [[ $@ == "" ]]; then
+    command marta .
+  else
+    command marta "$@"
+  fi
 }
 # find
 ff() {
-    if [[ $2 == "" ]]; then
-        command find . -iname "*$1*" 2>/dev/null
-    else
-        command find "$1" -iname "*$2*" 2>/dev/null
-    fi
+  if [[ $2 == "" ]]; then
+    command find . -iname "*$1*" 2>/dev/null
+  else
+    command find "$1" -iname "*$2*" 2>/dev/null
+  fi
 }
 sf() {
-    if [[ $2 == "" ]]; then
-        command sudo find . -iname "*$1*" 2>/dev/null
-    else
-        command sudo find "$1" -iname "*$2*" 2>/dev/null
-    fi
+  if [[ $2 == "" ]]; then
+    command sudo find . -iname "*$1*" 2>/dev/null
+  else
+    command sudo find "$1" -iname "*$2*" 2>/dev/null
+  fi
 }
 # rename with index
 rn() {
-    i=1
-    for file in *.*; do
-        ext="${file##*.}"
-        mv "$file" "$*-$((i++)).$ext"
-    done
+  i=1
+  for file in *.*; do
+    ext="${file##*.}"
+    mv "$file" "$*-$((i++)).$ext"
+  done
 }
 
 #############################################################################
@@ -204,23 +194,23 @@ alias bs="brew search"
 alias br="brew rmtree"
 alias bcr="brew cask remove"
 bdep() {
-    if [[ $@ == "" ]]; then
-        brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
-    else
-        command brew rmtree --dry-run "$@"
-    fi
+  if [[ $@ == "" ]]; then
+    brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
+  else
+    command brew rmtree --dry-run "$@"
+  fi
 }
 alias blv="brew leaves"
 alias bul="brew update && brew outdated && brew cask outdated"
 bu() {
-    echo -e "\e[4mUpdating Homebrew:\e[0m"
-    brew update --verbose
-    echo ""
-    echo -e "\e[4mUpdating brew packages:\e[0m"
-    brew upgrade
-    echo ""
-    echo -e "\e[4mUpdating brew casks:\e[0m"
-    brew cask upgrade
+  echo -e "\e[4mUpdating Homebrew:\e[0m"
+  brew update --verbose
+  echo ""
+  echo -e "\e[4mUpdating brew packages:\e[0m"
+  brew upgrade
+  echo ""
+  echo -e "\e[4mUpdating brew casks:\e[0m"
+  brew cask upgrade
 }
 alias bd="brew cleanup; brew doctor"
 
@@ -238,7 +228,7 @@ alias sp="speedtest"
 # ---------------------------------------------------------------------------
 # aliases
 a() {
-    alias | grep "$1"
+  alias | grep "$1"
 }
 # which
 alias w="which"
@@ -253,7 +243,7 @@ alias htop="sudo htop"
 # CLI TOOLS
 #############################################################################
 
-# Toggl & SelfControl
+# Toggl
 # ---------------------------------------------------------------------------
 alias tgr="toggl continue; toggl now"
 alias tgn="toggl now"
@@ -262,7 +252,7 @@ alias tgw="open https://www.toggl.com/app/timer"
 
 # Projects
 tgs() {
-    toggl start $2 -o $1 && tgn
+  toggl start $2 -o $1 && tgn
 }
 alias tgcode="tgs Coding"
 alias tgc="tgcode"
@@ -276,28 +266,28 @@ alias tgphys="tgs Physio/Exercise"
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
 alias tgdb="tgtt Databases"
-alias tgk="tgtt C#"
+alias tgcs="tgtt C#"
 alias tgjav="tgtt 'Java Web'"
 alias tgweb="tgtt Veebihaldus"
 alias tgf="tgtt Physics"
+
 #  history for today and this week
 tgl() {
-    raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
-    echo $raw_data
+  raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
+  echo $raw_data
 
-    times=($(echo $raw_data | grep / | cut -c 16-24))
-    epoch='1970-01-01'
-    sum=0
+  times=($(echo $raw_data | grep / | cut -c 16-24))
+  epoch='1970-01-01'
+  sum=0
 
-    for i in $times; do
-        sum="$(date -ujf "%Y-%m-%d %H:%M:%S" "$epoch $i" +%s) + $sum"
-    done
+  for i in $times; do
+    sum="$(date -ujf "%Y-%m-%d %H:%M:%S" "$epoch $i" +%s) + $sum"
+  done
 
-    echo " --------------------------------------------------------------------------------------"
-    echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
+  echo " --------------------------------------------------------------------------------------"
+  echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
 }
 alias tglw="toggl sum"
-
 alias tgx="tgn && toggl stop"
 
 # Trello CLI
@@ -305,24 +295,24 @@ alias tgx="tgn && toggl stop"
 
 # list cards
 trls() {
-    trello show-cards -b "📥 Personal" -l $1
+  trello show-cards -b "📥 Personal" -l $1
 }
 trel() {
-    trls '💣 Today'
-    trls '🌆 Tonight'
-    trls '🌅 Tomorrow'
-    trls '📆 This week'
+  trls '💣 Today'
+  trls '🌆 Tonight'
+  trls '🌅 Tomorrow'
+  trls '📆 This week'
 }
 
 # add cards
 tradd() {
-    if [[ $2 == "add-label" ]]; then
-        title="${@:4}"
-        trello add-card $title -b "📥 Personal" -l $1 -g $3
-    else
-        title="${@:2}"
-        trello add-card $title -b "📥 Personal" -l $1
-    fi
+  if [[ $2 == "add-label" ]]; then
+    title="${@:4}"
+    trello add-card $title -b "📥 Personal" -l $1 -g $3
+  else
+    title="${@:2}"
+    trello add-card $title -b "📥 Personal" -l $1
+  fi
 }
 alias tred="tradd '💣 Today'"
 alias tren="tradd '🌆 Tonight'"
@@ -335,17 +325,17 @@ alias tredt="tred add-label 5b7c3a417b03a914551de144"
 alias trent="tren add-label 5b7c3a417b03a914551de144"
 # Coding board
 trec() {
-    trello add-card "$*" -b "🛠 Coding" -l "🏃 In progress"
+  trello add-card "$*" -b "🛠 Coding" -l "🏃 In progress"
 }
 
 # move to Done on "📥 Personal" board
 trex() {
-    trello move-card "$*" 5a785c3a56d2f82288d292e8
+  trello move-card "$*" 5a785c3a56d2f82288d292e8
 }
 
 # cards with reminder to add extra time in Toggl
 extra() {
-    tren "Add $2 min $1"
+  tren "Add $2 min $1"
 }
 alias codep="extra coding"
 alias pyp="extra Python"
@@ -355,7 +345,7 @@ alias socp="extra social"
 # Calculator
 # ---------------------------------------------------------------------------
 pcalc() {
-    python3 -c "from math import *; print($*)"
+  python3 -c "from math import *; print($*)"
 }
 alias calc="noglob pcalc"
 alias ca="calc"
@@ -363,7 +353,7 @@ alias ca="calc"
 # Unit converter
 # ---------------------------------------------------------------------------
 un() {
-    units "$1 $2" $3
+  units "$1 $2" $3
 }
 
 # Calendar
@@ -375,32 +365,32 @@ alias calm="gcalcli calm --military --mon"
 # World clock
 # ---------------------------------------------------------------------------
 wcl() {
-    if [[ $@ == "" ]]; then
-        world_clock
-    else
-        world_clock | grep -iF "$@"
-    fi
+  if [[ $@ == "" ]]; then
+    world_clock
+  else
+    world_clock | grep -iF "$@"
+  fi
 }
 
 world_clock() {
-    time_zones=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna"
-        "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
-    output=""
+  time_zones=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna"
+    "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
+  output=""
 
-    for loc in ${time_zones[@]}; do
-        city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
-        current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }')
-        temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
-        output="${output}\n${temp}"
-    done
+  for loc in ${time_zones[@]}; do
+    city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
+    current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }')
+    temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
+    output="${output}\n${temp}"
+  done
 
-    echo $output | column -t | tr '_' ' '
+  echo $output | column -t | tr '_' ' '
 }
 
 # Weather
 # ---------------------------------------------------------------------------
 met() {
-    curl -s v2.wttr.in/"$*"
+  curl -s v2.wttr.in/"$*"
 }
 # old version
 alias meto="curl -s \"wttr.in/$1\""
@@ -410,27 +400,27 @@ alias meto="curl -s \"wttr.in/$1\""
 alias cr="xattr -cr"
 # convert string to TITLE case
 tc() {
-    echo "$*" | python3 -c "print('$*'.title())"
+  echo "$*" | python3 -c "print('$*'.title())"
 }
 # convert string to SENTENCE case
 sc() {
-    echo "$*" | python3 -c "print('$*'.capitalize())"
+  echo "$*" | python3 -c "print('$*'.capitalize())"
 }
 # convert mov to gif
 togif() {
-    ffmpeg -i "$1" -pix_fmt rgb8 -r 10 output.gif
+  ffmpeg -i "$1" -pix_fmt rgb8 -r 10 output.gif
 }
 # stopwatch
 alias sw="termdown -a"
 # merge PDFs with ghostscript
 mpdf() {
-    unalias gs
-    if [[ $@ == "" ]]; then
-        gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf * &&
-    else
-        gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf "$@"
-    fi
-    alias gs="ggs"
+  unalias gs
+  if [[ $@ == "" ]]; then
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf * &&
+  else
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf "$@"
+  fi
+  alias gs="ggs"
 }
 
 #############################################################################
@@ -441,21 +431,21 @@ mpdf() {
 # ---------------------------------------------------------------------------
 
 if [[ -n $SSH_CONNECTION ]]; then
-    # for remote session
-    export EDITOR='emacs -nw'
+  # for remote session
+  export EDITOR='emacs -nw'
 else
-    # for local session
-    export EDITOR='code'
+  # for local session
+  export EDITOR='code'
 fi
 
 # VSCode
 # alias codei="code-insiders"
 c() {
-    if [[ $@ == "" ]]; then
-        code .
-    else
-        code "$@"
-    fi
+  if [[ $@ == "" ]]; then
+    code .
+  else
+    code "$@"
+  fi
 }
 
 # emacs
@@ -468,14 +458,6 @@ alias cre="EDITOR=emacs crontab -e"
 # zsh & dotfiles
 alias zs="exec zsh"
 alias zc="code $DOTFILES"
-alias ze="emacs -nw $DOTFILES/.zshrc"
-# pull dotfiles
-zl() {
-    current_dir=$(pwd)
-    cd $DOTFILES
-    git pull
-    cd $current_dir
-}
 
 # git
 # ---------------------------------------------------------------------------
@@ -489,7 +471,7 @@ alias glof="glot"
 alias glo="git log --graph --oneline --all"
 # git commit with message
 gcm() {
-    git commit -m "$*"
+  git commit -m "$*"
 }
 alias gb="git branch"
 alias gchm="git checkout master"
@@ -510,33 +492,33 @@ alias gshp="git stash pop"
 # alias gch="git checkout"
 # safe git checkout
 gch() {
-    git stash; git stash apply; git checkout "$@"
+  git stash; git stash apply; git checkout "$@"
 }
 
 # Commit changes and move the last used tag to the new commit
 gmtc() {
-    # get the last used tag from current branch and save in a variable
-    tag=$(git describe --tags)
-    # delete the tag locally and remotely
-    git push --delete origin $tag
-    git tag -d $tag
-    # commit with message passed as an argument
-    git commit -m "$*"
-    # add the tag
-    git tag $tag
-    # push changes
-    git push origin --all
-    # push tag
-    git push origin --tags
+  # get the last used tag from current branch and save in a variable
+  tag=$(git describe --tags)
+  # delete the tag locally and remotely
+  git push --delete origin $tag
+  git tag -d $tag
+  # commit with message passed as an argument
+  git commit -m "$*"
+  # add the tag
+  git tag $tag
+  # push changes
+  git push origin --all
+  # push tag
+  git push origin --tags
 }
 
 # Interactive rebase
 gir() {
-    if [[ $@ == "" ]]; then
-        git rebase -i HEAD~5
-    else
-        git rebase -i HEAD~$@
-    fi
+  if [[ $@ == "" ]]; then
+    git rebase -i HEAD~5
+  else
+    git rebase -i HEAD~$@
+  fi
 }
 alias girr="git rebase -i --root"
 
@@ -564,47 +546,24 @@ alias pips="pip show"
 alias ch="charm"
 # pip zsh completion
 function _pip_completion() {
-    local words cword
-    read -Ac words
-    read -cn cword
-    reply=($(COMP_WORDS="$words[*]" \
-        COMP_CWORD=$((cword - 1)) \
-        PIP_AUTO_COMPLETE=1 $words[1]))
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=($(COMP_WORDS="$words[*]" \
+    COMP_CWORD=$((cword - 1)) \
+    PIP_AUTO_COMPLETE=1 $words[1]))
 }
 compctl -K _pip_completion pip
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # Web & JS
 # ---------------------------------------------------------------------------
-# close Chrome and re-open with remote debug on
-crdbg() {
-    osascript -e 'quit app "Google Chrome.app"'
-    sleep 1
-    nohup /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 >/dev/null 2>&1 &
-    disown
-}
-# jasmine
-alias jm="jasmine"
 # Can I use
 alias ciu="caniuse"
 
 # Node
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                    # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"          # This loads nvm
 [ -s "$NVM_DIR/bash _completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n10="nvm use 10"
 alias n12="nvm use 12"
@@ -634,49 +593,49 @@ alias npbd="npm run build-dev"
 alias npbp="npm run build-prod"
 alias npcl="npm run cloc"
 
-# Prepper app
+# Restock app
+# project I used to work on as a contract developer
+# leaving for now for reference
 # ---------------------------------------------------------------------------
-PREPPER="$HOME/Projects/prepper"
-alias cdp="cd $PREPPER"
-alias cdf="cd $PREPPER/cloud_functions/functions"
-alias cdg="cd $PREPPER/cloud_functions/functions/sheets-admin/gas"
+RESTOCK="$HOME/Projects/prepper"
+alias cdp="cd $RESTOCK"
+alias cdf="cd $RESTOCK/cloud_functions/functions"
+alias cdg="cd $RESTOCK/cloud_functions/functions/sheets-admin/gas"
 fd() {
-    cdf
-    if firebase deploy --only functions; then
-        cd -
-        osascript -e 'display notification "Firebase deploy complete!" with title "Firebase" sound name "Ping"'
-    else
-        cd -
-        osascript -e 'display notification "Firebase deploy failed!" with title "Firebase" sound name "Glass"'
-    fi
+  cdf
+  if firebase deploy --only functions; then
+    cd -
+    osascript -e 'display notification "Firebase deploy complete!" with title "Firebase" sound name "Ping"'
+  else
+    cd -
+    osascript -e 'display notification "Firebase deploy failed!" with title "Firebase" sound name "Glass"'
+  fi
 }
 alias fbak="gcloud firestore export gs://prepper.appspot.com"
 fps() {
-    gcloud pubsub topics publish $1 --message $2
+  gcloud pubsub topics publish $1 --message $2
 }
 alias cpush="cdg && clasp push && cd -"
 alias dep="fd && cpush"
 apkd() {
-    echo "Build date: $(stat -f "%Sm" $HOME/OneDrive/prepper/release/app-release.apk | rev | cut -d' ' -f2- | rev)"
+  echo "Build date: $(stat -f "%Sm" $HOME/OneDrive/prepper/release/app-release.apk | rev | cut -d' ' -f2- | rev)"
 }
 apki() {
-    apkd
-    echo "Uninstalling previous Prepper build:"
-    adb -s 3f8f68620504 uninstall com.palm83.prepper
-    adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
+  apkd
+  echo "Uninstalling previous Restock build:"
+  adb -s 3f8f68620504 uninstall com.palm83.prepper
+  adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
 }
+
+# Zaino app
+# ---------------------------------------------------------------------------
+alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
 
 # SSH
 # ---------------------------------------------------------------------------
-# krupenja.net
-alias sshk="ssh igor@krupenja.net"
-alias fsk="sshfs root@krupenja.net:/ /Volumes/krupenja.net"
 # Mount home dir on enos
 alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
-# Misc
-# ---------------------------------------------------------------------------
-alias cac="cacher run-server:start -o https://app.cacher.io -p 30069 -t eg0MNUXE1Y3y6lIUVvZr >/dev/null 2>&1 & disown"
 
 #############################################################################
 # LINUX
@@ -685,6 +644,6 @@ alias cac="cacher run-server:start -o https://app.cacher.io -p 30069 -t eg0MNUXE
 
 case "$OSTYPE" in
 linux*)
-    source $DOTFILES/zsh/.zsh_linux
-    ;;
+  source $DOTFILES/zsh/.zsh_linux
+  ;;
 esac

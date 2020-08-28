@@ -1,5 +1,7 @@
 #!/bin/bash
+
 # by George Nachman https://www.iterm2.com/documentation-images.html
+
 # tmux requires unrecognized OSC sequences to be wrapped with DCS tmux;
 # <sequence> ST, and for all ESCs in <sequence> to be replaced with ESC ESC. It
 # only accepts ESC backslash for ST.

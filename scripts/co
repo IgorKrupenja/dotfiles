@@ -1,6 +1,8 @@
 #!/bin/bash
 
-T='gYw' # The test text
+# from https://askubuntu.com/questions/27314/script-to-display-all-terminal-colors
+
+T='test' # The test text
 
 echo -e "\n                 40m     41m     42m     43m\
      44m     45m     46m     47m"
