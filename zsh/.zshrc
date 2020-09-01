@@ -33,15 +33,6 @@ bindkey "\e\eOC" forward-word
 # ---------------------------------------------------------------------------
 # less: do not clear screen on exit
 export LESS=-XFR
-# for z dir navigation
-# only source on macOS to avoid error in Linux
-case "$OSTYPE" in
-darwin*)
-  source /usr/local/etc/profile.d/z.sh
-  ;;
-esac
-# fuck
-eval $(thefuck --alias)
 
 #############################################################################
 # ZSH
@@ -127,8 +118,8 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 # quick look
 alias ql="qlmanage -p &>/dev/null"
 # img tools
-alias lsi="imgls"
-alias cati="imgcat"
+alias ils="imgls"
+alias icat="imgcat"
 # syntax-highlighted cat
 alias ccat='pygmentize -g'
 # dd with progress
@@ -560,7 +551,6 @@ compctl -K _pip_completion pip
 # Can I use
 alias ciu="caniuse"
 
-# Node
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"          # This loads nvm
@@ -569,6 +559,7 @@ alias n10="nvm use 10"
 alias n12="nvm use 12"
 alias n13="nvm use 13"
 alias nd="nvm use default"
+
 # npm global
 alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
@@ -584,14 +575,37 @@ alias npid="npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
+# npm scripts
 alias npr="npm run"
-alias nps="npm run serve"
+alias nps="npm start"
+alias npt="npm test"
 alias npb="npm run build"
-alias npt="npm run test"
-alias npd="npm run dev"
-alias npbd="npm run build-dev"
-alias npbp="npm run build-prod"
+alias npsv="npm run serve"
 alias npcl="npm run cloc"
+
+# yarn
+alias ya="yarn add"
+yad() {
+  yarn add "$1" -D
+}
+alias yr="yarn remove"
+alias yo="yarn outdated"
+alias yu="yarn upgrade"
+# scrips
+alias yru="yarn run"
+alias ys="yarn start"
+alias yb="yarn run build"
+alias ycl="yarn run cloc"
+alias yd="yarn run deploy"
+alias ydf="yarn run deploy-fn-dev"
+alias ydfd="yarn run deploy-fn"
+
+# Zaino app
+# ---------------------------------------------------------------------------
+alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
+alias z="cd $PROJECTS/zaino"
+alias zw="cd $PROJECTS/zaino/packages/web-app"
+alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
 
 # Restock app
 # project I used to work on as a contract developer
@@ -627,15 +641,10 @@ apki() {
   adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
 }
 
-# Zaino app
-# ---------------------------------------------------------------------------
-alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
-
 # SSH
 # ---------------------------------------------------------------------------
 # Mount home dir on enos
 alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
-
 
 #############################################################################
 # LINUX
