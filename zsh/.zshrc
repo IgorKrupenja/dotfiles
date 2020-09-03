@@ -447,8 +447,8 @@ alias suemacs="sudo emacs -nw"
 alias cre="EDITOR=emacs crontab -e"
 
 # zsh & dotfiles
-alias zs="exec zsh"
-alias zc="code $DOTFILES"
+alias sz="exec zsh"
+alias cz="code $DOTFILES"
 
 # git
 # ---------------------------------------------------------------------------
