@@ -597,8 +597,8 @@ alias ys="yarn start"
 alias yb="yarn run build"
 alias ycl="yarn run cloc"
 alias yd="yarn run deploy"
-alias ydf="yarn run deploy-fn-dev"
-alias ydfd="yarn run deploy-fn"
+alias ydfd="yarn run deploy-fn-dev"
+alias ydf="yarn run deploy-fn"
 
 # Zaino app
 # ---------------------------------------------------------------------------
