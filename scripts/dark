@@ -56,44 +56,6 @@ if [[ $(pgrep "PDF Expert") ]]; then
 	fi
 fi
 
-################################# JetBrains IDEs
-
-# Uses a hacky approach with sending keystrokes from AppleScript
-# Will only work if IDEs are already running
-
-ides=("pycharm" "intellij")
-
-for ide in "${ides[@]}"; do
-	if [[ $(pgrep $ide) ]]; then
-		if [ "$set_dark" = true ]; then
-			osascript <<EOF
-		  tell application "$ide" to activate
-			tell application "System Events"
-				keystroke "\`" using {control down}
-				keystroke "5"
-				delay 0.4
-				keystroke "4"
-			end tell
-EOF
-		else
-			osascript <<EOF
-		  tell application "$ide" to activate
-			tell application "System Events"
-				keystroke "\`" using {control down}
-				keystroke "5"
-				delay 0.4
-				keystroke "1"
-				delay 0.4
-				keystroke "\`" using {control down}
-				keystroke "1"
-				delay 0.6
-				keystroke "3"
-			end tell
-EOF
-		fi
-	fi
-done
-
 ################################# VSCode
 
 json=$HOME/Library/Application\ Support/Code/User/settings.json
