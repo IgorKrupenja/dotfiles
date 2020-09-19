@@ -486,8 +486,10 @@ gch() {
   git stash; git stash apply; git checkout "$@"
 }
 
-# Commit changes and move the last used tag to the new commit
+# Commit changes and move the last used tag to the new commit - useful for some uni courses
 gmtc() {
+  # add all to git
+  git add .
   # get the last used tag from current branch and save in a variable
   tag=$(git describe --tags)
   # delete the tag locally and remotely
