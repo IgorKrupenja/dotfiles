@@ -482,21 +482,15 @@ alias gsh="git stash"
 alias gshp="git stash pop"
 alias gch="git checkout"
 
-# Commit changes and move the last used tag to the new commit - useful for some uni courses
+# Move the last used tag to the new commit - useful for some uni courses
 gmtc() {
-  # add all to git
-  git add .
   # get the last used tag from current branch and save in a variable
   tag=$(git describe --tags)
   # delete the tag locally and remotely
   git push --delete origin $tag
   git tag -d $tag
-  # commit with message passed as an argument
-  git commit -m "$*"
   # add the tag
   git tag $tag
-  # push changes
-  git push origin --all
   # push tag
   git push origin --tags
 }
