@@ -480,11 +480,7 @@ alias gd="git diff"
 alias gdt="git difftool"
 alias gsh="git stash"
 alias gshp="git stash pop"
-# alias gch="git checkout"
-# safe git checkout
-gch() {
-  git stash; git stash apply; git checkout "$@"
-}
+alias gch="git checkout"
 
 # Commit changes and move the last used tag to the new commit - useful for some uni courses
 gmtc() {
