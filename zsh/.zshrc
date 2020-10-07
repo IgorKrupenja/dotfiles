@@ -633,6 +633,11 @@ apki() {
   adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
 }
 
+# Trnasoxiana
+# stuff for another freelance work project
+# ---------------------------------------------------------------------------
+alias tgt="tgs Transoxiana"
+
 # SSH
 # ---------------------------------------------------------------------------
 # Mount home dir on enos
