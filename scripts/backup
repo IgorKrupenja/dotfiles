@@ -1,5 +1,9 @@
 #!/bin/bash
 
+##############################################################################
+# Backup: used to regularly backup and commit changes for some of the settings
+##############################################################################
+
 # Cannot be run on Linux
 case "$OSTYPE" in
 linux*)
@@ -39,12 +43,6 @@ fi
 if [[ $(git diff misc/com.colliderli.iina.plist) ]]; then
     git add misc/com.colliderli.iina.plist
     git commit -m "Update IINA settings"
-fi
-
-# ESLint
-if [[ $(git diff dev-templates) ]]; then
-    git add dev-templates/*
-    git commit -m "Update development templates"
 fi
 
 # push

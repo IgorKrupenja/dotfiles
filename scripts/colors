@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# show treminal colors
 # from https://askubuntu.com/questions/27314/script-to-display-all-terminal-colors
 
 T='test' # The test text

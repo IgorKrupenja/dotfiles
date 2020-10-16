@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Dispalys list of image thumbnails in current dir -- for iTerm terminal
 # by George Nachman https://www.iterm2.com/documentation-images.html
 
 # tmux requires unrecognized OSC sequences to be wrapped with DCS tmux;

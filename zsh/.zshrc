@@ -234,6 +234,13 @@ alias htop="sudo htop"
 # CLI TOOLS
 #############################################################################
 
+# Aliases for scripts in ./scripts directory
+# ---------------------------------------------------------------------------
+alias ggs="git-global-status"
+alias st="status"
+alias bak="backup"
+alias co="colors"
+
 # Toggl
 # ---------------------------------------------------------------------------
 alias tgr="toggl continue; toggl now"
@@ -504,10 +511,6 @@ gir() {
   fi
 }
 alias girr="git rebase -i --root"
-
-# git global status to check if any repos need commits/pushes
-alias ggst="git-global-status.sh"
-alias ggs="ggst"
 
 # cht.sh
 # ---------------------------------------------------------------------------

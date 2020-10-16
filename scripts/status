@@ -1,5 +1,15 @@
 #!/bin/bash
 
+##############################################################################
+# Status: script to show different status info about hardware/software
+##############################################################################
+
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  # prevemt running not on macOS
+  echo "Status script only supports macOS, exiting."
+  exit
+fi
+
 # return time difference between two times in human-readable format
 get_time_difference() {
   time_ago=$(($1 - $2))
@@ -26,7 +36,7 @@ batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" |
 # build CPU/RAM info helper string
 top_info="$(top | head -n 7)"
 
-# show data
+# show status data
 echo "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
 echo "Uptime      : $uptime"
 echo "OS          : macOS $(sw_vers -productVersion)"
