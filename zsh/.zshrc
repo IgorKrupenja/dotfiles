@@ -197,11 +197,8 @@ bu() {
   echo -e "\e[4mUpdating Homebrew:\e[0m"
   brew update --verbose
   echo ""
-  echo -e "\e[4mUpdating brew packages:\e[0m"
+  echo -e "\e[4mUpdating brew packages and casks:\e[0m"
   brew upgrade
-  echo ""
-  echo -e "\e[4mUpdating brew casks:\e[0m"
-  brew cask upgrade
 }
 alias bd="brew cleanup; brew doctor"
 
