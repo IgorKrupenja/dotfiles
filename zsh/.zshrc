@@ -607,7 +607,7 @@ RESTOCK="$HOME/Projects/prepper"
 alias cdp="cd $RESTOCK"
 alias cdf="cd $RESTOCK/cloud_functions/functions"
 alias cdg="cd $RESTOCK/cloud_functions/functions/sheets-admin/gas"
-fd() {
+fired() {
   cdf
   if firebase deploy --only functions; then
     cd -
