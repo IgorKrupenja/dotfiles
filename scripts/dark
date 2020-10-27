@@ -1,16 +1,17 @@
 #!/bin/bash
 
 #################################################################################
-# Dark: Set system dark mode on macOS and manually sets dark themes in some apps.
+# Dark: Switch between system dark and light modes on macOS
+# and manually switch between dark and light themes in some apps.
 #################################################################################
 
-# prevemt running not on macOS
+# prevent running not on macOS
 if [[ "$OSTYPE" != "darwin"* ]]; then
 	echo "Dark mode script only supports macOS, exiting."
 	exit
 fi
 
-################################# change macOS theme
+################################# macOS dark mode
 
 osascript -e '
 	tell application "System Events"
@@ -22,8 +23,8 @@ osascript -e '
 
 ################################# variable for other apps
 
-# define variable if need to set dark theme in other apps
-# 2>/dev/null to suppress error if dark mode is off
+# define variable if changing light -> dark
+# 2>/dev/null to suppress error if changing dark -> light
 if [[ $(defaults read -g AppleInterfaceStyle 2>/dev/null) == "Dark" ]]; then
 	set_dark=true
 fi
@@ -60,7 +61,7 @@ fi
 
 ################################# VSCode
 
-json=$HOME/Library/Application\ Support/Code/User/settings.json
+conf=$HOME/Library/Application\ Support/Code/User/settings.json
 
 light_values=(
 	# Colours for bracket highlighting
@@ -94,21 +95,21 @@ dark_values=(
 for i in ${!light_values[@]}; do
 	if [ "$set_dark" = true ]; then
 		# light ->  dark
-		sed -i '' "s/${light_values[i]}/${dark_values[i]}/g" "$json"
+		sed -i '' "s/${light_values[i]}/${dark_values[i]}/g" "$conf"
 	else
 		# dark -> light
-		sed -i '' "s/${dark_values[i]}/${light_values[i]}/g" "$json"
+		sed -i '' "s/${dark_values[i]}/${light_values[i]}/g" "$conf"
 	fi
 done
 
 ################################# Sublime Merge
 
-sett=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
+conf=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
 
 if [ "$set_dark" = true ]; then
-	sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$sett"
+	sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$conf"
 else
-	sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$sett"
+	sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$conf"
 fi
 
 ################################# cht.sh
