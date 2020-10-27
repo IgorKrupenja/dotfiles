@@ -63,7 +63,6 @@ fi
 json=$HOME/Library/Application\ Support/Code/User/settings.json
 
 light_values=(
-	'"workbench.colorTheme": "Night Owl Light (No Italics)"'
 	# Colours for bracket highlighting
 	'"#0c969b", "#4876d6", "#994cc3"'
 	# To do highlighting
@@ -78,7 +77,6 @@ light_values=(
 	'"hediet.vscode-drawio.theme": "Kennedy"'
 )
 dark_values=(
-	'"workbench.colorTheme": "Nord"'
 	# Colours for bracket highlighting
 	'"#83A2C2", "#91BDBC", "#b48ead"'
 	# To do highlighting
@@ -95,10 +93,10 @@ dark_values=(
 
 for i in ${!light_values[@]}; do
 	if [ "$set_dark" = true ]; then
-		# Night Owl Light -> Nord
+		# light ->  dark
 		sed -i '' "s/${light_values[i]}/${dark_values[i]}/g" "$json"
 	else
-		# Nord -> Night Owl Light
+		# dark -> light
 		sed -i '' "s/${dark_values[i]}/${light_values[i]}/g" "$json"
 	fi
 done
