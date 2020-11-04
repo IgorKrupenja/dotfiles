@@ -584,6 +584,7 @@ alias yr="yarn remove"
 alias yo="yarn outdated"
 alias yu="yarn upgrade"
 alias yui="yarn upgrade-interactive"
+alias yuil="yarn upgrade-interactive --latest"
 # scrips
 alias yru="yarn run"
 alias ys="yarn start"
