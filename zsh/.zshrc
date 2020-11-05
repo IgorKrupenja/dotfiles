@@ -21,7 +21,7 @@ export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 # PATH
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/scripts:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH=/usr/local/opt/python@3.8/bin:/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/scripts:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # Key bindings
 # ---------------------------------------------------------------------------
