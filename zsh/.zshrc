@@ -224,6 +224,7 @@ alias w="which"
 alias reboot="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'"
 # manage Finder sidebar items
 alias side="mysides"
+alias fcl="osascript -e 'tell application \"Finder\" to close windows'"
 # htop with sudo
 alias htop="sudo htop"
 
