@@ -490,7 +490,7 @@ alias gch="git checkout"
 # Move the last used tag to the new commit - useful for some uni courses
 gmtc() {
   # get the last used tag from current branch and save in a variable
-  tag=$(git describe --tags)
+  tag=$(git describe --tags | cut -d- -f1)
   # delete the tag locally and remotely
   git push --delete origin $tag
   git tag -d $tag
