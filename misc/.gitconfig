@@ -1,6 +1,6 @@
 [user]
-  email = igor.krupenja@gmail.com
-  name = Igor Krupenja
+	email = igor.krupenja@gmail.com
+	name = Igor Krupenja
 [color]
   ui = auto
 [push]
@@ -28,3 +28,8 @@
   helper = store
 [http]
 	cookiefile = /Users/igor/.gitcookies
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

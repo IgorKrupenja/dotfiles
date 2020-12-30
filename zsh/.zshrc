@@ -19,7 +19,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
-# PATH
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 export PATH=/usr/local/opt/python@3.8/bin:/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/scripts:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
@@ -267,7 +266,7 @@ alias tgjav="tgtt 'Java Web'"
 alias tgweb="tgtt Veebihaldus"
 alias tgf="tgtt Physics"
 
-#  history for today and this week
+# history for today and this week
 tgl() {
   raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
   echo $raw_data
@@ -412,9 +411,9 @@ alias sw="termdown -a"
 mpdf() {
   unalias gs
   if [[ $@ == "" ]]; then
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf * &&
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf * &&
   else
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged-slides.pdf "$@"
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
   fi
   alias gs="ggs"
 }
@@ -472,7 +471,7 @@ gcm() {
 alias gb="git branch"
 alias gchm="git checkout master"
 alias gl="git pull"
-alias gp="git pull && git remote | xargs -L1 git push --all"
+alias gp="git pull && git remote | xargs -L1 git push"
 alias gpf="git push -f origin --all"
 alias ga="git add"
 alias gcl="git clone"

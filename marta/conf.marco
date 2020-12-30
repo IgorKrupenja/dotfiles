@@ -1,15 +1,17 @@
+environment {
+    terminal "iTerm"
+    textEditor "Visual Studio Code"
+}
+
 behavior {
     theme "Igor"
-    dateFormat "%d/%m/%y %X"
 
-    showActionBar false
+    layout {
+        showActionBar false
+    }
 
     actions {
         core.lookup.mode "substring"
-    }
-
-    quickSelect {
-        filterMatchedItems true
     }
 
     table {
@@ -19,13 +21,7 @@ behavior {
     }
 }
 
-environment {
-    terminal "iTerm"
-    textEditor "Visual Studio Code"
-}
-
 etty {
-    useMainThemeColors true
     fonts {
         normal [ "MonacoB Nerd Font" 13 ]
     }
@@ -43,103 +39,23 @@ fonts {
 }
 
 keyBindings {
-    Backspace {
-        id "core.go.up"
-    }
+    "Cmd+R" "core.refresh"
+    "Ctrl+Tab" "core.tab.next"
 
-    "Cmd+Backspace" {
-        id "core.trash"
-    }
+    "Left" "core.go.up"
+    "Right" "core.open"
+    "Space" "core.select.move.down"
 
-    "Cmd+F12" {
-        id "core.copy.current.dir.path"
-    }
+    "Delete" "core.trash"
 
-    "Cmd+I" {
-        id "core.documentation"
-    }
-
-    "Cmd+R" {
-        id "core.refresh"
-    }
-
-    Delete {
-        id "core.trash"
-    }
-
-    F1 {
-        id "core.get.info"
-    }
-
-    F10 {
-        id "core.move.to"
-    }
-
-    F11 {
-        id "core.open.terminal.here"
-    }
-
-    F12 {
-        id "core.reveal.in.finder"
-    }
-
-    F2 {
-        id "core.rename"
-    }
-
-    F3 {
-        id "core.preview"
-    }
-
-    F4 {
-        id "core.edit"
-    }
-
-    F5 {
-        id "core.copy.to"
-    }
-
-    F6 {
-        id "core.move.to"
-    }
-
-    F8 {
-        id "core.trash"
-    }
-
-    F9 {
-        id "core.copy.to"
-    }
-
-    "Left" {
-        id "core.go.up"
-    }
-
-    Return {
-        id "core.open"
-    }
-
-    "Right" {
-        id "core.open"
-    }
-
-    "Shift+Down" {
-        id "core.select.move.down"
-    }
-
-    "Shift+F12" {
-        id "core.copy.paths"
-    }
-
-    "Shift+F9" {
-        id "core.create.symlink"
-    }
-
-    Space {
-        id "core.select.move.down"
-    }
-    
-    "Ctrl+Tab" {
-        id "core.activate.next.tab"
-    }
+    "F1" "core.finder.showInfo"
+    "F2" "core.rename"
+    "F3" "core.preview"
+    "Shift+F5" "core.symlink"
+    "F9" "core.copy"
+    "Shift+F9" "core.symlink"
+    "F10" "core.move"
+    "F12" "core.finder.reveal"
+    "Cmd+F12" "core.path.folder"
+    "Shift+F12" "core.path"
 }
