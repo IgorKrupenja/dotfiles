@@ -175,14 +175,10 @@ rn() {
 # Homebrew
 # ---------------------------------------------------------------------------
 alias bif="brew info"
-alias bcif="brew cask info"
 alias bi="brew install"
-alias bci="brew cask install"
 alias bl="brew list"
-alias bcl="brew cask list"
 alias bs="brew search"
 alias br="brew rmtree"
-alias bcr="brew cask remove"
 bdep() {
   if [[ $@ == "" ]]; then
     brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
@@ -191,13 +187,15 @@ bdep() {
   fi
 }
 alias blv="brew leaves"
-alias bul="brew update && brew outdated && brew cask outdated"
+alias bul="brew update && brew outdated"
 bu() {
   echo -e "\e[4mUpdating Homebrew:\e[0m"
   brew update --verbose
   echo ""
-  echo -e "\e[4mUpdating brew packages and casks:\e[0m"
-  brew upgrade
+  echo -e "\e[4mUpdating packages and casks:\e[0m"
+  if [[ ! $(brew upgrade) ]]; then
+    echo "Everything up to date!"
+  fi
 }
 alias bd="brew cleanup; brew doctor"
 
