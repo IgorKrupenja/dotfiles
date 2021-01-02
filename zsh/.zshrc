@@ -176,9 +176,16 @@ rn() {
 # ---------------------------------------------------------------------------
 alias bif="brew info"
 alias bi="brew install"
-alias bl="brew list"
+bl() {
+  echo -e "\e[4mFormulas:\e[0m"
+  brew list --formula
+  echo ""
+  echo -e "\e[4mCasks:\e[0m"
+  brew list --cask
+}
 alias bs="brew search"
 alias br="brew rmtree"
+alias bcr="brew remove --cask"
 bdep() {
   if [[ $@ == "" ]]; then
     brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
