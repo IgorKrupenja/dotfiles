@@ -468,7 +468,14 @@ alias glo="git log --graph --oneline --all"
 gcm() {
   git commit -m "$*"
 }
-alias gb="git branch"
+# create branch both locally and remotely, only origin
+gb() {
+  git checkout -b "$*" && git push origin "$*"
+}
+# delete branch both locally and remotely, only origin
+gbd() {
+  git branch -D "$*" && git push -d origin "$*"
+}
 alias gchm="git checkout master"
 alias gl="git pull"
 alias gp="git pull && git remote | xargs -L1 git push"
