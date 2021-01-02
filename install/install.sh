@@ -251,6 +251,8 @@ macos_settings() {
 
     # Map key to the left of 1 to tilde (~)
     ln -sv $DOTFILES/misc/com.user.tilde.plist $HOME/Library/LaunchAgents/com.user.tilde.plist
+    sudo chown root:wheel /Users/igor/Library/LaunchAgents/com.user.tilde.plist
+    sudo launchctl load /Users/igor/Library/LaunchAgents/com.user.tilde.plist
     tilde
 
     # Projects folder icon
