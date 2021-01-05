@@ -200,9 +200,7 @@ bu() {
   brew update --verbose
   echo ""
   echo -e "\e[4mUpdating packages and casks:\e[0m"
-  if [[ ! $(brew upgrade) ]]; then
-    echo "Everything up to date!"
-  fi
+  brew upgrade
 }
 alias bd="brew cleanup; brew doctor"
 
@@ -214,7 +212,6 @@ alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Re
 alias net="sudo iftop -B"
 # speedtest.net
 alias sp="speedtest"
-# display terminal colors
 
 # Misc
 # ---------------------------------------------------------------------------
