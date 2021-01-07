@@ -36,6 +36,15 @@ batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" |
 # build CPU/RAM info helper string
 top_info="$(top | head -n 7)"
 
+# build RAM Info
+blocks_free=$(vm_stat | grep free | awk '{ print $3 }' | sed 's/\.//')
+blocks_inactive=$(vm_stat | grep inactive | awk '{ print $3 }' | sed 's/\.//')
+blocks_speculative=$(vm_stat | grep speculative | awk '{ print $3 }' | sed 's/\.//')
+mem_free=$((($blocks_free + $blocks_speculative) * 4096 / 1048576))
+mem_inactive=$(($blocks_inactive * 4096 / 1048576))
+mem_total_free=$(($mem_free + $mem_inactive))
+mem_total=$(($(sysctl -n hw.memsize) / (1024 ** 3)))
+
 # show status data
 echo "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8,9)"
 echo "Uptime      : $uptime"
@@ -43,9 +52,10 @@ echo "OS          : macOS $(sw_vers -productVersion)"
 echo "Kernel      : $(uname -s -r)"
 echo "Model       : MacBook Pro 16-inch 2019"
 echo "CPU         : $(echo "$top_info" | grep -E "^CPU" | sed -n 's/CPU usage: //p')- $(sysctl -n machdep.cpu.brand_string)"
-echo "Memory      : $(echo "$top_info" | grep -E "^Phys" | sed -n 's/PhysMem: //p')"
+echo "Memory      : ${mem_total}GB total; ${mem_free}MB free, ${mem_inactive}MB inactive, ${mem_total_free}MB total free"
 echo "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
 echo "Battery     : $batt_perc for $batt_time, $batt_remain; cycle count $batt_cycles"
 echo "Hostname    : $(uname -n)"
+echo "WiFI SSID   : $(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F' SSID: ' '/ SSID: / {print $2}' | xargs)"
 echo "Internal IP : $(ipconfig getifaddr en0)"
 echo "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"

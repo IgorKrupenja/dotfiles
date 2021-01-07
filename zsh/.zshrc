@@ -24,9 +24,12 @@ export PATH=/usr/local/opt/python@3.8/bin:/usr/local/sbin:/usr/local/opt/python/
 
 # Key bindings
 # ---------------------------------------------------------------------------
-# these are needed for alt + left/right to work in IntelliJ terminal
+# these are needed for option/cmd + left/right to work in IntelliJ terminal
 bindkey "\e\eOD" backward-word
 bindkey "\e\eOC" forward-word
+# todo #136
+# bindkey "\e\eUF702" beginning-of-line
+# bindkey "\e\eUF703" end-of-line
 
 # Utilities
 # ---------------------------------------------------------------------------

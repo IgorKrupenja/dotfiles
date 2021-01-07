@@ -61,7 +61,7 @@ macos_prepare() {
   # Install brew AND git
   # Will also install xcode-tools, including git - needed to clone repo
   # So running xcode-select --install separately IS NOT required
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
 clone_repo() {
