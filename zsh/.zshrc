@@ -188,7 +188,7 @@ alias br="brew rmtree"
 alias bcr="brew remove --cask"
 bdep() {
   if [[ $@ == "" ]]; then
-    brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
+    brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
   else
     command brew rmtree --dry-run "$@"
   fi

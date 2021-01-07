@@ -7,9 +7,9 @@
 # Cannot be run on Linux
 case "$OSTYPE" in
 linux*)
-    echo "ERROR: Script does not support Linux!"
-    exit 1
-    ;;
+  echo "ERROR: Script does not support Linux!"
+  exit 1
+  ;;
 esac
 
 # echo in case run from shell
@@ -17,32 +17,40 @@ echo "Backup in progress. Please wait..."
 
 ################### Backup
 
+# hosts
+cd $DOTFILES/misc
+cp -rf /etc/hosts hosts
+if [[ $(git diff hosts) ]]; then
+  git add hosts
+  git commit -m "Update hosts file"
+fi
+
 # Brewfile dump
 cd $DOTFILES/install
 brew bundle dump --force
 if [[ $(git diff Brewfile) ]]; then
-    git add Brewfile
-    git commit -m "Update Brewfile"
+  git add Brewfile
+  git commit -m "Update Brewfile"
 fi
 
 cd $DOTFILES
 
 # Marta
 if [[ $(git diff marta) ]]; then
-    git add marta/*
-    git commit -m "Update Marta settings"
+  git add marta/*
+  git commit -m "Update Marta settings"
 fi
 
 # commit iTerm plist if there are changes
 if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
-    git add iterm/com.googlecode.iterm2.plist
-    git commit -m "Update iTerm settings"
+  git add iterm/com.googlecode.iterm2.plist
+  git commit -m "Update iTerm settings"
 fi
 
 # commit IINA plist if there are changes
 if [[ $(git diff misc/com.colliderli.iina.plist) ]]; then
-    git add misc/com.colliderli.iina.plist
-    git commit -m "Update IINA settings"
+  git add misc/com.colliderli.iina.plist
+  git commit -m "Update IINA settings"
 fi
 
 # push

@@ -6,7 +6,7 @@
       <string>com.user.tilde</string>
       <key>ProgramArguments</key>
       <array>
-         <string>/Users/igor/Projects/dotfiles/bin/tilde</string>
+         <string>/Users/igor/Projects/dotfiles/scripts/tilde</string>
       </array>
       <key>RunAtLoad</key>
       <true/>
