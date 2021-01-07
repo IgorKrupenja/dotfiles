@@ -200,7 +200,11 @@ bu() {
   brew update --verbose
   echo ""
   echo -e "\e[4mUpdating packages and casks:\e[0m"
-  brew upgrade
+  if [[ ! $(brew outdated) ]]; then
+    echo "Everything up to date!"
+  else
+    brew upgrade
+  fi
 }
 alias bd="brew cleanup; brew doctor"
 
@@ -472,7 +476,9 @@ gcm() {
 }
 # create branch both locally and remotely, only origin
 gb() {
-  git checkout -b "$*" && git push origin "$*"
+  git checkout -b "$*"
+  git push origin "$*"
+  git branch --set-upstream-to=origin/"$*" "$*"
 }
 # delete branch both locally and remotely, only origin
 gbd() {
