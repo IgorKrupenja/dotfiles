@@ -140,14 +140,13 @@ install_sw_node() {
   echo ""
   echo "**************************** Installing from npm ***************************"
   echo ""
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
   backup_file $HOME/.nvm/default-packages
   ln -sv $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
-  nvm install 10
-  nvm install 12
+  # installs latest node and makes it default
+  nvm install node
   nvm install 14
-  nvm install 15
-  nvm alias default 14
+  nvm install 12
 }
 
 install_sw_misc() {

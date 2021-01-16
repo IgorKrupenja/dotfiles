@@ -563,11 +563,11 @@ alias ciu="caniuse"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"          # This loads nvm
-[ -s "$NVM_DIR/bash _completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-alias n10="nvm use 10"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias n12="nvm use 12"
-alias n13="nvm use 13"
+alias n14="nvm use 14"
+alias n15="nvm use 15"
 alias nd="nvm use default"
 
 # npm global

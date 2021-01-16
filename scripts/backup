@@ -19,10 +19,18 @@ echo "Backup in progress. Please wait..."
 
 # hosts
 cd $DOTFILES/misc
-cp -rf /etc/hosts hosts
+cp -f /etc/hosts hosts
 if [[ $(git diff hosts) ]]; then
   git add hosts
   git commit -m "Update hosts file"
+fi
+
+# VSCode - in case settigns sync fails
+cd $DOTFILES/vscode
+cp -f "/Users/igor/Library/Application Support/Code/User/settings.json" settings.json
+if [[ $(git diff settings.json) ]]; then
+  git add settings.json
+  git commit -m "Update VSCode settings"
 fi
 
 # Brewfile dump
