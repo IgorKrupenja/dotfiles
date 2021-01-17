@@ -443,12 +443,12 @@ else
 fi
 
 # VSCode
-# alias codei="code-insiders"
+# --disable-renderer-accessibility is a workaround for https://github.com/microsoft/vscode/issues/107016
 c() {
   if [[ $@ == "" ]]; then
-    code .
+    code --disable-renderer-accessibility .
   else
-    code "$@"
+    code --disable-renderer-accessibility "$@"
   fi
 }
 
