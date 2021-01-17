@@ -245,7 +245,7 @@ alias htop="sudo htop"
 alias ggs="git-global-status"
 alias st="status"
 alias bak="backup"
-alias co="colors"
+alias co="color"
 
 # Toggl
 # ---------------------------------------------------------------------------
