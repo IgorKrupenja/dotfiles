@@ -6,11 +6,11 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles, settings and scripts. Primarily for macOS, limited Ubuntu Server 20.04 support.
+A repository to store some of my dotfiles, settings and scripts. Primarily for macOS, limited Ubuntu Server support.
 
 ## Highlights
 
-- [install/install.sh](install/install.sh) Installation script for automated install (see [Installation](#installation) section below).
+- [install/install](install/install) Installation script for automated install (see [Installation](#installation) section below).
 - [zsh/.zshrc](zsh/.zshrc) My core Z shell config with helpful functions, aliases, etc. Note that this is intentionally kept as a single file as splitting the config into several files was causing performance issues.
 - [scripts/status](scripts/status) Displays some status information on hardware/software (only macOS supported).
 - [scripts/git-global-status](scripts/git-global-status) Shows status (up-to-date/need to commit/need to push) for git repositories in a directory set with `$PROJECTS` environment variable.
@@ -20,7 +20,7 @@ A repository to store some of my dotfiles, settings and scripts. Primarily for m
 
 Install script can be run on clean systems without git or Xcode Command Line Tools.
 
-To install on macOS or Ubuntu Server 20.04, run:
+To install on macOS or Ubuntu Server (limited support), run:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install/install)"
