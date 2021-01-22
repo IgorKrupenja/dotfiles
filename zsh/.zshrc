@@ -421,7 +421,7 @@ mpdf() {
   unalias gs
   if [[ $@ == "" ]]; then
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf * &&
-  else
+      else
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
   fi
   alias gs="ggs"
@@ -487,6 +487,7 @@ gbd() {
   git branch -D "$*" && git push -d origin "$*"
 }
 alias gchm="git checkout master"
+alias gf="git fetch"
 alias gl="git pull"
 alias gp="git pull && git remote | xargs -L1 git push"
 alias gpf="git push -f origin --all"
@@ -562,8 +563,8 @@ alias ciu="caniuse"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n12="nvm use 12"
 alias n14="nvm use 14"
 alias n15="nvm use 15"
