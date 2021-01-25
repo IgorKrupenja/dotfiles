@@ -264,16 +264,13 @@ alias tgcar="tgs Career"
 alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
 alias tgsel="tgs Work Selling"
-alias tgp="tgs Prepper"
 alias tgphys="tgs Physio/Exercise"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
-alias tgdb="tgtt Databases"
-alias tgcs="tgtt C#"
-alias tgjav="tgtt 'Java Web'"
-alias tgweb="tgtt Veebihaldus"
-alias tgf="tgtt Physics"
+alias tgh="tgtt Hajus"
+alias tga="tgtt Algo"
+alias tgal="tga"
 
 # history for today and this week
 tgl() {
