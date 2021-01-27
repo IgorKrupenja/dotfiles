@@ -611,6 +611,19 @@ alias yd="yarn run deploy"
 alias ydfd="yarn run deploy-fn-dev"
 alias ydf="yarn run deploy-fn"
 
+# SSH
+# ---------------------------------------------------------------------------
+# Mount home dir on enos
+alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
+
+#############################################################################
+# PROJECTS
+#############################################################################
+
+# CV, currently WIP
+# ---------------------------------------------------------------------------
+alias cvdep="$HOME/OneDrive\ -\ TalTech/Work/Job\ hunt/cv/deploy"
+
 # Zaino app
 # ---------------------------------------------------------------------------
 alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
@@ -652,15 +665,10 @@ apki() {
   adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
 }
 
-# Trnasoxiana
+# Transoxiana
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
 alias tgt="tgs Transoxiana"
-
-# SSH
-# ---------------------------------------------------------------------------
-# Mount home dir on enos
-alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
 #############################################################################
 # LINUX
