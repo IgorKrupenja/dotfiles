@@ -423,6 +423,8 @@ mpdf() {
   fi
   alias gs="ggs"
 }
+# media downloader
+alias ydl="youtube-dl"
 
 #############################################################################
 # DEVELOPMENT
