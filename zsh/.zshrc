@@ -668,7 +668,7 @@ apki() {
 # Transoxiana
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
-alias tgt="tgs Transoxiana"
+alias tgto="tgs Transoxiana"
 
 #############################################################################
 # LINUX
