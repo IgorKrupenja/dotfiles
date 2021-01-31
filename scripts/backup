@@ -17,14 +17,6 @@ echo "Backup in progress. Please wait..."
 
 ################### Backup
 
-# hosts
-cd $DOTFILES/misc
-cp -f /etc/hosts hosts
-if [[ $(git diff hosts) ]]; then
-  git add hosts
-  git commit -m "Update hosts file"
-fi
-
 # VSCode - in case settigns sync fails
 cd $DOTFILES/vscode
 cp -f "/Users/igor/Library/Application Support/Code/User/settings.json" settings.json
