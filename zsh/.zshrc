@@ -502,6 +502,10 @@ alias gdt="git difftool"
 alias gsh="git stash"
 alias gshp="git stash pop"
 alias gch="git checkout"
+alias gxs="git bisect start"
+alias gxg="git bisect good"
+alias gxb="git bisect bad"
+alias gxr="git bisect reset"
 
 # Move the last used tag to the new commit - useful for some uni courses
 gmtc() {
