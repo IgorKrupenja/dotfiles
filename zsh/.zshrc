@@ -235,6 +235,7 @@ alias side="mysides"
 alias fcl="osascript -e 'tell application \"Finder\" to close windows'"
 # htop with sudo
 alias htop="sudo htop"
+alias cl="clear"
 
 #############################################################################
 # CLI TOOLS
