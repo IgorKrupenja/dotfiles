@@ -674,14 +674,3 @@ apki() {
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
 alias tgto="tgs Transoxiana"
-
-#############################################################################
-# LINUX
-# must stay at the end of file
-#############################################################################
-
-case "$OSTYPE" in
-linux*)
-  source $DOTFILES/zsh/.zsh_linux
-  ;;
-esac

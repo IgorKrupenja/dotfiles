@@ -6,7 +6,7 @@
 
 ## Introduction
 
-A repository to store some of my dotfiles, settings and scripts. Primarily for macOS, limited Ubuntu Server support.
+A repository to store some of my dotfiles, settings and scripts. Only macOS supported.
 
 ## Highlights
 
@@ -20,7 +20,7 @@ A repository to store some of my dotfiles, settings and scripts. Primarily for m
 
 Install script can be run on clean systems without git or Xcode Command Line Tools.
 
-To install on macOS or Ubuntu Server (limited support), run:
+To install on macOS, run:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install/install)"

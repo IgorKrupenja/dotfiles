@@ -22,39 +22,29 @@ backup_file() {
   fi
 }
 
-main_macos() {
-  macos_get_sudo
-  macos_prepare
+main() {
+  get_sudo
+  prepare
   clone_repo
   install_sw_brew
   install_sw_pip
   install_sw_misc
   zsh_config
-  dotfiles_common
-  dotfiles_macos
+  dotfiles
   install_sw_node
   macos_settings
   display_success_message
 }
 
-main_linux() {
-  install_sw_apt
-  clone_repo
-  zsh_config
-  dotfiles_common
-  linux_misc
-  display_success_message
-}
-
 # Ask for password only once
-macos_get_sudo() {
+get_sudo() {
   echo "Please enter sudo password:"
   printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
     sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
     sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
 }
 
-macos_prepare() {
+prepare() {
   echo ""
   echo "************************** Installing brew and git *************************"
   echo ""
@@ -82,36 +72,6 @@ clone_repo() {
     git clone https://github.com/krupenja/dotfiles.git .
     cd $DOTFILES
   fi
-}
-
-install_sw_apt() {
-  echo ""
-  echo "************************** Installing apt packages *************************"
-  echo ""
-
-  # apt over https and curl
-  sudo apt-get install -y apt-transport-https curl
-
-  ##### Update
-  sudo apt-get update && sudo apt-get upgrade -y
-
-  ##### Install
-  # emacs
-  echo | sudo add-apt-repository ppa:kelleyk/emacs
-  sudo apt-get update
-  sudo apt-get install -y emacs26-nox
-  # thefuck
-  sudo apt-get install -y python3-dev python3-pip python3-setuptools
-  sudo pip3 install thefuck
-  # other
-  sudo apt-get install -y git
-  sudo apt-get install -y smem
-  sudo apt-get install -y tcptrack
-  sudo apt-get install -y zsh
-  sudo apt-get install -y htop
-  sudo apt-get install -y p7zip-full
-  sudo apt-get install -y speedtest-cli
-  sudo apt-get install -y mc
 }
 
 install_sw_brew() {
@@ -181,7 +141,7 @@ zsh_config() {
 }
 
 # Needs to be called after zsh_config
-dotfiles_common() {
+dotfiles() {
   echo ""
   echo "*************************** Installing dotfiles ****************************"
   echo ""
@@ -198,9 +158,6 @@ dotfiles_common() {
     ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
   done
   touch $HOME/.hushlogin
-}
-
-dotfiles_macos() {
   # SSH
   backup_file $HOME/.ssh/config
   mkdir $HOME/.ssh/
@@ -301,14 +258,6 @@ macos_settings() {
   sudo dscl . -delete /Groups/wheel GroupMembership $(whoami)
 }
 
-# Needs to be called after link_dotfiles_common
-linux_misc() {
-  # Install z
-  wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/z.sh
-  # Cleanup
-  sudo apt autoremove -y
-}
-
 display_success_message() {
   echo ""
   echo "############################################################################"
@@ -326,11 +275,11 @@ display_success_message() {
 # Check OS
 case $(uname) in
 Darwin)
-  main_macos "$@"
+  main "$@"
   exit
   ;;
-Linux)
-  main_linux "$@"
+*)
+  echo "Only macOS supported"
   exit
   ;;
 esac
