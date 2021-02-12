@@ -177,7 +177,7 @@ macos_settings() {
   # crontab
   (
     crontab -l >/dev/null 2>&1
-    echo "0 22 * * 0 . $HOME/.zshrc; /Users/igor/Projects/dotfiles/scripts/bak >/dev/null 2>&1"
+    echo "0 22 * * 0 . $HOME/.zshrc; /Users/igor/Projects/dotfiles/scripts/backup >/dev/null 2>&1"
   ) | crontab -
   (
     crontab -l >/dev/null 2>&1
