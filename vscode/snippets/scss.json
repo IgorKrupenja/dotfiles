@@ -1,0 +1,70 @@
+{
+	// Place your snippets for scss here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Media query for mobile": {
+		"prefix": "mqm",
+		"body": [
+			"@include mq(mobile) {",
+			"  ${1}",
+			"}"
+		],
+		"description": "Media query for mobile"
+	},
+	"Media query for desktop": {
+		"prefix": "mqd",
+		"body": [
+			"@include mq(desktop) {",
+			"  ${1}",
+			"}"
+		],
+		"description": "Media query for desktop"
+	},
+	"Media query for tablet": {
+		"prefix": "mqt",
+		"body": [
+			"@include mq(tablet) {",
+			"  ${1}",
+			"}"
+		],
+		"description": "Media query for table"
+	},
+	"Media query mixin": {
+		"prefix": "mq",
+		"body": [
+			"$break-small: ${1};",
+			"$break-large: ${2};",
+			"",
+			"@mixin mq($media) {",
+			"  @if $media==mobile {",
+			"    @media only screen and (max-width: $break-small) {",
+			"      @content;",
+			"    }",
+			"  }",
+			"",
+			"  @else if $media==tablet {",
+			"    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {",
+			"      @content;",
+			"    }",
+			"  }",
+			"",
+			"  @else if $media==desktop {",
+			"    @media only screen and (min-width: $break-large) {",
+			"      @content;",
+			"    }",
+			"  }",
+			"}"
+		],
+		"description": "Creates a simple media query mixin with three widths: mobile, tablet and desktop."
+	},
+}
