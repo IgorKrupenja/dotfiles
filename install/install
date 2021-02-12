@@ -162,11 +162,6 @@ dotfiles() {
   backup_file $HOME/.ssh/config
   mkdir $HOME/.ssh/
   ln -sv $DOTFILES/ssh/config $HOME/.ssh/config
-  # Toggl CLI
-  # fix white-on-white text
-  cd $HOME/Projects
-  git clone https://github.com/krupenja/toggl-cli.git
-  cp -v $HOME/Projects/toggl-cli/toggl/cli/helpers.py /usr/local/lib/python3.7/site-packages/toggl/cli/helpers.py
 }
 
 macos_settings() {

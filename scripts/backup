@@ -20,6 +20,8 @@ echo "Backup in progress. Please wait..."
 # VSCode - in case settigns sync fails
 cd $DOTFILES/vscode
 cp -f "/Users/igor/Library/Application Support/Code/User/settings.json" settings.json
+cp -f "/Users/igor/Library/Application Support/Code/User/keybindings.json" keybindings.json
+cp -rf "/Users/igor/Library/Application Support/Code/User/snippets" ./
 if [[ $(git diff settings.json) ]]; then
   git add settings.json
   git commit -m "Update VSCode settings"
