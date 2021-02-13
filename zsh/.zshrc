@@ -269,6 +269,7 @@ alias tgphys="tgs Physio/Exercise"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
+alias tgen="tgtt 'English II'"
 alias tgh="tgtt Hajus"
 alias tga="tgtt Algo"
 alias tgal="tga"
