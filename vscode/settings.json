@@ -60,6 +60,12 @@
       "editorCursor.foreground": "#000"
     }
   },
+  "editor.tokenColorCustomizations": {
+    "[Night Owl Light (No Italics)]": {
+      // "semanticHighlighting": true
+      "strings": "#C96765"
+    }
+  },
   "editor.renderWhitespace": "none",
   "git-graph.graph.colours": [
     "#de3d3b",
@@ -195,7 +201,7 @@
   ],
   "python.linting.mypyEnabled": true,
   "prettier.arrowParens": "avoid",
-  "workbench.colorTheme": "Night Owl Light (No Italics)",
+  "workbench.colorTheme": "Nord",
   "customizeUI.activityBar": "bottom",
   "tabnine.experimentalAutoImports": true,
   "editor.accessibilitySupport": "off",
