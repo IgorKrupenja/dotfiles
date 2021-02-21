@@ -266,6 +266,7 @@ alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
 alias tgsel="tgs Work Selling"
 alias tgphys="tgs Physio/Exercise"
+alias tgm="tgs Moving house"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
@@ -427,6 +428,7 @@ mpdf() {
 }
 # media downloader
 alias ydl="youtube-dl"
+alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 
 #############################################################################
 # DEVELOPMENT
@@ -599,6 +601,7 @@ alias npun="npm uninstall"
 # alias npcl="npm run cloc"
 
 # yarn
+alias yi="yarn install"
 alias ya="yarn add"
 yad() {
   yarn add "$1" -D
