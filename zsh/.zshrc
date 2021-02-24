@@ -266,7 +266,7 @@ alias tgsoc="tgs Social"
 alias tghus="tgs Work Hustle"
 alias tgsel="tgs Work Selling"
 alias tgphys="tgs Physio/Exercise"
-alias tgm="tgs Moving house"
+alias tgm="tgs 'Moving house'"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
@@ -678,3 +678,4 @@ apki() {
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
 alias tgto="tgs Transoxiana"
+alias fb="flutter build apk --split-per-abi"
