@@ -20,7 +20,22 @@ export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=/usr/local/opt/python@3.8/bin:/usr/local/sbin:/usr/local/opt/python/libexec/bin:$DOTFILES/scripts:$HOME/.flutter-sdk/bin:$HOME/.gem/ruby/2.6.0/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+path=(
+  # python unversioned symlinks
+  /usr/local/opt/python/libexec/bin
+  # required for iftop installed with homebrew
+  /usr/local/sbin
+  $DOTFILES/scripts
+  # dart package bin, including fvm
+  $HOME/.pub-cache/bin
+  # global flutter bin from nvm
+  $HOME/fvm/default/bin
+  # Android/Flutter CLI tools
+  $ANDROID_HOME/emulator
+  $ANDROID_HOME/tools
+  $ANDROID_HOME/platform-tools
+  $path
+)
 
 # Key bindings
 # ---------------------------------------------------------------------------
@@ -138,7 +153,7 @@ mkf() {
   mkdir -p "$(dirname "$1")" && touch "$1"
 }
 # thefuck
-alias f="fuck"
+alias fk="fuck"
 # open Marta in current dir
 m() {
   if [[ $@ == "" ]]; then
@@ -678,4 +693,13 @@ apki() {
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
 alias tgto="tgs Transoxiana"
-alias fb="flutter build apk --split-per-abi"
+alias f="fvm flutter"
+alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
+alias fcl="fvm flutter clean"
+alias fd="fvm flutter doctor --verbose"
+alias fr="fvm flutter run --release --verbose"
+alias fg="fvm flutter pub get"
+alias fgr="fvm flutter pub get && fvm flutter run --release --verbose"
+fvmu() {
+  fvm use $@ && fvm flutter clean
+}
