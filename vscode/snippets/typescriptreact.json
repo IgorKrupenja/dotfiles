@@ -53,5 +53,10 @@
       ""
     ],
     "description": "React component"
+  },
+  "For of loop": {
+    "prefix": ["fof", "forof"],
+    "body": ["for (const ${1} of ${1}s) {", "  $0", "}"],
+    "description": "for of loop"
   }
 }

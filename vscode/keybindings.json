@@ -249,5 +249,20 @@
   {
     "key": "ctrl+z",
     "command": "flutter.selectDevice"
+  },
+  {
+    "key": "alt+enter",
+    "command": "-abracadabra.quickFix",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+.",
+    "command": "-editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
   }
 ]

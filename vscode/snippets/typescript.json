@@ -20,11 +20,16 @@
   "Export all": {
     "prefix": "exa",
     "body": ["export * from '.$1'"],
-    "description": "Export default"
+    "description": "Export all"
   },
   "Log to console": {
     "prefix": "log",
     "body": ["console.log($1)"],
     "description": "Log to console"
+  },
+  "For of loop": {
+    "prefix": ["fof", "forof"],
+    "body": ["for (const ${1} of ${1}s) {", "  $0", "}"],
+    "description": "for of loop"
   }
 }
