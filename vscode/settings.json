@@ -13,8 +13,6 @@
   "editor.cursorSmoothCaretAnimation": true,
   "editor.fontFamily": "'MonacoB Nerd Font', 'Monaco Nerd Font Mono', Monego, MonacoB, Monaco, Hack, 'Ubuntu Mono', monospace",
   "git-graph.showStatusBarItem": false,
-  // disable welcome page
-  "workbench.startupEditor": "none",
   // map file extensions to languages
   "files.associations": {
     "*.emacs": "lisp",
@@ -201,7 +199,6 @@
   ],
   "python.linting.mypyEnabled": true,
   "prettier.arrowParens": "avoid",
-  "workbench.colorTheme": "Nord",
   "customizeUI.activityBar": "bottom",
   "tabnine.experimentalAutoImports": true,
   "editor.accessibilitySupport": "off",
@@ -252,7 +249,9 @@
   "dart.previewLsp": true,
   "editor.linkedEditing": true,
   "html-css-class-completion.enableFindUsage": true,
-  "html-css-class-completion.enableScssFindUsage": true
+  "html-css-class-completion.enableScssFindUsage": true,
+  "workbench.colorTheme": "Nord"
+
   // experimental check for problems in all TS files
   // disabled as very bad perf
   // "typescript.tsserver.experimental.enableProjectDiagnostics": true
