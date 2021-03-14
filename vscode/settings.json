@@ -79,7 +79,8 @@
   "editor.autoClosingOvertype": "always",
   "[markdown]": {
     "editor.quickSuggestions": true,
-    "editor.wordBasedSuggestions": false
+    "editor.wordBasedSuggestions": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   // workaround to fix jumpy markdown ediitng -- was fixed?
   // see https://github.com/microsoft/vscode/issues/69467
