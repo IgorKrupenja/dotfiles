@@ -140,6 +140,7 @@
     "Avenir",
     "Krupenja",
     "Parens",
+    "Playtech",
     "Prepper",
     "Siidisaba",
     "Spellright",
@@ -158,7 +159,6 @@
     "smth",
     "xlink"
   ],
-  "window.zoomLevel": 0,
   "window.titleBarStyle": "native",
   "[html]": {
     "editor.wordBasedSuggestions": false,
