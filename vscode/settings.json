@@ -137,18 +137,30 @@
   "cSpell.language": "en-GB,en,it,ru,lorem",
   "bashIde.highlightParsingErrors": false,
   "cSpell.userWords": [
+    "Adcash",
     "Avenir",
+    "Devtailor",
+    "Handies",
+    "Kertu",
+    "Kodality",
+    "Krematoorium",
     "Krupenja",
+    "Maksim",
     "Parens",
+    "Pipedrive",
     "Playtech",
+    "Praktikakohvik",
     "Prepper",
+    "Serializers",
     "Siidisaba",
     "Spellright",
+    "Transferwise",
     "Youtube",
     "animationend",
     "autoplay",
     "barcode",
     "captcha",
+    "cloc",
     "creds",
     "dotfiles",
     "firestore",
@@ -157,6 +169,7 @@
     "mixins",
     "overscroll",
     "smth",
+    "wojtekmaj",
     "xlink"
   ],
   "window.titleBarStyle": "native",
@@ -226,6 +239,9 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[plaintext]": {
+    "editor.wordWrap": "on"
   },
   "customizeUI.activityBarHideSettings": true,
   "terminal.integrated.fontSize": 13,
