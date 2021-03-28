@@ -629,6 +629,8 @@ alias yuil="yarn upgrade-interactive --latest"
 # scrips
 alias yru="yarn run"
 alias ys="yarn start"
+alias yt="yarn test"
+alias ytw="yarn test-watch"
 alias yb="yarn run build"
 alias ycl="yarn run cloc"
 alias yd="yarn run deploy"
