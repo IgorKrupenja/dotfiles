@@ -270,7 +270,7 @@
   "editor.linkedEditing": true,
   "html-css-class-completion.enableFindUsage": true,
   "html-css-class-completion.enableScssFindUsage": true,
-  "workbench.colorTheme": "Night Owl Light (No Italics)",
+  "workbench.colorTheme": "Nord",
   "debug.console.fontSize": 13
 
   // experimental check for problems in all TS files
