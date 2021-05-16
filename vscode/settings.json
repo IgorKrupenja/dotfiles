@@ -56,8 +56,9 @@
       "dropdown.background": "#fff",
       "input.background": "#fff",
       "editorWidget.background": "#fff",
-      "editorCursor.foreground": "#000",
-      "dart.closingLabels": "#939dbb88"
+      "editorCursor.foreground": "#403F55",
+      "dart.closingLabels": "#939dbb88",
+      "debugConsole.infoForeground": "#403F55"
     }
   },
   "editor.tokenColorCustomizations": {
@@ -68,14 +69,14 @@
   },
   "editor.renderWhitespace": "none",
   "git-graph.graph.colours": [
-    "#bf616a",
-    "#a3be8c",
-    "#ebcb8b",
-    "#81a1c1",
-    "#88c0d0",
-    "#e5e9f0",
-    "#4c566a",
-    "#b48ead"
+    "#de3d3b",
+    "#08916a",
+    "#E0AF02",
+    "#288ed7",
+    "#49d0c5",
+    "#994cc3",
+    "#403f53",
+    "#d6438a"
   ],
   "material-icon-theme.folders.color": "#72809e",
   "editor.autoClosingOvertype": "always",
@@ -89,11 +90,11 @@
   // "markdown.preview.scrollEditorWithPreview": false,
   "todo-tree.highlights.defaultHighlight": {
     "type": "text-and-comment",
-    "foreground": "#b48ead",
-    "background": "#b48ead",
-    "opacity": "20",
-    "iconColour": "#b48ead",
-    "rulerColour": "#b48ead",
+    "foreground": "#d6438a",
+    "background": "#d6438a",
+    "opacity": "10",
+    "iconColour": "#d6438a",
+    "rulerColour": "#d6438a",
     "fontWeight": "bold",
     "textDecoration": "underline"
   },
@@ -114,12 +115,12 @@
   "highlight-matching-tag.styles": {
     "opening": {
       "name": {
-        "underline": "#b58faf"
+        "underline": "#0c969b"
       }
     },
     "closing": {
       "name": {
-        "underline": "#b58faf"
+        "underline": "#0c969b"
       }
     }
   },
@@ -160,6 +161,7 @@
     "Transferwise",
     "Youtube",
     "animationend",
+    "audioplayers",
     "autoplay",
     "barcode",
     "captcha",
@@ -230,10 +232,10 @@
     "()",
     "[]",
     "{}",
-    ["#83A2C2", "#91BDBC", "#b48ead"],
+    ["#0c969b", "#4876d6", "#994cc3"],
     "Red"
   ],
-  "hediet.vscode-drawio.theme": "dark",
+  "hediet.vscode-drawio.theme": "Kennedy",
   "customizeUI.fontSizeMap": {
     "13px": "14px",
     "12px": "14px",
@@ -272,7 +274,7 @@
   "editor.linkedEditing": true,
   "html-css-class-completion.enableFindUsage": true,
   "html-css-class-completion.enableScssFindUsage": true,
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Night Owl Light (No Italics)",
   "debug.console.fontSize": 13
 
   // experimental check for problems in all TS files
