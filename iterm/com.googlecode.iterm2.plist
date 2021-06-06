@@ -4928,6 +4928,8 @@
 			<integer>513</integer>
 			<key>Transparency</key>
 			<real>0.048879679568527915</real>
+			<key>Unicode Normalization</key>
+			<integer>0</integer>
 			<key>Unlimited Scrollback</key>
 			<true/>
 			<key>Use Bold Font</key>
