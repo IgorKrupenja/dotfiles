@@ -28,7 +28,7 @@ path=(
   $DOTFILES/scripts
   # dart package bin, including fvm
   $HOME/.pub-cache/bin
-  # global flutter bin from nvm
+  # global flutter from fvm
   $HOME/fvm/default/bin
   # Android/Flutter CLI tools
   $ANDROID_HOME/emulator

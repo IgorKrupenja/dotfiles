@@ -73,7 +73,8 @@
     # java_version          # java version (https://www.java.com/)
     rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
     rvm                     # ruby version from rvm (https://rvm.io)
-    fvm                     # flutter version management (https://github.com/leoafarias/fvm)
+    # fvm                     # flutter version management (https://github.com/leoafarias/fvm)
+    flutter
     luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
     jenv                    # java version from jenv (https://github.com/jenv/jenv)
     plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
@@ -1459,6 +1460,12 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+  }
+
+  function prompt_flutter() {
+    symlink=$(ls -l $HOME/fvm/default)
+    version=$(cat $HOME/fvm/default/version)
+    p10k segment -f 'blue' -t "F ${symlink##*/} ${version}"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
