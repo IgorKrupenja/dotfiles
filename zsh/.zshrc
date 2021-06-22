@@ -5,6 +5,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+# todo this breaks lintining, see #215
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -286,10 +287,10 @@ alias tgm="tgs 'Moving house'"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"
-alias tgen="tgtt 'English II'"
 alias tgh="tgtt Hajus"
 alias tga="tgtt Algo"
 alias tgal="tga"
+alias tgdt="tgs Devtailor"
 
 # history for today and this week
 tgl() {
@@ -505,7 +506,7 @@ gb() {
 gbd() {
   git branch -D "$*" && git push -d origin "$*"
 }
-alias gchm="git checkout master"
+alias gchm="git checkout main"
 alias gf="git fetch"
 alias gl="git pull"
 alias gp="git pull && git remote | xargs -L1 git push"
@@ -706,3 +707,9 @@ alias fgr="fvm flutter pub get && fvm flutter run --release --verbose"
 fvmu() {
   fvm use $@ && fvm flutter clean
 }
+
+# Devtailor
+# more work stuff
+# ---------------------------------------------------------------------------
+alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
+alias dt="cd $PROJECTS/devtailor/"

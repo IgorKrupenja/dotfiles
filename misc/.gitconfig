@@ -34,4 +34,6 @@
 	process = git-lfs filter-process
 	required = true
 [init]
-	defaultBranch = master
+	defaultBranch = main
+[branch]
+	autosetuprebase = always
