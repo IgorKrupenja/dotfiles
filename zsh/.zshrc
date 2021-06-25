@@ -284,6 +284,7 @@ alias tghus="tgs Work Hustle"
 alias tgsel="tgs Work Selling"
 alias tgphys="tgs Physio/Exercise"
 alias tgm="tgs 'Moving house'"
+alias tgg="tgs 'GGG'"
 # TalTech
 alias tgtt="tgs TalTech"
 alias tgttu="tgtt"

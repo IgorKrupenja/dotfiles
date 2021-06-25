@@ -117,9 +117,9 @@ fi
 conf=$HOME/.cht.sh/cht.sh.conf
 
 if [ "$set_dark" = true ]; then
-  sed -i '' 's/style=lovelace/style=paraiso-dark/g' $conf
+  sed -i '' 's/style=lovelace/style=paraiso-dark/g' "$conf"
 else
-  sed -i '' 's/style=paraiso-dark/style=lovelace/g' $conf
+  sed -i '' 's/style=paraiso-dark/style=lovelace/g' "$conf"
 fi
 
 ################################# toggl-cli
@@ -127,9 +127,9 @@ fi
 conf=$HOME/.togglrc
 
 if [ "$set_dark" = true ]; then
-  sed -i '' 's/light/dark/g' $conf
+  sed -i '' 's/light/dark/g' "$conf"
 else
-  sed -i '' 's/dark/light/g' $conf
+  sed -i '' 's/dark/light/g' "$conf"
 fi
 
 ################################# Switch back to iTerm
