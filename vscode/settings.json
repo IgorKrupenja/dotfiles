@@ -314,7 +314,8 @@
   "workbench.colorTheme": "Vitesse Owl Light",
   "dart.showTodos": false,
   "dart.previewLsp": true,
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "gitlens.currentLine.enabled": false
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
