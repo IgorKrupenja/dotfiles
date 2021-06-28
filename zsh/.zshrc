@@ -612,11 +612,9 @@ alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
 # npm scripts
 alias npr="npm run"
-alias nps="npm start"
-# alias npt="npm test"
-# alias npb="npm run build"
-# alias npsv="npm run serve"
-# alias npcl="npm run cloc"
+alias nps="nvm use && npm start"
+alias npt="npm test"
+alias npcl="npm run cloc"
 
 # yarn
 alias yi="yarn install"
