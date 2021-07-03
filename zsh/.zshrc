@@ -643,6 +643,11 @@ alias ydf="yarn run deploy-fn"
 # Mount home dir on enos
 alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
 
+# Docker
+# ---------------------------------------------------------------------------
+alias dp="docker ps -a"
+alias ds="docker start"
+
 #############################################################################
 # PROJECTS
 #############################################################################
@@ -712,3 +717,5 @@ fvmu() {
 # ---------------------------------------------------------------------------
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias dt="cd $PROJECTS/devtailor/"
+alias wd="docker start world-of-mouth-postgres"
+alias wdd="npm run database:schema:drop"
