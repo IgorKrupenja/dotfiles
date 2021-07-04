@@ -315,7 +315,13 @@
   "dart.showTodos": false,
   "dart.previewLsp": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "gitlens.currentLine.enabled": false
+  "gitlens.currentLine.enabled": false,
+  "git-graph.repository.commits.fetchAvatars": true,
+  "workbench.editorAssociations": {
+    "git-rebase-todo": "default"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "debug.console.wordWrap": false
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
