@@ -221,7 +221,6 @@ bdep() {
   fi
 }
 alias blv="brew leaves"
-alias bul="brew update && brew outdated"
 bu() {
   echo -e "\e[4mUpdating Homebrew:\e[0m"
   brew update --verbose
