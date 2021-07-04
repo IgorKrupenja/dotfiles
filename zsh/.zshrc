@@ -204,8 +204,15 @@ bl() {
   brew list --cask
 }
 alias bs="brew search"
-alias br="brew rmtree"
-alias bcr="brew remove --cask"
+br() {
+  if  brew info --cask "$@" &>/dev/null; then
+    # cask
+    brew remove --cask "$@"
+  else
+    # formula
+    brew rmtree "$@"
+  fi
+}
 bdep() {
   if [[ $@ == "" ]]; then
     brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
