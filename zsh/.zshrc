@@ -724,5 +724,5 @@ fvmu() {
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias dt="cd $PROJECTS/devtailor/"
 alias wd="docker start world-of-mouth-postgres"
-alias wdb="docker start world-of-mouth-postgres && npm start"
+alias wb="docker start world-of-mouth-postgres && nvm use && npm start"
 alias wdrop="npm run database:schema:drop"
