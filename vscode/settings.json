@@ -1,6 +1,5 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "terminal.integrated.cursorBlinking": true,
   // each XML attribute on new line when formatting
   "xmlTools.splitAttributesOnFormat": true,
   // add brackets to function autocompletion in Python
@@ -16,7 +15,6 @@
   // map file extensions to languages
   "files.associations": {
     "*.emacs": "lisp",
-    "*.zsh_linux": "shellscript",
     "*.zsh": "shellscript",
     "*.gitconfig": "ini",
     "*.firebaserc": "json"
@@ -78,7 +76,13 @@
       "debugConsole.infoForeground": "#403F55",
       "statusBar.debuggingBackground": "#d6438a",
       "statusBar.debuggingForeground": "#FFF",
-      "statusBar.debuggingBorder": "#d6438a"
+      "statusBar.debuggingBorder": "#d6438a",
+      "scrollbarSlider.background": "#393a3430",
+      "editor.wordHighlightBackground": "#1c6b4820",
+      "editor.wordHighlightStrongBackground": "#1c6b4820",
+      "list.inactiveSelectionBackground": "#e6e6e6",
+      "list.activeSelectionBackground": "#dddddd",
+      "list.hoverBackground": "#e6e6e6"
     }
   },
   "editor.semanticTokenColorCustomizations": {
@@ -109,13 +113,131 @@
           "settings": {
             "foreground": "#403F55"
           }
+        },
+        {
+          "name": "Disable italics",
+          "scope": [
+            "comment",
+            "comment.block",
+            "comment.block.documentation",
+            "comment.line",
+            "constant",
+            "constant.character",
+            "constant.character.escape",
+            "constant.numeric",
+            "constant.numeric.integer",
+            "constant.numeric.float",
+            "constant.numeric.hex",
+            "constant.numeric.octal",
+            "constant.other",
+            "constant.regexp",
+            "constant.rgb-value",
+            "emphasis",
+            "entity",
+            "entity.name",
+            "entity.name.class",
+            "entity.name.function",
+            "entity.name.method",
+            "entity.name.section",
+            "entity.name.selector",
+            "entity.name.tag",
+            "entity.name.type",
+            "entity.other",
+            "entity.other.attribute-name",
+            "entity.other.inherited-class",
+            "invalid",
+            "invalid.deprecated",
+            "invalid.illegal",
+            "keyword",
+            "keyword.control",
+            "keyword.operator",
+            "keyword.operator.new",
+            "keyword.operator.assignment",
+            "keyword.operator.arithmetic",
+            "keyword.operator.logical",
+            "keyword.other",
+            "markup",
+            "markup.bold",
+            "markup.changed",
+            "markup.deleted",
+            "markup.heading",
+            "markup.inline.raw",
+            "markup.inserted",
+            "markup.italic",
+            "markup.list",
+            "markup.list.numbered",
+            "markup.list.unnumbered",
+            "markup.other",
+            "markup.quote",
+            "markup.raw",
+            "markup.underline",
+            "markup.underline.link",
+            "meta",
+            "meta.block",
+            "meta.cast",
+            "meta.class",
+            "meta.function",
+            "meta.function-call",
+            "meta.preprocessor",
+            "meta.return-type",
+            "meta.selector",
+            "meta.tag",
+            "meta.type.annotation",
+            "meta.type",
+            "punctuation.definition.string.begin",
+            "punctuation.definition.string.end",
+            "punctuation.separator",
+            "punctuation.separator.continuation",
+            "punctuation.terminator",
+            "storage",
+            "storage.modifier",
+            "storage.type",
+            "string",
+            "string.interpolated",
+            "string.other",
+            "string.quoted",
+            "string.quoted.double",
+            "string.quoted.other",
+            "string.quoted.single",
+            "string.quoted.triple",
+            "string.regexp",
+            "string.unquoted",
+            "strong",
+            "support",
+            "support.class",
+            "support.constant",
+            "support.function",
+            "support.other",
+            "support.type",
+            "support.type.property-name",
+            "support.variable",
+            "variable",
+            "variable.language",
+            "variable.name",
+            "variable.other",
+            "variable.other.readwrite",
+            "variable.parameter"
+          ],
+          "settings": {
+            "fontStyle": ""
+          }
         }
       ]
     }
   },
-
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "WoM in Docker",
+      "database": "world_of_mouth_development",
+      "username": "postgres",
+      "password": "postgres"
+    }
+  ],
   "editor.renderWhitespace": "none",
-
   "material-icon-theme.folders.color": "#72809e",
   "editor.autoClosingOvertype": "always",
   "[markdown]": {
@@ -137,7 +259,7 @@
     "textDecoration": "underline"
   },
   "todo-tree.highlights.highlightDelay": 0,
-  "todo-tree.regex.regex": "((%|#|/*|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
+  "todo-tree.regex.regex": "(%|#|/*|//|<!--|^\\s*\\*)\\s*($TAGS)",
   "todo-tree.regex.regexCaseSensitive": false,
   "editor.tabSize": 2,
   "editor.formatOnType": true,
@@ -234,7 +356,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "todo-tree.tree.showScanModeButton": false,
   "[python]": {
     "editor.rulers": [120],
     "editor.tabSize": 4
@@ -257,7 +378,6 @@
   ],
   "python.linting.mypyEnabled": true,
   "customizeUI.activityBar": "bottom",
-  "tabnine.experimentalAutoImports": true,
   "editor.accessibilitySupport": "off",
   "workbench.preferredDarkColorTheme": "Nord",
   "workbench.preferredLightColorTheme": "Vitesse Owl Light",
@@ -311,7 +431,6 @@
   "html-css-class-completion.enableFindUsage": true,
   "html-css-class-completion.enableScssFindUsage": true,
   "debug.console.fontSize": 13,
-  "workbench.colorTheme": "Vitesse Owl Light",
   "dart.showTodos": false,
   "dart.previewLsp": true,
   "security.workspace.trust.untrustedFiles": "open",
@@ -321,7 +440,13 @@
     "git-rebase-todo": "default"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "debug.console.wordWrap": false
+  "debug.console.wordWrap": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.colorTheme": "Vitesse Owl Light",
+  "gitlens.codeLens.enabled": false,
+  "sqltools.highlightQuery": false,
+  "htmlhint.enable": false,
+  "terminal.integrated.cursorBlinking": true
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
