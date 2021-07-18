@@ -301,6 +301,7 @@
   "cSpell.userWords": [
     "Adcash",
     "Avenir",
+    "Datepicker",
     "Devtailor",
     "Handies",
     "Jaarika",
@@ -446,7 +447,8 @@
   "gitlens.codeLens.enabled": false,
   "sqltools.highlightQuery": false,
   "htmlhint.enable": false,
-  "terminal.integrated.cursorBlinking": true
+  "terminal.integrated.cursorBlinking": true,
+  "tabnine.experimentalAutoImports": true
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
