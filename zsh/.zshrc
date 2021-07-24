@@ -706,7 +706,7 @@ apki() {
 # Transoxiana
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
-# alias tgto="tgs 'Mum accounting'"
+alias tgto="tgs 'Mum accounting'"
 # alias f="fvm flutter"
 # alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
 # alias fcl="fvm flutter clean"
