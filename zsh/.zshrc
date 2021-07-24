@@ -706,17 +706,17 @@ apki() {
 # Transoxiana
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
-alias tgto="tgs 'Mum accounting'"
-alias f="fvm flutter"
-alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
-alias fcl="fvm flutter clean"
-alias fd="fvm flutter doctor --verbose"
-alias fr="fvm flutter run --release --verbose"
-alias fg="fvm flutter pub get"
-alias fgr="fvm flutter pub get && fvm flutter run --release --verbose"
-fvmu() {
-  fvm use $@ && fvm flutter clean
-}
+# alias tgto="tgs 'Mum accounting'"
+# alias f="fvm flutter"
+# alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
+# alias fcl="fvm flutter clean"
+# alias fd="fvm flutter doctor --verbose"
+# alias fr="fvm flutter run --release --verbose"
+# alias fg="fvm flutter pub get"
+# alias fgr="fvm flutter pub get && fvm flutter run --release --verbose"
+# fvmu() {
+#   fvm use $@ && fvm flutter clean
+# }
 
 # Devtailor
 # more work stuff
@@ -726,3 +726,5 @@ alias dt="cd $PROJECTS/devtailor/"
 alias wd="docker start world-of-mouth-postgres"
 alias wb="docker start world-of-mouth-postgres && nvm use && npm start"
 alias wdrop="npm run database:schema:drop"
+alias f="flutter"
+alias fd="flutter devices"
