@@ -644,6 +644,12 @@ alias yd="yarn run deploy"
 alias ydfd="yarn run deploy-fn-dev"
 alias ydf="yarn run deploy-fn"
 
+# Flutter
+# ---------------------------------------------------------------------------
+alias f="flutter"
+alias fd="flutter devices"
+alias fg="flutter pub get"
+
 # SSH
 # ---------------------------------------------------------------------------
 # Mount home dir on enos
@@ -726,5 +732,3 @@ alias dt="cd $PROJECTS/devtailor/"
 alias wd="docker start world-of-mouth-postgres"
 alias wb="docker start world-of-mouth-postgres && nvm use && npm start"
 alias wdrop="npm run database:schema:drop"
-alias f="flutter"
-alias fd="flutter devices"
