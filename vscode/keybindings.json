@@ -271,6 +271,22 @@
   },
   {
     "key": "ctrl+r",
-    "command": "workbench.action.debug.selectandstart"
+    "command": "workbench.action.debug.selectandstart",
+    "when": "!inDebugMode"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "-editor.debug.action.showDebugHover",
+    "when": "editorTextFocus && inDebugMode"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "shift+cmd+f5",
+    "command": "-workbench.action.debug.restart",
+    "when": "inDebugMode"
   }
 ]

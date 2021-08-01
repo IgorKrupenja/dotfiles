@@ -23,7 +23,9 @@
   // make shortcuts for some commands work in terminal
   "terminal.integrated.commandsToSkipShell": [
     // ctrl + f
-    "workbench.action.openRecent"
+    "workbench.action.openRecent",
+    // ctrl + r
+    "workbench.action.debug.selectandstart"
   ],
   "editor.quickSuggestionsDelay": 0,
   // vertical ruler like IntelliJ
@@ -319,6 +321,7 @@
     "Siidisaba",
     "Spellright",
     "Transferwise",
+    "Wishlisted",
     "Youtube",
     "animationend",
     "audioplayers",
@@ -427,7 +430,6 @@
   "nasc-touchbar.showReferences": true,
   "jumpy.display.backgroundColor": "#F1CA81",
   "jumpy.display.color": "#2D3441",
-  // "dart.previewLsp": true,
   "editor.linkedEditing": true,
   "html-css-class-completion.enableFindUsage": true,
   "html-css-class-completion.enableScssFindUsage": true,
@@ -448,7 +450,8 @@
   "sqltools.highlightQuery": false,
   "htmlhint.enable": false,
   "terminal.integrated.cursorBlinking": true,
-  "tabnine.experimentalAutoImports": true
+  "dart.debugExternalLibraries": false,
+  "dart.debugSdkLibraries": false
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
