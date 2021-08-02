@@ -232,7 +232,7 @@ bu() {
     brew upgrade
   fi
 }
-alias bd="brew cleanup; brew doctor"
+alias bd="brew cleanup -s; brew doctor"
 
 # System info
 # ---------------------------------------------------------------------------
