@@ -620,7 +620,21 @@ alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
 # npm scripts
 alias npr="npm run"
-alias nps="nvm use && npm start"
+npm-start() {
+  if npm run | grep start:debug &>/dev/null; then
+    npm run start:debug
+  else
+    npm start
+  fi
+}
+nps() {
+  if [ -e .nvmrc ]
+  then
+    nvm use && npm-start
+  else
+    npm-start
+  fi
+}
 alias npt="npm test"
 alias npcl="npm run cloc"
 
