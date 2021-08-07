@@ -233,6 +233,7 @@ bu() {
   fi
 }
 alias bd="brew cleanup -s; brew doctor"
+alias brr="brew reinstall"
 
 # System info
 # ---------------------------------------------------------------------------
@@ -290,6 +291,7 @@ alias tghus="tgs Work Hustle"
 alias tgsel="tgs Work Selling"
 alias tgphys="tgs Physio/Exercise"
 alias tgm="tgs 'Moving house'"
+alias tgv="tgs 'Vanya Diary'"
 alias tgg="tgs 'GGG'"
 # TalTech
 alias tgtt="tgs TalTech"
