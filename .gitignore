@@ -1,6 +1,2 @@
 .DS_Store
-.vscode
-node_modules
-.eslintrc.json
-sandbox.js
 tmp/
