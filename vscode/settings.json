@@ -1,4 +1,41 @@
 {
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dart]": {
+    "editor.semanticHighlighting.enabled": true
+  },
+  "[python]": {
+    "editor.rulers": [120],
+    "editor.tabSize": 4
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[html]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": true,
+    "editor.wordBasedSuggestions": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[plaintext]": {
+    "editor.wordWrap": "on"
+  },
   "workbench.iconTheme": "material-icon-theme",
   // each XML attribute on new line when formatting
   "xmlTools.splitAttributesOnFormat": true,
@@ -75,6 +112,7 @@
       "scrollbar.shadow": "#00000000",
       "tab.activeBorder": "#d6438a",
       "terminal.ansiBrightBlack": "#939dbb",
+      "terminal.ansiBlack": "#403F55",
       "debugConsole.infoForeground": "#403F55",
       "statusBar.debuggingBackground": "#d6438a",
       "statusBar.debuggingForeground": "#FFF",
@@ -107,6 +145,13 @@
           "scope": "string.quoted.double.json.comments",
           "settings": {
             "foreground": "#C96765"
+          }
+        },
+        {
+          "name": "Booleans",
+          "scope": "constant.language.boolean",
+          "settings": {
+            "foreground": "#994cc3"
           }
         },
         {
@@ -242,11 +287,6 @@
   "editor.renderWhitespace": "none",
   "material-icon-theme.folders.color": "#72809e",
   "editor.autoClosingOvertype": "always",
-  "[markdown]": {
-    "editor.quickSuggestions": true,
-    "editor.wordBasedSuggestions": false,
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
   // workaround to fix jumpy markdown ediitng -- was fixed?
   // see https://github.com/microsoft/vscode/issues/69467
   // "markdown.preview.scrollEditorWithPreview": false,
@@ -343,10 +383,6 @@
     "xlink"
   ],
   "window.titleBarStyle": "native",
-  "[html]": {
-    "editor.wordBasedSuggestions": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "files.insertFinalNewline": true,
   "explorer.confirmDelete": false,
   "todo-tree.general.tags": ["TODO"],
@@ -357,22 +393,12 @@
     "source.fixAll.eslint": true
   },
   "prettier.printWidth": 100,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[python]": {
-    "editor.rulers": [120],
-    "editor.tabSize": 4
-  },
   "editor.matchBrackets": "never",
   "editor.minimap.enabled": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "vsintellicode.features.python.deepLearning": "enabled",
   "python.formatting.autopep8Args": ["\"--max-line-length 120\""],
   "python.linting.pycodestyleArgs": ["--max-line-length=120"],
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.stablePeek": true,
   // makes ESLint work in multi-root workspaces
   "eslint.workingDirectories": [
@@ -404,20 +430,8 @@
     "monospace": "14px", // Used for monospace fonts in user interface
     "menu": "14px" // Used for menu items (windows only)
   },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[plaintext]": {
-    "editor.wordWrap": "on"
-  },
   "customizeUI.activityBarHideSettings": true,
   "terminal.integrated.fontSize": 13,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.dragAndDrop": false,
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,

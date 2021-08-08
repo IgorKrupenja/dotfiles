@@ -11,7 +11,7 @@ echo "*************************** Use fast connection! *************************
 echo ""
 
 # Write log
-exec > >(tee -a "/tmp/dotfiles-install-$(date +"%Y%m%d%H%M").log") 2>&1
+exec > >(tee -a "/tmp/dotfiles-install-$(date +%s).log") 2>&1
 
 # Repo location
 DOTFILES="$HOME/Projects/dotfiles"
@@ -192,9 +192,9 @@ macos_settings() {
   defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
   # Marta
-  marta_dir="$HOME/Library/Application\ Support/org.yanex.marta"
+  marta_dir="$HOME/Library/Application Support/org.yanex.marta"
   if [ -e $marta_dir ]; then
-    mv -fv $marta_dir $marta_dir-$(date +"%Y%m%d%H%M").bak
+    mv -fv $marta_dir $marta_dir-$(date +%s).bak
   fi
   ln -sv $DOTFILES/marta $HOME/Library/Application\ Support/org.yanex.marta
   # for CLI
