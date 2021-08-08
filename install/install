@@ -179,10 +179,6 @@ macos_settings() {
     echo "0 17 * * * /usr/local/scripts/trello refresh >/dev/null 2>&1"
   ) | crontab -
 
-  # hosts
-  backup_file /etc/hosts
-  cp -v $DOTFILES/misc/hosts /etc/hosts
-
   # iina
   backup_file $HOME/Library/Preferences/com.colliderli.iina.plist
   ln -sv $DOTFILES/misc/com.colliderli.iina.plist $HOME/Library/Preferences/com.colliderli.iina.plist
@@ -193,10 +189,12 @@ macos_settings() {
 
   # Marta
   marta_dir="$HOME/Library/Application Support/org.yanex.marta"
+  # Using copy and not symlink beacuse of this issue:
+  # https://github.com/marta-file-manager/marta-issues/issues/488
   if [ -e $marta_dir ]; then
-    mv -fv $marta_dir $marta_dir-$(date +%s).bak
+    cp -fvr $marta_dir $marta_dir-$(date +%s).bak
   fi
-  ln -sv $DOTFILES/marta $HOME/Library/Application\ Support/org.yanex.marta
+  cp -fvr $DOTFILES/marta $marta_dir
   # for CLI
   ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 

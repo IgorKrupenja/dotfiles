@@ -38,8 +38,10 @@ fi
 cd $DOTFILES
 
 # Marta
+rm -rf $DOTFILES/marta
+cp -fvr $HOME/Library/Application\ Support/org.yanex.marta $DOTFILES/marta
 if [[ $(git diff marta) ]]; then
-  git add marta/*
+  git add marta
   git commit -m "Update Marta settings"
 fi
 
