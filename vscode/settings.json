@@ -197,6 +197,7 @@
             "invalid.illegal",
             "keyword",
             "keyword.control",
+            "keyword.control.flow.ts",
             "keyword.operator",
             "keyword.operator.new",
             "keyword.operator.assignment",
@@ -236,6 +237,7 @@
             "punctuation.separator",
             "punctuation.separator.continuation",
             "punctuation.terminator",
+            "punctuation.accessor",
             "storage",
             "storage.modifier",
             "storage.type",
@@ -346,6 +348,7 @@
     "Datepicker",
     "Devtailor",
     "Handies",
+    "ILIKE",
     "Jaarika",
     "Kertu",
     "Kodality",
@@ -361,6 +364,7 @@
     "Siidisaba",
     "Spellright",
     "Transferwise",
+    "Vineet's",
     "Wishlisted",
     "Youtube",
     "animationend",
@@ -371,14 +375,19 @@
     "cloc",
     "creds",
     "dotfiles",
+    "dtos",
     "firestore",
     "hacky",
+    "minlength",
     "minmax",
     "mixins",
+    "nestjs",
     "overscroll",
     "pmmmwh",
     "smth",
     "svgr",
+    "trimtex",
+    "typeorm",
     "wojtekmaj",
     "xlink"
   ],
@@ -457,15 +466,21 @@
     "git-rebase-todo": "default"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "debug.console.wordWrap": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "workbench.colorTheme": "Vitesse Owl Light",
   "gitlens.codeLens.enabled": false,
   "sqltools.highlightQuery": false,
   "htmlhint.enable": false,
-  "terminal.integrated.cursorBlinking": true,
   "dart.debugExternalLibraries": false,
-  "dart.debugSdkLibraries": false
+  "dart.debugSdkLibraries": false,
+  "debug.console.wordWrap": false,
+  "terminal.integrated.cursorBlinking": true,
+  "postcssSorting.config": {
+    "properties-order": "alphabetical"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 
   // experimental check for problems in all TS files
   // disabled as very bad perf

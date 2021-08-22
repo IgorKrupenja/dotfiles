@@ -198,18 +198,18 @@
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
   },
-  {
-    "key": "alt+cmd+s",
-    "command": "workbench.action.files.saveAll"
-  },
-  {
-    "key": "alt+cmd+s",
-    "command": "-workbench.action.files.saveAll"
-  },
-  {
-    "key": "cmd+s",
-    "command": "workbench.action.files.save"
-  },
+  // {
+  //   "key": "alt+cmd+s",
+  //   "command": "workbench.action.files.saveAll"
+  // },
+  // {
+  //   "key": "alt+cmd+s",
+  //   "command": "-workbench.action.files.saveAll"
+  // },
+  // {
+  //   "key": "cmd+s",
+  //   "command": "workbench.action.files.save"
+  // },
   {
     "key": "cmd+s",
     "command": "-workbench.action.files.save"
@@ -288,5 +288,12 @@
     "key": "shift+cmd+f5",
     "command": "-workbench.action.debug.restart",
     "when": "inDebugMode"
+  },
+  {
+    "key": "cmd+s",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "sequence": ["postcssSorting.execute", "workbench.action.files.save"]
+    }
   }
 ]
