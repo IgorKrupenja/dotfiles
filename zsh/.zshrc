@@ -205,7 +205,7 @@ bl() {
 }
 alias bs="brew search"
 br() {
-  if  brew info --cask "$@" &>/dev/null; then
+  if brew info --cask "$@" &>/dev/null; then
     # cask
     brew remove --cask "$@"
   else
@@ -283,23 +283,6 @@ alias tgw="open https://www.toggl.com/app/timer"
 tgs() {
   toggl start $2 -o $1 && tgn
 }
-alias tgcode="tgs Coding"
-alias tgc="tgcode"
-alias tgcar="tgs Career"
-alias tgsoc="tgs Social"
-alias tghus="tgs Work Hustle"
-alias tgsel="tgs Work Selling"
-alias tgphys="tgs Physio/Exercise"
-alias tgm="tgs 'Moving house'"
-alias tgv="tgs 'Vanya Diary'"
-alias tgg="tgs 'GGG'"
-# TalTech
-alias tgtt="tgs TalTech"
-alias tgttu="tgtt"
-alias tgh="tgtt Hajus"
-alias tga="tgtt Algo"
-alias tgal="tga"
-alias tgdt="tgs Devtailor"
 
 # history for today and this week
 tgl() {
@@ -628,8 +611,7 @@ npm-start() {
   fi
 }
 nps() {
-  if [ -e .nvmrc ]
-  then
+  if [ -e .nvmrc ]; then
     nvm use && npm-start
   else
     npm-start
@@ -728,7 +710,7 @@ apki() {
 # Transoxiana
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
-alias tgto="tgs 'Mum accounting'"
+alias tgto="tgs Transoxiana"
 # alias f="fvm flutter"
 # alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
 # alias fcl="fvm flutter clean"
