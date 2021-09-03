@@ -240,7 +240,7 @@ alias brr="brew reinstall"
 # wifi network list
 alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
 # network usage stats
-alias net="sudo iftop -B"
+alias net="sudo iftop -B -i en0"
 # speedtest.net
 alias sp="speedtest"
 
@@ -271,6 +271,7 @@ alias ggs="git-global-status"
 alias st="status"
 alias bak="backup"
 alias co="color"
+alias up="update"
 
 # Toggl
 # ---------------------------------------------------------------------------

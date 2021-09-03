@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# shell
+echo -e "\e[4mUpdating OMZ:\e[0m"
+_omz::update
+echo -e "\e[4mUpdating Powerlevel10k:\e[0m"
+git -C "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k pull
+
+# node
+echo -e "\e[4mUpdating global npm:\e[0m"
+npm -g update
+
+#homebrew
+echo -e "\e[4mUpdating Homebrew:\e[0m"
+brew update --verbose
+echo ""
+echo -e "\e[4mUpdating packages and casks:\e[0m"
+if [[ ! -n $(brew outdated) ]]; then
+  echo "Everything up to date!"
+else
+  brew upgrade
+fi
