@@ -283,6 +283,7 @@ alias tgw="open https://www.toggl.com/app/timer"
 tgs() {
   toggl start $2 -o $1 && tgn
 }
+alias tgts="tgs 'Trimtex I phase dev' 'Daily status meeting'"
 
 # history for today and this week
 tgl() {
@@ -710,7 +711,6 @@ apki() {
 # Transoxiana
 # stuff for another freelance work project
 # ---------------------------------------------------------------------------
-alias tgto="tgs Transoxiana"
 # alias f="fvm flutter"
 # alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
 # alias fcl="fvm flutter clean"
