@@ -198,9 +198,9 @@ rn() {
 alias bif="brew info"
 alias bi="brew install"
 bl() {
-  echo -e "\e[4mFormulas:\e[0m"
+  echo -e "\n\e[4mFormulas:\e[0m\n"
   brew list --formula
-  echo -e "\n\e[4mCasks:\e[0m"
+  echo -e "\n\e[4mCasks:\e[0m\n"
   brew list --cask
 }
 alias bs="brew search"
@@ -222,9 +222,9 @@ bdep() {
 }
 alias blv="brew leaves"
 bu() {
-  echo -e "\e[4mUpdating Homebrew:\e[0m"
+  echo -e "\n\e[4mUpdating Homebrew:\e[0m\n"
   brew update --verbose
-  echo -e "\n\e[4mUpdating packages and casks:\e[0m"
+  echo -e "\n\e[4mUpdating packages and casks:\e[0m\n"
   if [[ ! $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
@@ -584,7 +584,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n12="nvm use 12"
 alias n14="nvm use 14"
-alias n15="nvm use 15"
+alias n16="nvm use 16"
 alias nd="nvm use default"
 
 # npm global

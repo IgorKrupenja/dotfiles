@@ -3,6 +3,9 @@
 ansi() { echo -e "\e[${1}m${*:2}\e[0m"; }
 underline() { ansi 4 "$@"; }
 
+# gems, mostly for cocoapods
+sudo gems update
+
 # shell
 echo -e "\n$(underline "Updating OMZ")\n"
 "$ZSH"/tools/upgrade.sh
