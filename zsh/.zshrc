@@ -364,10 +364,10 @@ pcalc() {
 alias calc="noglob pcalc"
 alias ca="calc"
 
-# Unit converter
+# Unit and currency converter
 # ---------------------------------------------------------------------------
 un() {
-  units "$1 $2" $3
+  gunits "$1 $2" $3 -t
 }
 
 # Calendar
