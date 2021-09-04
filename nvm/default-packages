@@ -1,5 +1,6 @@
 trello-cli
-cash-cli
 bash-language-server
 firebase-tools
-fileicon
+@nestjs/cli
+aws-cli
+@angular/cli

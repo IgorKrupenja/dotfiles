@@ -68,7 +68,8 @@ plugins=(
   web-search
   colored-man-pages
   extract
-  # the two below need to be installed separately
+  # below custom plugins installed separately
+  autoupdate
   zsh-syntax-highlighting
   zsh-autosuggestions
   zsh-better-npm-completion
@@ -199,8 +200,7 @@ alias bi="brew install"
 bl() {
   echo -e "\e[4mFormulas:\e[0m"
   brew list --formula
-  echo ""
-  echo -e "\e[4mCasks:\e[0m"
+  echo -e "\n\e[4mCasks:\e[0m"
   brew list --cask
 }
 alias bs="brew search"
@@ -224,8 +224,7 @@ alias blv="brew leaves"
 bu() {
   echo -e "\e[4mUpdating Homebrew:\e[0m"
   brew update --verbose
-  echo ""
-  echo -e "\e[4mUpdating packages and casks:\e[0m"
+  echo -e "\n\e[4mUpdating packages and casks:\e[0m"
   if [[ ! $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
@@ -233,7 +232,7 @@ bu() {
   fi
 }
 alias bd="brew cleanup -s; brew doctor"
-alias brr="brew reinstall"
+alias bri="brew reinstall"
 
 # System info
 # ---------------------------------------------------------------------------

@@ -1,21 +1,39 @@
 #!/bin/zsh
 
+ansi() { echo -e "\e[${1}m${*:2}\e[0m"; }
+underline() { ansi 4 "$@"; }
+
 # shell
-echo -e "\e[4mUpdating OMZ:\e[0m"
-_omz::update
-echo -e "\e[4mUpdating Powerlevel10k:\e[0m"
-git -C "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k pull
+echo -e "\n$(underline "Updating OMZ")\n"
+"$ZSH"/tools/upgrade.sh
+
+echo -e "\n$(underline Updating ZSH plugins)\n"
+find -L "$HOME/.oh-my-zsh/custom" -type d -name .git | while read -r d; do
+  p=$(dirname "$d")
+  pn=$(basename "$p")
+  pt=$(dirname "$p")
+  pt=$(basename "${pt:0:((${#pt} - 1))}")
+  pushd -q "${p}" || exit
+
+  if git pull --rebase --stat; then
+    printf "${BLUE}%s${NORMAL}\n" "Hooray! the $pn $pt has been updated and/or is at the current version."
+  else
+    printf "${RED}%s${NORMAL}\n" "There was an error updating the $pn $pt. Try again later?"
+  fi
+
+  popd &>/dev/null || exit
+done
 
 # node
-echo -e "\e[4mUpdating global npm:\e[0m"
+echo -e "\n$(underline Updating global npm)\n"
 npm -g update
 
-#homebrew
-echo -e "\e[4mUpdating Homebrew:\e[0m"
+# homebrew
+echo -e "\n$(underline Updating Homebrew)\n"
 brew update --verbose
-echo ""
-echo -e "\e[4mUpdating packages and casks:\e[0m"
-if [[ ! -n $(brew outdated) ]]; then
+
+echo -e "\n$(underline Updating packages and casks)\n"
+if [[ -z $(brew outdated) ]]; then
   echo "Everything up to date!"
 else
   brew upgrade
