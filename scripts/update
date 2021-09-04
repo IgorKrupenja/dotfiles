@@ -25,14 +25,14 @@ find -L "$HOME/.oh-my-zsh/custom" -type d -name .git | while read -r d; do
 done
 
 # node
-echo -e "\n$(underline Updating global npm)\n"
+echo -e "\n$(underline Updating global npm packages)\n"
 npm -g update
 
 # homebrew
 echo -e "\n$(underline Updating Homebrew)\n"
 brew update --verbose
 
-echo -e "\n$(underline Updating packages and casks)\n"
+echo -e "\n$(underline Updating Homebrew packages and casks)\n"
 if [[ -z $(brew outdated) ]]; then
   echo "Everything up to date!"
 else
