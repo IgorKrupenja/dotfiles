@@ -5,7 +5,7 @@ underline() { ansi 4 "$@"; }
 
 # gems, mostly for cocoapods
 echo -e "\n$(underline "Updating Ruby gems")\n"
-sudo gem update
+gem update
 
 # shell
 echo -e "\n$(underline "Updating OMZ")\n"
