@@ -21,6 +21,8 @@ export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+# Ruby gems, for cocoapods
+export GEM_HOME=$HOME/.gem
 path=(
   # python unversioned symlinks
   /usr/local/opt/python/libexec/bin
@@ -36,6 +38,8 @@ path=(
   $ANDROID_HOME/tools
   $ANDROID_HOME/platform-tools
   $ANDROID_HOME/build-tools/30.0.3
+  # Ruby gems, for cocoapods
+  $GEM_HOME/bin
   $path
 )
 
@@ -543,6 +547,14 @@ gir() {
   fi
 }
 alias girr="git rebase -i --root"
+
+# GitHub
+# ---------------------------------------------------------------------------
+dotn() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body ""
+  cd ~-
+}
 
 # cht.sh
 # ---------------------------------------------------------------------------
