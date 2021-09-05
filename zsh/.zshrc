@@ -119,11 +119,6 @@ te() {
 
 # diskutil & VeraCrypt
 # ---------------------------------------------------------------------------
-vcm() {
-  dir="$*"
-  mountpoint=${dir##*/}
-  /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -t --mount --protect-hidden=no -k="" --pim=0 $dir /Volumes/$mountpoint
-}
 alias dil='diskutil list'
 alias diu='diskutil unmount'
 # eject all
