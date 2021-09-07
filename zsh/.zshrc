@@ -5,8 +5,8 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# todo this breaks lintining, see #215
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  # TODO: this breaks lintining and formatting, see #215
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -56,6 +56,8 @@ bindkey "\e\eOC" forward-word
 # ---------------------------------------------------------------------------
 # less: do not clear screen on exit
 export LESS=-XFR
+# thefuck
+eval $(thefuck --alias)
 
 #############################################################################
 # ZSH
@@ -285,6 +287,7 @@ tgs() {
 alias tgts="tgs 'Trimtex I phase dev' 'Daily status meeting'"
 
 # history for today and this week
+# TODO: currently broken, #250
 tgl() {
   raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
   echo $raw_data
@@ -371,12 +374,14 @@ un() {
 
 # Calendar
 # ---------------------------------------------------------------------------
+# TODO: All broken, see #199
 alias cala="gcalcli agenda --military --details=length --details=location"
 alias calw="gcalcli calw --military --mon"
 alias calm="gcalcli calm --military --mon"
 
 # World clock
 # ---------------------------------------------------------------------------
+# TODO: broken due to #259
 wcl() {
   if [[ $@ == "" ]]; then
     world_clock
@@ -489,14 +494,15 @@ gcm() {
   git commit -m "$*"
 }
 # create branch both locally and remotely, only origin
-gb() {
+alias gb="git branch"
+gbn() {
   git checkout -b "$*"
   git push origin "$*"
   git branch --set-upstream-to=origin/"$*" "$*"
 }
 # delete branch both locally and remotely, only origin
 gbd() {
-  git branch -D "$*" && git push -d origin "$*"
+  git push -d origin "$*" && git branch -D "$*"
 }
 alias gchm="git checkout main"
 alias gf="git fetch"
