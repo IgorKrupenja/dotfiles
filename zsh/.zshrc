@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #############################################################################
 # ENVIRONMENT CONFIGURATION
 #############################################################################
@@ -361,13 +363,24 @@ wcl() {
 }
 
 world_clock() {
-  time_zones=("America/Los_Angeles" "America/New_York" "Europe/Dublin" "Europe/London" "Europe/Rome" "Europe/Vienna"
-    "Europe/Tallinn" "Europe/Moscow" "Asia/Singapore")
+  time_zones=(
+    "America/Los_Angeles"
+    "America/New_York"
+    "Europe/Dublin"
+    "Europe/London"
+    "Europe/Rome"
+    "Europe/Berlin"
+    "Europe/Vienna"
+    "Europe/Tallinn"
+    "Europe/Chisinau"
+    "Europe/Moscow"
+    "Asia/Singapore"
+  )
   output=""
 
   for loc in ${time_zones[@]}; do
     city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
-    current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $5 }')
+    current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $4 " " $5 }')
     temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
     output="${output}\n${temp}"
   done
