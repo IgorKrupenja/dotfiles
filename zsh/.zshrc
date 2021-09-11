@@ -43,15 +43,6 @@ path=(
   $path
 )
 
-# Key bindings
-# ---------------------------------------------------------------------------
-# these are needed for option/cmd + left/right to work in IntelliJ terminal
-bindkey "\e\eOD" backward-word
-bindkey "\e\eOC" forward-word
-# todo #136
-# bindkey "\e\eUF702" beginning-of-line
-# bindkey "\e\eUF703" end-of-line
-
 # Utilities
 # ---------------------------------------------------------------------------
 # less: do not clear screen on exit
@@ -664,11 +655,6 @@ alias f="flutter"
 alias fd="flutter devices"
 alias fg="flutter pub get"
 
-# SSH
-# ---------------------------------------------------------------------------
-# Mount home dir on enos
-alias fsico="sshfs igkrup@enos.itcollege.ee:/home/igkrup /Volumes/enos"
-
 # Docker
 # ---------------------------------------------------------------------------
 alias dp="docker ps -a"
@@ -690,7 +676,6 @@ alias zw="cd $PROJECTS/zaino/packages/web-app"
 alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
 
 # Devtailor
-# more work stuff
 # ---------------------------------------------------------------------------
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias dt="cd $PROJECTS/devtailor/"
