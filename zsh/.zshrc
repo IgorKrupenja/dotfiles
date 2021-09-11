@@ -407,11 +407,11 @@ world_clock() {
 
 # Weather
 # ---------------------------------------------------------------------------
-met() {
+wtr() {
   curl -s v2.wttr.in/"$*"
 }
 # old version
-alias meto="curl -s \"wttr.in/$1\""
+alias wtro="curl -s \"wttr.in/$1\""
 
 # Misc
 # ---------------------------------------------------------------------------
@@ -443,6 +443,7 @@ mpdf() {
 # media downloader
 alias ydl="youtube-dl"
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
+alias tl="transmission-remote -l"
 
 #############################################################################
 # DEVELOPMENT
@@ -600,6 +601,7 @@ alias n14="nvm use 14"
 alias n16="nvm use 16"
 alias nd="nvm use default"
 
+alias nps="npm search"
 # npm global
 alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
@@ -608,8 +610,8 @@ alias ngi="npm -g install"
 alias ngun="npm -g uninstall"
 # npm local
 alias npl="npm list --depth=0"
-alias npo="npm outdated"
 alias npu="npm update"
+alias npo="npm outdated"
 alias npi="npm install"
 alias npid="npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
@@ -624,7 +626,7 @@ npm-start() {
     npm start
   fi
 }
-nps() {
+npst() {
   if [ -e .nvmrc ]; then
     nvm use && npm-start
   else
@@ -686,54 +688,6 @@ alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
 alias z="cd $PROJECTS/zaino"
 alias zw="cd $PROJECTS/zaino/packages/web-app"
 alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
-
-# Restock app
-# project I used to work on as a contract developer
-# leaving for now for reference
-# ---------------------------------------------------------------------------
-RESTOCK="$HOME/Projects/prepper"
-alias cdp="cd $RESTOCK"
-alias cdf="cd $RESTOCK/cloud_functions/functions"
-alias cdg="cd $RESTOCK/cloud_functions/functions/sheets-admin/gas"
-fired() {
-  cdf
-  if firebase deploy --only functions; then
-    cd -
-    osascript -e 'display notification "Firebase deploy complete!" with title "Firebase" sound name "Ping"'
-  else
-    cd -
-    osascript -e 'display notification "Firebase deploy failed!" with title "Firebase" sound name "Glass"'
-  fi
-}
-alias fbak="gcloud firestore export gs://prepper.appspot.com"
-fps() {
-  gcloud pubsub topics publish $1 --message $2
-}
-alias cpush="cdg && clasp push && cd -"
-alias dep="fd && cpush"
-apkd() {
-  echo "Build date: $(stat -f "%Sm" $HOME/OneDrive/prepper/release/app-release.apk | rev | cut -d' ' -f2- | rev)"
-}
-apki() {
-  apkd
-  echo "Uninstalling previous Restock build:"
-  adb -s 3f8f68620504 uninstall com.palm83.prepper
-  adb -s 3f8f68620504 install $HOME/OneDrive/prepper/release/app-release.apk
-}
-
-# Transoxiana
-# stuff for another freelance work project
-# ---------------------------------------------------------------------------
-# alias f="fvm flutter"
-# alias fb="fvm flutter pub get && fvm flutter build apk --split-per-abi"
-# alias fcl="fvm flutter clean"
-# alias fd="fvm flutter doctor --verbose"
-# alias fr="fvm flutter run --release --verbose"
-# alias fg="fvm flutter pub get"
-# alias fgr="fvm flutter pub get && fvm flutter run --release --verbose"
-# fvmu() {
-#   fvm use $@ && fvm flutter clean
-# }
 
 # Devtailor
 # more work stuff
