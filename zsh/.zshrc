@@ -1,18 +1,11 @@
 #############################################################################
-# ZSH POWERLEVEL THEME INSTANT PROMPT
+# ENVIRONMENT CONFIGURATION
 #############################################################################
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  # TODO: this breaks lintining and formatting, see #215
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-#############################################################################
-# ENVIRONMENT CONFIGURATION
-#############################################################################
+source $HOME/.p10k-instant-prompt
 
 # Path variables
 # ---------------------------------------------------------------------------
@@ -70,6 +63,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   zsh-better-npm-completion
+  zsh-nvm
 )
 # disable paste highlight
 zle_highlight+=(paste:none)
@@ -196,20 +190,12 @@ bl() {
   brew list --cask
 }
 alias bs="brew search"
-br() {
-  if brew info --cask "$@" &>/dev/null; then
-    # cask
-    brew remove --cask "$@"
-  else
-    # formula
-    brew rmtree "$@"
-  fi
-}
+alias br="brew remove"
 bdep() {
   if [[ $@ == "" ]]; then
     brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
   else
-    command brew rmtree --dry-run "$@"
+    brew rmtree --dry-run "$@"
   fi
 }
 alias blv="brew leaves"
@@ -223,7 +209,7 @@ bu() {
     brew upgrade
   fi
 }
-alias bd="brew cleanup -s; brew doctor"
+alias bd="brew autoremove && brew cleanup -s && brew doctor"
 alias bri="brew reinstall"
 
 # System info
@@ -251,6 +237,8 @@ alias fcl="osascript -e 'tell application \"Finder\" to close windows'"
 # htop with sudo
 alias htop="sudo htop"
 alias cl="clear"
+# zsh
+alias sz="exec zsh"
 
 #############################################################################
 # CLI TOOLS
@@ -339,15 +327,6 @@ trec() {
 trex() {
   trello move-card "$*" 5a785c3a56d2f82288d292e8
 }
-
-# cards with reminder to add extra time in Toggl
-extra() {
-  tren "Add $2 min $1"
-}
-alias codep="extra coding"
-alias pyp="extra Python"
-alias carp="extra career"
-alias socp="extra social"
 
 # Calculator
 # ---------------------------------------------------------------------------
@@ -467,10 +446,6 @@ alias suemacs="sudo emacs -nw"
 # crontab
 alias cre="EDITOR=emacs crontab -e"
 
-# zsh & dotfiles
-alias sz="exec zsh"
-alias cz="code $DOTFILES"
-
 # git
 # ---------------------------------------------------------------------------
 # git status
@@ -541,14 +516,6 @@ gir() {
 }
 alias girr="git rebase -i --root"
 
-# GitHub
-# ---------------------------------------------------------------------------
-dotn() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body ""
-  cd ~-
-}
-
 # cht.sh
 # ---------------------------------------------------------------------------
 # cheat sheets
@@ -584,8 +551,6 @@ compctl -K _pip_completion pip
 alias ciu="caniuse"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n12="nvm use 12"
 alias n14="nvm use 14"
@@ -664,7 +629,7 @@ alias ds="docker start"
 # PROJECTS
 #############################################################################
 
-# CV, currently WIP
+# CV
 # ---------------------------------------------------------------------------
 alias cvdep="$HOME/OneDrive\ -\ TalTech/Work/Job\ hunt/cv/deploy"
 
@@ -674,6 +639,15 @@ alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
 alias z="cd $PROJECTS/zaino"
 alias zw="cd $PROJECTS/zaino/packages/web-app"
 alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
+
+# Dotfiles
+# ---------------------------------------------------------------------------
+dotn() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body ""
+  cd ~-
+}
+alias cz="code $DOTFILES"
 
 # Devtailor
 # ---------------------------------------------------------------------------
