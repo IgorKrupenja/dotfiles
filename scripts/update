@@ -1,59 +1,107 @@
 #!/bin/zsh
-# shellcheck shell=bash
+# shellcheck shell=bash disable=SC2086
 
-ansi() { echo -e "\033[${1}m${*:2}\033[0m"; }
-underline() { ansi 4 "$@"; }
+ansi() {
+  echo -e "\033[${1}m${*:2}\033[0m"
+}
 
-# gems, mostly for cocoapods
-echo -e "\n$(underline "Updating Ruby gems")\n"
-gem update
+underline() {
+  ansi 4 "$@"
+}
 
-# shell
-echo -e "\n$(underline "Updating OMZ")\n"
-"$ZSH"/tools/upgrade.sh
+main() {
+  update_gems
+  update_omz
+  update_node
+  update_homebrew
+}
 
-echo -e "\n$(underline Updating custom OMZ plugins)\n"
-# based on autoupdate plugin https://github.com/TamCore/autoupdate-oh-my-zsh-plugins/blob/master/autoupdate.plugin.zsh
-find -L "$HOME/.oh-my-zsh/custom" -type d -name .git | while read -r d; do
-  p=$(dirname "$d")
-  pn=$(basename "$p")
-  pt=$(dirname "$p")
-  pt=$(basename "${pt:0:((${#pt} - 1))}")
-  pushd -q "${p}" || exit
+# gems, for cocoapods
+update_gems() {
+  echo -e "\n$(underline "Updating Ruby gems")\n"
+  gem update
+}
 
-  if git pull --rebase --stat; then
-    printf "${BLUE}%s${NORMAL}\n" "Hooray! the $pn $pt has been updated and/or is at the current version."
+update_omz() {
+  echo -e "\n$(underline "Updating OMZ")\n"
+  "$ZSH"/tools/upgrade.sh
+
+  echo -e "\n$(underline Updating custom OMZ plugins)\n"
+  # based on autoupdate plugin https://github.com/TamCore/autoupdate-oh-my-zsh-plugins/blob/master/autoupdate.plugin.zsh
+  find -L "$HOME/.oh-my-zsh/custom" -type d -name .git | while read -r d; do
+    p=$(dirname "$d")
+    pn=$(basename "$p")
+    pt=$(dirname "$p")
+    pt=$(basename "${pt:0:((${#pt} - 1))}")
+    pushd -q "${p}" || exit
+
+    if git pull --rebase --stat; then
+      printf "${BLUE}%s${NORMAL}\n" "Hooray! the $pn $pt has been updated and/or is at the current version."
+    else
+      printf "${RED}%s${NORMAL}\n" "There was an error updating the $pn $pt. Try again later?"
+    fi
+
+    popd &>/dev/null || exit
+  done
+}
+
+trim_node_version_string() {
+  input=$*
+  node_version_string="$(echo -e "${input#*v}" | tr -d '[:space:]')"
+  echo $node_version_string
+}
+
+update_node() {
+  echo -e "\n$(underline Updating nvm)\n"
+  # uses zsh-nvm OMZ plugin
+  source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+  nvm upgrade
+
+  echo -e "\n$(underline Updating nvm node versions)\n"
+
+  node_versions=()
+  while IFS= read -r line; do
+    if [[ $line != *"system"* ]]; then
+      node_versions+=("$(trim_node_version_string ${line%%.*})")
+    fi
+  done < <(nvm ls --no-alias --no-colors)
+
+  for node_version in "${node_versions[@]}"; do
+    echo "Checking if node ${node_version} needs updating..."
+
+    current_node_version_string=$(nvm ls $node_version --no-colors)
+    current_node_version=$(trim_node_version_string ${current_node_version_string%%\**})
+    next_node_version_string=$(nvm version-remote $node_version)
+    next_node_version=$(trim_node_version_string $next_node_version_string)
+
+    if [ "$next_node_version" != $current_node_version ]; then
+      previous_node_version=$current_node_version
+      nvm install $node_version
+      nvm reinstall-packages $previous_node_version
+      nvm uninstall $previous_node_version
+    fi
+  done
+
+  nvm cache clear
+
+  echo -e "\n$(underline Updating global npm packages)\n"
+  npm -g update
+}
+
+update_homebrew() {
+  # homebrew
+  echo -e "\n$(underline Runnning Homebrew diagnostics)\n"
+  brew autoremove && brew cleanup -s && brew doctor
+
+  echo -e "\n$(underline Updating Homebrew)\n"
+  brew update --verbose
+
+  echo -e "\n$(underline Updating Homebrew packages and casks)\n"
+  if [[ -z $(brew outdated) ]]; then
+    echo "Everything up to date!"
   else
-    printf "${RED}%s${NORMAL}\n" "There was an error updating the $pn $pt. Try again later?"
+    brew upgrade
   fi
+}
 
-  popd &>/dev/null || exit
-done
-
-# node
-echo -e "\n$(underline Updating nvm)\n"
-# uses zsh-nvm OMZ plugin
-source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm/zsh-nvm.plugin.zsh
-nvm upgrade
-
-# todo not ready, see #238
-# echo -e "\n$(underline Updating nvm node latest and LTS versions)\n"
-# nvm install node --latest-npm --reinstall-packages-from=node
-# nvm install --lts --latest-npm --reinstall-packages-from='lts/*'
-
-echo -e "\n$(underline Updating global npm packages)\n"
-npm -g update
-
-# homebrew
-echo -e "\n$(underline Runnning Homebrew diagnostics)\n"
-brew autoremove && brew cleanup -s && brew doctor
-
-echo -e "\n$(underline Updating Homebrew)\n"
-brew update --verbose
-
-echo -e "\n$(underline Updating Homebrew packages and casks)\n"
-if [[ -z $(brew outdated) ]]; then
-  echo "Everything up to date!"
-else
-  brew upgrade
-fi
+main "$@"
