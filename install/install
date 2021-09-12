@@ -100,13 +100,18 @@ install_sw_node() {
   echo ""
   echo "**************************** Installing from npm ***************************"
   echo ""
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+  git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+  $(builtin cd "$NVM_DIR" && git checkout --quiet "$(zsh_nvm_latest_release_tag)")
   backup_file $HOME/.nvm/default-packages
   ln -sv $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
   # installs latest node and makes it default
   nvm install node
   nvm install 14
   nvm install 12
+}
+
+zsh_nvm_latest_release_tag() {
+  echo $(builtin cd "$NVM_DIR" && git fetch --quiet --tags origin && git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1))
 }
 
 install_sw_misc() {
@@ -119,6 +124,13 @@ install_sw_misc() {
   mkdir $HOME/.cht.sh
   backup_file $HOME/.cht.sh/cht.sh.conf
   ln -sv $DOTFILES/misc/cht.sh.conf $HOME/.cht.sh/cht.sh.conf
+  # Dart and Flutter
+  dart pub global activate fvm
+  dart pub global activate pubglobalupdate
+  fvm install stable
+  fvm install beta
+  fvm install dev
+  fvm global stable
 }
 
 zsh_config() {
@@ -136,8 +148,16 @@ zsh_config() {
   # Install plug-ins
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
+  git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
+  git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
   # iTerm shell integrations
   curl -L https://iterm2.com/shell_integration/zsh -o $DOTFILES/zsh/.iterm2_shell_integration.zsh
+  # Config
+  backup_file $HOME/.zshrc
+  ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
+  backup_file $HOME/.zprofile
+  ln -sv $DOTFILES/zsh/.zprofile $HOME/.zprofile
 }
 
 # Needs to be called after zsh_config
@@ -145,9 +165,7 @@ dotfiles() {
   echo ""
   echo "*************************** Installing dotfiles ****************************"
   echo ""
-  # zsh
-  backup_file $HOME/.zshrc
-  ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
+
   #mc
   ln -sv $DOTFILES/mc $HOME/.config/mc
   # misc
@@ -244,7 +262,12 @@ macos_settings() {
   # Dock magnification effect
   defaults write com.apple.dock magnification -bool true
   defaults write com.apple.dock largesize -int 64
-  # restart Dock to apply changes
+  # Show hidden files in Finder
+  defaults write com.apple.finder AppleShowAllFiles -bool true
+  defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+  defaults write com.apple.screensaver askForPasswordDelay -int 0
+  # restart to apply changes
+  killall Finder
   killall Dock
 
   # Ask for sudo password in the future
@@ -266,13 +289,10 @@ display_success_message() {
 }
 
 # Check OS
-case $(uname) in
-Darwin)
+if [[ $(uname) == "Darwin" ]]; then
   main "$@"
   exit
-  ;;
-*)
+else
   echo "Only macOS supported"
   exit
-  ;;
-esac
+fi
