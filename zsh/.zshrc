@@ -1,4 +1,5 @@
 #!/bin/zsh
+# shellcheck shell=bash disable=SC2034,2086,2048
 
 #############################################################################
 # ENVIRONMENT CONFIGURATION
@@ -34,6 +35,7 @@ path=(
   $ANDROID_HOME/platform-tools
   $ANDROID_HOME/build-tools/30.0.3
   # Ruby gems, for cocoapods
+  $GEM_HOME/ruby/2.6.0/bin
   $GEM_HOME/bin
   $path
 )
@@ -64,11 +66,13 @@ plugins=(
   extract
   # below custom plugins installed separately
   autoupdate
-  zsh-syntax-highlighting
   zsh-autosuggestions
   zsh-better-npm-completion
   zsh-nvm
+  # this needs to stay at the end of the list
+  zsh-syntax-highlighting
 )
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # disable paste highlight
 zle_highlight+=(paste:none)
 # faster paste
@@ -144,7 +148,7 @@ mkf() {
 alias fk="fuck"
 # open Marta in current dir
 m() {
-  if [[ $@ == "" ]]; then
+  if [[ $* == "" ]]; then
     command marta .
   else
     command marta "$@"
@@ -191,7 +195,7 @@ bl() {
 alias bs="brew search"
 alias br="brew remove"
 bdep() {
-  if [[ $@ == "" ]]; then
+  if [[ $* == "" ]]; then
     brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
   else
     brew deps --tree --installed "$@"
@@ -237,7 +241,7 @@ alias fcl="osascript -e 'tell application \"Finder\" to close windows'"
 alias htop="sudo htop"
 alias cl="clear"
 # zsh
-alias sz="exec zsh"
+alias ez="exec zsh"
 
 #############################################################################
 # CLI TOOLS
@@ -351,10 +355,10 @@ alias calm="gcalcli calm --military --mon"
 # World clock
 # ---------------------------------------------------------------------------
 wcl() {
-  if [[ $@ == "" ]]; then
+  if [[ $* == "" ]]; then
     world_clock
   else
-    world_clock | grep -iF "$@"
+    world_clock | grep -iF "$*"
   fi
 }
 
@@ -374,7 +378,7 @@ world_clock() {
   )
   output=""
 
-  for loc in ${time_zones[@]}; do
+  for loc in $time_zones; do
     city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
     current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $4 " " $5 }')
     temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
@@ -412,10 +416,10 @@ alias sw="termdown -a"
 # merge PDFs with ghostscript
 mpdf() {
   unalias gs
-  if [[ $@ == "" ]]; then
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf * &&
-      else
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$@"
+  if [[ $* == "" ]]; then
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
+  else
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf $*
   fi
   alias gs="ggs"
 }
@@ -441,7 +445,7 @@ fi
 
 # VSCode
 c() {
-  if [[ $@ == "" ]]; then
+  if [[ $* == "" ]]; then
     code .
   else
     code "$@"
@@ -516,10 +520,10 @@ gmtc() {
 
 # Interactive rebase
 gir() {
-  if [[ $@ == "" ]]; then
+  if [[ $* == "" ]]; then
     git rebase -i HEAD~5
   else
-    git rebase -i HEAD~$@
+    git rebase -i HEAD~"$1"
   fi
 }
 

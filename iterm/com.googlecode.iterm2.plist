@@ -3941,12 +3941,16 @@
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>HotkeyModifiers</key>
-	<integer>524288</integer>
+	<integer>524576</integer>
 	<key>IRMemory</key>
 	<integer>4</integer>
 	<key>NeverWarnAboutOverrides</key>
 	<true/>
 	<key>NeverWarnAboutOverrides_selection</key>
+	<integer>0</integer>
+	<key>NeverWarnAboutShortLivedSessions_8A2592B5-294E-4848-9BB0-DBD09F5AF62D</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_8A2592B5-294E-4848-9BB0-DBD09F5AF62D_selection</key>
 	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>

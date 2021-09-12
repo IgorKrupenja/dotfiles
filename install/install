@@ -11,7 +11,7 @@ echo "*************************** Use fast connection! *************************
 echo ""
 
 # Write log
-exec > >(tee -a "/tmp/dotfiles-install-$(date +%s).log") 2>&1
+exec > >(tee "/tmp/dotfiles-install-$(date +%s).log") 2>&1
 
 # Repo location
 DOTFILES="$HOME/Projects/dotfiles"

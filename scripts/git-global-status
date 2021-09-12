@@ -19,7 +19,7 @@ repos=()
 while IFS= read -r line; do
   repos+=("$line")
   # might need to tweak maxdepth later
-done < <(find $PROJECTS -path $PROJECTS/archive -prune -false -o -name .git -maxdepth 3 | sed 's/.git//')
+done < <(find "$PROJECTS" -path "$PROJECTS"/archive -prune -false -o -name .git -maxdepth 3 | sed 's/.git//')
 
 # navigate to each repo and echo status
 for repo in "${repos[@]}"; do
