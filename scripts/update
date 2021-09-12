@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
+# shellcheck shell=bash
 
 ansi() { echo -e "\033[${1}m${*:2}\033[0m"; }
 underline() { ansi 4 "$@"; }
@@ -11,7 +12,8 @@ gem update
 echo -e "\n$(underline "Updating OMZ")\n"
 "$ZSH"/tools/upgrade.sh
 
-echo -e "\n$(underline Updating ZSH plugins)\n"
+echo -e "\n$(underline Updating custom OMZ plugins)\n"
+# based on autoupdate plugin https://github.com/TamCore/autoupdate-oh-my-zsh-plugins/blob/master/autoupdate.plugin.zsh
 find -L "$HOME/.oh-my-zsh/custom" -type d -name .git | while read -r d; do
   p=$(dirname "$d")
   pn=$(basename "$p")
@@ -30,7 +32,15 @@ done
 
 # node
 echo -e "\n$(underline Updating nvm)\n"
+# uses zsh-nvm OMZ plugin
+source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 nvm upgrade
+
+# todo not ready, see #238
+# echo -e "\n$(underline Updating nvm node latest and LTS versions)\n"
+# nvm install node --latest-npm --reinstall-packages-from=node
+# nvm install --lts --latest-npm --reinstall-packages-from='lts/*'
+
 echo -e "\n$(underline Updating global npm packages)\n"
 npm -g update
 

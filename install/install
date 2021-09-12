@@ -100,6 +100,7 @@ install_sw_node() {
   echo ""
   echo "**************************** Installing from npm ***************************"
   echo ""
+  NVM_DIR=$HOME/.nvm
   git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
   $(builtin cd "$NVM_DIR" && git checkout --quiet "$(zsh_nvm_latest_release_tag)")
   backup_file $HOME/.nvm/default-packages
@@ -131,26 +132,30 @@ install_sw_misc() {
   fvm install beta
   fvm install dev
   fvm global stable
+  # Cocoapods for Flutter
+  export GEM_HOME=$HOME/.gem
+  gem install cocoapods --user-install
 }
 
 zsh_config() {
   echo ""
   echo "***************************** Configuring zsh ******************************"
   echo ""
+  ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
   # Remove any existing install first
   rm -rf $HOME/.oh-my-zsh
   # Install oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
   # Install theme
-  git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+  git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
   backup_file $HOME/.p10k.zsh
   ln -sv $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
   # Install plug-ins
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
   git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
-  git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
-  git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
+  git clone https://github.com/lukechilds/zsh-better-npm-completion $ZSH_CUSTOM/plugins/zsh-better-npm-completion
+  git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM/plugins/zsh-nvm
   # iTerm shell integrations
   curl -L https://iterm2.com/shell_integration/zsh -o $DOTFILES/zsh/.iterm2_shell_integration.zsh
   # Config
