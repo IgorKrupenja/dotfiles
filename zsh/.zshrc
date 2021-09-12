@@ -48,6 +48,8 @@ eval $(thefuck --alias)
 #############################################################################
 # ZSH
 #############################################################################
+# fixes various issues when copy-pasting or entering international characters
+export LANG=en_US.UTF-8
 # theme - note that these need to come before sourcing omz
 ZSH_THEME=powerlevel10k/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
