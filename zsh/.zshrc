@@ -118,11 +118,8 @@ die() {
 
 # Misc
 # ---------------------------------------------------------------------------
-alias df="df -h"
+alias df="duf"
 alias du="du -h -d 1"
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 # quick look
 alias ql="qlmanage -p &>/dev/null"
 # img tools
@@ -135,8 +132,6 @@ alias ddd="sudo gdd bs=1M status=progress"
 # ls/la with dirs first
 alias lad="gls -lAh --group-directories-first --color"
 alias lsd="gls --group-directories-first --color"
-# mc
-alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
 # recursive mkdir
 alias mkdir='mkdir -pv'
 # touch with dir creation
@@ -197,7 +192,7 @@ bdep() {
   if [[ $@ == "" ]]; then
     brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
   else
-    brew rmtree --dry-run "$@"
+    brew deps --tree --installed "$@"
   fi
 }
 alias blv="brew leaves"
@@ -353,7 +348,6 @@ alias calm="gcalcli calm --military --mon"
 
 # World clock
 # ---------------------------------------------------------------------------
-# TODO: broken due to #259
 wcl() {
   if [[ $@ == "" ]]; then
     world_clock
@@ -399,11 +393,11 @@ alias wtro="curl -s \"wttr.in/$1\""
 # Misc
 # ---------------------------------------------------------------------------
 alias cr="xattr -cr"
-# convert string to TITLE case
+# convert string to title case
 tc() {
   echo "$*" | python3 -c "print('$*'.title())"
 }
-# convert string to SENTENCE case
+# convert string to sentence case
 sc() {
   echo "$*" | python3 -c "print('$*'.capitalize())"
 }
@@ -462,11 +456,9 @@ alias cre="EDITOR=emacs crontab -e"
 # git
 # ---------------------------------------------------------------------------
 # git status
-alias gst="git status"
-alias gs="gst"
+alias gs="git status"
 # normal git log - with timestamps
 alias glot="git log --graph --all"
-alias glof="glot"
 # log with pretty graph
 alias glo="git log --graph --oneline --all"
 # git commit with message
@@ -484,6 +476,7 @@ gbn() {
 gbd() {
   git push -d origin "$*" && git branch -D "$*"
 }
+alias gch="git checkout"
 alias gchm="git checkout main"
 alias gf="git fetch"
 alias gl="git pull"
@@ -491,21 +484,21 @@ alias gp="git push origin"
 alias gpf="git push -f origin"
 alias ga="git add"
 alias gcl="git clone"
-alias gt="git tag"
-alias gpt="git push origin --tags"
 alias gmt='git mergetool'
-# delete a remote tag
-alias gptd="git push --delete origin"
 alias gd="git diff"
 alias gdt="git difftool"
 alias gsh="git stash"
 alias gshp="git stash pop"
-alias gch="git checkout"
 alias gxs="git bisect start"
 alias gxg="git bisect good"
 alias gxb="git bisect bad"
 alias gxr="git bisect reset"
 
+# tags
+alias gt="git tag"
+alias gpt="git push origin --tags"
+# delete a remote tag
+alias gptd="git push --delete origin"
 # Move the last used tag to the new commit - useful for some uni courses
 gmtc() {
   # get the last used tag from current branch and save in a variable
@@ -527,7 +520,6 @@ gir() {
     git rebase -i HEAD~$@
   fi
 }
-alias girr="git rebase -i --root"
 
 # cht.sh
 # ---------------------------------------------------------------------------
@@ -629,6 +621,7 @@ alias ydf="yarn run deploy-fn"
 
 # Flutter
 # ---------------------------------------------------------------------------
+source $DOTFILES/zsh/flutter_completion.sh
 alias f="flutter"
 alias fd="flutter devices"
 alias fg="flutter pub get"
@@ -666,5 +659,6 @@ alias cz="code $DOTFILES"
 # ---------------------------------------------------------------------------
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias dt="cd $PROJECTS/devtailor/"
+alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
