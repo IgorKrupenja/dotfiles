@@ -472,7 +472,7 @@ gcm() {
   git commit -m "$*"
 }
 # create branch both locally and remotely, only origin
-alias gb="git branch"
+alias gbl="git branch"
 gbn() {
   git checkout -b "$*"
   git push origin "$*"
