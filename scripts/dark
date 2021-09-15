@@ -102,16 +102,6 @@ for i in "${!light_values[@]}"; do
   fi
 done
 
-################################# Sublime Merge
-
-conf=$HOME/Library/Application\ Support/Sublime\ Merge/Packages/User/Preferences.sublime-settings
-
-if [ "$set_dark" = true ]; then
-  sed -i '' 's/Merge.sublime-theme/Merge Dark.sublime-theme/g' "$conf"
-else
-  sed -i '' 's/Merge Dark.sublime-theme/Merge.sublime-theme/g' "$conf"
-fi
-
 ################################# cht.sh
 
 conf=$HOME/.cht.sh/cht.sh.conf
