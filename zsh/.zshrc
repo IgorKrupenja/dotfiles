@@ -314,6 +314,7 @@ tradd() {
 }
 alias tred="tradd '💣 Today'"
 alias tren="tradd '🌆 Tonight'"
+alias trep="tradd '🧠 PKM'"
 alias tref="tradd '📈 Further ahead'"
 # Important label
 alias tredi="tred add-label 5c56f3491be0121b5865f2d7"
