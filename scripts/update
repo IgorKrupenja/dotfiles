@@ -79,7 +79,7 @@ update_node() {
       previous_node_version=$current_node_version
       nvm install $node_version
       nvm reinstall-packages $previous_node_version
-      nvm uninstall $previous_node_version
+      # nvm uninstall $previous_node_version
     fi
   done
 
