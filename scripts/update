@@ -14,6 +14,7 @@ main() {
   update_omz
   update_node
   update_homebrew
+  update_mas
 }
 
 # gems, for cocoapods
@@ -89,7 +90,6 @@ update_node() {
 }
 
 update_homebrew() {
-  # homebrew
   echo -e "\n$(underline Runnning Homebrew diagnostics)\n"
   brew autoremove && brew cleanup -s && brew doctor
 
@@ -102,6 +102,11 @@ update_homebrew() {
   else
     brew upgrade
   fi
+}
+
+update_mas() {
+  echo -e "\n$(underline "Updating App Store apps")\n"
+  mas upgrade
 }
 
 main "$@"
