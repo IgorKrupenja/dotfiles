@@ -314,7 +314,6 @@ tradd() {
 }
 alias tred="tradd '💣 Today'"
 alias tren="tradd '🌆 Tonight'"
-alias trep="tradd '🧠 PKM'"
 alias tref="tradd '📈 Further ahead'"
 # Important label
 alias tredi="tred add-label 5c56f3491be0121b5865f2d7"
@@ -330,6 +329,12 @@ trec() {
 # move to Done on "📥 Personal" board
 trex() {
   trello move-card "$*" 5a785c3a56d2f82288d292e8
+}
+
+# Obsidian
+# ---------------------------------------------------------------------------
+ob() {
+  echo "- [ ] $*" >>"$PROJECTS/dev-journal/📥 Incoming/To do.md"
 }
 
 # Calculator
