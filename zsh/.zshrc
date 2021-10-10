@@ -616,7 +616,7 @@ yad() {
   yarn add "$1" -D
 }
 alias yr="yarn remove"
-alias yo="yarn outdated"
+alias yot="yarn outdated"
 alias yu="yarn upgrade"
 alias yui="yarn upgrade-interactive"
 alias yuil="yarn upgrade-interactive --latest"
