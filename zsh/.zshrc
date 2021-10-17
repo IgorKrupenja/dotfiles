@@ -666,9 +666,30 @@ alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
 
 # Dotfiles
 # ---------------------------------------------------------------------------
+# TODO: reduce code duplication similar to tradd alias
+dotfiles-new-issue() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body ""
+  cd ~-
+}
 dotn() {
   cd $PROJECTS/dotfiles
   gh issue create --title "$*" --body ""
+  cd ~-
+}
+dotnc() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body "" --label "core"
+  cd ~-
+}
+dotnci() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body "" --label "core,important"
+  cd ~-
+}
+dotni() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body "" --label "important"
   cd ~-
 }
 alias cz="code $DOTFILES"
