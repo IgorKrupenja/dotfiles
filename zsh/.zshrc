@@ -20,14 +20,8 @@ export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 # Ruby gems, for cocoapods
 export GEM_HOME=$HOME/.gem
 path=(
-  # python unversioned symlinks
-  /usr/local/opt/python/libexec/bin
-  # required for iftop installed with homebrew
-  /usr/local/sbin
   $DOTFILES/scripts
-  # dart package bin, including fvm
-  $HOME/.pub-cache/bin
-  # global flutter from fvm
+  # global flutter (and dart) from fvm
   $HOME/fvm/default/bin
   # Android/Flutter CLI tools
   $ANDROID_HOME/emulator
