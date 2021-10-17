@@ -492,8 +492,9 @@ alias gch="git checkout"
 alias gchm="git checkout main"
 alias gf="git fetch"
 alias gl="git pull"
-alias gp="git push origin"
-alias gpf="git push -f origin"
+# TODO uncomment
+# alias gp="git push origin"
+# alias gpf="git push -f origin"
 alias ga="git add"
 alias gcl="git clone"
 alias gmt='git mergetool'
@@ -568,30 +569,41 @@ compctl -K _pip_completion pip
 alias ciu="caniuse"
 
 # nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-alias n12="nvm use 12"
-alias n14="nvm use 14"
 alias n16="nvm use 16"
 alias nd="nvm use default"
+nvm-use() {
+  if [ -e .nvmrc ]; then
+    nvm use && $*
+  else
+    $*
+  fi
+}
 
+# npm general
 alias nps="npm search"
+
 # npm global
 alias ngl="npm -g list --depth=0"
 alias ngo="npm -g outdated"
 alias ngu="npm -g update"
 alias ngi="npm -g install"
 alias ngun="npm -g uninstall"
+
 # npm local
 alias npl="npm list --depth=0"
-alias npu="npm update"
-alias npo="npm outdated"
-alias npi="npm install"
-alias npid="npm install --save-dev"
+alias npi="nvm-use npm install"
+alias npu="nvm-use npm update"
+alias npo="nvm-use npm outdated"
+alias npid="nvm-use npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
+
 # npm scripts
-alias npr="npm run"
+alias npr="nvm-use npm run"
 npm-start() {
   if npm run | grep start:debug &>/dev/null; then
     npm run start:debug
@@ -599,13 +611,7 @@ npm-start() {
     npm start
   fi
 }
-npst() {
-  if [ -e .nvmrc ]; then
-    nvm use && npm-start
-  else
-    npm-start
-  fi
-}
+alias npst="nvm-use npm-start"
 alias npt="npm test"
 alias npcl="npm run cloc"
 
