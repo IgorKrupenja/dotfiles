@@ -22,14 +22,14 @@
     "body": ["export * from '.$1'"],
     "description": "Export all"
   },
+  "For of loop": {
+    "prefix": ["fof", "forof"],
+    "body": ["for (const ${1} of ${1}s) {", "  $0", "}"],
+    "description": "for of loop"
+  },
   "Log to console": {
     "prefix": "log",
     "body": ["console.log($1)"],
     "description": "Log to console"
   },
-  "For of loop": {
-    "prefix": ["fof", "forof"],
-    "body": ["for (const ${1} of ${1}s) {", "  $0", "}"],
-    "description": "for of loop"
-  }
 }

@@ -198,18 +198,6 @@
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
   },
-  // {
-  //   "key": "alt+cmd+s",
-  //   "command": "workbench.action.files.saveAll"
-  // },
-  // {
-  //   "key": "alt+cmd+s",
-  //   "command": "-workbench.action.files.saveAll"
-  // },
-  // {
-  //   "key": "cmd+s",
-  //   "command": "workbench.action.files.save"
-  // },
   {
     "key": "cmd+s",
     "command": "-workbench.action.files.save"
@@ -295,5 +283,276 @@
     "args": {
       "sequence": ["postcssSorting.execute", "workbench.action.files.save"]
     }
+  },
+  {
+    "key": "cmd+o",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "alt+cmd+o",
+    "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "cmd+p",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "shift+cmd+p",
+    "command": "-workbench.action.showCommands"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "shift+cmd+p",
+    "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "alt+cmd+o",
+    "command": "workbench.action.files.openFileFolder"
+  },
+  {
+    "key": "cmd+o",
+    "command": "-workbench.action.files.openFileFolder"
+  },
+  {
+    "key": "alt+cmd+o",
+    "command": "workbench.action.files.openLocalFileFolder",
+    "when": "remoteFileDialogVisible"
+  },
+  {
+    "key": "cmd+o",
+    "command": "-workbench.action.files.openLocalFileFolder",
+    "when": "remoteFileDialogVisible"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "editor.action.previousMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-editor.action.previousMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.action.terminal.findPrevious",
+    "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-workbench.action.terminal.findPrevious",
+    "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+alt+enter",
+    "command": "-colonize.hold",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+enter",
+    "command": "-colonize.newline",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+enter",
+    "command": "-colonize.endline",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.view.extension.dockerView"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus"
+  },
+  {
+    "key": "enter",
+    "command": "-renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus"
+  },
+  {
+    "key": "enter",
+    "command": "list.select",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "shift+enter",
+    "command": "colonize.endline"
+  },
+  {
+    "key": "shift+alt+cmd+w",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "delete",
+    "command": "-workbench.action.terminal.killInstance",
+    "when": "terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.terminal.killEditor",
+    "when": "terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-workbench.action.terminal.killInstance",
+    "when": "terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "deleteAllLeft",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-deleteAllLeft",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "notebook.cell.delete",
+    "when": "notebookEditable && notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-notebook.cell.delete",
+    "when": "notebookEditable && notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "debug.removeBreakpoint",
+    "when": "breakpointsFocused && !breakpointInputFocused"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-debug.removeBreakpoint",
+    "when": "breakpointsFocused && !breakpointInputFocused"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "debug.removeWatchExpression",
+    "when": "watchExpressionsFocused && !expressionSelected"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-debug.removeWatchExpression",
+    "when": "watchExpressionsFocused && !expressionSelected"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "keybindings.editor.removeKeybinding",
+    "when": "inKeybindings && keybindingFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-keybindings.editor.removeKeybinding",
+    "when": "inKeybindings && keybindingFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "moveFileToTrash",
+    "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-moveFileToTrash",
+    "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "notification.clear",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-notification.clear",
+    "when": "notificationFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "remote.tunnel.closeInline",
+    "when": "tunnelCloseable && tunnelViewFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-remote.tunnel.closeInline",
+    "when": "tunnelCloseable && tunnelViewFocus"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "search.action.remove",
+    "when": "fileMatchOrMatchFocus && searchViewletVisible"
+  },
+  {
+    "key": "cmd+backspace",
+    "command": "-search.action.remove",
+    "when": "fileMatchOrMatchFocus && searchViewletVisible"
   }
 ]
