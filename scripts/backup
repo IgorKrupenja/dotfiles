@@ -61,7 +61,7 @@ fi
 echo ""
 echo "Pushing to dotfiles repo:"
 echo "-------------------------"
-git push
+git push --no-verify
 
 #################### Notifications
 
