@@ -492,9 +492,8 @@ alias gch="git checkout"
 alias gchm="git checkout main"
 alias gf="git fetch"
 alias gl="git pull"
-# TODO uncomment
-# alias gp="git push origin"
-# alias gpf="git push -f origin"
+alias gp="git push origin"
+alias gpf="git push -f origin"
 alias ga="git add"
 alias gcl="git clone"
 alias gmt='git mergetool'

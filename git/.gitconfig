@@ -14,6 +14,7 @@
 [core]
   editor = code --wait
   excludesfile = /Users/igor/.gitignore_global
+	hooksPath = /Users/igor/Projects/dotfiles/git/hooks
 [diff]
   tool = vscode
 [difftool]

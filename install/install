@@ -174,12 +174,13 @@ dotfiles() {
   #mc
   ln -sv $DOTFILES/mc $HOME/.config/mc
   # misc
-  dotfiles=(".gitconfig" ".emacs")
+  dotfiles=(".emacs")
   for dotfile in ${dotfiles[@]}; do
     # Backup any existing dotfiles
     backup_file $HOME/${dotfile}
     ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
   done
+  ln -sv $DOTFILES/git/.gitconfig $HOME/.gitconfig
   touch $HOME/.hushlogin
   # SSH
   backup_file $HOME/.ssh/config
