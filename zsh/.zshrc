@@ -25,6 +25,8 @@ export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 export GEM_HOME=$HOME/.gem
 path=(
   $DOTFILES/scripts
+  # dart binaries, including fvm
+  $HOME/.pub-cache/bin
   # global flutter (and dart) from fvm
   $HOME/fvm/default/bin
   # Android/Flutter CLI tools
