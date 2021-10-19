@@ -64,6 +64,7 @@ plugins=(
   web-search
   colored-man-pages
   extract
+  ng
   # below custom plugins installed separately
   autoupdate
   zsh-autosuggestions
