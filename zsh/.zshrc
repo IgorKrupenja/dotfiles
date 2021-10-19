@@ -1,3 +1,7 @@
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 #!/bin/zsh
 # shellcheck shell=bash disable=SC2034,2086,2048
 
@@ -308,6 +312,7 @@ tradd() {
 }
 alias tred="tradd '💣 Today'"
 alias tren="tradd '🌆 Tonight'"
+alias trew="tradd '📆 This week'"
 alias tref="tradd '📈 Further ahead'"
 # Important label
 alias tredi="tred add-label 5c56f3491be0121b5865f2d7"
@@ -694,3 +699,9 @@ alias dt="cd $PROJECTS/devtailor/"
 alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
+
+# Fig
+# ---------------------------------------------------------------------------
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
