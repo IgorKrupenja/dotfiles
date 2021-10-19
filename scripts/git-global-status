@@ -24,12 +24,8 @@ done < <(find "$PROJECTS" -path "$PROJECTS"/archive -prune -false -o -name .git 
 # navigate to each repo and echo status
 for repo in "${repos[@]}"; do
   cd "${repo}" || exit
-  # ${PWD##*/} to get dir name w/o full path
-  if [[ $(git diff) ]]; then
-    echo -e "${red}${PWD##*/}: need to commit${nc}"
-  elif git status | grep -q "Untracked files"; then
-    echo -e "${red}${PWD##*/}: need to commit${nc}"
-  elif git status | grep -q "Changes to be committed"; then
+  if [[ $(git diff) || $(git status | grep -q "Untracked files|Changes to be committed") ]]; then
+    # ${PWD##*/} to get dir name w/o full path
     echo -e "${red}${PWD##*/}: need to commit${nc}"
   elif git status | grep -q "branch is ahead"; then
     echo -e "${yellow}${PWD##*/}: need to push${nc}"
