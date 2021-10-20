@@ -667,42 +667,20 @@ alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
 
 # Dotfiles
 # ---------------------------------------------------------------------------
-# TODO: reduce code duplication similar to tradd alias
 dotfiles-new-issue() {
+  title="${@:2}"
   cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body ""
+  gh issue create --title $title --body "" --label $1
   cd ~-
 }
-dotn() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body ""
-  cd ~-
-}
-dotnc() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body "" --label "core"
-  cd ~-
-}
-dotnci() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body "" --label "core,important"
-  cd ~-
-}
-dotni() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body "" --label "important"
-  cd ~-
-}
-dotnvi() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body "" --label "important,vscode"
-  cd ~-
-}
-dotnv() {
-  cd $PROJECTS/dotfiles
-  gh issue create --title "$*" --body "" --label "vscode"
-  cd ~-
-}
+# TODO: broken, label cannot be empty
+alias dotn="dotfiles-new-issue ''"
+alias dotni="dotfiles-new-issue important"
+alias dotnc="dotfiles-new-issue core"
+alias dotnci="dotfiles-new-issue core,important"
+alias dotnv="dotfiles-new-issue vscode"
+alias dotnvi="dotfiles-new-issue vscode,important"
+
 alias cz="code $DOTFILES"
 
 # Devtailor
@@ -712,7 +690,7 @@ alias dt="cd $PROJECTS/devtailor/"
 alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
-alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor  --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
+alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
 
 # Fig
 # ---------------------------------------------------------------------------
