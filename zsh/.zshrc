@@ -693,6 +693,16 @@ dotni() {
   gh issue create --title "$*" --body "" --label "important"
   cd ~-
 }
+dotnvi() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body "" --label "important,vscode"
+  cd ~-
+}
+dotnv() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title "$*" --body "" --label "vscode"
+  cd ~-
+}
 alias cz="code $DOTFILES"
 
 # Devtailor
