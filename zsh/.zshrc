@@ -19,6 +19,9 @@ source $HOME/.p10k-instant-prompt
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
+# For gradle formatter plugin for VSCode
+export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME="/usr/libexec/java_home"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 # Ruby gems, for cocoapods
@@ -674,7 +677,12 @@ dotfiles-new-issue() {
   cd ~-
 }
 # TODO: broken, label cannot be empty
-alias dotn="dotfiles-new-issue ''"
+dotn() {
+  cd $PROJECTS/dotfiles
+  gh issue create --title $* --body ""
+  cd ~-
+}
+# alias dotn="dotfiles-new-issue ''"
 alias dotni="dotfiles-new-issue important"
 alias dotnc="dotfiles-new-issue core"
 alias dotnci="dotfiles-new-issue core,important"
