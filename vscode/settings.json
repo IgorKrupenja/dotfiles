@@ -405,6 +405,7 @@
     "animationend",
     "audioplayers",
     "autoplay",
+    "autovalidate",
     "Avenir",
     "barcode",
     "captcha",
@@ -433,10 +434,12 @@
     "Kodality",
     "Krematoorium",
     "Krupenja",
+    "LTRB",
     "Maksim",
     "minlength",
     "minmax",
     "mixins",
+    "mywebsite",
     "nestjs",
     "netsuite",
     "originalname",
@@ -448,6 +451,7 @@
     "Praktikakohvik",
     "Prepper",
     "Serializers",
+    "sfprotext",
     "Siidisaba",
     "smth",
     "Spellright",
@@ -456,12 +460,14 @@
     "Trello",
     "trimtex",
     "typeorm",
+    "unfocus",
     "Vineet",
     "Vineet's",
     "vooder",
     "vsync",
     "Wishlisted",
     "wojtekmaj",
+    "worldofmouth",
     "xlink",
     "Youtube"
   ],
@@ -543,12 +549,9 @@
   "svg.preview.mode": "svg",
   "terminal.integrated.gpuAcceleration": "on",
   "workbench.editor.pinnedTabSizing": "compact",
-  "tabnine.experimentalAutoImports": true,
   "workbench.colorTheme": "Nord",
-  "editor.renderIndentGuides": false,
   "diffEditor.wordWrap": "off",
   "editor.inlayHints.enabled": false,
-  "bracket-pair-colorizer-2.showBracketsInGutter": true,
   "editor.matchBrackets": "never",
   "workbench.iconTheme": "material-icon-theme",
   "editor.detectIndentation": false,
@@ -617,7 +620,13 @@
     "dart"
   ],
   "cSpell.diagnosticLevel": "Hint",
-  "python.analysis.completeFunctionParens": true
+  "python.analysis.completeFunctionParens": true,
+  "dart.flutterSdkPaths": ["/Users/igor/fvm/versions"],
+  "settingsSync.ignoredSettings": ["-dart.flutterSdkPaths"],
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  }
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
