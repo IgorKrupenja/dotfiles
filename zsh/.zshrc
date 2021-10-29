@@ -647,6 +647,10 @@ source $DOTFILES/zsh/flutter_completion.sh
 alias f="flutter"
 alias fd="flutter devices"
 alias fg="flutter pub get"
+alias fbda="flutter build appbundle --flavor=development"
+alias fbdi="flutter build ipa --flavor=development"
+alias fbra="flutter build appbundle --flavor=production"
+alias fbri="flutter build ipa --flavor=production"
 
 # Docker
 # ---------------------------------------------------------------------------
