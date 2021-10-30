@@ -122,6 +122,14 @@ else
   sed -i '' 's/dark/light/g' "$conf"
 fi
 
+################################# fig
+
+if [ "$set_dark" = true ]; then
+  fig theme nord >/dev/null
+else
+  fig theme light >/dev/null
+fi
+
 ################################# Switch back to iTerm
 
 osascript -e 'tell application "iTerm" to activate'
