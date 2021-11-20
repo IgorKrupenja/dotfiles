@@ -1,9 +1,10 @@
+#!/bin/zsh
+# shellcheck shell=bash disable=SC2034,2086,2048
+
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the start of this file.
 [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
-#!/bin/zsh
-# shellcheck shell=bash disable=SC2034,2086,2048
 
 #############################################################################
 # ENVIRONMENT CONFIGURATION
@@ -28,6 +29,8 @@ export ANDROID_HOME=/Users/$USER/Library/Android/sdk
 export GEM_HOME=$HOME/.gem
 path=(
   $DOTFILES/scripts
+  # some binaries installed with homebrew, like iftop
+  /usr/local/sbin
   # dart binaries, including fvm
   $HOME/.pub-cache/bin
   # global flutter (and dart) from fvm
@@ -617,6 +620,7 @@ npm-start() {
 }
 alias npst="nvm-use npm-start"
 alias npt="npm test"
+alias npe="npm run test:e2e"
 alias npcl="npm run cloc"
 
 # yarn
@@ -649,7 +653,7 @@ alias fd="flutter devices"
 alias fg="flutter pub get"
 alias fbda="flutter build appbundle --flavor=development"
 alias fbdi="flutter build ipa --flavor=development"
-alias fbra="flutter build appbundle --flavor=production"
+alias fbra="flutter build apk --flavor=production"
 alias fbri="flutter build ipa --flavor=production"
 
 # Docker
@@ -702,10 +706,10 @@ alias dt="cd $PROJECTS/devtailor/"
 alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
+alias tdrop="NODE_ENV=test ddrop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
 
-# Fig
-# ---------------------------------------------------------------------------
+#### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
 [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 #### END FIG ENV VARIABLES ####

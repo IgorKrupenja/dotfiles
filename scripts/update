@@ -10,8 +10,8 @@ underline() {
 }
 
 main() {
-  update_gems
-  update_omz
+  # update_gems
+  # update_omz
   update_node
   update_homebrew
   update_mas
@@ -90,9 +90,6 @@ update_node() {
 }
 
 update_homebrew() {
-  echo -e "\n$(underline Runnning Homebrew diagnostics)\n"
-  brew autoremove && brew cleanup -s && brew doctor
-
   echo -e "\n$(underline Updating Homebrew)\n"
   brew update --verbose
 
@@ -102,6 +99,9 @@ update_homebrew() {
   else
     brew upgrade
   fi
+
+  echo -e "\n$(underline Runnning Homebrew diagnostics)\n"
+  brew autoremove && brew cleanup -s && brew doctor
 }
 
 update_mas() {
