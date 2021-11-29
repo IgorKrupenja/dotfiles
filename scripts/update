@@ -105,7 +105,7 @@ update_homebrew() {
     brew upgrade
   fi
 
-  echo -e "\n$(underline Runnning Homebrew diagnostics)\n"
+  echo -e "\n$(underline Running Homebrew diagnostics)\n"
   brew autoremove && brew cleanup -s && brew doctor
 }
 
