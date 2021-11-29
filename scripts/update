@@ -54,9 +54,9 @@ trim_node_version_string() {
 
 update_node() {
   echo -e "\n$(underline Updating nvm)\n"
-  nvm cache clear
   # uses zsh-nvm OMZ plugin
   source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+  nvm cache clear
   nvm upgrade
 
   node_versions=()
