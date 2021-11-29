@@ -1,5 +1,5 @@
 #!/bin/zsh
-# shellcheck shell=bash disable=SC2086
+# shellcheck shell=bash disable=SC2086,2046
 
 ansi() {
   echo -e "\033[${1}m${*:2}\033[0m"
@@ -10,8 +10,8 @@ underline() {
 }
 
 main() {
-  # update_gems
-  # update_omz
+  update_gems
+  update_omz
   update_node
   update_homebrew
   update_mas
@@ -54,11 +54,10 @@ trim_node_version_string() {
 
 update_node() {
   echo -e "\n$(underline Updating nvm)\n"
+  nvm cache clear
   # uses zsh-nvm OMZ plugin
   source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm/zsh-nvm.plugin.zsh
   nvm upgrade
-
-  echo -e "\n$(underline Updating nvm node versions)\n"
 
   node_versions=()
   while IFS= read -r line; do
@@ -66,27 +65,33 @@ update_node() {
       node_versions+=("$(trim_node_version_string ${line%%.*})")
     fi
   done < <(nvm ls --no-alias --no-colors)
+  unique_node_versions=($(echo "${node_versions[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 
-  for node_version in "${node_versions[@]}"; do
-    echo "Checking if node ${node_version} needs updating..."
-
-    current_node_version_string=$(nvm ls $node_version --no-colors)
+  for node_version in "${unique_node_versions[@]}"; do
+    current_node_version_string=$(nvm ls $node_version --no-colors | tail -1)
     current_node_version=$(trim_node_version_string ${current_node_version_string%%\**})
+
+    echo -e "\n$(underline Updating global npm packages for node $current_node_version)\n"
+    nvm use $node_version
+    npm -g update
+
+    # String is stored in a variable to prevent syntax highlighting from breaking
+    node_update_string="Checking for updates for node ${node_version}..."
+    echo -e "\n$(underline $node_update_string)\n"
+
     next_node_version_string=$(nvm version-remote $node_version)
     next_node_version=$(trim_node_version_string $next_node_version_string)
 
     if [ "$next_node_version" != $current_node_version ]; then
+      echo -e "\n$(underline Found new version for node ${node_version}: installing ${next_node_version})\n"
       previous_node_version=$current_node_version
       nvm install $node_version
       nvm reinstall-packages $previous_node_version
-      # nvm uninstall $previous_node_version
     fi
   done
 
-  nvm cache clear
-
-  echo -e "\n$(underline Updating global npm packages)\n"
-  npm -g update
+  echo -e "\n$(underline Node version update complete, overview of installed versions:)\n"
+  nvm ls --no-alias
 }
 
 update_homebrew() {
