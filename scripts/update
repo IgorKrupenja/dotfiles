@@ -9,14 +9,6 @@ underline() {
   ansi 4 "$@"
 }
 
-main() {
-  update_gems
-  update_omz
-  update_node
-  update_homebrew
-  update_mas
-}
-
 # gems, for cocoapods
 update_gems() {
   echo -e "\n$(underline "Updating Ruby gems")\n"
@@ -112,6 +104,14 @@ update_homebrew() {
 update_mas() {
   echo -e "\n$(underline "Updating App Store apps")\n"
   mas upgrade
+}
+
+main() {
+  update_gems
+  update_omz
+  update_node
+  update_homebrew
+  update_mas
 }
 
 main "$@"
