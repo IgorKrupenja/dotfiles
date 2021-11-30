@@ -706,7 +706,7 @@ alias dt="cd $PROJECTS/devtailor/"
 alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
-alias tdrop="NODE_ENV=test ddrop"
+alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
 
 #### FIG ENV VARIABLES ####
