@@ -67,7 +67,7 @@ update_node() {
     nvm use $node_version
     npm -g update
 
-    # String is stored in a variable to prevent syntax highlighting from breaking
+    # String is stored in a variable to prevent syntax highlighting from breaking in VSCode
     node_update_string="Checking for updates for node ${node_version}..."
     echo -e "\n$(underline $node_update_string)\n"
 

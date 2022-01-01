@@ -4,5 +4,4 @@ firebase-tools
 @nestjs/cli
 aws-cli
 @angular/cli
-alfred-npms
 caniuse-cmd
