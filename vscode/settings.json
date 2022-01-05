@@ -1,55 +1,49 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
+  "[javascript][typescript][typescriptreact][json][jsonc][scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dart]": {
-    "editor.semanticHighlighting.enabled": true
+    // TODO: only really needed for Night Owl-based themes
+    "editor.semanticHighlighting.enabled": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
   },
   "[python]": {
     "editor.rulers": [120],
     "editor.tabSize": 4
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "[html]": {
-    "editor.wordBasedSuggestions": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[html][markdown]": {
+    "editor.wordBasedSuggestions": false
   },
   "[markdown]": {
     "editor.quickSuggestions": true,
-    "editor.wordBasedSuggestions": false,
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[plaintext]": {
     "editor.wordWrap": "on"
   },
+  "[shellscript]": {
+    "editor.language.colorizedBracketPairs": [
+      ["[", "]"],
+      ["{", "}"],
+      ["(", ")"],
+      ["do", "done"],
+      ["if", "fi"],
+      ["case", "esac"]
+    ]
+  },
   "[xml]": {
-    "editor.insertSpaces": false,
+    // "editor.insertSpaces": false,
     "editor.tabSize": 4
   },
-  // add brackets to function autocompletion in Python
-  "python.autoComplete.addBrackets": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "files.autoSave": "onFocusChange",
-  "python.linting.pycodestyleEnabled": true,
-  "python.linting.pydocstyleEnabled": true,
-  // make Pep8 underline colour green for message type 'E'
-  "python.linting.pycodestyleCategorySeverity.E": "Warning",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.fontFamily": "'MonacoB Nerd Font', 'Monaco Nerd Font Mono', Monego, MonacoB, Monaco, Hack, 'Ubuntu Mono', monospace",
   "git-graph.showStatusBarItem": false,
@@ -75,23 +69,23 @@
   "window.newWindowDimensions": "inherit",
   // tweaks for themes
   "git-graph.graph.colours": [
-    "#bf616a",
-    "#a3be8c",
-    "#ebcb8b",
-    "#81a1c1",
-    "#88c0d0",
-    "#e5e9f0",
-    "#4c566a",
-    "#b48ead"
+    "#de3d3b",
+    "#08916a",
+    "#E0AF02",
+    "#288ed7",
+    "#49d0c5",
+    "#994cc3",
+    "#403f53",
+    "#d6438a"
   ],
   "workbench.colorCustomizations": {
     "[Nord]": {
       "scrollbar.shadow": "#00000000",
       "editorOverviewRuler.border": "#00000000",
-      "dart.closingLabels": "#616E8888"
-      // "editorBracketHighlight.foreground1": "#83A2C2",
-      // "editorBracketHighlight.foreground2": "#91BDBC",
-      // "editorBracketHighlight.foreground3": "#b48ead"
+      "dart.closingLabels": "#616E8888",
+      "editorBracketHighlight.foreground1": "#83A2C2",
+      "editorBracketHighlight.foreground2": "#91BDBC",
+      "editorBracketHighlight.foreground3": "#d6438a"
     },
     // "[Serendipity Light]": {
     //   "editorBracketHighlight.foreground1": "#4588FF",
@@ -106,45 +100,34 @@
     "[Vitesse Owl Light]": {
       "dart.closingLabels": "#939dbb88",
       "scrollbar.shadow": "#00000000",
-      "tab.activeBorder": "#b48ead",
+      "tab.activeBorder": "#d6438a",
       "terminal.ansiBrightBlack": "#939dbb",
       "terminal.ansiBlack": "#403F55",
       "debugConsole.infoForeground": "#403F55",
-      "statusBar.debuggingBackground": "#b48ead",
+      "statusBar.debuggingBackground": "#d6438a",
       "statusBar.debuggingForeground": "#FFF",
-      "statusBar.debuggingBorder": "#b48ead",
+      "statusBar.debuggingBorder": "#d6438a",
       "scrollbarSlider.background": "#393a3430",
       "editor.wordHighlightBackground": "#1c6b4820",
       "editor.wordHighlightStrongBackground": "#1c6b4820",
       "list.inactiveSelectionBackground": "#e6e6e6",
       "list.activeSelectionBackground": "#dddddd",
       "list.hoverBackground": "#e6e6e6",
-      "activityBar.activeBorder": "#b48ead",
-      "activityBarBadge.background": "#b48ead"
-      // "editorBracketHighlight.foreground1": "#0c969b",
-      // "editorBracketHighlight.foreground2": "#4876d6",
-      // "editorBracketHighlight.foreground3": "#e5e9f0"
+      "activityBar.activeBorder": "#d6438a",
+      "activityBarBadge.background": "#d6438a",
+      "editorBracketHighlight.foreground1": "#0c969b",
+      "editorBracketHighlight.foreground2": "#4876d6",
+      "editorBracketHighlight.foreground3": "#994cc3"
     }
   },
   "editor.semanticTokenColorCustomizations": {
     "[Vitesse Owl Light]": {
       "rules": {
-        "annotation": "#e5e9f0"
+        "annotation": "#994cc3"
       }
     }
   },
   "editor.tokenColorCustomizations": {
-    "[Nord Deep]": {
-      "textMateRules": [
-        {
-          "name": "numbers",
-          "scope": "constant.numeric",
-          "settings": {
-            "foreground": "#b48ead"
-          }
-        }
-      ]
-    },
     "[Vitesse Owl Light]": {
       "strings": "#C96765",
       "variables": "#403F55",
@@ -167,14 +150,14 @@
           "name": "Booleans",
           "scope": "constant.language.boolean",
           "settings": {
-            "foreground": "#e5e9f0"
+            "foreground": "#994cc3"
           }
         },
         {
           "name": "Booleans in JSON",
           "scope": "constant.language.json.comments",
           "settings": {
-            "foreground": "#e5e9f0"
+            "foreground": "#994cc3"
           }
         },
         {
@@ -347,21 +330,14 @@
   // "markdown.preview.scrollEditorWithPreview": false,
   "todo-tree.highlights.defaultHighlight": {
     "type": "text-and-comment",
-    "foreground": "#b48ead",
-    "background": "#b48ead",
-    "opacity": "20",
-    "iconColour": "#b48ead",
-    "rulerColour": "#b48ead",
+    "foreground": "#d6438a",
+    "background": "#d6438a",
+    "opacity": "10",
+    "iconColour": "#d6438a",
+    "rulerColour": "#d6438a",
     "fontWeight": "bold",
     "textDecoration": "underline"
   },
-  "bracket-pair-colorizer-2.colors": ["#83A2C2", "#91BDBC", "#b48ead"],
-  "bracket-pair-colorizer-2.scopeLineCSS": [
-    "borderStyle : solid",
-    "borderWidth : 1px",
-    "borderColor : {color}",
-    "opacity: 1"
-  ],
   "todo-tree.highlights.highlightDelay": 0,
   "todo-tree.regex.regex": "(%|#|/*|//|<!--|^\\s*\\*)\\s*($TAGS)",
   "todo-tree.regex.regexCaseSensitive": false,
@@ -378,12 +354,12 @@
   "highlight-matching-tag.styles": {
     "opening": {
       "name": {
-        "underline": "#b58faf"
+        "underline": "#0c969b"
       }
     },
     "closing": {
       "name": {
-        "underline": "#b58faf"
+        "underline": "#0c969b"
       }
     }
   },
@@ -402,6 +378,7 @@
   "cSpell.language": "en-GB,en,it,ru,lorem,et",
   "cSpell.userWords": [
     "Adcash",
+    "Åland",
     "animationend",
     "audioplayers",
     "autoplay",
@@ -417,16 +394,22 @@
     "Debouncer",
     "dedup",
     "Devtailor",
+    "dotenv",
     "dotfiles",
     "dtos",
     "fieldname",
     "firestore",
     "Flama",
     "flatlock",
+    "fullscreen",
     "gainsboro",
     "Geolocator",
+    "gtsupertext",
     "hacky",
     "Handies",
+    "Harjumaa",
+    "Huftgold",
+    "iftop",
     "ILIKE",
     "Jaarika",
     "Janno",
@@ -435,6 +418,7 @@
     "Krematoorium",
     "Krupenja",
     "LTRB",
+    "Lyndanisse",
     "Maksim",
     "minlength",
     "minmax",
@@ -450,17 +434,22 @@
     "pmmmwh",
     "Praktikakohvik",
     "Prepper",
+    "Recents",
     "Serializers",
     "sfprotext",
     "Siidisaba",
     "smth",
     "Spellright",
     "svgr",
+    "Swal",
+    "TADA",
+    "Tartumaa",
     "Transferwise",
     "Trello",
     "trimtex",
     "typeorm",
     "unfocus",
+    "unsandbox",
     "Vineet",
     "Vineet's",
     "vooder",
@@ -484,8 +473,6 @@
   "editor.minimap.enabled": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "vsintellicode.features.python.deepLearning": "enabled",
-  "python.formatting.autopep8Args": ["\"--max-line-length 120\""],
-  "python.linting.pycodestyleArgs": ["--max-line-length=120"],
   // makes ESLint work in multi-root workspaces
   "eslint.workingDirectories": [
     {
@@ -498,7 +485,7 @@
   "window.autoDetectColorScheme": true,
   "git-graph.commitDetailsView.autoCenter": false,
   "editor.fontSize": 13,
-  "hediet.vscode-drawio.theme": "dark",
+  "hediet.vscode-drawio.theme": "Kennedy",
   "customizeUI.fontSizeMap": {
     "13px": "14px",
     "12px": "14px",
@@ -512,21 +499,12 @@
   "editor.dragAndDrop": false,
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
-  "nasc-touchbar.addCursorBelow": false,
   "svg.preview.showRuler": true,
-  "nasc-touchbar.peekDefinition": true,
-  "nasc-touchbar.showCommands": false,
-  "nasc-touchbar.togglePanel": false,
-  "nasc-touchbar.jumpToBracket": true,
-  "nasc-touchbar.showReferences": true,
-  "jumpy.display.backgroundColor": "#F1CA81",
-  "jumpy.display.color": "#2D3441",
   "editor.linkedEditing": true,
   "html-css-class-completion.enableFindUsage": true,
   "html-css-class-completion.enableScssFindUsage": true,
   "debug.console.fontSize": 13,
   "dart.showTodos": false,
-  "dart.previewLsp": true,
   "security.workspace.trust.untrustedFiles": "open",
   "gitlens.currentLine.enabled": false,
   "git-graph.repository.commits.fetchAvatars": true,
@@ -537,9 +515,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "gitlens.codeLens.enabled": false,
   "sqltools.highlightQuery": false,
-  "htmlhint.enable": false,
   "dart.debugSdkLibraries": false,
-  "window.zoomLevel": 0,
   "terminal.integrated.cursorBlinking": true,
   "postcssSorting.config": {
     "properties-order": "alphabetical"
@@ -549,17 +525,15 @@
   "svg.preview.mode": "svg",
   "terminal.integrated.gpuAcceleration": "on",
   "workbench.editor.pinnedTabSizing": "compact",
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Vitesse Owl Light",
   "diffEditor.wordWrap": "off",
   "editor.inlayHints.enabled": false,
-  "editor.matchBrackets": "never",
   "workbench.iconTheme": "material-icon-theme",
   "editor.detectIndentation": false,
   "debug.internalConsoleOptions": "openOnSessionStart",
   "todo-tree.filtering.includeHiddenFiles": true,
   "bashIde.explainshellEndpoint": "http://localhost:5000",
   "bashIde.highlightParsingErrors": true,
-
   "shellcheck.ignorePatterns": {
     "**/*.zshrc": false,
     "**/zshrc": false,
@@ -570,9 +544,6 @@
   "terminal.external.osxExec": "iTerm.app",
   "dart.enableSnippets": false,
   "auto-close-tag.disableOnLanguage": ["typescript"],
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
   "dart.automaticCommentSlashes": "all",
   "dart.openDevTools": "flutter",
   // "dart.flutterRunAdditionalArgs": [
@@ -620,13 +591,30 @@
     "dart"
   ],
   "cSpell.diagnosticLevel": "Hint",
-  "python.analysis.completeFunctionParens": true,
   "dart.flutterSdkPaths": ["/Users/igor/fvm/versions"],
   "settingsSync.ignoredSettings": ["-dart.flutterSdkPaths"],
   "editor.accessibilitySupport": "off",
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
-  }
+  },
+  "cSpell.enableFiletypes": ["applescript", "gitignore", "hosts", "svg"],
+  "codeswing.themePreview": true,
+  "editor.inlineSuggest.enabled": true,
+  "docker.containers.label": "ContainerName",
+  "docker.containers.description": ["RepositoryNameAndTag", "Status"],
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.matchBrackets": "never",
+  "editor.cursorBlinking": "phase",
+  "xml.format.splitAttributes": true,
+  "xml.format.spaceBeforeEmptyCloseTag": false,
+  "ruby.format": "rubocop"
 
   // experimental check for problems in all TS files
   // disabled as very bad perf

@@ -203,24 +203,9 @@
     "command": "-workbench.action.files.save"
   },
   {
-    "key": "ctrl+a",
-    "command": "extension.jumpy-enter",
-    "when": "editorTextFocus && !jumpy.isInJumpMode"
-  },
-  {
     "key": "alt+q",
     "command": "-extension.jumpy-enter",
     "when": "editorTextFocus && !jumpy.isInJumpMode"
-  },
-  {
-    "key": "escape",
-    "command": "extension.jumpy-exit",
-    "when": "editorTextFocus && jumpy.isInJumpMode"
-  },
-  {
-    "key": "ctrl+a",
-    "command": "extension.jumpy-exit",
-    "when": "editorTextFocus && jumpy.isInJumpMode"
   },
   {
     "key": "ctrl+z",
@@ -554,5 +539,19 @@
     "key": "cmd+backspace",
     "command": "-search.action.remove",
     "when": "fileMatchOrMatchFocus && searchViewletVisible"
+  },
+  {
+    "key": "tab",
+    "command": "markdown.extension.onTabKey",
+    "when": "editorTextFocus && !inlineSuggestionVisible && !editorReadonly && !editorTabMovesFocus && !hasOtherSuggestions && !hasSnippetCompletions && !inSnippetMode && !suggestWidgetVisible && editorLangId == 'markdown'"
+  },
+  {
+    "key": "tab",
+    "command": "-markdown.extension.onTabKey",
+    "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus && !hasOtherSuggestions && !hasSnippetCompletions && !inSnippetMode && !suggestWidgetVisible && editorLangId == 'markdown'"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "extension.aceJump.multiChar"
   }
 ]
