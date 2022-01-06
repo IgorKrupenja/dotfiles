@@ -1,129 +1,125 @@
-tap "aljohri/-"
-tap "beeftornado/rmtree"
-tap "coursier/formulas"
-tap "dart-lang/dart"
-tap "github/gh"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "muesli/tap"
-tap "sass/sass"
-brew "apktool"
-brew "sqlite"
-brew "python@3.9"
-brew "awscli"
-brew "bash"
-brew "openjdk"
-brew "bfg"
-brew "cloc"
-brew "coreutils"
-brew "docker"
-brew "dockutil"
-brew "emacs", restart_service: true
-brew "fastlane"
-brew "ffmpeg"
-brew "fileicon"
-brew "gh"
-brew "ghostscript"
-brew "git"
-brew "gnu-units"
-brew "htop"
-brew "hunspell"
-brew "iftop"
-brew "jq"
-brew "less"
-brew "mas"
-brew "mitmproxy"
-brew "ncdu"
-brew "openfortivpn"
-brew "python@3.8"
-brew "shellcheck"
-brew "shfmt"
-brew "speedtest-cli"
-brew "spotify-tui"
-brew "thefuck"
-brew "transmission-cli", restart_service: true
-brew "trash"
-brew "tree"
-brew "wget"
-brew "wifi-password"
-brew "yarn"
-brew "youtube-dl"
-brew "zsh"
-brew "aljohri/-/docx2pdf"
-brew "dart-lang/dart/dart"
-brew "muesli/tap/duf"
-cask "1password"
-cask "1password-cli"
-cask "adobe-creative-cloud"
-cask "android-studio"
-cask "bettertouchtool"
-cask "bose-updater"
-cask "brave-browser"
-cask "brave-browser-nightly"
-cask "browserstacklocal"
-cask "calibre"
-cask "coconutbattery"
-cask "contexts"
-cask "datagrip"
-cask "discord"
-cask "disk-inventory-x"
-cask "drawio"
-cask "fantastical"
-cask "figma"
-cask "firefox"
-cask "firefox-nightly"
-cask "go64"
-cask "goldendict"
-cask "google-chrome"
-cask "google-chrome-canary"
-cask "iina"
-cask "inkscape"
-cask "intellij-idea"
-cask "iterm2"
-cask "logitech-options"
-cask "macfuse"
-cask "macmediakeyforwarder"
-cask "marta"
-cask "microsoft-edge"
-cask "microsoft-edge-dev"
-cask "monitorcontrol"
-cask "mysides"
-cask "obsidian"
-cask "openmtp"
-cask "opera"
-cask "opera-developer"
-cask "pixelsnap"
-cask "postman"
-cask "pycharm"
-cask "safari-technology-preview"
-cask "slack"
-cask "spotify"
-cask "spotify-notifications"
-cask "telegram"
-cask "tor-browser"
-cask "transmission"
-cask "veracrypt"
-cask "visual-studio-code"
-cask "vivaldi"
-cask "vivaldi-snapshot"
-cask "whatsapp"
-cask "zoom"
-mas "ABBYY Lingvo European Dictionary", id: 467622356
-mas "AdGuard for Safari", id: 1440147259
-mas "ColorSlurp", id: 1287239339
-mas "Dark Reader for Safari", id: 1438243180
-mas "DigiDoc4 Client", id: 1370791134
-mas "Keynote", id: 409183694
-mas "Pages", id: 409201541
-mas "PiPifier", id: 1160374471
-mas "Reeder", id: 1529448980
-mas "Spark", id: 1176895641
-mas "The Clock", id: 488764545
-mas "The Unarchiver", id: 425424353
-mas "Timery", id: 1425368544
-mas "Xcode", id: 497799835
+tap 'aljohri/-'
+tap 'beeftornado/rmtree'
+tap 'coursier/formulas'
+tap 'dart-lang/dart'
+tap 'github/gh'
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/cask-drivers'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/core'
+tap 'homebrew/services'
+tap 'muesli/tap'
+tap 'sass/sass'
+brew 'apktool'
+brew 'sqlite'
+brew 'python@3.9'
+brew 'awscli'
+brew 'bash'
+brew 'openjdk'
+brew 'bfg'
+brew 'cloc'
+brew 'coreutils'
+brew 'docker'
+brew 'dockutil'
+brew 'emacs', restart_service: true
+brew 'fastlane'
+brew 'ffmpeg'
+brew 'fileicon'
+brew 'gh'
+brew 'ghostscript'
+brew 'git'
+brew 'gnu-units'
+brew 'htop'
+brew 'hunspell'
+brew 'iftop'
+brew 'jq'
+brew 'less'
+brew 'mas'
+brew 'mitmproxy'
+brew 'ncdu'
+brew 'openfortivpn'
+brew 'python@3.8'
+brew 'shellcheck'
+brew 'shfmt'
+brew 'speedtest-cli'
+brew 'spotify-tui'
+brew 'thefuck'
+brew 'transmission-cli', restart_service: true
+brew 'trash'
+brew 'tree'
+brew 'wget'
+brew 'wifi-password'
+brew 'yarn'
+brew 'youtube-dl'
+brew 'zsh'
+brew 'aljohri/-/docx2pdf'
+brew 'dart-lang/dart/dart'
+brew 'muesli/tap/duf'
+cask '1password'
+cask '1password-cli'
+cask 'bettertouchtool'
+cask 'bose-updater'
+cask 'brave-browser'
+cask 'brave-browser-nightly'
+cask 'browserstacklocal'
+cask 'calibre'
+cask 'coconutbattery'
+cask 'contexts'
+cask 'datagrip'
+cask 'discord'
+cask 'disk-inventory-x'
+cask 'drawio'
+cask 'fantastical'
+cask 'figma'
+cask 'firefox'
+cask 'firefox-nightly'
+cask 'go64'
+cask 'goldendict'
+cask 'google-chrome'
+cask 'google-chrome-canary'
+cask 'iina'
+cask 'inkscape'
+cask 'intellij-idea'
+cask 'iterm2'
+cask 'logitech-options'
+cask 'macfuse'
+cask 'macmediakeyforwarder'
+cask 'marta'
+cask 'microsoft-edge'
+cask 'microsoft-edge-dev'
+cask 'monitorcontrol'
+cask 'mysides'
+cask 'obsidian'
+cask 'openmtp'
+cask 'opera'
+cask 'opera-developer'
+cask 'pixelsnap'
+cask 'postman'
+cask 'safari-technology-preview'
+cask 'slack'
+cask 'spotify'
+cask 'telegram'
+cask 'tor-browser'
+cask 'transmission'
+cask 'veracrypt'
+cask 'visual-studio-code'
+cask 'vivaldi'
+cask 'vivaldi-snapshot'
+cask 'whatsapp'
+cask 'zoom'
+mas 'ABBYY Lingvo European Dictionary', id: 467_622_356
+mas 'AdGuard for Safari', id: 1_440_147_259
+mas 'ColorSlurp', id: 1_287_239_339
+mas 'Dark Reader for Safari', id: 1_438_243_180
+mas 'DigiDoc4 Client', id: 1_370_791_134
+mas 'Keynote', id: 409_183_694
+mas 'Pages', id: 409_201_541
+mas 'PiPifier', id: 1_160_374_471
+mas 'Reeder', id: 1_529_448_980
+mas 'Spark', id: 1_176_895_641
+mas 'The Clock', id: 488_764_545
+mas 'The Unarchiver', id: 425_424_353
+mas 'Timery', id: 1_425_368_544
+mas 'Xcode', id: 497_799_835
