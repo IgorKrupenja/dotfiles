@@ -38,7 +38,7 @@ main() {
 
 # Ask for password only once
 get_sudo() {
-  echo "Please enter sudo password:"
+  printf "Please enter sudo password.\n"
   printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
     sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
     sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
@@ -100,11 +100,14 @@ install_sw_node() {
   echo ""
   echo "**************************** Installing from npm ***************************"
   echo ""
-  NVM_DIR=$HOME/.nvm
+  export NVM_DIR=$HOME/.nvm
   git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
   $(builtin cd "$NVM_DIR" && git checkout --quiet "$(zsh_nvm_latest_release_tag)")
   backup_file $HOME/.nvm/default-packages
   ln -sv $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
+
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
   # installs latest node and makes it default
   nvm install node
   nvm install 14
@@ -125,6 +128,9 @@ install_sw_misc() {
   mkdir $HOME/.cht.sh
   backup_file $HOME/.cht.sh/cht.sh.conf
   ln -sv $DOTFILES/misc/cht.sh.conf $HOME/.cht.sh/cht.sh.conf
+  echo ""
+  echo "*********************** Installing fvm and pub packages *********************"
+  echo ""
   # Dart and Flutter
   dart pub global activate fvm
   dart pub global activate pubglobalupdate
@@ -133,7 +139,11 @@ install_sw_misc() {
   fvm install dev
   fvm global stable
   # Cocoapods for Flutter
+  echo ""
+  echo "************************ Installing cocoapods packages **********************"
+  echo ""
   export GEM_HOME=$HOME/.gem
+  export PATH=$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/bin:$PATH
   gem install cocoapods --user-install
 }
 
@@ -150,6 +160,8 @@ zsh_config() {
   git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
   backup_file $HOME/.p10k.zsh
   ln -sv $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
+  backup_file $HOME/.p10k-instant-prompt
+  ln -sv $DOTFILES/zsh/.p10k-instant-prompt $HOME/.p10k-instant-prompt
   # Install plug-ins
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -172,6 +184,7 @@ dotfiles() {
   echo ""
 
   #mc
+  mkdir $HOME/.config/mc
   ln -sv $DOTFILES/mc $HOME/.config/mc
   # misc
   dotfiles=(".emacs")
@@ -213,7 +226,7 @@ macos_settings() {
 
   # Marta
   marta_dir="$HOME/Library/Application Support/org.yanex.marta"
-  # Using copy and not symlink beacuse of this issue:
+  # Using copy and not symlink because of this issue:
   # https://github.com/marta-file-manager/marta-issues/issues/488
   if [ -e $marta_dir ]; then
     cp -fvr $marta_dir $marta_dir-$(date +%s).bak
@@ -233,8 +246,9 @@ macos_settings() {
 
   # macOS defaults below, thanks to Mathias Bynens! https://mths.be/macos
 
-  # fix for font smoothing in Chromium/Electron
-  defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
+  # todo
+  # # fix for font smoothing in Chromium/Electron
+  # defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
   # Show scrollbars only wen scrolling
   defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
   # Disable the “Are you sure you want to open this application?” dialog
@@ -244,15 +258,15 @@ macos_settings() {
   defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
   defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
   # Disable “natural” scrolling
-  defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+  defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false # todo
   # Stop iTunes from responding to the keyboard media keys
-  launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
+  # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
   # Require password immediately after sleep or screen saver begins
   defaults write com.apple.screensaver askForPassword -int 1
   defaults write com.apple.screensaver askForPasswordDelay -int 0
   # Save screenshots in PNG format
   defaults write com.apple.screencapture type -string "png"
-  # Set homes as the default location for new Finder windows
+  # Set home as the default location for new Finder windows
   defaults write com.apple.finder NewWindowTarget -string "PfLo"
   defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
   # Wipe all (default) app icons from the Dock
@@ -261,8 +275,9 @@ macos_settings() {
   defaults write com.apple.dock autohide -bool true
   # Remove the auto-hiding Dock delay
   defaults write com.apple.dock autohide-delay -float 0
+  # todo
   # Don’t show recent applications in Dock
-  defaults write com.apple.dock show-recents -bool false
+  # defaults write com.apple.dock show-recents -bool false
   # Check for software updates daily, not just once per week
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
   # Dock magnification effect
