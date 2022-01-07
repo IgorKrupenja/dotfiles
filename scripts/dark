@@ -104,30 +104,12 @@ done
 
 ################################# cht.sh
 
-conf=$HOME/.cht.sh/cht.sh.conf
+conf=$DOTFILES/misc/cht.sh.conf
 
 if [ "$set_dark" = true ]; then
   sed -i '' 's/style=lovelace/style=paraiso-dark/g' "$conf"
 else
   sed -i '' 's/style=paraiso-dark/style=lovelace/g' "$conf"
-fi
-
-################################# toggl-cli
-
-conf=$HOME/.togglrc
-
-if [ "$set_dark" = true ]; then
-  sed -i '' 's/light/dark/g' "$conf"
-else
-  sed -i '' 's/dark/light/g' "$conf"
-fi
-
-################################# fig
-
-if [ "$set_dark" = true ]; then
-  fig theme nord >/dev/null
-else
-  fig theme light >/dev/null
 fi
 
 ################################# Switch back to iTerm

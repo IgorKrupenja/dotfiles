@@ -94,7 +94,6 @@ install_sw_pip() {
   echo ""
   pip3 install pipdeptree
   pip3 install ipython
-  pip3 install togglCli
   pip3 install termdown
   pip3 install gcalcli
   pip3 install pip-autoremove
@@ -124,13 +123,12 @@ zsh_nvm_latest_release_tag() {
 }
 
 install_sw_misc() {
-  # cht.sh
+  # cheat.sh
   echo ""
-  echo "***************************** Installing cht.sh ****************************"
+  echo "**************************** Installing cheat.sh ***************************"
   echo ""
-  curl https://cht.sh/:cht.sh >/usr/local/bin/cht.sh
+  curl https://cht.sh/:cht.sh | tee /usr/local/bin/cht.sh
   chmod +x /usr/local/bin/cht.sh
-  mkdir $HOME/.cht.sh
   backup_file $HOME/.cht.sh/cht.sh.conf
   ln -sv $DOTFILES/misc/cht.sh.conf $HOME/.cht.sh/cht.sh.conf
   echo ""
