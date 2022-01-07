@@ -27,21 +27,10 @@ etty {
     }
 }
 
-fonts {
-    actionBar [ "Default" 13 ]
-    breadcrumbs [ "Default" 13 ]
-    ephemeralTabs [ "Default Bold" 13 ]
-    files [ "Default" 13 ]
-    statusBar [ "Default Light" 13 ]
-    tableHeader [ "Default" 13 ]
-    tabs [ "Default" 13 ]
-    preferences [ "Monaco" 13 ]
-}
-
 keyBindings {
     "Cmd+R" "core.refresh"
     "Ctrl+Tab" "core.tab.next"
-    
+
     "Cmd+O" "core.lookup"
     "Cmd+P" "core.actions"
 
