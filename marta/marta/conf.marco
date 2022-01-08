@@ -41,7 +41,7 @@ fonts {
 keyBindings {
     "Cmd+R" "core.refresh"
     "Ctrl+Tab" "core.tab.next"
-    
+
     "Cmd+O" "core.lookup"
     "Cmd+P" "core.actions"
 
