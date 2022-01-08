@@ -17,7 +17,6 @@ export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 # For gradle formatter plugin for VSCode
 export JAVA_HOME=$(/usr/libexec/java_home)
-# export JAVA_HOME="/usr/libexec/java_home"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 path=(
@@ -686,7 +685,6 @@ dotn() {
   gh issue create --title $* --body ""
   cd ~-
 }
-# alias dotn="dotfiles-new-issue ''"
 alias dotni="dotfiles-new-issue important"
 alias dotnc="dotfiles-new-issue core"
 alias dotnci="dotfiles-new-issue core,important"
