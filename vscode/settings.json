@@ -7,7 +7,8 @@
     "editor.semanticHighlighting.enabled": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
-    }
+    },
+    "editor.selectionHighlight": false
   },
   "[python]": {
     "editor.rulers": [120],
@@ -45,7 +46,7 @@
   },
   "files.autoSave": "onFocusChange",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.fontFamily": "'MonacoB Nerd Font', 'Monaco Nerd Font Mono', Monego, MonacoB, Monaco, Hack, 'Ubuntu Mono', monospace",
+  "editor.fontFamily": "'MonacoB Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
   "git-graph.showStatusBarItem": false,
   // map file extensions to languages
   "files.associations": {
@@ -414,6 +415,7 @@
     "Jaarika",
     "Janno",
     "Kertu",
+    "killall",
     "Kodality",
     "Krematoorium",
     "Krupenja",
@@ -484,18 +486,8 @@
   "workbench.preferredLightColorTheme": "Vitesse Owl Light",
   "window.autoDetectColorScheme": true,
   "git-graph.commitDetailsView.autoCenter": false,
-  "editor.fontSize": 13,
   "hediet.vscode-drawio.theme": "Kennedy",
-  "customizeUI.fontSizeMap": {
-    "13px": "14px",
-    "12px": "14px",
-    "window-title": "14px", // Window title font when using custom titlebar
-    "tab-title": "14px", // Used for editor tab titles
-    "monospace": "14px", // Used for monospace fonts in user interface
-    "menu": "14px" // Used for menu items (windows only)
-  },
   "customizeUI.activityBarHideSettings": true,
-  "terminal.integrated.fontSize": 13,
   "editor.dragAndDrop": false,
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
@@ -503,7 +495,6 @@
   "editor.linkedEditing": true,
   "html-css-class-completion.enableFindUsage": true,
   "html-css-class-completion.enableScssFindUsage": true,
-  "debug.console.fontSize": 13,
   "dart.showTodos": false,
   "security.workspace.trust.untrustedFiles": "open",
   "gitlens.currentLine.enabled": false,
@@ -593,6 +584,17 @@
   "cSpell.diagnosticLevel": "Hint",
   "dart.flutterSdkPaths": ["/Users/igor/fvm/versions"],
   "settingsSync.ignoredSettings": ["-dart.flutterSdkPaths"],
+  "editor.fontSize": 13,
+  "terminal.integrated.fontSize": 13,
+  "debug.console.fontSize": 13,
+  "customizeUI.fontSizeMap": {
+    "13px": "14px",
+    "12px": "14px",
+    "window-title": "14px",
+    "tab-title": "14px",
+    "monospace": "14px",
+    "menu": "14px"
+  },
   "editor.accessibilitySupport": "off",
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
@@ -614,7 +616,8 @@
   "editor.cursorBlinking": "phase",
   "xml.format.splitAttributes": true,
   "xml.format.spaceBeforeEmptyCloseTag": false,
-  "ruby.format": "rubocop"
+  "ruby.format": "rubocop",
+  "dart.debugExternalPackageLibraries": true
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
