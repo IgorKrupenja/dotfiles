@@ -142,13 +142,6 @@ install_sw_misc() {
   fvm install beta
   fvm install dev
   fvm global stable
-  # Cocoapods for Flutter
-  echo ""
-  echo "************************ Installing cocoapods packages **********************"
-  echo ""
-  export GEM_HOME=$HOME/.gem
-  export PATH=$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/bin:$PATH
-  gem install cocoapods --user-install
 }
 
 zsh_config() {

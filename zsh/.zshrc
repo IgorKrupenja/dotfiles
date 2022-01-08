@@ -19,9 +19,7 @@ export DOTFILES="$PROJECTS/dotfiles"
 export JAVA_HOME=$(/usr/libexec/java_home)
 # export JAVA_HOME="/usr/libexec/java_home"
 export CLOUD="$HOME/OneDrive\ -\ TTU"
-export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-# Ruby gems, for cocoapods
-export GEM_HOME=$HOME/.gem
+export ANDROID_HOME=$HOME/Library/Android/sdk
 path=(
   $DOTFILES/scripts
   # some binaries installed with homebrew, like iftop
@@ -34,10 +32,11 @@ path=(
   $ANDROID_HOME/emulator
   $ANDROID_HOME/tools
   $ANDROID_HOME/platform-tools
-  $ANDROID_HOME/build-tools/30.0.3
-  # Ruby gems, for cocoapods
-  $GEM_HOME/ruby/2.6.0/bin
-  $GEM_HOME/bin
+  $ANDROID_HOME/build-tools/32.0.0
+  # Ruby for git fame
+  /opt/homebrew/opt/ruby/bin
+  /opt/homebrew/lib/ruby/gems/3.0.0/bin
+  /opt/homebrew/opt/python@3.8/bin
   $path
 )
 
@@ -545,6 +544,8 @@ fpath=($HOME/.oh-my-zsh/custom/plugins/cht.sh $fpath)
 
 # python
 # ---------------------------------------------------------------------------
+alias python="python3"
+alias pip="pip3"
 alias ipy="ipython"
 alias pipi="pip install"
 alias pipdep="pipdeptree"
