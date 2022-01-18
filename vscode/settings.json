@@ -1,5 +1,5 @@
 {
-  "[javascript][typescript][typescriptreact][json][jsonc][scss]": {
+  "[javascript][typescript][typescriptreact][json][jsonc][scss][html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dart]": {
@@ -8,7 +8,8 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
-    "editor.selectionHighlight": false
+    "editor.selectionHighlight": false,
+    "editor.wordSeparators": "`~!@$%^&*()-=+[{]}\\|;:'\",.<>/?"
   },
   "[python]": {
     "editor.rulers": [120],
@@ -376,7 +377,7 @@
   "python.pythonPath": "/usr/local/opt/python/libexec/bin/python",
   "material-icon-theme.saturation": 0.8,
   "material-icon-theme.hidesExplorerArrows": true,
-  "cSpell.language": "en-GB,en,it,ru,lorem,et",
+  "cSpell.language": "en-GB,en,it,ru,lorem,et,et-EE,it-IT",
   "cSpell.userWords": [
     "Adcash",
     "Åland",
@@ -394,6 +395,7 @@
     "Datepicker",
     "Debouncer",
     "dedup",
+    "devtailor",
     "Devtailor",
     "dotenv",
     "dotfiles",
@@ -470,6 +472,8 @@
   "prettier.trailingComma": "es5",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+    // Causes problems with NestJS
+    // "source.organizeImports": true
   },
   "prettier.printWidth": 100,
   "editor.minimap.enabled": false,
@@ -617,7 +621,10 @@
   "xml.format.splitAttributes": true,
   "xml.format.spaceBeforeEmptyCloseTag": false,
   "ruby.format": "rubocop",
-  "dart.debugExternalPackageLibraries": true
+  "dart.debugExternalPackageLibraries": true,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
