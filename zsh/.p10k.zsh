@@ -1464,8 +1464,15 @@
 
   function prompt_flutter() {
     symlink=$(ls -l $HOME/fvm/default)
+
+    if [[ $symlink == *"."* ]]; then
+      channel=""
+    else
+      channel="${symlink##*/} "
+    fi
+
     version=$(cat $HOME/fvm/default/version)
-    p10k segment -f 'blue' -t "F ${symlink##*/} ${version}"
+    p10k segment -f 'blue' -t "F $channel$version"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.

@@ -21,13 +21,11 @@ export CLOUD="$HOME/OneDrive\ -\ TTU"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 path=(
   $DOTFILES/scripts
-  # some binaries installed with homebrew, like iftop
-  /usr/local/sbin
   # dart binaries, including fvm
   $HOME/.pub-cache/bin
   # global flutter (and dart) from fvm
   $HOME/fvm/default/bin
-  # Android/Flutter CLI tools
+  # Android CLI tools
   $ANDROID_HOME/emulator
   $ANDROID_HOME/tools
   $ANDROID_HOME/platform-tools
@@ -334,7 +332,7 @@ trex() {
 
 # Obsidian
 # ---------------------------------------------------------------------------
-ob() {
+obs() {
   echo "- [ ] $*" >>"$PROJECTS/dev-journal/📥 Incoming/To do.md"
 }
 
@@ -431,9 +429,10 @@ mpdf() {
   alias gs="ggs"
 }
 # media downloader
-alias ydl="youtube-dl"
+alias ydl="yt-dlp"
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias tl="transmission-remote -l"
+alias mil='echo $(($(gdate +%s%N) / 1000000))'
 
 #############################################################################
 # DEVELOPMENT
@@ -506,6 +505,8 @@ alias gxs="git bisect start"
 alias gxg="git bisect good"
 alias gxb="git bisect bad"
 alias gxr="git bisect reset"
+alias gm="git merge"
+alias gmm="git merge main"
 
 # tags
 alias gt="git tag"
@@ -701,4 +702,13 @@ alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
-alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
+alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
+wdx() {
+  if [[ "$(docker container inspect -f '{{.State.Running}}' world-of-mouth-postgres)" == "true" ]]; then
+    docker stop world-of-mouth-postgres &>/dev/null
+    docker start world-of-mouth-postgres-test
+  else
+    docker stop world-of-mouth-postgres-test &>/dev/null
+    docker start world-of-mouth-postgres
+  fi
+}
