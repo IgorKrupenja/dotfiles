@@ -64,9 +64,7 @@ echo "-------------------------"
 git push --no-verify
 
 # Obsidian
-
 cd $PROJECTS/dev-journal
-
 if git status | grep -q "branch is ahead"; then
   printf "\nPushing to dev-journal repo:\n---------------------------\n"
   git push --no-verify
