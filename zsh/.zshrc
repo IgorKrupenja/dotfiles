@@ -335,6 +335,7 @@ trex() {
 obs() {
   echo "- [ ] $*" >>"$PROJECTS/dev-journal/📥 Incoming/To do.md"
 }
+alias cobs='cd $PROJECTS/dev-journal'
 
 # Calculator
 # ---------------------------------------------------------------------------
@@ -619,28 +620,6 @@ alias npt="npm test"
 alias npe="npm run test:e2e"
 alias npcl="npm run cloc"
 
-# yarn
-alias yi="yarn install"
-alias ya="yarn add"
-yad() {
-  yarn add "$1" -D
-}
-alias yr="yarn remove"
-alias yot="yarn outdated"
-alias yu="yarn upgrade"
-alias yui="yarn upgrade-interactive"
-alias yuil="yarn upgrade-interactive --latest"
-# scrips
-alias yru="yarn run"
-alias ys="yarn start"
-alias yt="yarn test"
-alias ytw="yarn test-watch"
-alias yb="yarn run build"
-alias ycl="yarn run cloc"
-alias yd="yarn run deploy"
-alias ydfd="yarn run deploy-fn-dev"
-alias ydf="yarn run deploy-fn"
-
 # Flutter
 # ---------------------------------------------------------------------------
 source $DOTFILES/zsh/flutter_completion.sh
@@ -656,6 +635,15 @@ alias fbri="flutter build ipa --flavor=production"
 # ---------------------------------------------------------------------------
 alias dp="docker ps -a"
 alias ds="docker start"
+
+# GCloud
+# ---------------------------------------------------------------------------
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/igor/.google-cloud-sdk/path.zsh.inc' ]; then . '/Users/igor/.google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/igor/.google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/igor/.google-cloud-sdk/completion.zsh.inc'; fi
 
 #############################################################################
 # PROJECTS
