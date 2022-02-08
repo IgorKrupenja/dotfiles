@@ -627,6 +627,7 @@ source $DOTFILES/zsh/flutter_completion.sh
 alias f="flutter"
 alias fd="flutter devices"
 alias fg="flutter pub get"
+alias fv="flutter --version"
 alias fbda="flutter build appbundle --flavor=development"
 alias fbdi="flutter build ipa --flavor=development"
 alias fbra="flutter build apk --flavor=production"
@@ -634,7 +635,8 @@ alias fbri="flutter build ipa --flavor=production"
 
 # Docker
 # ---------------------------------------------------------------------------
-alias dp="docker ps -a"
+alias dls="docker container ls"
+alias dlsa="docker container ls -a"
 alias ds="docker start"
 
 # GCloud
@@ -687,7 +689,6 @@ alias cz="code $DOTFILES"
 # ---------------------------------------------------------------------------
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias dt="cd $PROJECTS/devtailor/"
-alias td="docker start trimtex-postgres"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
@@ -701,3 +702,8 @@ wdx() {
     docker start world-of-mouth-postgres
   fi
 }
+alias dlsw="docker container ls | grep world-of-mouth-postgres"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
