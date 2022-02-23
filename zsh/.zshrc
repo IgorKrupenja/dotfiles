@@ -506,9 +506,7 @@ alias gxs="git bisect start"
 alias gxg="git bisect good"
 alias gxb="git bisect bad"
 alias gxr="git bisect reset"
-gm() {
-  git merge "$*" --squash
-}
+alias gm="git merge"
 alias gmm="git merge main --squash"
 
 # tags
