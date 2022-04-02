@@ -433,7 +433,7 @@ mpdf() {
 alias ydl="yt-dlp"
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias tl="transmission-remote -l"
-alias mil='echo $(($(gdate +%s%N) / 1000000))'
+alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 
 #############################################################################
 # DEVELOPMENT

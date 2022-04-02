@@ -111,11 +111,11 @@ install_sw_node() {
 
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-  # installs latest node and makes it default
   nvm install node
   nvm install 16
   nvm install 14
   nvm install 12
+  nvm alias default 16
 }
 
 zsh_nvm_latest_release_tag() {
