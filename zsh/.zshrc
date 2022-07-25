@@ -253,39 +253,6 @@ alias bak="backup"
 alias co="color"
 alias up="update"
 
-# Toggl
-# ---------------------------------------------------------------------------
-alias tgr="toggl continue; toggl now"
-alias tgn="toggl now"
-# Open in browser
-alias tgw="open https://www.toggl.com/app/timer"
-
-# Projects
-tgs() {
-  toggl start $2 -o $1 && tgn
-}
-alias tgts="tgs 'Trimtex I phase dev' 'Daily status meeting'"
-
-# history for today and this week
-# TODO: currently broken, #250
-tgl() {
-  raw_data=$(toggl ls -s $(date "+%m/%d/%y") -f +project)
-  echo $raw_data
-
-  times=($(echo $raw_data | grep / | cut -c 16-24))
-  epoch='1970-01-01'
-  sum=0
-
-  for i in $times; do
-    sum="$(date -ujf "%Y-%m-%d %H:%M:%S" "$epoch $i" +%s) + $sum"
-  done
-
-  echo " --------------------------------------------------------------------------------------"
-  echo " Total:        $(date -ujf "%s" $(echo $sum | bc) +"%H:%M:%S")"
-}
-alias tglw="toggl sum"
-alias tgx="tgn && toggl stop"
-
 # Trello CLI
 # ---------------------------------------------------------------------------
 
@@ -507,7 +474,7 @@ alias gxg="git bisect good"
 alias gxb="git bisect bad"
 alias gxr="git bisect reset"
 alias gm="git merge"
-alias gmm="git merge main --squash"
+alias gmm="git merge main"
 
 # tags
 alias gt="git tag"
@@ -638,6 +605,8 @@ alias fbri="flutter build ipa --flavor=production"
 alias dls="docker container ls"
 alias dlsa="docker container ls -a"
 alias ds="docker start"
+alias dcu="docker-compose up"
+alias dcb="docker-compose build"
 
 # GCloud
 # ---------------------------------------------------------------------------
@@ -707,3 +676,6 @@ alias dlsw="docker container ls | grep world-of-mouth-postgres"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
