@@ -553,5 +553,14 @@
   {
     "key": "ctrl+a",
     "command": "extension.aceJump.multiChar"
+  },
+  {
+    "key": "escape",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible && !editorHasMultipleSelections && !editorHoverVisible"
+  },
+  {
+    "key": "ctrl+cmd+w",
+    "command": "-workbench.action.toggleTabsVisibility"
   }
 ]

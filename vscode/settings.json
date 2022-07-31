@@ -1,13 +1,10 @@
 {
-  "[javascript][typescript][typescriptreact][json][jsonc][scss][html]": {
+  "[javascript][typescript][typescriptreact][json][jsonc][scss][html][css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dart]": {
-    // TODO: only really needed for Night Owl-based themes
-    "editor.semanticHighlighting.enabled": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
+    // TODO: only really needed for Night Owl-based themes? Or not at all?
+    // "editor.semanticHighlighting.enabled": true,
     "editor.selectionHighlight": false,
     "editor.wordSeparators": "`~!@$%^&*()-=+[{]}\\|;:'\",.<>/?"
   },
@@ -18,11 +15,15 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "[html][markdown]": {
+  "[html][markdown][plaintext]": {
     "editor.wordBasedSuggestions": false
   },
   "[markdown]": {
-    "editor.quickSuggestions": true,
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[plaintext]": {
@@ -89,16 +90,6 @@
       "editorBracketHighlight.foreground2": "#91BDBC",
       "editorBracketHighlight.foreground3": "#d6438a"
     },
-    // "[Serendipity Light]": {
-    //   "editorBracketHighlight.foreground1": "#4588FF",
-    //   "editorBracketHighlight.foreground2": "#13B8A6",
-    //   "editorBracketHighlight.foreground3": "#A073FF"
-    // },
-    // "[Serendipity Dark]": {
-    //   "editorBracketHighlight.foreground1": "#77A9FF",
-    //   "editorBracketHighlight.foreground2": "#9EF0F0",
-    //   "editorBracketHighlight.foreground3": "#D4BFFF"
-    // },
     "[Vitesse Owl Light]": {
       "dart.closingLabels": "#939dbb88",
       "scrollbar.shadow": "#00000000",
@@ -119,7 +110,8 @@
       "activityBarBadge.background": "#d6438a",
       "editorBracketHighlight.foreground1": "#0c969b",
       "editorBracketHighlight.foreground2": "#4876d6",
-      "editorBracketHighlight.foreground3": "#994cc3"
+      "editorBracketHighlight.foreground3": "#994cc3",
+      "inputOption.activeBackground": "#d6438a51"
     }
   },
   "editor.semanticTokenColorCustomizations": {
@@ -312,29 +304,16 @@
       ]
     }
   },
-  "sqltools.connections": [
-    {
-      "previewLimit": 50,
-      "server": "localhost",
-      "port": 5432,
-      "driver": "PostgreSQL",
-      "name": "WoM in Docker",
-      "database": "world_of_mouth_development",
-      "username": "postgres",
-      "password": "postgres"
-    }
-  ],
-  "editor.renderWhitespace": "none",
   "material-icon-theme.folders.color": "#72809e",
   "editor.autoClosingOvertype": "always",
-  // workaround to fix jumpy markdown ediitng -- was fixed?
+  // workaround to fix jumpy markdown editng -- was fixed?
   // see https://github.com/microsoft/vscode/issues/69467
   // "markdown.preview.scrollEditorWithPreview": false,
   "todo-tree.highlights.defaultHighlight": {
     "type": "text-and-comment",
     "foreground": "#d6438a",
     "background": "#d6438a",
-    "opacity": "10",
+    "opacity": 10,
     "iconColour": "#d6438a",
     "rulerColour": "#d6438a",
     "fontWeight": "bold",
@@ -347,7 +326,6 @@
   "editor.formatOnType": true,
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
-  "breadcrumbs.enabled": true,
   "zenMode.fullScreen": false,
   "window.restoreWindows": "all",
   "editor.wordSeparators": "`~!@$%^&*()-=+[{]}\\|;:'\",.<>/?_",
@@ -365,7 +343,7 @@
       }
     }
   },
-  "customizeUI.titleBar": "inline",
+  // "customizeUI.titleBar": "inline",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "eslint.validate": ["javascript", "javascriptreact"],
   // add parentheses on autocompleting function calls
@@ -374,7 +352,6 @@
   "editor.formatOnSave": true,
   // display suggestions even when expanding snippets
   "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "python.pythonPath": "/usr/local/opt/python/libexec/bin/python",
   "material-icon-theme.saturation": 0.8,
   "material-icon-theme.hidesExplorerArrows": true,
   "cSpell.language": "en-GB,en,it,ru,lorem,et,et-EE,it-IT",
@@ -383,16 +360,20 @@
     "Åland",
     "animationend",
     "audioplayers",
+    "autobuy",
     "autoplay",
     "autovalidate",
     "Avenir",
     "barcode",
+    "BIGSERIAL",
+    "browserslist",
     "captcha",
     "cloc",
     "Cocoapods",
     "collada",
     "creds",
     "Datepicker",
+    "debouncer",
     "Debouncer",
     "dedup",
     "devtailor",
@@ -400,13 +381,21 @@
     "dotenv",
     "dotfiles",
     "dtos",
+    "esmaspäeva",
+    "esnext",
     "fieldname",
+    "fingate",
+    "Fingate",
     "firestore",
+    "flama",
     "Flama",
     "flatlock",
+    "Freepik",
     "fullscreen",
     "gainsboro",
+    "gcloud",
     "Geolocator",
+    "gsutil",
     "gtsupertext",
     "hacky",
     "Handies",
@@ -421,6 +410,7 @@
     "Kodality",
     "Krematoorium",
     "Krupenja",
+    "litecoin",
     "LTRB",
     "Lyndanisse",
     "Maksim",
@@ -428,6 +418,7 @@
     "minmax",
     "mixins",
     "mywebsite",
+    "NEARLINE",
     "nestjs",
     "netsuite",
     "originalname",
@@ -439,15 +430,21 @@
     "Praktikakohvik",
     "Prepper",
     "Recents",
+    "reduxjs",
+    "reranked",
+    "reranking",
     "Serializers",
     "sfprotext",
     "Siidisaba",
     "smth",
     "Spellright",
+    "Sumsub",
     "svgr",
     "Swal",
     "TADA",
     "Tartumaa",
+    "tatumio",
+    "tranform",
     "Transferwise",
     "Trello",
     "trimtex",
@@ -458,10 +455,12 @@
     "Vineet's",
     "vooder",
     "vsync",
+    "wishlisted",
     "Wishlisted",
     "wojtekmaj",
     "worldofmouth",
     "xlink",
+    "xpub",
     "Youtube"
   ],
   "files.insertFinalNewline": true,
@@ -471,9 +470,8 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-    // Causes problems with NestJS
-    // "source.organizeImports": true
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
   },
   "prettier.printWidth": 100,
   "editor.minimap.enabled": false,
@@ -485,13 +483,12 @@
       "mode": "auto"
     }
   ],
-  "python.linting.mypyEnabled": true,
   "workbench.preferredDarkColorTheme": "Nord",
   "workbench.preferredLightColorTheme": "Vitesse Owl Light",
   "window.autoDetectColorScheme": true,
   "git-graph.commitDetailsView.autoCenter": false,
   "hediet.vscode-drawio.theme": "Kennedy",
-  "customizeUI.activityBarHideSettings": true,
+  // "customizeUI.activityBarHideSettings": true,
   "editor.dragAndDrop": false,
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
@@ -509,26 +506,22 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "diffEditor.ignoreTrimWhitespace": false,
   "gitlens.codeLens.enabled": false,
-  "sqltools.highlightQuery": false,
-  "dart.debugSdkLibraries": false,
+  "dart.debugSdkLibraries": true,
   "terminal.integrated.cursorBlinking": true,
   "postcssSorting.config": {
     "properties-order": "alphabetical"
   },
-
   "editor.semanticHighlighting.enabled": false,
   "svg.preview.mode": "svg",
   "terminal.integrated.gpuAcceleration": "on",
   "workbench.editor.pinnedTabSizing": "compact",
-  "workbench.colorTheme": "Vitesse Owl Light",
   "diffEditor.wordWrap": "off",
-  "editor.inlayHints.enabled": false,
+  "editor.inlayHints.enabled": "off",
   "workbench.iconTheme": "material-icon-theme",
   "editor.detectIndentation": false,
   "debug.internalConsoleOptions": "openOnSessionStart",
   "todo-tree.filtering.includeHiddenFiles": true,
-  "bashIde.explainshellEndpoint": "http://localhost:5000",
-  "bashIde.highlightParsingErrors": true,
+  "bashIde.explainshellEndpoint": "http://localhost:5001",
   "shellcheck.ignorePatterns": {
     "**/*.zshrc": false,
     "**/zshrc": false,
@@ -545,7 +538,6 @@
   //   "--verbose"
   // ],
   "dart.showDevToolsDebugToolBarButtons": false,
-  "window.titleBarStyle": "native",
   "dart.lineLength": 120,
   "cSpell.enabledLanguageIds": [
     "asciidoc",
@@ -588,21 +580,18 @@
   "cSpell.diagnosticLevel": "Hint",
   "dart.flutterSdkPaths": ["/Users/igor/fvm/versions"],
   "settingsSync.ignoredSettings": ["-dart.flutterSdkPaths"],
-  "editor.fontSize": 13,
-  "terminal.integrated.fontSize": 13,
-  "debug.console.fontSize": 13,
-  "customizeUI.fontSizeMap": {
-    "13px": "14px",
-    "12px": "14px",
-    "window-title": "14px",
-    "tab-title": "14px",
-    "monospace": "14px",
-    "menu": "14px"
-  },
+  // "editor.fontSize": 13,
+  // "terminal.integrated.fontSize": 13,
+  // "debug.console.fontSize": 13,
+  // "customizeUI.fontSizeMap": {
+  //   "13px": "14px",
+  //   "12px": "14px",
+  //   "window-title": "14px",
+  //   "tab-title": "14px",
+  //   "monospace": "14px",
+  //   "menu": "14px"
+  // },
   "editor.accessibilitySupport": "off",
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
   "cSpell.enableFiletypes": ["applescript", "gitignore", "hosts", "svg"],
   "codeswing.themePreview": true,
   "editor.inlineSuggest.enabled": true,
@@ -622,9 +611,30 @@
   "xml.format.spaceBeforeEmptyCloseTag": false,
   "ruby.format": "rubocop",
   "dart.debugExternalPackageLibraries": true,
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "redhat.telemetry.enabled": false,
+  "debug.javascript.debugByLinkOptions": {
+    "trace": true
+  },
+  "angular.enable-strict-mode-prompt": false,
+  "window.titleBarStyle": "custom",
+  "editor.unicodeHighlight.allowedLocales": {
+    "ru": true
+  },
+  "security.workspace.trust.enabled": false,
+  "audioCues.onDebugBreak": "on",
+  "workbench.editor.historyBasedLanguageDetection": true,
+  "debug.showBreakpointsInOverviewRuler": true,
+  // todo should only be enabled per legacy project
+  // "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "firestorerules.usePrettierFormatter": true,
+  "git.mergeEditor": true,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "markdown.experimental.validate.enabled": true,
+  "editor.experimental.pasteActions.enabled": true,
+  "workbench.colorTheme": "Vitesse Owl Light",
+  // TODO Unfortunately this results in a blurry text in TErminal, even at whole values.
+  // But should be fixed soon https://github.com/xtermjs/xterm.js/pull/3926
+  "window.zoomLevel": 0.75
 
   // experimental check for problems in all TS files
   // disabled as very bad perf

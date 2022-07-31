@@ -83,5 +83,27 @@
     "prefix": "sstate",
     "body": ["setState(() => $1)"],
     "description": "setState one-liner"
+  },
+  "initState": {
+    "prefix": "istate",
+    "body": [
+      "@override",
+      "void initState() {",
+      "  super.initState();",
+      "  // TODO: implement initState",
+      "}"
+    ],
+    "description": "initState"
+  },
+  "dispose": {
+    "prefix": "dispose",
+    "body": [
+      "@override",
+      "void dispose() {",
+      "  // TODO: implement dispose",
+      "  super.dispose();",
+      "}"
+    ],
+    "description": "dispose"
   }
 }
