@@ -658,6 +658,7 @@ alias cz="code $DOTFILES"
 # ---------------------------------------------------------------------------
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias dt="cd $PROJECTS/devtailor/"
+alias dj="cd $PROJECTS/dev-journal/"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
