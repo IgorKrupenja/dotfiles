@@ -441,6 +441,7 @@ alias gs="git status"
 alias glot="git log --graph --all"
 # log with pretty graph
 alias glo="git log --graph --oneline --all"
+alias glod="git log --format='%C(auto) %h %s'"
 # git commit with message
 gcm() {
   git commit -m "$*"
@@ -574,8 +575,9 @@ alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
 
 # npm scripts
-alias npl="nvm-use npm run lint"
 alias npr="nvm-use npm run"
+alias npl="nvm-use npm run lint"
+alias npf="nvm-use npm run format"
 npm-start() {
   if npm run | grep start:debug &>/dev/null; then
     npm run start:debug
