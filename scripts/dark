@@ -64,8 +64,6 @@ fi
 conf=$HOME/Library/Application\ Support/Code/User/settings.json
 
 light_values=(
-  # Colours for bracket highlighting
-  '"#0c969b", "#4876d6", "#994cc3"'
   # To do highlighting
   '"opacity": "10"'
   # To do highlighting and git graph
@@ -78,8 +76,6 @@ light_values=(
   '"hediet.vscode-drawio.theme": "Kennedy"'
 )
 dark_values=(
-  # Colours for bracket highlighting
-  '"#83A2C2", "#91BDBC", "#b48ead"'
   # To do highlighting
   '"opacity": "20"'
   # To do highlighting and git graph
