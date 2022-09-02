@@ -441,7 +441,7 @@ alias gs="git status"
 alias glot="git log --graph --all"
 # log with pretty graph
 alias glo="git log --graph --oneline --all"
-alias glod="git log --format='%C(auto) %h %s'"
+alias glod="git log --pretty=format:'%ad | [%h] %s' --date=format:'%Y-%m-%d'"
 # git commit with message
 gcm() {
   git commit -m "$*"
