@@ -63,6 +63,7 @@ brew "yt-dlp/taps/yt-dlp"
 cask "1password"
 cask "1password-cli"
 cask "adobe-creative-cloud"
+cask "balenaetcher"
 cask "bettertouchtool"
 cask "bose-updater"
 cask "brave-browser"
@@ -75,7 +76,6 @@ cask "datagrip"
 cask "discord"
 cask "disk-inventory-x"
 cask "docker"
-cask "fantastical"
 cask "figma"
 cask "firefox"
 cask "firefox-nightly"
@@ -100,6 +100,7 @@ cask "microsoft-office"
 cask "monitorcontrol"
 cask "mysides"
 cask "ngrok"
+cask "nightowl"
 cask "obsidian"
 cask "openmtp"
 cask "opera"
@@ -122,18 +123,3 @@ cask "whatsapp"
 cask "windscribe"
 cask "wkhtmltopdf"
 cask "zoom"
-mas "AdGuard for Safari", id: 1440147259
-mas "ColorSlurp", id: 1287239339
-mas "Dark Reader for Safari", id: 1438243180
-mas "DaVinci Resolve", id: 571213070
-mas "DigiDoc4 Client", id: 1370791134
-mas "Keynote", id: 409183694
-mas "Notability", id: 360593530
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Reeder", id: 1529448980
-mas "Spark", id: 1176895641
-mas "The Clock", id: 488764545
-mas "The Unarchiver", id: 425424353
-mas "Web eID", id: 1576665083
-mas "Xcode", id: 497799835
