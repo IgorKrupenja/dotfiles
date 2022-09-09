@@ -421,6 +421,7 @@
     "NEARLINE",
     "nestjs",
     "netsuite",
+    "offchain",
     "originalname",
     "overscroll",
     "Parens",
@@ -438,9 +439,11 @@
     "Siidisaba",
     "smth",
     "Spellright",
+    "sumsub",
     "Sumsub",
     "svgr",
     "Swal",
+    "tada",
     "TADA",
     "Tartumaa",
     "tatumio",
@@ -624,7 +627,7 @@
   "audioCues.onDebugBreak": "on",
   "workbench.editor.historyBasedLanguageDetection": true,
   "debug.showBreakpointsInOverviewRuler": true,
-  // todo should only be enabled per legacy project
+  // todo should only be enabled for legacy projects
   // "editor.formatOnSaveMode": "modificationsIfAvailable",
   "firestorerules.usePrettierFormatter": true,
   "git.mergeEditor": true,
@@ -632,9 +635,8 @@
   "markdown.experimental.validate.enabled": true,
   "editor.experimental.pasteActions.enabled": true,
   "workbench.colorTheme": "Vitesse Owl Light",
-  // TODO Unfortunately this results in a blurry text in TErminal, even at whole values.
-  // But should be fixed soon https://github.com/xtermjs/xterm.js/pull/3926
-  "window.zoomLevel": 0.75
+  "window.zoomLevel": 0.75,
+  "githubPullRequests.pullBranch": "never"
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
