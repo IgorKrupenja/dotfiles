@@ -1,0 +1,19 @@
+:host-context(.platform-linux) .monospace,
+:host-context(.platform-linux) .source-code,
+.platform-mac .monospace,
+.platform-mac .source-code {
+  font-family: 'MonacoB Nerd Font', monospace !important;
+  font-size: 11px !important;
+}
+
+.monospace,
+.source-code {
+  font-family: 'MonacoB Nerd Font', monospace !important;
+  font-size: 11px !important;
+}
+
+::shadow .monospace,
+::shadow .source-code {
+  font-family: 'MonacoB Nerd Font', monospace !important;
+  font-size: 11px !important;
+}
