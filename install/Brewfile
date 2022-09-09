@@ -123,21 +123,3 @@ cask "whatsapp"
 cask "windscribe"
 cask "wkhtmltopdf"
 cask "zoom"
-mas "1Password for Safari", id: 1569813296
-mas "AdGuard for Safari", id: 1440147259
-mas "ColorSlurp", id: 1287239339
-mas "Dark Reader for Safari", id: 1438243180
-mas "DaVinci Resolve", id: 571213070
-mas "DigiDoc4 Client", id: 1370791134
-mas "Keepa - Price Tracker", id: 1533805339
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "PayPal Honey", id: 1472777122
-mas "PiPifier", id: 1160374471
-mas "Popcorn for Safari", id: 1535719670
-mas "The Clock", id: 488764545
-mas "The Unarchiver", id: 425424353
-mas "Vimari", id: 1480933944
-mas "Web eID", id: 1576665083
-mas "Xcode", id: 497799835
