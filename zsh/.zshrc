@@ -458,6 +458,8 @@ gbd() {
   git push -d origin "$*" && git branch -D "$*"
 }
 alias gch="git checkout"
+alias gch-="git checkout -"
+alias gchp="git checkout -"
 alias gchm="git checkout main"
 alias gf="git fetch"
 alias gl="git pull"
