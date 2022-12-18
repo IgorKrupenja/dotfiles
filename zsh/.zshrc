@@ -661,6 +661,7 @@ alias cz="code $DOTFILES"
 # Devtailor
 # ---------------------------------------------------------------------------
 alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
+alias trim="cd $PROJECTS/devtailor/trimtex-v2/"
 alias dt="cd $PROJECTS/devtailor/"
 alias dj="cd $PROJECTS/dev-journal/"
 alias wd="docker start world-of-mouth-postgres"
