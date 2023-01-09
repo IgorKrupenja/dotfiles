@@ -4,6 +4,7 @@ animationend
 Antoniga
 audioplayers
 autobuy
+autocrop
 autoplay
 autovalidate
 Avenir
@@ -74,13 +75,16 @@ mywebsite
 NEARLINE
 nestjs
 netsuite
+networkidle
 offchain
 originalname
 overscroll
 Parens
+Phong
 Pipedrive
 Playtech
 pmmmwh
+pnmp
 Praktikakohvik
 Prepper
 prevorder
@@ -97,6 +101,9 @@ sfprotext
 Siidisaba
 smth
 Spellright
+streamifier
+stylelint
+Stylelint
 suht
 sumsub
 Sumsub
@@ -106,6 +113,8 @@ tada
 TADA
 Tartumaa
 tatumio
+topbar
+Topbar
 tranform
 Transferwise
 Transoxiana

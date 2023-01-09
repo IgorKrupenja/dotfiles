@@ -547,6 +547,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n16="nvm use 16"
+alias n18="nvm use 18"
 alias nd="nvm use default"
 nvm-use() {
   if [ -e .nvmrc ]; then
@@ -591,6 +592,14 @@ alias npst="nvm-use npm-start"
 alias npt="npm test"
 alias npe="nvm-use npm run test:e2e"
 alias npcl="npm run cloc"
+
+# pnpm
+alias pni="nvm-use pnpm install"
+alias pnid="nvm-use pnpm install --save-dev"
+alias pnr="nvm-use pnpm run"
+alias pnt="nvm-use pnpm test"
+alias pno="nvm-use pnpm outdated"
+alias pnu="nvm-use pnpm update"
 
 # Flutter
 # ---------------------------------------------------------------------------
@@ -685,3 +694,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# pnpm
+export PNPM_HOME="/Users/igor/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

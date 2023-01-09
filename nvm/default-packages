@@ -1,7 +1,8 @@
-trello-cli
-bash-language-server
-firebase-tools
+@angular/cli
 @nestjs/cli
 aws-cli
-@angular/cli
+bash-language-server
 caniuse-cmd
+firebase-tools
+pnpm
+trello-cli
