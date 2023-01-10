@@ -600,6 +600,7 @@ alias pnr="nvm-use pnpm run"
 alias pnt="nvm-use pnpm test"
 alias pno="nvm-use pnpm outdated"
 alias pnu="nvm-use pnpm update"
+alias pnd="nvm-use pnpm dev"
 
 # Flutter
 # ---------------------------------------------------------------------------
