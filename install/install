@@ -114,8 +114,7 @@ install_sw_node() {
   nvm install node
   nvm install 16
   nvm install 14
-  nvm install 12
-  nvm alias default 16
+  nvm alias default node
 }
 
 zsh_nvm_latest_release_tag() {
