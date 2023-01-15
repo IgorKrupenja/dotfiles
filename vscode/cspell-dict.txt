@@ -1,4 +1,5 @@
 Adcash
+Aksenov
 Åland
 animationend
 Antoniga
@@ -33,6 +34,7 @@ Dušiuks
 Editability
 esmaspäeva
 esnext
+espree
 fieldname
 fingate
 Fingate
@@ -43,6 +45,7 @@ flatlock
 Freepik
 fullscreen
 gainsboro
+Gainullin
 gcloud
 Geolocator
 gsutil
@@ -67,21 +70,26 @@ litecoin
 LTRB
 Lyndanisse
 Maksim
+Malofeev
 microservices
 minlength
 minmax
 mixins
 mywebsite
+Nagorny
 NEARLINE
+Nehoroshkin
 nestjs
 netsuite
 networkidle
+nextjs
 offchain
 originalname
 overscroll
 Parens
 Phong
 Pipedrive
+Pjotr
 Playtech
 pmmmwh
 pnmp
@@ -99,6 +107,7 @@ salesrep
 Serializers
 sfprotext
 Siidisaba
+Sjomkin
 smth
 Spellright
 streamifier
@@ -117,6 +126,7 @@ topbar
 Topbar
 tranform
 Transferwise
+transoxiana
 Transoxiana
 Trello
 trimtex
@@ -134,3 +144,7 @@ worldofmouth
 xlink
 xpub
 Youtube
+Aleksander
+Nikotin
+Sorokin
+Vitaly

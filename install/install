@@ -179,9 +179,6 @@ dotfiles() {
   echo "*************************** Installing dotfiles ****************************"
   echo ""
 
-  #mc
-  mkdir $HOME/.config/mc
-  ln -sv $DOTFILES/mc $HOME/.config/mc
   # misc
   dotfiles=(".emacs")
   for dotfile in ${dotfiles[@]}; do

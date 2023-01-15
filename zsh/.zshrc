@@ -32,7 +32,7 @@ path=(
   $ANDROID_HOME/build-tools/32.0.0
   # Ruby for git fame
   /opt/homebrew/opt/ruby/bin
-  /opt/homebrew/lib/ruby/gems/3.0.0/bin
+  /opt/homebrew/lib/ruby/gems/3.2.0/bin
   /opt/homebrew/opt/python@3.8/bin
   $path
 )
