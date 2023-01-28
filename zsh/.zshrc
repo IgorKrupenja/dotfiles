@@ -210,7 +210,7 @@ bu() {
     brew upgrade
   fi
 }
-alias bd="brew autoremove && brew cleanup -s && brew doctor"
+alias bd="brew autoremove && brew cleanup -s && brew doctor && brew tap --repair"
 alias bri="brew reinstall"
 
 # System info

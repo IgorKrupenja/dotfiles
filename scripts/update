@@ -98,7 +98,7 @@ update_homebrew() {
   fi
 
   echo -e "\n$(underline Running Homebrew diagnostics)\n"
-  brew autoremove && brew cleanup -s && brew doctor
+  brew autoremove && brew cleanup -s && brew doctor && brew tap --repair
 }
 
 update_mas() {
