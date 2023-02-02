@@ -598,7 +598,7 @@ alias pni="nvm-use pnpm install"
 alias pnid="nvm-use pnpm install --save-dev"
 alias pnr="nvm-use pnpm run"
 alias pnt="nvm-use pnpm test"
-alias pno="nvm-use pnpm outdatedn -r"
+alias pno="nvm-use pnpm outdated -r"
 alias pnu="nvm-use pnpm update"
 alias pnd="nvm-use pnpm dev"
 
