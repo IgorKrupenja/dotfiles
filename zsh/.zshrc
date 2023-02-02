@@ -599,8 +599,13 @@ alias pnid="nvm-use pnpm install --save-dev"
 alias pnr="nvm-use pnpm run"
 alias pnt="nvm-use pnpm test"
 alias pno="nvm-use pnpm outdated -r"
-alias pnu="nvm-use pnpm update"
+alias pnu="nvm-use pnpm update -r"
 alias pnd="nvm-use pnpm dev"
+
+# turbo
+alias tu="nvm-use turbo"
+alias tud="nvm-use turbo dev"
+alias tut="nvm-use turbo test"
 
 # Flutter
 # ---------------------------------------------------------------------------
