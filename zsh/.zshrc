@@ -601,6 +601,8 @@ alias pnt="nvm-use pnpm test"
 alias pno="nvm-use pnpm outdated -r"
 alias pnu="nvm-use pnpm update -r"
 alias pnd="nvm-use pnpm dev"
+alias pns="nvm-use pnpm start"
+alias pnb="nvm-use pnpm build"
 
 # turbo
 alias tu="nvm-use turbo"
