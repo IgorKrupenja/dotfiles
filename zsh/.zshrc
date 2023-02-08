@@ -684,7 +684,7 @@ alias dj="cd $PROJECTS/dev-journal/"
 alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
-alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert a4864960e58740b081d268fe63b7d30bcf2b7600a7f08be3c9592c607aea6eed"
+alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
 wdx() {
   if [[ "$(docker container inspect -f '{{.State.Running}}' world-of-mouth-postgres)" == "true" ]]; then
     docker stop world-of-mouth-postgres &>/dev/null
@@ -710,16 +710,15 @@ export PATH="$PNPM_HOME:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/igor/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/igor/mambaforge/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/Users/igor/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/igor/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/igor/mambaforge/bin:$PATH"
-    fi
+  if [ -f "/Users/igor/mambaforge/etc/profile.d/conda.sh" ]; then
+    . "/Users/igor/mambaforge/etc/profile.d/conda.sh"
+  else
+    export PATH="/Users/igor/mambaforge/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
