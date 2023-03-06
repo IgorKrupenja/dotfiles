@@ -240,6 +240,10 @@ alias htop="sudo htop"
 alias cl="clear"
 # zsh
 alias ez="exec zsh"
+# kill process on port
+kport() {
+  lsof -t -i tcp:$1 | xargs kill
+}
 
 #############################################################################
 # CLI TOOLS
@@ -722,3 +726,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop

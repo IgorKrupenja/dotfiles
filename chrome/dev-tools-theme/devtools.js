@@ -1,6 +1,7 @@
-var x = new XMLHttpRequest();
-x.open('GET', 'style.css');
-x.onload = function () {
-  chrome.devtools.panels.applyStyleSheet(x.responseText);
+const request = new XMLHttpRequest();
+
+request.open('GET', 'style.css');
+request.onload = function () {
+  chrome.devtools.panels.applyStyleSheet(request.responseText);
 };
-x.send();
+request.send();
