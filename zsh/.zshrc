@@ -41,8 +41,6 @@ path=(
 # ---------------------------------------------------------------------------
 # less: do not clear screen on exit
 export LESS=-XFR
-# thefuck
-eval $(thefuck --alias)
 
 #############################################################################
 # ZSH
@@ -56,12 +54,13 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 COMPLETION_WAITING_DOTS="true"
 # disable % at EOL
 PROMPT_EOL_MARK=''
+# this and zsh-nvm result in faster zsh load times than using nvm directly
+export NVM_COMPLETION=true
 # Plugins
 plugins=(
   web-search
   colored-man-pages
   extract
-  ng
   # below custom plugins installed separately
   autoupdate
   zsh-autosuggestions
@@ -547,9 +546,6 @@ compctl -K _pip_completion pip
 alias ciu="caniuse"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 alias n16="nvm use 16"
 alias n18="nvm use 18"
 alias nd="nvm use default"
@@ -598,6 +594,8 @@ alias npe="nvm-use npm run test:e2e"
 alias npcl="npm run cloc"
 
 # pnpm
+export PNPM_HOME="/Users/igor/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 alias pni="nvm-use pnpm install"
 alias pnid="nvm-use pnpm install --save-dev"
 alias pnr="nvm-use pnpm run"
@@ -627,6 +625,7 @@ alias fbri="flutter build ipa --flavor=production"
 
 # Docker
 # ---------------------------------------------------------------------------
+source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop
 alias dls="docker container ls"
 alias dlsa="docker container ls -a"
 alias ds="docker start"
@@ -699,32 +698,3 @@ wdx() {
   fi
 }
 alias dlsw="docker container ls | grep world-of-mouth-postgres"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-# pnpm
-export PNPM_HOME="/Users/igor/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/igor/mambaforge/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "/Users/igor/mambaforge/etc/profile.d/conda.sh" ]; then
-    . "/Users/igor/mambaforge/etc/profile.d/conda.sh"
-  else
-    export PATH="/Users/igor/mambaforge/bin:$PATH"
-  fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop
