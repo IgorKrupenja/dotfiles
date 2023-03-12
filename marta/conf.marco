@@ -23,20 +23,30 @@ behavior {
 
 etty {
     fonts {
-        normal [ "MonacoB Nerd Font" 13 ]
+        normal [ "MonacoB Nerd Font" 14 ]
     }
 }
 
 fonts {
-    actionBar [ "Default" 13 ]
-    breadcrumbs [ "Default" 13 ]
-    ephemeralTabs [ "Default Bold" 13 ]
-    files [ "Default" 13 ]
-    statusBar [ "Default Light" 13 ]
-    tableHeader [ "Default" 13 ]
-    tabs [ "Default" 13 ]
-    preferences [ "Monaco" 13 ]
+    actionBar [ "Default" 14 ]
+    breadcrumbs [ "Default" 14 ]
+    ephemeralTabs [ "Default Bold" 14 ]
+    files [ "Default" 14 ]
+    statusBar [ "Default Light" 14 ]
+    tableHeader [ "Default" 14 ]
+    tabs [ "Default" 14 ]
+    preferences [ "MonacoB Nerd Font" 14 ]
 }
+
+gadgets [
+    {
+        id "gadget.action.trash.runner"
+        name "Move to trash (CLI)"
+        type "executable"
+        executable "/opt/homebrew/bin/trash"
+        args ["${active.selection.paths}"]
+    }
+]
 
 keyBindings {
     "Cmd+R" "core.refresh"
@@ -49,12 +59,14 @@ keyBindings {
     "Right" "core.open"
     "Space" "core.select.move.down"
 
-    "Delete" "core.trash"
+    "Delete" "gadget.action.trash.runner"
+    "Cmd+Backspace" "gadget.action.trash.runner"
 
     "F1" "core.finder.showInfo"
     "F2" "core.rename"
     "F3" "core.preview"
     "Shift+F5" "core.symlink"
+    "F8" "gadget.action.trash.runner"
     "F9" "core.copy"
     "Shift+F9" "core.symlink"
     "F10" "core.move"
@@ -62,3 +74,4 @@ keyBindings {
     "Cmd+F12" "core.path.folder"
     "Shift+F12" "core.path"
 }
+
