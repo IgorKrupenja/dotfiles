@@ -198,13 +198,18 @@
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
   },
-  {
-    "key": "cmd+s",
-    "command": "-workbench.action.files.save"
-  },
+  // {
+  //   "key": "cmd+s",
+  //   "command": "-workbench.action.files.save"
+  // },
   {
     "key": "alt+q",
     "command": "-extension.jumpy-enter",
+    "when": "editorTextFocus && !jumpy.isInJumpMode"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "extension.jumpy-enter",
     "when": "editorTextFocus && !jumpy.isInJumpMode"
   },
   {
@@ -262,13 +267,13 @@
     "command": "-workbench.action.debug.restart",
     "when": "inDebugMode"
   },
-  {
-    "key": "cmd+s",
-    "command": "extension.multiCommand.execute",
-    "args": {
-      "sequence": ["postcssSorting.execute", "workbench.action.files.save"]
-    }
-  },
+  // {
+  //   "key": "cmd+s",
+  //   "command": "extension.multiCommand.execute",
+  //   "args": {
+  //     "sequence": ["postcssSorting.execute", "workbench.action.files.save"]
+  //   }
+  // },
   {
     "key": "cmd+o",
     "command": "workbench.action.quickOpen"
@@ -551,10 +556,6 @@
     "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus && !hasOtherSuggestions && !hasSnippetCompletions && !inSnippetMode && !suggestWidgetVisible && editorLangId == 'markdown'"
   },
   {
-    "key": "ctrl+a",
-    "command": "extension.aceJump.multiChar"
-  },
-  {
     "key": "escape",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible && !editorHasMultipleSelections && !editorHoverVisible"
@@ -562,5 +563,63 @@
   {
     "key": "ctrl+cmd+w",
     "command": "-workbench.action.toggleTabsVisibility"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-emojisense.quickEmoji",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-emojisense.quickEmojiTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-markdown.extension.editing.toggleItalic",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-toggleSuggestionDetails",
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "-editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "workbench.action.showTreeHover",
+    "when": "customTreeView && listFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "-workbench.action.showTreeHover",
+    "when": "customTreeView && listFocus && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "-workbench.action.files.saveAs"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "-workbench.action.files.saveLocalFile",
+    "when": "remoteFileDialogVisible"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "workbench.view.extension.test"
   }
 ]
