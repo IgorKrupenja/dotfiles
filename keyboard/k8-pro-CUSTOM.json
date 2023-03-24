@@ -1,5 +1,5 @@
 {
-  "name": "Keychron K8 Pro",
+  "name": "Keychron K8 Pro ANSI RGB",
   "vendorProductId": 875823744,
   "macros": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
   "layers": [
@@ -141,7 +141,7 @@
       "KC_TRNS",
       "KC_HELP",
       "KC_TRNS",
-      "KC_SLEP",
+      "KC_NLCK",
       "RGB_TOG",
       "RGB_MOD",
       "RGB_VAI",
