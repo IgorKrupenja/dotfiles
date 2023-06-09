@@ -1,5 +1,3 @@
-@angular/cli
-@nestjs/cli
 aws-cli
 bash-language-server
 caniuse-cmd

@@ -16,20 +16,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 # For gradle formatter plugin for VSCode
-export JAVA_HOME=$(/usr/libexec/java_home)
 export CLOUD="$HOME/OneDrive\ -\ TTU"
-export ANDROID_HOME=$HOME/Library/Android/sdk
 path=(
   $DOTFILES/scripts
-  # Android CLI tools
-  $ANDROID_HOME/emulator
-  $ANDROID_HOME/tools
-  $ANDROID_HOME/platform-tools
-  $ANDROID_HOME/build-tools/32.0.0
-  # Ruby for git fame
-  /opt/homebrew/opt/ruby/bin
-  /opt/homebrew/lib/ruby/gems/3.2.0/bin
-  /opt/homebrew/opt/python@3.8/bin
   $path
 )
 
@@ -318,13 +307,6 @@ un() {
   gunits "$1 $2" $3 -t
 }
 
-# Calendar
-# ---------------------------------------------------------------------------
-# TODO: All broken, see #199
-alias cala="gcalcli agenda --military --details=length --details=location"
-alias calw="gcalcli calw --military --mon"
-alias calm="gcalcli calm --military --mon"
-
 # World clock
 # ---------------------------------------------------------------------------
 wcl() {
@@ -399,7 +381,6 @@ mpdf() {
 # media downloader
 alias ydl="yt-dlp"
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
-alias tl="transmission-remote -l"
 alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 
 #############################################################################
@@ -604,11 +585,6 @@ alias pnd="nvm-use pnpm dev"
 alias pns="nvm-use pnpm start"
 alias pnb="nvm-use pnpm build"
 
-# turbo
-alias tu="nvm-use turbo"
-alias tud="nvm-use turbo dev"
-alias tut="nvm-use turbo test"
-
 # Docker
 # ---------------------------------------------------------------------------
 source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop
@@ -666,21 +642,8 @@ alias cz="code $DOTFILES"
 
 # Devtailor
 # ---------------------------------------------------------------------------
-alias wom="cd $PROJECTS/devtailor/world-of-mouth/"
 alias trim="cd $PROJECTS/devtailor/trimtex-v2/"
 alias dt="cd $PROJECTS/devtailor/"
-alias dj="cd $PROJECTS/dev-journal/"
-alias wd="docker start world-of-mouth-postgres"
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
-wdx() {
-  if [[ "$(docker container inspect -f '{{.State.Running}}' world-of-mouth-postgres)" == "true" ]]; then
-    docker stop world-of-mouth-postgres &>/dev/null
-    docker start world-of-mouth-postgres-test
-  else
-    docker stop world-of-mouth-postgres-test &>/dev/null
-    docker start world-of-mouth-postgres
-  fi
-}
-alias dlsw="docker container ls | grep world-of-mouth-postgres"
