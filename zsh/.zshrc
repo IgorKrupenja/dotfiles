@@ -21,10 +21,6 @@ export CLOUD="$HOME/OneDrive\ -\ TTU"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 path=(
   $DOTFILES/scripts
-  # dart binaries, including fvm
-  $HOME/.pub-cache/bin
-  # global flutter (and dart) from fvm
-  $HOME/fvm/default/bin
   # Android CLI tools
   $ANDROID_HOME/emulator
   $ANDROID_HOME/tools
@@ -90,6 +86,7 @@ source $DOTFILES/zsh/.iterm2_shell_integration.zsh
 alias dl="cd $HOME/Downloads"
 alias p="cd $PROJECTS"
 alias dot="cd $DOTFILES"
+alias cd-="cd -"
 
 # Trash
 # ---------------------------------------------------------------------------
@@ -599,6 +596,7 @@ export PATH="$PNPM_HOME:$PATH"
 alias pni="nvm-use pnpm install"
 alias pnid="nvm-use pnpm install --save-dev"
 alias pnr="nvm-use pnpm run"
+alias pnl="nvm-use pnpm lint"
 alias pnt="nvm-use pnpm test"
 alias pno="nvm-use pnpm outdated -r"
 alias pnu="nvm-use pnpm update -r"
@@ -610,18 +608,6 @@ alias pnb="nvm-use pnpm build"
 alias tu="nvm-use turbo"
 alias tud="nvm-use turbo dev"
 alias tut="nvm-use turbo test"
-
-# Flutter
-# ---------------------------------------------------------------------------
-source $DOTFILES/zsh/flutter_completion.sh
-alias f="flutter"
-alias fd="flutter devices"
-alias fg="flutter pub get"
-alias fv="flutter --version"
-alias fbda="flutter build appbundle --flavor=development"
-alias fbdi="flutter build ipa --flavor=development"
-alias fbra="flutter build apk --flavor=production"
-alias fbri="flutter build ipa --flavor=production"
 
 # Docker
 # ---------------------------------------------------------------------------

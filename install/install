@@ -133,14 +133,6 @@ install_sw_misc() {
   echo ""
   echo "*********************** Installing fvm and pub packages *********************"
   echo ""
-  # Dart and Flutter
-  dart pub global activate fvm
-  dart pub global activate pubglobalupdate
-  export PATH=$HOME/fvm/default/bin:$PATH
-  fvm install stable
-  fvm install beta
-  fvm install dev
-  fvm global stable
 }
 
 zsh_config() {
