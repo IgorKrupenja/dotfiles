@@ -15,6 +15,7 @@ echo ""
 # Write log
 exec > >(tee "/tmp/dotfiles-install-$(date +%s).log") 2>&1
 
+mkdir -p $HOME/Projects
 # Repo location
 DOTFILES="$HOME/Projects/dotfiles"
 
@@ -84,7 +85,6 @@ install_sw_brew() {
   /usr/sbin/softwareupdate --install-rosetta --agree-to-license
   cd $DOTFILES/install
   brew bundle
-  ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
   cd $DOTFILES
 }
 
@@ -95,7 +95,6 @@ install_sw_pip() {
   pip3 install pipdeptree
   pip3 install ipython
   pip3 install termdown
-  pip3 install gcalcli
   pip3 install pip-autoremove
 }
 
@@ -112,8 +111,8 @@ install_sw_node() {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
   nvm install node
+  nvm install 18
   nvm install 16
-  nvm install 14
   nvm alias default node
 }
 
@@ -130,8 +129,6 @@ install_sw_misc() {
   chmod +x /usr/local/bin/cht.sh
   backup_file $HOME/.cht.sh/cht.sh.conf
   ln -sv $DOTFILES/misc/cht.sh.conf $HOME/.cht.sh/cht.sh.conf
-  echo ""
-  echo "*********************** Installing fvm and pub packages *********************"
   echo ""
 }
 
