@@ -587,7 +587,7 @@ alias pnb="nvm-use pnpm build"
 
 # Docker
 # ---------------------------------------------------------------------------
-source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop
+# source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop
 alias dls="docker container ls"
 alias dlsa="docker container ls -a"
 alias ds="docker start"

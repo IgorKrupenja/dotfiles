@@ -107,7 +107,7 @@ update_mas() {
 }
 
 main() {
-  update_gems
+  # update_gems
   update_omz
   update_node
   update_homebrew
