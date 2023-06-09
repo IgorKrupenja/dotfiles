@@ -533,12 +533,12 @@
     "scminput": true,
     "git-commit": true
   },
-  "window.zoomLevel": 0.9,
   "typescript.preferences.jsxAttributeCompletionStyle": "braces",
   "workbench.sideBar.location": "right",
   "vitest.enable": true,
   "vitest.showFailMessages": true,
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "window.zoomLevel": 1
 
   // experimental check for problems in all TS files
   // disabled as very bad perf

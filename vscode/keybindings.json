@@ -621,5 +621,18 @@
   {
     "key": "shift+cmd+s",
     "command": "workbench.view.extension.test"
+  },
+  {
+    "key": "cmd+k cmd+r",
+    "command": "-workbench.action.keybindingsReference"
+  },
+  {
+    "key": "cmd+k cmd+r",
+    "command": "-git.revertSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
+  },
+  {
+    "key": "cmd+k cmd+r",
+    "command": "git.revertSelectedRanges"
   }
 ]
