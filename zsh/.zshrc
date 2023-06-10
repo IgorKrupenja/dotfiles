@@ -80,6 +80,7 @@ alias cd-="cd -"
 # Trash
 # ---------------------------------------------------------------------------
 alias t="trash"
+
 alias tcd="cd $HOME/.Trash"
 alias tls="ls $HOME/.Trash"
 alias tla="la $HOME/.Trash"
