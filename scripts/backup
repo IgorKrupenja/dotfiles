@@ -27,13 +27,13 @@ if [[ $(git diff .) ]]; then
   git commit -m "Update VSCode settings"
 fi
 
-# Brewfile dump
-# cd $DOTFILES/install
-# brew bundle dump --force
-# if [[ $(git diff Brewfile) ]]; then
-#   git add Brewfile
-#   git commit -m "Update Brewfile"
-# fi
+Brewfile dump
+cd $DOTFILES/install
+brew bundle dump --force
+if [[ $(git diff Brewfile) ]]; then
+  git add Brewfile
+  git commit -m "Update Brewfile"
+fi
 
 cd $DOTFILES
 
