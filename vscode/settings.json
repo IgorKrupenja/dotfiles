@@ -77,236 +77,40 @@
   "window.newWindowDimensions": "inherit",
   // tweaks for themes
   "git-graph.graph.colours": [
-    "#bf616a",
-    "#a3be8c",
-    "#ebcb8b",
-    "#81a1c1",
-    "#88c0d0",
-    "#e5e9f0",
-    "#4c566a",
-    "#b48ead"
+    "#de3d3b",
+    "#08916a",
+    "#E0AF02",
+    "#288ed7",
+    "#49d0c5",
+    "#994cc3",
+    "#403f53",
+    "#d6438a"
   ],
   "workbench.colorCustomizations": {
     "[Nord]": {
       "scrollbar.shadow": "#00000000",
       "editorOverviewRuler.border": "#00000000",
-      "dart.closingLabels": "#616E8888",
+      // "dart.closingLabels": "#616E8888",
       "editorBracketHighlight.foreground1": "#83A2C2",
       "editorBracketHighlight.foreground2": "#91BDBC",
-      "editorBracketHighlight.foreground3": "#b48ead"
+      "editorBracketHighlight.foreground3": "#d6438a"
     },
-    "[Vitesse Owl Light]": {
-      "dart.closingLabels": "#939dbb88",
+    "[Nord Deep]": {
       "scrollbar.shadow": "#00000000",
-      "tab.activeBorder": "#b48ead",
-      "terminal.ansiBrightBlack": "#939dbb",
-      "terminal.ansiBlack": "#403F55",
-      "debugConsole.infoForeground": "#403F55",
-      "statusBar.debuggingBackground": "#b48ead",
-      "statusBar.debuggingForeground": "#FFF",
-      "statusBar.debuggingBorder": "#b48ead",
-      "scrollbarSlider.background": "#393a3430",
-      "editor.wordHighlightBackground": "#1c6b4820",
-      "editor.wordHighlightStrongBackground": "#1c6b4820",
-      "list.inactiveSelectionBackground": "#e6e6e6",
-      "list.activeSelectionBackground": "#dddddd",
-      "list.hoverBackground": "#e6e6e6",
-      "activityBar.activeBorder": "#b48ead",
-      "activityBarBadge.background": "#b48ead",
-      "editorBracketHighlight.foreground1": "#0c969b",
-      "editorBracketHighlight.foreground2": "#4876d6",
-      "editorBracketHighlight.foreground3": "#e5e9f0",
-      "inputOption.activeBackground": "#b48ead51"
-    }
-  },
-  "editor.semanticTokenColorCustomizations": {
-    "[Vitesse Owl Light]": {
-      "rules": {
-        "annotation": "#e5e9f0"
-      }
-    }
-  },
-  "editor.tokenColorCustomizations": {
-    "[Vitesse Owl Light]": {
-      "strings": "#C96765",
-      "variables": "#403F55",
-      "textMateRules": [
-        {
-          "name": "Json strings",
-          "scope": "string.quoted.double.json.comments",
-          "settings": {
-            "foreground": "#C96765"
-          }
-        },
-        {
-          "name": "TS Decorator",
-          "scope": "source.ts meta.decorator entity.name.function",
-          "settings": {
-            "foreground": "#0c969b"
-          }
-        },
-        {
-          "name": "Booleans",
-          "scope": "constant.language.boolean",
-          "settings": {
-            "foreground": "#e5e9f0"
-          }
-        },
-        {
-          "name": "Booleans in JSON",
-          "scope": "constant.language.json.comments",
-          "settings": {
-            "foreground": "#e5e9f0"
-          }
-        },
-        {
-          "name": "null",
-          "scope": "constant.language.null",
-          "settings": {
-            "foreground": "#4876d6"
-          }
-        },
-        {
-          "name": "SCSS &",
-          "scope": "entity.name.tag.reference.scss",
-          "settings": {
-            "foreground": "#C96765"
-          }
-        },
-        {
-          "name": "CSS custom tags like Angular components",
-          "scope": "entity.name.tag.custom",
-          "settings": {
-            "foreground": "#C96765"
-          }
-        },
-        {
-          "name": "CSS units",
-          "scope": "keyword.other.unit",
-          "settings": {
-            "foreground": "#4876d6"
-          }
-        },
-        {
-          "name": "Properties",
-          "scope": "variable.other",
-          "settings": {
-            "foreground": "#403F55"
-          }
-        },
-        {
-          "name": "Disable italics",
-          "scope": [
-            "comment",
-            "comment.block",
-            "comment.block.documentation",
-            "comment.line",
-            "constant",
-            "constant.character",
-            "constant.character.escape",
-            "constant.numeric",
-            "constant.numeric.integer",
-            "constant.numeric.float",
-            "constant.numeric.hex",
-            "constant.numeric.octal",
-            "constant.other",
-            "constant.regexp",
-            "constant.rgb-value",
-            "emphasis",
-            "entity",
-            "entity.name",
-            "entity.name.class",
-            "entity.name.function",
-            "entity.name.method",
-            "entity.name.section",
-            "entity.name.selector",
-            "entity.name.tag",
-            "entity.name.type",
-            "entity.other",
-            "entity.other.attribute-name",
-            "entity.other.inherited-class",
-            "invalid",
-            "invalid.deprecated",
-            "invalid.illegal",
-            "keyword",
-            "keyword.control",
-            "keyword.control.flow.ts",
-            "keyword.operator",
-            "keyword.operator.expression.instanceof.ts",
-            "keyword.operator.new",
-            "keyword.operator.assignment",
-            "keyword.operator.arithmetic",
-            "keyword.operator.logical",
-            "keyword.other",
-            "markup",
-            "markup.bold",
-            "markup.changed",
-            "markup.deleted",
-            "markup.heading",
-            "markup.inline.raw",
-            "markup.inserted",
-            "markup.italic",
-            "markup.list",
-            "markup.list.numbered",
-            "markup.list.unnumbered",
-            "markup.other",
-            "markup.quote",
-            "markup.raw",
-            "markup.underline",
-            "markup.underline.link",
-            "meta",
-            "meta.block",
-            "meta.cast",
-            "meta.class",
-            "meta.function",
-            "meta.function-call",
-            "meta.preprocessor",
-            "meta.return-type",
-            "meta.selector",
-            "meta.tag",
-            "meta.type.annotation",
-            "meta.type",
-            "punctuation.definition.string.begin",
-            "punctuation.definition.string.end",
-            "punctuation.separator",
-            "punctuation.separator.continuation",
-            "punctuation.terminator",
-            "punctuation.accessor",
-            "storage",
-            "storage.modifier",
-            "storage.type",
-            "string",
-            "string.interpolated",
-            "string.other",
-            "string.quoted",
-            "string.quoted.double",
-            "string.quoted.other",
-            "string.quoted.single",
-            "string.quoted.triple",
-            "string.regexp",
-            "string.unquoted",
-            "strong",
-            "support",
-            "support.class",
-            "support.constant",
-            "support.function",
-            "support.other",
-            "support.type",
-            "support.type.property-name",
-            "support.variable",
-            "variable",
-            "variable.language",
-            "variable.name",
-            "variable.other",
-            "variable.other.readwrite",
-            "variable.parameter",
-            "variable.other.object.property"
-          ],
-          "settings": {
-            "fontStyle": ""
-          }
-        }
-      ]
+      "editorOverviewRuler.border": "#00000000",
+      // "dart.closingLabels": "#616E8888",
+      "editorBracketHighlight.foreground1": "#83A2C2",
+      "editorBracketHighlight.foreground2": "#91BDBC",
+      "editorBracketHighlight.foreground3": "#d6438a"
+    },
+    "[Nord Light Brighter]": {
+      "scrollbar.shadow": "#00000000",
+      "editorOverviewRuler.border": "#00000000",
+      // "dart.closingLabels": "#616E8888",
+      // todo not good
+      "editorBracketHighlight.foreground1": "#83A2C2",
+      "editorBracketHighlight.foreground2": "#91BDBC",
+      "editorBracketHighlight.foreground3": "#d6438a"
     }
   },
   "material-icon-theme.folders.color": "#72809e",
@@ -316,11 +120,11 @@
   // "markdown.preview.scrollEditorWithPreview": false,
   "todo-tree.highlights.defaultHighlight": {
     "type": "text-and-comment",
-    "foreground": "#b48ead",
-    "background": "#b48ead",
+    "foreground": "#d6438a",
+    "background": "#d6438a",
     "opacity": 10,
-    "iconColour": "#b48ead",
-    "rulerColour": "#b48ead",
+    "iconColour": "#d6438a",
+    "rulerColour": "#d6438a",
     "fontWeight": "bold",
     "textDecoration": "underline"
   },
@@ -339,12 +143,12 @@
   "highlight-matching-tag.styles": {
     "opening": {
       "name": {
-        "underline": "#b58faf"
+        "underline": "#0c969b"
       }
     },
     "closing": {
       "name": {
-        "underline": "#b58faf"
+        "underline": "#0c969b"
       }
     }
   },
@@ -379,7 +183,7 @@
       "mode": "auto"
     }
   ],
-  "workbench.preferredDarkColorTheme": "Nord",
+  "workbench.preferredDarkColorTheme": "Nord Deep",
   "window.autoDetectColorScheme": true,
   "git-graph.commitDetailsView.autoCenter": false,
   "editor.dragAndDrop": false,
@@ -424,7 +228,6 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.external.osxExec": "iTerm.app",
   "dart.enableSnippets": false,
-  "auto-close-tag.disableOnLanguage": ["typescript"],
   "dart.automaticCommentSlashes": "all",
   "dart.openDevTools": "flutter",
   "dart.showDevToolsDebugToolBarButtons": false,
@@ -469,7 +272,7 @@
   ],
   "cSpell.diagnosticLevel": "Hint",
   "dart.flutterSdkPaths": ["/Users/igor/fvm/versions"],
-  "settingsSync.ignoredSettings": ["-dart.flutterSdkPaths"],
+  "settingsSync.ignoredSettings": ["-dart.flutterSdkPaths", "workbench.colorTheme"],
   "editor.accessibilitySupport": "off",
   "cSpell.enableFiletypes": ["applescript", "gitignore", "hosts", "svg"],
   "codeswing.themePreview": true,
@@ -482,13 +285,9 @@
     "plaintext": true,
     "markdown": true
   },
-  "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.matchBrackets": "never",
   "editor.cursorBlinking": "phase",
-  "xml.format.splitAttributes": true,
-  "xml.format.spaceBeforeEmptyCloseTag": false,
-  // "ruby.format": "rubocop",
   "dart.debugExternalPackageLibraries": true,
   "redhat.telemetry.enabled": false,
   "debug.javascript.debugByLinkOptions": {
@@ -508,7 +307,6 @@
   "firestorerules.usePrettierFormatter": true,
   "git.mergeEditor": true,
   "terminal.integrated.shellIntegration.enabled": true,
-  "editor.experimental.pasteActions.enabled": true,
   "window.commandCenter": false,
   "cSpell.customDictionaries": {
     "custom": {
@@ -536,7 +334,9 @@
   "vitest.enable": true,
   "vitest.showFailMessages": true,
   "git.openRepositoryInParentFolders": "always",
-  "workbench.colorTheme": "Nord"
+  "workbench.colorTheme": "GitHub Light",
+  "workbench.preferredLightColorTheme": "GitHub Light",
+  "window.zoomLevel": 0.8
 
   // experimental check for problems in all TS files
   // disabled as very bad perf
