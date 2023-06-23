@@ -4,7 +4,7 @@ environment {
 }
 
 behavior {
-    theme "Igor"
+    theme "Classic"
 
     layout {
         showActionBar false
@@ -15,15 +15,8 @@ behavior {
     }
 
     table {
-        maxItemCount -1
         useAlternateColor false
         colorHighlighting true
-    }
-}
-
-etty {
-    fonts {
-        normal [ "MonacoB Nerd Font" 14 ]
     }
 }
 
@@ -41,10 +34,10 @@ fonts {
 gadgets [
     {
         id "gadget.action.trash.runner"
-        name "Move to trash (CLI)"
+        name "Move to Trash (CLI)"
         type "executable"
-        executable "/opt/homebrew/bin/trash"
-        args ["${active.selection.paths}"]
+        executable "/Users/igor/Projects/dotfiles/scripts/trash-prompt.sh"
+        args ["${active.selection.names}"]
     }
 ]
 
@@ -59,14 +52,14 @@ keyBindings {
     "Right" "core.open"
     "Space" "core.select.move.down"
 
-    "Delete" "gadget.action.trash.runner"
-    "Cmd+Backspace" "gadget.action.trash.runner"
+    "Delete" "core.trash"
+    "Cmd+Backspace" "core.trash"
 
     "F1" "core.finder.showInfo"
     "F2" "core.rename"
     "F3" "core.preview"
     "Shift+F5" "core.symlink"
-    "F8" "gadget.action.trash.runner"
+    "F8" "core.trash"
     "F9" "core.copy"
     "Shift+F9" "core.symlink"
     "F10" "core.move"
@@ -74,4 +67,3 @@ keyBindings {
     "Cmd+F12" "core.path.folder"
     "Shift+F12" "core.path"
 }
-
