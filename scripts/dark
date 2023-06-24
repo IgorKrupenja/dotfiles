@@ -65,27 +65,19 @@ conf=$HOME/Library/Application\ Support/Code/User/settings.json
 
 light_values=(
   # To do highlighting
+  '"foreground": "#A74047",'
+  '"background": "#A74047",'
   '"opacity": "10"'
-  # To do highlighting and git graph
-  '#d6438a'
-  # git graph
-  '#de3d3b' '#08916a' '#E0AF02' '#288ed7' '#49d0c5' '#994cc3' '#403f53'
-  # Highlight matching tag
-  '"underline": "#0c969b"'
-  # Draw.io
-  '"hediet.vscode-drawio.theme": "Kennedy"'
+  '"iconColour": "#A74047",'
+  '"rulerColour": "#A74047",'
 )
 dark_values=(
   # To do highlighting
+  '"foreground": "#b48ead",'
+  '"background": "#b48ead",'
   '"opacity": "20"'
-  # To do highlighting and git graph
-  '#b48ead'
-  # git graph
-  '#bf616a' '#a3be8c' '#ebcb8b' '#81a1c1' '#88c0d0' '#e5e9f0' '#4c566a'
-  # Highlight matching tag
-  '"underline": "#b58faf"'
-  # Draw.io
-  '"hediet.vscode-drawio.theme": "dark"'
+  '"iconColour": "#b48ead",'
+  '"rulerColour": "#b48ead",'
 )
 
 for i in "${!light_values[@]}"; do

@@ -4,6 +4,7 @@ Aksenov
 Aleksander
 animationend
 Antoniga
+applescript
 audioplayers
 autobuy
 autocrop
@@ -92,6 +93,7 @@ netsuite
 networkidle
 nextjs
 Nikotin
+Nord
 offchain
 Openlogin
 originalname
@@ -163,3 +165,4 @@ worldofmouth
 xlink
 xpub
 Youtube
+Zaino
