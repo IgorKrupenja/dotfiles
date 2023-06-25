@@ -121,6 +121,7 @@ Serializers
 Sexclub
 Sexmane
 sfprotext
+Shastin
 Siidisaba
 Sjomkin
 smth

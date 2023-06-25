@@ -65,19 +65,15 @@ conf=$HOME/Library/Application\ Support/Code/User/settings.json
 
 light_values=(
   # To do highlighting
-  '"foreground": "#A74047",'
-  '"background": "#A74047",'
-  '"opacity": "10"'
-  '"iconColour": "#A74047",'
-  '"rulerColour": "#A74047",'
+  '"color": "#A74047"'
+  '"backgroundColor": "#A7404715"'
+  '"overviewRulerColor": "#A74047"'
 )
 dark_values=(
   # To do highlighting
-  '"foreground": "#b48ead",'
-  '"background": "#b48ead",'
-  '"opacity": "20"'
-  '"iconColour": "#b48ead",'
-  '"rulerColour": "#b48ead",'
+  '"color": "#b48ead"'
+  '"backgroundColor": "#b48ead30"'
+  '"overviewRulerColor": "#b48ead"'
 )
 
 for i in "${!light_values[@]}"; do
