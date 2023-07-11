@@ -139,6 +139,7 @@ tada
 TADA
 Tartumaa
 tatumio
+todohighlight
 topbar
 Topbar
 tprompt
@@ -155,6 +156,7 @@ unsandbox
 Vineet
 Vineet's
 Vitaly
+Vitesse
 vooder
 votings
 vsync

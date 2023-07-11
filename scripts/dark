@@ -68,12 +68,26 @@ light_values=(
   '"color": "#A74047"'
   '"backgroundColor": "#A7404715"'
   '"overviewRulerColor": "#A74047"'
+  # Git graph
+  '#D73A4A'
+  '#28A745'
+  '#DCAB07'
+  '#0366D6'
+  '#5B32A3'
+  '#1C7C82'
 )
 dark_values=(
   # To do highlighting
   '"color": "#b48ead"'
   '"backgroundColor": "#b48ead30"'
   '"overviewRulerColor": "#b48ead"'
+  # Git graph
+  '#5E81AC'
+  '#88C0D0'
+  '#BF616A'
+  '#A3BE8C'
+  '#EBCB8B'
+  '#B48EAD'
 )
 
 for i in "${!light_values[@]}"; do
