@@ -15,8 +15,6 @@ source $HOME/.p10k-instant-prompt
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
-# For gradle formatter plugin for VSCode
-export CLOUD="$HOME/OneDrive\ -\ TTU"
 path=(
   $DOTFILES/scripts
   $path
