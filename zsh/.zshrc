@@ -66,6 +66,10 @@ source $ZSH/oh-my-zsh.sh
 # iTerm shell integration
 source $DOTFILES/zsh/.iterm2_shell_integration.zsh
 
+if [ -f $DOTFILES/zsh/private.zsh ]; then
+  source $DOTFILES/zsh/private.zsh
+fi
+
 #############################################################################
 # NAVIGATION & FILE MANAGEMENT
 #############################################################################
