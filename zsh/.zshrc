@@ -590,7 +590,9 @@ alias pnb="nvm-use pnpm build"
 
 # Docker
 # ---------------------------------------------------------------------------
-# source /Users/igor/.docker/init-zsh.sh || true # Added by Docker Desktop
+if [ -f $HOME/.docker/init-zsh.sh ]; then
+  source "$HOME/.docker/init-zsh.sh"
+fi
 alias dls="docker container ls"
 alias dlsa="docker container ls -a"
 alias ds="docker start"
@@ -600,8 +602,10 @@ alias dcb="docker-compose build"
 # GCloud
 # ---------------------------------------------------------------------------
 
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
 #############################################################################
 # PROJECTS
