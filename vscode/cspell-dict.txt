@@ -46,6 +46,7 @@ firestore
 flama
 Flama
 flatlock
+forem
 formik
 Formik
 Freepik
@@ -59,6 +60,9 @@ gtsupertext
 hacky
 Handies
 Harjumaa
+hashnode
+Hashnode
+HASHNODE
 Huftgold
 icomoon
 Icomoon
@@ -133,6 +137,8 @@ Stylelint
 suht
 sumsub
 Sumsub
+supabase
+SUPABASE
 svgr
 Swal
 tada

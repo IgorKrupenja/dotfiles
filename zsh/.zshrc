@@ -117,8 +117,6 @@ alias ql="qlmanage -p &>/dev/null"
 # img tools
 alias ils="imgls"
 alias icat="imgcat"
-# syntax-highlighted cat
-alias ccat='pygmentize -g'
 # dd with progress
 alias ddd="sudo gdd bs=1M status=progress"
 # ls/la with dirs first
@@ -179,7 +177,7 @@ bl() {
   brew list --cask
 }
 alias bs="brew search"
-alias br="brew remove"
+alias br="brew rmtree"
 bdep() {
   if [[ $* == "" ]]; then
     brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
@@ -582,11 +580,14 @@ alias pnid="nvm-use pnpm install --save-dev"
 alias pnr="nvm-use pnpm run"
 alias pnl="nvm-use pnpm lint"
 alias pnt="nvm-use pnpm test"
+alias pnc="nvm-use pnpm coverage"
 alias pno="nvm-use pnpm outdated -r"
 alias pnu="nvm-use pnpm update -r"
 alias pnd="nvm-use pnpm dev"
 alias pns="nvm-use pnpm start"
 alias pnb="nvm-use pnpm build"
+alias pne="nvm-use pnpm exec"
+alias pnx="nvm-use pnpm dlx"
 
 # Docker
 # ---------------------------------------------------------------------------
