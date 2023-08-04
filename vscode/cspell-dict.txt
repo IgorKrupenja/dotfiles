@@ -3,6 +3,7 @@ Aksenov
 Åland
 Aleksander
 animationend
+ansi
 Antoniga
 applescript
 audioplayers
@@ -79,6 +80,7 @@ Kodality
 Kostiv
 Krematoorium
 Krupenja
+lcov
 litecoin
 LTRB
 Lyndanisse

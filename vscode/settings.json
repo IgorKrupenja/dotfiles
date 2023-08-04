@@ -1,12 +1,128 @@
 {
-    "workbench.colorTheme": "Nord Light Brighter",
-    "security.workspace.trust.untrustedFiles": "open",
-    "editor.fontFamily": "'MonacoB Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
-    "window.zoomLevel": 0.8,
-    "workbench.sideBar.location": "right",
-    "workbench.preferredDarkColorTheme": "Nord",
-    "workbench.preferredHighContrastLightColorTheme": "Nord Light Brighter",
-    "window.autoDetectColorScheme": true,
-    "editor.inlineSuggest.enabled": true,
-    "workbench.iconTheme": "material-icon-theme"
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.fontFamily": "'MonacoB Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
+  "workbench.sideBar.location": "right",
+  "workbench.preferredDarkColorTheme": "Nord",
+  "window.autoDetectColorScheme": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "workbench.colorCustomizations": {
+    "[Nord]": {
+      "scrollbar.shadow": "#00000000",
+      "editorOverviewRuler.border": "#00000000",
+      "editorBracketHighlight.foreground1": "#83A2C2",
+      "editorBracketHighlight.foreground2": "#91BDBC",
+      "editorBracketHighlight.foreground3": "#B48EAD"
+    },
+    "[GitHub Soft]": {
+      // "peekViewTitle.background": "#ffffff"
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    // "[GitHub Soft]": {
+    //   "textMateRules": [
+    //     {
+    //       "scope": "support.type.primitive.tsx",
+    //       "settings": {
+    //         "foreground": "#9C602B"
+    //       }
+    //     }
+    //   ]
+    // }
+  },
+  "files.autoSave": "onFocusChange",
+  "editor.guides.bracketPairs": "active",
+  "editor.matchBrackets": "never",
+  "shellcheck.ignorePatterns": {
+    "**/*.zshrc": false,
+    "**/*.zprofile": false
+  },
+  "cSpell.customDictionaries": {
+    "custom": {
+      "name": "Custom",
+      "path": "~/Projects/dotfiles/vscode/cspell-dict.txt",
+      "scope": "user",
+      "addWords": true
+    }
+  },
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.enableFiletypes": ["applescript", "gitignore", "hosts"],
+  "editor.cursorBlinking": "smooth",
+  "terminal.integrated.cursorBlinking": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "explorer.confirmDelete": false,
+  "material-icon-theme.saturation": 0.6,
+  "git-graph.graph.colours": [
+    "#5E81AC",
+    "#88C0D0",
+    "#BF616A",
+    "#A3BE8C",
+    "#EBCB8B",
+    "#B48EAD"
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "#b48ead",
+    "backgroundColor": "#b48ead30",
+    "overviewRulerColor": "#b48ead",
+    "borderRadius": "2px"
+  },
+  "git-graph.showStatusBarItem": false,
+  "workbench.preferredLightColorTheme": "GitHub Soft",
+  "workbench.editor.tabCloseButton": "left",
+  "cSpell.language": "en-GB,en,ru,lorem,et,et-EE",
+  "importCost.largePackageDarkColor": "#BF616A88",
+  "importCost.largePackageLightColor": "#A74047AA",
+  "importCost.mediumPackageDarkColor": "#EBCB8B88",
+  "importCost.mediumPackageLightColor": "#DBAB09AA",
+  "importCost.smallPackageDarkColor": "#A3BE8C88",
+  "importCost.smallPackageLightColor": "#22863AAA",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "todohighlight.isCaseSensitive": false,
+  "todohighlight.keywordsPattern": "(\\/\\/|#|<!--|/\\*|;|\\/\\\\*|^|^[ \\\\t]*(-|\\\\d+.))\\s*todo.*",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "workbench.editorAssociations": {
+    "git-rebase-todo": "default"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Nord",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": ["source.addMissingImports"],
+  "editor.linkedEditing": true,
+  "editor.dragAndDrop": false,
+  "notebook.dragAndDropEnabled": false,
+  "settingsSync.ignoredSettings": [
+    "workbench.colorTheme",
+    "todohighlight.defaultStyle",
+    "git-graph.graph.colours"
+  ],
+  "window.zoomLevel": 1,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "database-client.telemetry.usesOnlineServices": false,
+  "window.dialogStyle": "custom",
+  "emmet.syntaxProfiles": {
+    "jsx": {
+      "markup.attributes": {
+        "class*": "className"
+      }
+    }
+  },
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": true,
+  "yaml.schemas": {
+    "file:///Users/igor/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "redhat.telemetry.enabled": true,
+  "atlascode.jira.enabled": false,
+  "window.commandCenter": false
 }
