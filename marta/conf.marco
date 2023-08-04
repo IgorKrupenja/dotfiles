@@ -4,7 +4,7 @@ environment {
 }
 
 behavior {
-    theme "Classic"
+    theme "Igor"
 
     layout {
         showActionBar false
