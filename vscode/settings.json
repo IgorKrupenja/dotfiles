@@ -12,9 +12,15 @@
       "editorOverviewRuler.border": "#00000000",
       "editorBracketHighlight.foreground1": "#83A2C2",
       "editorBracketHighlight.foreground2": "#91BDBC",
-      "editorBracketHighlight.foreground3": "#B48EAD"
+      "editorBracketHighlight.foreground3": "#B48EAD",
+      "jumpy2.labelFontColor": "#FFFFFF",
+      "jumpy2.labelBackgroundColor": "#83A2C2",
+      "jumpy2.labelBorderColor": "#83A2C2"
     },
     "[GitHub Soft]": {
+      "jumpy2.labelFontColor": "#FFFFFF",
+      "jumpy2.labelBackgroundColor": "#5a32a3",
+      "jumpy2.labelBorderColor": "#5a32a3"
       // "peekViewTitle.background": "#ffffff"
     }
   },
@@ -88,7 +94,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "GitHub Soft",
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
@@ -105,7 +111,6 @@
     "todohighlight.defaultStyle",
     "git-graph.graph.colours"
   ],
-  "window.zoomLevel": 1,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "git.openRepositoryInParentFolders": "never",
   "terminal.integrated.defaultProfile.osx": "zsh",
@@ -120,9 +125,22 @@
   },
   "markdown.editor.pasteUrlAsFormattedLink.enabled": true,
   "yaml.schemas": {
-    "file:///Users/igor/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///Users/igor/.vscode/extensions/atlassian.atlascode-3.0.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
   "redhat.telemetry.enabled": true,
   "atlascode.jira.enabled": false,
-  "window.commandCenter": false
+  "window.commandCenter": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 1
 }

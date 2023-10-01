@@ -190,17 +190,8 @@
   },
   {
     "key": "ctrl+a",
-    "command": "extension.jumpy-word"
-  },
-  {
-    "key": "ctrl+a",
     "command": "-cursorLineStart",
     "when": "textInputFocus"
-  },
-  {
-    "key": "Escape",
-    "command": "extension.jumpy-exit",
-    "when": "editorTextFocus && jumpy.isJumpyMode"
   },
   {
     "key": "cmd+w",
@@ -216,5 +207,23 @@
     "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "jumpy2.toggle",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "escape",
+    "command": "jumpy2.exit",
+    "when": "editorTextFocus && jumpy2.jump-mode"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-workbench.action.switchWindow"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "editor.emmet.action.wrapWithAbbreviation"
   }
 ]
