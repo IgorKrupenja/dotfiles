@@ -65,7 +65,11 @@ update_node() {
 
     echo -e "\n$(underline Updating global npm packages for node $current_node_version)\n"
     nvm use $node_version
-    npm -g update
+    if [[ $(npm -g outdated) ]]; then
+      npm -g update
+    else
+      echo -e "\nEverything up to date!"
+    fi
 
     # String is stored in a variable to prevent syntax highlighting from breaking in VSCode
     node_update_string="Checking for updates for node ${node_version}..."

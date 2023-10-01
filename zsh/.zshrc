@@ -527,6 +527,7 @@ alias ciu="caniuse"
 # nvm
 alias n16="nvm use 16"
 alias n18="nvm use 18"
+alias n20="nvm use 20"
 alias nd="nvm use default"
 nvm-use() {
   if [ -e .nvmrc ]; then
