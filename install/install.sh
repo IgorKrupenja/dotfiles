@@ -36,7 +36,7 @@ main() {
   dotfiles
   install_sw_node
   macos_settings
-  display_success_message
+  restart_zsh
 }
 
 # Ask for password only once
@@ -268,16 +268,15 @@ macos_settings() {
   sudo dscl . -delete /Groups/wheel GroupMembership $(whoami)
 }
 
-display_success_message() {
+restart_zsh() {
+  exec zsh
+
   echo ""
   echo "############################################################################"
   echo "#                                                                          #"
   echo "#                             INSTALL FINISHED                             #"
   echo "#                                                                          #"
   echo "############################################################################"
-  echo ""
-  echo "*********** Restart terminal or SSH session to update zsh config ***********"
-  echo ""
 
   exit
 }
