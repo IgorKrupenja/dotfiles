@@ -96,6 +96,7 @@ install_sw_pip() {
   pip3 install ipython
   pip3 install termdown
   pip3 install pip-autoremove
+  pip3 install git-fame
 }
 
 install_sw_node() {
@@ -266,6 +267,9 @@ macos_settings() {
 
   # Ask for sudo password in the future
   sudo dscl . -delete /Groups/wheel GroupMembership $(whoami)
+
+  # Enable server performance mode https://apple.stackexchange.com/questions/373035/fix-fork-resource-temporarily-unavailable-on-os-x-macos
+  nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 }
 
 restart_zsh() {
