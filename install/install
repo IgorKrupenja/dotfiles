@@ -146,7 +146,7 @@ zsh_config() {
   backup_file $HOME/.p10k.zsh
   ln -sv $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
   backup_file $HOME/.p10k-instant-prompt
-  ln -sv $DOTFILES/zsh/.p10k-instant-prompt $HOME/.p10k-instant-prompt
+  ln -sv $DOTFILES/zsh/.p10k-instant-prompt.sh $HOME/.p10k-instant-prompt.sh
   # Install plug-ins
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions

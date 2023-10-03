@@ -93,11 +93,11 @@ update_homebrew() {
   brew update --verbose
 
   echo -e "\n$(underline Updating Homebrew packages and casks)\n"
-  if [[ -z $(brew outdated) ]]; then
-    echo "Everything up to date!"
-  else
-    brew upgrade
-  fi
+  # if [[ -z $(brew outdated --greedy) ]]; then
+  #   echo "Everything up to date!"
+  # else
+  brew upgrade --greedy --verbose
+  # fi
 
   echo -e "\n$(underline Running Homebrew diagnostics)\n"
   brew autoremove && brew cleanup -s && brew doctor && brew tap --repair
