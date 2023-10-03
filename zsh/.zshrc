@@ -16,10 +16,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export SCRIPTS="$DOTFILES/scripts"
-# path=(
-#   $DOTFILES/scripts
-#   $path
-# )
 
 # Utilities
 # ---------------------------------------------------------------------------
