@@ -10,11 +10,11 @@ A repository to store some of my dotfiles, settings and scripts. Only macOS supp
 
 ## Highlights
 
-- [install/install](install/install) Installation script for automated install (see [Installation](#installation) section below).
+- [install/install](install/install.sh) Installation script for automated install (see [Installation](#installation) section below).
 - [zsh/.zshrc](zsh/.zshrc) My core Z shell config with helpful functions, aliases, etc. Note that this is intentionally kept as a single file as splitting the config into several files was causing performance issues.
-- [scripts/status](scripts/status) Displays some status information on hardware/software (only macOS supported).
-- [scripts/git-global-status](scripts/git-global-status) Shows status (up-to-date/need to commit/need to push) for git repositories in a directory set with `$PROJECTS` environment variable.
-- [scripts/dark](scripts/dark) Switch between system dark and light modes on macOS and manually switch between dark and light themes in some apps.
+- [scripts/status](scripts/status.sh) Displays some status information on hardware/software (only macOS supported).
+- [scripts/git-global-status](scripts/git-global-status.sh) Shows status (up-to-date/need to commit/need to push) for git repositories in a directory set with `$PROJECTS` environment variable.
+- [scripts/dark](scripts/dark.sh) Switches between system dark and light modes on macOS and manually switches between dark and light themes in some apps.
 
 ## Installation
 
