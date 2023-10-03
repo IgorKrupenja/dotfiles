@@ -394,13 +394,7 @@ alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 # Editors
 # ---------------------------------------------------------------------------
 
-if [[ -n $SSH_CONNECTION ]]; then
-  # for remote session
-  export EDITOR='emacs -nw'
-else
-  # for local session
-  export EDITOR='code'
-fi
+export EDITOR='code'
 
 # VSCode
 c() {
@@ -410,13 +404,6 @@ c() {
     code "$@"
   fi
 }
-
-# emacs
-alias emacs="emacs -nw"
-alias suemacs="sudo emacs -nw"
-
-# crontab
-alias cre="EDITOR=emacs crontab -e"
 
 # git
 # ---------------------------------------------------------------------------

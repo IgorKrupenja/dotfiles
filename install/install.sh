@@ -169,7 +169,7 @@ dotfiles() {
   echo ""
 
   # misc
-  dotfiles=(".emacs" ".sleep" ".wakeup")
+  dotfiles=(".sleep" ".wakeup")
   for dotfile in ${dotfiles[@]}; do
     # Backup any existing dotfiles
     backup_file $HOME/${dotfile}
