@@ -190,11 +190,11 @@ macos_settings() {
 
   # crontab
   (
-    crontab -l >/dev/null 2>&1
+    crontab -l 2>/dev/null
     echo "0 22 * * 0 /Users/igor/Projects/dotfiles/scripts/backup >/dev/null 2>&1"
   ) | crontab -
   (
-    crontab -l >/dev/null 2>&1
+    crontab -l 2>/dev/null
     echo "0 17 * * * /usr/local/scripts/trello refresh >/dev/null 2>&1"
   ) | crontab -
 

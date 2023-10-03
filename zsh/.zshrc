@@ -393,7 +393,6 @@ alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 
 # Editors
 # ---------------------------------------------------------------------------
-
 export EDITOR='code'
 
 # VSCode
