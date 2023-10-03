@@ -1,14 +1,6 @@
 #!/bin/zsh
 # shellcheck shell=bash disable=SC2086,2046
 
-ansi() {
-  echo -e "\033[${1}m${*:2}\033[0m"
-}
-
-underline() {
-  ansi 4 "$@"
-}
-
 # gems, for cocoapods
 update_gems() {
   echo -e "\n$(underline "Updating Ruby gems")\n"
@@ -36,12 +28,6 @@ update_omz() {
 
     popd &>/dev/null || exit
   done
-}
-
-trim_node_version_string() {
-  input=$*
-  node_version_string="$(echo -e "${input#*v}" | tr -d '[:space:]')"
-  echo $node_version_string
 }
 
 update_node() {
@@ -88,6 +74,12 @@ update_node() {
   nvm ls --no-alias
 }
 
+trim_node_version_string() {
+  input=$*
+  node_version_string="$(echo -e "${input#*v}" | tr -d '[:space:]')"
+  echo $node_version_string
+}
+
 update_homebrew() {
   echo -e "\n$(underline Updating Homebrew)\n"
   brew update --verbose
@@ -106,6 +98,14 @@ update_homebrew() {
 update_mas() {
   echo -e "\n$(underline "Updating App Store apps")\n"
   mas upgrade
+}
+
+underline() {
+  ansi 4 "$@"
+}
+
+ansi() {
+  echo -e "\033[${1}m${*:2}\033[0m"
 }
 
 main() {

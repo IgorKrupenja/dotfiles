@@ -15,10 +15,11 @@ source $HOME/.p10k-instant-prompt.sh
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
-path=(
-  $DOTFILES/scripts
-  $path
-)
+export SCRIPTS="$DOTFILES/scripts"
+# path=(
+#   $DOTFILES/scripts
+#   $path
+# )
 
 # Utilities
 # ---------------------------------------------------------------------------
@@ -114,9 +115,6 @@ alias df="duf"
 alias du="du -h -d 1"
 # quick look
 alias ql="qlmanage -p &>/dev/null"
-# img tools
-alias ils="imgls"
-alias icat="imgcat"
 # dd with progress
 alias ddd="sudo gdd bs=1M status=progress"
 # ls/la with dirs first
@@ -243,11 +241,14 @@ kport() {
 
 # Aliases for scripts in ./scripts directory
 # ---------------------------------------------------------------------------
-alias ggs="git-global-status"
-alias st="status"
-alias bak="backup"
-alias co="color"
-alias up="update"
+alias ggs="$SCRIPTS/git-global-status.sh"
+alias st="$SCRIPTS/status.sh"
+alias bak="$SCRIPTS/backup.sh"
+alias co="$SCRIPTS/color.sh"
+alias up="$SCRIPTS/update.sh"
+alias dark="$SCRIPTS/dark.sh"
+alias ils="$SRCRIPTS/imgls.sh"
+alias icat="$SRCRIPTS/imgcat.sh"
 
 # Trello CLI
 # ---------------------------------------------------------------------------

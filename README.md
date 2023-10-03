@@ -23,5 +23,5 @@ Install script can be run on clean systems without git or Xcode Command Line Too
 To install on macOS, run:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install/install)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install/install.sh)"
 ```
