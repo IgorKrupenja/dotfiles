@@ -108,12 +108,17 @@ ansi() {
   echo -e "\033[${1}m${*:2}\033[0m"
 }
 
+display_notification() {
+  osascript -e 'display notification "Software update complete" with title "cron" sound name "Ping"'
+}
+
 main() {
   # update_gems
   update_omz
   update_node
   update_homebrew
   update_mas
+  display_notification
 }
 
 main "$@"
