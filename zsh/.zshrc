@@ -171,13 +171,7 @@ bl() {
   brew list --cask
 }
 alias bs="brew search"
-br() {
-  if brew list --cask | grep -qw $1; then
-    brew uninstall --cask $1
-  else
-    brew rmtree $1
-  fi
-}
+alias br="brew uninstall"
 bdep() {
   if [[ $* == "" ]]; then
     brew leaves | xargs brew deps --formula --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"

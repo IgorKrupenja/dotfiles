@@ -51,6 +51,7 @@ forem
 formik
 Formik
 Freepik
+Fudy
 fullscreen
 gainsboro
 Gainullin
