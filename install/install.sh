@@ -31,7 +31,6 @@ main() {
   clone_repo
   install_sw_brew
   install_sw_pip
-  install_sw_misc
   zsh_config
   dotfiles
   install_sw_node
@@ -119,18 +118,6 @@ install_sw_node() {
 
 zsh_nvm_latest_release_tag() {
   echo $(builtin cd "$NVM_DIR" && git fetch --quiet --tags origin && git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1))
-}
-
-install_sw_misc() {
-  # cheat.sh
-  echo ""
-  echo "**************************** Installing cheat.sh ***************************"
-  echo ""
-  curl https://cht.sh/:cht.sh | tee /usr/local/bin/cht.sh
-  chmod +x /usr/local/bin/cht.sh
-  backup_file $HOME/.cht.sh/cht.sh.conf
-  ln -sv $DOTFILES/misc/cht.sh.conf $HOME/.cht.sh/cht.sh.conf
-  echo ""
 }
 
 zsh_config() {

@@ -240,14 +240,14 @@ kport() {
 
 # Aliases for scripts in ./scripts directory
 # ---------------------------------------------------------------------------
-alias ggst="$SCRIPTS/git-global-status.sh"
+alias ggs="$SCRIPTS/git-global-status.sh"
 alias st="$SCRIPTS/status.sh"
 alias bak="$SCRIPTS/backup.sh"
 alias co="$SCRIPTS/color.sh"
 alias up="$SCRIPTS/update.sh"
 alias dark="$SCRIPTS/dark.sh"
 alias ils="$SCRIPTS/imgls.sh"
-alias icat="$SRCRIPTS/imgcat.sh"
+alias icat="$SCRIPTS/imgcat.sh"
 
 # Trello CLI
 # ---------------------------------------------------------------------------
@@ -374,12 +374,13 @@ togif() {
 }
 # stopwatch
 alias sw="termdown -a"
+alias ghostscript="/opt/homebrew/bin/gs"
 # merge PDFs with ghostscript
 mpdf() {
   if [[ $* == "" ]]; then
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
+    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
   else
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$*"
+    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$*"
   fi
 }
 # media downloader
@@ -408,7 +409,7 @@ c() {
 # git
 # ---------------------------------------------------------------------------
 # git status
-alias gst="git status"
+alias gs="git status"
 # normal git log - with timestamps
 alias glot="git log --graph --all"
 # log with pretty graph
@@ -477,13 +478,6 @@ gir() {
     git rebase -i HEAD~"$1"
   fi
 }
-
-# cht.sh
-# ---------------------------------------------------------------------------
-# cheat sheets
-alias cht="cht.sh"
-# for completions
-fpath=("$HOME"/.oh-my-zsh/custom/plugins/cht.sh "$fpath")
 
 # python
 # ---------------------------------------------------------------------------
