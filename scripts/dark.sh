@@ -100,16 +100,6 @@ for i in "${!light_values[@]}"; do
   fi
 done
 
-################################# cht.sh
-
-conf=$DOTFILES/misc/cht.sh.conf
-
-if [ "$set_dark" = true ]; then
-  sed -i '' 's/style=lovelace/style=paraiso-dark/g' "$conf"
-else
-  sed -i '' 's/style=paraiso-dark/style=lovelace/g' "$conf"
-fi
-
 ################################# Switch back to iTerm
 
 osascript -e 'tell application "iTerm" to activate'
