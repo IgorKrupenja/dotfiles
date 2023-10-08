@@ -240,7 +240,7 @@ kport() {
 
 # Aliases for scripts in ./scripts directory
 # ---------------------------------------------------------------------------
-alias ggs="$SCRIPTS/git-global-status.sh"
+alias ggst="$SCRIPTS/git-global-status.sh"
 alias st="$SCRIPTS/status.sh"
 alias bak="$SCRIPTS/backup.sh"
 alias co="$SCRIPTS/color.sh"
@@ -335,9 +335,9 @@ world_clock() {
     "Europe/Moscow"
     "Asia/Singapore"
   )
-  output=""
 
-  for loc in $time_zones; do
+  output=""
+  for loc in "${time_zones[@]}"; do
     city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
     current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $4 " " $5 }')
     temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
@@ -353,7 +353,9 @@ wtr() {
   curl -s v2.wttr.in/"$*"
 }
 # old version
-alias wtro="curl -s \"wttr.in/$1\""
+wtro() {
+  curl -s "wttr.in/$1"
+}
 
 # Misc
 # ---------------------------------------------------------------------------
@@ -374,13 +376,11 @@ togif() {
 alias sw="termdown -a"
 # merge PDFs with ghostscript
 mpdf() {
-  unalias gs
   if [[ $* == "" ]]; then
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
   else
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf $*
   fi
-  alias gs="ggs"
 }
 # media downloader
 alias ydl="yt-dlp"
@@ -408,7 +408,7 @@ c() {
 # git
 # ---------------------------------------------------------------------------
 # git status
-alias gs="git status"
+alias gst="git status"
 # normal git log - with timestamps
 alias glot="git log --graph --all"
 # log with pretty graph
@@ -605,16 +605,16 @@ fi
 # Dotfiles
 # ---------------------------------------------------------------------------
 dotfiles_new_issue() {
-  title="${@:2}"
+  title="${*:2}"
   cd $PROJECTS/dotfiles
   gh issue create --title $title --body "" --label $1
-  cd ~-
+  cd ~- || exit
 }
 # TODO: broken, label cannot be empty
 dotn() {
   cd $PROJECTS/dotfiles
   gh issue create --title $* --body ""
-  cd ~-
+  cd ~- || exit
 }
 alias dotni="dotfiles_new_issue important"
 alias dotnc="dotfiles_new_issue core"
