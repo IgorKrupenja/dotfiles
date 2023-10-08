@@ -260,10 +260,6 @@ alias ils="$SCRIPTS/imgls.sh"
 # shellcheck disable=2139
 alias icat="$SCRIPTS/imgcat.sh"
 
-# Obsidian
-# ---------------------------------------------------------------------------
-alias cobs='cd $PROJECTS/dev-journal'
-
 # Calculator
 # ---------------------------------------------------------------------------
 pcalc() {
