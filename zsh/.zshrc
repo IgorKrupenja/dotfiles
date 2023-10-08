@@ -81,18 +81,18 @@ ansi() {
 
 # Shortcuts
 # ---------------------------------------------------------------------------
-alias dl="cd $HOME/Downloads"
-alias p="cd $PROJECTS"
-alias dot="cd $DOTFILES"
+alias dl='cd $HOME/Downloads'
+alias p='cd $PROJECTS'
+alias dot='cd $DOTFILES'
 alias cd-="cd -"
 
 # Trash
 # ---------------------------------------------------------------------------
 alias t="trash"
 
-alias tcd="cd $HOME/.Trash"
-alias tls="ls $HOME/.Trash"
-alias tla="la $HOME/.Trash"
+alias tcd='cd $HOME/.Trash'
+alias tls='ls $HOME/.Trash'
+alias tla='la $HOME/.Trash'
 # empty trash
 te() {
   osascript <<-EOF
@@ -240,14 +240,14 @@ kport() {
 
 # Aliases for scripts in ./scripts directory
 # ---------------------------------------------------------------------------
-alias ggs="$SCRIPTS/git-global-status.sh"
-alias st="$SCRIPTS/status.sh"
-alias bak="$SCRIPTS/backup.sh"
-alias co="$SCRIPTS/color.sh"
-alias up="$SCRIPTS/update.sh"
-alias dark="$SCRIPTS/dark.sh"
-alias ils="$SCRIPTS/imgls.sh"
-alias icat="$SCRIPTS/imgcat.sh"
+alias ggs='$SCRIPTS/git-global-status.sh'
+alias st='$SCRIPTS/status.sh'
+alias bak='$SCRIPTS/backup.sh'
+alias co='$SCRIPTS/color.sh'
+alias up='$SCRIPTS/update.sh'
+alias dark='$SCRIPTS/dark.sh'
+alias ils='$SCRIPTS/imgls.sh'
+alias icat='$SCRIPTS/imgcat.sh'
 
 # Trello CLI
 # ---------------------------------------------------------------------------
@@ -577,11 +577,10 @@ alias dcb="docker-compose build"
 
 # GCloud
 # ---------------------------------------------------------------------------
-# TODO wtf?
-# if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
-#   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-#   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-# fi
+if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
 #############################################################################
 # PROJECTS
