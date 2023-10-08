@@ -20,6 +20,7 @@ captcha
 cloc
 Cocoapods
 collada
+colliderli
 creds
 custname
 Datepicker
@@ -69,6 +70,7 @@ Huftgold
 icomoon
 Icomoon
 iftop
+iina
 ILIKE
 Jaarika
 Janno
@@ -88,6 +90,7 @@ LTRB
 Lyndanisse
 Maksim
 Malofeev
+marta
 microservices
 minlength
 minmax
@@ -105,6 +108,7 @@ Nord
 offchain
 Openlogin
 originalname
+osascript
 overscroll
 Parens
 paypal
@@ -177,5 +181,6 @@ wojtekmaj
 worldofmouth
 xlink
 xpub
+yanex
 Youtube
 Zaino

@@ -17,8 +17,8 @@ echo "Backup in progress. Please wait..."
 
 ################### Backup
 
-# VSCode - in case settigns sync fails
-cd $DOTFILES/vscode
+# VSCode - in case settings sync fails
+cd "$DOTFILES/vscode" || exit
 cp -f "/Users/igor/Library/Application Support/Code/User/settings.json" settings.json
 cp -f "/Users/igor/Library/Application Support/Code/User/keybindings.json" keybindings.json
 cp -rf "/Users/igor/Library/Application Support/Code/User/snippets" ./
@@ -28,18 +28,18 @@ if [[ $(git diff .) ]]; then
 fi
 
 # Brewfile dump
-cd $DOTFILES/install
+cd "$DOTFILES/install" || exit
 brew bundle dump --force
 if [[ $(git diff Brewfile) ]]; then
   git add Brewfile
   git commit -m "Update Brewfile"
 fi
 
-cd $DOTFILES
+cd "$DOTFILES" || exit
 
 # Marta
-rm -rf $DOTFILES/marta
-cp -fvr $HOME/Library/Application\ Support/org.yanex.marta $DOTFILES/marta
+rm -rf "$DOTFILES/marta"
+cp -fvr "$HOME/Library/Application\ Support/org.yanex.marta" "$DOTFILES/marta"
 if [[ $(git diff marta) ]]; then
   git add marta
   git commit -m "Update Marta settings"
@@ -64,7 +64,7 @@ echo "-------------------------"
 git push --no-verify
 
 # Obsidian
-cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes
+cd "$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes" || exit
 if git status | grep -q "branch is ahead"; then
   printf "\nPushing to dev-journal repo:\n----------------------------\n"
   git push --no-verify
