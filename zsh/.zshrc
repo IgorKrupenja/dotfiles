@@ -249,50 +249,6 @@ alias dark='$SCRIPTS/dark.sh'
 alias ils='$SCRIPTS/imgls.sh'
 alias icat='$SCRIPTS/imgcat.sh'
 
-# Trello CLI
-# ---------------------------------------------------------------------------
-
-# list cards
-trls() {
-  trello show-cards -b "📥 Personal" -l "$1"
-}
-trel() {
-  trls '💣 Today'
-  trls '🌆 Tonight'
-  trls '🌅 Tomorrow'
-  trls '📆 This week'
-}
-
-# add cards
-tradd() {
-  if [[ $2 == "add-label" ]]; then
-    title="${*:4}"
-    trello add-card "$title" -b "📥 Personal" -l "$1" -g "$3"
-  else
-    title="${*:2}"
-    trello add-card "$title" -b "📥 Personal" -l "$1"
-  fi
-}
-alias tred="tradd '💣 Today'"
-alias tren="tradd '🌆 Tonight'"
-alias trew="tradd '📆 This week'"
-alias tref="tradd '📈 Further ahead'"
-# Important label
-alias tredi="tred add-label 5c56f3491be0121b5865f2d7"
-alias treni="tren add-label 5c56f3491be0121b5865f2d7"
-# TalTech label
-alias tredt="tred add-label 5b7c3a417b03a914551de144"
-alias trent="tren add-label 5b7c3a417b03a914551de144"
-# Coding board
-trec() {
-  trello add-card "$*" -b "🛠 Coding" -l "🏃 In progress"
-}
-
-# move to Done on "📥 Personal" board
-trex() {
-  trello move-card "$*" 5a785c3a56d2f82288d292e8
-}
-
 # Obsidian
 # ---------------------------------------------------------------------------
 alias cobs='cd $PROJECTS/dev-journal'
