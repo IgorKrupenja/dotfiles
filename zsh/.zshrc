@@ -1,5 +1,5 @@
 #!/bin/zsh
-# shellcheck shell=bash disable=SC2034,2086,2048
+# shellcheck shell=bash disable=2034
 
 #############################################################################
 # ENVIRONMENT CONFIGURATION
@@ -8,7 +8,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-source $HOME/.p10k-instant-prompt.sh
+source "$HOME/.p10k-instant-prompt.sh"
 
 # Path variables
 # ---------------------------------------------------------------------------
@@ -29,7 +29,7 @@ export LESS=-XFR
 export LANG=en_US.UTF-8
 # theme - note that these need to come before sourcing omz
 ZSH_THEME=powerlevel10k/powerlevel10k
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source "$HOME/.p10k.zsh"
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 # disable % at EOL
@@ -57,12 +57,12 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # Fix for "Insecure completion-dependent directories detected" issue
 ZSH_DISABLE_COMPFIX=true
 # Source default omz config
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 # iTerm shell integration
-source $DOTFILES/zsh/.iterm2_shell_integration.zsh
+source "$DOTFILES/zsh/.iterm2_shell_integration.zsh"
 
-if [ -f $DOTFILES/zsh/private.zsh ]; then
-  source $DOTFILES/zsh/private.zsh
+if [ -f "$DOTFILES/zsh/private.zsh" ]; then
+  source "$DOTFILES/zsh/private.zsh"
 fi
 
 # Output formatting
@@ -231,7 +231,7 @@ alias cl="clear"
 alias ez="exec zsh"
 # kill process on port
 kport() {
-  lsof -t -i tcp:$1 | xargs kill
+  lsof -t -i tcp:"$1" | xargs kill
 }
 
 #############################################################################
@@ -246,7 +246,7 @@ alias bak="$SCRIPTS/backup.sh"
 alias co="$SCRIPTS/color.sh"
 alias up="$SCRIPTS/update.sh"
 alias dark="$SCRIPTS/dark.sh"
-alias ils="$SRCRIPTS/imgls.sh"
+alias ils="$SCRIPTS/imgls.sh"
 alias icat="$SRCRIPTS/imgcat.sh"
 
 # Trello CLI
@@ -254,7 +254,7 @@ alias icat="$SRCRIPTS/imgcat.sh"
 
 # list cards
 trls() {
-  trello show-cards -b "📥 Personal" -l $1
+  trello show-cards -b "📥 Personal" -l "$1"
 }
 trel() {
   trls '💣 Today'
@@ -267,10 +267,10 @@ trel() {
 tradd() {
   if [[ $2 == "add-label" ]]; then
     title="${*:4}"
-    trello add-card $title -b "📥 Personal" -l $1 -g $3
+    trello add-card "$title" -b "📥 Personal" -l "$1" -g "$3"
   else
     title="${*:2}"
-    trello add-card $title -b "📥 Personal" -l $1
+    trello add-card "$title" -b "📥 Personal" -l "$1"
   fi
 }
 alias tred="tradd '💣 Today'"
@@ -308,7 +308,7 @@ alias ca="calc"
 # Unit and currency converter
 # ---------------------------------------------------------------------------
 un() {
-  gunits "$1 $2" $3 -t
+  gunits "$1 $2" "$3" -t
 }
 
 # World clock
@@ -337,14 +337,14 @@ world_clock() {
   )
 
   output=""
-  for loc in "${time_zones[@]}"; do
-    city=$(echo $loc | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
-    current_time=$(TZ=${loc} date | awk '{ print $2 " " $3 " " $4 " " $5 }')
+  for time_zone in "${time_zones[@]}"; do
+    city=$(echo "$time_zone" | sed 's/Los_Angeles/San_Francisco/g' | sed 's/Rome/Milan/g' | sed 's/\// /g' | awk '{print $2}')
+    current_time=$(TZ=${time_zone} date | awk '{ print $2 " " $3 " " $4 " " $5 }')
     temp=$(awk -v l="$city" -v t="$current_time" 'BEGIN { print l "\t" t }')
     output="${output}\n${temp}"
   done
 
-  echo $output | column -t | tr '_' ' '
+  echo "$output" | column -t | tr '_' ' '
 }
 
 # Weather
@@ -379,7 +379,7 @@ mpdf() {
   if [[ $* == "" ]]; then
     gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
   else
-    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf $*
+    gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$*"
   fi
 }
 # media downloader
@@ -461,10 +461,10 @@ gmtc() {
   # get the last used tag from current branch and save in a variable
   tag=$(git describe --tags | cut -d- -f1)
   # delete the tag locally and remotely
-  git push --delete origin $tag
-  git tag -d $tag
+  git push --delete origin "$tag"
+  git tag -d "$tag"
   # add the tag
-  git tag $tag
+  git tag "$tag"
   # push tag
   git push origin --tags
 }
@@ -483,7 +483,7 @@ gir() {
 # cheat sheets
 alias cht="cht.sh"
 # for completions
-fpath=($HOME/.oh-my-zsh/custom/plugins/cht.sh $fpath)
+fpath=("$HOME"/.oh-my-zsh/custom/plugins/cht.sh "$fpath")
 
 # python
 # ---------------------------------------------------------------------------
@@ -498,16 +498,6 @@ alias piplo="pip list -o"
 alias pipu="pip-autoremove -y"
 alias pips="pip show"
 alias ch="charm"
-# pip zsh completion
-function _pip_completion() {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=($(COMP_WORDS="$words[*]" \
-    COMP_CWORD=$((cword - 1)) \
-    PIP_AUTO_COMPLETE=1 $words[1]))
-}
-compctl -K _pip_completion pip
 
 # Web & JS
 # ---------------------------------------------------------------------------
@@ -521,9 +511,9 @@ alias n20="nvm use 20"
 alias nd="nvm use default"
 nvm_use() {
   if [ -e .nvmrc ]; then
-    nvm use && $*
+    nvm use && "$*"
   else
-    $*
+    "$*"
   fi
 }
 
@@ -582,7 +572,7 @@ alias pnx="nvm_use pnpm dlx"
 
 # Docker
 # ---------------------------------------------------------------------------
-if [ -f $HOME/.docker/init-zsh.sh ]; then
+if [ -f "$HOME"/.docker/init-zsh.sh ]; then
   source "$HOME/.docker/init-zsh.sh"
 fi
 alias dls="docker container ls"
@@ -593,10 +583,11 @@ alias dcb="docker-compose build"
 
 # GCloud
 # ---------------------------------------------------------------------------
-if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-fi
+# TODO wtf?
+# if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
+#   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+#   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+# fi
 
 #############################################################################
 # PROJECTS
@@ -606,14 +597,14 @@ fi
 # ---------------------------------------------------------------------------
 dotfiles_new_issue() {
   title="${*:2}"
-  cd $PROJECTS/dotfiles || exit
-  gh issue create --title $title --body "" --label $1
+  cd "$PROJECTS"/dotfiles || exit
+  gh issue create --title "$title" --body "" --label "$1"
   cd ~- || exit
 }
 # TODO: broken, label cannot be empty
 dotn() {
-  cd $PROJECTS/dotfiles || exit
-  gh issue create --title $* --body ""
+  cd "$PROJECTS"/dotfiles || exit
+  gh issue create --title "$*" --body ""
   cd ~- || exit
 }
 alias dotni="dotfiles_new_issue important"
