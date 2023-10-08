@@ -240,14 +240,25 @@ kport() {
 
 # Aliases for scripts in ./scripts directory
 # ---------------------------------------------------------------------------
-alias ggs='$SCRIPTS/git-global-status.sh'
-alias st='$SCRIPTS/status.sh'
-alias bak='$SCRIPTS/backup.sh'
-alias co='$SCRIPTS/color.sh'
-alias up='$SCRIPTS/update.sh'
-alias dark='$SCRIPTS/dark.sh'
-alias ils='$SCRIPTS/imgls.sh'
-alias icat='$SCRIPTS/imgcat.sh'
+
+# Enforcing SC2139 here breaks existing command detection with zsh-syntax-highlighting
+
+# shellcheck disable=2139
+alias ggs="$SCRIPTS/git-global-status.sh"
+# shellcheck disable=2139
+alias st="$SCRIPTS/status.sh"
+# shellcheck disable=2139
+alias bak="$SCRIPTS/backup.sh"
+# shellcheck disable=2139
+alias co="$SCRIPTS/color.sh"
+# shellcheck disable=2139
+alias up="$SCRIPTS/update.sh"
+# shellcheck disable=2139
+alias dark="$SCRIPTS/dark.sh"
+# shellcheck disable=2139
+alias ils="$SCRIPTS/imgls.sh"
+# shellcheck disable=2139
+alias icat="$SCRIPTS/imgcat.sh"
 
 # Obsidian
 # ---------------------------------------------------------------------------
