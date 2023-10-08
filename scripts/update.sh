@@ -88,7 +88,7 @@ update_homebrew() {
   if [[ -z $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
-    brew upgrade --verbose
+    brew upgrade
   fi
 
   echo -e "\n$(underline Running Homebrew diagnostics)\n"

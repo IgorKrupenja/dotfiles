@@ -65,6 +65,16 @@ if [ -f $DOTFILES/zsh/private.zsh ]; then
   source $DOTFILES/zsh/private.zsh
 fi
 
+# Output formatting
+# ---------------------------------------------------------------------------
+underline() {
+  ansi 4 "$@"
+}
+
+ansi() {
+  echo -e "\033[${1}m${*:2}\033[0m"
+}
+
 #############################################################################
 # NAVIGATION & FILE MANAGEMENT
 #############################################################################
@@ -122,8 +132,6 @@ alias mkdir='mkdir -pv'
 mkf() {
   mkdir -p "$(dirname "$1")" && touch "$1"
 }
-# thefuck
-alias fk="fuck"
 # open Marta in current dir
 m() {
   if [[ $* == "" ]]; then
@@ -165,9 +173,9 @@ rn() {
 alias bif="brew info"
 alias bi="brew install"
 bl() {
-  echo -e "\n\e[4mFormulas:\e[0m\n"
+  echo -e "\n$(underline Formulas:)\n"
   brew list --formula
-  echo -e "\n\e[4mCasks:\e[0m\n"
+  echo -e "\n$(underline Casks:)\n"
   brew list --cask
 }
 alias bs="brew search"
@@ -181,10 +189,11 @@ bdep() {
 }
 alias blv="brew leaves"
 bu() {
-  echo -e "\n\e[4mUpdating Homebrew:\e[0m\n"
+  echo -e "\n$(underline Updating Homebrew)\n"
   brew update --verbose
-  echo -e "\n\e[4mUpdating packages and casks:\e[0m\n"
-  if [[ ! $(brew outdated) ]]; then
+
+  echo -e "\n$(underline Updating Homebrew packages and casks)\n"
+  if [[ -z $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
     brew upgrade
@@ -286,9 +295,6 @@ trex() {
 
 # Obsidian
 # ---------------------------------------------------------------------------
-obs() {
-  echo "- [ ] $*" >>"$PROJECTS/dev-journal/📥 Incoming/To do.md"
-}
 alias cobs='cd $PROJECTS/dev-journal'
 
 # Calculator
@@ -378,6 +384,7 @@ mpdf() {
 }
 # media downloader
 alias ydl="yt-dlp"
+
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 
@@ -386,7 +393,7 @@ alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 #############################################################################
 
 # Editors
-# ---------------------------------------------------------------------------
+# -------------------------- -------------------------------------------------
 export EDITOR='code'
 
 # VSCode
@@ -512,7 +519,7 @@ alias n16="nvm use 16"
 alias n18="nvm use 18"
 alias n20="nvm use 20"
 alias nd="nvm use default"
-nvm-use() {
+nvm_use() {
   if [ -e .nvmrc ]; then
     nvm use && $*
   else
@@ -532,46 +539,46 @@ alias ngun="npm -g uninstall"
 
 # npm local
 alias npls="npm list --depth=0"
-alias npi="nvm-use npm install"
-alias npu="nvm-use npm update"
-alias npo="nvm-use npm outdated"
-alias npid="nvm-use npm install --save-dev"
+alias npi="nvm_use npm install"
+alias npu="nvm_use npm update"
+alias npo="nvm_use npm outdated"
+alias npid="nvm_use npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
 
 # npm scripts
-alias npr="nvm-use npm run"
-alias npl="nvm-use npm run lint"
-alias npf="nvm-use npm run format"
-npm-start() {
+alias npr="nvm_use npm run"
+alias npl="nvm_use npm run lint"
+alias npf="nvm_use npm run format"
+npm_start() {
   if npm run | grep start:debug &>/dev/null; then
     npm run start:debug
   else
     npm start
   fi
 }
-alias npst="nvm-use npm-start"
+alias npst="nvm_use npm_start"
 alias npt="npm test"
-alias npe="nvm-use npm run test:e2e"
+alias npe="nvm_use npm run test:e2e"
 alias npcl="npm run cloc"
 
 # pnpm
 export PNPM_HOME="/Users/igor/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-alias pni="nvm-use pnpm install"
-alias pnid="nvm-use pnpm install --save-dev"
-alias pnr="nvm-use pnpm run"
-alias pnl="nvm-use pnpm lint"
-alias pnt="nvm-use pnpm test"
-alias pntc="nvm-use pnpm test:coverage"
-alias pno="nvm-use pnpm outdated -r"
-alias pnu="nvm-use pnpm update -r"
-alias pnd="nvm-use pnpm dev"
-alias pns="nvm-use pnpm start"
-alias pnb="nvm-use pnpm build"
-alias pne="nvm-use pnpm exec"
-alias pnx="nvm-use pnpm dlx"
+alias pni="nvm_use pnpm install"
+alias pnid="nvm_use pnpm install --save-dev"
+alias pnr="nvm_use pnpm run"
+alias pnl="nvm_use pnpm lint"
+alias pnt="nvm_use pnpm test"
+alias pntc="nvm_use pnpm test:coverage"
+alias pno="nvm_use pnpm outdated -r"
+alias pnu="nvm_use pnpm update -r"
+alias pnd="nvm_use pnpm dev"
+alias pns="nvm_use pnpm start"
+alias pnb="nvm_use pnpm build"
+alias pne="nvm_use pnpm exec"
+alias pnx="nvm_use pnpm dlx"
 
 # Docker
 # ---------------------------------------------------------------------------
@@ -586,7 +593,6 @@ alias dcb="docker-compose build"
 
 # GCloud
 # ---------------------------------------------------------------------------
-
 if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
   source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
@@ -596,20 +602,9 @@ fi
 # PROJECTS
 #############################################################################
 
-# CV
-# ---------------------------------------------------------------------------
-alias cvdep="$HOME/OneDrive\ -\ TalTech/Work/Job\ hunt/cv/deploy"
-
-# Zaino app
-# ---------------------------------------------------------------------------
-alias zgp="gsutil -m acl set -R -a public-read gs://zaino-2e6cf.appspot.com"
-alias z="cd $PROJECTS/zaino"
-alias zw="cd $PROJECTS/zaino/packages/web-app"
-alias zf="cd $PROJECTS/zaino/packages/cloud-functions"
-
 # Dotfiles
 # ---------------------------------------------------------------------------
-dotfiles-new-issue() {
+dotfiles_new_issue() {
   title="${@:2}"
   cd $PROJECTS/dotfiles
   gh issue create --title $title --body "" --label $1
@@ -621,11 +616,11 @@ dotn() {
   gh issue create --title $* --body ""
   cd ~-
 }
-alias dotni="dotfiles-new-issue important"
-alias dotnc="dotfiles-new-issue core"
-alias dotnci="dotfiles-new-issue core,important"
-alias dotnv="dotfiles-new-issue vscode"
-alias dotnvi="dotfiles-new-issue vscode,important"
+alias dotni="dotfiles_new_issue important"
+alias dotnc="dotfiles_new_issue core"
+alias dotnci="dotfiles_new_issue core,important"
+alias dotnv="dotfiles_new_issue vscode"
+alias dotnvi="dotfiles_new_issue vscode,important"
 
 alias cz="code $DOTFILES"
 
