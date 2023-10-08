@@ -52,7 +52,12 @@
     }
   },
   "cSpell.diagnosticLevel": "Hint",
-  "cSpell.enableFiletypes": ["applescript", "gitignore", "hosts"],
+  "cSpell.enableFiletypes": [
+    "applescript",
+    "gitignore",
+    "hosts",
+    "shellscript"
+  ],
   "editor.cursorBlinking": "smooth",
   "terminal.integrated.cursorBlinking": true,
   "workbench.iconTheme": "material-icon-theme",
@@ -102,7 +107,6 @@
     "scminput": false
   },
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": ["source.addMissingImports"],
   "editor.linkedEditing": true,
   "editor.dragAndDrop": false,
   "notebook.dragAndDropEnabled": false,
@@ -122,9 +126,8 @@
       }
     }
   },
-  "markdown.editor.pasteUrlAsFormattedLink.enabled": "always",
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "redhat.telemetry.enabled": true,
-  "window.commandCenter": false,
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
@@ -133,5 +136,11 @@
     ".wakeup": "shellscript"
   },
   "git.openRepositoryInParentFolders": "always",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "window.density.editorTabHeight": "compact",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "debug.toolBarLocation": "docked",
+  "window.commandCenter": false
 }
