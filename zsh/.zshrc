@@ -29,7 +29,7 @@ export LESS=-XFR
 export LANG=en_US.UTF-8
 # theme - note that these need to come before sourcing omz
 ZSH_THEME=powerlevel10k/powerlevel10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 # disable % at EOL
@@ -266,10 +266,10 @@ trel() {
 # add cards
 tradd() {
   if [[ $2 == "add-label" ]]; then
-    title="${@:4}"
+    title="${*:4}"
     trello add-card $title -b "📥 Personal" -l $1 -g $3
   else
-    title="${@:2}"
+    title="${*:2}"
     trello add-card $title -b "📥 Personal" -l $1
   fi
 }
