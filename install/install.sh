@@ -221,6 +221,10 @@ macos_settings() {
   # Projects folder icon
   fileicon set $HOME/Projects /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
 
+  # Disable system sound on ctrl+cmd+arrow
+  mkdir $HOME/Library/KeyBindings
+  ln -sv $DOTFILES/keyboard/DefaultKeyBinding.dict $HOME/Library/KeyBindings/DefaultKeyBinding.dict
+
   # macOS defaults below, thanks to Mathias Bynens! https://mths.be/macos
 
   # Show scrollbars only wen scrolling
