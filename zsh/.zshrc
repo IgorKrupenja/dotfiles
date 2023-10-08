@@ -606,13 +606,13 @@ fi
 # ---------------------------------------------------------------------------
 dotfiles_new_issue() {
   title="${*:2}"
-  cd $PROJECTS/dotfiles
+  cd $PROJECTS/dotfiles || exit
   gh issue create --title $title --body "" --label $1
   cd ~- || exit
 }
 # TODO: broken, label cannot be empty
 dotn() {
-  cd $PROJECTS/dotfiles
+  cd $PROJECTS/dotfiles || exit
   gh issue create --title $* --body ""
   cd ~- || exit
 }
@@ -622,12 +622,12 @@ alias dotnci="dotfiles_new_issue core,important"
 alias dotnv="dotfiles_new_issue vscode"
 alias dotnvi="dotfiles_new_issue vscode,important"
 
-alias cz="code $DOTFILES"
+alias cz='code $DOTFILES'
 
 # Devtailor
 # ---------------------------------------------------------------------------
-alias trim="cd $PROJECTS/devtailor/trimtex-v2/"
-alias dt="cd $PROJECTS/devtailor/"
+alias trim='cd $PROJECTS/devtailor/trimtex-v2/'
+alias dt='cd $PROJECTS/devtailor/'
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
