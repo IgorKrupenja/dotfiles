@@ -527,6 +527,11 @@ alias pnb="nvm_use pnpm build"
 alias pne="nvm_use pnpm exec"
 alias pnx="nvm_use pnpm dlx"
 
+# yarn
+alias yad="nvm_use yarn develop"
+alias yar="nvm_use yarn run"
+alias yab="nvm_use yarn build"
+
 # Docker
 # ---------------------------------------------------------------------------
 if [ -f "$HOME"/.docker/init-zsh.sh ]; then
@@ -578,3 +583,5 @@ alias dt='cd $PROJECTS/devtailor/'
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
+alias yai="nvm_use yarn run data:import"
+alias yae="nvm_use yarn run data:export"
