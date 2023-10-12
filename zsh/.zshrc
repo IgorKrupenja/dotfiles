@@ -468,9 +468,9 @@ alias n20="nvm use 20"
 alias nd="nvm use default"
 nvm_use() {
   if [ -e .nvmrc ]; then
-    nvm use && "$*"
+    nvm use && eval "$*"
   else
-    "$*"
+    eval "$*"
   fi
 }
 
