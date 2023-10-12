@@ -17,6 +17,7 @@ BIGSERIAL
 Borkedalen
 browserslist
 captcha
+cera
 cloc
 Cocoapods
 collada
@@ -49,10 +50,12 @@ flama
 Flama
 flatlock
 forem
+formatjs
 formik
 Formik
 Freepik
 Fudy
+fudy
 fullscreen
 gainsboro
 Gainullin
@@ -66,6 +69,7 @@ Harjumaa
 hashnode
 Hashnode
 HASHNODE
+hoverable
 Huftgold
 icomoon
 Icomoon
@@ -86,6 +90,7 @@ Krematoorium
 Krupenja
 lcov
 litecoin
+localematcher
 LTRB
 Lyndanisse
 Maksim
