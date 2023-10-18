@@ -54,8 +54,8 @@ formatjs
 formik
 Formik
 Freepik
-Fudy
 fudy
+Fudy
 fullscreen
 gainsboro
 Gainullin
@@ -82,6 +82,7 @@ Jannol
 Jürmann
 Kertu
 Keychron
+keyframes
 khwarezm
 killall
 Kodality
