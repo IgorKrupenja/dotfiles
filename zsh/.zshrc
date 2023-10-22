@@ -493,6 +493,7 @@ alias npid="nvm_use npm install --save-dev"
 alias nplp="npm list -prod -depth 0"
 alias npld="npm list -dev -depth 0"
 alias npun="npm uninstall"
+alias npui="nvm_use npx npm-check-updates -ui"
 
 # npm scripts
 alias npr="nvm_use npm run"
@@ -518,7 +519,6 @@ alias pnid="nvm_use pnpm install --save-dev"
 alias pnr="nvm_use pnpm run"
 alias pnl="nvm_use pnpm lint"
 alias pnt="nvm_use pnpm test"
-alias pntc="nvm_use pnpm test:coverage"
 alias pno="nvm_use pnpm outdated -r"
 alias pnu="nvm_use pnpm update -r"
 alias pnd="nvm_use pnpm dev"
@@ -526,11 +526,21 @@ alias pns="nvm_use pnpm start"
 alias pnb="nvm_use pnpm build"
 alias pne="nvm_use pnpm exec"
 alias pnx="nvm_use pnpm dlx"
+alias pnui="nvm_use pnpm dlx npm-check-updates -ui"
 
 # yarn
 alias yad="nvm_use yarn develop"
 alias yar="nvm_use yarn run"
 alias yab="nvm_use yarn build"
+
+# bun
+alias buni="bun install"
+alias bunu="bun update"
+alias bunl="bun lint"
+alias bunt="bun test --watch"
+alias bunpt="bun publish:test"
+alias bunx="bun x"
+alias bunui="bun x npm-check-updates -ui"
 
 # Docker
 # ---------------------------------------------------------------------------

@@ -54,6 +54,7 @@ formatjs
 formik
 Formik
 Freepik
+frontmatter
 fudy
 Fudy
 fullscreen
