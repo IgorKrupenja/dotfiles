@@ -105,8 +105,6 @@ install_sw_node() {
   export NVM_DIR=$HOME/.nvm
   git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
   $(builtin cd "$NVM_DIR" && git checkout --quiet "$(zsh_nvm_latest_release_tag)")
-  backup_file $HOME/.nvm/default-packages
-  ln -sv $DOTFILES/nvm/default-packages $HOME/.nvm/default-packages
 
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion

@@ -535,6 +535,8 @@ alias yar="nvm_use yarn run"
 alias yab="nvm_use yarn build"
 
 # bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 alias buni="bun install"
 alias bunu="bun update"
 alias bunl="bun lint"
