@@ -538,12 +538,14 @@ alias yab="nvm_use yarn build"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 alias buni="bun install"
+alias buna="bun add"
 alias bunu="bun update"
 alias bunl="bun lint"
+alias bunls="bun pm ls"
 alias bunt="bun test --watch"
-alias bunpt="bun publish:test"
 alias bunx="bun x"
 alias bunui="bun x npm-check-updates -ui"
+alias bungls="bun pm ls -g"
 
 # Docker
 # ---------------------------------------------------------------------------

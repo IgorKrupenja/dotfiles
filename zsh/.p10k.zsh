@@ -75,6 +75,7 @@
     rvm                     # ruby version from rvm (https://rvm.io)
     # fvm                     # flutter version management (https://github.com/leoafarias/fvm)
     # flutter
+    bun
     luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
     jenv                    # java version from jenv (https://github.com/jenv/jenv)
     plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
@@ -1473,6 +1474,10 @@
 
     version=$(cat $HOME/fvm/default/version)
     p10k segment -f 'blue' -t "F $channel$version"
+  }
+
+  function prompt_bun() {
+    p10k segment -f 'red' -t "  $(bun -v)"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.

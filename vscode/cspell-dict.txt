@@ -171,6 +171,7 @@ Transoxiana
 Trello
 trimtex
 turborepo
+typecheck
 typeorm
 unfocus
 unsandbox
