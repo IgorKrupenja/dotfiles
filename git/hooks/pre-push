@@ -11,7 +11,7 @@ if [[ " ${protected_branches[*]} " =~ ${current_branch} ]]; then
   echo
 
   if [ "$branch_input" = "$current_branch" ]; then
-    echo -en "Committing to $current_branch\n"
+    echo -en "Pushing to $current_branch\n\n"
     exit 0 # push will execute
   fi
   echo -en "❌ Not committing to $current_branch, incorrect branch name '$branch_input' entered\n"
