@@ -545,6 +545,8 @@ alias bunls="bun pm ls"
 alias bunt="bun test --watch"
 alias bunui="bunx npm-check-updates -ui"
 alias bungls="bun pm ls -g"
+# For bug reporting
+alias bunb="bun --revision && uname -mprs"
 
 # Docker
 # ---------------------------------------------------------------------------
