@@ -80,6 +80,14 @@ trim_node_version_string() {
   echo $node_version_string
 }
 
+update_bun() {
+  echo -e "\n$(underline Upgrading Bun)\n"
+  bun upgrade --canary
+
+  echo -e "\n$(underline Updating Bun global packages)\n"
+  bun update -g
+}
+
 update_homebrew() {
   echo -e "\n$(underline Updating Homebrew)\n"
   brew update --verbose
@@ -116,6 +124,7 @@ main() {
   # update_gems
   update_omz
   update_node
+  update_bun
   update_homebrew
   update_mas
   display_notification
