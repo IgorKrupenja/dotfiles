@@ -545,7 +545,7 @@ alias buna="bun add"
 alias bunu="bun update"
 alias bunl="bun lint"
 alias bunls="bun pm ls"
-alias bunt="bun test --watch"
+alias bunt="bun test --watch --coverage"
 alias bunui="bunx npm-check-updates -ui"
 alias bungls="bun pm ls -g"
 # For bug reporting
