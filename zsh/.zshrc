@@ -349,6 +349,9 @@ mpdf() {
 # media downloader
 alias ydl="yt-dlp"
 
+perf() {
+  hyperfine "$*"
+}
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
