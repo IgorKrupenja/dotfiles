@@ -84,6 +84,7 @@ ansi() {
 alias dl='cd $HOME/Downloads'
 alias p='cd $PROJECTS'
 alias dot='cd $DOTFILES'
+alias blog='cd $PROJECTS/blog'
 alias cd-="cd -"
 
 # Trash
@@ -607,3 +608,6 @@ alias yae="nvm_use yarn run data:export"
 
 # bun completions
 [ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
