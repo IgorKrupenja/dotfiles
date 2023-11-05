@@ -29,7 +29,7 @@ export LESS=-XFR
 export LANG=en_US.UTF-8
 # theme - note that these need to come before sourcing omz
 ZSH_THEME=powerlevel10k/powerlevel10k
-[[ ! -f $HOME/.p10k.zsh ]] || source "$HOME/.p10k.zsh"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # display red dots while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 # disable % at EOL
@@ -608,6 +608,3 @@ alias yae="nvm_use yarn run data:export"
 
 # bun completions
 [ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

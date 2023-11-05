@@ -21,13 +21,6 @@
   prompt = false
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-  conflictstyle = diff3
-  tool = intellij
-[mergetool "intellij"]
-  cmd = /Applications/IntelliJ\\ IDEA.app/Contents/MacOS/idea merge $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\") $(cd $(dirname \"$BASE\") && pwd)/$(basename \"$BASE\") $(cd $(dirname \"$MERGED\") && pwd)/$(basename \"$MERGED\")
-  trustExitCode = true
-	keepBackup = false
 [credential]
   helper = store
 [http]
