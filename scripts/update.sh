@@ -8,7 +8,7 @@ update_gems() {
 }
 
 update_omz() {
-  echo -e "\n$(underline "Updating OMZ")\n"
+  echo -e "$(underline "Updating OMZ")\n"
   "$ZSH"/tools/upgrade.sh
 
   echo -e "\n$(underline Updating custom OMZ plugins)\n"
