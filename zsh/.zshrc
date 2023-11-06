@@ -40,6 +40,7 @@ ZLE_RPROMPT_INDENT=0
 export NVM_COMPLETION=true
 # Plugins
 plugins=(
+  per-directory-history
   web-search
   colored-man-pages
   extract
