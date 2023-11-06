@@ -1716,7 +1716,7 @@
   }
 
   function prompt_bun() {
-    p10k segment -f 'red' -t "$(bun -v)  "
+    p10k segment -f 'red' -t "  $(bun -v)"
   }
 
   function instant_prompt_bun() {
