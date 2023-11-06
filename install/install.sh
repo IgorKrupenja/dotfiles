@@ -258,6 +258,7 @@ macos_settings() {
   defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
   defaults write com.apple.screensaver askForPasswordDelay -int 0
   # Disable shit Sonoma keyboard switcher indicator
+  mkdir -p /Library/Preferences/FeatureFlags/Domain
   defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
   # restart to apply changes
   killall Finder

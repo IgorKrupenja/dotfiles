@@ -161,6 +161,7 @@ TADA
 Tartumaa
 tatumio
 tensorflow
+TIMESTAMPTZ
 todohighlight
 topbar
 Topbar

@@ -545,12 +545,12 @@ alias buni="bun install"
 alias buna="bun add"
 alias bunu="bun update"
 alias bunl="bun lint"
-alias bunls="bun pm ls"
-alias bunt="bun test --watch --coverage"
-alias bunui="bunx npm-check-updates -ui"
-alias bungls="bun pm ls -g"
-# For bug reporting
-alias bunb="bun --revision && uname -mprs"
+alias bunt="bun test --watch"
+alias bunpt="bun publish:test"
+alias bunx="bun x"
+alias bunui="bun x npm-check-updates -ui"
+# bun completions
+[ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
 
 # Docker
 # ---------------------------------------------------------------------------
@@ -605,6 +605,3 @@ alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
-
-# bun completions
-[ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
