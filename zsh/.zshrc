@@ -53,6 +53,7 @@ plugins=(
   # this needs to stay at the end of the list
   zsh-syntax-highlighting
 )
+HISTORY_START_WITH_GLOBAL=true
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # disable paste highlight
 zle_highlight+=(paste:none)
