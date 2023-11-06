@@ -36,7 +36,9 @@ COMPLETION_WAITING_DOTS="true"
 PROMPT_EOL_MARK=''
 # https://github.com/romkatv/powerlevel10k#extra-space-without-background-on-the-right-side-of-right-prompt
 ZLE_RPROMPT_INDENT=0
-preexec() { printf "\n"; }
+preexec() {
+  printf "\n"
+}
 precmd() {
   if [[ "${ADD_NEW_LINE}" = true ]]; then
     PROMPT=$'\n'"${PROMPT}"
