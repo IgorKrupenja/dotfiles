@@ -40,13 +40,12 @@ preexec() {
   printf "\n"
 }
 precmd() {
-  if [[ "${ADD_NEW_LINE}" = true ]]; then
-    PROMPT=$'\n'"${PROMPT}"
-    ADD_NEW_LINE=false
-  else
-    PROMPT="${PROMPT}"
-    NEW_LINE=true
-    ADD_NEW_LINE=true
+  # Print a newline before the prompt, unless it's the
+  # first prompt in the process.
+  if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+    NEW_LINE_BEFORE_PROMPT=1
+  elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+    printf "\n"
   fi
 }
 # this and zsh-nvm result in faster zsh load times than using nvm directly
