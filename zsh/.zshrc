@@ -38,11 +38,6 @@ PROMPT_EOL_MARK=''
 ZLE_RPROMPT_INDENT=0
 preexec() { printf "\n"; }
 precmd() {
-  # if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
-  #   NEW_LINE_BEFORE_PROMPT=1
-  # elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
-  #   echo ""
-  # fi
   if [[ "${ADD_NEW_LINE}" = true ]]; then
     PROMPT=$'\n'"${PROMPT}"
     ADD_NEW_LINE=false
