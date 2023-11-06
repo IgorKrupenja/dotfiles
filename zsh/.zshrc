@@ -37,6 +37,7 @@ PROMPT_EOL_MARK=''
 # https://github.com/romkatv/powerlevel10k#extra-space-without-background-on-the-right-side-of-right-prompt
 ZLE_RPROMPT_INDENT=0
 preexec() { printf "\n"; }
+precmd() { printf "\n"; }
 # this and zsh-nvm result in faster zsh load times than using nvm directly
 export NVM_COMPLETION=true
 # Plugins
