@@ -897,7 +897,7 @@
   ######[ per_directory_history: Oh My Zsh per-directory-history local/global indicator ]#######
   # Color when using local/global history.
   typeset -g POWERLEVEL9K_PER_DIRECTORY_HISTORY_LOCAL_FOREGROUND=5
-  typeset -g POWERLEVEL9K_PER_DIRECTORY_HISTORY_GLOBAL_FOREGROUND=3
+  typeset -g POWERLEVEL9K_PER_DIRECTORY_HISTORY_GLOBAL_FOREGROUND=4
 
   # Tip: Uncomment the next two lines to hide "local"/"global" text and leave just the icon.
   # typeset -g POWERLEVEL9K_PER_DIRECTORY_HISTORY_LOCAL_CONTENT_EXPANSION=''
