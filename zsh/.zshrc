@@ -379,7 +379,8 @@ alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
 
 # Editors
 # -------------------------- -------------------------------------------------
-export EDITOR='code'
+export VISUAL=$SCRIPTS/code-wait.sh
+export EDITOR=$SCRIPTS/code-wait.sh
 
 # VSCode
 c() {

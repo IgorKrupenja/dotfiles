@@ -181,11 +181,7 @@ macos_settings() {
   ) | crontab -
   (
     crontab -l 2>/dev/null
-    echo "0 17 * * * /usr/local/scripts/trello refresh >/dev/null 2>&1"
-  ) | crontab -
-  (
-    crontab -l 2>/dev/null
-    echo "0 20 * * * /usr/local/scripts/dotfiles/scripts/update.sh >/dev/null 2>&1"
+    echo "0 20 * * * /Users/igor/Projects/dotfiles/scripts/update.sh >/dev/null 2>&1"
   ) | crontab -
 
   # iina
