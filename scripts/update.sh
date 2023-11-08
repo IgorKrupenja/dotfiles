@@ -108,6 +108,11 @@ update_mas() {
   mas upgrade
 }
 
+update_macos() {
+  echo -e "\n$(underline "Updating macOS")\n"
+  sudo softwareupdate -i -a
+}
+
 underline() {
   ansi 4 "$@"
 }
@@ -127,6 +132,7 @@ main() {
   update_bun
   update_homebrew
   update_mas
+  # update_macos
   display_notification
 }
 

@@ -109,9 +109,9 @@ install_sw_node() {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
   nvm install node
-  nvm install 18
-  nvm install 16
-  nvm alias default 18
+  nvm install 20
+
+  bun install -g "$(cat bun/default-packages | tr '\n' ' ' && echo)"
 }
 
 zsh_nvm_latest_release_tag() {

@@ -58,6 +58,7 @@ plugins=(
   extract
   # below custom plugins installed separately
   autoupdate
+  zsh-autocomplete
   zsh-autosuggestions
   zsh-better-npm-completion
   zsh-nvm
@@ -372,6 +373,31 @@ perf() {
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
+# ChatGPT
+ai() {
+  sgpt "$*"
+}
+ais() {
+  sgpt --shell "$*"
+}
+aico() {
+  sgpt --code "$*"
+}
+aic() {
+  sgpt --repl "$(uuidgen)"
+}
+ai4() {
+  sgpt --model gpt-4 "$*"
+}
+ai4s() {
+  sgpt --model gpt-4 --shell "$*"
+}
+ai4co() {
+  sgpt --model gpt-4 --code "$*"
+}
+ai4c() {
+  sgpt --model gpt-4 --repl "$(uuidgen)"
+}
 
 #############################################################################
 # DEVELOPMENT
@@ -566,6 +592,7 @@ alias bunt="bun test --watch"
 alias bunpt="bun publish:test"
 alias bunx="bun x"
 alias bunui="bun x npm-check-updates -ui -p bun"
+alias bunb="bun --revision && uname -mprs"
 # bun completions
 [ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
 
@@ -622,5 +649,3 @@ alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
-
-# [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
