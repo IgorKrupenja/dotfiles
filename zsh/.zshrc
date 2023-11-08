@@ -353,7 +353,7 @@ sc() {
 }
 # convert mov to gif
 togif() {
-  ffmpeg -i "$1" -pix_fmt rgb8 -r 10 output.gif
+  ffmpeg -i "$1" -pix_fmt rgb8 -r 10 "$1"
 }
 # stopwatch
 alias sw="termdown -a"
