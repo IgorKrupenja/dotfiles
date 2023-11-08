@@ -111,7 +111,7 @@ install_sw_node() {
   nvm install node
   nvm install 20
 
-  bun install -g "$(cat bun/default-packages | tr '\n' ' ' && echo)"
+  bun install -g "$(cat bun/default-packages | tr '\n' ' ')"
 }
 
 zsh_nvm_latest_release_tag() {
