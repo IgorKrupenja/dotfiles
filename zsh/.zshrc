@@ -249,7 +249,9 @@ alias cl="clear"
 alias ez="exec zsh"
 # kill process on port
 kport() {
-  lsof -t -i tcp:"$1" | xargs kill
+  for port in "$@"; do
+    lsof -t -i tcp:"$port" | xargs kill
+  done
 }
 
 #############################################################################
