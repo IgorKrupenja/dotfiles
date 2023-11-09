@@ -60,7 +60,7 @@ plugins=(
   autoupdate
   zsh-autocomplete
   zsh-autosuggestions
-  zsh-better-npm-completion
+  # zsh-better-npm-completion
   zsh-nvm
   # this needs to stay at the end of the list
   zsh-syntax-highlighting
