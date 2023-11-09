@@ -376,27 +376,33 @@ alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
 # ChatGPT
-ai() {
-  sgpt "$*"
+ai_glob() {
+  sgpt "$@"
 }
-ais() {
+alias ai="noglob ai_glob"
+ais_glob() {
   sgpt --shell "$*"
 }
-aico() {
+alias ais="noglob ais_glob"
+aico_glob() {
   sgpt --code "$*"
 }
+alias aico="noglob aico_glob"
 aic() {
   sgpt --repl "$(uuidgen)"
 }
-ai4() {
+ai4_glob() {
   sgpt --model gpt-4 "$*"
 }
-ai4s() {
+alias ai4="noglob ai4_glob"
+ai4s_glob() {
   sgpt --model gpt-4 --shell "$*"
 }
-ai4co() {
+alias ai4s="noglob ai4s_glob"
+ai4co_glob() {
   sgpt --model gpt-4 --code "$*"
 }
+alias ai4co="noglob ai4co_glob"
 ai4c() {
   sgpt --model gpt-4 --repl "$(uuidgen)"
 }
