@@ -58,7 +58,7 @@ plugins=(
   extract
   # below custom plugins installed separately
   autoupdate
-  zsh-autocomplete
+  # zsh-autocomplete
   zsh-autosuggestions
   # zsh-better-npm-completion
   zsh-nvm
@@ -377,7 +377,7 @@ alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
 # ChatGPT
 ai_glob() {
-  sgpt "$@"
+  sgpt "$*"
 }
 alias ai="noglob ai_glob"
 ais_glob() {

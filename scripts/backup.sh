@@ -64,7 +64,7 @@ echo "-------------------------"
 git push --no-verify
 
 # Obsidian
-cd "$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes" || exit
+cd "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes" || exit
 if git status | grep -q "branch is ahead"; then
   printf "\nPushing to dev-journal repo:\n----------------------------\n"
   git push --no-verify
