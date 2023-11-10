@@ -188,9 +188,6 @@ macos_settings() {
   backup_file $HOME/Library/Preferences/com.colliderli.iina.plist
   ln -sv $DOTFILES/misc/com.colliderli.iina.plist $HOME/Library/Preferences/com.colliderli.iina.plist
 
-  # fonts
-  ln -sv $DOTFILES/fonts/* $HOME/Library/Fonts
-
   # iTerm
   defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
   defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true

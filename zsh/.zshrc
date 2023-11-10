@@ -58,9 +58,7 @@ plugins=(
   extract
   # below custom plugins installed separately
   autoupdate
-  # zsh-autocomplete
   zsh-autosuggestions
-  # zsh-better-npm-completion
   zsh-nvm
   # this needs to stay at the end of the list
   zsh-syntax-highlighting
@@ -657,3 +655,16 @@ alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
+# Shell-GPT integration ZSH v0.1
+_sgpt_zsh() {
+if [[ -n "$BUFFER" ]]; then
+    _sgpt_prev_cmd=$BUFFER
+    BUFFER+="⌛"
+    zle -I && zle redisplay
+    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd")
+    zle end-of-line
+fi
+}
+zle -N _sgpt_zsh
+bindkey ^l _sgpt_zsh
+# Shell-GPT integration ZSH v0.1
