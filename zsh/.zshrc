@@ -273,10 +273,6 @@ alias co="$SCRIPTS/color.sh"
 alias up="$SCRIPTS/update.sh"
 # shellcheck disable=2139
 alias dark="$SCRIPTS/dark.sh"
-# shellcheck disable=2139
-alias ils="$SCRIPTS/imgls.sh"
-# shellcheck disable=2139
-alias icat="$SCRIPTS/imgcat.sh"
 
 # Calculator
 # ---------------------------------------------------------------------------
@@ -338,42 +334,8 @@ wtro() {
   curl -s "wttr.in/$1"
 }
 
-# Misc
+# Shell-GPT
 # ---------------------------------------------------------------------------
-alias cr="xattr -cr"
-# convert string to title case
-tc() {
-  echo "$*" | python3 -c "print('$*'.title())"
-}
-# convert string to sentence case
-sc() {
-  echo "$*" | python3 -c "print('$*'.capitalize())"
-}
-# convert mov to gif
-togif() {
-  ffmpeg -i "$1" -pix_fmt rgb8 -r 10 "$1"
-}
-# stopwatch
-alias sw="termdown -a"
-alias ghostscript="/opt/homebrew/bin/gs"
-# merge PDFs with ghostscript
-mpdf() {
-  if [[ $* == "" ]]; then
-    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
-  else
-    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$*"
-  fi
-}
-# media downloader
-alias ydl="yt-dlp"
-
-perf() {
-  hyperfine "$*"
-}
-alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
-alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
-alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
-# ChatGPT
 ai_glob() {
   sgpt "$*"
 }
@@ -404,6 +366,56 @@ alias ai4co="noglob ai4co_glob"
 ai4c() {
   sgpt --model gpt-4 --repl "$(uuidgen)"
 }
+# Shell-GPT integration ZSH v0.1
+_sgpt_zsh() {
+  if [[ -n "$BUFFER" ]]; then
+    _sgpt_prev_cmd=$BUFFER
+    BUFFER+="⌛"
+    zle -I && zle redisplay
+    BUFFER=$(sgpt --shell <<<"$_sgpt_prev_cmd")
+    zle end-of-line
+  fi
+}
+zle -N _sgpt_zsh
+bindkey ^l _sgpt_zsh
+# Shell-GPT integration ZSH v0.1
+
+# Misc
+# ---------------------------------------------------------------------------
+alias cr="xattr -cr"
+# convert string to title case
+tc() {
+  echo "$*" | python3 -c "print('$*'.title())"
+}
+# convert string to sentence case
+sc() {
+  echo "$*" | python3 -c "print('$*'.capitalize())"
+}
+# convert mov to gif
+togif() {
+  ffmpeg -i "$1" -pix_fmt rgb8 -r 10 "$1"
+}
+# stopwatch
+alias sw="termdown -a"
+alias ghostscript="/opt/homebrew/bin/gs"
+# merge PDFs with ghostscript
+mpdf() {
+  if [[ $* == "" ]]; then
+    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
+  else
+    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$*"
+  fi
+}
+# media downloader
+alias ydl="yt-dlp"
+perf() {
+  hyperfine "$*"
+}
+alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
+alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
+alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
+alias ils="imgls"
+alias icat="imgcat"
 
 #############################################################################
 # DEVELOPMENT
@@ -655,16 +667,3 @@ alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert 82b3a56201e3e3e58e2c1ef41ef7cb22401571415d468fc0c389caeee09fa903"
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
-# Shell-GPT integration ZSH v0.1
-_sgpt_zsh() {
-if [[ -n "$BUFFER" ]]; then
-    _sgpt_prev_cmd=$BUFFER
-    BUFFER+="⌛"
-    zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd")
-    zle end-of-line
-fi
-}
-zle -N _sgpt_zsh
-bindkey ^l _sgpt_zsh
-# Shell-GPT integration ZSH v0.1
