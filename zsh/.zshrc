@@ -411,7 +411,7 @@ alias ydl="yt-dlp"
 perf() {
   hyperfine "$*"
 }
-alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
+alias uuid='uuidgen | tr "[:upper:]" "[:lower:]" | tee >(pbcopy)'
 alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
 alias ils="imgls"
