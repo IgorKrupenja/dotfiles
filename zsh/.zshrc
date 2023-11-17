@@ -632,6 +632,14 @@ if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi
 
+# AWS
+# ---------------------------------------------------------------------------
+export AWS_DEFAULT_PROFILE=trimtex
+alias awpls="aws configure list-profiles"
+awp() {
+  export AWS_PROFILE="$1"
+}
+
 #############################################################################
 # PROJECTS
 #############################################################################
