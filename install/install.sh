@@ -155,7 +155,7 @@ dotfiles() {
   echo ""
 
   # misc
-  dotfiles=(".sleep" ".wakeup")
+  dotfiles=(".sleep")
   for dotfile in ${dotfiles[@]}; do
     # Backup any existing dotfiles
     backup_file $HOME/${dotfile}
