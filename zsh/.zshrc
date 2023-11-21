@@ -634,7 +634,7 @@ fi
 
 # AWS
 # ---------------------------------------------------------------------------
-export AWS_PROFILE=trimtex
+if [[ -f .aws/config && $(grep "\[profile trimtex\]" .aws/config) ]]; then export AWS_PROFILE=trimtex; fi
 alias awpls="aws configure list-profiles"
 awp() {
   export AWS_PROFILE="$1"
