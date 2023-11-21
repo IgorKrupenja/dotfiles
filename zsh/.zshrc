@@ -634,7 +634,7 @@ fi
 
 # AWS
 # ---------------------------------------------------------------------------
-export AWS_DEFAULT_PROFILE=trimtex
+export AWS_PROFILE=trimtex
 alias awpls="aws configure list-profiles"
 awp() {
   export AWS_PROFILE="$1"
