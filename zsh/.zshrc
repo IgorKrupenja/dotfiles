@@ -226,6 +226,7 @@ alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Re
 alias net="sudo iftop -B -i en0"
 # speedtest.net
 alias sp="speedtest"
+alias ip="ipconfig getifaddr en0 | tee >(pbcopy)"
 
 # Misc
 # ---------------------------------------------------------------------------
