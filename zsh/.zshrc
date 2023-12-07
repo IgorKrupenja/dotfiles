@@ -379,7 +379,11 @@ _sgpt_zsh() {
 }
 zle -N _sgpt_zsh
 bindkey ^l _sgpt_zsh
-# Shell-GPT integration ZSH v0.1
+
+# GitHub and Copilot CLI
+# ---------------------------------------------------------------------------
+# To get aliases
+eval "$(github-copilot-cli alias -- "$0")"
 
 # Misc
 # ---------------------------------------------------------------------------
