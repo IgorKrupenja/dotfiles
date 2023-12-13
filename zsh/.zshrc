@@ -12,6 +12,9 @@ source "$HOME/.p10k-instant-prompt.sh"
 
 # Path variables
 # ---------------------------------------------------------------------------
+export PNPM_HOME="$HOME/Library/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+path+=("$PNPM_HOME" "$BUN_INSTALL/bin")
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
@@ -421,6 +424,7 @@ alias mil='echo $(($(gdate +%s%N) / 1000000)) | tee >(pbcopy)'
 alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
 alias ils="imgls"
 alias icat="imgcat"
+alias path='echo "$PATH" | tr ":" "\n"'
 
 #############################################################################
 # DEVELOPMENT
@@ -583,8 +587,6 @@ alias npe="nvm_use npm run test:e2e"
 alias npcl="npm run cloc"
 
 # pnpm
-export PNPM_HOME="/Users/igor/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 alias pni="nvm_use pnpm install"
 alias pnid="nvm_use pnpm install --save-dev"
 alias pnr="nvm_use pnpm run"
@@ -605,8 +607,6 @@ alias yar="nvm_use yarn run"
 alias yab="nvm_use yarn build"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 alias buni="bun install"
 alias buna="bun add"
 alias bunad="bun add -D"
