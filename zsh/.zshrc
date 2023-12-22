@@ -14,7 +14,7 @@ source "$HOME/.p10k-instant-prompt.sh"
 # ---------------------------------------------------------------------------
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
-path+=("$PNPM_HOME" "$BUN_INSTALL/bin")
+path+=("$PNPM_HOME" "$BUN_INSTALL/bin" "$HOME/.flutter-sdk/bin")
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
