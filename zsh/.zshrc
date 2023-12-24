@@ -103,6 +103,7 @@ alias dl='cd $HOME/Downloads'
 alias p='cd $PROJECTS'
 alias dot='cd $DOTFILES'
 alias blog='cd $PROJECTS/blog'
+alias ob='cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'
 alias cd-="cd -"
 
 # Trash
