@@ -20,6 +20,7 @@ browserslist
 captcha
 cera
 cloc
+clsx
 Cocoapods
 collada
 colliderli
@@ -40,6 +41,7 @@ dušiga
 dušisegisti
 Dušiuks
 Editability
+ENIC
 esmaspäeva
 esnext
 espree
@@ -71,6 +73,7 @@ Harjumaa
 hashnode
 Hashnode
 HASHNODE
+hookform
 hoverable
 Huftgold
 icomoon
@@ -88,13 +91,16 @@ keyframes
 khwarezm
 killall
 Kodality
+kõrgharidus
 Kostiv
 Krematoorium
 Krupenja
+lähinädalatel
 lcov
 litecoin
 localematcher
 LTRB
+lucide
 Lyndanisse
 Maksim
 Malofeev
@@ -105,6 +111,7 @@ minmax
 mixins
 mywebsite
 Nagorny
+NARIC
 NEARLINE
 Nehoroshkin
 nestjs
@@ -114,6 +121,8 @@ nextjs
 Nikotin
 Nord
 offchain
+openai
+OPENAI
 Openlogin
 originalname
 osascript
@@ -135,6 +144,7 @@ Recents
 reduxjs
 reranked
 reranking
+Revolut
 Riho
 salesrep
 Serializers
@@ -159,6 +169,7 @@ svgr
 Swal
 tada
 TADA
+tailwindcss
 Tartumaa
 tatumio
 tensorflow
