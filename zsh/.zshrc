@@ -458,6 +458,7 @@ alias glod="git log --pretty=format:'%ad | [%h] %s' --date=format:'%Y-%m-%d'"
 gcm() {
   git commit -m "$*"
 }
+alias gcmx="gcm x"
 # create branch both locally and remotely, only origin
 alias gbl="git branch"
 gbn() {
@@ -617,6 +618,7 @@ alias buni="bun install"
 alias buna="bun add"
 alias bunad="bun add -D"
 alias bund="bun dev"
+alias bunf="bun format"
 alias bunu="bun update"
 alias bunl="bun lint"
 alias bunt="bun test --watch"
