@@ -339,52 +339,7 @@ wtro() {
   curl -s "wttr.in/$1"
 }
 
-# Shell-GPT
-# ---------------------------------------------------------------------------
-ai_glob() {
-  sgpt "$*"
-}
-alias ai="noglob ai_glob"
-ais_glob() {
-  sgpt --shell "$*"
-}
-alias ais="noglob ais_glob"
-aico_glob() {
-  sgpt --code "$*"
-}
-alias aico="noglob aico_glob"
-aic() {
-  sgpt --repl "$(uuidgen)"
-}
-ai4_glob() {
-  sgpt --model gpt-4 "$*"
-}
-alias ai4="noglob ai4_glob"
-ai4s_glob() {
-  sgpt --model gpt-4 --shell "$*"
-}
-alias ai4s="noglob ai4s_glob"
-ai4co_glob() {
-  sgpt --model gpt-4 --code "$*"
-}
-alias ai4co="noglob ai4co_glob"
-ai4c() {
-  sgpt --model gpt-4 --repl "$(uuidgen)"
-}
-# Shell-GPT integration ZSH v0.1
-_sgpt_zsh() {
-  if [[ -n "$BUFFER" ]]; then
-    _sgpt_prev_cmd=$BUFFER
-    BUFFER+="⌛"
-    zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<<"$_sgpt_prev_cmd")
-    zle end-of-line
-  fi
-}
-zle -N _sgpt_zsh
-bindkey ^l _sgpt_zsh
-
-# GitHub and Copilot CLI
+# Copilot CLI
 # ---------------------------------------------------------------------------
 # To get aliases
 eval "$(github-copilot-cli alias -- "$0")"
@@ -518,20 +473,6 @@ gir() {
     git rebase -i HEAD~"$1"
   fi
 }
-
-# python
-# ---------------------------------------------------------------------------
-alias python="python3"
-alias pip="pip3"
-alias ipy="ipython"
-alias pipi="pip install"
-alias pipdep="pipdeptree"
-alias pipl="pip list"
-alias piplo="pip list -o"
-# remove with unused dependencies
-alias pipu="pip-autoremove -y"
-alias pips="pip show"
-alias ch="charm"
 
 # Web & JS
 # ---------------------------------------------------------------------------
