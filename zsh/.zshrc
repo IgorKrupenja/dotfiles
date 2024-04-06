@@ -526,6 +526,7 @@ npm_start() {
 }
 alias npst="nvm_use npm_start"
 alias npt="npm test"
+alias npti="npm test -- --include"
 alias npe="nvm_use npm run test:e2e"
 alias npcl="npm run cloc"
 
