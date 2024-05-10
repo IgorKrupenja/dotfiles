@@ -163,6 +163,7 @@ smth
 Sorokin
 Spellright
 STBY
+stebby
 Stebby
 streamifier
 stylelint
