@@ -516,6 +516,7 @@ alias npui="nvm_use npx npm-check-updates -ui"
 
 # npm scripts
 alias npr="nvm_use npm run"
+alias npb="nvm_use npm run build"
 alias npl="nvm_use npm run lint"
 alias npf="nvm_use npm run format"
 npm_start() {
