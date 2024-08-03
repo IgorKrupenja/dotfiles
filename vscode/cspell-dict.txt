@@ -81,6 +81,7 @@ hoverable
 Huftgold
 icomoon
 Icomoon
+ideathon
 iftop
 iina
 ILIKE
@@ -158,6 +159,7 @@ Sexmane
 sfprotext
 Shastin
 Siidisaba
+Simo
 Sjomkin
 smth
 Sorokin

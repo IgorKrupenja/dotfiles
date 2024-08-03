@@ -137,6 +137,7 @@ die() {
 
 # Misc
 # ---------------------------------------------------------------------------
+alias tk="take"
 alias df="duf"
 alias du="du -h -d 1"
 # quick look
