@@ -68,6 +68,8 @@ gainsboro
 Gainullin
 gcloud
 Geolocator
+github
+gridraven
 gsutil
 gtsupertext
 hacky
@@ -83,6 +85,7 @@ icomoon
 Icomoon
 ideathon
 iftop
+igor
 iina
 ILIKE
 Jaarika
@@ -140,6 +143,9 @@ Pjotr
 Playtech
 pmmmwh
 pnmp
+poeditor
+postgis
+postgres
 Praktikakohvik
 Prepper
 prevorder
@@ -161,9 +167,11 @@ Shastin
 Siidisaba
 Simo
 Sjomkin
+slackapi
 smth
 Sorokin
 Spellright
+sportidfront
 STBY
 stebby
 Stebby
@@ -182,7 +190,9 @@ TADA
 tailwindcss
 Tartumaa
 tatumio
+Tegola
 tensorflow
+tileserver
 TIMESTAMPTZ
 todohighlight
 topbar

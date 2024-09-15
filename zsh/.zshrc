@@ -585,6 +585,10 @@ alias ds="docker start"
 alias dcu="docker-compose up"
 alias dcb="docker-compose build"
 
+# Terraform
+# ---------------------------------------------------------------------------
+alias tf="terraform"
+
 # GCloud
 # ---------------------------------------------------------------------------
 if [ -d "$(brew --prefix)/share/google-cloud-sdk" ]; then
@@ -635,3 +639,10 @@ alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert b47741e4081cd98bb0796d14a59edf903a26444c6ddaf46bd2d044cde84fc2d3"
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
+
+# eval "$(frum init)"
+export PATH="/opt/homebrew/opt/ruby/bin:$(gem environment gemdir)/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
