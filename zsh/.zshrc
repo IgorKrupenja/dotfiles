@@ -389,15 +389,15 @@ alias path='echo "$PATH" | tr ":" "\n"'
 
 # Editors
 # -------------------------- -------------------------------------------------
-export VISUAL=$SCRIPTS/code-wait.sh
-export EDITOR=$SCRIPTS/code-wait.sh
+export VISUAL=$SCRIPTS/cursor-wait.sh
+export EDITOR=$SCRIPTS/cursor-wait.sh
 
 # VSCode
 c() {
   if [[ $* == "" ]]; then
-    code .
+    cursor .
   else
-    code "$@"
+    cursor "$@"
   fi
 }
 
@@ -630,7 +630,7 @@ alias dotnci="dotfiles_new_issue core,important"
 alias dotnv="dotfiles_new_issue vscode"
 alias dotnvi="dotfiles_new_issue vscode,important"
 
-alias cz='code $DOTFILES'
+alias cz='c $DOTFILES'
 
 # Devtailor
 # ---------------------------------------------------------------------------

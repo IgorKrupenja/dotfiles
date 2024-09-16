@@ -3824,6 +3824,8 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>8A2592B5-294E-4848-9BB0-DBD09F5AF62D</string>
+	<key>DimInactiveSplitPanes</key>
+	<true/>
 	<key>DimOnlyText</key>
 	<true/>
 	<key>DisableFullscreenTransparency</key>
