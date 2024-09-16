@@ -587,6 +587,8 @@ alias dcb="docker-compose build"
 
 # Terraform
 # ---------------------------------------------------------------------------
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
 alias tf="terraform"
 
 # GCloud
@@ -640,9 +642,7 @@ alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --tr
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
 
+# Some half-broken Ruby stuff
 # eval "$(frum init)"
-export PATH="/opt/homebrew/opt/ruby/bin:$(gem environment gemdir)/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# export PATH="/opt/homebrew/opt/ruby/bin:$(gem environment gemdir)/bin:$PATH"
+# export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
