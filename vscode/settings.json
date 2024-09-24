@@ -15,12 +15,18 @@
       "editorBracketHighlight.foreground3": "#B48EAD",
       "jumpy2.labelFontColor": "#FFFFFF",
       "jumpy2.labelBackgroundColor": "#83A2C2",
-      "jumpy2.labelBorderColor": "#83A2C2"
+      "jumpy2.labelBorderColor": "#83A2C2",
+      "jumpy2.checkered_labelFontColor": "#FFFFFF",
+      "jumpy2.checkered_labelBackgroundColor": "#83A2C2",
+      "jumpy2.checkered_labelBorderColor": "#83A2C2"
     },
     "[GitHub Soft]": {
       "jumpy2.labelFontColor": "#FFFFFF",
       "jumpy2.labelBackgroundColor": "#5a32a3",
-      "jumpy2.labelBorderColor": "#5a32a3"
+      "jumpy2.labelBorderColor": "#5a32a3",
+      "jumpy2.checkered_labelFontColor": "#FFFFFF",
+      "jumpy2.checkered_labelBackgroundColor": "#5a32a3",
+      "jumpy2.checkered_labelBorderColor": "#5a32a3"
       // "peekViewTitle.background": "#ffffff"
     }
   },
@@ -99,7 +105,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "GitHub Soft",
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
@@ -137,7 +143,7 @@
   },
   "git.openRepositoryInParentFolders": "always",
   "window.density.editorTabHeight": "compact",
-  "debug.toolBarLocation": "docked",
+  "debug.toolBarLocation": "commandCenter",
   "githubPullRequests.pullBranch": "never",
   "security.workspace.trust.enabled": false,
   "git.mergeEditor": true,
@@ -150,6 +156,24 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "window.newWindowDimensions": "inherit",
-  "window.commandCenter": false,
-  "workbench.activityBar.location": "top"
+  "debug.javascript.autoAttachFilter": "disabled",
+  "debug.openDebug": "openOnSessionStart",
+  "workbench.activityBar.location": "top",
+  "debug.openExplorerOnEnd": true,
+  "terminal.external.osxExec": "iTerm.app",
+  "workbench.editor.tabActionLocation": "left",
+  "update.showReleaseNotes": false,
+  "editor.occurrencesHighlight": "multiFile",
+  "terminal.integrated.stickyScroll.enabled": true,
+  "typescript.preferGoToSourceDefinition": true,
+  "vitest.enable": true,
+  "[hosts]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "totalTypeScript.hideAllTips": false,
+  "totalTypeScript.hideBasicTips": true,
+  "totalTypeScript.hiddenTips": [
+    "passing-generics-to-types",
+    "record-utility-type"
+  ]
 }
