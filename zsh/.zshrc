@@ -574,6 +574,16 @@ alias bunb="bun --revision && uname -mprs"
 # bun completions
 [ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
 
+# Prisma
+# ---------------------------------------------------------------------------
+alias pa="pnpm exec prisma"
+alias pag="pa generate --sql"
+alias pad="pa migrate dev --preview-feature"
+
+# Postgres
+# ---------------------------------------------------------------------------
+alias pgr="psql -h localhost -p 5432 -d gridraven_local -U postgres -W < "
+
 # Docker
 # ---------------------------------------------------------------------------
 if [ -f "$HOME"/.docker/init-zsh.sh ]; then
