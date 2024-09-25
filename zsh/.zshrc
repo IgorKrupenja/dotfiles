@@ -476,12 +476,13 @@ gir() {
   fi
 }
 
-# Web & JS
+# FE misc
 # ---------------------------------------------------------------------------
 # Can I use
 alias ciu="caniuse"
 
 # nvm
+# ---------------------------------------------------------------------------
 alias n16="nvm use 16"
 alias n18="nvm use 18"
 alias n20="nvm use 20"
@@ -494,6 +495,8 @@ nvm_use() {
   fi
 }
 
+# npm
+# ---------------------------------------------------------------------------
 # npm general
 alias nps="npm search"
 
@@ -534,6 +537,7 @@ alias npe="nvm_use npm run test:e2e"
 alias npcl="npm run cloc"
 
 # pnpm
+# ---------------------------------------------------------------------------
 alias pni="nvm_use pnpm install"
 alias pnid="nvm_use pnpm install --save-dev"
 alias pnr="nvm_use pnpm run"
@@ -553,12 +557,8 @@ alias pnex="nvm_use pnpm exec"
 alias pnre="nvm_use pnpm remove"
 alias pnui="nvm_use pnpm dlx npm-check-updates -ui"
 
-# yarn
-alias yad="nvm_use yarn develop"
-alias yar="nvm_use yarn run"
-alias yab="nvm_use yarn build"
-
-# bun
+# Bun
+# ---------------------------------------------------------------------------
 alias buni="bun install"
 alias buna="bun add"
 alias bunad="bun add -D"
@@ -600,6 +600,8 @@ alias dcb="docker-compose build"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 alias tf="terraform"
+alias tfa="terraform apply"
+alias tfp="terraform plan"
 
 # GCloud
 # ---------------------------------------------------------------------------
