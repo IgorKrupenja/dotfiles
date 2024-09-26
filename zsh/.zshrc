@@ -650,7 +650,7 @@ alias trim='cd $PROJECTS/devtailor/trimtex-v2/'
 alias dt='cd $PROJECTS/devtailor/'
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
-alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert b47741e4081cd98bb0796d14a59edf903a26444c6ddaf46bd2d044cde84fc2d3"
+alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert c63e665a112fdaf867140b679b1b107f644a2bb2adeae53ba11b6fb5391ba493"
 alias yai="nvm_use yarn run data:import"
 alias yae="nvm_use yarn run data:export"
 
