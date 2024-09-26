@@ -1,38 +1,38 @@
 [user]
-	email = igor.krupenja@gmail.com
-	name = Igor Krupenja
+email = igor.krupenja@gmail.com
+name = Igor Krupenja
 [color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  ui = true
-  pager = true
+diff = auto
+status = auto
+branch = auto
+interactive = auto
+ui = true
+pager = true
 [push]
-	default = current
-  followTags = true
+default = current
+followTags = true
 [core]
-  editor = code --wait
-  excludesfile = /Users/igor/.gitignore_global
-	hooksPath = /Users/igor/Projects/dotfiles/git/hooks
+editor = cursor --wait
+excludesfile = /Users/igor/.gitignore_global
+hooksPath = /Users/igor/Projects/dotfiles/git/hooks
 [diff]
-  tool = vscode
+tool = cursor
 [difftool]
-  prompt = false
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+prompt = false
+[difftool "cursor"]
+cmd = cursor --wait --diff $LOCAL $REMOTE
 [credential]
-  helper = store
+helper = store
 [http]
-	cookiefile = /Users/igor/.gitcookies
+cookiefile = /Users/igor/.gitcookies
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
 [init]
-	defaultBranch = main
+defaultBranch = main
 [branch]
-	autosetuprebase = always
+autosetuprebase = always
 [mergetool]
-	keepBackup = false
+keepBackup = false
