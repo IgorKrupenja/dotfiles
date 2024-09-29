@@ -1,46 +1,21 @@
 #!/bin/bash
 
-caffeinate -i -w $$ &
-
-echo ""
-echo "############################################################################"
-echo "#                                                                          #"
-echo "#                        krupenja/dotfiles INSTALL                         #"
-echo "#                                                                          #"
-echo "############################################################################"
-echo ""
-echo "*************************** Use fast connection! ***************************"
-echo ""
-
-# Write log
-exec > >(tee "/tmp/dotfiles-install-$(date +%s).log") 2>&1
-
-mkdir -p $HOME/Projects
-# Repo location
-DOTFILES="$HOME/Projects/dotfiles"
-
-backup_file() {
-  if [ -e $1 ]; then
-    mv -fv $1 $1.bak
-  fi
-}
-
 main() {
   get_sudo
   prepare
+  install_brew_git
   clone_repo
-  install_sw_brew
-  install_sw_pip
-  zsh_config
-  dotfiles
-  install_sw_node
-  macos_settings
+  install_from_brew
+  install_from_pipx
+  configure_zsh
+  configure_dotfiles
+  install_from_npm
+  set_macos_settings
   restart_zsh
 }
 
 # Ask for password only once
 get_sudo() {
-  printf "Please enter sudo password.\n"
   printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
     sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
     sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
@@ -48,130 +23,149 @@ get_sudo() {
 
 prepare() {
   echo ""
-  echo "************************** Installing brew and git *************************"
+  echo "🚀🚀🚀 IgorKrupenja/dotfiles automated install"
+  echo "🚀🚀🚀 Use fast connection!"
   echo ""
+
+  # Any subsequent commands which fail will cause the shell script to exit immediately
+  set -e
+
+  DOTFILES="$HOME/Projects/dotfiles"
+
+  if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null; then
+    echo "This script requires your terminal app to have Full Disk Access."
+    echo "Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
+    exit 1
+  fi
+
+  caffeinate -i -w $$ &
+  # Write log
+  exec > >(tee "/tmp/dotfiles-install-$(date +%s).log") 2>&1
+}
+
+install_brew_git() {
+  echo ""
+  echo "🚀🚀🚀 Installing Homebrew and git"
+  echo ""
+
   # Install brew AND git
   # Will also install xcode-tools, including git - needed to clone repo
   # So running xcode-select --install separately IS NOT required
   echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  # Add brew to PATH
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
 clone_repo() {
-  # Clone repo if not already cloned
-  if [[ -d $DOTFILES/.git ]]; then
+  if [[ -d "$DOTFILES/.git" ]]; then
     echo ""
-    echo "********************** Dotfiles repo already cloned ************************"
-    echo "************************* Pulling latest changes ***************************"
+    echo "🚀🚀🚀 Dotfiles repo already cloned"
+    echo "🚀🚀🚀 Pulling latest changes"
     echo ""
-    cd $DOTFILES
-    git pull
+
+    git -C "$DOTFILES" pull
   else
     echo ""
-    echo "************************** Cloning dotfiles repo ***************************"
+    echo "🚀🚀🚀 Cloning dotfiles repo"
     echo ""
-    mkdir -p $DOTFILES
-    cd $DOTFILES
-    git clone https://github.com/krupenja/dotfiles.git .
-    cd $DOTFILES
+
+    git clone https://github.com/krupenja/dotfiles.git "$DOTFILES"
   fi
 }
 
-install_sw_brew() {
+install_from_brew() {
   # Install formulae and casks from Brewfile
   echo ""
-  echo "******************** Installing Rosetta and brew packages ********************"
+  echo "🚀🚀🚀 Installing from Homebrew and App Store"
   echo ""
-  /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-  cd $DOTFILES/install
-  brew bundle
-  cd $DOTFILES
+
+  brew bundle --file="$DOTFILES/install/Brewfile"
 }
 
-install_sw_pip() {
+install_from_pipx() {
   echo ""
-  echo "**************************** Installing from pip ***************************"
+  echo "🚀🚀🚀 Installing from pipx"
   echo ""
-  pip3 install pipdeptree
-  pip3 install ipython
-  pip3 install termdown
-  pip3 install pip-autoremove
-  pip3 install git-fame
+
+  # Prevent warnings
+  pipx ensurepath
+
+  pipx install pipdeptree
+  pipx install termdown
+  pipx install git-fame
 }
 
-install_sw_node() {
+install_from_npm() {
   echo ""
-  echo "**************************** Installing from npm ***************************"
+  echo "🚀🚀🚀 Installing node global npm packages"
   echo ""
-  export NVM_DIR=$HOME/.nvm
-  git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
-  $(builtin cd "$NVM_DIR" && git checkout --quiet "$(zsh_nvm_latest_release_tag)")
 
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-  nvm install node
-  nvm install 20
+  # Uses nvm installed with zsh-nvm
+  # TODO: broken https://github.com/IgorKrupenja/dotfiles/issues/443
+  # nvm install node
+  # nvm install --lts
 
-  bun install -g "$(cat bun/default-packages | tr '\n' ' ')"
+  while IFS= read -r package || [[ -n "$package" ]]; do
+    bun install -g "$package"
+  done <"$DOTFILES/bun/default-packages"
 }
 
-zsh_nvm_latest_release_tag() {
-  echo $(builtin cd "$NVM_DIR" && git fetch --quiet --tags origin && git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1))
-}
+configure_zsh() {
+  echo ""
+  echo "🚀🚀🚀 Configuring zsh"
+  echo ""
 
-zsh_config() {
-  echo ""
-  echo "***************************** Configuring zsh ******************************"
-  echo ""
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-  # Remove any existing install first
-  rm -rf $HOME/.oh-my-zsh
+  backup "$HOME/.oh-my-zsh"
   # Install oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
   # Install theme
-  git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-  backup_file $HOME/.p10k.zsh
-  ln -sv $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
-  backup_file $HOME/.p10k-instant-prompt
-  ln -sv $DOTFILES/zsh/.p10k-instant-prompt.sh $HOME/.p10k-instant-prompt.sh
+  git clone https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
+  backup "$HOME/.p10k.zsh"
+  ln -sv "$DOTFILES/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
+  backup "$HOME/.p10k-instant-prompt.sh"
+  ln -sv "$DOTFILES/zsh/.p10k-instant-prompt.sh" "$HOME/.p10k-instant-prompt.sh"
   # Install plug-ins
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
-  git clone https://github.com/lukechilds/zsh-better-npm-completion $ZSH_CUSTOM/plugins/zsh-better-npm-completion
-  git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM/plugins/zsh-nvm
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+  git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins "$ZSH_CUSTOM/plugins/autoupdate"
+  git clone https://github.com/lukechilds/zsh-better-npm-completion "$ZSH_CUSTOM/plugins/zsh-better-npm-completion"
+  git clone https://github.com/lukechilds/zsh-nvm "$ZSH_CUSTOM/plugins/zsh-nvm"
   # iTerm shell integrations
-  curl -L https://iterm2.com/shell_integration/zsh -o $DOTFILES/zsh/.iterm2_shell_integration.zsh
+  curl -L https://iterm2.com/shell_integration/zsh -o "$DOTFILES/zsh/.iterm2_shell_integration.zsh"
   # Config
-  backup_file $HOME/.zshrc
-  ln -sv $DOTFILES/zsh/.zshrc $HOME/.zshrc
-  backup_file $HOME/.zprofile
-  ln -sv $DOTFILES/zsh/.zprofile $HOME/.zprofile
+  backup "$HOME/.zshrc"
+  ln -sv "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
+  backup "$HOME/.zprofile"
+  ln -sv "$DOTFILES/zsh/.zprofile" "$HOME/.zprofile"
 }
 
 # Needs to be called after zsh_config
-dotfiles() {
+configure_dotfiles() {
   echo ""
-  echo "*************************** Installing dotfiles ****************************"
+  echo "🚀🚀🚀 Installing dotfiles"
   echo ""
 
-  # misc
   dotfiles=(".sleep")
-  for dotfile in ${dotfiles[@]}; do
+  for dotfile in "${dotfiles[@]}"; do
     # Backup any existing dotfiles
-    backup_file $HOME/${dotfile}
-    ln -sv $DOTFILES/misc/${dotfile} $HOME/${dotfile}
+    backup "$HOME/${dotfile}"
+    ln -sv "$DOTFILES/misc/${dotfile}" "$HOME/${dotfile}"
   done
-  ln -sv $DOTFILES/git/.gitconfig $HOME/.gitconfig
-  touch $HOME/.hushlogin
-  # SSH
-  backup_file $HOME/.ssh/config
-  mkdir $HOME/.ssh/
-  ln -sv $DOTFILES/ssh/config $HOME/.ssh/config
+
+  backup "$HOME/.gitconfig"
+  ln -sv "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
+
+  touch "$HOME/.hushlogin"
+
+  backup "$HOME/.ssh/config"
+  mkdir -p "$HOME/.ssh/"
+  ln -sv "$DOTFILES/ssh/config" "$HOME/.ssh/config"
 }
 
-macos_settings() {
+set_macos_settings() {
   echo ""
-  echo "*************************** Restoring macOS settings ***************************"
+  echo "🚀🚀🚀 Restoring macOS settings"
   echo ""
 
   # crontab
@@ -185,36 +179,30 @@ macos_settings() {
   ) | crontab -
 
   # iina
-  backup_file $HOME/Library/Preferences/com.colliderli.iina.plist
-  ln -sv $DOTFILES/misc/com.colliderli.iina.plist $HOME/Library/Preferences/com.colliderli.iina.plist
+  backup "$HOME/Library/Preferences/com.colliderli.iina.plist"
+  ln -sv "$DOTFILES/misc/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
 
   # iTerm
-  defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string $DOTFILES/iterm
+  defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
   defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
   # Marta
   marta_dir="$HOME/Library/Application Support/org.yanex.marta"
   # Using copy and not symlink because of this issue:
   # https://github.com/marta-file-manager/marta-issues/issues/488
-  if [ -e $marta_dir ]; then
-    cp -fvr $marta_dir $marta_dir-$(date +%s).bak
-  fi
-  cp -fvr $DOTFILES/marta $marta_dir/
+  backup "$marta_dir"
+  cp -fvr "$DOTFILES/marta" "$marta_dir/"
   # for CLI
-  ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
-
-  # Map key to the left of 1 to tilde (~)
-  ln -sv $DOTFILES/misc/com.user.tilde.plist $HOME/Library/LaunchAgents/com.user.tilde.plist
-  chown root:wheel /Users/igor/Library/LaunchAgents/com.user.tilde.plist
-  launchctl load /Users/igor/Library/LaunchAgents/com.user.tilde.plist
-  tilde
+  # TODO: broken https://github.com/IgorKrupenja/dotfiles/issues/440
+  # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
 
   # Projects folder icon
-  fileicon set $HOME/Projects /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
+  fileicon set "$HOME/Projects" /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
 
   # Disable system sound on ctrl+cmd+arrow
-  mkdir $HOME/Library/KeyBindings
-  ln -sv $DOTFILES/keyboard/DefaultKeyBinding.dict $HOME/Library/KeyBindings/DefaultKeyBinding.dict
+  mkdir "$HOME/Library/KeyBindings"
+  backup "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
+  ln -sv "$DOTFILES/keyboard/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
 
   # macOS defaults below, thanks to Mathias Bynens! https://mths.be/macos
 
@@ -258,29 +246,30 @@ macos_settings() {
   killall Dock
 
   # Ask for sudo password in the future
-  sudo dscl . -delete /Groups/wheel GroupMembership $(whoami)
+  sudo dscl . -delete /Groups/wheel GroupMembership "$(whoami)"
 
   # Enable server performance mode https://apple.stackexchange.com/questions/373035/fix-fork-resource-temporarily-unavailable-on-os-x-macos
   nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 }
 
 restart_zsh() {
-  exec zsh
-
   echo ""
-  echo "############################################################################"
-  echo "#                                                                          #"
-  echo "#                             INSTALL FINISHED                             #"
-  echo "#                                                                          #"
-  echo "############################################################################"
+  echo "🚀🚀🚀 Install finished"
+  echo "🚀🚀🚀 Restarting zsh"
 
-  exit
+  exec zsh
+}
+
+backup() {
+  if [ -e "$1" ]; then
+    TIMESTAMP=$(date +%Y%m%d%H%M%S)
+    mv -fv "$1" "${1}.bak.${TIMESTAMP}"
+  fi
 }
 
 # Check OS
 if [[ $(uname) == "Darwin" ]]; then
   main "$@"
-  exit
 else
   echo "Only macOS supported"
   exit

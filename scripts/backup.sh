@@ -27,9 +27,19 @@ if [[ $(git diff .) ]]; then
   git commit -m "Update VSCode settings"
 fi
 
+# Cursor
+cd "$DOTFILES/cursor" || exit
+cp -f "/Users/igor/Library/Application Support/Cursor/User/settings.json" settings.json
+cp -f "/Users/igor/Library/Application Support/Cursor/User/keybindings.json" keybindings.json
+cp -rf "/Users/igor/Library/Application Support/Cursor/User/snippets" ./
+if [[ $(git diff .) ]]; then
+  git add .
+  git commit -m "Update Cursor settings"
+fi
+
 # Brewfile dump
 cd "$DOTFILES/install" || exit
-brew bundle dump --force
+brew bundle dump --taps --brews --casks --mas --force
 if [[ $(git diff Brewfile) ]]; then
   git add Brewfile
   git commit -m "Update Brewfile"
@@ -39,7 +49,7 @@ cd "$DOTFILES" || exit
 
 # Marta
 rm -rf "$DOTFILES/marta"
-cp -fvr "$HOME/Library/Application\ Support/org.yanex.marta" "$DOTFILES/marta"
+cp -fvr "$HOME/Library/Application Support/org.yanex.marta" "$DOTFILES/marta"
 if [[ $(git diff marta) ]]; then
   git add marta
   git commit -m "Update Marta settings"
@@ -62,13 +72,6 @@ echo ""
 echo "Pushing to dotfiles repo:"
 echo "-------------------------"
 git push --no-verify
-
-# Obsidian
-cd "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes" || exit
-if git status | grep -q "branch is ahead"; then
-  printf "\nPushing to dev-journal repo:\n----------------------------\n"
-  git push --no-verify
-fi
 
 #################### Notifications
 

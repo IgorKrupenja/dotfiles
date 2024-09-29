@@ -14,7 +14,8 @@ source "$HOME/.p10k-instant-prompt.sh"
 # ---------------------------------------------------------------------------
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
-path+=("$PNPM_HOME" "$BUN_INSTALL/bin" "$HOME/.flutter-sdk/bin" "/opt/homebrew/opt/postgresql@16/bin")
+# $HOME/.local/bin is for pipx
+path+=("$PNPM_HOME" "$BUN_INSTALL/bin" "/opt/homebrew/opt/postgresql@16/bin" "$HOME/.local/bin")
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
@@ -51,7 +52,7 @@ precmd() {
     printf "\n"
   fi
 }
-# this and zsh-nvm result in faster zsh load times than using nvm directly
+# For zsh-nvm, faster shell load times than using nvm directly
 export NVM_COMPLETION=true
 # Plugins
 plugins=(
@@ -80,6 +81,7 @@ source "$ZSH/oh-my-zsh.sh"
 source "$DOTFILES/zsh/.iterm2_shell_integration.zsh"
 
 if [ -f "$DOTFILES/zsh/private.zsh" ]; then
+  # shellcheck disable=SC1091
   source "$DOTFILES/zsh/private.zsh"
 fi
 
@@ -630,7 +632,6 @@ dotfiles_new_issue() {
   gh issue create --title "$title" --body "" --label "$1"
   cd ~- || exit
 }
-# TODO: broken, label cannot be empty
 dotn() {
   cd "$PROJECTS"/dotfiles || exit
   gh issue create --title "$*" --body ""
@@ -648,13 +649,11 @@ alias cz='c $DOTFILES'
 # ---------------------------------------------------------------------------
 alias trim='cd $PROJECTS/devtailor/trimtex-v2/'
 alias dt='cd $PROJECTS/devtailor/'
+alias gr='cd $PROJECTS/devtailor/grid-raven/grid-raven/'
 alias ddrop="npm run database:schema:drop && trash dist"
 alias tdrop="NODE_ENV=test npm run database:schema:drop"
 alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert c63e665a112fdaf867140b679b1b107f644a2bb2adeae53ba11b6fb5391ba493"
-alias yai="nvm_use yarn run data:import"
-alias yae="nvm_use yarn run data:export"
 
 # Some half-broken Ruby stuff
 # eval "$(frum init)"
 # export PATH="/opt/homebrew/opt/ruby/bin:$(gem environment gemdir)/bin:$PATH"
-# export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"

@@ -21,8 +21,9 @@ A repository with some of my dotfiles, settings and scripts. Only macOS is suppo
 
 Install script can be run on clean systems without git or Xcode Command Line Tools.
 
-To install on macOS, run:
+1. Give your terminal app "Full Disk Access" in System Preferences > Security & Privacy.
+2. Run:
 
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/master/install/install.sh)"
-```
+    ```bash
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/main/install/install.sh)"
+    ```
