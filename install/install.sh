@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
+# shellcheck shell=bash
 
 main() {
   get_sudo
@@ -8,10 +9,10 @@ main() {
   install_from_brew
   install_from_pipx
   configure_zsh
-  configure_dotfiles
-  install_from_npm
-  set_macos_settings
-  restart_zsh
+  # configure_dotfiles
+  # install_from_npm
+  # set_macos_settings
+  # restart_zsh
 }
 
 # Ask for password only once
@@ -138,6 +139,11 @@ configure_zsh() {
   ln -sv "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
   backup "$HOME/.zprofile"
   ln -sv "$DOTFILES/zsh/.zprofile" "$HOME/.zprofile"
+
+  # todo
+  source ~/.zshrc
+  nvm install node
+  nvm install --lts
 }
 
 # Needs to be called after zsh_config
