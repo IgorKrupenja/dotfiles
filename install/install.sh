@@ -9,10 +9,15 @@ main() {
   install_from_brew
   install_from_pipx
   configure_zsh
-  # configure_dotfiles
-  # install_from_npm
-  # set_macos_settings
-  # restart_zsh
+  # test_ik
+  configure_dotfiles
+  install_from_npm
+  set_macos_settings
+  restart_zsh
+}
+
+test_ik() {
+  echo "test fn"
 }
 
 # Ask for password only once
@@ -142,8 +147,10 @@ configure_zsh() {
 
   # todo
   source ~/.zshrc
-  nvm install node
-  nvm install --lts
+  # nvm install node
+  # nvm install --lts
+
+  # echo "Installed node and node --lts"
 }
 
 # Needs to be called after zsh_config
