@@ -9,15 +9,10 @@ main() {
   install_from_brew
   install_from_pipx
   configure_zsh
-  # test_ik
   configure_dotfiles
   install_from_npm
-  # set_macos_settings
-  # restart_zsh
-}
-
-test_ik() {
-  echo "test fn"
+  set_macos_settings
+  restart_zsh
 }
 
 # Ask for password only once
@@ -33,9 +28,6 @@ prepare() {
   echo "🚀🚀🚀 Use fast connection!"
   echo ""
 
-  # Any subsequent commands which fail will cause the shell script to exit immediately
-  set -e
-
   DOTFILES="$HOME/Projects/dotfiles"
 
   if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null; then
@@ -43,10 +35,6 @@ prepare() {
     echo "Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
     exit 1
   fi
-
-  caffeinate -i -w $$ &
-  # Write log
-  exec > >(tee "/tmp/dotfiles-install-$(date +%s).log") 2>&1
 }
 
 install_brew_git() {
@@ -101,21 +89,6 @@ install_from_pipx() {
   pipx install git-fame
 }
 
-install_from_npm() {
-  echo ""
-  echo "🚀🚀🚀 Installing node global npm packages"
-  echo ""
-
-  # Uses nvm installed with zsh-nvm
-  # TODO: broken https://github.com/IgorKrupenja/dotfiles/issues/443
-  # nvm install node
-  # nvm install --lts
-
-  while IFS= read -r package || [[ -n "$package" ]]; do
-    bun install -g "$package"
-  done <"$DOTFILES/bun/default-packages"
-}
-
 configure_zsh() {
   echo ""
   echo "🚀🚀🚀 Configuring zsh"
@@ -145,12 +118,10 @@ configure_zsh() {
   backup "$HOME/.zprofile"
   ln -sv "$DOTFILES/zsh/.zprofile" "$HOME/.zprofile"
 
-  # todo
-  source ~/.zshrc
-  # nvm install node
-  # nvm install --lts
-
-  # echo "Installed node and node --lts"
+  # Workaround to get nvm install working
+  trap - ERR
+  source "$HOME/.zshrc"
+  trap handle_error ERR
 }
 
 # Needs to be called after zsh_config
@@ -174,6 +145,20 @@ configure_dotfiles() {
   backup "$HOME/.ssh/config"
   mkdir -p "$HOME/.ssh/"
   ln -sv "$DOTFILES/ssh/config" "$HOME/.ssh/config"
+}
+
+install_from_npm() {
+  echo ""
+  echo "🚀🚀🚀 Installing node global npm packages"
+  echo ""
+
+  # Uses nvm installed with zsh-nvm
+  nvm install node
+  nvm install --lts
+
+  while IFS= read -r package || [[ -n "$package" ]]; do
+    bun install -g "$package"
+  done <"$DOTFILES/bun/default-packages"
 }
 
 set_macos_settings() {
@@ -269,6 +254,7 @@ restart_zsh() {
   echo ""
   echo "🚀🚀🚀 Install finished"
   echo "🚀🚀🚀 Restarting zsh"
+  echo ""
 
   exec zsh
 }
@@ -280,8 +266,23 @@ backup() {
   fi
 }
 
+# Based on https://stackoverflow.com/a/4384381/7405507
+handle_error() {
+  # Save the exit code as the first thing done in the trap function
+  errorCode=$?
+  echo "error $errorCode"
+  echo "the command executing at the time of the error was:"
+  # Contains the command that was being executed at the time of the trap
+  echo "$BASH_COMMAND"
+  # Contains the line number in the script of that command
+  echo "on line ${BASH_LINENO[0]}"
+  # Exit the script
+  exit $errorCode
+}
+
 # Check OS
 if [[ $(uname) == "Darwin" ]]; then
+  trap handle_error ERR
   main "$@"
 else
   echo "Only macOS supported"
