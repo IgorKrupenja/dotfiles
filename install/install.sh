@@ -12,8 +12,8 @@ main() {
   # test_ik
   configure_dotfiles
   install_from_npm
-  set_macos_settings
-  restart_zsh
+  # set_macos_settings
+  # restart_zsh
 }
 
 test_ik() {
