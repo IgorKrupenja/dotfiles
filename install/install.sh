@@ -262,7 +262,7 @@ restart_zsh() {
 backup() {
   if [ -e "$1" ]; then
     TIMESTAMP=$(date +%Y%m%d%H%M%S)
-    mv -fv "$1" "${1}.bak.${TIMESTAMP}"
+    mv -fv "$1" "${1}.${TIMESTAMP}.bak"
   fi
 }
 
