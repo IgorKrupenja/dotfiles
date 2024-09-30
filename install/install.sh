@@ -281,7 +281,7 @@ handle_error() {
 }
 
 bold() {
-  ansi 1 "$@"
+  ansi 35 "$@"
 }
 
 ansi() {
