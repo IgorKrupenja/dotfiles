@@ -281,6 +281,8 @@ alias co="$SCRIPTS/color.sh"
 alias up="$SCRIPTS/update.sh"
 # shellcheck disable=2139
 alias dark="$SCRIPTS/dark.sh"
+# shellcheck disable=2139
+alias n="$SCRIPTS/notify.sh"
 
 # Calculator
 # ---------------------------------------------------------------------------
