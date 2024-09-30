@@ -4,7 +4,7 @@ environment {
 }
 
 behavior {
-    theme "Classic"
+    theme "Igor"
 
     layout {
         showActionBar false
@@ -30,16 +30,6 @@ fonts {
     tabs [ "Default" 14 ]
     preferences [ "MonacoB Nerd Font" 14 ]
 }
-
-gadgets [
-    {
-        id "gadget.action.trash.runner"
-        name "Move to Trash (CLI)"
-        type "executable"
-        executable "/Users/igor/Projects/dotfiles/scripts/trash-prompt.sh"
-        args ["${active.selection.names}"]
-    }
-]
 
 keyBindings {
     "Cmd+R" "core.refresh"
