@@ -24,8 +24,8 @@ get_sudo() {
 
 prepare() {
   echo ""
-  echo -e "🚀 $(bold IgorKrupenja/dotfiles automated install)"
-  echo -e "🚀 $(bold Use fast connection!)"
+  echo -e "🚀 $(purple IgorKrupenja/dotfiles automated install)"
+  echo -e "🚀 $(purple Use fast connection!)"
   echo ""
 
   DOTFILES="$HOME/Projects/dotfiles"
@@ -39,7 +39,7 @@ prepare() {
 
 install_brew_git() {
   echo ""
-  echo -e "🚀 $(bold Installing Homebrew and git)"
+  echo -e "🚀 $(purple Installing Homebrew and git)"
   echo ""
 
   # Install brew AND git
@@ -53,14 +53,14 @@ install_brew_git() {
 clone_repo() {
   if [[ -d "$DOTFILES/.git" ]]; then
     echo ""
-    echo -e "🚀 $(bold Dotfiles repo already cloned)"
-    echo -e "🚀 $(bold Pulling latest changes)"
+    echo -e "🚀 $(purple Dotfiles repo already cloned)"
+    echo -e "🚀 $(purple Pulling latest changes)"
     echo ""
 
     git -C "$DOTFILES" pull
   else
     echo ""
-    echo -e "🚀 $(bold Cloning dotfiles repo)"
+    echo -e "🚀 $(purple Cloning dotfiles repo)"
     echo ""
 
     git clone https://github.com/krupenja/dotfiles.git "$DOTFILES"
@@ -70,7 +70,7 @@ clone_repo() {
 install_from_brew() {
   # Install formulae and casks from Brewfile
   echo ""
-  echo -e "🚀 $(bold Installing from Homebrew and App Store)"
+  echo -e "🚀 $(purple Installing from Homebrew and App Store)"
   echo ""
 
   brew bundle --file="$DOTFILES/install/Brewfile"
@@ -78,7 +78,7 @@ install_from_brew() {
 
 install_from_pipx() {
   echo ""
-  echo -e "🚀 $(bold Installing from pipx)"
+  echo -e "🚀 $(purple Installing from pipx)"
   echo ""
 
   # Prevent warnings
@@ -91,7 +91,7 @@ install_from_pipx() {
 
 configure_zsh() {
   echo ""
-  echo -e "🚀 $(bold Configuring zsh)"
+  echo -e "🚀 $(purple Configuring zsh)"
   echo ""
 
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
@@ -127,7 +127,7 @@ configure_zsh() {
 # Needs to be called after zsh_config
 configure_dotfiles() {
   echo ""
-  echo -e "🚀 $(bold Installing dotfiles)"
+  echo -e "🚀 $(purple Installing dotfiles)"
   echo ""
 
   dotfiles=(".sleep")
@@ -149,7 +149,7 @@ configure_dotfiles() {
 
 install_from_npm() {
   echo ""
-  echo -e "🚀 $(bold Installing node global npm packages)"
+  echo -e "🚀 $(purple Installing node global npm packages)"
   echo ""
 
   # Uses nvm installed with zsh-nvm
@@ -163,7 +163,7 @@ install_from_npm() {
 
 set_macos_settings() {
   echo ""
-  echo -e "🚀 $(bold Restoring macOS settings)"
+  echo -e "🚀 $(purple Restoring macOS settings)"
   echo ""
 
   # crontab
@@ -252,8 +252,8 @@ set_macos_settings() {
 
 restart_zsh() {
   echo ""
-  echo -e "🚀 $(bold Install finished)"
-  echo -e "🚀 $(bold Restarting zsh)"
+  echo -e "🚀 $(purple Install finished)"
+  echo -e "🚀 $(purple Restarting zsh)"
   echo ""
 
   exec zsh
@@ -280,7 +280,7 @@ handle_error() {
   exit $errorCode
 }
 
-bold() {
+purple() {
   ansi 35 "$@"
 }
 
