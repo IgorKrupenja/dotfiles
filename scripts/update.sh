@@ -3,15 +3,15 @@
 
 # gems, for cocoapods
 update_gems() {
-  echo -e "\n$(underline "Updating Ruby gems")\n"
+  echo -e "\n🚀 $(purple "Updating Ruby gems")\n"
   gem update
 }
 
 update_omz() {
-  echo -e "$(underline "Updating OMZ")\n"
+  echo -e "🚀 $(purple "Updating OMZ")\n"
   "$ZSH"/tools/upgrade.sh
 
-  echo -e "\n$(underline Updating custom OMZ plugins)\n"
+  echo -e "\n🚀 $(purple Updating custom OMZ plugins)\n"
   # based on autoupdate plugin https://github.com/TamCore/autoupdate-oh-my-zsh-plugins/blob/master/autoupdate.plugin.zsh
   find -L "$HOME/.oh-my-zsh/custom" -type d -name .git | while read -r d; do
     p=$(dirname "$d")
@@ -31,7 +31,7 @@ update_omz() {
 }
 
 update_node() {
-  echo -e "\n$(underline Updating nvm)\n"
+  echo -e "\n🚀 $(purple Updating nvm)\n"
   # uses zsh-nvm OMZ plugin
   source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm/zsh-nvm.plugin.zsh
   nvm cache clear
@@ -49,7 +49,7 @@ update_node() {
     current_node_version_string=$(nvm ls $node_version --no-colors | tail -1)
     current_node_version=$(trim_node_version_string ${current_node_version_string%%\**})
 
-    echo -e "\n$(underline Updating global npm packages for node $current_node_version)\n"
+    echo -e "\n🚀 $(purple Updating global npm packages for node $current_node_version)\n"
     nvm use $node_version
     if [[ $(npm -g outdated) ]]; then
       npm -g update
@@ -57,20 +57,20 @@ update_node() {
       echo -e "\nEverything up to date!"
     fi
 
-    echo -e "\n$(underline "Checking for updates for node ${node_version}...")\n"
+    echo -e "\n🚀 $(purple "Checking for updates for node ${node_version}...")\n"
 
     next_node_version_string=$(nvm version-remote $node_version)
     next_node_version=$(trim_node_version_string $next_node_version_string)
 
     if [ "$next_node_version" != $current_node_version ]; then
-      echo -e "\n$(underline Found new version for node ${node_version}: installing ${next_node_version})\n"
+      echo -e "\n🚀 $(purple Found new version for node ${node_version}: installing ${next_node_version})\n"
       previous_node_version=$current_node_version
       nvm install $node_version
       nvm reinstall-packages $previous_node_version
     fi
   done
 
-  echo -e "\n$(underline Node version update complete, overview of installed versions:)\n"
+  echo -e "\n🚀 $(purple Node version update complete, overview of installed versions:)\n"
   nvm ls --no-alias
 }
 
@@ -81,40 +81,40 @@ trim_node_version_string() {
 }
 
 update_bun() {
-  echo -e "\n$(underline Upgrading Bun)\n"
+  echo -e "\n🚀 $(purple Upgrading Bun)\n"
   bun upgrade --canary
 
-  echo -e "\n$(underline Updating Bun global packages)\n"
+  echo -e "\n🚀 $(purple Updating Bun global packages)\n"
   bun update -g
 }
 
 update_homebrew() {
-  echo -e "\n$(underline Updating Homebrew)\n"
+  echo -e "\n🚀 $(purple Updating Homebrew)\n"
   brew update --verbose
 
-  echo -e "\n$(underline Updating Homebrew packages and casks)\n"
+  echo -e "\n🚀 $(purple Updating Homebrew packages and casks)\n"
   if [[ -z $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
     brew upgrade
   fi
 
-  echo -e "\n$(underline Running Homebrew diagnostics)\n"
+  echo -e "\n🚀 $(purple Running Homebrew diagnostics)\n"
   brew autoremove && brew cleanup -s && brew doctor && brew tap --repair
 }
 
 update_mas() {
-  echo -e "\n$(underline "Updating App Store apps")\n"
+  echo -e "\n🚀 $(purple "Updating App Store apps")\n"
   mas upgrade
 }
 
 update_macos() {
-  echo -e "\n$(underline "Updating macOS")\n"
+  echo -e "\n🚀 $(purple "Updating macOS")\n"
   sudo softwareupdate -i -a
 }
 
-underline() {
-  ansi 4 "$@"
+purple() {
+  ansi 35 "$@"
 }
 
 ansi() {
