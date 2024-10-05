@@ -26,6 +26,7 @@ Cocoapods
 codegen
 collada
 colliderli
+corepack
 creds
 csrf
 custname
