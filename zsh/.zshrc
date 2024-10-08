@@ -596,8 +596,8 @@ fi
 alias dls="docker container ls"
 alias dlsa="docker container ls -a"
 alias ds="docker start"
-alias dcu="docker-compose up"
-alias dcb="docker-compose build"
+alias dcu="docker compose up"
+alias dcb="docker compose build"
 
 # Terraform
 # ---------------------------------------------------------------------------
