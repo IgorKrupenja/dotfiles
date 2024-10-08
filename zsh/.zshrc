@@ -286,10 +286,11 @@ alias n="$SCRIPTS/notify.sh"
 
 # Calculator
 # ---------------------------------------------------------------------------
-pcalc() {
-  python3 -c "from math import *; print($*)"
+cli_calculator() {
+  # python3 -c "from math import *; print($*)"
+  bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $*;"
 }
-alias calc="noglob pcalc"
+alias calc="noglob cli_calculator"
 alias ca="calc"
 
 # Unit and currency converter
