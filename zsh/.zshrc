@@ -287,7 +287,6 @@ alias n="$SCRIPTS/notify.sh"
 # Calculator
 # ---------------------------------------------------------------------------
 cli_calculator() {
-  # python3 -c "from math import *; print($*)"
   bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $*;"
 }
 alias calc="noglob cli_calculator"
@@ -355,11 +354,11 @@ eval "$(github-copilot-cli alias -- "$0")"
 alias cr="xattr -cr"
 # convert string to title case
 tc() {
-  echo "$*" | python3 -c "print('$*'.title())"
+  bun --print "'$*'.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');"
 }
 # convert string to sentence case
 sc() {
-  echo "$*" | python3 -c "print('$*'.capitalize())"
+  bun --print "'$*'.replace(/(^\w|\.\s+\w)/g, c => c.toUpperCase())"
 }
 # convert mov to gif
 togif() {

@@ -83,6 +83,7 @@ trim_node_version_string() {
 update_bun() {
   echo -e "\n🚀 $(purple Upgrading Bun)\n"
   bun upgrade --canary
+  echo -e "\nCurrent Bun version: $(bun --version)\n"
 
   echo -e "\n🚀 $(purple Updating Bun global packages)\n"
   bun update -g

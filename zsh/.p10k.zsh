@@ -46,6 +46,7 @@
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
     command_execution_time  # duration of the last command
     status                  # exit code of the last command
+    gloud
     # =========================[ Line #3 ]=========================
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
@@ -1709,7 +1710,7 @@
     fi
 
     version=$(cat $HOME/fvm/default/version)
-    p10k segment -f 'blue' -t "F $channel$version"
+    p10k segment -f 'blue' -t " $channel$version"
   }
 
   function instant_prompt_flutter() {
