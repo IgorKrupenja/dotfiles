@@ -574,7 +574,8 @@ alias bunt="bun test --watch"
 alias bunpt="bun publish:test"
 alias bunx="bun x"
 alias bunui="bun x npm-check-updates -ui -p bun"
-alias bunb="bun --revision && uname -mprs"
+alias bunb="bun run build"
+alias bunr="bun --revision && uname -mprs"
 # bun completions
 [ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
 
