@@ -660,3 +660,5 @@ alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --tr
 # Some half-broken Ruby stuff
 # eval "$(frum init)"
 # export PATH="/opt/homebrew/opt/ruby/bin:$(gem environment gemdir)/bin:$PATH"
+
+. "$HOME/.cargo/env"

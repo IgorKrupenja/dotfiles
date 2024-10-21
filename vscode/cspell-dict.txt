@@ -19,7 +19,9 @@ Bocconi
 Borkedalen
 browserslist
 captcha
+celsius
 cera
+claude
 cloc
 clsx
 Cocoapods
