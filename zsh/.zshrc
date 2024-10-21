@@ -598,6 +598,7 @@ alias dls="docker container ls"
 alias dlsa="docker container ls -a"
 alias ds="docker start"
 alias dcu="docker compose up"
+alias dcd="docker compose up -d"
 alias dcb="docker compose build"
 
 # Terraform
