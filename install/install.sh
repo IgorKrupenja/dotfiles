@@ -87,6 +87,7 @@ install_from_pipx() {
   pipx install pipdeptree
   pipx install termdown
   pipx install git-fame
+  pipx install spotify2ytmusic
 }
 
 configure_zsh() {
