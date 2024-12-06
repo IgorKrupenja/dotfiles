@@ -268,5 +268,15 @@
     "key": "cmd+k",
     "command": "-cursorai.action.generateInTerminal",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "f5",
+    "command": "mysql.runSQL",
+    "when": "config.database-client.executeCursorSQLByShortcut && editorLangId == 'cql' || config.database-client.executeCursorSQLByShortcut && editorLangId == 'dbclient-js' || config.database-client.executeCursorSQLByShortcut && editorLangId == 'postgres' || config.database-client.executeCursorSQLByShortcut && editorLangId == 'sql' || editorHasSelection && editorLangId == 'cql' || editorHasSelection && editorLangId == 'dbclient-js' || editorHasSelection && editorLangId == 'postgres' || editorHasSelection && editorLangId == 'sql'"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "-mysql.runSQL",
+    "when": "config.database-client.executeCursorSQLByShortcut && editorLangId == 'cql' || config.database-client.executeCursorSQLByShortcut && editorLangId == 'dbclient-js' || config.database-client.executeCursorSQLByShortcut && editorLangId == 'postgres' || config.database-client.executeCursorSQLByShortcut && editorLangId == 'sql' || editorHasSelection && editorLangId == 'cql' || editorHasSelection && editorLangId == 'dbclient-js' || editorHasSelection && editorLangId == 'postgres' || editorHasSelection && editorLangId == 'sql'"
   }
 ]

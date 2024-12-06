@@ -1,6 +1,6 @@
 {
   "security.workspace.trust.untrustedFiles": "open",
-  "editor.fontFamily": "'MonacoB Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
+  "editor.fontFamily": "'MonacoB2 Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
   "workbench.sideBar.location": "right",
   "workbench.preferredDarkColorTheme": "Nord",
   "window.autoDetectColorScheme": true,
@@ -12,7 +12,7 @@
       "editorOverviewRuler.border": "#00000000",
       "editorBracketHighlight.foreground1": "#83A2C2",
       "editorBracketHighlight.foreground2": "#91BDBC",
-      "editorBracketHighlight.foreground3": "#B48EAD",
+      "editorBracketHighlight.foreground3": "#1C7C82",
       "jumpy2.labelFontColor": "#FFFFFF",
       "jumpy2.labelBackgroundColor": "#83A2C2",
       "jumpy2.labelBorderColor": "#83A2C2",
@@ -58,28 +58,28 @@
   "explorer.confirmDelete": false,
   "material-icon-theme.saturation": 0.6,
   "git-graph.graph.colours": [
-    "#5E81AC",
-    "#88C0D0",
-    "#BF616A",
-    "#A3BE8C",
-    "#EBCB8B",
-    "#B48EAD"
+    "#D73A4A",
+    "#28A745",
+    "#DCAB07",
+    "#0366D6",
+    "#5B32A3",
+    "#1C7C82"
   ],
   "todohighlight.defaultStyle": {
-    "color": "#b48ead",
-    "backgroundColor": "#b48ead30",
-    "overviewRulerColor": "#b48ead",
+    "color": "#A74047",
+    "backgroundColor": "#A7404715",
+    "overviewRulerColor": "#A74047",
     "borderRadius": "2px"
   },
   "git-graph.showStatusBarItem": false,
   "workbench.preferredLightColorTheme": "GitHub Soft",
   "workbench.editor.tabCloseButton": "left",
   "cSpell.language": "en-GB,en,ru,lorem,et,et-EE",
-  "importCost.largePackageDarkColor": "#BF616A88",
+  "importCost.largePackageDarkColor": "#DCAB0788",
   "importCost.largePackageLightColor": "#A74047AA",
-  "importCost.mediumPackageDarkColor": "#EBCB8B88",
+  "importCost.mediumPackageDarkColor": "#5B32A388",
   "importCost.mediumPackageLightColor": "#DBAB09AA",
-  "importCost.smallPackageDarkColor": "#A3BE8C88",
+  "importCost.smallPackageDarkColor": "#0366D688",
   "importCost.smallPackageLightColor": "#22863AAA",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "todohighlight.isCaseSensitive": false,
@@ -151,7 +151,6 @@
   "workbench.editor.tabActionLocation": "left",
   "update.showReleaseNotes": false,
   "editor.occurrencesHighlight": "multiFile",
-  "terminal.integrated.stickyScroll.enabled": true,
   "typescript.preferGoToSourceDefinition": true,
   "vitest.enable": true,
   "[hosts]": {
@@ -162,11 +161,21 @@
   "totalTypeScript.hiddenTips": [
     "passing-generics-to-types",
     "record-utility-type",
-    "keyof"
+    "keyof",
+    "non-null-expression",
+    "typeof"
   ],
   "cursor.cpp.disabledLanguages": ["scminput"],
   "cursor.cpp.enablePartialAccepts": true,
   "[shellscript]": {
     "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
-  }
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "cweijan.vscode-postgresql-client2"
+  },
+  "database-client.capitalizeKeywordsWhenFormatting": true,
+  "database-client.saveConnectionExpandedState": true
 }
