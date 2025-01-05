@@ -59,7 +59,7 @@ if [[ $(pgrep "PDF Expert") ]]; then
   fi
 fi
 
-################################# VSCode
+################################# Cursor
 
 conf=$HOME/Library/Application\ Support/Cursor/User/settings.json
 
@@ -103,3 +103,4 @@ done
 ################################# Switch back to iTerm
 
 osascript -e 'tell application "iTerm" to activate'
+ø
