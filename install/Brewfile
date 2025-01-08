@@ -47,7 +47,7 @@ brew "shellcheck"
 brew "shfmt"
 brew "sleepwatcher", restart_service: true
 brew "speedtest-cli"
-brew "trash"
+brew "trash", link: true
 brew "tree"
 brew "uv"
 brew "wget"
@@ -119,9 +119,11 @@ mas "1Password for Safari", id: 1569813296
 mas "AdGuard for Safari", id: 1440147259
 mas "ColorSlurp", id: 1287239339
 mas "DigiDoc4", id: 1370791134
+mas "Kindle", id: 302584613
 mas "Notability", id: 360593530
 mas "Pages", id: 409201541
 mas "PasteNow", id: 1552536109
+mas "Photomator", id: 1444636541
 mas "PiPifier", id: 1160374471
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
