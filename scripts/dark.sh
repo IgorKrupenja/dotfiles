@@ -103,4 +103,3 @@ done
 ################################# Switch back to iTerm
 
 osascript -e 'tell application "iTerm" to activate'
-ø
