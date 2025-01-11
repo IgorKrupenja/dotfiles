@@ -45,7 +45,7 @@ brew "python@3.11"
 brew "rustup"
 brew "shellcheck"
 brew "shfmt"
-brew "sleepwatcher", restart_service: true
+brew "sleepwatcher", restart_service: :changed
 brew "speedtest-cli"
 brew "trash", link: true
 brew "tree"
@@ -63,6 +63,7 @@ cask "affinity-photo"
 cask "ankerwork"
 cask "arc"
 cask "bettertouchtool"
+cask "boosteroid"
 cask "brave-browser"
 cask "brave-browser@nightly"
 cask "calibre"
