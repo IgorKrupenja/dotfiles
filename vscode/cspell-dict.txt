@@ -12,6 +12,7 @@ autocrop
 autoplay
 autovalidate
 Avenir
+Baltics
 barcode
 BIGSERIAL
 blgr
@@ -26,6 +27,7 @@ cloc
 clsx
 Cocoapods
 codegen
+Codemagic
 collada
 colliderli
 corepack
@@ -40,6 +42,8 @@ dedup
 devtailor
 Devtailor
 divs
+Dockerfiles
+dockerised
 dotenv
 dotfiles
 dtos
@@ -48,9 +52,11 @@ dušisegisti
 Dušiuks
 Editability
 ENIC
+Entriken
 esmaspäeva
 esnext
 espree
+Fargate
 fieldname
 fingate
 Fingate
@@ -155,6 +161,7 @@ prevorder
 pubb
 Publishability
 Rando
+rasa
 Recents
 reduxjs
 reranked
@@ -230,6 +237,7 @@ wojtekmaj
 worldofmouth
 xlink
 xpub
+xslx
 Xsrf
 yanex
 Youtube
