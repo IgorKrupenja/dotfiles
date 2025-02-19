@@ -577,6 +577,13 @@ alias bunx="bun x"
 alias bunui="bun x npm-check-updates -ui -p bun"
 alias bunb="bun run build"
 alias bunr="bun --revision && uname -mprs"
+buntp() {
+  if [ -z "$1" ]; then
+    echo "Usage: buntp <string>"
+    return 1
+  fi
+  bun test ./**/*"$1"* --watch
+}
 # bun completions
 [ -s "/Users/igor/.bun/_bun" ] && source "/Users/igor/.bun/_bun"
 
