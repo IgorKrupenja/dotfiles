@@ -141,6 +141,7 @@ offchain
 openai
 OPENAI
 Openlogin
+opensearch
 originalname
 osascript
 overscroll

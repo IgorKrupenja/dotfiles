@@ -673,6 +673,8 @@ alias byk='cd $PROJECTS/devtailor/burokratt/'
 # Enforcing SC2139 here breaks existing command detection with zsh-syntax-highlighting
 # shellcheck disable=2139
 alias byt="$SCRIPTS/byk/training-opensearch.sh"
+# shellcheck disable=2139
+alias byc="$SCRIPTS/byk/get-cookie.sh"
 
 # Some half-broken Ruby stuff
 # eval "$(frum init)"
