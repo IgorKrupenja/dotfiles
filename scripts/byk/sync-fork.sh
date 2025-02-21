@@ -10,14 +10,14 @@ else
     echo -e "${GREEN}✓${NC} Git repository detected"
 fi
 
-# Ensure default remote is set for gh commands
-echo "ℹ️ Setting default remote for GitHub CLI..."
 DEFAULT_REMOTE=$(git remote get-url origin)
 REPO_PATH=$(echo "$DEFAULT_REMOTE" | sed -E 's/.*github.com(:|\/)(.*)\.git/\2/')
+echo "ℹ️ Fork URL: https://github.com/$REPO_PATH"
 
 # Set default remote only if not already set
 CURRENT_DEFAULT=$(gh repo set-default --view 2>/dev/null)
 if [ -z "$CURRENT_DEFAULT" ]; then
+    echo "ℹ️ Setting default remote for GitHub CLI..."
     gh repo set-default "$REPO_PATH"
     if [ $? -ne 0 ]; then
         echo "Error: Failed to set default remote for GitHub CLI"
