@@ -675,6 +675,8 @@ alias byk='cd $PROJECTS/devtailor/burokratt/'
 alias byt="$SCRIPTS/byk/training-opensearch.sh"
 # shellcheck disable=2139
 alias byc="$SCRIPTS/byk/get-cookie.sh"
+# shellcheck disable=2139
+alias bys="$SCRIPTS/byk/sync-fork.sh"
 
 # Some half-broken Ruby stuff
 # eval "$(frum init)"
