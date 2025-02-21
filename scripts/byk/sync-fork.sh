@@ -41,15 +41,6 @@ echo "ℹ️ Repository info: $REPO_INFO"
 PARENT_ORG=$(echo "$REPO_INFO" | jq -r '.parent.owner.login')
 PARENT_REPO=$(echo "$REPO_INFO" | jq -r '.parent.name')
 
-if [ "$PARENT_ORG" == "null" ]; then
-    echo "⚠️ Warning: This repository is not recognized as a fork by GitHub"
-    echo "Even though you have an upstream remote configured, GitHub's API doesn't recognize this as a fork."
-    echo "This might be a GitHub API issue. You can try:"
-    echo "1. Waiting and trying again later"
-    echo "2. Contacting GitHub support"
-    exit 1
-fi
-
 echo "ℹ️ Parent repository: $PARENT_ORG/$PARENT_REPO"
 
 if [[ "$PARENT_ORG" != "buerokratt" ]]; then
@@ -61,24 +52,14 @@ fi
 echo "Syncing dev branch from upstream..."
 gh repo sync --branch dev
 if [ $? -ne 0 ]; then
-    echo "⚠️ GitHub sync failed. Falling back to manual sync..."
-    git fetch upstream dev
-    git checkout dev
-    git merge upstream/dev
-    echo "✓ Manual sync completed"
+    echo "⚠️ GitHub sync failed."
+    exit 1
 else
     echo -e "${GREEN}✓${NC} GitHub sync completed"
 fi
 
 # Pull the latest dev branch
 echo "Pulling dev branch..."
-git fetch origin dev
-if [ $? -ne 0 ]; then
-    echo "Error: Failed to fetch from origin"
-    exit 1
-fi
-
-# Check if we're already on dev branch
 CURRENT_BRANCH=$(git branch --show-current)
 if [ "$CURRENT_BRANCH" != "dev" ]; then
     git checkout dev
@@ -88,10 +69,9 @@ if [ "$CURRENT_BRANCH" != "dev" ]; then
     fi
 fi
 
-# Merge changes from origin/dev
-git merge origin/dev
+git pull origin dev
 if [ $? -ne 0 ]; then
-    echo "Error: Failed to merge changes from origin/dev"
+    echo "Error: Failed to pull changes from origin/dev"
     exit 1
 fi
 
