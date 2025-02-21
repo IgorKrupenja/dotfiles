@@ -26,6 +26,20 @@ fi
 
 echo "$response"
 
-echo "$response" | pbcopy
+# Copy to clipboard based on OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    echo "$response" | pbcopy
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Linux (requires xclip or xsel)
+    if command -v xclip >/dev/null 2>&1; then
+        echo "$response" | xclip -selection clipboard
+    elif command -v xsel >/dev/null 2>&1; then
+        echo "$response" | xsel --clipboard
+    else
+        echo "Please install xclip or xsel to enable clipboard functionality"
+        exit 0
+    fi
+fi
 
 printf "\nToken has been copied to clipboard!"
