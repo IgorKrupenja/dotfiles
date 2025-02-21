@@ -1,18 +1,31 @@
 #!/bin/bash
 
-# Make the curl request and extract only the "response" value using jq
-response=$(curl -s -X POST \
+# Make the curl request and capture both output and error
+output=$(curl -s --show-error --fail -X POST \
     -H "Content-Type: application/json" \
     -d '{
     "login": "EE30303039914",
     "password": "OK"
   }' \
-    http://localhost:8080/auth/login | jq -r '.response')
+    http://localhost:8080/auth/login 2>&1)
+curl_status=$?
 
-# Print the response
+# Check if curl command succeeded
+if [ $curl_status -ne 0 ]; then
+    echo "Error: $output"
+    exit 1
+fi
+
+# Check if output is valid JSON and extract response
+if echo "$output" | jq . >/dev/null 2>&1; then
+    response=$(echo "$output" | jq -r '.response')
+else
+    echo "Error: Invalid JSON response from server: $output"
+    exit 1
+fi
+
 echo "$response"
 
-# Copy the response to clipboard
 echo "$response" | pbcopy
 
-echo "Token has been copied to clipboard!"
+printf "\nToken has been copied to clipboard!"
