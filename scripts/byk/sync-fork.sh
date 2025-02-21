@@ -48,10 +48,31 @@ if [[ "$PARENT_ORG" != "buerokratt" ]]; then
     exit 1
 fi
 
+# Compare dev branches between fork and upstream
+echo "ℹ️ Checking differences between fork and upstream dev branches..."
+DIFF_OUTPUT=$(gh api \
+    -H "Accept: application/vnd.github.v3+json" \
+    /repos/$PARENT_ORG/$PARENT_REPO/compare/dev...dev \
+    --jq '.status' 2>&1)
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to compare branches"
+    exit 1
+fi
+
+echo "ℹ️ Branch comparison status: $DIFF_OUTPUT"
+
+if [ "$DIFF_OUTPUT" == "identical" ]; then
+    echo -e "${GREEN}✓${NC} Fork is already up-to-date with upstream"
+    exit 0
+fi
+
 # Sync the dev branch from upstream
 echo "Syncing dev branch from upstream..."
-gh repo sync --branch dev
-if [ $? -ne 0 ]; then
+gh repo sync --branch dev 2>&1
+SYNC_STATUS=$?
+
+if [ $SYNC_STATUS -ne 0 ]; then
     echo "⚠️ GitHub sync failed."
     exit 1
 else
