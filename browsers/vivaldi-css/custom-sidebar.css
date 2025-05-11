@@ -1,0 +1,162 @@
+:root {
+  --tabbarHoverDuration: 0.1s;
+  --tabbarHoverDelay: 0;
+  --tabbarMinimizeWidth: 36px;
+  --tabbarExpandWidth: 312px;
+}
+
+/* transition rule:
+    transition based on width property changes
+    the transition animation lasts --tabbarHoverDuration
+    the animation is performed with an "ease-out" function
+    the transition animation doesn't start for --tabbarHoverDelay
+*/
+
+/* Ensure a background is shown; transparent background when omitted */
+#browser.tabs-left .tabbar-wrapper {
+  z-index: 1;
+}
+
+/* Fix scrollbar overflow*/
+
+#tabs-tabbar-container.left .tab-strip {
+  min-width: initial !important;
+}
+
+#tabs-tabbar-container.left .tab-strip::-webkit-scrollbar {
+  --scrollbarWidth: 0 !important;
+}
+
+#tabs-tabbar-container.left:is(:hover, :focus-within)
+  .tab-strip::-webkit-scrollbar {
+  --scrollbarWidth: 10px !important;
+}
+
+/*----- Tab bar -----*/
+
+/* Shrink the tab bar when not in focus/hovered */
+#tabs-tabbar-container.left {
+  width: var(--tabbarMinimizeWidth) !important;
+  /* transition for AFTER hover or tab bar CLOSE */
+  transition: width var(--tabbarHoverDuration) ease-out var(--tabbarHoverDelay);
+}
+
+/* Shrink Stacked Tabbs when not hovered */
+.tabbar-wrapper:not(:is(:hover, :focus-within)) #tabs-subcontainer,
+.tabbar-wrapper:not(:is(:hover, :focus-within))
+  #tabs-subcontainer
+  .tab.active.insubstrip {
+  width: 0 !important;
+  /* transition for AFTER hover or tab bar CLOSE */
+  transition: width var(--tabbarHoverDuration) ease-out var(--tabbarHoverDelay);
+  flex: none !important;
+}
+
+/* Show tab bar when hovering no panel bar or tab bar or when moving tabs to an inactive window */
+#browser.isblurred:where(:has(div.tab-yield-space, .tab-acceptsdrop))
+  #tabs-tabbar-container.left,
+#browser.tabs-left:where(:has(#panels-container:is(:hover, :focus-within)))
+  #tabs-tabbar-container.left,
+#tabs-tabbar-container.left:is(:hover, :focus-within) {
+  width: var(--tabbarExpandWidth) !important;
+  /* transition for hover/focus or tab bar OPEN */
+  transition: width var(--tabbarHoverDuration) ease-in 0s !important;
+}
+
+/* Keep transition for tab stack */
+#tabs-tabbar-container.left:is(:hover, :focus-within) #tabs-subcontainer {
+  transition: width var(--tabbarHoverDuration) ease-in 0s !important;
+}
+
+/* Controls the "empty" space behind the tab bar and allows the website content to stretch and fill the space */
+#main > .inner > div:has(#tabs-tabbar-container.left) {
+  max-width: var(--tabbarMinimizeWidth);
+}
+
+/* Lock the Newtab button to the left */
+.button-toolbar.newtab,
+.synced-tabs-button {
+  left: 1px !important;
+  --PositionX: 1px !important;
+}
+
+.toolbar-tabbar.sync-and-trash-container {
+  margin: 0 !important;
+  justify-content: flex-start !important;
+}
+
+/* Fix favicons and "X" close button to prevent "accidental" closures */
+.tab .favicon {
+  display: initial !important;
+}
+
+.tabs-container .tab .close {
+  order: initial !important;
+  padding: 4px !important;
+  margin-right: 4px !important;
+  height: 24px !important;
+  width: 24px !important;
+}
+
+/* Fix Tab buttons to be aligned better */
+.toolbar-tabbar > .button-toolbar {
+  align-self: center;
+}
+
+/* Fix tab stack new tab button being shown when not expanded */
+.tabbar-wrapper:not(:is(:hover, :focus-within))
+  #tabs-subcontainer
+  .toolbar-tabbar {
+  display: none;
+}
+/*----- Workspace switcher -----*/
+
+/* Hide by default */
+#browser.tabs-left .tabbar-workspace-button {
+  width: var(--tabbarMinimizeWidth) !important;
+  /* transition for AFTER hover or tab bar CLOSE */
+  transition: width var(--tabbarHoverDuration) ease-out var(--tabbarHoverDelay);
+}
+
+/* Show with tab bar */
+#browser.tabs-left:where(
+    :has(#tabs-tabbar-container:is(.left):is(:hover, :focus-within))
+  )
+  .tabbar-workspace-button,
+#browser.tabs-left .tabbar-workspace-button:is(:hover, :focus-within),
+#browser.tabs-left:where(:has(#panels-container:is(:hover, :focus-within)))
+  .tabbar-workspace-button,
+#browser.tabs-left.isblurred:where(:has(div.tab-yield-space, .tab-acceptsdrop))
+  .tabbar-workspace-button,
+#browser:where(:has(.tabbar-workspace-button:is(:hover, :focus-within)))
+  #tabs-tabbar-container:is(.left) {
+  width: var(--tabbarExpandWidth) !important;
+  /* transition for hover/focus or tab bar OPEN */
+  transition: width var(--tabbarHoverDuration) ease-in 0s !important;
+}
+
+/* Hide the little workspace dropdown carot */
+#browser.tabs-left .button-toolbar-menu-indicator {
+  display: none;
+}
+
+/* Show the little workspace dropdown carot with tab bar */
+#browser.tabs-left:where(
+    :has(#tabs-tabbar-container:is(.left):is(:hover, :focus-within))
+  )
+  .button-toolbar-menu-indicator,
+#browser.tabs-left .button-toolbar-menu-indicator:is(:hover, :focus-within),
+#browser.tabs-left:where(:has(#panels-container:is(:hover, :focus-within)))
+  .button-toolbar-menu-indicator,
+#browser.tabs-left.isblurred:where(:has(div.tab-yield-space, .tab-acceptsdrop))
+  .button-toolbar-menu-indicator {
+  display: inherit;
+}
+
+/* Realignment of workspace switcher icon when collapsed */
+.tabbar-wrapper:not(:is(:hover, :focus-within))
+  .button-toolbar.workspace-popup
+  button
+  .button-title {
+  margin-right: 0px !important;
+}
