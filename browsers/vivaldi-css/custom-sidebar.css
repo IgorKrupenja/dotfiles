@@ -82,12 +82,8 @@
 
 .toolbar-tabbar.sync-and-trash-container {
   margin: 0 !important;
+  padding-right: 3px !important;
   justify-content: flex-start !important;
-}
-
-/* Fix favicons and "X" close button to prevent "accidental" closures */
-.tab .favicon {
-  display: initial !important;
 }
 
 .tabs-container .tab .close {
