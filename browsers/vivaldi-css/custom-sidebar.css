@@ -73,11 +73,24 @@
   max-width: var(--tabbarMinimizeWidth);
 }
 
-/* Lock the Newtab button to the left */
-.button-toolbar.newtab,
+/* Lock the sync button to the left */
 .synced-tabs-button {
   left: 1px !important;
   --PositionX: 1px !important;
+}
+
+.button-toolbar.newtab {
+  left: 0px !important;
+  --PositionX: 0px !important;
+  width: 100%;
+  background-color: #efefef !important;
+  border-radius: 16px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.button-toolbar.newtab:hover {
+  background-color: #e8e8e8 !important;
 }
 
 .toolbar-tabbar.sync-and-trash-container {
