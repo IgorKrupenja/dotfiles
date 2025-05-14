@@ -83,14 +83,14 @@
   left: 0px !important;
   --PositionX: 0px !important;
   width: 100%;
-  background-color: var(--colorAccentBgAlphaHeavy) !important;
+  background-color: #efefef !important;
   border-radius: 16px;
   margin-left: 3px;
   margin-right: 3px;
 }
 
 .button-toolbar.newtab:hover {
-  background-color:  var(--colorAccentBgAlpha) !important;
+  background-color: #e8e8e8 !important;
 }
 
 .toolbar-tabbar.sync-and-trash-container {
