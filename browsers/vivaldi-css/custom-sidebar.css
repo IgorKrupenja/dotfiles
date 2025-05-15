@@ -1,171 +1,158 @@
-:root {
-  --tabbarHoverDuration: 0.1s;
-  --tabbarHoverDelay: 0;
-  --tabbarMinimizeWidth: 36px;
-  --tabbarExpandWidth: 312px;
-}
+/*
+    Custom CSS for Vivaldi Browser providing Arc Browser-like auto-hide functionality for vertical tabs.
+    Fully compatible with workspaces.
 
-/* transition rule:
-    transition based on width property changes
-    the transition animation lasts --tabbarHoverDuration
-    the animation is performed with an "ease-out" function
-    the transition animation doesn't start for --tabbarHoverDelay
+    This customization was made and tested with the tab bar positioned on the left side of the screen,
+    but it should also work on the right side.
 */
 
-/* Ensure a background is shown; transparent background when omitted */
-#browser.tabs-left .tabbar-wrapper {
+:root {
+  --tabbar-transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  --scrollbar-width: 10px;
+  --scrollbar-border-color: #9fb0cb;
+  --tabbar-peek-width: 3px;
+}
+
+/*----- Scrollbar Styling -----*/
+
+#tabs-tabbar-container:is(.left, .right) .tab-strip::-webkit-scrollbar {
+  padding: 0 2px !important;
+  width: var(--scrollbar-width) !important;
+  border: 1px solid var(--scrollbar-border-color) !important;
+  border-radius: 8px !important;
+}
+
+#tabs-tabbar-container:is(.left, .right) .tab-strip::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+#tabs-tabbar-container:is(.left, .right) .tab-strip::-webkit-scrollbar-thumb {
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
+}
+
+/*----- Vertical Tabbar Auto-Hide Behavior -----*/
+
+/* Base hidden state for vertical tabbar */
+#browser:is(.tabs-left, .tabs-right) .tabbar-wrapper {
+  position: absolute;
+  transform: translateX(calc(-100% + var(--tabbar-peek-width)));
+  transition: var(--tabbar-transition) !important;
+  opacity: 0;
   z-index: 1;
 }
 
-/* Fix scrollbar overflow*/
-
-#tabs-tabbar-container.left .tab-strip {
-  min-width: initial !important;
+/* Right side positioning */
+#browser.tabs-right .tabbar-wrapper {
+  right: 0;
+  transform: translateX(calc(100% - var(--tabbar-peek-width)));
 }
 
-#tabs-tabbar-container.left .tab-strip::-webkit-scrollbar {
-  --scrollbarWidth: 0 !important;
-}
-
-#tabs-tabbar-container.left:is(:hover, :focus-within)
-  .tab-strip::-webkit-scrollbar {
-  --scrollbarWidth: 10px !important;
-}
-
-/*----- Tab bar -----*/
-
-/* Shrink the tab bar when not in focus/hovered */
-#tabs-tabbar-container.left {
-  width: var(--tabbarMinimizeWidth) !important;
-  /* transition for AFTER hover or tab bar CLOSE */
-  transition: width var(--tabbarHoverDuration) ease-out var(--tabbarHoverDelay);
-}
-
-/* Shrink Stacked Tabbs when not hovered */
-.tabbar-wrapper:not(:is(:hover, :focus-within)) #tabs-subcontainer,
-.tabbar-wrapper:not(:is(:hover, :focus-within))
-  #tabs-subcontainer
-  .tab.active.insubstrip {
-  width: 0 !important;
-  /* transition for AFTER hover or tab bar CLOSE */
-  transition: width var(--tabbarHoverDuration) ease-out var(--tabbarHoverDelay);
-  flex: none !important;
-}
-
-/* Show tab bar when hovering no panel bar or tab bar or when moving tabs to an inactive window */
-#browser.isblurred:where(:has(div.tab-yield-space, .tab-acceptsdrop))
-  #tabs-tabbar-container.left,
-#browser.tabs-left:where(:has(#panels-container:is(:hover, :focus-within)))
-  #tabs-tabbar-container.left,
-#tabs-tabbar-container.left:is(:hover, :focus-within) {
-  width: var(--tabbarExpandWidth) !important;
-  /* transition for hover/focus or tab bar OPEN */
-  transition: width var(--tabbarHoverDuration) ease-in 0s !important;
-}
-
-/* Keep transition for tab stack */
-#tabs-tabbar-container.left:is(:hover, :focus-within) #tabs-subcontainer {
-  transition: width var(--tabbarHoverDuration) ease-in 0s !important;
-}
-
-/* Controls the "empty" space behind the tab bar and allows the website content to stretch and fill the space */
-#main > .inner > div:has(#tabs-tabbar-container.left) {
-  max-width: var(--tabbarMinimizeWidth);
-}
-
-/* Lock the sync button to the left */
-.synced-tabs-button {
-  left: 1px !important;
-  --PositionX: 1px !important;
-}
-
-.button-toolbar.newtab {
-  left: 0px !important;
-  --PositionX: 0px !important;
-  width: 100%;
-  background-color: var(--colorAccentBgAlphaHeavy);
-  border-radius: 16px;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.button-toolbar.newtab:hover {
-  background-color: var(--colorAccentBgAlpha);
-}
-
-.toolbar-tabbar.sync-and-trash-container {
-  margin: 0 !important;
-  padding-right: 3px !important;
-  justify-content: flex-start !important;
-}
-
-.tabs-container .tab .close {
-  order: initial !important;
-  padding: 4px !important;
-  margin-right: 4px !important;
-  height: 24px !important;
-  width: 24px !important;
-}
-
-/* Fix Tab buttons to be aligned better */
-.toolbar-tabbar > .button-toolbar {
-  align-self: center;
-}
-
-/* Fix tab stack new tab button being shown when not expanded */
-.tabbar-wrapper:not(:is(:hover, :focus-within))
-  #tabs-subcontainer
-  .toolbar-tabbar {
-  display: none;
-}
-/*----- Workspace switcher -----*/
-
-/* Hide by default */
-#browser.tabs-left .tabbar-workspace-button {
-  width: var(--tabbarMinimizeWidth) !important;
-  /* transition for AFTER hover or tab bar CLOSE */
-  transition: width var(--tabbarHoverDuration) ease-out var(--tabbarHoverDelay);
-}
-
-/* Show with tab bar */
-#browser.tabs-left:where(
-    :has(#tabs-tabbar-container:is(.left):is(:hover, :focus-within))
-  )
-  .tabbar-workspace-button,
-#browser.tabs-left .tabbar-workspace-button:is(:hover, :focus-within),
-#browser.tabs-left:where(:has(#panels-container:is(:hover, :focus-within)))
-  .tabbar-workspace-button,
+/* Tab move functionality support */
 #browser.tabs-left.isblurred:where(:has(div.tab-yield-space, .tab-acceptsdrop))
-  .tabbar-workspace-button,
-#browser:where(:has(.tabbar-workspace-button:is(:hover, :focus-within)))
-  #tabs-tabbar-container:is(.left) {
-  width: var(--tabbarExpandWidth) !important;
-  /* transition for hover/focus or tab bar OPEN */
-  transition: width var(--tabbarHoverDuration) ease-in 0s !important;
+  .tabbar-wrapper,
+#browser.tabs-left.isblurred:is(:active, :focus)
+  .tabbar-wrapper:is(:active, :focus) {
+  transform: translateX(0);
+  opacity: 1;
 }
 
-/* Hide the little workspace dropdown carot */
-#browser.tabs-left .button-toolbar-menu-indicator {
-  display: none;
+/* Show tabbar on hover */
+#browser:is(.tabs-left, .tabs-right) .tabbar-wrapper:hover {
+  transform: translateX(0);
+  transition: var(--tabbar-transition) !important;
+  opacity: 1;
 }
 
-/* Show the little workspace dropdown carot with tab bar */
-#browser.tabs-left:where(
-    :has(#tabs-tabbar-container:is(.left):is(:hover, :focus-within))
+/* Show when mouse approaches edge of screen */
+#browser:is(.tabs-left) .mainbar:hover + .tabbar-wrapper,
+#browser:is(.tabs-right) .webpage:hover + .tabbar-wrapper {
+  transform: translateX(0);
+  transition: var(--tabbar-transition) !important;
+  opacity: 1;
+}
+
+/* Show when workspace popups are active */
+#browser:is(.tabs-left, .tabs-right):has(
+    .WorkspacePopup:visible,
+    .workspace-popup:visible
   )
-  .button-toolbar-menu-indicator,
-#browser.tabs-left .button-toolbar-menu-indicator:is(:hover, :focus-within),
-#browser.tabs-left:where(:has(#panels-container:is(:hover, :focus-within)))
-  .button-toolbar-menu-indicator,
-#browser.tabs-left.isblurred:where(:has(div.tab-yield-space, .tab-acceptsdrop))
-  .button-toolbar-menu-indicator {
-  display: inherit;
+  .tabbar-wrapper {
+  transform: translateX(0);
+  transition: var(--tabbar-transition) !important;
+  opacity: 1;
 }
 
-/* Realignment of workspace switcher icon when collapsed */
-.tabbar-wrapper:not(:is(:hover, :focus-within))
-  .button-toolbar.workspace-popup
-  button
-  .button-title {
-  margin-right: 0px !important;
+/* Keep tab bar visible during workspace naming */
+#browser:is(.tabs-left, .tabs-right):has(
+    .quick-command-container.workspace-naming
+  )
+  .tabbar-wrapper,
+#browser:is(.tabs-left, .tabs-right):has(.workspace-naming) .tabbar-wrapper,
+#browser:is(.tabs-left, .tabs-right):has(.WorkspacePopup) .tabbar-wrapper,
+#browser:is(.tabs-left, .tabs-right):has(input[placeholder*="workspace"])
+  .tabbar-wrapper {
+  transform: translateX(0) !important;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+/* Hide on click outside */
+html:active:not(
+    :has(
+        .tabbar-wrapper:hover,
+        .quick-command-container.workspace-naming,
+        .workspace-naming,
+        input[placeholder="workspace"]:focus,
+        .WorkspacePopup:visible,
+        .workspace-popup:visible
+      )
+  )
+  .tabbar-wrapper {
+  transform: translateX(calc(-100% + var(--tabbar-peek-width))) !important;
+  transition: var(--tabbar-transition) !important;
+  opacity: 0 !important;
+}
+
+/* Fix right side hiding behavior on click outside */
+html:active:not(
+    :has(
+        .tabbar-wrapper:hover,
+        .quick-command-container.workspace-naming,
+        .workspace-naming,
+        input[placeholder="workspace"]:focus,
+        .WorkspacePopup:visible,
+        .workspace-popup:visible
+      )
+  )
+  #browser.tabs-right
+  .tabbar-wrapper {
+  transform: translateX(calc(100% - var(--tabbar-peek-width))) !important;
+}
+
+/* Additional reset mechanism for when tabs get stuck */
+html:active:active
+  .tabbar-wrapper:not(:hover):not(
+    :has(
+        .quick-command-container.workspace-naming,
+        .workspace-naming,
+        input[placeholder="workspace"]:focus
+      )
+  ) {
+  transform: translateX(calc(-100% + var(--tabbar-peek-width))) !important;
+  opacity: 0 !important;
+}
+
+/* Additional reset for right side */
+html:active:active
+  #browser.tabs-right
+  .tabbar-wrapper:not(:hover):not(
+    :has(
+        .quick-command-container.workspace-naming,
+        .workspace-naming,
+        input[placeholder="workspace"]:focus
+      )
+  ) {
+  transform: translateX(calc(100% - var(--tabbar-peek-width))) !important;
+  opacity: 0 !important;
 }
