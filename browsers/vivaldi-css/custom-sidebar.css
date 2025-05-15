@@ -57,6 +57,19 @@
   opacity: 1;
 }
 
+.button-toolbar.newtab {
+  left: 0px !important;
+  width: 100%;
+  background-color: var(--colorBgDark);
+  border-radius: 16px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.button-toolbar.newtab:hover {
+  background-color: var(--colorBgDarker);
+}
+
 /* Show tabbar on hover */
 #browser:is(.tabs-left, .tabs-right) .tabbar-wrapper:hover {
   transform: translateX(0);
