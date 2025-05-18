@@ -677,6 +677,7 @@ alias byt="$SCRIPTS/byk/training-opensearch.sh"
 alias byc="$SCRIPTS/byk/get-cookie.sh"
 # shellcheck disable=2139
 alias bys="$SCRIPTS/byk/sync-fork.sh"
+alias byts='date "+%Y%m%d%H%M%S"'
 
 # Some half-broken Ruby stuff
 # eval "$(frum init)"
@@ -685,5 +686,5 @@ alias bys="$SCRIPTS/byk/sync-fork.sh"
 . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
