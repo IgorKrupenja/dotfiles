@@ -57,6 +57,7 @@ if [[ $(pgrep "PDF Expert") ]]; then
 				end tell
 			'
   fi
+  osascript -e 'tell application "PDF Expert" to hide'
 fi
 
 ################################# Cursor
@@ -99,7 +100,3 @@ for i in "${!light_values[@]}"; do
     sed -i '' "s/${dark_values[i]}/${light_values[i]}/g" "$conf"
   fi
 done
-
-################################# Switch back to iTerm
-
-osascript -e 'tell application "iTerm" to activate'
