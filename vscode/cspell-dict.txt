@@ -102,6 +102,7 @@ Jaarika
 Janno
 Jannol
 Jürmann
+Kalma
 Kertu
 Keychron
 keyframes
@@ -182,6 +183,7 @@ Siidisaba
 Simo
 Sjomkin
 slackapi
+smax
 smth
 Sorokin
 Spellright

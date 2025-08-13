@@ -433,7 +433,6 @@ gbd() {
 }
 alias gch="git checkout"
 alias gch-="git checkout -"
-alias gchp="git checkout -"
 alias gchm="git checkout main"
 alias gchs="git checkout staging"
 alias gf="git fetch"
