@@ -57,7 +57,7 @@ if [[ $(pgrep "PDF Expert") ]]; then
 				end tell
 			'
   fi
-  osascript -e 'tell application "PDF Expert" to hide'
+  osascript -e 'tell application "System Events" to set visible of process "PDF Expert" to false'
 fi
 
 ################################# Cursor
