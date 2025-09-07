@@ -39,27 +39,6 @@ else
   sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
 fi
 
-################################# PDF Expert
-
-if [[ $(pgrep "PDF Expert") ]]; then
-  if [ "$set_dark" = true ]; then
-    osascript -e '
-    		tell application "PDF Expert" to activate
-				tell application "System Events"
-					keystroke "n" using {option down, command down}
-				end tell
-			'
-  else
-    osascript -e '
-    		tell application "PDF Expert" to activate
-				tell application "System Events"
-					keystroke "z" using {option down, command down}
-				end tell
-			'
-  fi
-  osascript -e 'tell application "System Events" to set visible of process "PDF Expert" to false'
-fi
-
 ################################# Cursor
 
 conf=$HOME/Library/Application\ Support/Cursor/User/settings.json
