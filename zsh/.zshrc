@@ -75,6 +75,8 @@ zle_highlight+=(paste:none)
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 # Fix for "Insecure completion-dependent directories detected" issue
 ZSH_DISABLE_COMPFIX=true
+# Disable auto update prompt
+DISABLE_AUTO_UPDATE=true
 # Source default omz config
 source "$ZSH/oh-my-zsh.sh"
 # iTerm shell integration
