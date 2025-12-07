@@ -389,6 +389,7 @@ alias times='echo $(date +"%Y.%m.%dT%H.%M.%S") | tee >(pbcopy)'
 alias ils="imgls"
 alias icat="imgcat"
 alias path='echo "$PATH" | tr ":" "\n"'
+alias cat="bat"
 
 #############################################################################
 # DEVELOPMENT
