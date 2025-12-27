@@ -347,10 +347,10 @@ wtro() {
   curl -s "wttr.in/$1"
 }
 
-# Copilot CLI
+# Gemini
 # ---------------------------------------------------------------------------
 # To get aliases
-eval "$(github-copilot-cli alias -- "$0")"
+alias "??"="gemini --model gemini-2.5-flash"
 
 # Misc
 # ---------------------------------------------------------------------------
@@ -558,9 +558,8 @@ alias pnu="nvm_use pnpm update -r"
 alias pnd="nvm_use pnpm dev"
 alias pns="nvm_use pnpm start"
 alias pnb="nvm_use pnpm build"
-alias pne="nvm_use pnpm exec"
+alias pnx="nvm_use pnpm exec"
 alias pndx="nvm_use pnpm dlx"
-alias pnex="nvm_use pnpm exec"
 alias pnre="nvm_use pnpm remove"
 alias pnui="nvm_use pnpm dlx npm-check-updates -ui"
 
