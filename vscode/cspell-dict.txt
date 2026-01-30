@@ -19,6 +19,7 @@ blgr
 Bocconi
 Borkedalen
 browserslist
+Bürokratt
 captcha
 celsius
 cera
@@ -101,6 +102,7 @@ inorder
 Jaarika
 Janno
 Jannol
+jetbrains
 Jürmann
 Kalma
 Kertu

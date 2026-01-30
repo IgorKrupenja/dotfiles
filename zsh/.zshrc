@@ -352,6 +352,10 @@ wtro() {
 # To get aliases
 alias "??"="gemini --model gemini-2.5-flash"
 
+# OpenClaw
+alias moltbot="clawbot"
+alias openclaw="clawbot"
+
 # Misc
 # ---------------------------------------------------------------------------
 alias cr="xattr -cr"
