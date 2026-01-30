@@ -353,8 +353,8 @@ wtro() {
 alias "??"="gemini --model gemini-2.5-flash"
 
 # OpenClaw
-alias moltbot="clawbot"
-alias openclaw="clawbot"
+alias moltbot="clawdbot"
+alias openclaw="clawdbot"
 
 # Misc
 # ---------------------------------------------------------------------------
