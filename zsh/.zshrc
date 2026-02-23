@@ -347,14 +347,13 @@ wtro() {
   curl -s "wttr.in/$1"
 }
 
-# Gemini
+# CLI LLM
 # ---------------------------------------------------------------------------
 # To get aliases
-alias "??"="gemini --model gemini-2.5-flash"
-
-# OpenClaw
-alias moltbot="clawdbot"
-alias openclaw="clawdbot"
+_claude_query() {
+  claude -p "$*"
+}
+alias '??'='noglob _claude_query'
 
 # Misc
 # ---------------------------------------------------------------------------
@@ -367,21 +366,9 @@ tc() {
 sc() {
   bun --print "'$*'.replace(/(^\w|\.\s+\w)/g, c => c.toUpperCase())"
 }
-# convert mov to gif
-togif() {
-  ffmpeg -i "$1" -pix_fmt rgb8 -r 10 "$1"
-}
 # stopwatch
 alias sw="termdown -a"
 alias ghostscript="/opt/homebrew/bin/gs"
-# merge PDFs with ghostscript
-mpdf() {
-  if [[ $* == "" ]]; then
-    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf ./*
-  else
-    ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf "$*"
-  fi
-}
 # media downloader
 alias ydl="yt-dlp"
 perf() {

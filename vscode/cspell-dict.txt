@@ -1,4 +1,5 @@
 Adcash
+agentic
 Aksenov
 Åland
 Aleksander
@@ -174,6 +175,7 @@ reranked
 reranking
 Revolut
 Riho
+rulekit
 ruuter
 salesrep
 Serializers
