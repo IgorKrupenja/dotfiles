@@ -290,7 +290,10 @@ alias n="$SCRIPTS/notify.sh"
 # Calculator
 # ---------------------------------------------------------------------------
 cli_calculator() {
-  bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $*;"
+  # Convert commas to dots (European decimal style) and strip leading zeros
+  local expr
+  expr=$(echo "$*" | sed -E 's/,/./g; s/(^|[^.[:alnum:]])0+([0-9])/\1\2/g')
+  bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $expr;"
 }
 alias calc="noglob cli_calculator"
 alias ca="calc"
