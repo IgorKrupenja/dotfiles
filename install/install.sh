@@ -12,6 +12,7 @@ main() {
   configure_dotfiles
   install_from_npm
   install_fonts
+  configure_dock
   set_macos_settings
   restart_zsh
 }
@@ -190,6 +191,30 @@ install_fonts() {
   fi
 }
 
+configure_dock() {
+  echo ""
+  echo -e "🚀 $(purple Configuring Dock)"
+  echo ""
+
+  dockutil --no-restart --remove all
+
+  dockutil --no-restart --add /System/Applications/Apps.app
+  dockutil --no-restart --add /Applications/Notion\ Calendar.app
+  dockutil --no-restart --add /Applications/Marta.app
+  dockutil --no-restart --add /Applications/Vivaldi.app
+  dockutil --no-restart --add /Applications/Discord.app
+  dockutil --no-restart --add /Applications/Telegram\ Desktop.app
+  dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
+  dockutil --no-restart --add /Applications/iTerm.app
+  dockutil --no-restart --add /Applications/OrbStack.app
+  dockutil --no-restart --add /Applications/Obsidian.app
+  dockutil --no-restart --add /Applications/Notion.app
+  dockutil --no-restart --add /System/Applications/Photos.app
+  dockutil --no-restart --add /Applications/Spotify.app
+  dockutil --no-restart --add /System/Applications/Podcasts.app
+  dockutil --add /Applications/IINA.app
+}
+
 set_macos_settings() {
   echo ""
   echo -e "🚀 $(purple Restoring macOS settings)"
@@ -256,8 +281,6 @@ set_macos_settings() {
   # Set home as the default location for new Finder windows
   defaults write com.apple.finder NewWindowTarget -string "PfLo"
   defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
-  # Wipe all (default) app icons from the Dock
-  dockutil --no-restart --remove all
   # Automatically hide and show the Dock
   defaults write com.apple.dock autohide -bool true
   # Remove the auto-hiding Dock delay
