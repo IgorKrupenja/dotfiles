@@ -11,6 +11,7 @@ main() {
   configure_zsh
   configure_dotfiles
   install_from_npm
+  install_fonts
   set_macos_settings
   restart_zsh
 }
@@ -166,6 +167,27 @@ install_from_npm() {
   while IFS= read -r package || [[ -n "$package" ]]; do
     bun install -g "$package"
   done <"$DOTFILES/bun/default-packages"
+}
+
+install_fonts() {
+  echo ""
+  echo -e "🚀 $(purple Installing fonts)"
+  echo ""
+
+  local fonts_dir="$HOME/Library/Fonts"
+
+  # MonacoB2 Nerd Font: download MonacoB2, patch with nerd fonts patcher via Docker
+  if [ ! -f "$fonts_dir/MonacoB2NerdFont-Regular.otf" ]; then
+    local tmpdir
+    tmpdir=$(mktemp -d)
+    curl -LJ --output-dir "$tmpdir" -O \
+      "https://github.com/vjpr/monaco-bold/raw/refs/heads/master/MonacoB2/MonacoB2.otf"
+    docker run --rm -v "$tmpdir:/in" -v "$tmpdir:/out" nerdfonts/patcher -c
+    cp "$tmpdir"/MonacoB2NerdFont*.otf "$fonts_dir/"
+    rm -rf "$tmpdir"
+  else
+    echo "MonacoB2 Nerd Font already installed, skipping."
+  fi
 }
 
 set_macos_settings() {
