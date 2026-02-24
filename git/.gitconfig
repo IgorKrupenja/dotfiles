@@ -36,3 +36,5 @@ defaultBranch = main
 autosetuprebase = always
 [mergetool]
 keepBackup = false
+[alias]
+disable-hooks = config --local core.hooksPath .git/hooks
