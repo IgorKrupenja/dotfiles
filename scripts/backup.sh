@@ -73,6 +73,13 @@ if [[ $(git diff iina/Igor.conf) ]]; then
   git commit -m "Update IINA keybindings"
 fi
 
+# keyboard shortcuts (System Settings > Keyboard)
+cp -f "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist"
+if [[ $(git diff keyboard/com.apple.symbolichotkeys.plist) ]]; then
+  git add keyboard/com.apple.symbolichotkeys.plist
+  git commit -m "Update keyboard shortcuts"
+fi
+
 # push
 echo ""
 echo "Pushing to dotfiles repo:"

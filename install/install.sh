@@ -256,6 +256,10 @@ set_macos_settings() {
   # Projects folder icon
   fileicon set "$HOME/Projects" /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
 
+  # Keyboard shortcuts (System Settings > Keyboard)
+  backup "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+  cp -f "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist" "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+
   # Disable system sound on ctrl+cmd+arrow
   mkdir "$HOME/Library/KeyBindings"
   backup "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
