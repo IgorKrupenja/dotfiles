@@ -361,7 +361,7 @@ wtro() {
 # ---------------------------------------------------------------------------
 # To get aliases
 _claude_query() {
-  claude -p "$*"
+  claude -p --model claude-haiku-4-6 "$*"
 }
 alias '??'='noglob _claude_query'
 
