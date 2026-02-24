@@ -257,15 +257,15 @@ set_macos_settings() {
   backup "$HOME/Library/Preferences/com.colliderli.iina.plist"
   ln -sv "$DOTFILES/iina/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
 
-  # iTerm
-  defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
-  defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
-
   # IINA keybindings
   iina_conf_dir="$HOME/Library/Application Support/com.colliderli.iina/input_conf"
   mkdir -p "$iina_conf_dir"
   backup "$iina_conf_dir/Igor.conf"
   ln -sv "$DOTFILES/iina/Igor.conf" "$iina_conf_dir/Igor.conf"
+
+  # iTerm
+  defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
+  defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
   # Marta
   marta_dir="$HOME/Library/Application Support/org.yanex.marta"
