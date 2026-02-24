@@ -150,6 +150,8 @@ configure_dotfiles() {
   mkdir -p "$HOME/.claude"
   backup "$HOME/.claude/CLAUDE.md"
   ln -sv "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+  backup "$HOME/.claude/settings.json"
+  ln -sv "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
 }
 
 install_from_npm() {
