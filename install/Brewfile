@@ -35,7 +35,6 @@ brew "python@3.11"
 brew "shellcheck"
 brew "shfmt"
 brew "speedtest-cli"
-brew "terminal-notifier"
 brew "trash", link: true
 brew "wget"
 brew "yt-dlp"
