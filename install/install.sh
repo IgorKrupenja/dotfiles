@@ -214,21 +214,28 @@ configure_dock() {
 
   dockutil --no-restart --remove all
 
-  dockutil --no-restart --add /System/Applications/Apps.app
-  dockutil --no-restart --add /Applications/Notion\ Calendar.app
-  dockutil --no-restart --add /Applications/Marta.app
-  dockutil --no-restart --add /Applications/Vivaldi.app
-  dockutil --no-restart --add /Applications/Discord.app
-  dockutil --no-restart --add /Applications/Telegram\ Desktop.app
-  dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
-  dockutil --no-restart --add /Applications/iTerm.app
-  dockutil --no-restart --add /Applications/OrbStack.app
-  dockutil --no-restart --add /Applications/Obsidian.app
-  dockutil --no-restart --add /Applications/Notion.app
-  dockutil --no-restart --add /System/Applications/Photos.app
-  dockutil --no-restart --add /Applications/Spotify.app
-  dockutil --no-restart --add /System/Applications/Podcasts.app
-  dockutil --add /Applications/IINA.app
+  local dock_apps=(
+    "/System/Applications/Apps.app"
+    "/Applications/Notion Calendar.app"
+    "/Applications/Marta.app"
+    "/Applications/Vivaldi.app"
+    "/Applications/Discord.app"
+    "/Applications/Telegram Desktop.app"
+    "/Applications/Visual Studio Code.app"
+    "/Applications/iTerm.app"
+    "/Applications/OrbStack.app"
+    "/Applications/Obsidian.app"
+    "/Applications/Notion.app"
+    "/System/Applications/Photos.app"
+    "/Applications/Spotify.app"
+    "/System/Applications/Podcasts.app"
+    "/Applications/IINA.app"
+  )
+
+  for app in "${dock_apps[@]}"; do
+    dockutil --no-restart --add "$app"
+  done
+  killall Dock
 }
 
 set_macos_settings() {
