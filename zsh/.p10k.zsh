@@ -44,10 +44,10 @@
     node_version          # node.js version
     background_jobs         # presence of background jobs
     per_directory_history   # Oh My Zsh per-directory-history local/global indicator
+    claude                  # claude model + context usage (shown inside Claude Code sessions)
     command_execution_time  # duration of the last command
     status                  # exit code of the last command
     gloud
-    claude                  # claude model + context usage (shown inside Claude Code sessions)
     # =========================[ Line #3 ]=========================
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
