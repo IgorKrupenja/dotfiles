@@ -235,7 +235,14 @@ alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Re
 alias net="sudo iftop -B -i en0"
 # speedtest.net
 alias sp="speedtest"
-alias ip="ipconfig getifaddr en0 | tee >(pbcopy)"
+ip() {
+  local internal external
+  internal=$(ipconfig getifaddr en0)
+  external=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')
+  echo "Internal: $internal"
+  echo "External: $external"
+  printf "%s\n%s" "$internal" "$external" | pbcopy
+}
 
 # Misc
 # ---------------------------------------------------------------------------
