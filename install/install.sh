@@ -255,7 +255,7 @@ set_macos_settings() {
 
   # iina
   backup "$HOME/Library/Preferences/com.colliderli.iina.plist"
-  ln -sv "$DOTFILES/misc/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
+  ln -sv "$DOTFILES/iina/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
 
   # iTerm
   defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"

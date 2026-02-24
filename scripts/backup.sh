@@ -62,15 +62,9 @@ if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
 fi
 
 # commit IINA plist if there are changes
-if [[ $(git diff misc/com.colliderli.iina.plist) ]]; then
-  git add misc/com.colliderli.iina.plist
+if [[ $(git diff iina/com.colliderli.iina.plist) ]]; then
+  git add iina/com.colliderli.iina.plist
   git commit -m "Update IINA settings"
-fi
-
-# commit IINA keybindings if there are changes
-if [[ $(git diff iina/Igor.conf) ]]; then
-  git add iina/Igor.conf
-  git commit -m "Update IINA keybindings"
 fi
 
 # keyboard shortcuts (System Settings > Keyboard)

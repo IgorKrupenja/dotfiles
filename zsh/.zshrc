@@ -241,7 +241,7 @@ ip() {
   external=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')
   echo "Internal: $internal"
   echo "External: $external"
-  printf "%s\n%s" "$internal" "$external" | pbcopy
+  echo "$internal" | pbcopy
 }
 
 # Misc

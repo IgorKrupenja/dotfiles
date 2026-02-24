@@ -142,9 +142,9 @@ main() {
   update_node
   update_bun
   update_homebrew
-  update_mas
-  # macOS updates require sudo and an interactive terminal
+  # mas upgrade requires sudo - skip in cron to avoid hanging on password prompt
   if is_interactive; then
+    update_mas
     update_macos
   fi
   display_notification

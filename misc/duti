@@ -1,6 +1,6 @@
 # File associations
 # Format: bundle-id    extension    role
-# duti -f misc/duti to apply
+# duti misc/duti to apply
 
 # JavaScript / TypeScript
 com.microsoft.VSCode    .js     all
