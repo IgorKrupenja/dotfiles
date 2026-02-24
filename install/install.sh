@@ -251,6 +251,8 @@ set_macos_settings() {
   # Disable shit Sonoma keyboard switcher indicator
   mkdir -p /Library/Preferences/FeatureFlags/Domain
   defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+  # File associations
+  duti "$DOTFILES/misc/duti"
   # restart to apply changes
   killall Finder
   killall Dock
