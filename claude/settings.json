@@ -24,7 +24,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"' && afplay /System/Library/Sounds/Ping.aiff"
+            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"' && (osascript -e 'tell application \"System Events\" to get bundle identifier of first application process whose frontmost is true' | grep -qi \"com.microsoft.VSCode\" || afplay /System/Library/Sounds/Ping.aiff)"
           }
         ]
       }
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Task complete\" with title \"Claude Code\"' && afplay /System/Library/Sounds/Glass.aiff"
+            "command": "osascript -e 'display notification \"Task complete\" with title \"Claude Code\"' && (osascript -e 'tell application \"System Events\" to get bundle identifier of first application process whose frontmost is true' | grep -qi \"com.microsoft.VSCode\" || afplay /System/Library/Sounds/Glass.aiff)"
           }
         ]
       }
