@@ -24,7 +24,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/igor/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Claude needs your attention' 'Ping'"
+            "command": "$HOME/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Claude needs your attention' 'Ping'"
           }
         ]
       }
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/igor/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Task complete' 'Glass'"
+            "command": "$HOME/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Task complete' 'Glass'"
           }
         ]
       }
