@@ -106,17 +106,11 @@ ansi() {
 alias dl='cd $HOME/Downloads'
 alias p='cd $PROJECTS'
 alias dot='cd $DOTFILES'
-alias blog='cd $PROJECTS/blog'
-alias ob='cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'
 alias cd-="cd -"
 
 # Trash
 # ---------------------------------------------------------------------------
 alias t="trash"
-
-alias tcd='cd $HOME/.Trash'
-alias tls='ls $HOME/.Trash'
-alias tla='la $HOME/.Trash'
 # empty trash
 te() {
   osascript <<-EOF
@@ -129,28 +123,10 @@ te() {
 	EOF
 }
 
-# diskutil & VeraCrypt
-# ---------------------------------------------------------------------------
-alias dil='diskutil list'
-alias diu='diskutil unmount'
-# eject all
-die() {
-  /Applications/VeraCrypt.app/Contents/MacOS/VeraCrypt -d
-  osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"
-}
-
 # Misc
 # ---------------------------------------------------------------------------
-alias tk="take"
 alias df="duf"
 alias du="du -h -d 1"
-# quick look
-alias ql="qlmanage -p &>/dev/null"
-# dd with progress
-alias ddd="sudo gdd bs=1M status=progress"
-# ls/la with dirs first
-alias lad="gls -lAh --group-directories-first --color"
-alias lsd="gls --group-directories-first --color"
 # recursive mkdir
 alias mkdir='mkdir -pv'
 # touch with dir creation
@@ -179,14 +155,6 @@ sf() {
   else
     command sudo find "$1" -iname "*$2*" 2>/dev/null
   fi
-}
-# rename with index
-rn() {
-  i=1
-  for file in *.*; do
-    ext="${file##*.}"
-    mv "$file" "$*-$((i++)).$ext"
-  done
 }
 
 #############################################################################
@@ -229,8 +197,6 @@ alias bri="brew reinstall"
 
 # System info
 # ---------------------------------------------------------------------------
-# wifi network list
-alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -s"
 # network usage stats
 alias net="sudo iftop -B -i en0"
 # speedtest.net
@@ -254,11 +220,9 @@ a() {
 alias w="which"
 # reboot with confirmation dialog
 alias reboot="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'"
-# manage Finder sidebar items
-alias side="mysides"
 alias fcl="osascript -e 'tell application \"Finder\" to close windows'"
-# htop with sudo
 alias htop="sudo htop"
+alias btop="sudo btop"
 alias cl="clear"
 # zsh
 alias ez="exec zsh"
@@ -279,8 +243,6 @@ kport() {
 # Enforcing SC2139 here breaks existing command detection with zsh-syntax-highlighting
 
 # shellcheck disable=2139
-alias ggs="$SCRIPTS/git-global-status.sh"
-# shellcheck disable=2139
 alias st="$SCRIPTS/status.sh"
 # shellcheck disable=2139
 alias bak="$SCRIPTS/backup.sh"
@@ -295,19 +257,14 @@ alias dk="dark"
 # Calculator
 # ---------------------------------------------------------------------------
 cli_calculator() {
-  # Convert commas to dots (European decimal style) and strip leading zeros
+  # Convert commas to dots (European decimal style), strip spaces used as thousands
+  # separators (e.g. 4 003 -> 4003), and strip leading zeros
   local expr
-  expr=$(echo "$*" | sed -E 's/,/./g; s/(^|[^.[:alnum:]])0+([0-9])/\1\2/g')
+  expr=$(echo "$*" | sed -E 's/,/./g; s/([0-9]) +([0-9])/\1\2/g; s/(^|[^.[:alnum:]])0+([0-9])/\1\2/g')
   bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $expr;"
 }
 alias calc="noglob cli_calculator"
 alias ca="calc"
-
-# Unit and currency converter
-# ---------------------------------------------------------------------------
-un() {
-  gunits "$1 $2" "$3" -t
-}
 
 # World clock
 # ---------------------------------------------------------------------------
@@ -345,16 +302,6 @@ world_clock() {
   echo "$output" | column -t | tr '_' ' '
 }
 
-# Weather
-# ---------------------------------------------------------------------------
-wtr() {
-  curl -s v2.wttr.in/"$*"
-}
-# old version
-wtro() {
-  curl -s "wttr.in/$1"
-}
-
 # CLI LLM
 # ---------------------------------------------------------------------------
 # To get aliases
@@ -365,7 +312,6 @@ alias '??'='noglob _claude_query'
 
 # Misc
 # ---------------------------------------------------------------------------
-alias cr="xattr -cr"
 # convert string to title case
 tc() {
   bun --print "'$*'.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');"
@@ -499,6 +445,9 @@ nvm_use() {
     eval "$*"
   fi
 }
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # npm
 # ---------------------------------------------------------------------------
@@ -639,23 +588,6 @@ awp() {
 
 # Dotfiles
 # ---------------------------------------------------------------------------
-dotfiles_new_issue() {
-  title="${*:2}"
-  cd "$PROJECTS"/dotfiles || exit
-  gh issue create --title "$title" --body "" --label "$1"
-  cd ~- || exit
-}
-dotn() {
-  cd "$PROJECTS"/dotfiles || exit
-  gh issue create --title "$*" --body ""
-  cd ~- || exit
-}
-alias dotni="dotfiles_new_issue important"
-alias dotnc="dotfiles_new_issue core"
-alias dotnci="dotfiles_new_issue core,important"
-alias dotnv="dotfiles_new_issue vscode"
-alias dotnvi="dotfiles_new_issue vscode,important"
-
 alias cz='c $DOTFILES'
 
 # Devtailor
@@ -673,13 +605,3 @@ alias byk='cd $PROJECTS/devtailor/burokratt/'
 # shellcheck disable=2139
 alias byt="$SCRIPTS/byk/training-opensearch.sh"
 alias byts='date "+%Y%m%d%H%M%S"'
-
-# Some half-broken Ruby stuff
-# eval "$(frum init)"
-# export PATH="/opt/homebrew/opt/ruby/bin:$(gem environment gemdir)/bin:$PATH"
-
-. "$HOME/.cargo/env"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
