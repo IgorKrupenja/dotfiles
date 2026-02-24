@@ -197,9 +197,8 @@ set_macos_settings() {
   # https://github.com/marta-file-manager/marta-issues/issues/488
   backup "$marta_dir"
   cp -fvr "$DOTFILES/marta" "$marta_dir/"
-  # for CLI
-  # TODO: broken https://github.com/IgorKrupenja/dotfiles/issues/440
-  # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
+  # for CLI - symlink to /opt/homebrew/bin (writable on Apple Silicon, unlike /usr/local/bin)
+  ln -sf /Applications/Marta.app/Contents/Resources/launcher /opt/homebrew/bin/marta
 
   # Projects folder icon
   fileicon set "$HOME/Projects" /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
