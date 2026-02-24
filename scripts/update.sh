@@ -97,7 +97,12 @@ update_homebrew() {
   if [[ -z $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
-    brew upgrade
+    # In cron, skip casks that require sudo to avoid hanging on password prompt
+    if is_interactive; then
+      brew upgrade
+    else
+      SUDO_ASKPASS=/usr/bin/false brew upgrade
+    fi
   fi
 
   echo -e "\n🚀 $(purple Running Homebrew diagnostics)\n"
@@ -126,6 +131,11 @@ display_notification() {
   osascript -e 'display notification "Software update complete" with title "cron" sound name "Ping"'
 }
 
+# Returns true if the script is running in an interactive terminal (not cron)
+is_interactive() {
+  [ -t 1 ]
+}
+
 main() {
   # update_gems
   update_omz
@@ -133,7 +143,10 @@ main() {
   update_bun
   update_homebrew
   update_mas
-  # update_macos
+  # macOS updates require sudo and an interactive terminal
+  if is_interactive; then
+    update_macos
+  fi
   display_notification
 }
 
