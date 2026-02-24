@@ -421,8 +421,7 @@ alias gcmx="gcm x"
 alias gbl="git branch"
 gbn() {
   git checkout -b "$*"
-  git push origin "$*"
-  git branch --set-upstream-to=origin/"$*" "$*"
+  git push -u origin "$*"
 }
 # delete branch both locally and remotely, only origin
 gbd() {
