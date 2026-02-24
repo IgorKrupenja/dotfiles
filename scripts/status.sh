@@ -56,6 +56,5 @@ echo "Memory      : ${mem_total}GB total; ${mem_free}MB free, ${mem_inactive}MB 
 echo "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
 echo "Battery     : $batt_perc for $batt_time, $batt_remain; cycle count $batt_cycles"
 echo "Hostname    : $(uname -n)"
-echo "WiFI SSID   : $(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F' SSID: ' '/ SSID: / {print $2}' | xargs)"
 echo "Internal IP : $(ipconfig getifaddr en0)"
 echo "External IP : $(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')"

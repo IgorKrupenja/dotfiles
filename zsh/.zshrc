@@ -235,7 +235,14 @@ alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Re
 alias net="sudo iftop -B -i en0"
 # speedtest.net
 alias sp="speedtest"
-alias ip="ipconfig getifaddr en0 | tee >(pbcopy)"
+ip() {
+  local internal external
+  internal=$(ipconfig getifaddr en0)
+  external=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F '"' '{ print $2}')
+  echo "Internal: $internal"
+  echo "External: $external"
+  echo "$internal" | pbcopy
+}
 
 # Misc
 # ---------------------------------------------------------------------------
@@ -290,7 +297,10 @@ alias n="$SCRIPTS/notify.sh"
 # Calculator
 # ---------------------------------------------------------------------------
 cli_calculator() {
-  bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $*;"
+  # Convert commas to dots (European decimal style) and strip leading zeros
+  local expr
+  expr=$(echo "$*" | sed -E 's/,/./g; s/(^|[^.[:alnum:]])0+([0-9])/\1\2/g')
+  bun --print "const { floor, sqrt, ceil, round, pow, sin, cos, tan, asin, acos, atan, log, exp, PI, E, abs, min, max, random } = Math; $expr;"
 }
 alias calc="noglob cli_calculator"
 alias ca="calc"
@@ -418,8 +428,7 @@ alias gcmx="gcm x"
 alias gbl="git branch"
 gbn() {
   git checkout -b "$*"
-  git push origin "$*"
-  git branch --set-upstream-to=origin/"$*" "$*"
+  git push -u origin "$*"
 }
 # delete branch both locally and remotely, only origin
 gbd() {

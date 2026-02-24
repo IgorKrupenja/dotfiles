@@ -10,7 +10,10 @@ main() {
   install_from_pipx
   configure_zsh
   configure_dotfiles
+  build_claude_notify
   install_from_npm
+  install_fonts
+  configure_dock
   set_macos_settings
   restart_zsh
 }
@@ -154,6 +157,21 @@ configure_dotfiles() {
   ln -sv "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
 }
 
+build_claude_notify() {
+  echo ""
+  echo -e "🚀 $(purple Building Claude-Notify.app)"
+  echo ""
+
+  local src="$DOTFILES/claude/hooks/claude-notify"
+  local app="$HOME/.claude/Claude-Notify.app/Contents"
+
+  mkdir -p "$app/MacOS" "$app/Resources"
+  cp -f "$src/Info.plist" "$app/Info.plist"
+  cp -f "$src/AppIcon.icns" "$app/Resources/AppIcon.icns"
+  swiftc "$src/main.swift" -o "$app/MacOS/claude-notify"
+  codesign --force --sign - --deep "$HOME/.claude/Claude-Notify.app"
+}
+
 install_from_npm() {
   echo ""
   echo -e "🚀 $(purple Installing node global npm packages)"
@@ -166,6 +184,58 @@ install_from_npm() {
   while IFS= read -r package || [[ -n "$package" ]]; do
     bun install -g "$package"
   done <"$DOTFILES/bun/default-packages"
+}
+
+install_fonts() {
+  echo ""
+  echo -e "🚀 $(purple Installing fonts)"
+  echo ""
+
+  local fonts_dir="$HOME/Library/Fonts"
+
+  # MonacoB2 Nerd Font: download MonacoB2, patch with nerd fonts patcher via Docker
+  if [ ! -f "$fonts_dir/MonacoB2NerdFont-Regular.otf" ]; then
+    local tmpdir
+    tmpdir=$(mktemp -d)
+    curl -LJ --output-dir "$tmpdir" -O \
+      "https://github.com/vjpr/monaco-bold/raw/refs/heads/master/MonacoB2/MonacoB2.otf"
+    docker run --rm -v "$tmpdir:/in" -v "$tmpdir:/out" nerdfonts/patcher -c
+    cp "$tmpdir"/MonacoB2NerdFont*.otf "$fonts_dir/"
+    rm -rf "$tmpdir"
+  else
+    echo "MonacoB2 Nerd Font already installed, skipping."
+  fi
+}
+
+configure_dock() {
+  echo ""
+  echo -e "🚀 $(purple Configuring Dock)"
+  echo ""
+
+  dockutil --no-restart --remove all
+
+  local dock_apps=(
+    "/System/Applications/Apps.app"
+    "/Applications/Notion Calendar.app"
+    "/Applications/Marta.app"
+    "/Applications/Vivaldi.app"
+    "/Applications/Discord.app"
+    "/Applications/Telegram Desktop.app"
+    "/Applications/Visual Studio Code.app"
+    "/Applications/iTerm.app"
+    "/Applications/OrbStack.app"
+    "/Applications/Obsidian.app"
+    "/Applications/Notion.app"
+    "/System/Applications/Photos.app"
+    "/Applications/Spotify.app"
+    "/System/Applications/Podcasts.app"
+    "/Applications/IINA.app"
+  )
+
+  for app in "${dock_apps[@]}"; do
+    dockutil --no-restart --add "$app"
+  done
+  killall Dock
 }
 
 set_macos_settings() {
@@ -185,7 +255,13 @@ set_macos_settings() {
 
   # iina
   backup "$HOME/Library/Preferences/com.colliderli.iina.plist"
-  ln -sv "$DOTFILES/misc/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
+  ln -sv "$DOTFILES/iina/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
+
+  # IINA keybindings
+  iina_conf_dir="$HOME/Library/Application Support/com.colliderli.iina/input_conf"
+  mkdir -p "$iina_conf_dir"
+  backup "$iina_conf_dir/Igor.conf"
+  ln -sv "$DOTFILES/iina/Igor.conf" "$iina_conf_dir/Igor.conf"
 
   # iTerm
   defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
@@ -197,12 +273,15 @@ set_macos_settings() {
   # https://github.com/marta-file-manager/marta-issues/issues/488
   backup "$marta_dir"
   cp -fvr "$DOTFILES/marta" "$marta_dir/"
-  # for CLI
-  # TODO: broken https://github.com/IgorKrupenja/dotfiles/issues/440
-  # ln -s /Applications/Marta.app/Contents/Resources/launcher /usr/local/bin/marta
+  # for CLI - symlink to /opt/homebrew/bin (writable on Apple Silicon, unlike /usr/local/bin)
+  ln -sf /Applications/Marta.app/Contents/Resources/launcher /opt/homebrew/bin/marta
 
   # Projects folder icon
   fileicon set "$HOME/Projects" /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
+
+  # Keyboard shortcuts (System Settings > Keyboard)
+  backup "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+  cp -f "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist" "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 
   # Disable system sound on ctrl+cmd+arrow
   mkdir "$HOME/Library/KeyBindings"
@@ -229,8 +308,6 @@ set_macos_settings() {
   # Set home as the default location for new Finder windows
   defaults write com.apple.finder NewWindowTarget -string "PfLo"
   defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
-  # Wipe all (default) app icons from the Dock
-  dockutil --no-restart --remove all
   # Automatically hide and show the Dock
   defaults write com.apple.dock autohide -bool true
   # Remove the auto-hiding Dock delay
@@ -246,6 +323,8 @@ set_macos_settings() {
   # Disable shit Sonoma keyboard switcher indicator
   mkdir -p /Library/Preferences/FeatureFlags/Domain
   defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+  # File associations
+  duti "$DOTFILES/misc/duti"
   # restart to apply changes
   killall Finder
   killall Dock
