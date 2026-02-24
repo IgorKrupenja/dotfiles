@@ -36,8 +36,10 @@ btop_themes_dir="/opt/homebrew/share/btop/themes"
 
 if [ "$set_dark" = true ]; then
   sed -i '' "s|color_theme = \".*\"|color_theme = \"${btop_themes_dir}/nord.theme\"|" "$conf"
+  sed -i '' "s|theme_background = .*|theme_background = true|" "$conf"
 else
   sed -i '' "s|color_theme = \".*\"|color_theme = \"${btop_themes_dir}/adwaita.theme\"|" "$conf"
+  sed -i '' "s|theme_background = .*|theme_background = false|" "$conf"
 fi
 
 ################################# Marta
