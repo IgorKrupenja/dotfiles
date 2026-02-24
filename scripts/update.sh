@@ -111,7 +111,7 @@ update_homebrew() {
 
 update_mas() {
   echo -e "\n🚀 $(purple "Updating App Store apps")\n"
-  mas upgrade
+  MAS_NO_AUTO_INDEX=1 mas upgrade
 }
 
 update_macos() {
