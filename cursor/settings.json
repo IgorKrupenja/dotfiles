@@ -126,7 +126,6 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "files.associations": {
-    ".sleep": "shellscript",
     ".wakeup": "shellscript"
   },
   "git.openRepositoryInParentFolders": "always",

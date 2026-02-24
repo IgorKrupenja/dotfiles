@@ -134,13 +134,6 @@ configure_dotfiles() {
   echo -e "🚀 $(purple Installing dotfiles)"
   echo ""
 
-  dotfiles=(".sleep")
-  for dotfile in "${dotfiles[@]}"; do
-    # Backup any existing dotfiles
-    backup "$HOME/${dotfile}"
-    ln -sv "$DOTFILES/misc/${dotfile}" "$HOME/${dotfile}"
-  done
-
   backup "$HOME/.gitconfig"
   ln -sv "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 
