@@ -106,9 +106,6 @@
   },
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "redhat.telemetry.enabled": true,
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-  },
   "files.associations": {
     ".sleep": "shellscript",
     ".wakeup": "shellscript",
