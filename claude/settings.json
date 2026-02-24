@@ -25,7 +25,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$HOME/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Claude needs your attention' 'Ping' >/dev/null 2>&1 &"
+            "command": "[ -n \"$VSCODE_PID\" ] && $HOME/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Claude needs your attention' 'Ping' >/dev/null 2>&1 &"
           }
         ]
       }
@@ -36,7 +36,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$HOME/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Task complete' 'Glass' >/dev/null 2>&1 &"
+            "command": "[ -n \"$VSCODE_PID\" ] && $HOME/.claude/Claude-Notify.app/Contents/MacOS/claude-notify 'Claude Code' 'Task complete' 'Glass' >/dev/null 2>&1 &"
           }
         ]
       }
