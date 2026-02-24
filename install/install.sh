@@ -146,6 +146,10 @@ configure_dotfiles() {
   backup "$HOME/.ssh/config"
   mkdir -p "$HOME/.ssh/"
   ln -sv "$DOTFILES/ssh/config" "$HOME/.ssh/config"
+
+  mkdir -p "$HOME/.claude"
+  backup "$HOME/.claude/CLAUDE.md"
+  ln -sv "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 }
 
 install_from_npm() {
