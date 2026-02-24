@@ -39,9 +39,9 @@ else
   sed -i '' -e 's/theme "Igor"/theme "Classic"/g' "$conf"
 fi
 
-################################# Cursor
+################################# VSCode
 
-conf=$HOME/Library/Application\ Support/Cursor/User/settings.json
+conf=$HOME/Library/Application\ Support/Code/User/settings.json
 
 light_values=(
   # To do highlighting

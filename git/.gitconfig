@@ -12,15 +12,15 @@ pager = true
 default = current
 followTags = true
 [core]
-editor = cursor --wait
+editor = code --wait
 excludesfile = /Users/igor/.gitignore_global
 hooksPath = /Users/igor/Projects/dotfiles/git/hooks
 [diff]
-tool = cursor
+tool = code
 [difftool]
 prompt = false
-[difftool "cursor"]
-cmd = cursor --wait --diff $LOCAL $REMOTE
+[difftool "code"]
+cmd = code --wait --diff $LOCAL $REMOTE
 [credential]
 helper = store
 [http]

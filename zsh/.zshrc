@@ -388,15 +388,15 @@ alias cat="bat"
 
 # Editors
 # -------------------------- -------------------------------------------------
-export VISUAL=$SCRIPTS/cursor-wait.sh
-export EDITOR=$SCRIPTS/cursor-wait.sh
+export VISUAL=$SCRIPTS/code-wait.sh
+export EDITOR=$SCRIPTS/code-wait.sh
 
 # VSCode
 c() {
   if [[ $* == "" ]]; then
-    cursor .
+    code .
   else
-    cursor "$@"
+    code "$@"
   fi
 }
 
