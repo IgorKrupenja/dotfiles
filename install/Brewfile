@@ -35,6 +35,7 @@ brew "python@3.11"
 brew "shellcheck"
 brew "shfmt"
 brew "speedtest-cli"
+brew "terminal-notifier"
 brew "trash", link: true
 brew "wget"
 brew "yt-dlp"
@@ -81,9 +82,9 @@ cask "zen"
 mas "AdGuard Mini", id: 1440147259
 mas "ColorSlurp", id: 1287239339
 mas "DigiDoc4", id: 1370791134
-mas "Web eID", id: 1576665083
 mas "Kindle", id: 302584613
 mas "One Thing", id: 1604176982
 mas "PiPifier", id: 1160374471
 mas "The Unarchiver", id: 425424353
+mas "Web eID", id: 1576665083
 mas "Xcode", id: 497799835
