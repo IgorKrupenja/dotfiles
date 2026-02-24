@@ -27,16 +27,6 @@ if [[ $(git diff .) ]]; then
   git commit -m "Update VSCode settings"
 fi
 
-# Cursor
-cd "$DOTFILES/cursor" || exit
-cp -f "/Users/igor/Library/Application Support/Cursor/User/settings.json" settings.json
-cp -f "/Users/igor/Library/Application Support/Cursor/User/keybindings.json" keybindings.json
-cp -rf "/Users/igor/Library/Application Support/Cursor/User/snippets" ./
-if [[ $(git diff .) ]]; then
-  git add .
-  git commit -m "Update Cursor settings"
-fi
-
 # Brewfile dump
 cd "$DOTFILES/install" || exit
 brew bundle dump --taps --brews --casks --mas --force
