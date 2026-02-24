@@ -47,6 +47,7 @@
     command_execution_time  # duration of the last command
     status                  # exit code of the last command
     gloud
+    claude                  # claude model + context usage (shown inside Claude Code sessions)
     # =========================[ Line #3 ]=========================
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
@@ -1727,6 +1728,28 @@
 
   function instant_prompt_node_version() {
     prompt_node_version
+  }
+
+  # Show configured Claude model from ~/.claude/settings.json.
+  # Parses "claude-sonnet-4-6" → "Sonnet 4.6" without hardcoded names.
+  function prompt_claude() {
+    local settings="$HOME/.claude/settings.json"
+    [[ ! -f $settings ]] && return
+    local raw
+    raw=$(sed -n 's/.*"model"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$settings")
+    [[ -z $raw ]] && return
+    # Parse "claude-<family>-<major>-<minor>[-<date>]"
+    local rest="${raw#claude-}"           # "sonnet-4-6"
+    local family="${rest%%-[0-9]*}"       # "sonnet"
+    local ver="${rest#${family}-}"        # "4-6" or "4-5-20251001"
+    ver="${ver%%-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]}"  # strip date suffix
+    ver="${ver//-/.}"                     # "4.6"
+    local model="${(C)family} ${ver}"     # "Sonnet 4.6"
+    p10k segment -f 6 -t $'\U000F06A9'" $model"
+  }
+
+  function instant_prompt_claude() {
+    prompt_claude
   }
 
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
