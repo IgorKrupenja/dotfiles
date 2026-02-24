@@ -191,6 +191,12 @@ set_macos_settings() {
   defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm"
   defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
+  # IINA keybindings
+  iina_conf_dir="$HOME/Library/Application Support/com.colliderli.iina/input_conf"
+  mkdir -p "$iina_conf_dir"
+  backup "$iina_conf_dir/Igor.conf"
+  ln -sv "$DOTFILES/iina/Igor.conf" "$iina_conf_dir/Igor.conf"
+
   # Marta
   marta_dir="$HOME/Library/Application Support/org.yanex.marta"
   # Using copy and not symlink because of this issue:

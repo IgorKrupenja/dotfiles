@@ -67,6 +67,12 @@ if [[ $(git diff misc/com.colliderli.iina.plist) ]]; then
   git commit -m "Update IINA settings"
 fi
 
+# commit IINA keybindings if there are changes
+if [[ $(git diff iina/Igor.conf) ]]; then
+  git add iina/Igor.conf
+  git commit -m "Update IINA keybindings"
+fi
+
 # push
 echo ""
 echo "Pushing to dotfiles repo:"
