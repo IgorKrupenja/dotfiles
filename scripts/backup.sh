@@ -55,17 +55,13 @@ if [[ $(git diff marta) ]]; then
   git commit -m "Update Marta settings"
 fi
 
-# commit iTerm plist if there are changes
-if [[ $(git diff iterm/com.googlecode.iterm2.plist) ]]; then
-  git add iterm/com.googlecode.iterm2.plist
-  git commit -m "Update iTerm settings"
-fi
-
-# commit IINA plist if there are changes
-if [[ $(git diff iina/com.colliderli.iina.plist) ]]; then
-  git add iina/com.colliderli.iina.plist
-  git commit -m "Update IINA settings"
-fi
+# commit app settings folders if there are changes
+for app in iterm iina claude; do
+  if [[ $(git diff "$app") ]]; then
+    git add "$app"
+    git commit -m "Update ${app^} settings"
+  fi
+done
 
 # keyboard shortcuts (System Settings > Keyboard)
 cp -f "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist"

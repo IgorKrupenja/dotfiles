@@ -12,7 +12,8 @@
       "Write(*)",
       "Read(*)",
       "Glob(*)",
-      "Grep(*)"
+      "Grep(*)",
+      "WebFetch(*)"
     ]
   },
   "model": "claude-sonnet-4-6",

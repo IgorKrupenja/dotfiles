@@ -291,8 +291,6 @@ alias up="$SCRIPTS/update.sh"
 # shellcheck disable=2139
 alias dark="$SCRIPTS/dark.sh"
 alias dk="dark"
-# shellcheck disable=2139
-alias n="$SCRIPTS/notify.sh"
 
 # Calculator
 # ---------------------------------------------------------------------------
@@ -674,10 +672,6 @@ alias byk='cd $PROJECTS/devtailor/burokratt/'
 # Enforcing SC2139 here breaks existing command detection with zsh-syntax-highlighting
 # shellcheck disable=2139
 alias byt="$SCRIPTS/byk/training-opensearch.sh"
-# shellcheck disable=2139
-alias byc="$SCRIPTS/byk/get-cookie.sh"
-# shellcheck disable=2139
-alias bys="$SCRIPTS/byk/sync-fork.sh"
 alias byts='date "+%Y%m%d%H%M%S"'
 
 # Some half-broken Ruby stuff
