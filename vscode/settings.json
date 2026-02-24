@@ -107,7 +107,6 @@
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "redhat.telemetry.enabled": true,
   "files.associations": {
-    ".sleep": "shellscript",
     ".wakeup": "shellscript",
     ".swcrc": "json",
   },
