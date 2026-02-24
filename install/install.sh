@@ -293,6 +293,15 @@ set_macos_settings() {
   defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
   # Disable "natural" scrolling
   defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+  # Three finger drag
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+  # Force click
+  defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
+  defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
+  defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
+  # Tracking speed (0–3 scale)
+  defaults write NSGlobalDomain com.apple.trackpad.scaling -float 1
   # Require password immediately after sleep or screen saver begins
   defaults write com.apple.screensaver askForPassword -int 1
   defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -318,6 +327,22 @@ set_macos_settings() {
   defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
   # File associations
   duti "$DOTFILES/install/duti"
+
+  # Cannot be automated on macOS Sonoma/Sequoia (set manually in System Settings):
+  # - Displays > TrueTone (disable)
+  # - Displays > Automatically adjust brightness (disable)
+  # - Displays > Advanced > Slightly dim the display on battery (disable)
+
+  # Finder sidebar
+  mysides remove "AirDrop" 2>/dev/null || true
+  mysides remove "Recents" 2>/dev/null || true
+  mysides add "Applications" file:///Applications/
+  mysides add "Downloads" "file://$HOME/Downloads/"
+  mysides add "Movies" "file://$HOME/Movies/"
+  mysides add "Projects" "file://$HOME/Projects/"
+  mysides add "Stuff" "file://$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/"
+  mysides add "Work" "file://$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Work/"
+
   # restart to apply changes
   killall Finder
   killall Dock
