@@ -225,5 +225,35 @@
   {
     "key": "ctrl+w",
     "command": "editor.emmet.action.wrapWithAbbreviation"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-workbench.action.browser.focusUrlInput",
+    "when": "activeEditor == 'workbench.editor.browser'"
+  },
+  {
+    "key": "cmd+escape",
+    "command": "claude-vscode.blur",
+    "when": "!config.claudeCode.useTerminal && !editorTextFocus"
+  },
+  {
+    "key": "cmd+escape",
+    "command": "-claude-vscode.blur",
+    "when": "!config.claudeCode.useTerminal && !editorTextFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "claude-vscode.focus",
+    "when": "editorTextFocus && !config.claudeCode.useTerminal"
+  },
+  {
+    "key": "cmd+l",
+    "command": "claude-vscode.blur",
+    "when": "!config.claudeCode.useTerminal && !editorTextFocus"
   }
 ]

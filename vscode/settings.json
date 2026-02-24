@@ -1,24 +1,25 @@
 {
   "security.workspace.trust.untrustedFiles": "open",
-  "editor.fontFamily": "'MonacoB Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
+  "editor.fontFamily": "'MonacoB2 Nerd Font', MonacoB, Monego, Monaco, Hack, 'Ubuntu Mono', monospace",
   "workbench.sideBar.location": "right",
   "workbench.preferredDarkColorTheme": "Nord",
   "window.autoDetectColorScheme": true,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
+  "terminal.integrated.commandsToSkipShell": ["workbench.action.openRecent"],
   "workbench.colorCustomizations": {
     "[Nord]": {
       "scrollbar.shadow": "#00000000",
       "editorOverviewRuler.border": "#00000000",
       "editorBracketHighlight.foreground1": "#83A2C2",
       "editorBracketHighlight.foreground2": "#91BDBC",
-      "editorBracketHighlight.foreground3": "#B48EAD",
+      "editorBracketHighlight.foreground3": "#1C7C82",
       "jumpy2.labelFontColor": "#FFFFFF",
       "jumpy2.labelBackgroundColor": "#83A2C2",
       "jumpy2.labelBorderColor": "#83A2C2",
       "jumpy2.checkered_labelFontColor": "#FFFFFF",
       "jumpy2.checkered_labelBackgroundColor": "#83A2C2",
-      "jumpy2.checkered_labelBorderColor": "#83A2C2"
+      "jumpy2.checkered_labelBorderColor": "#83A2C2",
     },
     "[GitHub Soft]": {
       "jumpy2.labelFontColor": "#FFFFFF",
@@ -26,72 +27,53 @@
       "jumpy2.labelBorderColor": "#5a32a3",
       "jumpy2.checkered_labelFontColor": "#FFFFFF",
       "jumpy2.checkered_labelBackgroundColor": "#5a32a3",
-      "jumpy2.checkered_labelBorderColor": "#5a32a3"
-      // "peekViewTitle.background": "#ffffff"
-    }
+      "jumpy2.checkered_labelBorderColor": "#5a32a3",
+    },
   },
-  "editor.tokenColorCustomizations": {
-    // "[GitHub Soft]": {
-    //   "textMateRules": [
-    //     {
-    //       "scope": "support.type.primitive.tsx",
-    //       "settings": {
-    //         "foreground": "#9C602B"
-    //       }
-    //     }
-    //   ]
-    // }
-  },
+  "editor.tokenColorCustomizations": {},
   "files.autoSave": "onFocusChange",
   "editor.guides.bracketPairs": "active",
   "editor.matchBrackets": "never",
   "shellcheck.ignorePatterns": {
     "**/*.zshrc": false,
-    "**/*.zprofile": false
+    "**/*.zprofile": false,
   },
   "cSpell.customDictionaries": {
     "custom": {
       "name": "Custom",
       "path": "~/Projects/dotfiles/vscode/cspell-dict.txt",
       "scope": "user",
-      "addWords": true
-    }
+      "addWords": true,
+    },
   },
   "cSpell.diagnosticLevel": "Hint",
-  "cSpell.enableFiletypes": [
-    "applescript",
-    "gitignore",
-    "hosts",
-    "shellscript"
-  ],
   "editor.cursorBlinking": "smooth",
   "terminal.integrated.cursorBlinking": true,
   "workbench.iconTheme": "material-icon-theme",
   "explorer.confirmDelete": false,
   "material-icon-theme.saturation": 0.6,
   "git-graph.graph.colours": [
-    "#5E81AC",
-    "#88C0D0",
-    "#BF616A",
-    "#A3BE8C",
-    "#EBCB8B",
-    "#B48EAD"
+    "#D73A4A",
+    "#28A745",
+    "#DCAB07",
+    "#0366D6",
+    "#5B32A3",
+    "#1C7C82",
   ],
   "todohighlight.defaultStyle": {
-    "color": "#b48ead",
-    "backgroundColor": "#b48ead30",
-    "overviewRulerColor": "#b48ead",
-    "borderRadius": "2px"
+    "color": "#A74047",
+    "backgroundColor": "#A7404715",
+    "overviewRulerColor": "#A74047",
+    "borderRadius": "2px",
   },
   "git-graph.showStatusBarItem": false,
   "workbench.preferredLightColorTheme": "GitHub Soft",
-  "workbench.editor.tabCloseButton": "left",
   "cSpell.language": "en-GB,en,ru,lorem,et,et-EE",
-  "importCost.largePackageDarkColor": "#BF616A88",
+  "importCost.largePackageDarkColor": "#DCAB0788",
   "importCost.largePackageLightColor": "#A74047AA",
-  "importCost.mediumPackageDarkColor": "#EBCB8B88",
+  "importCost.mediumPackageDarkColor": "#5B32A388",
   "importCost.mediumPackageLightColor": "#DBAB09AA",
-  "importCost.smallPackageDarkColor": "#A3BE8C88",
+  "importCost.smallPackageDarkColor": "#0366D688",
   "importCost.smallPackageLightColor": "#22863AAA",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "todohighlight.isCaseSensitive": false,
@@ -100,18 +82,9 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.enabled": false,
   "workbench.editorAssociations": {
-    "git-rebase-todo": "default"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "git-rebase-todo": "default",
   },
   "workbench.colorTheme": "GitHub Soft",
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": true,
-    "markdown": true,
-    "scminput": false
-  },
   "editor.formatOnSave": true,
   "editor.linkedEditing": true,
   "editor.dragAndDrop": false,
@@ -119,27 +92,27 @@
   "settingsSync.ignoredSettings": [
     "workbench.colorTheme",
     "todohighlight.defaultStyle",
-    "git-graph.graph.colours"
+    "git-graph.graph.colours",
   ],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "database-client.telemetry.usesOnlineServices": false,
   "window.dialogStyle": "custom",
   "emmet.syntaxProfiles": {
     "jsx": {
       "markup.attributes": {
-        "class*": "className"
-      }
-    }
+        "class*": "className",
+      },
+    },
   },
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   "redhat.telemetry.enabled": true,
   "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
   },
   "files.associations": {
     ".sleep": "shellscript",
-    ".wakeup": "shellscript"
+    ".wakeup": "shellscript",
+    ".swcrc": "json",
   },
   "git.openRepositoryInParentFolders": "always",
   "window.density.editorTabHeight": "compact",
@@ -148,32 +121,42 @@
   "security.workspace.trust.enabled": false,
   "git.mergeEditor": true,
   "editor.codeActionsOnSave": {
-    "source.addMissingImports": "always"
+    "source.addMissingImports": "always",
+    "source.fixAll.eslint": "always",
   },
-  "testing.openTesting": "neverOpen",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 1.15,
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "window.newWindowDimensions": "inherit",
   "debug.javascript.autoAttachFilter": "disabled",
   "debug.openDebug": "openOnSessionStart",
-  "workbench.activityBar.location": "top",
   "debug.openExplorerOnEnd": true,
   "terminal.external.osxExec": "iTerm.app",
   "workbench.editor.tabActionLocation": "left",
   "update.showReleaseNotes": false,
   "editor.occurrencesHighlight": "multiFile",
-  "terminal.integrated.stickyScroll.enabled": true,
   "typescript.preferGoToSourceDefinition": true,
-  "vitest.enable": true,
   "[hosts]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
-  "totalTypeScript.hideAllTips": false,
-  "totalTypeScript.hideBasicTips": true,
-  "totalTypeScript.hiddenTips": [
-    "passing-generics-to-types",
-    "record-utility-type"
-  ]
+  "security.promptForLocalFileProtocolHandling": false,
+  "testing.automaticallyOpenTestResults": "neverOpen",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto",
+    },
+  ],
+  "claudeCode.preferredLocation": "sidebar",
+  "claudeCode.useCtrlEnterToSend": true,
+  "claudeCode.allowDangerouslySkipPermissions": true,
+  "claudeCode.initialPermissionMode": "bypassPermissions",
+  "chat.agentsControl.enabled": false,
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": false,
+  "workbench.activityBar.location": "top",
+  "chat.disableAIFeatures": true,
 }
