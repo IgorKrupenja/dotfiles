@@ -163,6 +163,8 @@ build_claude_notify() {
   cp -f "$src/AppIcon.icns" "$app/Resources/AppIcon.icns"
   swiftc "$src/main.swift" -o "$app/MacOS/claude-notify"
   codesign --force --sign - --deep "$HOME/.claude/Claude-Notify.app"
+  backup "$HOME/.claude/notify-launch.py"
+  ln -sv "$src/notify-launch.py" "$HOME/.claude/notify-launch.py"
 }
 
 install_from_npm() {
