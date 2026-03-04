@@ -589,19 +589,3 @@ awp() {
 # Dotfiles
 # ---------------------------------------------------------------------------
 alias cz='c $DOTFILES'
-
-# Devtailor
-# ---------------------------------------------------------------------------
-alias trim='cd $PROJECTS/devtailor/trimtex-v2/'
-alias dt='cd $PROJECTS/devtailor/'
-alias gr='cd $PROJECTS/devtailor/grid-raven/grid-raven/'
-alias ddrop="npm run database:schema:drop && trash dist"
-alias tdrop="NODE_ENV=test npm run database:schema:drop"
-alias vpn="sudo openfortivpn vpn.devtailor.com:443 --username=igor.krupenja --trusted-cert c63e665a112fdaf867140b679b1b107f644a2bb2adeae53ba11b6fb5391ba493"
-
-# BYK
-alias byk='cd $PROJECTS/devtailor/burokratt/'
-# Enforcing SC2139 here breaks existing command detection with zsh-syntax-highlighting
-# shellcheck disable=2139
-alias byt="$SCRIPTS/byk/training-opensearch.sh"
-alias byts='date "+%Y%m%d%H%M%S"'
