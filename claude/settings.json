@@ -1,10 +1,5 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/igor/.claude/statusline-command.sh"
-  },
   "permissions": {
-    "defaultMode": "bypassPermissions",
     "allow": [
       "mcp__*",
       "Bash(*)",
@@ -14,10 +9,10 @@
       "Glob(*)",
       "Grep(*)",
       "WebFetch(*)"
-    ]
+    ],
+    "defaultMode": "bypassPermissions"
   },
   "model": "claude-sonnet-4-6",
-  "skipDangerousModePermissionPrompt": true,
   "hooks": {
     "Notification": [
       {
@@ -41,5 +36,10 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/igor/.claude/statusline-command.sh"
+  },
+  "skipDangerousModePermissionPrompt": true
 }
