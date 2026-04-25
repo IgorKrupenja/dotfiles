@@ -589,3 +589,11 @@ awp() {
 # Dotfiles
 # ---------------------------------------------------------------------------
 alias cz='c $DOTFILES'
+
+# pnpm
+export PNPM_HOME="/Users/igor/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

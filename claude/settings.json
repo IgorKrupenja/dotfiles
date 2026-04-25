@@ -8,11 +8,56 @@
       "Read(*)",
       "Glob(*)",
       "Grep(*)",
-      "WebFetch(*)"
+      "WebFetch(*)",
+      "WebSearch",
+      "mcp__mcp-google-sheets__create_spreadsheet",
+      "mcp__mcp-google-sheets__update_cells",
+      "mcp__mcp-google-sheets__batch_update",
+      "mcp__mcp-google-sheets__batch_update_cells",
+      "mcp__mcp-google-sheets__list_sheets",
+      "mcp__mcp-google-sheets__get_sheet_data",
+      "mcp__claude_ai_Linear__list_comments",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_wait_for",
+      "mcp__claude_ai_Linear__list_teams",
+      "mcp__claude_ai_Linear__create_attachment",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_evaluate",
+      "mcp__mcp-google-sheets__search_spreadsheets",
+      "mcp__claude_ai_Linear__list_issues",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Linear__save_issue",
+      "mcp__claude_ai_Linear__get_issue",
+      "mcp__claude_ai_Linear__save_comment",
+      "mcp__claude_ai_Linear__save_project",
+      "mcp__claude_ai_Linear__list_projects",
+      "mcp__claude_ai_Linear__delete_comment",
+      "mcp__claude_ai_Linear__create_issue_label",
+      "Edit(~/.claude/skills/estonia-events-crawl/**)",
+      "Edit(~/.claude/skills/estonia-events-add/**)",
+      "Edit(~/.claude/skills/estonia-events-coda/**)",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_fill_form",
+      "mcp__playwright__browser_type",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_close",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__get_metadata",
+      "Bash(mv /Users/igor/.claude/tallinn-dev-skills ~/Projects/tallinn-dev)",
+      "Read(//Users/igor/Projects/**)"
     ],
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "/Users/igor/.claude/projects/-Users-igor-Projects-liqd-player-frontend/memory",
+      "/Users/igor/.claude/skills",
+      "/Users/igor/.claude/skills/estonia-events-crawl",
+      "/Users/igor/.claude"
+    ]
   },
-  "model": "claude-sonnet-4-6",
   "hooks": {
     "Notification": [
       {
@@ -41,5 +86,14 @@
     "type": "command",
     "command": "bash /Users/igor/.claude/statusline-command.sh"
   },
-  "skipDangerousModePermissionPrompt": true
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light-ansi",
+  "agentPushNotifEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  }
 }

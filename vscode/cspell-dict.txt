@@ -89,6 +89,8 @@ Harjumaa
 hashnode
 Hashnode
 HASHNODE
+highroller
+Highroller
 hookform
 hoverable
 Huftgold
@@ -118,6 +120,7 @@ Krematoorium
 Krupenja
 lähinädalatel
 lcov
+liqd
 litecoin
 localematcher
 LTRB
@@ -127,6 +130,7 @@ Maksim
 Malofeev
 Marko
 marta
+maxage
 microservices
 minlength
 minmax
@@ -155,6 +159,7 @@ paypal
 Phong
 Pipedrive
 Pjotr
+platformatic
 Playtech
 pmmmwh
 pnmp

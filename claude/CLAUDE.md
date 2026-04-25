@@ -4,8 +4,6 @@
 
 Dotfiles repo is at `~/Projects/dotfiles`.
 
-## Git
+## Playwright MCP screenshots
 
-### Disable git hooks
-
-Run `git disable-hooks` in the repo. This is a global git alias that sets `core.hooksPath = .git/hooks` locally, overriding the global hooks path for that repo.
+When using `mcp__playwright__browser_take_screenshot` with the `filename` parameter, always prefix with `.playwright-mcp/` (the server's default snapshot folder) so files don't end up in repo roots. Example: `.playwright-mcp/my-shot.jpeg`, not `my-shot.jpeg`.
