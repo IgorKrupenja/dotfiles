@@ -227,19 +227,9 @@
     "command": "editor.emmet.action.wrapWithAbbreviation"
   },
   {
-    "key": "cmd+l",
-    "command": "-expandLineSelection",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "cmd+l",
-    "command": "-workbench.action.browser.focusUrlInput",
-    "when": "activeEditor == 'workbench.editor.browser'"
-  },
-  {
     "key": "cmd+escape",
-    "command": "claude-vscode.blur",
-    "when": "!config.claudeCode.useTerminal && !editorTextFocus"
+    "command": "-claude-vscode.focus",
+    "when": "!config.claudeCode.useTerminal && editorTextFocus"
   },
   {
     "key": "cmd+escape",
@@ -247,13 +237,31 @@
     "when": "!config.claudeCode.useTerminal && !editorTextFocus"
   },
   {
-    "key": "cmd+l",
-    "command": "claude-vscode.focus",
-    "when": "editorTextFocus && !config.claudeCode.useTerminal"
+    "key": "cmd+escape",
+    "command": "multiCommand.claudeSidebarFocus",
+    "when": "!config.claudeCode.useTerminal && editorTextFocus"
   },
   {
-    "key": "cmd+l",
+    "key": "cmd+escape",
     "command": "claude-vscode.blur",
-    "when": "!config.claudeCode.useTerminal && !editorTextFocus"
-  }
+    "when": "!config.claudeCode.useTerminal && !editorTextFocus && claude-vscode.sideBarActive"
+  },
+{
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\u001b\r"
+    },
+    "when": "terminalFocus"
+},
+{
+  "key": "shift+cmd+escape",
+  "command": "-claude-vscode.editor.open",
+  "when": "!config.claudeCode.useTerminal"
+},
+{
+  "key": "shift+cmd+escape",
+  "command": "multiCommand.claudeNewConversationWithSelection",
+  "when": "!config.claudeCode.useTerminal"
+}
 ]

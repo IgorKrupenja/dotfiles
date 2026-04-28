@@ -152,4 +152,40 @@
   "claudeCode.hideOnboarding": true,
   "claudeCode.preferredLocation": "sidebar",
   "extensions.ignoreRecommendations": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "claudeCode.selectedModel": "default",
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.claudeNewConversationWithSelection",
+      "sequence": [
+        "claude-vscode.newConversation",
+        "claude-vscode.focus"
+      ]
+    },
+    {
+      "command": "multiCommand.claudeSidebarFocus",
+      "sequence": [
+        "claude-vscode.sidebar.open",
+        "claude-vscode.focus"
+      ]
+    }
+  ],
+  "terminal.integrated.tabs.showActions": "always",
+  "terminal.integrated.tabs.description": "",
+  "terminal.integrated.tabs.title": "${cwdFolder}",
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://turbo.build": true,
+    "https://www.schemastore.org/": true
+  },
+  "gitlens.ai.model": "gitkraken",
+  "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
+  "terminal.integrated.tabs.enabled": false,
 }
