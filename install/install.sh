@@ -87,10 +87,8 @@ install_from_pipx() {
   # Prevent warnings
   pipx ensurepath
 
-  pipx install pipdeptree
-  pipx install termdown
   pipx install git-fame
-  pipx install spotify2ytmusic
+  pipx install markdown
 }
 
 configure_zsh() {
