@@ -95,5 +95,6 @@
   "attribution": {
     "commit": "",
     "pr": ""
-  }
+  },
+  "effortLevel": "max"
 }

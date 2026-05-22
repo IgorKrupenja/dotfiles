@@ -30,6 +30,7 @@ clsx
 Cocoapods
 codegen
 Codemagic
+Coinspaid
 collada
 colliderli
 corepack
@@ -43,6 +44,8 @@ Debouncer
 dedup
 devtailor
 Devtailor
+dinero
+Dinero
 divs
 Dockerfiles
 dockerised
@@ -197,6 +200,7 @@ smth
 Sorokin
 Spellright
 sportidfront
+stablecoins
 STBY
 stebby
 Stebby
@@ -235,6 +239,7 @@ typeorm
 UG's
 unfocus
 unsandbox
+USDTE
 usergroup
 usergroups
 Usergroups
@@ -249,6 +254,7 @@ Waitlist
 wishlisted
 Wishlisted
 wojtekmaj
+worktree
 worldofmouth
 xlink
 xpub

@@ -378,10 +378,23 @@ gbn() {
 gbd() {
   git push -d origin "$*" && git branch -D "$*"
 }
-alias gch="git checkout"
-alias gch-="git checkout -"
-alias gchm="git checkout main"
-alias gchs="git checkout staging"
+gch() {
+  if [[ $# -gt 0 ]]; then
+    local worktree_path
+    worktree_path=$(git worktree list --porcelain 2>/dev/null | awk -v branch="refs/heads/$1" '
+      /^worktree / { path = substr($0, 10) }
+      $1 == "branch" && $2 == branch { print path; exit }
+    ')
+    if [[ -n "$worktree_path" ]]; then
+      cd "$worktree_path" || exit
+      return
+    fi
+  fi
+  git checkout "$@"
+}
+alias gch-="gch -"
+alias gchm="gch main"
+alias gchs="gch staging"
 alias gf="git fetch"
 alias gl="git pull"
 alias gp="git push origin"
