@@ -610,3 +610,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Default AWS CLI to the liqd SSO profile
+export AWS_PROFILE=liqd
