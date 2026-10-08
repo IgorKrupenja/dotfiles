@@ -68,8 +68,6 @@ brew "oven-sh/bun/bun", trusted: true
 brew "teamookla/speedtest/speedtest", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Webcam & audio device software
-cask "ankerwork"
 # Tool to customise input devices and automate computer systems
 cask "bettertouchtool"
 # Web browser focusing on privacy
@@ -82,8 +80,6 @@ cask "claude-code"
 cask "coconutbattery"
 # Allows switching between application windows
 cask "contexts"
-# Translate words without ever opening a dictionary
-cask "dictionaries"
 # Voice and text chat software
 cask "discord"
 # Web browser
@@ -92,22 +88,12 @@ cask "firefox"
 cask "google-chrome"
 # Free and open-source media player
 cask "iina"
-# Vector graphics editor
-cask "inkscape"
-# System monitoring app
-cask "istat-menus"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Adaptive brightness for external displays
-cask "lunar"
 # Extensible two-pane file manager
 cask "marta"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # Calendar for professionals and teams
 cask "notion-calendar"
-# Simple application that will prevent iTunes or Apple Music from launching
-cask "notunes"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
