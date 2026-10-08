@@ -287,6 +287,13 @@ set_macos_settings() {
   # Apply them without logging out
   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
+  # Cmd+Shift+, opens System Settings from any app (Keyboard > App Shortcuts). The menu
+  # title must use three dots: the … character doesn't match
+  defaults write -g NSUserKeyEquivalents -dict-add "System Settings..." '@$,'
+  # Show it under App Shortcuts in System Settings too, like adding it there does
+  defaults read com.apple.universalaccess com.apple.custommenu.apps 2>/dev/null | grep -q NSGlobalDomain ||
+    defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add NSGlobalDomain
+
   # Disable system sound on ctrl+cmd+arrow
   mkdir -p "$HOME/Library/KeyBindings"
   backup "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
