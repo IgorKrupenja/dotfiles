@@ -227,22 +227,16 @@
     "command": "editor.emmet.action.wrapWithAbbreviation"
   },
   {
-    "key": "cmd+escape",
-    "command": "-claude-vscode.focus",
-    "when": "!config.claudeCode.useTerminal && editorTextFocus"
+    "key": "f11",
+    "command": "-workbench.action.toggleFullScreen"
   },
   {
-    "key": "cmd+escape",
-    "command": "-claude-vscode.blur",
-    "when": "!config.claudeCode.useTerminal && !editorTextFocus"
-  },
-  {
-    "key": "cmd+escape",
+    "key": "f11",
     "command": "multiCommand.claudeSidebarFocus",
     "when": "!config.claudeCode.useTerminal && editorTextFocus"
   },
   {
-    "key": "cmd+escape",
+    "key": "f11",
     "command": "claude-vscode.blur",
     "when": "!config.claudeCode.useTerminal && !editorTextFocus && claude-vscode.sideBarActive"
   },

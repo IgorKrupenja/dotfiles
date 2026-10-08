@@ -108,6 +108,7 @@
   "window.density.editorTabHeight": "compact",
   "debug.toolBarLocation": "commandCenter",
   "githubPullRequests.pullBranch": "never",
+  "githubPullRequests.openPullLinks": false,
   "security.workspace.trust.enabled": false,
   "git.mergeEditor": true,
   "editor.codeActionsOnSave": {
@@ -188,4 +189,7 @@
   "gitlens.ai.model": "gitkraken",
   "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
   "terminal.integrated.tabs.enabled": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "git.blame.editorDecoration.enabled": false,
+  "workbench.browser.openLocalhostLinks": false,
 }
