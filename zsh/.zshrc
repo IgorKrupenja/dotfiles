@@ -611,5 +611,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# Default AWS CLI to the liqd SSO profile
-export AWS_PROFILE=liqd
+# Default AWS CLI to the liqd-developer SSO profile
+export AWS_PROFILE=liqd-developer
