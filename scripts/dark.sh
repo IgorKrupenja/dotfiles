@@ -34,6 +34,12 @@ fi
 conf=$HOME/.config/btop/btop.conf
 btop_themes_dir="/opt/homebrew/share/btop/themes"
 
+# btop creates its config only on first run, so it can be missing on a new Mac
+if [ ! -f "$conf" ]; then
+  mkdir -p "$(dirname "$conf")"
+  btop --default-config >"$conf"
+fi
+
 if [ "$set_dark" = true ]; then
   sed -i '' "s|color_theme = \".*\"|color_theme = \"${btop_themes_dir}/nord.theme\"|" "$conf"
   sed -i '' "s|theme_background = .*|theme_background = true|" "$conf"
