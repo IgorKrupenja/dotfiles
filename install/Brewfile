@@ -1,17 +1,7 @@
-tap "aws/tap", trusted: true
-tap "beeftornado/rmtree", trusted: true
-tap "dave1010/clipea", trusted: true
-tap "github/gh", trusted: true
-tap "leoafarias/fvm", trusted: true
 tap "muesli/tap", trusted: true
-tap "nahive/spotify-notify", trusted: true
 tap "openclaw/tap", trusted: true
 tap "oven-sh/bun", trusted: true
-tap "sandreas/tap", trusted: true
-tap "steipete/tap", trusted: true
-tap "supabase/tap", trusted: true
 tap "teamookla/speedtest", trusted: true
-tap "yt-dlp/taps", trusted: true
 # Command-line interface for SQLite
 brew "sqlite"
 # Interpreted, interactive, object-oriented programming language
@@ -73,7 +63,7 @@ brew "openclaw/tap/gogcli"
 # Go client and CLI for the Google Places API (New)
 brew "openclaw/tap/goplaces"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun@1.0.25"
+brew "oven-sh/bun/bun"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 # Password manager that keeps all passwords secure behind one password
@@ -100,7 +90,6 @@ cask "discord"
 cask "firefox"
 # Web browser
 cask "google-chrome"
-cask "goplaces"
 # Free and open-source media player
 cask "iina"
 # Vector graphics editor
