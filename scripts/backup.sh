@@ -53,10 +53,12 @@ for key in recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory; do
 done
 
 # commit app settings folders if there are changes
-for app in iterm iina claude; do
-  if [[ $(git diff "$app") ]]; then
-    git add "$app"
-    git commit -m "Update ${app^} settings"
+# folder:name pairs, as macOS bash 3.2 has no associative arrays
+for app in iterm:iTerm iina:IINA claude:Claude; do
+  folder=${app%%:*}
+  if [[ $(git diff "$folder") ]]; then
+    git add "$folder"
+    git commit -m "Update ${app#*:} settings"
   fi
 done
 

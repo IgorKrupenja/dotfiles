@@ -256,13 +256,6 @@ set_macos_settings() {
   echo -e "🚀 $(purple Restoring macOS settings)"
   echo ""
 
-  # crontab, replacing earlier entries for these scripts so that re-runs do not duplicate them
-  {
-    crontab -l 2>/dev/null | grep -v -e "$DOTFILES/scripts/backup.sh" -e "$DOTFILES/scripts/update.sh" || true
-    echo "0 21 * * 0 $DOTFILES/scripts/backup.sh >/dev/null 2>&1"
-    echo "0 20 * * * $DOTFILES/scripts/update.sh >/dev/null 2>&1"
-  } | crontab -
-
   # iina, imported because macOS replaces symlinked preference files with regular ones
   defaults import com.colliderli.iina "$DOTFILES/iina/com.colliderli.iina.plist"
 
@@ -395,7 +388,7 @@ handle_error() {
 
   local failure="$in_function: $failed_command (exit $error_code)"
   FAILURES+=("$failure")
-  # stderr, so that it cannot end up in piped output like the crontab
+  # stderr, so that it cannot end up in piped output
   echo -e "$(red "error in $failure")" >&2
 }
 
