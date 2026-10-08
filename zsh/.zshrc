@@ -15,7 +15,7 @@ source "$HOME/.p10k-instant-prompt.sh"
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 # $HOME/.local/bin is for pipx
-path+=("$PNPM_HOME" "$BUN_INSTALL/bin" "/opt/homebrew/opt/postgresql@16/bin" "$HOME/.local/bin")
+path+=("$PNPM_HOME" "$BUN_INSTALL/bin" "$HOME/.local/bin")
 export ZSH="$HOME/.oh-my-zsh"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
@@ -553,10 +553,6 @@ buntp() {
 alias pa="pnpm exec prisma"
 alias pag="pa generate --sql"
 alias pad="pa migrate dev --preview-feature"
-
-# Postgres
-# ---------------------------------------------------------------------------
-alias pgr="psql -h localhost -p 5432 -d gridraven_local -U postgres -W < "
 
 # Docker
 # ---------------------------------------------------------------------------
