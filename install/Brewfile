@@ -1,82 +1,156 @@
-tap "aws/tap"
-tap "beeftornado/rmtree"
-tap "dave1010/clipea"
-tap "github/gh"
-tap "leoafarias/fvm"
-tap "muesli/tap"
-tap "nahive/spotify-notify"
-tap "oven-sh/bun"
-tap "sandreas/tap"
-tap "steipete/tap"
-tap "supabase/tap"
-tap "teamookla/speedtest"
-tap "yt-dlp/taps"
+tap "aws/tap", trusted: true
+tap "beeftornado/rmtree", trusted: true
+tap "dave1010/clipea", trusted: true
+tap "github/gh", trusted: true
+tap "leoafarias/fvm", trusted: true
+tap "muesli/tap", trusted: true
+tap "nahive/spotify-notify", trusted: true
+tap "openclaw/tap", trusted: true
+tap "oven-sh/bun", trusted: true
+tap "sandreas/tap", trusted: true
+tap "steipete/tap", trusted: true
+tap "supabase/tap", trusted: true
+tap "teamookla/speedtest", trusted: true
+tap "yt-dlp/taps", trusted: true
+# Command-line interface for SQLite
 brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.14"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Statistics utility to count lines of code
 brew "cloc"
+# Tool for managing dock items
 brew "dockutil"
+# Select default apps for documents and URL schemes on macOS
 brew "duti"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Quickly rewrite git repository history
 brew "git-filter-repo"
+# Command-line benchmarking tool
 brew "hyperfine"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Mac App Store command-line interface
 brew "mas"
+# NCurses Disk Usage
 brew "ncdu"
+# Execute binaries from Python packages in isolated environments
 brew "pipx"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Object-relational database system
 brew "postgresql@18", link: true
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
 brew "shfmt"
+# CLI tool that moves files or folder to the trash
 brew "trash", link: true
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# UNIX shell (command interpreter)
 brew "zsh"
+# Disk Usage/Free Utility
 brew "muesli/tap/duf"
+# Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
+brew "openclaw/tap/gogcli"
+# Go client and CLI for the Google Places API (New)
+brew "openclaw/tap/goplaces"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun@1.0.25"
-brew "steipete/tap/gogcli"
-brew "steipete/tap/goplaces"
+# Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Webcam & audio device software
 cask "ankerwork"
+# Tool to customise input devices and automate computer systems
 cask "bettertouchtool"
+# Web browser focusing on privacy
+cask "brave-browser"
+# Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
 cask "claude-code"
+# Tool to show live information about the batteries in various devices
 cask "coconutbattery"
+# Allows switching between application windows
 cask "contexts"
+# Translate words without ever opening a dictionary
 cask "dictionaries"
+# Voice and text chat software
 cask "discord"
+# Web browser
 cask "firefox"
+# Web browser
 cask "google-chrome"
+cask "goplaces"
+# Free and open-source media player
 cask "iina"
+# Vector graphics editor
 cask "inkscape"
+# System monitoring app
+cask "istat-menus"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Adaptive brightness for external displays
 cask "lunar"
+# File system integration
 cask "macfuse"
+# Extensible two-pane file manager
 cask "marta"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
+# Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
+# Open-source software for live streaming and screen recording
 cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Estonian ID-card drivers, authentication components & signing components
 cask "open-eid"
+# Replacement for Docker Desktop
 cask "orbstack"
+# Screen measuring tool
 cask "pixelsnap"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
+# Team communication and collaboration software
 cask "slack"
+# Music streaming service
 cask "spotify"
+# Desktop client for Telegram messenger
 cask "telegram-desktop"
+# Web browser focusing on security
+cask "tor-browser"
+# Open-source BitTorrent client
 cask "transmission"
+# Disk encryption software focusing on security based on TrueCrypt
 cask "veracrypt"
+# Open-source code editor
 cask "visual-studio-code"
+# Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# Gecko based web browser
 cask "zen"
 mas "AdGuard Mini", id: 1440147259
 mas "ColorSlurp", id: 1287239339
 mas "DigiDoc4", id: 1370791134
 mas "Kindle", id: 302584613
-mas "One Thing", id: 1604176982
 mas "PiPifier", id: 1160374471
 mas "The Unarchiver", id: 425424353
 mas "Web eID", id: 1576665083
-mas "Xcode", id: 497799835
