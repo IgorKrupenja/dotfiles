@@ -349,7 +349,7 @@ set_macos_settings() {
   # File associations. macOS asks to confirm the extensions it has no file type for
   # (cjs, tsx, go, toml, env...), and duti prints error -50 for those. Fine once confirmed.
   echo "Setting file associations: click \"Use Code\" in each dialog macOS shows."
-  duti "$DOTFILES/install/duti"
+  duti "$DOTFILES/install/duti.conf"
 
   # Cannot be automated on macOS Sonoma/Sequoia (set manually in System Settings):
   # - Displays > TrueTone (disable)
