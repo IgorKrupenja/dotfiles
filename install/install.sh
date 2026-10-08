@@ -336,7 +336,9 @@ set_macos_settings() {
   # Disable shit Sonoma keyboard switcher indicator
   sudo mkdir -p /Library/Preferences/FeatureFlags/Domain
   sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
-  # File associations
+  # File associations. macOS asks to confirm the extensions it has no file type for
+  # (cjs, tsx, go, toml, env...), and duti prints error -50 for those. Fine once confirmed.
+  echo "Setting file associations: click \"Use Code\" in each dialog macOS shows."
   duti "$DOTFILES/install/duti"
 
   # Cannot be automated on macOS Sonoma/Sequoia (set manually in System Settings):
