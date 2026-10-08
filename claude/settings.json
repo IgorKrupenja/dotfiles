@@ -100,5 +100,6 @@
   "env": {
     "CLAUDE_CODE_EFFORT_LEVEL": "max"
   },
-  "model": "opus[1m]"
+  "model": "opus[1m]",
+  "remoteControlAtStartup": true
 }
