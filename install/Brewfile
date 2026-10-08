@@ -57,15 +57,15 @@ brew "yt-dlp"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Disk Usage/Free Utility
-brew "muesli/tap/duf"
+brew "muesli/tap/duf", trusted: true
 # Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
-brew "openclaw/tap/gogcli"
+brew "openclaw/tap/gogcli", trusted: true
 # Go client and CLI for the Google Places API (New)
-brew "openclaw/tap/goplaces"
+brew "openclaw/tap/goplaces", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
+brew "oven-sh/bun/bun", trusted: true
 # Ookla Speedtest
-brew "teamookla/speedtest/speedtest"
+brew "teamookla/speedtest/speedtest", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Webcam & audio device software
