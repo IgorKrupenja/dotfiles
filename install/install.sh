@@ -327,6 +327,9 @@ set_macos_settings() {
   defaults write com.apple.dock autohide-delay -float 0
   # Don’t show recent applications in Dock
   defaults write com.apple.dock show-recents -bool false
+  # Less space between menu bar icons, applied after logging out and back in
+  defaults -currentHost write NSGlobalDomain NSStatusItemSpacing -int 6
+  defaults -currentHost write NSGlobalDomain NSStatusItemSelectionPadding -int 6
   # Check for software updates daily, not just once per week
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
   # Show hidden files in Finder

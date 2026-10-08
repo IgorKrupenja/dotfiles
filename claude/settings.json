@@ -89,10 +89,6 @@
       }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/igor/.claude/statusline-command.sh"
-  },
   "enabledPlugins": {
     "figma@claude-plugins-official": true
   },
