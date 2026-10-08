@@ -20,9 +20,12 @@ A repository with some of my dotfiles, settings and scripts. Only macOS is suppo
 
 Install script can be run on clean systems without git or Xcode Command Line Tools.
 
-1. Give your terminal app "Full Disk Access" in System Preferences > Security & Privacy.
-2. Run:
+1. Give your terminal app "Full Disk Access" in System Settings > Privacy & Security.
+2. Sign in to the App Store, the Mac App Store apps in the Brewfile need it.
+3. Run:
 
     ```bash
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/krupenja/dotfiles/main/install/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/IgorKrupenja/dotfiles/main/install/install.sh)"
     ```
+
+The script keeps going when a step fails and lists the failed commands at the end, so you can fix them and re-run it.

@@ -45,6 +45,13 @@ if [[ $(git diff marta) ]]; then
   git commit -m "Update Marta settings"
 fi
 
+# IINA, exported because macOS replaces symlinked preference files with regular ones.
+# Recent files and folders are left out, the repo is public.
+defaults export com.colliderli.iina "$DOTFILES/iina/com.colliderli.iina.plist"
+for key in recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory; do
+  plutil -remove "$key" "$DOTFILES/iina/com.colliderli.iina.plist" 2>/dev/null
+done
+
 # commit app settings folders if there are changes
 for app in iterm iina claude; do
   if [[ $(git diff "$app") ]]; then

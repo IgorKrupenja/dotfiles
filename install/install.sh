@@ -1,9 +1,8 @@
-#!/bin/zsh
-# shellcheck shell=bash
+#!/bin/bash
 
 main() {
-  get_sudo
   prepare
+  get_sudo
   install_brew_git
   clone_repo
   install_from_brew
@@ -15,14 +14,21 @@ main() {
   install_fonts
   configure_dock
   set_macos_settings
+  remove_sudo
   restart_zsh
 }
 
 # Ask for password only once
 get_sudo() {
-  printf "%s\n" "%wheel ALL=(ALL) NOPASSWD: ALL" |
-    sudo tee "/etc/sudoers.d/wheel" >/dev/null &&
-    sudo dscl /Local/Default append /Groups/wheel GroupMembership "$(whoami)"
+  echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" | sudo tee "$SUDOERS_FILE" >/dev/null
+  # Revoke it even if the script gets interrupted
+  trap remove_sudo EXIT
+}
+
+# Ask for sudo password in the future
+remove_sudo() {
+  sudo rm -f "$SUDOERS_FILE"
+  trap - EXIT
 }
 
 prepare() {
@@ -32,10 +38,11 @@ prepare() {
   echo ""
 
   DOTFILES="$HOME/Projects/dotfiles"
+  SUDOERS_FILE="/etc/sudoers.d/dotfiles-install"
 
   if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null; then
     echo "This script requires your terminal app to have Full Disk Access."
-    echo "Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
+    echo "Add this terminal to the Full Disk Access list in System Settings > Privacy & Security, quit the app, and re-run this script."
     exit 1
   fi
 }
@@ -66,7 +73,7 @@ clone_repo() {
     echo -e "🚀 $(purple Cloning dotfiles repo)"
     echo ""
 
-    git clone https://github.com/krupenja/dotfiles.git "$DOTFILES"
+    git clone https://github.com/IgorKrupenja/dotfiles.git "$DOTFILES"
   fi
 }
 
@@ -113,17 +120,12 @@ configure_zsh() {
   git clone https://github.com/lukechilds/zsh-better-npm-completion "$ZSH_CUSTOM/plugins/zsh-better-npm-completion"
   git clone https://github.com/lukechilds/zsh-nvm "$ZSH_CUSTOM/plugins/zsh-nvm"
   # iTerm shell integrations
-  curl -L https://iterm2.com/shell_integration/zsh -o "$DOTFILES/zsh/.iterm2_shell_integration.zsh"
+  curl -fL https://iterm2.com/shell_integration/zsh -o "$DOTFILES/zsh/.iterm2_shell_integration.zsh"
   # Config
   backup "$HOME/.zshrc"
   ln -sv "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
   backup "$HOME/.zprofile"
   ln -sv "$DOTFILES/zsh/.zprofile" "$HOME/.zprofile"
-
-  # Workaround to get nvm install working
-  trap - ERR
-  source "$HOME/.zshrc"
-  trap handle_error ERR
 }
 
 # Needs to be called after zsh_config
@@ -170,9 +172,8 @@ install_from_npm() {
   echo -e "🚀 $(purple Installing node global npm packages)"
   echo ""
 
-  # Uses nvm installed with zsh-nvm
-  nvm install node
-  nvm install --lts
+  # nvm comes from the zsh-nvm plugin, which only loads in zsh and installs nvm on first load
+  zsh -c 'source "$HOME/.zshrc"; nvm install node && nvm install --lts'
 
   while IFS= read -r package || [[ -n "$package" ]]; do
     bun install -g "$package"
@@ -186,18 +187,37 @@ install_fonts() {
 
   local fonts_dir="$HOME/Library/Fonts"
 
-  # MonacoB2 Nerd Font: download MonacoB2, patch with nerd fonts patcher via Docker
+  # MonacoB2 Nerd Font: download MonacoB2 and its bold, patch with nerd fonts patcher via Docker
   if [ ! -f "$fonts_dir/MonacoB2NerdFont-Regular.otf" ]; then
+    start_docker
     local tmpdir
     tmpdir=$(mktemp -d)
-    curl -LJ --output-dir "$tmpdir" -O \
-      "https://github.com/vjpr/monaco-bold/raw/refs/heads/master/MonacoB2/MonacoB2.otf"
+    local monaco_url="https://github.com/vjpr/monaco-bold/raw/refs/heads/master/MonacoB2"
+    curl -fL --output-dir "$tmpdir" -O "$monaco_url/MonacoB2.otf" -O "$monaco_url/MonacoB2-Bold.otf"
     docker run --rm -v "$tmpdir:/in" -v "$tmpdir:/out" nerdfonts/patcher -c
     cp "$tmpdir"/MonacoB2NerdFont*.otf "$fonts_dir/"
     rm -rf "$tmpdir"
   else
     echo "MonacoB2 Nerd Font already installed, skipping."
   fi
+}
+
+# Docker comes from OrbStack, which is not running yet on a fresh Mac
+start_docker() {
+  # OrbStack links docker into PATH only on its first start
+  PATH="$PATH:/Applications/OrbStack.app/Contents/MacOS/xbin"
+  if docker info >/dev/null 2>&1; then
+    return
+  fi
+
+  open -a OrbStack
+  echo "Waiting for OrbStack to start, finish its setup window if one opens..."
+  for _ in {1..60}; do
+    sleep 5
+    if docker info >/dev/null 2>&1; then
+      return
+    fi
+  done
 }
 
 configure_dock() {
@@ -209,19 +229,19 @@ configure_dock() {
 
   local dock_apps=(
     "/System/Applications/Apps.app"
+    "/System/Applications/Contacts.app"
     "/Applications/Notion Calendar.app"
     "/Applications/Marta.app"
     "/Applications/Vivaldi.app"
-    "/Applications/Discord.app"
-    "/Applications/Telegram Desktop.app"
+    "/Applications/Google Chrome.app"
+    "/Applications/Safari.app"
+    "/Applications/Slack.app"
     "/Applications/Visual Studio Code.app"
+    "/Applications/Windscribe.app"
+    "/Applications/Claude.app"
     "/Applications/iTerm.app"
     "/Applications/OrbStack.app"
-    "/Applications/Obsidian.app"
-    "/Applications/Notion.app"
-    "/System/Applications/Photos.app"
     "/Applications/Spotify.app"
-    "/System/Applications/Podcasts.app"
     "/Applications/IINA.app"
   )
 
@@ -236,19 +256,15 @@ set_macos_settings() {
   echo -e "🚀 $(purple Restoring macOS settings)"
   echo ""
 
-  # crontab
-  (
-    crontab -l 2>/dev/null
-    echo "0 21 * * 0 /Users/igor/Projects/dotfiles/scripts/backup.sh >/dev/null 2>&1"
-  ) | crontab -
-  (
-    crontab -l 2>/dev/null
-    echo "0 20 * * * /Users/igor/Projects/dotfiles/scripts/update.sh >/dev/null 2>&1"
-  ) | crontab -
+  # crontab, replacing earlier entries for these scripts so that re-runs do not duplicate them
+  {
+    crontab -l 2>/dev/null | grep -v -e "$DOTFILES/scripts/backup.sh" -e "$DOTFILES/scripts/update.sh" || true
+    echo "0 21 * * 0 $DOTFILES/scripts/backup.sh >/dev/null 2>&1"
+    echo "0 20 * * * $DOTFILES/scripts/update.sh >/dev/null 2>&1"
+  } | crontab -
 
-  # iina
-  backup "$HOME/Library/Preferences/com.colliderli.iina.plist"
-  ln -sv "$DOTFILES/iina/com.colliderli.iina.plist" "$HOME/Library/Preferences/com.colliderli.iina.plist"
+  # iina, imported because macOS replaces symlinked preference files with regular ones
+  defaults import com.colliderli.iina "$DOTFILES/iina/com.colliderli.iina.plist"
 
   # IINA keybindings
   iina_conf_dir="$HOME/Library/Application Support/com.colliderli.iina/input_conf"
@@ -272,12 +288,14 @@ set_macos_settings() {
   # Projects folder icon
   fileicon set "$HOME/Projects" /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
 
-  # Keyboard shortcuts (System Settings > Keyboard)
-  backup "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
-  cp -f "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist" "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+  # Keyboard shortcuts (System Settings > Keyboard), imported because macOS caches
+  # preferences and can overwrite a plist that was copied in
+  defaults import com.apple.symbolichotkeys "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist"
+  # Apply them without logging out
+  /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
   # Disable system sound on ctrl+cmd+arrow
-  mkdir "$HOME/Library/KeyBindings"
+  mkdir -p "$HOME/Library/KeyBindings"
   backup "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
   ln -sv "$DOTFILES/keyboard/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
 
@@ -323,8 +341,8 @@ set_macos_settings() {
   defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
   defaults write com.apple.screensaver askForPasswordDelay -int 0
   # Disable shit Sonoma keyboard switcher indicator
-  mkdir -p /Library/Preferences/FeatureFlags/Domain
-  defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+  sudo mkdir -p /Library/Preferences/FeatureFlags/Domain
+  sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
   # File associations
   duti "$DOTFILES/install/duti"
 
@@ -332,31 +350,18 @@ set_macos_settings() {
   # - Displays > TrueTone (disable)
   # - Displays > Automatically adjust brightness (disable)
   # - Displays > Advanced > Slightly dim the display on battery (disable)
-
-  # Finder sidebar
-  mysides remove "AirDrop" 2>/dev/null || true
-  mysides remove "Recents" 2>/dev/null || true
-  mysides add "Applications" file:///Applications/
-  mysides add "Downloads" "file://$HOME/Downloads/"
-  mysides add "Movies" "file://$HOME/Movies/"
-  mysides add "Projects" "file://$HOME/Projects/"
-  mysides add "Stuff" "file://$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/"
-  mysides add "Work" "file://$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Work/"
+  # Finder sidebar cannot be automated either (mysides no longer works), set it manually:
+  # remove AirDrop and Recents, add Applications, Downloads, Movies, Projects, iCloud Stuff and Stuff/Work
 
   # restart to apply changes
   killall Finder
   killall Dock
-
-  # Ask for sudo password in the future
-  sudo dscl . -delete /Groups/wheel GroupMembership "$(whoami)"
-
-  # Enable server performance mode https://apple.stackexchange.com/questions/373035/fix-fork-resource-temporarily-unavailable-on-os-x-macos
-  nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 }
 
 restart_zsh() {
   echo ""
   echo -e "🚀 $(purple Install finished)"
+  print_failures
   echo -e "🚀 $(purple Restarting zsh)"
   echo ""
 
@@ -364,28 +369,52 @@ restart_zsh() {
 }
 
 backup() {
-  if [ -e "$1" ]; then
+  # -L too, as -e is false for a broken symlink and the ln after backup would then fail
+  if [ -e "$1" ] || [ -L "$1" ]; then
     TIMESTAMP=$(date +%Y%m%d%H%M%S)
     mv -fv "$1" "${1}.${TIMESTAMP}.bak"
   fi
 }
 
 # Based on https://stackoverflow.com/a/4384381/7405507
+# Logs the failed command and carries on, failures are listed again at the end
 handle_error() {
-  # Save the exit code as the first thing done in the trap function
-  errorCode=$?
-  echo "error $errorCode"
-  echo "the command executing at the time of the error was:"
-  # Contains the command that was being executed at the time of the trap
-  echo "$BASH_COMMAND"
-  # Contains the line number in the script of that command
-  echo "on line ${BASH_LINENO[0]}"
-  # Exit the script
-  exit $errorCode
+  # Save the exit code, the failed command and the function it ran in as the first thing
+  # done in the trap function. No line number: inside functions bash 3.2 only reports
+  # the line where the function starts.
+  local error_code=$? failed_command=$BASH_COMMAND in_function=${FUNCNAME[1]:-main} depth=${#FUNCNAME[@]}
+  # A function ending with a failed command fails as well, which runs the trap again one
+  # level up with the same command. That failure is already logged, so skip it.
+  # [ ] and not [[ ]], which would overwrite $BASH_COMMAND for the next trap.
+  if [ "$failed_command" = "$LAST_FAILED_COMMAND" ] && [ "$depth" -lt "${LAST_FAILED_DEPTH:-0}" ]; then
+    LAST_FAILED_DEPTH=$depth
+    return
+  fi
+  LAST_FAILED_COMMAND=$failed_command
+  LAST_FAILED_DEPTH=$depth
+
+  local failure="$in_function: $failed_command (exit $error_code)"
+  FAILURES+=("$failure")
+  # stderr, so that it cannot end up in piped output like the crontab
+  echo -e "$(red "error in $failure")" >&2
+}
+
+print_failures() {
+  if [[ ${#FAILURES[@]} -eq 0 ]]; then
+    echo -e "🚀 $(purple No errors)"
+    return
+  fi
+
+  echo -e "🚀 $(red "${#FAILURES[@]} commands failed, scroll up for their output:")"
+  printf "   %s\n" "${FAILURES[@]}"
 }
 
 purple() {
   ansi 35 "$@"
+}
+
+red() {
+  ansi 31 "$@"
 }
 
 ansi() {
@@ -394,6 +423,9 @@ ansi() {
 
 # Check OS
 if [[ $(uname) == "Darwin" ]]; then
+  FAILURES=()
+  # Without -E bash skips the ERR trap for commands inside functions, i.e. the whole script
+  set -E
   trap handle_error ERR
   main "$@"
 else

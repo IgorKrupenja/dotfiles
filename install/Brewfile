@@ -30,6 +30,8 @@ brew "dockutil"
 brew "duti"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# macOS CLI for managing custom icons for files and folders
+brew "fileicon"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -115,6 +117,8 @@ cask "macfuse"
 cask "marta"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Calendar for professionals and teams
+cask "notion-calendar"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
 # Open-source software for live streaming and screen recording
@@ -145,6 +149,8 @@ cask "veracrypt"
 cask "visual-studio-code"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# VPN client for secure internet access and private browsing
+cask "windscribe"
 # Gecko based web browser
 cask "zen"
 mas "AdGuard Mini", id: 1440147259
