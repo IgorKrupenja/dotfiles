@@ -26,8 +26,6 @@ brew "fileicon"
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Quickly rewrite git repository history
-brew "git-filter-repo"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
