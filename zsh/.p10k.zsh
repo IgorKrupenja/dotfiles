@@ -1731,20 +1731,21 @@
   }
 
   # Show configured Claude model from ~/.claude/settings.json.
-  # Parses "claude-sonnet-4-6" → "Sonnet 4.6" without hardcoded names.
+  # Parses "claude-sonnet-4-6" → "Sonnet 4.6" and aliases like "opus[1m]" → "Opus[1m]"
+  # without hardcoded names.
   function prompt_claude() {
     local settings="$HOME/.claude/settings.json"
     [[ ! -f $settings ]] && return
     local raw
     raw=$(sed -n 's/.*"model"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$settings")
     [[ -z $raw ]] && return
-    # Parse "claude-<family>-<major>-<minor>[-<date>]"
+    # Parse "claude-<family>-<major>-<minor>[-<date>]" or an alias without a version
     local rest="${raw#claude-}"           # "sonnet-4-6"
     local family="${rest%%-[0-9]*}"       # "sonnet"
-    local ver="${rest#${family}-}"        # "4-6" or "4-5-20251001"
+    local ver="${rest#${family}}"         # "-4-6", "-4-5-20251001" or "" for an alias
     ver="${ver%%-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]}"  # strip date suffix
-    ver="${ver//-/.}"                     # "4.6"
-    local model="${(C)family} ${ver}"     # "Sonnet 4.6"
+    ver="${${ver#-}//-/.}"                # "4.6"
+    local model="${(C)family}${ver:+ $ver}"  # "Sonnet 4.6"
     p10k segment -f 6 -t $'\U000F06A9'" $model"
   }
 
