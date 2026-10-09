@@ -87,6 +87,9 @@ update_bun() {
 
   echo -e "\n🚀 $(purple Updating Bun global packages)\n"
   bun update -g
+
+  # the skill documents the CLI, so refresh it whenever the CLI updates
+  playwright-cli install --skills --global
 }
 
 update_homebrew() {

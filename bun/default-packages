@@ -4,3 +4,4 @@ caniuse-cmd
 generator-code
 yo
 @githubnext/github-copilot-cli
+@playwright/cli

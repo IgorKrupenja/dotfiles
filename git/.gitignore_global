@@ -1,0 +1,2 @@
+# playwright-cli writes snapshots and screenshots into the current folder
+.playwright-cli/

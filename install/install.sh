@@ -136,6 +136,8 @@ configure_dotfiles() {
 
   backup "$HOME/.gitconfig"
   ln -sv "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
+  backup "$HOME/.gitignore_global"
+  ln -sv "$DOTFILES/git/.gitignore_global" "$HOME/.gitignore_global"
 
   touch "$HOME/.hushlogin"
 
