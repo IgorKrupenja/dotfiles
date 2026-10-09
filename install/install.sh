@@ -336,6 +336,11 @@ set_macos_settings() {
   defaults write com.apple.dock autohide-delay -float 0
   # Don’t show recent applications in Dock
   defaults write com.apple.dock show-recents -bool false
+  # No Quick Note hot corner in the bottom right (1 means no action)
+  defaults write com.apple.dock wvous-br-corner -int 1
+  # Don't reopen apps after a restart (unticks "Reopen windows when logging back in")
+  defaults write com.apple.loginwindow TALLogoutSavesState -bool false
+  defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
   # Less space between menu bar icons, applied after logging out and back in
   defaults -currentHost write NSGlobalDomain NSStatusItemSpacing -int 6
   defaults -currentHost write NSGlobalDomain NSStatusItemSelectionPadding -int 6
