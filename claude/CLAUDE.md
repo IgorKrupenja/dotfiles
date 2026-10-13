@@ -10,6 +10,21 @@ Text Igor sends to other people (DMs, emails, posts) is the strictest case: chec
 
 Dotfiles repo is at `~/Projects/dotfiles`.
 
+## Commit and push without asking
+
+In every git repo, commit each finished change and push it right away. Don't wait for Igor to ask:
+he finds being asked every time annoying. The one exception is the work repo `liqd-casino`
+(`~/Projects/liqd-casino`), where you commit and push only when he asks.
+
+- Commit on the current branch and push that branch. Don't create branches or PRs unless asked.
+- Stage only the files of your own change. Leave unrelated uncommitted work (another session's,
+  say) alone and mention it.
+- Follow the repo's commit message style. Never commit secrets (`.env` values, keys, tokens) or
+  git-ignored files; check the staged diff before pushing, above all in public repos.
+- If the push is rejected because the remote moved, `git pull --rebase` and push again. On a
+  conflict, stop and tell Igor.
+- A repo's own CLAUDE.md can add checks on top of this, and they still apply.
+
 ## Browser automation
 
 The Playwright MCP is only set up in `~/.claude/skills`, for the browser skills there. Everywhere else, use `playwright-cli` through Bash: it's installed globally with bun, and the `playwright-cli` skill lists its commands.
