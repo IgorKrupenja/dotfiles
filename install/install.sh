@@ -296,6 +296,10 @@ set_macos_settings() {
   defaults read com.apple.universalaccess com.apple.custommenu.apps 2>/dev/null | grep -q NSGlobalDomain ||
     defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add NSGlobalDomain
 
+  # Globe key switches the input source (Keyboard > Press 🌐 key to). For emoji use Ctrl+Cmd+Space:
+  # Globe+E opens them too, but on the Russian layout it also types the letter on that key
+  defaults write com.apple.HIToolbox AppleFnUsageType -int 1
+
   # Disable system sound on ctrl+cmd+arrow
   mkdir -p "$HOME/Library/KeyBindings"
   backup "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
