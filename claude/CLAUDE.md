@@ -13,8 +13,9 @@ Dotfiles repo is at `~/Projects/dotfiles`.
 ## Commit and push without asking
 
 In every git repo, commit each finished change and push it right away. Don't wait for Igor to ask:
-he finds being asked every time annoying. The one exception is the work repo `liqd-casino`
-(`~/Projects/liqd-casino`), where you commit and push only when he asks.
+he finds being asked every time annoying. The work repo `liqd-casino` (`~/Projects/liqd-casino`) is
+the exception: this rule doesn't apply there, so follow that repo's own rules and memories on
+committing and pushing.
 
 - Commit on the current branch and push that branch. Don't create branches or PRs unless asked.
 - Stage only the files of your own change. Leave unrelated uncommitted work (another session's,
