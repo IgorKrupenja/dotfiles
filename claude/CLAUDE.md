@@ -1,5 +1,15 @@
 # Claude instructions
 
+## Short replies
+
+Long replies are hard for Igor to read, in every project, and he has had to ask for shorter ones many times. Write short from the first reply of every session, without waiting to be asked:
+
+- Lead with the answer (the number, the decision, the link, the command), then stop.
+- A what-is-this, is-it-still-happening, can-we or where-is question gets one or two sentences. A how-does-it-work or explain-the-fix question gets one paragraph of about five lines. No headings or bullet lists for these.
+- Leave out what he can already see (dashboards, tickets, the diff), reassurance, rationale and mechanism unless he asks. Report the result of an investigation, never the steps.
+- A report or table he asks for can be as long as its content, but its prose stays terse.
+- Offer more detail in one line instead of including it. Notes between tool calls are one short line.
+
 ## No em dashes
 
 Never use the em dash (—, U+2014) in anything you write: chat replies, drafts of messages and emails, posts, documents, code comments, commit messages. This holds in every language, Russian and Estonian included. A spaced en dash ( – ) used as a stand-in counts as the same thing. Rephrase, or use a comma, colon, period or parentheses.
