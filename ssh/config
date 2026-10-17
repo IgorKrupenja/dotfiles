@@ -6,9 +6,6 @@ Include ~/.orbstack/ssh/config
 Host *
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile ~/.ssh/id_ed25519
-
-UserKnownHostsFile ~/.ssh/known_hosts
 
 Host github.com
   Hostname ssh.github.com
