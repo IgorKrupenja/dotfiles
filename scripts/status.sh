@@ -37,11 +37,12 @@ batt_cycles=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" |
 top_info="$(top | head -n 7)"
 
 # build RAM Info
-blocks_free=$(vm_stat | grep free | awk '{ print $3 }' | sed 's/\.//')
-blocks_inactive=$(vm_stat | grep inactive | awk '{ print $3 }' | sed 's/\.//')
-blocks_speculative=$(vm_stat | grep speculative | awk '{ print $3 }' | sed 's/\.//')
-mem_free=$((($blocks_free + $blocks_speculative) * 4096 / 1048576))
-mem_inactive=$(($blocks_inactive * 4096 / 1048576))
+page_size=$(vm_stat | head -1 | sed 's/[^0-9]//g')
+blocks_free=$(vm_stat | grep '^Pages free:' | awk '{ print $3 }' | sed 's/\.//')
+blocks_inactive=$(vm_stat | grep '^Pages inactive:' | awk '{ print $3 }' | sed 's/\.//')
+blocks_speculative=$(vm_stat | grep '^Pages speculative:' | awk '{ print $3 }' | sed 's/\.//')
+mem_free=$((($blocks_free + $blocks_speculative) * $page_size / 1048576))
+mem_inactive=$(($blocks_inactive * $page_size / 1048576))
 mem_total_free=$(($mem_free + $mem_inactive))
 mem_total=$(($(sysctl -n hw.memsize) / (1024 ** 3)))
 
