@@ -194,4 +194,6 @@
   "claudeCode.archiveInactiveSessions": 0,
   "claudeCode.attachOpenFile": false,
   "window.zoomLevel": 0.2676,
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
 }
