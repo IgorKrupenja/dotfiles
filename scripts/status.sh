@@ -51,7 +51,7 @@ echo "Date        : $(date -R) $(ls -l /etc/localtime | /usr/bin/cut -d '/' -f 8
 echo "Uptime      : $uptime"
 echo "OS          : macOS $(sw_vers -productVersion)"
 echo "Kernel      : $(uname -s -r)"
-echo "Model       : $(ioreg -rd1 -k product-name | sed -n 's/.*"product-name" = <"\(.*\)">/\1/p')"
+echo "Model       : $(ioreg -rd1 -k product-name | sed -n 's/.*"product-name" = <"\(.*\)">/\1/p'); $(sysctl -n hw.model)"
 echo "CPU         : $(echo "$top_info" | grep -E "^CPU" | sed -n 's/CPU usage: //p')- $(sysctl -n machdep.cpu.brand_string)"
 echo "Memory      : ${mem_total}GB total; ${mem_free}MB free, ${mem_inactive}MB inactive, ${mem_total_free}MB total free"
 echo "Swap        : $(sysctl vm.swapusage | sed -n 's/vm.swapusage:\ //p')"
