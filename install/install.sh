@@ -232,7 +232,7 @@ configure_dock() {
   # Saved by scripts/backup.sh
   while IFS= read -r app || [[ -n "$app" ]]; do
     dockutil --no-restart --add "$app"
-  done <"$DOTFILES/dock/apps"
+  done <"$DOTFILES/install/dock-apps"
   killall Dock
 }
 
