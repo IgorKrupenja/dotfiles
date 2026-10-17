@@ -4,8 +4,6 @@ tap "oven-sh/bun", trusted: true
 tap "teamookla/speedtest", trusted: true
 # Command-line interface for SQLite
 brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -44,6 +42,8 @@ brew "poppler"
 brew "postgresql@18", link: true
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -74,6 +74,8 @@ cask "brave-browser"
 cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Allows switching between application windows
@@ -90,6 +92,8 @@ cask "iina"
 cask "iterm2"
 # Extensible two-pane file manager
 cask "marta"
+# VPN client for secure internet access and private browsing
+cask "nordvpn"
 # Calendar for professionals and teams
 cask "notion-calendar"
 # Open-source software for live streaming and screen recording
@@ -108,6 +112,8 @@ cask "session-manager-plugin"
 cask "slack"
 # Music streaming service
 cask "spotify"
+# System monitor for the menu bar
+cask "stats"
 # Desktop client for Telegram messenger
 cask "telegram-desktop"
 # Web browser focusing on security
@@ -118,14 +124,7 @@ cask "transmission"
 cask "visual-studio-code"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
-# VPN client for secure internet access and private browsing
-cask "windscribe"
 # Gecko based web browser
 cask "zen"
-mas "AdGuard Mini", id: 1440147259
 mas "ColorSlurp", id: 1287239339
-mas "DigiDoc4", id: 1370791134
-mas "Kindle", id: 302584613
 mas "PiPifier", id: 1160374471
-mas "The Unarchiver", id: 425424353
-mas "Web eID", id: 1576665083
