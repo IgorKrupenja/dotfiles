@@ -191,4 +191,7 @@
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "git.blame.editorDecoration.enabled": false,
   "workbench.browser.openLocalhostLinks": false,
+  "claudeCode.archiveInactiveSessions": 0,
+  "claudeCode.attachOpenFile": false,
+  "window.zoomLevel": 0.2676,
 }
