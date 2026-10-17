@@ -89,6 +89,17 @@ if [[ $(git diff keyboard/com.apple.symbolichotkeys.plist) ]]; then
   git commit -m "Update keyboard shortcuts"
 fi
 
+# Vivaldi bookmarks, as Vivaldi sync has messed them up before. A dated copy goes to iCloud Drive
+# when they change, not to the repo, which is public. To restore one, quit Vivaldi and copy it over
+# the Bookmarks file
+bookmarks="$HOME/Library/Application Support/Vivaldi/Default/Bookmarks"
+bookmarks_backups="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Vivaldi bookmarks"
+mkdir -p "$bookmarks_backups"
+backups=("$bookmarks_backups"/Bookmarks-*.json)
+if ! cmp -s "$bookmarks" "${backups[${#backups[@]} - 1]}"; then
+  cp -f "$bookmarks" "$bookmarks_backups/Bookmarks-$(date +%Y-%m-%d-%H%M%S).json"
+fi
+
 # push
 echo ""
 echo "Pushing to dotfiles repo:"
