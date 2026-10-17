@@ -269,8 +269,6 @@ set_macos_settings() {
   # Keyboard shortcuts (System Settings > Keyboard), imported because macOS caches
   # preferences and can overwrite a plist that was copied in
   defaults import com.apple.symbolichotkeys "$DOTFILES/keyboard/com.apple.symbolichotkeys.plist"
-  # Apply them without logging out
-  /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
   # Cmd+Shift+, opens System Settings from any app (Keyboard > App Shortcuts). The menu
   # title must use three dots: the … character doesn't match
@@ -294,15 +292,22 @@ set_macos_settings() {
   defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
   # Disable the “Are you sure you want to open this application?” dialog
   defaults write com.apple.LaunchServices LSQuarantine -bool false
-  # Trackpad: enable tap to click for this user and for the login screen
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  # Trackpad: tap to click and three finger drag, on the built-in trackpad and a Magic Trackpad.
+  # Swipes between apps and Mission Control move to four fingers, as System Settings does for
+  # three finger drag.
+  for trackpad in com.apple.AppleMultitouchTrackpad com.apple.driver.AppleBluetoothMultitouch.trackpad; do
+    defaults write $trackpad Clicking -bool true
+    defaults write $trackpad TrackpadThreeFingerDrag -bool true
+    defaults write $trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+    defaults write $trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+  done
   defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
   defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerDragGesture -bool true
+  defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 0
+  defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerVertSwipeGesture -int 0
   # Disable "natural" scrolling
   defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-  # Three finger drag
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
   # Force click
   defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
   defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
@@ -345,12 +350,17 @@ set_macos_settings() {
   echo "Setting file associations: click \"Use Code\" in each dialog macOS shows."
   duti "$DOTFILES/install/duti.conf"
 
-  # Cannot be automated on macOS Sonoma/Sequoia (set manually in System Settings):
-  # - Displays > TrueTone (disable)
-  # - Displays > Automatically adjust brightness (disable)
-  # - Displays > Advanced > Slightly dim the display on battery (disable)
-  # Finder sidebar cannot be automated either (mysides no longer works), set it manually:
-  # remove AirDrop and Recents, add Applications, Downloads, Movies, Projects, iCloud Stuff and Stuff/Work
+  # Displays: no True Tone, automatic brightness or dimming on battery
+  swift "$DOTFILES/install/display.swift"
+  sudo pmset -b lessbright 0
+
+  # Finder sidebar, saved by scripts/backup.sh. sharedfilelistd reads it again when restarted
+  swift "$DOTFILES/install/finder-sidebar.swift" "$DOTFILES/install/finder-sidebar"
+  killall sharedfilelistd
+
+  # Apply keyboard shortcuts and trackpad settings without logging out (trackpad settings
+  # written only to the plists were lost after the last install)
+  /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
   # restart to apply changes
   killall Finder

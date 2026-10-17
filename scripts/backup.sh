@@ -46,6 +46,15 @@ if [[ $(git diff dock-apps) ]]; then
   git commit -m "Update Dock apps"
 fi
 
+# Finder sidebar, restored by install.sh. Left as is if reading it fails
+if sidebar=$(swift finder-sidebar.swift); then
+  echo "$sidebar" >finder-sidebar
+fi
+if [[ $(git diff finder-sidebar) ]]; then
+  git add finder-sidebar
+  git commit -m "Update Finder sidebar"
+fi
+
 cd "$DOTFILES" || exit
 
 # Marta
