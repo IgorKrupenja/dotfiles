@@ -25,6 +25,8 @@ export SCRIPTS="$DOTFILES/scripts"
 # ---------------------------------------------------------------------------
 # less: do not clear screen on exit
 export LESS=-XFR
+# Homebrew: do not ask for confirmation on install, upgrade and reinstall
+export HOMEBREW_NO_ASK=1
 
 #############################################################################
 # ZSH
