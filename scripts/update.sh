@@ -1,12 +1,6 @@
 #!/bin/zsh
 # shellcheck shell=bash disable=SC2086,2046
 
-# gems, for cocoapods
-update_gems() {
-  echo -e "\n🚀 $(purple "Updating Ruby gems")\n"
-  gem update
-}
-
 update_omz() {
   echo -e "🚀 $(purple "Updating OMZ")\n"
   "$ZSH"/tools/upgrade.sh
@@ -140,7 +134,6 @@ is_interactive() {
 }
 
 main() {
-  # update_gems
   update_omz
   update_node
   update_bun
