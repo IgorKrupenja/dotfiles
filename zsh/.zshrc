@@ -189,7 +189,7 @@ bu() {
   if [[ -z $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
-    brew upgrade
+    brew upgrade --yes
   fi
 }
 alias bd="brew autoremove && brew cleanup -s && brew doctor && brew tap --repair"

@@ -102,9 +102,9 @@ update_homebrew() {
   else
     # In cron, skip casks that require sudo to avoid hanging on password prompt
     if is_interactive; then
-      brew upgrade
+      brew upgrade --yes
     else
-      SUDO_ASKPASS=/usr/bin/false brew upgrade
+      SUDO_ASKPASS=/usr/bin/false brew upgrade --yes
     fi
   fi
 
