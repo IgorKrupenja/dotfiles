@@ -52,9 +52,17 @@ for key in recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory; do
   plutil -remove "$key" "$DOTFILES/iina/com.colliderli.iina.plist" 2>/dev/null
 done
 
+# Dock apps, restored by install.sh. dockutil lists them as file URLs, decoded to paths here
+mkdir -p "$DOTFILES/dock"
+dockutil --list | awk -F'\t' '$3 == "persistentApps" {print $2}' | while IFS= read -r url; do
+  url=${url#file://}
+  url=${url%/}
+  printf '%b\n' "${url//%/\\x}"
+done >"$DOTFILES/dock/apps"
+
 # commit app settings folders if there are changes
 # folder:name pairs, as macOS bash 3.2 has no associative arrays
-for app in iterm:iTerm iina:IINA claude:Claude; do
+for app in iterm:iTerm iina:IINA claude:Claude dock:Dock; do
   folder=${app%%:*}
   if [[ $(git diff "$folder") ]]; then
     git add "$folder"

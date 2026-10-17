@@ -229,27 +229,10 @@ configure_dock() {
 
   dockutil --no-restart --remove all
 
-  local dock_apps=(
-    "/System/Applications/Apps.app"
-    "/System/Applications/Contacts.app"
-    "/Applications/Notion Calendar.app"
-    "/Applications/Marta.app"
-    "/Applications/Vivaldi.app"
-    "/Applications/Google Chrome.app"
-    "/Applications/Safari.app"
-    "/Applications/Slack.app"
-    "/Applications/Visual Studio Code.app"
-    "/Applications/Windscribe.app"
-    "/Applications/Claude.app"
-    "/Applications/iTerm.app"
-    "/Applications/OrbStack.app"
-    "/Applications/Spotify.app"
-    "/Applications/IINA.app"
-  )
-
-  for app in "${dock_apps[@]}"; do
+  # Saved by scripts/backup.sh
+  while IFS= read -r app || [[ -n "$app" ]]; do
     dockutil --no-restart --add "$app"
-  done
+  done <"$DOTFILES/dock/apps"
   killall Dock
 }
 
