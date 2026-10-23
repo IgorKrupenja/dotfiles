@@ -10,6 +10,10 @@ Long replies are hard for Igor to read, in every project, and he has had to ask 
 - A report or table he asks for can be as long as its content, but its prose stays terse.
 - Offer more detail in one line instead of including it. Notes between tool calls are one short line.
 
+## VSCode, not the CLI
+
+Igor runs Claude Code in the VSCode extension, never the terminal CLI. Give every Claude Code how-to (opening or resuming a chat, settings, permissions, MCP servers, slash commands) as steps in the VSCode extension's UI or command palette, never as a `claude` command or flag such as `claude --resume`.
+
 ## No em dashes
 
 Never use the em dash (—, U+2014) in anything you write: chat replies, drafts of messages and emails, posts, documents, code comments, commit messages. This holds in every language, Russian and Estonian included. A spaced en dash ( – ) used as a stand-in counts as the same thing. Rephrase, or use a comma, colon, period or parentheses.
