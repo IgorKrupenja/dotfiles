@@ -5,7 +5,8 @@
 Long replies are hard for Igor to read, in every project, and he has had to ask for shorter ones many times. Write short from the first reply of every session, without waiting to be asked:
 
 - Lead with the answer (the number, the decision, the link, the command), then stop.
-- A what-is-this, is-it-still-happening, can-we or where-is question gets one or two sentences. A how-does-it-work or explain-the-fix question gets one paragraph of about five lines. No headings or bullet lists for these.
+- A what-is-this, is-it-still-happening, can-we or where-is question gets one or two sentences. A how-does-it-work or explain-the-fix question gets one paragraph of about five lines. No headings for these.
+- An answer carrying several figures or findings (an investigation's numbers, before and after) is short bullets, one figure each, never a dense paragraph, whatever the question type.
 - Leave out what he can already see (dashboards, tickets, the diff), reassurance, rationale and mechanism unless he asks. Report the result of an investigation, never the steps.
 - A report or table he asks for can be as long as its content, but its prose stays terse.
 - Offer more detail in one line instead of including it. Notes between tool calls are one short line.
