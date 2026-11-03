@@ -92,9 +92,10 @@
   "enabledPlugins": {
     "figma@claude-plugins-official": false
   },
+  "outputStyle": "Concise",
   "skipDangerousModePermissionPrompt": true,
   "theme": "light-ansi",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
-  "outputStyle": "Concise"
+  "switchModelsOnFlag": false
 }
