@@ -90,7 +90,7 @@
     ]
   },
   "enabledPlugins": {
-    "figma@claude-plugins-official": true
+    "figma@claude-plugins-official": false
   },
   "skipDangerousModePermissionPrompt": true,
   "theme": "light-ansi",
