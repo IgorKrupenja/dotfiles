@@ -11,9 +11,9 @@ Long replies are hard for Igor to read, in every project, and he has had to ask 
 - A report or table he asks for can be as long as its content, but its prose stays terse.
 - Offer more detail in one line instead of including it. Notes between tool calls are one short line.
 
-## VSCode, not the CLI
+## Claude app, not the CLI
 
-Igor runs Claude Code in the VSCode extension, never the terminal CLI. Give every Claude Code how-to (opening or resuming a chat, settings, permissions, MCP servers, slash commands) as steps in the VSCode extension's UI or command palette, never as a `claude` command or flag such as `claude --resume`.
+Igor runs Claude Code in the Claude desktop app's Code tab, never the terminal CLI or VSCode. Give every Claude Code how-to (starting or resuming a session, settings, permissions, MCP servers, slash commands) as numbered steps in the app's UI, never as a `claude` command or flag such as `claude --resume`. Before naming a button, menu or setting, check that it exists in the current app version.
 
 ## No em dashes
 
