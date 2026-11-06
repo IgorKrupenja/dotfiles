@@ -56,7 +56,7 @@
       "Bash(mv /Users/igor/.claude/tallinn-dev-skills ~/Projects/tallinn-dev)",
       "Read(//Users/igor/Projects/**)"
     ],
-    "defaultMode": "auto",
+    "defaultMode": "bypassPermissions",
     "additionalDirectories": [
       "/Users/igor/.claude/projects/-Users-igor-Projects-liqd-player-frontend/memory",
       "/Users/igor/.claude/skills",
