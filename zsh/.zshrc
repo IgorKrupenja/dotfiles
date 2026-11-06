@@ -27,6 +27,8 @@ export SCRIPTS="$DOTFILES/scripts"
 export LESS=-XFR
 # Homebrew: do not ask for confirmation on install, upgrade and reinstall
 export HOMEBREW_NO_ASK=1
+# Claude Code: max effort, exported here so the Claude app's effort picker defaults to it too
+export CLAUDE_CODE_EFFORT_LEVEL=max
 
 #############################################################################
 # ZSH
