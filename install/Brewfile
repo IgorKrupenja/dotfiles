@@ -12,6 +12,8 @@ brew "bat"
 brew "btop"
 # Statistics utility to count lines of code
 brew "cloc"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Tool for managing dock items
 brew "dockutil"
 # Select default apps for documents and URL schemes on macOS
@@ -128,11 +130,10 @@ cask "visual-studio-code"
 cask "vivaldi"
 # Gecko based web browser
 cask "zen"
-mas "AdGuard Mini", id: 1440147259
+mas "1Password for Safari", id: 1569813296
 mas "ColorSlurp", id: 1287239339
 mas "DigiDoc4", id: 1370791134
 mas "Kindle", id: 302584613
-mas "PiPifier", id: 1160374471
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
 mas "Web eID", id: 1576665083
