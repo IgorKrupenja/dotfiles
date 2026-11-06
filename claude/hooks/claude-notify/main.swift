@@ -10,7 +10,9 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
             NSWorkspace.shared.open(url)
         }
         completionHandler()
-        NSApp.terminate(nil)
+        // Quitting at once makes Finder report that Claude-Notify is not open anymore, since macOS
+        // is still activating the app for the click
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { NSApp.terminate(nil) }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,
