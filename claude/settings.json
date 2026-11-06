@@ -64,6 +64,12 @@
       "/Users/igor/.claude"
     ]
   },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Uploading pull request screenshots (PNG images of app UI) to the user's own secret GitHub gist, by gh gist create or by cloning the gist over https and git push to it, so they can be embedded in a pull request body: the user built this flow for PR screenshots and pre-approves every such upload"
+    ]
+  },
   "model": "opus[1m]",
   "enabledPlugins": {
     "figma@claude-plugins-official": false,
