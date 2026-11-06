@@ -100,6 +100,23 @@ if ! cmp -s "$bookmarks" "${backups[${#backups[@]} - 1]}"; then
   cp -f "$bookmarks" "$bookmarks_backups/Bookmarks-$(date +%Y-%m-%d-%H%M%S).json"
 fi
 
+# Claude Code memory of every project and CLAUDE.local.md files, which no repo tracks. A dated zip
+# goes to iCloud Drive when they change, not to the repo, which is public. Paths in it are relative
+# to the home folder, so to restore one, unzip it there
+claude_backups="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Claude memory"
+claude_zip="$(mktemp -d)/Claude-memory.zip"
+mkdir -p "$claude_backups"
+(
+  cd "$HOME" || exit
+  shopt -s nullglob
+  zip -q -r -X -D "$claude_zip" .claude/projects/*/memory Projects/*/CLAUDE.local.md -x '*.DS_Store'
+)
+backups=("$claude_backups"/Claude-memory-*.zip)
+if [[ -f $claude_zip ]] && ! cmp -s "$claude_zip" "${backups[${#backups[@]} - 1]}"; then
+  mv "$claude_zip" "$claude_backups/Claude-memory-$(date +%Y-%m-%d-%H%M%S).zip"
+fi
+rm -rf "$(dirname "$claude_zip")"
+
 # push
 echo ""
 echo "Pushing to dotfiles repo:"
