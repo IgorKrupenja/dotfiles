@@ -13,6 +13,7 @@ A repository with some of my dotfiles, settings and scripts. Only macOS is suppo
 - [install/install.sh](install/install.sh) Installation script for automated install (see [Installation](#installation) section below).
 - [zsh/.zshrc](zsh/.zshrc) My core Zsh config with helpful functions, aliases, etc. Note that this is intentionally kept as a single file as splitting the config into several files was causing performance issues.
 - [scripts/update.sh](scripts/update.sh) Updates Homebrew, npm/nvm, Bun, Oh My Zsh, Mac App Store apps etc.
+- [scripts/backup.sh](scripts/backup.sh) Commits app settings to this repo and backs up private data to iCloud Drive. Runs daily at 13:00 through a [launchd agent](launchd/com.igorkrupenja.dotfiles.backup.plist).
 - [scripts/status.sh](scripts/status.sh) Displays some status information on hardware/software.
 - [scripts/dark.sh](scripts/dark.sh) Switches between system dark and light modes on macOS and manually switches between dark and light themes in some apps.
 

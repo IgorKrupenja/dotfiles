@@ -223,6 +223,14 @@ set_macos_settings() {
   echo -e "🚀 $(purple Restoring macOS settings)"
   echo ""
 
+  # Daily run of scripts/backup.sh. Copied rather than symlinked, the way brew services installs
+  # its agents. bootout first, as bootstrap fails for an agent that is already loaded
+  local agent="$HOME/Library/LaunchAgents/com.igorkrupenja.dotfiles.backup.plist"
+  mkdir -p "$HOME/Library/LaunchAgents"
+  cp -f "$DOTFILES/launchd/com.igorkrupenja.dotfiles.backup.plist" "$agent"
+  launchctl bootout "gui/$(id -u)" "$agent" 2>/dev/null || true
+  launchctl bootstrap "gui/$(id -u)" "$agent"
+
   # iina, imported because macOS replaces symlinked preference files with regular ones
   defaults import com.colliderli.iina "$DOTFILES/iina/com.colliderli.iina.plist"
 

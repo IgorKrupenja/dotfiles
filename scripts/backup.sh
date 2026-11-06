@@ -12,8 +12,29 @@ linux*)
   ;;
 esac
 
-# echo in case run from shell
-echo "Backup in progress. Please wait..."
+# Not set when launchd runs this on schedule (launchd/com.igorkrupenja.dotfiles.backup.plist)
+DOTFILES=${DOTFILES:-$HOME/Projects/dotfiles}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Failed commands, named in a notification at the end, as nobody sees the output of a scheduled
+# run (it goes to ~/Library/Logs/backup.log)
+failed=()
+trap 'failed+=("$BASH_COMMAND")' ERR
+
+notify() {
+  if [[ $? -eq 0 && ${#failed[@]} -eq 0 ]]; then
+    osascript -e 'display notification "Backup complete" with title "Backup" sound name "Ping"'
+  else
+    # Passed as an argument, as quotes in the command would break an AppleScript string
+    osascript -e 'on run argv' \
+      -e 'display notification (item 1 of argv) with title "Backup failed" sound name "Basso"' \
+      -e 'end run' "${failed[0]:-Stopped early}"
+  fi
+}
+trap notify EXIT
+
+# echo in case run from shell, with the date for the log
+echo "$(date '+%Y-%m-%d %H:%M') Backup in progress. Please wait..."
 
 ################### Backup
 
@@ -68,8 +89,8 @@ fi
 # IINA, exported because macOS replaces symlinked preference files with regular ones.
 # Recent files and folders are left out, the repo is public.
 defaults export com.colliderli.iina "$DOTFILES/iina/com.colliderli.iina.plist"
-for key in recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory; do
-  plutil -remove "$key" "$DOTFILES/iina/com.colliderli.iina.plist" 2>/dev/null
+for key in recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory iinaLastPlayedFilePath; do
+  plutil -remove "$key" "$DOTFILES/iina/com.colliderli.iina.plist" 2>/dev/null || true
 done
 
 # commit app settings folders if there are changes
@@ -110,24 +131,25 @@ mkdir -p "$claude_backups"
   cd "$HOME" || exit
   shopt -s nullglob
   zip -q -r -X -D "$claude_zip" .claude/projects/*/memory Projects/*/CLAUDE.local.md -x '*.DS_Store'
-)
+) || failed+=("zip of Claude memory") # the ERR trap misses failures in a subshell
 backups=("$claude_backups"/Claude-memory-*.zip)
 if [[ -f $claude_zip ]] && ! cmp -s "$claude_zip" "${backups[${#backups[@]} - 1]}"; then
   mv "$claude_zip" "$claude_backups/Claude-memory-$(date +%Y-%m-%d-%H%M%S).zip"
 fi
 rm -rf "$(dirname "$claude_zip")"
 
-# push
+# push, again a minute later if it fails, as a scheduled run that starts on wake from sleep can get
+# here before the network is back
 echo ""
 echo "Pushing to dotfiles repo:"
 echo "-------------------------"
-git push --no-verify
+git push --no-verify || { sleep 60; git push --no-verify; }
 
-#################### Notifications
-
-# Displaying toast and playing sound
-osascript -e 'display notification "Backup complete" with title "cron" sound name "Ping"'
-
-# echo in case run from shell
+# echo in case run from shell. notify() above shows the notification
 echo ""
+if [[ ${#failed[@]} -gt 0 ]]; then
+  echo "Backup failed. Failed commands:"
+  printf '  %s\n' "${failed[@]}"
+  exit 1
+fi
 echo "Backup complete."
