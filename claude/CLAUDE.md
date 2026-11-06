@@ -45,6 +45,10 @@ committing and pushing.
   conflict, stop and tell Igor.
 - A repo's own CLAUDE.md can add checks on top of this, and they still apply.
 
+## Ask before extra PRs or stacked branches
+
+In every repo, never open an extra pull request or cut a branch from another PR's branch (stacking) without asking Igor first. Work that grows out of an open PR goes into that PR, with its ticket id added to the title, unless he says otherwise. When a separate PR or a stacked branch looks better, ask before creating the branch. He calls this very important.
+
 ## Google Sheets and Drive
 
 For Google Sheets and Drive, use the `gws` CLI through Bash, signed in as igor@liqd.com with Drive and Sheets access: `gws sheets +read`, `gws sheets +append`, `gws sheets spreadsheets ...` and `gws drive files list`. Pass `--params` and `--json` in single quotes (ranges carry `!`), and look up a method's parameters with `gws schema sheets.spreadsheets.values.get`. To sign in again, run `gws auth login -s sheets,drive`. Keep `project_id` empty in `~/.config/gws/client_secret.json`: with it set, Google refuses every call because the account has no role on that project.
