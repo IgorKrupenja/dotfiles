@@ -24,6 +24,8 @@ brew "fileicon"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
+brew "googleworkspace-cli"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
