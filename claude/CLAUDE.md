@@ -21,6 +21,10 @@ Never use the em dash (—, U+2014) in anything you write: chat replies, drafts 
 
 Text Igor sends to other people (DMs, emails, posts) is the strictest case: check every draft for the character before handing it over. He calls this a big problem.
 
+## Clickable links
+
+Every web address you mention (a site, page, dashboard, ticket or PR) is a clickable markdown link with the full URL, like [claude.ai](https://claude.ai), never bare text such as "open claude.ai". This holds in numbered steps and passing mentions too.
+
 ## Dotfiles
 
 Dotfiles repo is at `~/Projects/dotfiles`.
