@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!-- Runs scripts/backup.sh daily at 13:00, or on wake if the Mac was asleep then. Installed by
-     install/install.sh. To run it now: launchctl kickstart gui/$(id -u)/com.igorkrupenja.dotfiles.backup -->
+     install/install.sh. To run it now: launchctl kickstart gui/$(id -u)/com.igorkrupenja.dotfiles.backup
+
+     The script is passed to /bin/bash rather than run directly: macOS repeats its "can run in the
+     background" notification whenever an agent's unsigned program changes, so every edit of
+     backup.sh brought it back. Apple-signed bash doesn't trigger it. -->
 <plist version="1.0">
 <dict>
 	<key>Label</key>
 	<string>com.igorkrupenja.dotfiles.backup</string>
 	<key>ProgramArguments</key>
 	<array>
+		<string>/bin/bash</string>
 		<string>/Users/igor/Projects/dotfiles/scripts/backup.sh</string>
 	</array>
 	<key>StartCalendarInterval</key>
