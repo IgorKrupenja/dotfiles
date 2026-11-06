@@ -2,13 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!-- Runs scripts/update.sh daily at 12:30, half an hour before the backup so the two don't run at once,
      or on wake if the Mac was asleep then. Installed by install/install.sh. To run it now:
-     launchctl kickstart gui/$(id -u)/com.igorkrupenja.dotfiles.update -->
+     launchctl kickstart gui/$(id -u)/com.igorkrupenja.dotfiles.update
+
+     The script is passed to /bin/zsh rather than run directly: macOS repeats its "can run in the
+     background" notification whenever an agent's unsigned program changes, so every edit of
+     update.sh would bring it back. Apple-signed zsh doesn't trigger it. -->
 <plist version="1.0">
 <dict>
 	<key>Label</key>
 	<string>com.igorkrupenja.dotfiles.update</string>
 	<key>ProgramArguments</key>
 	<array>
+		<string>/bin/zsh</string>
 		<string>/Users/igor/Projects/dotfiles/scripts/update.sh</string>
 	</array>
 	<key>StartCalendarInterval</key>
