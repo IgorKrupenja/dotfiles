@@ -90,12 +90,21 @@
     ]
   },
   "enabledPlugins": {
-    "figma@claude-plugins-official": false
+    "figma@claude-plugins-official": false,
+    "autofix-relay@autofix-relay": true
+  },
+  "extraKnownMarketplaces": {
+    "autofix-relay": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/igor/.claude/local-plugins/autofix-relay"
+      }
+    }
   },
   "outputStyle": "Concise",
   "skipDangerousModePermissionPrompt": true,
   "theme": "light-ansi",
+  "switchModelsOnFlag": false,
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
-  "switchModelsOnFlag": false
+  "agentPushNotifEnabled": true
 }
