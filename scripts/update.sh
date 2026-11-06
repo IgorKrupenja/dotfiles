@@ -1,6 +1,22 @@
 #!/bin/zsh
 # shellcheck shell=bash disable=SC2086,2046
 
+# Not set when launchd runs this on schedule (launchd/com.igorkrupenja.dotfiles.update.plist)
+ZSH=${ZSH:-$HOME/.oh-my-zsh}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="$PATH:${BUN_INSTALL:-$HOME/.bun}/bin"
+
+# Steps with a failed command, named in a notification at the end, as nobody sees the output of a
+# scheduled run (it goes to ~/Library/Logs/update.log). Only commands run right in a step's own
+# function count, as nvm and the like run many commands that fail as a matter of course
+failed=()
+TRAPZERR() {
+  # shellcheck disable=SC2154 # funcstack is set by zsh
+  local step=${funcstack[2]#update_}
+  [[ ${funcstack[2]} == update_* && " ${failed[*]} " != *" $step "* ]] && failed+=("$step")
+  return 0
+}
+
 update_omz() {
   echo -e "🚀 $(purple "Updating OMZ")\n"
   "$ZSH"/tools/upgrade.sh
@@ -94,7 +110,7 @@ update_homebrew() {
   if [[ -z $(brew outdated) ]]; then
     echo "Everything up to date!"
   else
-    # In cron, skip casks that require sudo to avoid hanging on password prompt
+    # When scheduled, skip casks that require sudo to avoid hanging on password prompt
     if is_interactive; then
       brew upgrade --yes
     else
@@ -125,20 +141,39 @@ ansi() {
 }
 
 display_notification() {
-  osascript -e 'display notification "Software update complete" with title "cron" sound name "Ping"'
+  if [[ ${#failed[@]} -eq 0 ]]; then
+    echo -e "\nUpdate complete."
+    osascript -e 'display notification "Update complete" with title "Update" sound name "Ping"'
+  else
+    echo -e "\nUpdate failed: ${failed[*]}"
+    osascript -e "display notification \"Failed: ${failed[*]}\" with title \"Update failed\" sound name \"Basso\""
+    return 1
+  fi
 }
 
-# Returns true if the script is running in an interactive terminal (not cron)
+# A scheduled run that starts on wake from sleep can start before the network is back
+wait_for_network() {
+  for _ in {1..12}; do
+    curl -fsI -m 5 https://github.com >/dev/null && return
+    sleep 5
+  done
+}
+
+# Returns true if the script is running in an interactive terminal (not on schedule)
 is_interactive() {
   [ -t 1 ]
 }
 
 main() {
+  if ! is_interactive; then
+    echo -e "$(date '+%Y-%m-%d %H:%M') Scheduled update\n"
+    wait_for_network
+  fi
   update_omz
   update_node
   update_bun
   update_homebrew
-  # mas upgrade requires sudo - skip in cron to avoid hanging on password prompt
+  # mas upgrade requires sudo - skip when scheduled to avoid hanging on password prompt
   if is_interactive; then
     update_mas
     update_macos
