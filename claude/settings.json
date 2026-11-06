@@ -66,24 +66,13 @@
   },
   "model": "opus[1m]",
   "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$VSCODE_PID\" ] && python3 $HOME/.claude/notify-launch.py 'Claude Code' 'Claude needs your attention' 'Ping'"
-          }
-        ]
-      }
-    ],
     "Stop": [
       {
         "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "[ -n \"$VSCODE_PID\" ] && python3 $HOME/.claude/notify-launch.py 'Claude Code' 'Task complete' 'Glass'"
+            "command": "python3 $HOME/.claude/claude-notify-stop.py"
           }
         ]
       }
