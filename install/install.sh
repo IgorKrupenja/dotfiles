@@ -9,7 +9,6 @@ main() {
   install_from_pipx
   configure_zsh
   configure_dotfiles
-  build_claude_notify
   install_from_npm
   install_fonts
   configure_dock
@@ -150,23 +149,6 @@ configure_dotfiles() {
   ln -sv "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
   backup "$HOME/.claude/settings.json"
   ln -sv "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
-}
-
-build_claude_notify() {
-  echo ""
-  echo -e "🚀 $(purple Building Claude-Notify.app)"
-  echo ""
-
-  local src="$DOTFILES/claude/hooks/claude-notify"
-  local app="$HOME/.claude/Claude-Notify.app/Contents"
-
-  mkdir -p "$app/MacOS" "$app/Resources"
-  cp -f "$src/Info.plist" "$app/Info.plist"
-  cp -f "$src/AppIcon.icns" "$app/Resources/AppIcon.icns"
-  swiftc "$src/main.swift" -o "$app/MacOS/claude-notify"
-  codesign --force --sign - --deep "$HOME/.claude/Claude-Notify.app"
-  backup "$HOME/.claude/claude-notify-stop.py"
-  ln -sv "$src/stop-hook.py" "$HOME/.claude/claude-notify-stop.py"
 }
 
 install_from_npm() {

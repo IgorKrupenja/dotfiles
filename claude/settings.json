@@ -65,28 +65,22 @@
     ]
   },
   "model": "opus[1m]",
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 $HOME/.claude/claude-notify-stop.py"
-          }
-        ]
-      }
-    ]
-  },
   "enabledPlugins": {
     "figma@claude-plugins-official": false,
-    "autofix-relay@autofix-relay": true
+    "autofix-relay@autofix-relay": true,
+    "session-banners@session-banners": true
   },
   "extraKnownMarketplaces": {
     "autofix-relay": {
       "source": {
         "source": "directory",
         "path": "/Users/igor/.claude/local-plugins/autofix-relay"
+      }
+    },
+    "session-banners": {
+      "source": {
+        "source": "github",
+        "repo": "IgorKrupenja/claude-notify"
       }
     }
   },
