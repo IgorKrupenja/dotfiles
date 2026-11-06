@@ -13,12 +13,12 @@ func readList() throws -> [String: Any] {
 
 if CommandLine.arguments.count < 2 {
   for case let item as [String: Any] in try readList()["items"] as? [Any] ?? [] {
-    var stale = false
+    // The path stored in the bookmark, as resolving the bookmark prints
+    // "sandbox_extension_consume failed" for each item
     guard let bookmark = item["Bookmark"] as? Data,
-      let url = try? URL(resolvingBookmarkData: bookmark, options: [.withoutUI, .withoutMounting], bookmarkDataIsStale: &stale),
-      url.isFileURL
+      let path = URL.resourceValues(forKeys: [.pathKey], fromBookmarkData: bookmark)?.path
     else { continue }
-    print((url.path as NSString).abbreviatingWithTildeInPath)
+    print((path as NSString).abbreviatingWithTildeInPath)
   }
 } else {
   // Keeps the list's other properties
