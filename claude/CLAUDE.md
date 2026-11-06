@@ -41,6 +41,10 @@ committing and pushing.
   conflict, stop and tell Igor.
 - A repo's own CLAUDE.md can add checks on top of this, and they still apply.
 
+## Google Sheets and Drive
+
+For Google Sheets and Drive, use the `gws` CLI through Bash, signed in as igor@liqd.com with Drive and Sheets access: `gws sheets +read`, `gws sheets +append`, `gws sheets spreadsheets ...` and `gws drive files list`. Pass `--params` and `--json` in single quotes (ranges carry `!`), and look up a method's parameters with `gws schema sheets.spreadsheets.values.get`. To sign in again, run `gws auth login -s sheets,drive`. Keep `project_id` empty in `~/.config/gws/client_secret.json`: with it set, Google refuses every call because the account has no role on that project.
+
 ## Browser automation
 
 The Playwright MCP is only set up in `~/.claude/skills`, for the browser skills there. Everywhere else, use `playwright-cli` through Bash: it's installed globally with bun, and the `playwright-cli` skill lists its commands.
