@@ -9,6 +9,7 @@ main() {
   install_from_pipx
   configure_zsh
   configure_dotfiles
+  restore_backup
   install_from_npm
   install_fonts
   configure_dock
@@ -149,6 +150,52 @@ configure_dotfiles() {
   ln -sv "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
   backup "$HOME/.claude/settings.json"
   ln -sv "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
+}
+
+# Private data from the newest backup that scripts/backup.sh saved to iCloud Drive. What is already
+# here is kept, so that a re-run can't undo newer changes
+restore_backup() {
+  echo ""
+  echo -e "🚀 $(purple Restoring private data from iCloud Drive)"
+  echo ""
+
+  local zips latest tmpdir dir file repo
+  zips=("$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Backups"/Backup-*.zip)
+  latest=${zips[${#zips[@]} - 1]}
+  if [[ ! -f $latest ]]; then
+    FAILURES+=("restore_backup: no backup in iCloud Drive yet, re-run once it has synced")
+    echo -e "$(red "No backup in iCloud Drive yet, re-run once it has synced")" >&2
+    return
+  fi
+  tmpdir=$(mktemp -d)
+  unzip -q "$latest" -d "$tmpdir"
+
+  restore "$tmpdir/Vivaldi bookmarks/Bookmarks" "$HOME/Library/Application Support/Vivaldi/Default/Bookmarks"
+  for dir in "$tmpdir/Claude memory"/*/memory; do
+    restore "$dir" "$HOME/.claude/projects/${dir#"$tmpdir/Claude memory/"}"
+  done
+  # Only into repos that are cloned, as git can't clone into a folder that has a file in it
+  for file in "$tmpdir/Claude local files"/*/CLAUDE.local.md; do
+    repo=${file%/CLAUDE.local.md}
+    repo=${repo##*/}
+    if [[ -d "$HOME/Projects/$repo" ]]; then
+      restore "$file" "$HOME/Projects/$repo/CLAUDE.local.md"
+    elif [[ -f $file ]]; then
+      echo "Clone $repo, then copy its CLAUDE.local.md from $latest"
+    fi
+  done
+  rm -rf "$tmpdir"
+}
+
+# Copies $1 from a backup to $2, unless $2 is already there
+restore() {
+  if [[ ! -e $1 ]]; then
+    return
+  elif [[ -e $2 ]]; then
+    echo "Kept $2, already there"
+  else
+    ditto "$1" "$2" && echo "Restored $2"
+  fi
 }
 
 install_from_npm() {

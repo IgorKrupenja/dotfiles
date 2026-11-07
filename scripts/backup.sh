@@ -110,33 +110,40 @@ if [[ $(git diff keyboard/com.apple.symbolichotkeys.plist) ]]; then
   git commit -m "Update keyboard shortcuts"
 fi
 
-# Vivaldi bookmarks, as Vivaldi sync has messed them up before. A dated copy goes to iCloud Drive
-# when they change, not to the repo, which is public. To restore one, quit Vivaldi and copy it over
-# the Bookmarks file
-bookmarks="$HOME/Library/Application Support/Vivaldi/Default/Bookmarks"
-bookmarks_backups="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Vivaldi bookmarks"
-mkdir -p "$bookmarks_backups"
-backups=("$bookmarks_backups"/Bookmarks-*.json)
-if ! cmp -s "$bookmarks" "${backups[${#backups[@]} - 1]}"; then
-  cp -f "$bookmarks" "$bookmarks_backups/Bookmarks-$(date +%Y-%m-%d-%H%M%S).json"
-fi
+# Private data, which can't go to this repo as it is public: Vivaldi bookmarks, as Vivaldi sync has
+# messed them up before, and Claude Code memory of every project and CLAUDE.local.md files, which no
+# repo tracks. One zip with a folder for each goes to iCloud Drive when something in it changed, and
+# the 20 newest are kept. install.sh restores the newest
+backups="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Backups"
+tmp=$(mktemp -d)
+copy_failures=${#failed[@]}
+mkdir -p "$backups" "$tmp/latest" "$tmp/new/Vivaldi bookmarks" "$tmp/new/Claude memory" "$tmp/new/Claude local files"
+cp "$HOME/Library/Application Support/Vivaldi/Default/Bookmarks" "$tmp/new/Vivaldi bookmarks/"
+shopt -s nullglob
+for dir in "$HOME"/.claude/projects/*/memory; do
+  ditto "$dir" "$tmp/new/Claude memory/${dir#"$HOME/.claude/projects/"}"
+done
+for file in "$HOME"/Projects/*/CLAUDE.local.md; do
+  ditto "$file" "$tmp/new/Claude local files/${file#"$HOME/Projects/"}"
+done
+find "$tmp/new" -name .DS_Store -delete
 
-# Claude Code memory of every project and CLAUDE.local.md files, which no repo tracks. A dated zip
-# goes to iCloud Drive when they change, not to the repo, which is public. Paths in it are relative
-# to the home folder, so to restore one, unzip it there
-claude_backups="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Claude memory"
-claude_zip="$(mktemp -d)/Claude-memory.zip"
-mkdir -p "$claude_backups"
-(
-  cd "$HOME" || exit
-  shopt -s nullglob
-  zip -q -r -X -D "$claude_zip" .claude/projects/*/memory Projects/*/CLAUDE.local.md -x '*.DS_Store'
-) || failed+=("zip of Claude memory") # the ERR trap misses failures in a subshell
-backups=("$claude_backups"/Claude-memory-*.zip)
-if [[ -f $claude_zip ]] && ! cmp -s "$claude_zip" "${backups[${#backups[@]} - 1]}"; then
-  mv "$claude_zip" "$claude_backups/Claude-memory-$(date +%Y-%m-%d-%H%M%S).zip"
+# Compared with the newest backup unzipped, as zips of the same files differ when the file dates do.
+# One that can't be read counts as changed. Nothing is saved when a copy above failed, so that
+# incomplete backups can't push the complete ones out
+zips=("$backups"/Backup-*.zip)
+if [[ ${#zips[@]} -gt 0 ]]; then
+  unzip -q "${zips[${#zips[@]} - 1]}" -d "$tmp/latest" || true
 fi
-rm -rf "$(dirname "$claude_zip")"
+if [[ ${#failed[@]} -eq $copy_failures ]] && ! diff -rq "$tmp/new" "$tmp/latest" >/dev/null; then
+  (cd "$tmp/new" && zip -q -r -X "$backups/Backup-$(date +%Y-%m-%d-%H%M%S).zip" .) ||
+    failed+=("zip of the backup") # the ERR trap misses failures in a subshell
+fi
+zips=("$backups"/Backup-*.zip)
+for ((i = 0; i < ${#zips[@]} - 20; i++)); do
+  rm -f "${zips[i]}"
+done
+rm -rf "$tmp"
 
 # push, again a minute later if it fails, as a scheduled run that starts on wake from sleep can get
 # here before the network is back
