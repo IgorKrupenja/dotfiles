@@ -100,6 +100,8 @@ cask "marta"
 cask "nordvpn"
 # Calendar for professionals and teams
 cask "notion-calendar"
+# Cloud gaming platform
+cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
