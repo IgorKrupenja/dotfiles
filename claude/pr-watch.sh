@@ -3,8 +3,9 @@
 # Usage: pr-watch.sh <owner/repo> <number> [since]
 # Polls a pull request's reviews and state (never its CI) every 60 seconds and exits on the first
 # event the Claude app's Auto-fix does not report: an approval newer than `since` from someone other
-# than the author, a merge, a close, a drop from the merge queue, or, with auto-merge off, the PR
-# turning ready to merge. Run it as a background task and re-arm it with the event's time as `since`.
+# than the author, a merge, a close, a drop from the merge queue, or, with auto-merge off, a head
+# commit that was not ready at start turning ready to merge (a merge state flicker on the same head
+# never counts). Run it as a background task and re-arm it with the event's time as `since`.
 
 set -u
 
@@ -13,12 +14,13 @@ number="$2"
 since="${3:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
 owner="${repo%/*}"
 name="${repo#*/}"
-query='query($o:String!,$n:String!,$p:Int!){repository(owner:$o,name:$n){pullRequest(number:$p){state mergedAt closedAt reviewDecision mergeStateStatus autoMergeRequest{enabledAt} author{login} mergeQueueEntry{state} reviews(last:50,states:[APPROVED]){nodes{author{login} submittedAt}}}}}'
+query='query($o:String!,$n:String!,$p:Int!){repository(owner:$o,name:$n){pullRequest(number:$p){state mergedAt closedAt headRefOid reviewDecision mergeStateStatus autoMergeRequest{enabledAt} author{login} mergeQueueEntry{state} reviews(last:50,states:[APPROVED]){nodes{author{login} submittedAt}}}}}'
 
 failures=0
 in_queue=false
 left_queue_polls=0
-was_ready=""
+first_poll=true
+ready_head=""
 
 while true; do
   if ! json=$(gh api graphql -f query="$query" -F o="$owner" -F n="$name" -F p="$number" 2>&1); then
@@ -75,11 +77,15 @@ while true; do
   fi
 
   ready=$(jq -r '.reviewDecision == "APPROVED" and .mergeStateStatus == "CLEAN" and .autoMergeRequest == null' <<<"$pr")
-  if [[ "$ready" == true && "$was_ready" == false ]]; then
-    echo "PR #$number READY to merge: approved, checks green, auto-merge off"
-    exit 0
+  head=$(jq -r '.headRefOid' <<<"$pr")
+  if [[ "$ready" == true ]]; then
+    if [[ "$first_poll" == false && "$head" != "$ready_head" ]]; then
+      echo "PR #$number READY to merge at ${head:0:9}: approved, checks green, auto-merge off"
+      exit 0
+    fi
+    ready_head="$head"
   fi
-  was_ready="$ready"
+  first_poll=false
 
   sleep 60
 done
