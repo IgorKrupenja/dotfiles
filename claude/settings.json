@@ -69,7 +69,7 @@
     "figma@claude-plugins-official": false,
     "autofix-relay@autofix-relay": true,
     "session-banners@igor-plugins": true,
-    "linear-link@igor-plugins": true
+    "status-bar@igor-plugins": true
   },
   "extraKnownMarketplaces": {
     "autofix-relay": {
@@ -87,7 +87,7 @@
   },
   "outputStyle": "Concise",
   "pluginConfigs": {
-    "linear-link@igor-plugins": {
+    "status-bar@igor-plugins": {
       "options": {
         "workspace": "liqdcom",
         "stages": "main=dev, qa=qa, prod=prod",
