@@ -203,8 +203,9 @@ install_from_npm() {
   echo -e "🚀 $(purple Installing node global npm packages)"
   echo ""
 
-  # nvm comes from the zsh-nvm plugin, which only loads in zsh and installs nvm on first load
-  zsh -c 'source "$HOME/.zshrc"; nvm install node && nvm install --lts'
+  # nvm comes from the zsh-nvm plugin, which only loads in zsh and installs nvm on first load.
+  # nvm/default-packages gives every node it installs a global pnpm: node 25 and later ship no corepack
+  DOTFILES="$DOTFILES" zsh -c 'source "$HOME/.zshrc"; ln -sfv "$DOTFILES/nvm/default-packages" "$NVM_DIR/default-packages" && nvm install node && nvm install --lts'
 
   while IFS= read -r package || [[ -n "$package" ]]; do
     bun install -g "$package"
