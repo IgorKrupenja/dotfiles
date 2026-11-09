@@ -90,7 +90,9 @@
     "linear-link@igor-plugins": {
       "options": {
         "workspace": "liqdcom",
-        "stages": "main=dev, qa=qa, prod=prod"
+        "stages": "main=dev, qa=qa, prod=prod",
+        "previewWorkflow": "pr-preview.yml",
+        "previewLinks": "Preview=https://pr-{number}.preview.dev.liqd.com, Admin=https://pr-{number}.admin.preview.dev.liqd.com"
       }
     }
   },
