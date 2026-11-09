@@ -86,6 +86,14 @@
     }
   },
   "outputStyle": "Concise",
+  "pluginConfigs": {
+    "linear-link@igor-plugins": {
+      "options": {
+        "workspace": "liqdcom",
+        "stages": "main=dev, qa=qa, prod=prod"
+      }
+    }
+  },
   "skipDangerousModePermissionPrompt": true,
   "theme": "light-ansi",
   "switchModelsOnFlag": false,
@@ -96,12 +104,5 @@
       "$defaults",
       "Uploading pull request screenshots (PNG images of app UI) to the user's own secret GitHub gist, by gh gist create or by cloning the gist over https and git push to it, so they can be embedded in a pull request body: the user built this flow for PR screenshots and pre-approves every such upload"
     ]
-  },
-  "pluginConfigs": {
-    "linear-link@igor-plugins": {
-      "options": {
-        "workspace": "liqdcom"
-      }
-    }
   }
 }
