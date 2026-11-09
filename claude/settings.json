@@ -98,7 +98,8 @@
     },
     "worktree-warmup@igor-plugins": {
       "options": {
-        "command": "pnpm install --frozen-lockfile && pnpm run media:manifest"
+        "command": "pnpm install --frozen-lockfile && pnpm run media:manifest",
+        "requires": "packages/shared/src/mediaRegistry.generated.ts"
       }
     }
   },
