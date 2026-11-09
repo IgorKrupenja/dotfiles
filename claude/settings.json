@@ -69,7 +69,8 @@
     "figma@claude-plugins-official": false,
     "autofix-relay@autofix-relay": true,
     "session-banners@igor-plugins": true,
-    "status-bar@igor-plugins": true
+    "status-bar@igor-plugins": true,
+    "worktree-warmup@igor-plugins": true
   },
   "extraKnownMarketplaces": {
     "autofix-relay": {
@@ -93,6 +94,11 @@
         "stages": "main=dev, qa=qa, prod=prod",
         "previewWorkflow": "pr-preview.yml",
         "previewLinks": "Preview=https://pr-{number}.preview.dev.liqd.com, Admin=https://pr-{number}.admin.preview.dev.liqd.com"
+      }
+    },
+    "worktree-warmup@igor-plugins": {
+      "options": {
+        "command": "pnpm install --frozen-lockfile && pnpm run media:manifest"
       }
     }
   },
