@@ -168,7 +168,27 @@ sf() {
 # Homebrew
 # ---------------------------------------------------------------------------
 alias bif="brew info"
-alias bi="brew install"
+# Keep new app casks private to the current account by default. Set
+# HOMEBREW_CASK_OPTS="--appdir=/Applications" or pass --appdir=/Applications
+# when an app should be shared with other accounts.
+_brew_with_default_appdir() {
+  local cask_opts="${HOMEBREW_CASK_OPTS:-}"
+  local arg
+
+  for arg in "$@"; do
+    if [[ "$arg" == "--appdir" || "$arg" == --appdir=* ]]; then
+      command brew "$@"
+      return $?
+    fi
+  done
+
+  if [[ "$cask_opts" != *"--appdir"* ]]; then
+    cask_opts="${cask_opts:+${cask_opts} }--appdir=${HOME}/Applications"
+  fi
+
+  HOMEBREW_CASK_OPTS="$cask_opts" command brew "$@"
+}
+bi() { _brew_with_default_appdir install "$@"; }
 bl() {
   echo -e "\n$(underline Formulas:)\n"
   brew list --formula
@@ -197,7 +217,7 @@ bu() {
   fi
 }
 alias bd="brew autoremove && brew cleanup -s && brew doctor && brew tap --repair"
-alias bri="brew reinstall"
+bri() { _brew_with_default_appdir reinstall "$@"; }
 
 # System info
 # ---------------------------------------------------------------------------
