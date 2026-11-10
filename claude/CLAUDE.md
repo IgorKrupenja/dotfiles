@@ -49,9 +49,9 @@ committing and pushing.
 
 In every repo, never open an extra pull request or cut a branch from another PR's branch (stacking) without asking Igor first. Work that grows out of an open PR goes into that PR, with its ticket id added to the title, unless he says otherwise. When a separate PR or a stacked branch looks better, ask before creating the branch. He calls this very important.
 
-## Google Sheets and Drive
+## Google Sheets, Drive and Gmail
 
-For Google Sheets and Drive, use the `gws` CLI through Bash, signed in as igor@liqd.com with Drive and Sheets access: `gws sheets +read`, `gws sheets +append`, `gws sheets spreadsheets ...` and `gws drive files list`. Pass `--params` and `--json` in single quotes (ranges carry `!`), and look up a method's parameters with `gws schema sheets.spreadsheets.values.get`. To sign in again, run `gws auth login -s sheets,drive`. Keep `project_id` empty in `~/.config/gws/client_secret.json`: with it set, Google refuses every call because the account has no role on that project.
+For Google Sheets, Drive and Gmail, use the `gws` CLI through Bash, signed in as igor@liqd.com with Drive, Sheets and read-only Gmail access: `gws sheets +read`, `gws sheets +append`, `gws sheets spreadsheets ...`, `gws drive files list` and `gws gmail users messages list` (Gmail search syntax in `q`). Pass `--params` and `--json` in single quotes (ranges carry `!`), and look up a method's parameters with `gws schema sheets.spreadsheets.values.get`. To sign in again, run `gws auth login --scopes 'openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/userinfo.profile,https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/spreadsheets,https://www.googleapis.com/auth/gmail.readonly'` as a background task: it prints the consent URL without opening it, so `open` that URL for Igor. After a sign-in that adds scopes, move `~/.config/gws/token_cache.json` aside, or calls keep the old access token and fail with `insufficient authentication scopes`. Keep `project_id` empty in `~/.config/gws/client_secret.json`: with it set, Google refuses every call because the account has no role on that project.
 
 ## Browser automation
 
