@@ -74,6 +74,8 @@ cask "1password"
 cask "bettertouchtool"
 # Web browser focusing on privacy
 cask "brave-browser"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
