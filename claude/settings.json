@@ -93,8 +93,7 @@
         "workspace": "liqdcom",
         "stages": "main=dev, qa=qa, prod=prod",
         "previewWorkflow": "pr-preview.yml",
-        "previewLinks": "Preview=https://pr-{number}.preview.dev.liqd.com, Admin=https://pr-{number}.admin.preview.dev.liqd.com",
-        "watchPullRequests": true
+        "previewLinks": "Preview=https://pr-{number}.preview.dev.liqd.com, Admin=https://pr-{number}.admin.preview.dev.liqd.com"
       }
     },
     "worktree-warmup@igor-plugins": {
