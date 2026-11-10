@@ -70,7 +70,8 @@
     "autofix-relay@autofix-relay": true,
     "session-banners@igor-plugins": true,
     "status-bar@igor-plugins": true,
-    "worktree-warmup@igor-plugins": true
+    "worktree-warmup@igor-plugins": true,
+    "pr-watch@igor-plugins": true
   },
   "extraKnownMarketplaces": {
     "autofix-relay": {
@@ -93,14 +94,18 @@
         "workspace": "liqdcom",
         "stages": "main=dev, qa=qa, prod=prod",
         "previewWorkflow": "pr-preview.yml",
-        "previewLinks": "Preview=https://pr-{number}.preview.dev.liqd.com, Admin=https://pr-{number}.admin.preview.dev.liqd.com",
-        "watchPullRequests": true
+        "previewLinks": "Preview=https://pr-{number}.preview.dev.liqd.com, Admin=https://pr-{number}.admin.preview.dev.liqd.com"
       }
     },
     "worktree-warmup@igor-plugins": {
       "options": {
         "command": "pnpm install --frozen-lockfile && pnpm run media:manifest",
         "requires": "packages/shared/src/mediaRegistry.generated.ts"
+      }
+    },
+    "pr-watch@igor-plugins": {
+      "options": {
+        "stages": "main=dev, qa=qa, prod=prod"
       }
     }
   },
