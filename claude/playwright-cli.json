@@ -1,1 +1,8 @@
-{ "browser": { "launchOptions": { "args": ["--mute-audio"] } } }
+{
+  "browser": {
+    "launchOptions": {
+      "args": ["--mute-audio"],
+      "executablePath": "/Users/igor/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    }
+  }
+}
