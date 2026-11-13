@@ -63,6 +63,10 @@ Use one persistent `playwright-cli` browser per project, so logins carry over be
 
 `playwright-cli` saves snapshots and screenshots into `.playwright-cli/` in the current folder (the global gitignore excludes it). A bare `--filename` writes to the current folder instead, so either omit it or keep the path inside that folder: `--filename=.playwright-cli/after-fix.png`, not `--filename=after-fix.png`.
 
+## Mac apps and System Settings
+
+For anything in a Mac app or System Settings, act through AppleScript and `open` before handing Igor click steps: `open "x-apple.systempreferences:<pane id>"` opens a settings pane, `osascript -e 'tell application "<App>" to ...'` drives a scriptable app, and System Events UI scripting reaches the rest once the Claude app has the Accessibility permission. The Claude app's computer use isn't available on his LIQD account, so this is the way. Give numbered click steps only for what scripting can't reach, after checking the pane or control exists in the current macOS version. A command that needs root runs through `osascript -e 'do shell script "<cmd>" with administrator privileges'`, which asks for the password in a macOS dialog, never `sudo` in a terminal tab.
+
 ## Playwright MCP output files
 
 Whenever a Playwright MCP tool takes a `filename` parameter, always prefix it with `.playwright-mcp/` (the server's default output folder) so files don't end up in repo roots. Example: `.playwright-mcp/my-shot.jpeg`, not `my-shot.jpeg`.
