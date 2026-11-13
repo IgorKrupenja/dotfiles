@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Runs scripts/docker-cleanup.sh daily at 04:00, or on wake if the Mac was asleep then, so it
+     usually runs before any stack is up. The script cleans Docker only every 14 days. Installed by
+     install/install.sh. To clean right away: zsh ~/Projects/dotfiles/scripts/docker-cleanup.sh --now
+
+     The script is passed to /bin/zsh rather than run directly: macOS repeats its "can run in the
+     background" notification whenever an agent's unsigned program changes. Apple-signed zsh
+     doesn't trigger it. -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.igorkrupenja.dotfiles.docker-cleanup</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>/Users/igor/Projects/dotfiles/scripts/docker-cleanup.sh</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>4</integer>
+		<key>Minute</key>
+		<integer>0</integer>
+	</dict>
+	<key>StandardOutPath</key>
+	<string>/Users/igor/Library/Logs/docker-cleanup.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/igor/Library/Logs/docker-cleanup.log</string>
+</dict>
+</plist>
