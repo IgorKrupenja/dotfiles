@@ -84,6 +84,8 @@ cask "claude-code"
 cask "cloudflare-warp"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
+# Block websites, games and applications
+cask "cold-turkey-blocker"
 # Allows switching between application windows
 cask "contexts"
 # Voice and text chat software
