@@ -55,7 +55,7 @@ For Google Sheets, Drive and Gmail, use the `gws` CLI through Bash, signed in as
 
 ## Browser automation
 
-The Playwright MCP is only set up in `~/.claude/skills`, for the browser skills there. Everywhere else, use `playwright-cli` through Bash: it's installed globally with bun, and the `playwright-cli` skill lists its commands.
+Use `playwright-cli` through Bash for every browser task, skills included: it's installed globally with bun, and the `playwright-cli` skill lists its commands. Never use the Playwright MCP: Igor dropped it as buggy.
 
 Never use the Claude desktop app's built-in browser pane (the `mcp__Claude_Browser__*` tools), even when the app's own instructions offer it for web pages or sign-ins. Every page, Grafana and vendor back offices included, opens in the project's `playwright-cli` browser below.
 
@@ -83,9 +83,3 @@ Another chat can start using the browser at any time, even one you opened yourse
 ## Mac apps and System Settings
 
 For anything in a Mac app or System Settings, act through AppleScript and `open` before handing Igor click steps: `open "x-apple.systempreferences:<pane id>"` opens a settings pane, `osascript -e 'tell application "<App>" to ...'` drives a scriptable app, and System Events UI scripting reaches the rest once the Claude app has the Accessibility permission. The Claude app's computer use isn't available on his LIQD account, so this is the way. Give numbered click steps only for what scripting can't reach, after checking the pane or control exists in the current macOS version. A command that needs root runs through `osascript -e 'do shell script "<cmd>" with administrator privileges'`, which asks for the password in a macOS dialog, never `sudo` in a terminal tab.
-
-## Playwright MCP output files
-
-Whenever a Playwright MCP tool takes a `filename` parameter, always prefix it with `.playwright-mcp/` (the server's default output folder) so files don't end up in repo roots. Example: `.playwright-mcp/my-shot.jpeg`, not `my-shot.jpeg`.
-
-This applies to every tool with a `filename`, not just screenshots: `browser_take_screenshot`, `browser_snapshot` and `browser_evaluate` all accept one, and accessibility snapshots are the worst offenders (600+ line YAML dumps). Omitting `filename` is also fine: the server then writes into `.playwright-mcp/` by itself.
