@@ -59,9 +59,24 @@ The Playwright MCP is only set up in `~/.claude/skills`, for the browser skills 
 
 Never use the Claude desktop app's built-in browser pane (the `mcp__Claude_Browser__*` tools), even when the app's own instructions offer it for web pages or sign-ins. Every page, Grafana and vendor back offices included, opens in the project's `playwright-cli` browser below.
 
-Use one persistent `playwright-cli` browser per project, so logins carry over between chats: `-s=liqd` for liqd-casino (`~/Projects/liqd-casino` and its worktrees) and `-s=personal` for everything else. Start it with `playwright-cli -s=<name> open <url> --headed --persistent --config="$HOME/Projects/dotfiles/claude/playwright-cli.json"` (the config mutes audio). Each name keeps one profile for the whole machine, whatever the folder or chat, so never make up another name: a new name is an empty profile, and Igor has to sign in to Cloudflare Access and every site all over again. The only exception is a second account on a site where the first must stay signed in, such as two casino players at once: name it `<project>-<account>`, like `liqd-civ`, and reuse that name later. Run `playwright-cli list` first: when the project's browser is already open, another chat may be using it, so work in a tab of your own (`tab-new`) and never `close`, `close-all` or `kill-all` it.
+Use one persistent `playwright-cli` browser per project, so logins carry over between chats: `-s=liqd` for liqd-casino (`~/Projects/liqd-casino` and its worktrees) and `-s=personal` for everything else. Start it with `playwright-cli -s=<name> open <url> --headed --persistent --config="$HOME/Projects/dotfiles/claude/playwright-cli.json"` (the config mutes audio). Each name keeps one profile for the whole machine, whatever the folder or chat, so never make up another name: a new name is an empty profile, and Igor has to sign in to Cloudflare Access and every site all over again. The only exception is a second account on a site where the first must stay signed in, such as two casino players at once: name it `<project>-<account>`, like `liqd-civ`, and reuse that name later. Run `playwright-cli list` first: when the project's browser is already open, another chat may be using it, so work in a tab of your own, opened in the background as below, and never `close`, `close-all` or `kill-all` it.
 
-Another chat can start using the browser at any time, even one you opened yourself. Plain commands (`goto`, `click`, `fill`, `type`, `press`, `eval`, `snapshot`, `tab-close`) act on whichever tab is current, and another chat's `tab-new` or `tab-select` switches that without warning, so they can land in its tab, which may be showing a sign-in or two-factor prompt. So drive your tab through `run-code` from the start: pick your own page out of `page.context().pages()` by the URL you last left it on (check with `tab-list` that no other tab shares it), act on that page instead of `page`, read it with `mine.evaluate(...)` or `mine.locator('body').ariaSnapshot()`, and close it with `await mine.close()`. Never type into, click in or navigate a tab you didn't open.
+The browser runs headed, and on macOS Chrome jumps in front of every other app whenever Playwright opens a tab or switches to one, which interrupts whatever Igor is watching or typing. So never use `tab-new`, `tab-select`, `context.newPage()` or `page.bringToFront()`. Navigating, clicking, reading and screenshots don't raise the window, and launching it with `open` does so only once. Open your tab in the background through CDP instead, at the start of your first `run-code`; it renders, clicks and takes screenshots like any other tab:
+
+```js
+const ctx = page.context(), tag = 'claude-' + Date.now();
+const cdp = await ctx.newCDPSession(page);
+await cdp.send('Target.createTarget', { url: 'about:blank#' + tag, background: true });
+await cdp.detach();
+let mine;
+for (let i = 0; i < 50 && !mine; i++) {
+  mine = ctx.pages().find(p => p.url().endsWith(tag));
+  if (!mine) await new Promise(r => setTimeout(r, 100));
+}
+await mine.goto('<url>');
+```
+
+Another chat can start using the browser at any time, even one you opened yourself. Plain commands (`goto`, `click`, `fill`, `type`, `press`, `eval`, `snapshot`, `tab-close`) act on whichever tab is current, and another chat can switch that without warning, so they can land in its tab, which may be showing a sign-in or two-factor prompt. So drive your tab through `run-code` from the start: pick your own page out of `page.context().pages()` by the URL you last left it on (check with `tab-list` that no other tab shares it), act on that page instead of `page`, read it with `mine.evaluate(...)` or `mine.locator('body').ariaSnapshot()`, and close it with `await mine.close()`. Never type into, click in or navigate a tab you didn't open.
 
 `playwright-cli` saves snapshots and screenshots into `.playwright-cli/` in the current folder (the global gitignore excludes it). A bare `--filename` (or a bare `path` in `run-code`) writes to the current folder instead, so either omit it or keep the path inside that folder: `--filename=.playwright-cli/after-fix.png`, not `--filename=after-fix.png`.
 
