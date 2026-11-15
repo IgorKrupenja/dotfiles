@@ -148,8 +148,13 @@ configure_dotfiles() {
   mkdir -p "$HOME/.claude"
   backup "$HOME/.claude/CLAUDE.md"
   ln -sv "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+  # The fun macOS account has its own Claude settings, the shared ones are set up for work
+  local claude_settings="settings.json"
+  if [ "$(whoami)" = "fun" ]; then
+    claude_settings="settings-fun.json"
+  fi
   backup "$HOME/.claude/settings.json"
-  ln -sv "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
+  ln -sv "$DOTFILES/claude/$claude_settings" "$HOME/.claude/settings.json"
 }
 
 # Private data from the newest backup that scripts/backup.sh saved to iCloud Drive. What is already

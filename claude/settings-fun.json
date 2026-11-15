@@ -1,0 +1,36 @@
+{
+  "env": {
+    "CLAUDE_CODE_EFFORT_LEVEL": "max"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Read(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch",
+      "mcp__playwright",
+      "mcp__playwright-headless"
+    ],
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "/Users/fun/.claude",
+      "/Users/fun/Projects/ai-skills",
+      "/Users/fun/Projects/tallinn-dev"
+    ]
+  },
+  "model": "opus[1m]",
+  "outputStyle": "Concise",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light-ansi",
+  "switchModelsOnFlag": false,
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true
+}
