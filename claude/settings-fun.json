@@ -16,8 +16,7 @@
       "Grep(*)",
       "WebFetch(*)",
       "WebSearch",
-      "mcp__playwright",
-      "mcp__playwright-headless"
+      "mcp__playwright"
     ],
     "defaultMode": "bypassPermissions",
     "additionalDirectories": [
