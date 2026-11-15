@@ -321,6 +321,8 @@ set_macos_settings() {
   # Globe key switches the input source (Keyboard > Press 🌐 key to). For emoji use Ctrl+Cmd+Space:
   # Globe+E opens them too, but on the Russian layout it also types the letter on that key
   defaults write com.apple.HIToolbox AppleFnUsageType -int 1
+  # Disable the delayed inline input-source indicator and use the legacy switcher HUD
+  defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled -int 0
 
   # Disable system sound on ctrl+cmd+arrow
   mkdir -p "$HOME/Library/KeyBindings"
