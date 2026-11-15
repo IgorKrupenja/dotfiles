@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!-- Runs scripts/update.sh daily at 12:30, half an hour before the backup so the two don't run at once,
-     or on wake if the Mac was asleep then. Installed by install/install.sh. To run it now:
+     or on wake if the Mac was asleep then. Not loaded by install/install.sh, as daily runs caused
+     issues: scripts/update.sh is run by hand. To run it through the agent once it's loaded:
      launchctl kickstart gui/$(id -u)/com.igorkrupenja.dotfiles.update
 
      The script is passed to /bin/zsh rather than run directly: macOS repeats its "can run in the

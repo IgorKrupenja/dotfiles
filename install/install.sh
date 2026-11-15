@@ -276,11 +276,16 @@ set_macos_settings() {
   echo -e "🚀 $(purple Restoring macOS settings)"
   echo ""
 
-  # Daily runs of scripts/update.sh and scripts/backup.sh. Copied rather than symlinked, the way brew
-  # services installs its agents. bootout first, as bootstrap fails for an agent that is already loaded
+  # Scheduled runs of scripts/backup.sh and scripts/docker-cleanup.sh. Copied rather than symlinked,
+  # the way brew services installs its agents. bootout first, as bootstrap fails for an agent that is
+  # already loaded. The update agent is skipped: daily runs caused issues, so scripts/update.sh is run
+  # by hand
   local plist agent
   mkdir -p "$HOME/Library/LaunchAgents"
   for plist in "$DOTFILES"/launchd/*.plist; do
+    if [ "${plist##*/}" = "com.igorkrupenja.dotfiles.update.plist" ]; then
+      continue
+    fi
     agent="$HOME/Library/LaunchAgents/${plist##*/}"
     cp -f "$plist" "$agent"
     launchctl bootout "gui/$(id -u)" "$agent" 2>/dev/null || true
