@@ -1,0 +1,32 @@
+# Lint rules for any Bun project. Copy [lint.rules] into the project's bunfig.toml: `bun lint`
+# then flags the Node.js APIs and npm packages that Bun has its own replacement for, and names it.
+# Node APIs that Bun has nothing for (appendFile, chmod, mkdir, rm, parseArgs and so on) stay allowed.
+
+[lint.rules]
+"bun/prefer-builtin-sleep" = "error"
+"no-restricted-imports" = ["error", {
+  patterns = [
+    { regex = "^(node:)?fs(/promises)?$", importNames = ["default", "existsSync", "readFileSync", "writeFileSync", "copyFileSync", "unlinkSync", "readdirSync", "statSync", "access", "readFile", "writeFile", "copyFile", "unlink", "readdir", "stat"], message = "Use Bun.file(path) with .text(), .json(), .bytes(), .exists(), .stat() or .delete(), Bun.write(path, data), which creates missing folders, Bun.write(to, Bun.file(from)) to copy, and new Bun.Glob(pattern).scan(dir) to list a folder. Import what Bun lacks (appendFile, chmod, mkdir, rm) by name. Bun.file(folder).exists() is always false, so existsSync(folder) is fine with a disable comment." },
+    { regex = "^(node:)?path$", message = "Use import.meta.dir, import.meta.path or import.meta.file and template strings." },
+    { regex = "^(node:)?url$", importNames = ["fileURLToPath"], message = "Use import.meta.path, or import.meta.dir for the folder." },
+    { regex = "^(node:)?child_process$", message = "Use Bun.$`cmd`, Bun.spawn() or Bun.spawnSync()." },
+    { regex = "^(node:)?crypto$", importNames = ["createHash"], message = "Use new Bun.CryptoHasher(algorithm), or Bun.hash() for a non-cryptographic hash." },
+    { regex = "^(node:)?timers/promises$", message = "Use Bun.sleep(ms)." },
+    { regex = "^(node:)?readline(/promises)?$", message = "Use for await (const line of console), await Bun.stdin.text() or prompt()." },
+  ],
+  paths = [
+    { name = "dotenv", message = "Bun loads .env on its own; read Bun.env." },
+    { name = "execa", message = "Use Bun.$`cmd` or Bun.spawn()." },
+    { name = "glob", message = "Use new Bun.Glob(pattern).scan(dir)." },
+    { name = "fast-glob", message = "Use new Bun.Glob(pattern).scan(dir)." },
+    { name = "node-fetch", message = "fetch() is built in." },
+    { name = "ws", message = "WebSocket is built in, and Bun.serve() runs WebSocket servers." },
+    { name = "express", message = "Use Bun.serve() with routes." },
+    { name = "better-sqlite3", message = "Use bun:sqlite." },
+    { name = "pg", message = "Use Bun.sql." },
+    { name = "postgres", message = "Use Bun.sql." },
+    { name = "ioredis", message = "Use Bun.redis." },
+    { name = "uuid", message = "Use crypto.randomUUID() or Bun.randomUUIDv7()." },
+    { name = "which", message = "Use Bun.which()." },
+  ],
+}]
