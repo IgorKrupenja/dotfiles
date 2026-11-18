@@ -167,26 +167,26 @@ prune_backups() {
   done
 }
 
-# Pulls first, as Claude sessions and the other account push to main too. Each tries again a minute
-# later if it fails, as a scheduled run that starts on wake from sleep can get here before the
-# network is back
+# Pulls first, as Claude sessions and the other account push to main too. Tries again a minute later
+# if that fails, as a scheduled run that starts on wake from sleep can get here before the network
+# is back, and the other account's backup can push between this one's pull and push
 push() {
   echo ""
   echo "Pushing to dotfiles repo:"
   echo "-------------------------"
-  if pull || { sleep 60; pull; }; then
-    git push --no-verify || { sleep 60; git push --no-verify; }
-  else
+  if ! { pull_and_push || { sleep 60; pull_and_push; }; }; then
     record_failure # the ERR trap skips commands in an if condition
   fi
 }
 
-# Rebases on main, undone when it stops on a conflict so the repo isn't left halfway through a
-# rebase. --autostash, as iTerm writes its settings right into the repo at any time
-pull() {
-  git pull --rebase --autostash && return
-  git rebase --abort 2>/dev/null || true
-  return 1
+# A rebase that stops on a conflict is undone, so the repo isn't left halfway through one.
+# --autostash, as iTerm writes its settings right into the repo at any time
+pull_and_push() {
+  if ! git pull --rebase --autostash; then
+    git rebase --abort 2>/dev/null || true
+    return 1
+  fi
+  git push --no-verify
 }
 
 # Commits path $1 with message $2 if anything in it changed, new files included. Only that path, so
