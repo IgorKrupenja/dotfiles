@@ -2,10 +2,10 @@
 # shellcheck shell=bash
 
 # Cleans Docker in OrbStack every 14 days, as liqd-casino worktree stacks grew it to 487 GB in five
-# weeks. Removes the stacks of worktrees that are gone (containers, volumes, networks), then images,
-# stopped containers and build cache unused for a week, and the anonymous volumes and networks
-# nothing uses. Stacks of worktrees that still exist keep their volumes, and so does the shared
-# liqd-shared stack.
+# weeks. Removes the liqd-casino stacks of worktrees that are gone (containers, volumes, networks),
+# then images, stopped containers and build cache unused for a week, and the anonymous volumes and
+# networks nothing uses. Stacks of worktrees that still exist keep their volumes, and so do the
+# shared liqd-shared stack and every other repo's stacks.
 #
 # launchd starts it daily (launchd/com.igorkrupenja.dotfiles.docker-cleanup.plist) and it does
 # nothing until 14 days have passed since the last cleanup. A due run that finds a container, a
@@ -20,6 +20,7 @@ export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
 REPO=$HOME/Projects/liqd-casino
 SHARED_PROJECT=liqd-shared
 STAMP=$HOME/.local/state/dotfiles/docker-cleanup
+KNOWN=$HOME/.local/state/dotfiles/docker-cleanup-projects
 INTERVAL_DAYS=14
 UNUSED_FOR=168h
 LABEL=com.docker.compose.project
@@ -57,18 +58,51 @@ worktree_projects() {
   done
 }
 
-# Compose projects with containers or volumes whose worktree is gone. Prints nothing when the
-# worktrees can't be listed, so a missing checkout never takes every stack's data with it
+# Compose project names that still have containers or volumes
+project_labels() {
+  docker ps -a --format "{{.Label \"$LABEL\"}}"
+  docker volume ls --format "{{.Label \"$LABEL\"}}"
+}
+
+# Compose projects with a container that compose started in the liqd-casino checkout or a worktree
+# inside it (.claude/worktrees). Volumes don't record where they came from, so this misses a stack
+# whose containers are gone
+repo_projects() {
+  local project dir
+  docker ps -a --format "{{.Label \"$LABEL\"}} {{.Label \"$LABEL.working_dir\"}}" | while read -r project dir; do
+    if [[ -n $project && ($dir == "$REPO" || $dir == "$REPO"/*) ]]; then
+      echo "$project"
+    fi
+  done
+}
+
+# Adds the project names on stdin to the ones known to be liqd-casino stacks. Only a known project
+# is ever removed, as another repo's stack has no worktree here and would look orphaned otherwise
+remember() {
+  local known
+  known=$({ cat; cat "$KNOWN" 2>/dev/null; } | sed '/^$/d' | sort -u)
+  [[ -z $known ]] || printf '%s\n' "$known" >"$KNOWN"
+}
+
+# Forgets the known projects that have no worktree and nothing left in Docker
+forget_gone() {
+  local present
+  [[ -f $KNOWN ]] || return 0
+  present=$({ worktree_projects; project_labels; } | sed '/^$/d' | sort -u)
+  grep -xF "$present" "$KNOWN" >"$KNOWN.new"
+  mv "$KNOWN.new" "$KNOWN"
+}
+
+# Known liqd-casino stacks with containers or volumes whose worktree is gone. Prints nothing when
+# the worktrees can't be listed, so a missing checkout never takes every stack's data with it
 orphan_projects() {
   local keep project
   keep=$(worktree_projects)
   [[ -n $keep ]] || return 0
+  { printf '%s\n' "$keep"; repo_projects; } | remember
   keep=$(printf '%s\n%s' "$keep" "$SHARED_PROJECT")
-  {
-    docker ps -a --format "{{.Label \"$LABEL\"}}"
-    docker volume ls --format "{{.Label \"$LABEL\"}}"
-  } | sort -u | while read -r project; do
-    if [[ -n $project ]] && ! grep -qxF "$project" <<<"$keep"; then
+  project_labels | sort -u | while read -r project; do
+    if [[ -n $project ]] && grep -qxF "$project" "$KNOWN" && ! grep -qxF "$project" <<<"$keep"; then
       echo "$project"
     fi
   done
@@ -99,6 +133,7 @@ cleanup() {
   docker system df
 
   if [[ ${#failed[@]} -eq 0 ]]; then
+    forget_gone
     date +%s >"$STAMP"
     log "Cleanup complete"
     notify "Cleanup complete" Ping
@@ -113,7 +148,7 @@ dry_run() {
   local reason
   reason=$(busy_reason)
   [[ -z $reason ]] || echo "A scheduled run would skip now: $reason"
-  echo "Stacks whose worktree is gone, removed with their volumes:"
+  echo "Stacks of liqd-casino worktrees that are gone, removed with their volumes:"
   orphan_projects | sed 's/^/  /'
   echo "Also pruned: images, stopped containers and build cache unused for $UNUSED_FOR, unused anonymous volumes and networks"
   docker system df
@@ -124,6 +159,8 @@ main() {
   [[ $1 == --now ]] && mode=now
   [[ $1 == --dry-run ]] && mode=dry
   mkdir -p "$(dirname "$STAMP")"
+  # Every day, so that a worktree's stack is still known by its volumes once its containers are gone
+  worktree_projects | remember
   if [[ ! -f $STAMP ]]; then
     date +%s >"$STAMP"
     if [[ $mode == due ]]; then
