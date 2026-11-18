@@ -80,13 +80,22 @@ backup_marta() {
 }
 
 # Exported, as macOS replaces symlinked preference files with regular ones. Recent files and folders
-# are left out, the repo is public
+# are left out, the repo is public, and so are values that change just from using IINA (the last
+# played file, update checks, window positions), so that only a changed setting makes a commit. Saved
+# as XML, as binary exports differ every time even when nothing changed
 backup_iina() {
-  local key
-  defaults export com.colliderli.iina iina/com.colliderli.iina.plist
-  for key in recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory iinaLastPlayedFilePath; do
-    plutil -remove "$key" iina/com.colliderli.iina.plist 2>/dev/null || true
+  local file=iina/com.colliderli.iina.plist key
+  local keys=(recentDocuments NSOSPLastRootDirectory NSNavLastRootDirectory iinaLastPlayedFilePath
+    iinaLastPlayedFilePosition SULastCheckTime SUUpdateRelaunchingMarker MainWindowLastPosition)
+  defaults export com.colliderli.iina "$file"
+  # One for each window, named after it
+  while IFS= read -r key; do
+    keys+=("$key")
+  done < <(plutil -convert xml1 -o - "$file" | sed -n 's|^[[:space:]]<key>\(NSWindow Frame .*\)</key>$|\1|p')
+  for key in "${keys[@]}"; do
+    plutil -remove "$key" "$file" 2>/dev/null || true
   done
+  plutil -convert xml1 "$file"
   commit_changes iina "Update IINA settings"
 }
 
