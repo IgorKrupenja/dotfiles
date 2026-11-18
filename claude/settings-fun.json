@@ -30,5 +30,6 @@
   "theme": "light-ansi",
   "switchModelsOnFlag": false,
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skipWorkflowUsageWarning": true
 }
