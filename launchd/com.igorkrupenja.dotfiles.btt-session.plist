@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Keeps BetterTouchTool running only in the account that's on screen. With fast user switching the
+     account in the background keeps its BTT, whose keyboard tap still sees the keys typed in the
+     account on screen and fires triggers for its own front app: with Claude in front there, the
+     "Claude Enter swap" preset turned every Return typed in the other account into Shift+Return.
+
+     Every second it checks which account owns the screen (/dev/console), with zsh builtins so nothing
+     is spawned. When another account takes it, BTT quits (BTTRelaunch first, or it brings BTT back);
+     when this account is back, BTT starts. Each quit and start goes to ~/Library/Logs/btt-session.log.
+
+     The script is inline, so the same file works in every account whatever its home folder, and it
+     runs through Apple-signed zsh (com.igorkrupenja.dotfiles.update.plist says why). -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.igorkrupenja.dotfiles.btt-session</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>-c</string>
+		<string>
+exec &amp;&gt;&gt; "$HOME/Library/Logs/btt-session.log"
+zmodload zsh/stat zsh/zselect
+last=$UID
+while true; do
+  zselect -t 100
+  zstat -A owner +uid /dev/console || continue
+  if [[ ${owner[1]} == "$last" ]]; then continue; fi
+  last=${owner[1]}
+  if [[ $last == "$UID" ]]; then
+    if ! pgrep -qxu $UID BetterTouchTool; then
+      open -gb com.hegenberg.BetterTouchTool
+      print -P "%D{%F %T} started BTT"
+    fi
+  else
+    pkill -xu $UID BTTRelaunch
+    if pkill -xu $UID BetterTouchTool; then
+      print -P "%D{%F %T} quit BTT, uid $last has the screen"
+    fi
+  fi
+done
+</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+</dict>
+</plist>

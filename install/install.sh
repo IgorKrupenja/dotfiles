@@ -276,10 +276,10 @@ set_macos_settings() {
   echo -e "🚀 $(purple Restoring macOS settings)"
   echo ""
 
-  # Scheduled runs of scripts/backup.sh and scripts/docker-cleanup.sh. Copied rather than symlinked,
-  # the way brew services installs its agents. bootout first, as bootstrap fails for an agent that is
-  # already loaded. The update agent is skipped: daily runs caused issues, so scripts/update.sh is run
-  # by hand
+  # Scheduled runs of scripts/backup.sh and scripts/docker-cleanup.sh, plus the agent that keeps
+  # BetterTouchTool running only in the account on screen. Copied rather than symlinked, the way brew
+  # services installs its agents. bootout first, as bootstrap fails for an agent that is already
+  # loaded. The update agent is skipped: daily runs caused issues, so scripts/update.sh is run by hand
   local plist agent
   mkdir -p "$HOME/Library/LaunchAgents"
   for plist in "$DOTFILES"/launchd/*.plist; do
