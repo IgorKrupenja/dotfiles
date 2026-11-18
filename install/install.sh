@@ -164,8 +164,14 @@ restore_backup() {
   echo -e "🚀 $(purple Restoring private data from iCloud Drive)"
   echo ""
 
-  local zips latest tmpdir dir file repo
-  zips=("$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Backups"/Backup-*.zip)
+  local zips latest tmpdir dir file repo zip=Backup
+  local backups="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Backups"
+  # The fun macOS account has backups of its own, see scripts/backup.sh
+  if [ "$(whoami)" = "fun" ]; then
+    backups+=/fun
+    zip=fun-Backup
+  fi
+  zips=("$backups/$zip"-*.zip)
   latest=${zips[${#zips[@]} - 1]}
   if [[ ! -f $latest ]]; then
     FAILURES+=("restore_backup: no backup in iCloud Drive yet, re-run once it has synced")

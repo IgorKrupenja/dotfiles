@@ -8,20 +8,34 @@
 DOTFILES=${DOTFILES:-$HOME/Projects/dotfiles}
 # Private data, see backup_private_data
 BACKUPS="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Stuff/Personal/Backups"
+ZIP=Backup
+# The fun macOS account backs up only what is its own (see main), its zips in a folder of their own
+FUN=false
+if [[ $(whoami) == fun ]]; then
+  FUN=true
+  BACKUPS+=/fun
+  ZIP=fun-Backup
+fi
 
 main() {
   # echo in case run from shell, with the date for the log
   echo "$(date '+%Y-%m-%d %H:%M') Backup in progress. Please wait..."
   cd "$DOTFILES" || exit
-  backup_vscode
-  backup_brewfile
-  backup_dock
-  backup_finder_sidebar
-  backup_marta
-  backup_iina
-  backup_iterm
-  backup_claude
-  backup_keyboard_shortcuts
+  # IINA is used from the fun account and everything else from the main one. Each setting is backed
+  # up from one account only, so the two accounts' commits never touch the same file
+  if $FUN; then
+    backup_iina
+    backup_fun_claude
+  else
+    backup_vscode
+    backup_brewfile
+    backup_dock
+    backup_finder_sidebar
+    backup_marta
+    backup_iterm
+    backup_claude
+    backup_keyboard_shortcuts
+  fi
   backup_private_data
   push
 }
@@ -86,6 +100,11 @@ backup_claude() {
   commit_changes claude "Update Claude settings"
 }
 
+# The fun account's own Claude Code settings file, which install.sh links there
+backup_fun_claude() {
+  commit_changes claude/settings-fun.json "Update fun Claude settings"
+}
+
 # System Settings > Keyboard > Keyboard Shortcuts
 backup_keyboard_shortcuts() {
   cp -f "$HOME/Library/Preferences/com.apple.symbolichotkeys.plist" keyboard/
@@ -126,14 +145,14 @@ copy_private_data() {
 # zips of the same files differ when the file dates do. One that can't be read counts as changed
 zip_if_changed() {
   local zips latest
-  zips=("$BACKUPS"/Backup-*.zip)
+  zips=("$BACKUPS/$ZIP"-*.zip)
   latest=$(mktemp -d)
   if [[ ${#zips[@]} -gt 0 ]]; then
     unzip -q "${zips[${#zips[@]} - 1]}" -d "$latest" || true
   fi
   if ! diff -rq "$1" "$latest" >/dev/null; then
     mkdir -p "$BACKUPS"
-    (cd "$1" && zip -q -r -X "$BACKUPS/Backup-$(date +%Y-%m-%d-%H%M%S).zip" .) ||
+    (cd "$1" && zip -q -r -X "$BACKUPS/$ZIP-$(date +%Y-%m-%d-%H%M%S).zip" .) ||
       record_failure # the ERR trap misses failures in a subshell
   fi
   rm -rf "$latest"
@@ -142,19 +161,32 @@ zip_if_changed() {
 # Keeps the 20 newest backups
 prune_backups() {
   local zips i
-  zips=("$BACKUPS"/Backup-*.zip)
+  zips=("$BACKUPS/$ZIP"-*.zip)
   for ((i = 0; i < ${#zips[@]} - 20; i++)); do
     rm -f "${zips[i]}"
   done
 }
 
-# Tries again a minute later if it fails, as a scheduled run that starts on wake from sleep can get
-# here before the network is back
+# Pulls first, as Claude sessions and the other account push to main too. Each tries again a minute
+# later if it fails, as a scheduled run that starts on wake from sleep can get here before the
+# network is back
 push() {
   echo ""
   echo "Pushing to dotfiles repo:"
   echo "-------------------------"
-  git push --no-verify || { sleep 60; git push --no-verify; }
+  if pull || { sleep 60; pull; }; then
+    git push --no-verify || { sleep 60; git push --no-verify; }
+  else
+    record_failure # the ERR trap skips commands in an if condition
+  fi
+}
+
+# Rebases on main, undone when it stops on a conflict so the repo isn't left halfway through a
+# rebase. --autostash, as iTerm writes its settings right into the repo at any time
+pull() {
+  git pull --rebase --autostash && return
+  git rebase --abort 2>/dev/null || true
+  return 1
 }
 
 # Commits path $1 with message $2 if anything in it changed, new files included. Only that path, so
