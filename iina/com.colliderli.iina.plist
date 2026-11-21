@@ -62,9 +62,9 @@
 	<key>compactUI</key>
 	<integer>0</integer>
 	<key>controlBarPositionHorizontal</key>
-	<real>0.49250397086143494</real>
+	<real>0.49627459049224854</real>
 	<key>controlBarPositionVertical</key>
-	<real>0.78801843317972353</real>
+	<real>0.86961269378662109</real>
 	<key>controlBarToolbarButtons</key>
 	<array>
 		<integer>3</integer>
@@ -110,7 +110,7 @@
 	<key>singleClickAction</key>
 	<integer>2</integer>
 	<key>softVolume</key>
-	<real>100</real>
+	<real>95</real>
 	<key>subBgColorString</key>
 	<string>0.0/0.0/0.0/1.0</string>
 	<key>subLang</key>
