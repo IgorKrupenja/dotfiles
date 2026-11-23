@@ -88,6 +88,8 @@ cask "coconutbattery"
 cask "cold-turkey-blocker"
 # Allows switching between application windows
 cask "contexts"
+# Tool to run Windows software
+cask "crossover"
 # Voice and text chat software
 cask "discord"
 # Web browser
